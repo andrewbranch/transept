@@ -17,6 +17,7 @@
 		3A758BC919E6D4B300A54F6C /* MediaCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A758BC819E6D4B300A54F6C /* MediaCollectionViewController.swift */; };
 		3A758BCB19E6DBB200A54F6C /* CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A758BCA19E6DBB200A54F6C /* CollectionViewLayout.swift */; };
 		3A758BCD19E6DEC600A54F6C /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A758BCC19E6DEC600A54F6C /* CollectionViewCell.swift */; };
+		3A758BD219E884EC00A54F6C /* MediaCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A758BD119E884EC00A54F6C /* MediaCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		3A758BC819E6D4B300A54F6C /* MediaCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MediaCollectionViewController.swift; path = ../MediaCollectionViewController.swift; sourceTree = "<group>"; };
 		3A758BCA19E6DBB200A54F6C /* CollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewLayout.swift; sourceTree = "<group>"; };
 		3A758BCC19E6DEC600A54F6C /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		3A758BD119E884EC00A54F6C /* MediaCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaCollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 			children = (
 				3A758BA119E6B81A00A54F6C /* AppDelegate.swift */,
 				3A758BC819E6D4B300A54F6C /* MediaCollectionViewController.swift */,
+				3A758BD119E884EC00A54F6C /* MediaCollectionViewController.swift */,
 				3A758BA319E6B81A00A54F6C /* HomeViewController.swift */,
 				3A758BC319E6BE3200A54F6C /* GiveViewController.swift */,
 				3A758BC519E6BE4F00A54F6C /* ConnectViewController.swift */,
@@ -240,6 +243,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A758BCB19E6DBB200A54F6C /* CollectionViewLayout.swift in Sources */,
+				3A758BD219E884EC00A54F6C /* MediaCollectionViewController.swift in Sources */,
 				3A758BC619E6BE4F00A54F6C /* ConnectViewController.swift in Sources */,
 				3A758BC419E6BE3200A54F6C /* GiveViewController.swift in Sources */,
 				3A758BCD19E6DEC600A54F6C /* CollectionViewCell.swift in Sources */,
