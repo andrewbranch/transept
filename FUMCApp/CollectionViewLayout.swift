@@ -11,7 +11,7 @@ import UIKit
 class CollectionViewLayout: UICollectionViewLayout {
     
     let itemInsets: UIEdgeInsets = UIEdgeInsetsMake(22.0, 22.0, 22.0, 22.0)
-    let itemSize: CGSize = CGSizeMake(200.0, 200.0)
+    let itemSize: CGSize = CGSizeMake(200.0, 260.0)
     let interItemSpacingY: CGFloat = 30.0
     let numberOfColumns: NSInteger = 1
     let sectionInsets: UIEdgeInsets = UIEdgeInsetsMake(25.0, 25.0, 25.0, 25.0)

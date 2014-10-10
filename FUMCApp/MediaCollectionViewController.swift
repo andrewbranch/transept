@@ -21,7 +21,8 @@ class MediaCollectionViewController: UICollectionViewController, UICollectionVie
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.registerClass(CollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        // self.collectionView!.registerClass(CollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        self.collectionView!.registerNib(UINib(nibName: "CollectionViewCell", bundle: NSBundle.mainBundle()), forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
     }
@@ -53,8 +54,21 @@ class MediaCollectionViewController: UICollectionViewController, UICollectionVie
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as CollectionViewCell
-    
-        // Configure the cell
+        
+        switch (indexPath.item) {
+            case 0:
+                cell.imageView.image = UIImage(named: "bulletin")
+                cell.label.text = "BULLETIN"
+                break
+            case 1:
+                cell.label.text = "WITNESS"
+                break
+            case 2:
+                cell.label.text = "SERMONS"
+                break
+            default:
+                break
+        }
     
         return cell
     }

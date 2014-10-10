@@ -14,10 +14,11 @@
 		3A758BBA19E6B81A00A54F6C /* FUMCAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A758BB919E6B81A00A54F6C /* FUMCAppTests.swift */; };
 		3A758BC419E6BE3200A54F6C /* GiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A758BC319E6BE3200A54F6C /* GiveViewController.swift */; };
 		3A758BC619E6BE4F00A54F6C /* ConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A758BC519E6BE4F00A54F6C /* ConnectViewController.swift */; };
-		3A758BC919E6D4B300A54F6C /* MediaCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A758BC819E6D4B300A54F6C /* MediaCollectionViewController.swift */; };
 		3A758BCB19E6DBB200A54F6C /* CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A758BCA19E6DBB200A54F6C /* CollectionViewLayout.swift */; };
 		3A758BCD19E6DEC600A54F6C /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A758BCC19E6DEC600A54F6C /* CollectionViewCell.swift */; };
 		3A758BD219E884EC00A54F6C /* MediaCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A758BD119E884EC00A54F6C /* MediaCollectionViewController.swift */; };
+		3A758BD419E885B500A54F6C /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A758BD319E885B500A54F6C /* CollectionViewCell.xib */; };
+		3A758BD619E88F6900A54F6C /* Oswald-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A758BD519E88F6900A54F6C /* Oswald-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,10 +43,11 @@
 		3A758BB919E6B81A00A54F6C /* FUMCAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FUMCAppTests.swift; sourceTree = "<group>"; };
 		3A758BC319E6BE3200A54F6C /* GiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiveViewController.swift; sourceTree = "<group>"; };
 		3A758BC519E6BE4F00A54F6C /* ConnectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectViewController.swift; sourceTree = "<group>"; };
-		3A758BC819E6D4B300A54F6C /* MediaCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MediaCollectionViewController.swift; path = ../MediaCollectionViewController.swift; sourceTree = "<group>"; };
 		3A758BCA19E6DBB200A54F6C /* CollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewLayout.swift; sourceTree = "<group>"; };
 		3A758BCC19E6DEC600A54F6C /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		3A758BD119E884EC00A54F6C /* MediaCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaCollectionViewController.swift; sourceTree = "<group>"; };
+		3A758BD319E885B500A54F6C /* CollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
+		3A758BD519E88F6900A54F6C /* Oswald-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Oswald-Regular.ttf"; path = "../Oswald-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 		3A758B9F19E6B81A00A54F6C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3A758BD519E88F6900A54F6C /* Oswald-Regular.ttf */,
 				3A758BA019E6B81A00A54F6C /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -125,7 +128,6 @@
 			isa = PBXGroup;
 			children = (
 				3A758BA119E6B81A00A54F6C /* AppDelegate.swift */,
-				3A758BC819E6D4B300A54F6C /* MediaCollectionViewController.swift */,
 				3A758BD119E884EC00A54F6C /* MediaCollectionViewController.swift */,
 				3A758BA319E6B81A00A54F6C /* HomeViewController.swift */,
 				3A758BC319E6BE3200A54F6C /* GiveViewController.swift */,
@@ -139,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				3A758BCC19E6DEC600A54F6C /* CollectionViewCell.swift */,
+				3A758BD319E885B500A54F6C /* CollectionViewCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -225,6 +228,8 @@
 			files = (
 				3A758BA919E6B81A00A54F6C /* Main.storyboard in Resources */,
 				3A758BAB19E6B81A00A54F6C /* Images.xcassets in Resources */,
+				3A758BD419E885B500A54F6C /* CollectionViewCell.xib in Resources */,
+				3A758BD619E88F6900A54F6C /* Oswald-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,7 +252,6 @@
 				3A758BC619E6BE4F00A54F6C /* ConnectViewController.swift in Sources */,
 				3A758BC419E6BE3200A54F6C /* GiveViewController.swift in Sources */,
 				3A758BCD19E6DEC600A54F6C /* CollectionViewCell.swift in Sources */,
-				3A758BC919E6D4B300A54F6C /* MediaCollectionViewController.swift in Sources */,
 				3A758BA219E6B81A00A54F6C /* AppDelegate.swift in Sources */,
 				3A758BA419E6B81A00A54F6C /* HomeViewController.swift in Sources */,
 			);

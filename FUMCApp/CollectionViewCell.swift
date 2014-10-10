@@ -10,9 +10,11 @@ import UIKit
 
 class CollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
+    
     override init(frame: CGRect) {
         super.init(frame: frame);
-        self.backgroundColor = UIColor.blackColor();
     }
 
     required init(coder aDecoder: NSCoder) {
