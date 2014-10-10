@@ -10,10 +10,11 @@ import UIKit
 
 class CollectionViewLayout: UICollectionViewLayout {
     
-    let itemInsets: UIEdgeInsets = UIEdgeInsetsMake(22.0, 22.0, 13.0, 22.0)
-    let itemSize: CGSize = CGSizeMake(125.0, 125.0)
-    let interItemSpacingY: CGFloat = 12.0
+    let itemInsets: UIEdgeInsets = UIEdgeInsetsMake(22.0, 22.0, 22.0, 22.0)
+    let itemSize: CGSize = CGSizeMake(200.0, 200.0)
+    let interItemSpacingY: CGFloat = 30.0
     let numberOfColumns: NSInteger = 1
+    let sectionInsets: UIEdgeInsets = UIEdgeInsetsMake(25.0, 25.0, 25.0, 25.0)
     
     var cellId: NSString?
     var layoutInfo: NSDictionary?
@@ -79,12 +80,13 @@ class CollectionViewLayout: UICollectionViewLayout {
     func frameForCell(atIndexPath indexPath: NSIndexPath) -> CGRect {
         let row = indexPath.item / self.numberOfColumns
         let column = indexPath.item % self.numberOfColumns
+        let columnWidth = self.collectionViewContentSize().width / CGFloat(self.numberOfColumns);
         
         var spacingX = self.collectionView!.bounds.size.width - self.itemInsets.left - self.itemInsets.right - CGFloat(self.numberOfColumns) * self.itemSize.width
         if (self.numberOfColumns > 1) { spacingX /= CGFloat(self.numberOfColumns - 1) }
         
-        var originX = floor(self.itemInsets.left + (self.itemSize.width + spacingX) * CGFloat(column))
-        var originY = floor(self.itemInsets.top + (self.itemSize.height + self.interItemSpacingY) * CGFloat(row))
+        var originX = floor(self.itemInsets.left + (self.itemSize.width + spacingX) * CGFloat(column)) + (columnWidth - self.itemSize.width - self.itemInsets.left - self.itemInsets.right) / 2.0
+        var originY = floor(self.itemInsets.top + (self.itemSize.height + self.interItemSpacingY) * CGFloat(row)) + self.sectionInsets.top
         
         return CGRectMake(originX, originY, self.itemSize.width, self.itemSize.height)
     }

@@ -47,7 +47,6 @@ class MediaCollectionViewController: UICollectionViewController, UICollectionVie
         return 1
     }
 
-
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 3
     }
