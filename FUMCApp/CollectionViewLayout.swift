@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class CollectionViewLayout: UICollectionViewLayout {
     
     let itemInsets: UIEdgeInsets = UIEdgeInsetsMake(22.0, 22.0, 22.0, 22.0)
@@ -18,9 +19,15 @@ class CollectionViewLayout: UICollectionViewLayout {
     
     var cellId: NSString?
     var layoutInfo: NSDictionary?
+    var cellsAppeared = false
     
     private let mediaCellId = "MediaCell"
     private let connectCellId = "ConnectCell"
+    private let dynamicAnimator: UIDynamicAnimator?
+    
+//    override class func layoutAttributesClass() -> AnyClass {
+//        return AnimatedCollectionViewLayoutAttributes.instanceType()
+//    }
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -48,6 +55,15 @@ class CollectionViewLayout: UICollectionViewLayout {
         newLayoutInfo[mediaCellId] = cellLayoutInfo
         newLayoutInfo[connectCellId] = cellLayoutInfo
         self.layoutInfo = newLayoutInfo
+    }
+    
+    override func initialLayoutAttributesForAppearingItemAtIndexPath(itemIndexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
+        var itemAttributes = UICollectionViewLayoutAttributes(forCellWithIndexPath: itemIndexPath)
+        // var itemAttributes = super.initialLayoutAttributesForAppearingItemAtIndexPath(itemIndexPath) as AnimatedCollectionViewLayoutAttributes
+        // var itemAttributes = AnimatedCollectionViewLayoutAttributes(forCellWithIndexPath: itemIndexPath)
+        var frame = self.frameForCell(atIndexPath: itemIndexPath)
+        itemAttributes.center = CGPointMake(frame.midX, frame.midY)
+        return itemAttributes
     }
     
     override func layoutAttributesForElementsInRect(rect: CGRect) -> [AnyObject]? {
@@ -87,6 +103,10 @@ class CollectionViewLayout: UICollectionViewLayout {
         
         var originX = floor(self.itemInsets.left + (self.itemSize.width + spacingX) * CGFloat(column)) + (columnWidth - self.itemSize.width - self.itemInsets.left - self.itemInsets.right) / 2.0
         var originY = floor(self.itemInsets.top + (self.itemSize.height + self.interItemSpacingY) * CGFloat(row)) + self.sectionInsets.top
+        
+//        if (!cellsAppeared) {
+//            return CGRectMake(originX, self.collectionViewContentSize().height / 2.0, self.itemSize.width, self.itemSize.height)
+//        }
         
         return CGRectMake(originX, originY, self.itemSize.width, self.itemSize.height)
     }

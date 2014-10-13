@@ -13,6 +13,9 @@ let reuseIdentifier = "MediaCell"
 class MediaCollectionViewController: UICollectionViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet private var mediaLayout: CollectionViewLayout!
+    private let numberOfCells = 3
+    private var showingCells = 0
+    private var timer: NSTimer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,11 +28,17 @@ class MediaCollectionViewController: UICollectionViewController, UICollectionVie
         self.collectionView!.registerNib(UINib(nibName: "CollectionViewCell", bundle: NSBundle.mainBundle()), forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
+        
+        self.timer = NSTimer.scheduledTimerWithTimeInterval(0.08, target: self, selector: "addCell", userInfo: nil, repeats: true)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+
     }
 
     /*
@@ -49,7 +58,7 @@ class MediaCollectionViewController: UICollectionViewController, UICollectionVie
     }
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return showingCells
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -62,15 +71,27 @@ class MediaCollectionViewController: UICollectionViewController, UICollectionVie
                 break
             case 1:
                 cell.label.text = "WITNESS"
+                cell.imageView.image = UIImage(named: "witness")
                 break
             case 2:
                 cell.label.text = "SERMONS"
+                cell.imageView.image = UIImage(named: "sermons")
                 break
             default:
                 break
         }
     
         return cell
+    }
+    
+    func addCell() {
+        if (self.showingCells == self.numberOfCells) {
+            self.timer!.invalidate()
+        } else {
+            self.collectionView!.performBatchUpdates({ () -> Void in
+                self.collectionView!.insertItemsAtIndexPaths([NSIndexPath(forItem: self.showingCells++, inSection: 0)])
+            }, completion: nil)
+        }
     }
 
     // MARK: UICollectionViewDelegate
