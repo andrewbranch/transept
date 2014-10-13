@@ -11,11 +11,11 @@ import UIKit
 
 class CollectionViewLayout: UICollectionViewLayout {
     
-    let itemInsets: UIEdgeInsets = UIEdgeInsetsMake(22.0, 22.0, 22.0, 22.0)
-    let itemSize: CGSize = CGSizeMake(200.0, 260.0)
+    let itemInsets: UIEdgeInsets = UIEdgeInsetsMake(20.0, 20.0, 20.0, 20.0)
+    var itemSize: CGSize = CGSizeMake(200.0, 200.0)
     let interItemSpacingY: CGFloat = 30.0
     let numberOfColumns: NSInteger = 1
-    let sectionInsets: UIEdgeInsets = UIEdgeInsetsMake(25.0, 25.0, 25.0, 25.0)
+    let sectionInsets: UIEdgeInsets = UIEdgeInsetsMake(20.0, 20.0, 20.0, 20.0)
     
     var cellId: NSString?
     var layoutInfo: NSDictionary?
@@ -23,11 +23,6 @@ class CollectionViewLayout: UICollectionViewLayout {
     
     private let mediaCellId = "MediaCell"
     private let connectCellId = "ConnectCell"
-    private let dynamicAnimator: UIDynamicAnimator?
-    
-//    override class func layoutAttributesClass() -> AnyClass {
-//        return AnimatedCollectionViewLayoutAttributes.instanceType()
-//    }
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -39,6 +34,8 @@ class CollectionViewLayout: UICollectionViewLayout {
         
         var sectionCount = self.collectionView!.numberOfSections()
         var indexPath = NSIndexPath(forItem: 0, inSection: 0)
+        
+        self.itemSize.width = self.collectionViewContentSize().width / CGFloat(self.numberOfColumns)
         
         for (var section = 0; section < sectionCount; section++) {
             var itemCount = self.collectionView!.numberOfItemsInSection(section)
@@ -59,8 +56,6 @@ class CollectionViewLayout: UICollectionViewLayout {
     
     override func initialLayoutAttributesForAppearingItemAtIndexPath(itemIndexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
         var itemAttributes = UICollectionViewLayoutAttributes(forCellWithIndexPath: itemIndexPath)
-        // var itemAttributes = super.initialLayoutAttributesForAppearingItemAtIndexPath(itemIndexPath) as AnimatedCollectionViewLayoutAttributes
-        // var itemAttributes = AnimatedCollectionViewLayoutAttributes(forCellWithIndexPath: itemIndexPath)
         var frame = self.frameForCell(atIndexPath: itemIndexPath)
         itemAttributes.center = CGPointMake(frame.midX, frame.midY)
         return itemAttributes
@@ -88,7 +83,7 @@ class CollectionViewLayout: UICollectionViewLayout {
         var rowCount = self.collectionView!.numberOfItemsInSection(0) / self.numberOfColumns
         if (self.collectionView!.numberOfSections() % self.numberOfColumns > 0) { rowCount++ }
         
-        var height = self.itemInsets.top + CGFloat(rowCount) * self.itemSize.height + CGFloat(rowCount - 1) * self.interItemSpacingY + self.itemInsets.bottom
+        var height = self.itemInsets.top + CGFloat(rowCount) * self.itemSize.height + CGFloat(rowCount - 1) * self.interItemSpacingY + self.itemInsets.bottom + self.sectionInsets.top + self.sectionInsets.bottom
         
         return CGSizeMake(self.collectionView!.bounds.size.width, height)
     }
