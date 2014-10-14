@@ -99,10 +99,6 @@ class CollectionViewLayout: UICollectionViewLayout {
         var originX = floor(self.itemInsets.left + (self.itemSize.width + spacingX) * CGFloat(column)) + (columnWidth - self.itemSize.width - self.itemInsets.left - self.itemInsets.right) / 2.0
         var originY = floor(self.itemInsets.top + (self.itemSize.height + self.interItemSpacingY) * CGFloat(row)) + self.sectionInsets.top
         
-//        if (!cellsAppeared) {
-//            return CGRectMake(originX, self.collectionViewContentSize().height / 2.0, self.itemSize.width, self.itemSize.height)
-//        }
-        
         return CGRectMake(originX, originY, self.itemSize.width, self.itemSize.height)
     }
    

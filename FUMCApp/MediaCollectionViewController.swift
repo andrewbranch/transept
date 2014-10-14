@@ -16,19 +16,19 @@ class MediaCollectionViewController: UICollectionViewController, UICollectionVie
     private let numberOfCells = 3
     private var showingCells = 0
     private var timer: NSTimer?
+    private var modalWebViewController = UIViewController()
+    private var modalTableViewController = UITableViewController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        // self.navigationController?.setNavigationBarHidden(true, animated: true)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        // self.collectionView!.registerClass(CollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         self.collectionView!.registerNib(UINib(nibName: "CollectionViewCell", bundle: NSBundle.mainBundle()), forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
-        
         self.timer = NSTimer.scheduledTimerWithTimeInterval(0.08, target: self, selector: "addCell", userInfo: nil, repeats: true)
     }
 
@@ -37,19 +37,32 @@ class MediaCollectionViewController: UICollectionViewController, UICollectionVie
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillAppear(animated: Bool) {
-
+    override func viewDidAppear(animated: Bool) {
+        
     }
 
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        if (segue.identifier == "mediaCellSelection") {
+            var tableViewController = segue.destinationViewController as MediaTableViewController
+            var indexPath = sender as NSIndexPath
+            switch (indexPath.item) {
+                case 0:
+                    tableViewController.title = "Sunday Bulletins"
+                    break
+                case 1:
+                    tableViewController.title = "The Methodist Witness"
+                    break
+                case 2:
+                    tableViewController.title = "Sermon Archive"
+                    break
+                default:
+                    break
+            }
+        }
+        
     }
-    */
 
     // MARK: UICollectionViewDataSource
 
@@ -124,5 +137,9 @@ class MediaCollectionViewController: UICollectionViewController, UICollectionVie
     
     }
     */
+    
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        self.performSegueWithIdentifier("mediaCellSelection", sender: indexPath)
+    }
 
 }
