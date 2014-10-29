@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A212B661A0178EA00757466 /* Bulletin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A212B651A0178EA00757466 /* Bulletin.swift */; };
 		3A3C088F19EC7ABB00EFBD8D /* MediaTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C088E19EC7ABB00EFBD8D /* MediaTableViewController.swift */; };
 		3A3C089219EC8B4D00EFBD8D /* MyriadPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3A3C089119EC8B4D00EFBD8D /* MyriadPro-Regular.otf */; };
 		3A3C089319EC8B4D00EFBD8D /* MyriadPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3A3C089119EC8B4D00EFBD8D /* MyriadPro-Regular.otf */; };
@@ -26,6 +27,7 @@
 		3A758BD219E884EC00A54F6C /* MediaCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A758BD119E884EC00A54F6C /* MediaCollectionViewController.swift */; };
 		3A758BD419E885B500A54F6C /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A758BD319E885B500A54F6C /* CollectionViewCell.xib */; };
 		3A758BD619E88F6900A54F6C /* Oswald-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A758BD519E88F6900A54F6C /* Oswald-Regular.ttf */; };
+		3AC6C5CE1A0144C4002A18D8 /* BulletinsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC6C5CD1A0144C4002A18D8 /* BulletinsDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3A212B651A0178EA00757466 /* Bulletin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bulletin.swift; sourceTree = "<group>"; };
 		3A3C088E19EC7ABB00EFBD8D /* MediaTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaTableViewController.swift; sourceTree = "<group>"; };
 		3A3C089119EC8B4D00EFBD8D /* MyriadPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-Regular.otf"; sourceTree = "<group>"; };
 		3A3C089419EC8BAD00EFBD8D /* MyriadPro-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-Semibold.otf"; sourceTree = "<group>"; };
@@ -59,6 +62,7 @@
 		3A758BD119E884EC00A54F6C /* MediaCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaCollectionViewController.swift; sourceTree = "<group>"; };
 		3A758BD319E885B500A54F6C /* CollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
 		3A758BD519E88F6900A54F6C /* Oswald-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Oswald-Regular.ttf"; path = "../Oswald-Regular.ttf"; sourceTree = "<group>"; };
+		3AC6C5CD1A0144C4002A18D8 /* BulletinsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulletinsDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +83,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A212B671A0178F500757466 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3A212B651A0178EA00757466 /* Bulletin.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		3A758B9319E6B81A00A54F6C = {
 			isa = PBXGroup;
 			children = (
@@ -101,7 +113,9 @@
 			isa = PBXGroup;
 			children = (
 				3A758BA119E6B81A00A54F6C /* AppDelegate.swift */,
+				3AC6C5CF1A0144CF002A18D8 /* Data Sources */,
 				3A758BC719E6BE7300A54F6C /* View Controllers */,
+				3A212B671A0178F500757466 /* Models */,
 				3A758BCE19E6DECA00A54F6C /* Views */,
 				3A758BDB19E9EDD500A54F6C /* Utilities */,
 				3A758BA719E6B81A00A54F6C /* Main.storyboard */,
@@ -167,6 +181,14 @@
 			children = (
 			);
 			name = Utilities;
+			sourceTree = "<group>";
+		};
+		3AC6C5CF1A0144CF002A18D8 /* Data Sources */ = {
+			isa = PBXGroup;
+			children = (
+				3AC6C5CD1A0144C4002A18D8 /* BulletinsDataSource.swift */,
+			);
+			name = "Data Sources";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,7 +299,9 @@
 				3A3C088F19EC7ABB00EFBD8D /* MediaTableViewController.swift in Sources */,
 				3A3C089819ECCF6600EFBD8D /* RootTabBarController.swift in Sources */,
 				3A758BCB19E6DBB200A54F6C /* CollectionViewLayout.swift in Sources */,
+				3AC6C5CE1A0144C4002A18D8 /* BulletinsDataSource.swift in Sources */,
 				3A758BD219E884EC00A54F6C /* MediaCollectionViewController.swift in Sources */,
+				3A212B661A0178EA00757466 /* Bulletin.swift in Sources */,
 				3A758BC619E6BE4F00A54F6C /* ConnectViewController.swift in Sources */,
 				3A758BC419E6BE3200A54F6C /* GiveViewController.swift in Sources */,
 				3A758BCD19E6DEC600A54F6C /* CollectionViewCell.swift in Sources */,

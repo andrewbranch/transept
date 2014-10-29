@@ -16,15 +16,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        UINavigationBar.appearance().titleTextAttributes = [
-            NSFontAttributeName: UIFont(name: "MyriadPro-Semibold", size: 18.0)
-        ]
-        UIBarButtonItem.appearance().setTitleTextAttributes([
-            NSFontAttributeName: UIFont(name: "MyriadPro-Regular", size: 18.0)
-        ], forState: UIControlState.Normal)
-        UITabBarItem.appearance().setTitleTextAttributes([
-            NSFontAttributeName: UIFont(name: "MyriadPro-Regular", size: 10.0)
-        ], forState: UIControlState.Normal)
+        if let font = UIFont(name: "MyriadPro-Semibold", size: 18.0) {
+            UINavigationBar.appearance().titleTextAttributes = [
+                NSFontAttributeName: font
+            ]
+        }
+        
+        if let font = UIFont(name: "MyriadPro-Regular", size: 18.0) {
+            UIBarButtonItem.appearance().setTitleTextAttributes([
+                NSFontAttributeName: font
+            ], forState: UIControlState.Normal)
+        }
+        
+        if let font = UIFont(name: "MyriadPro-Regular", size: 10.0) {
+            UITabBarItem.appearance().setTitleTextAttributes([
+                NSFontAttributeName: font
+            ], forState: UIControlState.Normal)
+        }
 
         return true
     }

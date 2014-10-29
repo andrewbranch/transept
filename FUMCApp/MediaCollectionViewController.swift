@@ -26,7 +26,7 @@ class MediaCollectionViewController: UICollectionViewController, UICollectionVie
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.registerNib(UINib(nibName: "CollectionViewCell", bundle: NSBundle.mainBundle()), forCellWithReuseIdentifier: reuseIdentifier)
+        self.collectionView.registerNib(UINib(nibName: "CollectionViewCell", bundle: NSBundle.mainBundle()), forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
         self.timer = NSTimer.scheduledTimerWithTimeInterval(0.08, target: self, selector: "addCell", userInfo: nil, repeats: true)
@@ -49,7 +49,7 @@ class MediaCollectionViewController: UICollectionViewController, UICollectionVie
             var indexPath = sender as NSIndexPath
             switch (indexPath.item) {
                 case 0:
-                    tableViewController.title = "Sunday Bulletins"
+                    tableViewController.dataSource = BulletinsDataSource()
                     break
                 case 1:
                     tableViewController.title = "The Methodist Witness"
@@ -101,8 +101,8 @@ class MediaCollectionViewController: UICollectionViewController, UICollectionVie
         if (self.showingCells == self.numberOfCells) {
             self.timer!.invalidate()
         } else {
-            self.collectionView!.performBatchUpdates({ () -> Void in
-                self.collectionView!.insertItemsAtIndexPaths([NSIndexPath(forItem: self.showingCells++, inSection: 0)])
+            self.collectionView.performBatchUpdates({
+                self.collectionView.insertItemsAtIndexPaths([NSIndexPath(forItem: self.showingCells++, inSection: 0)])
             }, completion: nil)
         }
     }
