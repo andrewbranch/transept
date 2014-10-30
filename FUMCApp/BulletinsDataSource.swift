@@ -20,17 +20,23 @@ class BulletinsDataSource: NSObject, MediaTableViewDataSource {
         super.init()
         
         let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
-        dateFormatter.dateFormat = "dddd, MMM dd, yyyy"
         
         var request = NSURLRequest(URL: url!)
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
             if (error != nil) {
                 // TODO
             } else {
-                var bulletinsDictionary: [NSDictionary] = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.allZeros, error: nil) as [NSDictionary]
+                var bulletinsDictionary: [NSDictionary] = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as [NSDictionary]
                 for (var i = 0; i < bulletinsDictionary.count; i++) {
+
+                    self.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.sssZ"
+                    var date = self.dateFormatter.dateFromString(bulletinsDictionary[i].objectForKey("date") as String)
+                    
                     var b = Bulletin()
                     b.setValuesForKeysWithDictionary(bulletinsDictionary[i])
+                    b.date = date!
+                    
+                    self.dateFormatter.dateFormat = "EEEE, MMMM d, yyyy"
                     var day = self.dateFormatter.stringFromDate(b.date)
                     if (self.bulletins.indexForKey(day) != nil) {
                         self.bulletins[day]!.append(b)
