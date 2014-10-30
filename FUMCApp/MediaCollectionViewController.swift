@@ -49,7 +49,7 @@ class MediaCollectionViewController: UICollectionViewController, UICollectionVie
             var indexPath = sender as NSIndexPath
             switch (indexPath.item) {
                 case 0:
-                    tableViewController.dataSource = BulletinsDataSource()
+                    tableViewController.dataSource = BulletinsDataSource(delegate: tableViewController)
                     break
                 case 1:
                     tableViewController.title = "The Methodist Witness"

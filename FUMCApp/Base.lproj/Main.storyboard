@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Home-->
@@ -88,16 +89,27 @@
         <scene sceneID="iUJ-Vh-IHj">
             <objects>
                 <tableViewController id="EfC-3k-Tu9" customClass="MediaTableViewController" customModule="FUMCApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="aBF-Nu-ilQ">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="aBF-Nu-ilQ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="mediaTableViewCell" id="cCH-CQ-YCo">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="mediaTableViewCell" textLabel="mkA-fn-gLP" style="IBUITableViewCellStyleDefault" id="cCH-CQ-YCo">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cCH-CQ-YCo" id="dOe-oU-jng">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mkA-fn-gLP">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="CU2-Bk-W1i" kind="show" identifier="mediaTableCellSelection" id="bb4-wv-O9w"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -110,6 +122,39 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4CI-4J-mLa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2570" y="-710"/>
+        </scene>
+        <!--Media Web View Controller-->
+        <scene sceneID="iY3-my-iVE">
+            <objects>
+                <viewController id="CU2-Bk-W1i" customClass="MediaWebViewController" customModule="FUMCApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cAD-GE-ywh"/>
+                        <viewControllerLayoutGuide type="bottom" id="JpA-mj-vcx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="idO-dO-4bG">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="onI-FZ-bHd">
+                                <rect key="frame" x="16" y="64" width="568" height="487"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="onI-FZ-bHd" firstAttribute="leading" secondItem="idO-dO-4bG" secondAttribute="leadingMargin" id="gWD-1m-gYY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="onI-FZ-bHd" secondAttribute="trailing" id="hbc-Ft-QI1"/>
+                            <constraint firstItem="onI-FZ-bHd" firstAttribute="top" secondItem="cAD-GE-ywh" secondAttribute="bottom" id="jMW-bU-xOY"/>
+                            <constraint firstItem="JpA-mj-vcx" firstAttribute="top" secondItem="onI-FZ-bHd" secondAttribute="bottom" id="svu-yO-8H3"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="onI-FZ-bHd" id="8qO-FS-OeL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ONZ-Vo-Cwp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3306" y="-714"/>
         </scene>
         <!--Give-->
         <scene sceneID="JiP-Y7-CvA">

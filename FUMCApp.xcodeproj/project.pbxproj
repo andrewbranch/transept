@@ -15,6 +15,7 @@
 		3A3C089619EC8BAD00EFBD8D /* MyriadPro-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3A3C089419EC8BAD00EFBD8D /* MyriadPro-Semibold.otf */; };
 		3A3C089819ECCF6600EFBD8D /* RootTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C089719ECCF6600EFBD8D /* RootTabBarController.swift */; };
 		3A3C089919ECCF6600EFBD8D /* RootTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C089719ECCF6600EFBD8D /* RootTabBarController.swift */; };
+		3A7243AA1A02818B002AA176 /* MediaWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7243A91A02818B002AA176 /* MediaWebViewController.swift */; };
 		3A758BA219E6B81A00A54F6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A758BA119E6B81A00A54F6C /* AppDelegate.swift */; };
 		3A758BA419E6B81A00A54F6C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A758BA319E6B81A00A54F6C /* HomeViewController.swift */; };
 		3A758BA919E6B81A00A54F6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A758BA719E6B81A00A54F6C /* Main.storyboard */; };
@@ -46,6 +47,7 @@
 		3A3C089119EC8B4D00EFBD8D /* MyriadPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-Regular.otf"; sourceTree = "<group>"; };
 		3A3C089419EC8BAD00EFBD8D /* MyriadPro-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-Semibold.otf"; sourceTree = "<group>"; };
 		3A3C089719ECCF6600EFBD8D /* RootTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTabBarController.swift; sourceTree = "<group>"; };
+		3A7243A91A02818B002AA176 /* MediaWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaWebViewController.swift; sourceTree = "<group>"; };
 		3A758B9C19E6B81A00A54F6C /* FUMCApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FUMCApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A758BA019E6B81A00A54F6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A758BA119E6B81A00A54F6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				3A3C089719ECCF6600EFBD8D /* RootTabBarController.swift */,
 				3A758BD119E884EC00A54F6C /* MediaCollectionViewController.swift */,
 				3A3C088E19EC7ABB00EFBD8D /* MediaTableViewController.swift */,
+				3A7243A91A02818B002AA176 /* MediaWebViewController.swift */,
 				3A758BA319E6B81A00A54F6C /* HomeViewController.swift */,
 				3A758BC319E6BE3200A54F6C /* GiveViewController.swift */,
 				3A758BC519E6BE4F00A54F6C /* ConnectViewController.swift */,
@@ -301,6 +304,7 @@
 				3A3C089819ECCF6600EFBD8D /* RootTabBarController.swift in Sources */,
 				3A758BCB19E6DBB200A54F6C /* CollectionViewLayout.swift in Sources */,
 				3AC6C5CE1A0144C4002A18D8 /* BulletinsDataSource.swift in Sources */,
+				3A7243AA1A02818B002AA176 /* MediaWebViewController.swift in Sources */,
 				3A758BD219E884EC00A54F6C /* MediaCollectionViewController.swift in Sources */,
 				3A212B661A0178EA00757466 /* Bulletin.swift in Sources */,
 				3A758BC619E6BE4F00A54F6C /* ConnectViewController.swift in Sources */,

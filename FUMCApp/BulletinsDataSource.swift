@@ -15,10 +15,12 @@ class BulletinsDataSource: NSObject, MediaTableViewDataSource {
     var bulletins: Dictionary<NSString, [Bulletin]> = Dictionary<NSString, [Bulletin]>()
     let dateFormatter = NSDateFormatter()
     var sortedKeys: [NSString]?
+    var delegate: MediaTableViewDataSourceDelegate!
     
-    override init() {
+    required init(delegate: MediaTableViewDataSourceDelegate) {
         super.init()
         
+        self.delegate = delegate
         let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
         
         var request = NSURLRequest(URL: url!)
@@ -45,13 +47,24 @@ class BulletinsDataSource: NSObject, MediaTableViewDataSource {
                     }
                 }
                 
+                
                 self.sortedKeys = self.bulletins.keys.array
                 self.sortedKeys?.sort {
                     calendar?.compareDate(self.dateFormatter.dateFromString($0)!, toDate: self.dateFormatter.dateFromString($1)!, toUnitGranularity: NSCalendarUnit.DayCalendarUnit) == NSComparisonResult.OrderedDescending
                 }
+                
+                self.delegate.dataSourceDidFinishLoadingAPI(self)
             }
             
         }
+    }
+    
+    func urlForIndexPath(indexPath: NSIndexPath) -> NSURL? {
+        return NSURL(string: "https://fumc.herokuapp.com/api/file/" + self.bulletinForIndexPath(indexPath).file)
+    }
+    
+    func bulletinForIndexPath(indexPath: NSIndexPath) -> Bulletin {
+        return self.bulletins[self.sortedKeys![indexPath.section]]![indexPath.item]
     }
     
     // MARK: - Table view data source
@@ -65,11 +78,13 @@ class BulletinsDataSource: NSObject, MediaTableViewDataSource {
     }
     
     
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return self.sortedKeys![section]
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
-        
-        // Configure the cell...
-        
+        let cell = tableView.dequeueReusableCellWithIdentifier("mediaTableViewCell", forIndexPath: indexPath) as UITableViewCell
+        cell.textLabel.text = self.bulletinForIndexPath(indexPath).service
         return cell
     }
     
