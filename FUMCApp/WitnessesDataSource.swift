@@ -13,7 +13,7 @@ class WitnessesDataSource: NSObject, MediaTableViewDataSource {
     var title: NSString = "The Methodist Witness"
     var delegate: MediaTableViewDataSourceDelegate!
     var witnesses = Dictionary<NSString, [Witness]>()
-    var url = NSURL(string: "https://fumc.herokuapp.com/api/witnesses?visible=true&orderBy=volume:Z,issue:Z]")
+    var url = NSURL(string: "https://fumc.herokuapp.com/api/witnesses?visible=true&orderBy=volume:Z,issue:Z")
     var dateFormatter = NSDateFormatter()
     
     required init(delegate: MediaTableViewDataSourceDelegate) {
@@ -38,7 +38,7 @@ class WitnessesDataSource: NSObject, MediaTableViewDataSource {
                     w.to = to!
                     
                     self.dateFormatter.dateFormat = "yyyy"
-                    let volume = NSString(format: "%s • Volume %i", self.dateFormatter.stringFromDate(w.from), w.volume)
+                    let volume = NSString(format: "%@ • Volume %i", self.dateFormatter.stringFromDate(w.from), w.volume)
                     if (self.witnesses.indexForKey(volume) != nil) {
                         self.witnesses[volume]!.append(w)
                     } else {

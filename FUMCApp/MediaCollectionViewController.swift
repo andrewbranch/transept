@@ -52,7 +52,7 @@ class MediaCollectionViewController: UICollectionViewController, UICollectionVie
                     tableViewController.dataSource = BulletinsDataSource(delegate: tableViewController)
                     break
                 case 1:
-                    tableViewController.title = "The Methodist Witness"
+                    tableViewController.dataSource = WitnessesDataSource(delegate: tableViewController)
                     break
                 case 2:
                     tableViewController.title = "Sermon Archive"
