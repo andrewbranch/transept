@@ -11,10 +11,9 @@ import UIKit
 class BulletinsDataSource: NSObject, MediaTableViewDataSource {
     
     var title: NSString = "Worship Bulletins"
-    let url = NSURL(string: "https://fumc.herokuapp.com/api/bulletins?visible=true")
+    let url = NSURL(string: "https://fumc.herokuapp.com/api/bulletins?visible=true&orderBy=date:Z,service:A")
     var bulletins: Dictionary<NSString, [Bulletin]> = Dictionary<NSString, [Bulletin]>()
     let dateFormatter = NSDateFormatter()
-    var sortedKeys: [NSString]?
     var delegate: MediaTableViewDataSourceDelegate!
     
     required init(delegate: MediaTableViewDataSourceDelegate) {
@@ -47,12 +46,6 @@ class BulletinsDataSource: NSObject, MediaTableViewDataSource {
                     }
                 }
                 
-                
-                self.sortedKeys = self.bulletins.keys.array
-                self.sortedKeys?.sort {
-                    calendar?.compareDate(self.dateFormatter.dateFromString($0)!, toDate: self.dateFormatter.dateFromString($1)!, toUnitGranularity: NSCalendarUnit.DayCalendarUnit) == NSComparisonResult.OrderedDescending
-                }
-                
                 self.delegate.dataSourceDidFinishLoadingAPI(self)
             }
             
@@ -64,7 +57,7 @@ class BulletinsDataSource: NSObject, MediaTableViewDataSource {
     }
     
     func bulletinForIndexPath(indexPath: NSIndexPath) -> Bulletin {
-        return self.bulletins[self.sortedKeys![indexPath.section]]![indexPath.item]
+        return self.bulletins[self.bulletins.keys.array[indexPath.section]]![indexPath.row]
     }
     
     // MARK: - Table view data source
@@ -74,17 +67,18 @@ class BulletinsDataSource: NSObject, MediaTableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.bulletins[self.sortedKeys![section]]!.count
+        return self.bulletins[self.bulletins.keys.array[section]]!.count
     }
     
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return self.sortedKeys![section]
+        return self.bulletins.keys.array[section]
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("mediaTableViewCell", forIndexPath: indexPath) as UITableViewCell
         cell.textLabel.text = self.bulletinForIndexPath(indexPath).service
+        cell.detailTextLabel?.text = ""
         return cell
     }
     

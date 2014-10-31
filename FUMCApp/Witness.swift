@@ -1,25 +1,29 @@
 //
-//  Bulletin.swift
+//  Witness.swift
 //  FUMCApp
 //
-//  Created by Andrew Branch on 10/29/14.
+//  Created by Andrew Branch on 10/30/14.
 //  Copyright (c) 2014 FUMC Pensacola. All rights reserved.
 //
 
 import UIKit
 
-class Bulletin : NSObject {
+class Witness: NSObject {
     
     var id: Int
-    var service: NSString
-    var date: NSDate
+    var from: NSDate
+    var to: NSDate
     var file: NSString
+    var volume: Int
+    var issue: Int
     var visible: Bool
     
     override init() {
         self.id = 0
-        self.service = ""
-        self.date = NSDate()
+        self.from = NSDate()
+        self.to = NSDate()
+        self.volume = 0
+        self.issue = 0
         self.file = ""
         self.visible = false
     }
