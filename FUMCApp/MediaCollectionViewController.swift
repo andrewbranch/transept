@@ -18,6 +18,7 @@ class MediaCollectionViewController: UICollectionViewController, UICollectionVie
     private var timer: NSTimer?
     private var modalWebViewController = UIViewController()
     private var modalTableViewController = UITableViewController()
+    private var podcastURL = NSURL(string: "itms-pcast://itunes.apple.com/us/podcast/first-umc-of-pensacola-fl/id313924198?mt=2&uo=4")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,9 +55,6 @@ class MediaCollectionViewController: UICollectionViewController, UICollectionVie
                 case 1:
                     tableViewController.dataSource = WitnessesDataSource(delegate: tableViewController)
                     break
-                case 2:
-                    tableViewController.title = "Sermon Archive"
-                    break
                 default:
                     break
             }
@@ -80,10 +78,10 @@ class MediaCollectionViewController: UICollectionViewController, UICollectionVie
         switch (indexPath.item) {
             case 0:
                 cell.imageView.image = UIImage(named: "bulletin")
-                cell.label.text = "BULLETIN"
+                cell.label.text = "BULLETINS"
                 break
             case 1:
-                cell.label.text = "WITNESS"
+                cell.label.text = "WITNESSES"
                 cell.imageView.image = UIImage(named: "witness")
                 break
             case 2:
@@ -139,7 +137,11 @@ class MediaCollectionViewController: UICollectionViewController, UICollectionVie
     */
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        self.performSegueWithIdentifier("mediaCellSelection", sender: indexPath)
+        if (indexPath.item == 2) {
+            UIApplication.sharedApplication().openURL(podcastURL!)
+        } else {
+            self.performSegueWithIdentifier("mediaCellSelection", sender: indexPath)
+        }
     }
 
 }
