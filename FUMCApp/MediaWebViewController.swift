@@ -11,6 +11,7 @@ import UIKit
 class MediaWebViewController: UIViewController, UIWebViewDelegate {
     
     @IBOutlet var webView: UIWebView?
+    @IBOutlet var activityIndicator: UIActivityIndicatorView?
     
     var url: NSURL?
 
@@ -22,6 +23,14 @@ class MediaWebViewController: UIViewController, UIWebViewDelegate {
             var request = NSURLRequest(URL: url)
             self.webView!.loadRequest(request)
         }
+    }
+    
+    func webViewDidStartLoad(webView: UIWebView) {
+        self.activityIndicator!.startAnimating()
+    }
+    
+    func webViewDidFinishLoad(webView: UIWebView) {
+        self.activityIndicator!.stopAnimating()
     }
 
     override func didReceiveMemoryWarning() {

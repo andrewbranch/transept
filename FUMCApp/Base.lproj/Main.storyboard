@@ -145,9 +145,14 @@
                                 <rect key="frame" x="16" y="64" width="568" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Uad-L7-2BP">
+                                <rect key="frame" x="290" y="266" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="centerX" secondItem="Uad-L7-2BP" secondAttribute="centerX" id="BbS-tX-O0D"/>
+                            <constraint firstAttribute="centerY" secondItem="Uad-L7-2BP" secondAttribute="centerY" id="X6u-gp-PnZ"/>
                             <constraint firstItem="onI-FZ-bHd" firstAttribute="leading" secondItem="idO-dO-4bG" secondAttribute="leadingMargin" id="gWD-1m-gYY"/>
                             <constraint firstAttribute="trailingMargin" secondItem="onI-FZ-bHd" secondAttribute="trailing" id="hbc-Ft-QI1"/>
                             <constraint firstItem="onI-FZ-bHd" firstAttribute="top" secondItem="cAD-GE-ywh" secondAttribute="bottom" id="jMW-bU-xOY"/>
@@ -155,6 +160,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="Uad-L7-2BP" id="nEW-lU-iqq"/>
                         <outlet property="webView" destination="onI-FZ-bHd" id="8qO-FS-OeL"/>
                     </connections>
                 </viewController>
