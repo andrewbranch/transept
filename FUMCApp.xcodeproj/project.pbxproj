@@ -30,6 +30,12 @@
 		3A758BD219E884EC00A54F6C /* MediaCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A758BD119E884EC00A54F6C /* MediaCollectionViewController.swift */; };
 		3A758BD419E885B500A54F6C /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A758BD319E885B500A54F6C /* CollectionViewCell.xib */; };
 		3A758BD619E88F6900A54F6C /* Oswald-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A758BD519E88F6900A54F6C /* Oswald-Regular.ttf */; };
+		3A7FE2C41A0801A500E33424 /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A7FE2C11A0801A500E33424 /* TwitterKit.framework */; };
+		3A7FE2C51A0801A500E33424 /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A7FE2C11A0801A500E33424 /* TwitterKit.framework */; };
+		3A7FE2C61A0801A500E33424 /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3A7FE2C21A0801A500E33424 /* TwitterKitResources.bundle */; };
+		3A7FE2C71A0801A500E33424 /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3A7FE2C21A0801A500E33424 /* TwitterKitResources.bundle */; };
+		3A7FE2C81A0801A500E33424 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A7FE2C31A0801A500E33424 /* Fabric.framework */; };
+		3A7FE2C91A0801A500E33424 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A7FE2C31A0801A500E33424 /* Fabric.framework */; };
 		3AC6C5CE1A0144C4002A18D8 /* BulletinsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC6C5CD1A0144C4002A18D8 /* BulletinsDataSource.swift */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +74,9 @@
 		3A758BD119E884EC00A54F6C /* MediaCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaCollectionViewController.swift; sourceTree = "<group>"; };
 		3A758BD319E885B500A54F6C /* CollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
 		3A758BD519E88F6900A54F6C /* Oswald-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Oswald-Regular.ttf"; path = "../Oswald-Regular.ttf"; sourceTree = "<group>"; };
+		3A7FE2C11A0801A500E33424 /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterKit.framework; sourceTree = "<group>"; };
+		3A7FE2C21A0801A500E33424 /* TwitterKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle; sourceTree = "<group>"; };
+		3A7FE2C31A0801A500E33424 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		3AC6C5CD1A0144C4002A18D8 /* BulletinsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulletinsDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,6 +85,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A7FE2C41A0801A500E33424 /* TwitterKit.framework in Frameworks */,
+				3A7FE2C81A0801A500E33424 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +94,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A7FE2C51A0801A500E33424 /* TwitterKit.framework in Frameworks */,
+				3A7FE2C91A0801A500E33424 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,6 +117,9 @@
 				3A758B9E19E6B81A00A54F6C /* FUMCApp */,
 				3A758BB619E6B81A00A54F6C /* FUMCAppTests */,
 				3A758B9D19E6B81A00A54F6C /* Products */,
+				3A7FE2C11A0801A500E33424 /* TwitterKit.framework */,
+				3A7FE2C21A0801A500E33424 /* TwitterKitResources.bundle */,
+				3A7FE2C31A0801A500E33424 /* Fabric.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -164,13 +180,11 @@
 			isa = PBXGroup;
 			children = (
 				3A3C089719ECCF6600EFBD8D /* RootTabBarController.swift */,
-				3A758BD119E884EC00A54F6C /* MediaCollectionViewController.swift */,
-				3A3C088E19EC7ABB00EFBD8D /* MediaTableViewController.swift */,
-				3A7243A91A02818B002AA176 /* MediaWebViewController.swift */,
-				3A758BA319E6B81A00A54F6C /* HomeViewController.swift */,
-				3A758BC319E6BE3200A54F6C /* GiveViewController.swift */,
-				3A758BC519E6BE4F00A54F6C /* ConnectViewController.swift */,
 				3A758BCA19E6DBB200A54F6C /* CollectionViewLayout.swift */,
+				3A7FE2CB1A092F8E00E33424 /* Home */,
+				3A7FE2CA1A092F8500E33424 /* Media */,
+				3A7FE2CC1A092FA500E33424 /* Give */,
+				3A7FE2CD1A092FAB00E33424 /* Connect */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -189,6 +203,40 @@
 			children = (
 			);
 			name = Utilities;
+			sourceTree = "<group>";
+		};
+		3A7FE2CA1A092F8500E33424 /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				3A758BD119E884EC00A54F6C /* MediaCollectionViewController.swift */,
+				3A3C088E19EC7ABB00EFBD8D /* MediaTableViewController.swift */,
+				3A7243A91A02818B002AA176 /* MediaWebViewController.swift */,
+			);
+			name = Media;
+			sourceTree = "<group>";
+		};
+		3A7FE2CB1A092F8E00E33424 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				3A758BA319E6B81A00A54F6C /* HomeViewController.swift */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		3A7FE2CC1A092FA500E33424 /* Give */ = {
+			isa = PBXGroup;
+			children = (
+				3A758BC319E6BE3200A54F6C /* GiveViewController.swift */,
+			);
+			name = Give;
+			sourceTree = "<group>";
+		};
+		3A7FE2CD1A092FAB00E33424 /* Connect */ = {
+			isa = PBXGroup;
+			children = (
+				3A758BC519E6BE4F00A54F6C /* ConnectViewController.swift */,
+			);
+			name = Connect;
 			sourceTree = "<group>";
 		};
 		3AC6C5CF1A0144CF002A18D8 /* Data Sources */ = {
@@ -210,6 +258,7 @@
 				3A758B9819E6B81A00A54F6C /* Sources */,
 				3A758B9919E6B81A00A54F6C /* Frameworks */,
 				3A758B9A19E6B81A00A54F6C /* Resources */,
+				3A7FE2C01A08012800E33424 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -282,6 +331,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A758BA919E6B81A00A54F6C /* Main.storyboard in Resources */,
+				3A7FE2C61A0801A500E33424 /* TwitterKitResources.bundle in Resources */,
 				3A3C089219EC8B4D00EFBD8D /* MyriadPro-Regular.otf in Resources */,
 				3A758BAB19E6B81A00A54F6C /* Images.xcassets in Resources */,
 				3A758BD419E885B500A54F6C /* CollectionViewCell.xib in Resources */,
@@ -295,11 +345,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A3C089619EC8BAD00EFBD8D /* MyriadPro-Semibold.otf in Resources */,
+				3A7FE2C71A0801A500E33424 /* TwitterKitResources.bundle in Resources */,
 				3A3C089319EC8B4D00EFBD8D /* MyriadPro-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3A7FE2C01A08012800E33424 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run ffe8c572c11cd4916b1c232ff022514dba9174df 7b52158f37654210cb77cc42c52fae28f2ada702147917d297c3f0aae786e69f";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3A758B9819E6B81A00A54F6C /* Sources */ = {
@@ -438,6 +505,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFINES_MODULE = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = FUMCApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = FUMCApp;
@@ -453,6 +524,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFINES_MODULE = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = FUMCApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = FUMCApp;
@@ -467,6 +542,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -486,6 +562,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = FUMCAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

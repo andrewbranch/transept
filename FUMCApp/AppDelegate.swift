@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Fabric
+import TwitterKit
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -33,6 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 NSFontAttributeName: font
             ], forState: UIControlState.Normal)
         }
+        
+        Fabric.with([Twitter()])
 
         return true
     }

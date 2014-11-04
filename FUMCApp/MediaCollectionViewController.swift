@@ -22,9 +22,6 @@ class MediaCollectionViewController: UICollectionViewController, UICollectionVie
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // self.navigationController?.setNavigationBarHidden(true, animated: true)
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
         self.collectionView.registerNib(UINib(nibName: "CollectionViewCell", bundle: NSBundle.mainBundle()), forCellWithReuseIdentifier: reuseIdentifier)
@@ -39,7 +36,7 @@ class MediaCollectionViewController: UICollectionViewController, UICollectionVie
     }
     
     override func viewDidAppear(animated: Bool) {
-        
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default
     }
 
     // MARK: - Navigation

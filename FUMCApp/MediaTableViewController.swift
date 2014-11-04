@@ -17,12 +17,14 @@ protocol MediaTableViewDataSource: UITableViewDataSource {
 }
 
 protocol MediaTableViewDataSourceDelegate {
+    func dataStartDidStartLoadingAPI(dataSource: MediaTableViewDataSource) -> Void
     func dataSourceDidFinishLoadingAPI(dataSource: MediaTableViewDataSource) -> Void
 }
 
 class MediaTableViewController: UITableViewController, MediaTableViewDataSourceDelegate {
     
     var dataSource: MediaTableViewDataSource?
+    // @IBOutlet var activityIndicator: UIActivityIndicatorView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,9 +48,15 @@ class MediaTableViewController: UITableViewController, MediaTableViewDataSourceD
         // Dispose of any resources that can be recreated.
     }
     
+    
     // MARK: - MediaTableViewDataSourceDelegate
     
+    func dataStartDidStartLoadingAPI(dataSource: MediaTableViewDataSource) {
+        // self.activityIndicator!.startAnimating()
+    }
+    
     func dataSourceDidFinishLoadingAPI(dataSource: MediaTableViewDataSource) {
+        // self.activityIndicator!.stopAnimating()
         self.tableView.reloadData()
     }
 

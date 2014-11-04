@@ -26,7 +26,7 @@ class CollectionViewCell: UICollectionViewCell {
         
         var steps = 100
         var values = NSMutableArray(capacity: steps)
-        var value = CGFloat(0.0)
+        var value = CGFloat(0.1)
         var e = CGFloat(2.71)
         for (var t = 0; t < steps; t++) {
             value = -pow(e, CGFloat(-0.055 * CGFloat(t))) * cos(0.08 * CGFloat(t)) + 1.0

@@ -82,7 +82,7 @@ class WitnessesDataSource: NSObject, MediaTableViewDataSource {
         self.dateFormatter.dateFormat = "MMMM d"
         
         cell.textLabel.text = NSString(format: "Issue %i", witness.issue)
-        cell.detailTextLabel!.text = NSString(format: "%s – %s", self.dateFormatter.stringFromDate(witness.from), self.dateFormatter.stringFromDate(witness.to))
+        cell.detailTextLabel!.text = NSString(format: "%@ – %@", self.dateFormatter.stringFromDate(witness.from), self.dateFormatter.stringFromDate(witness.to))
         return cell
     }
     
