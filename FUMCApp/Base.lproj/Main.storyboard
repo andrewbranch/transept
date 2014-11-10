@@ -51,7 +51,6 @@
                                 <variation key="heightClass=regular-widthClass=compact" constant="15"/>
                             </constraint>
                         </constraints>
-                        <variation key="heightClass=regular-widthClass=compact"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="home" id="acW-dT-cKf"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
@@ -63,10 +62,10 @@
             </objects>
             <point key="canvasLocation" x="1002" y="-1540.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Calendar Table View Controller-->
         <scene sceneID="G66-xP-SFT">
             <objects>
-                <viewController storyboardIdentifier="calendarViewController" id="RjT-LP-9x3" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="calendarViewController" id="RjT-LP-9x3" customClass="CalendarTableViewController" customModule="FUMCApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aCp-GK-GZf"/>
                         <viewControllerLayoutGuide type="bottom" id="YNA-jF-0Ai"/>
@@ -75,9 +74,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ijV-vw-Xi4">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="ijV-vw-Xi4">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="calendarTableCell" textLabel="LYZ-gh-ReU" rowHeight="100" style="IBUITableViewCellStyleDefault" id="Bg4-W1-QEN">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -112,6 +111,9 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="ijV-vw-Xi4" id="dla-wL-kul"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WtP-7M-awR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

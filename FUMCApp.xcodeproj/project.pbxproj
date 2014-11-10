@@ -37,6 +37,8 @@
 		3A7FE2C81A0801A500E33424 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A7FE2C31A0801A500E33424 /* Fabric.framework */; };
 		3A7FE2C91A0801A500E33424 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A7FE2C31A0801A500E33424 /* Fabric.framework */; };
 		3AC6C5CE1A0144C4002A18D8 /* BulletinsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC6C5CD1A0144C4002A18D8 /* BulletinsDataSource.swift */; };
+		3AFD01E21A1157790037F0FD /* CalendarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFD01E11A1157790037F0FD /* CalendarTableViewController.swift */; };
+		3AFD01E41A115C080037F0FD /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFD01E31A115C080037F0FD /* CalendarEvent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +80,8 @@
 		3A7FE2C21A0801A500E33424 /* TwitterKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle; sourceTree = "<group>"; };
 		3A7FE2C31A0801A500E33424 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		3AC6C5CD1A0144C4002A18D8 /* BulletinsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulletinsDataSource.swift; sourceTree = "<group>"; };
+		3AFD01E11A1157790037F0FD /* CalendarTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarTableViewController.swift; sourceTree = "<group>"; };
+		3AFD01E31A115C080037F0FD /* CalendarEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarEvent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +111,7 @@
 			children = (
 				3A212B651A0178EA00757466 /* Bulletin.swift */,
 				3A7243AD1A02C2C5002AA176 /* Witness.swift */,
+				3AFD01E31A115C080037F0FD /* CalendarEvent.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -219,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				3A758BA319E6B81A00A54F6C /* HomeViewController.swift */,
+				3AFD01E11A1157790037F0FD /* CalendarTableViewController.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -383,7 +389,9 @@
 				3A758BD219E884EC00A54F6C /* MediaCollectionViewController.swift in Sources */,
 				3A212B661A0178EA00757466 /* Bulletin.swift in Sources */,
 				3A758BC619E6BE4F00A54F6C /* ConnectViewController.swift in Sources */,
+				3AFD01E41A115C080037F0FD /* CalendarEvent.swift in Sources */,
 				3A758BC419E6BE3200A54F6C /* GiveViewController.swift in Sources */,
+				3AFD01E21A1157790037F0FD /* CalendarTableViewController.swift in Sources */,
 				3A758BCD19E6DEC600A54F6C /* CollectionViewCell.swift in Sources */,
 				3A758BA219E6B81A00A54F6C /* AppDelegate.swift in Sources */,
 				3A758BA419E6B81A00A54F6C /* HomeViewController.swift in Sources */,
