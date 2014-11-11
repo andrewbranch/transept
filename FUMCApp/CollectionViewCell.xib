@@ -4,8 +4,8 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="Oswald-Regular.ttf">
-            <string>Oswald-Regular</string>
+        <mutableArray key="BebasNeue Bold.otf">
+            <string>BebasNeueBold</string>
         </mutableArray>
     </customFonts>
     <objects>
@@ -30,7 +30,7 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="Dei-4H-Jp0"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald" pointSize="32"/>
+                        <fontDescription key="fontDescription" name="BebasNeueBold" family="Bebas Neue" pointSize="32"/>
                         <color key="textColor" red="0.17222086588541663" green="0.11654380224454203" blue="0.12520311499336167" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>

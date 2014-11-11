@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CalendarTableViewController: UIViewController, UITableViewDataSource {
+class CalendarTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var events: Dictionary<NSString, [CalendarEvent]> = Dictionary<NSString, [CalendarEvent]>()
     var sortedKeys = [NSString]()
@@ -17,7 +17,10 @@ class CalendarTableViewController: UIViewController, UITableViewDataSource {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView!.dataSource = self
+
+        self.tableView!.registerNib(UINib(nibName: "CalendarTableViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "calendarTableViewCell")
+        self.tableView!.registerNib(UINib(nibName: "CalendarTableHeaderView", bundle: NSBundle.mainBundle()), forHeaderFooterViewReuseIdentifier: "CalendarTableHeaderViewIdentifier")
+        
         dateFormatter.dateFormat = "MM.dd.yyyy"
         let from = dateFormatter.stringFromDate(NSDate())
         let to = dateFormatter.stringFromDate(NSDate(timeIntervalSinceNow: 60 * 60 * 24 * 7))
@@ -71,15 +74,27 @@ class CalendarTableViewController: UIViewController, UITableViewDataSource {
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("calendarTableCell", forIndexPath: indexPath) as UITableViewCell
-
-        cell.textLabel.text = eventForIndexPath(indexPath).name
+        let cell = tableView.dequeueReusableCellWithIdentifier("calendarTableViewCell", forIndexPath: indexPath) as CalendarTableViewCell
+        let event = eventForIndexPath(indexPath)
+        cell.titleLabel!.text = event.name
+        cell.locationLabel!.text = event.location
+        
+        self.dateFormatter.dateFormat = "h:mm"
+        cell.timeLabel!.text = self.dateFormatter.stringFromDate(event.from)
+        self.dateFormatter.dateFormat = "a"
+        cell.meridiemLabel!.text = self.dateFormatter.stringFromDate(event.from)
 
         return cell
     }
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return self.sortedKeys[section]
+//    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return self.sortedKeys[section]
+//    }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableHeaderFooterViewWithIdentifier("CalendarTableHeaderViewIdentifier") as CalendarTableHeaderView
+        header.label!.text = self.sortedKeys[section]
+        return header
     }
 
     /*

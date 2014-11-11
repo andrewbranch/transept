@@ -43,7 +43,11 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Oswald-Regular.ttf</string>
+		<string>BebasNeue Thin.otf</string>
+		<string>BebasNeue Light.otf</string>
+		<string>BebasNeue Regular.otf</string>
+		<string>BebasNeue Book.otf</string>
+		<string>BebasNeue Bold.otf</string>
 		<string>MyriadPro-Regular.otf</string>
 		<string>MyriadPro-Semibold.otf</string>
 	</array>
