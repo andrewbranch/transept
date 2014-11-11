@@ -27,7 +27,7 @@
                             <size key="shadowOffset" width="1" height="1"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="0.95000000000000007" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.97212146577380953" green="0.97212146577380953" blue="0.97212146577380953" alpha="0.97999999999999998" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="trailingMargin" secondItem="JHJ-v1-pKO" secondAttribute="trailing" id="3V2-jj-itt"/>
                         <constraint firstItem="JHJ-v1-pKO" firstAttribute="leading" secondItem="vQZ-Mm-fBB" secondAttribute="leadingMargin" id="OuX-bW-6ps"/>
