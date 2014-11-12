@@ -9,6 +9,10 @@
 import UIKit
 import TwitterKit
 
+protocol HomeViewPage {
+    var pageViewController: HomeViewController? { get set }
+}
+
 class HomeViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
     var pageControl = UIPageControl()
@@ -17,7 +21,9 @@ class HomeViewController: UIPageViewController, UIPageViewControllerDataSource, 
     override func viewDidLoad() {
         super.viewDidLoad()
         let calendarViewController = self.storyboard!.instantiateViewControllerWithIdentifier("calendarViewController") as CalendarTableViewController
-        let featuredViewController = self.storyboard!.instantiateViewControllerWithIdentifier("featuredViewController") as UIViewController
+        let featuredViewController = self.storyboard!.instantiateViewControllerWithIdentifier("featuredViewController") as FeaturedViewController
+        calendarViewController.pageViewController = self
+        featuredViewController.pageViewController = self
         
         self.pages = [calendarViewController, featuredViewController]
         self.dataSource = self
@@ -54,8 +60,8 @@ class HomeViewController: UIPageViewController, UIPageViewControllerDataSource, 
         return self.pages[index! + 1]
     }
     
-    func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [AnyObject]) {
-        self.pageControl.currentPage = find(self.pages, pendingViewControllers.first! as UIViewController)!
+    func didTransitionToViewController(viewController: UIViewController) {
+        self.pageControl.currentPage = find(self.pages, viewController)!
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

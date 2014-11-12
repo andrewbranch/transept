@@ -8,8 +8,9 @@
 
 import UIKit
 
-class CalendarTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class CalendarTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, HomeViewPage {
     
+    var pageViewController: HomeViewController?
     var events: Dictionary<NSString, [CalendarEvent]> = Dictionary<NSString, [CalendarEvent]>()
     var sortedKeys = [NSString]()
     let dateFormatter = NSDateFormatter()
@@ -56,6 +57,21 @@ class CalendarTableViewController: UIViewController, UITableViewDataSource, UITa
             }
         }
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        self.pageViewController!.didTransitionToViewController(self)
+        self.pageViewController!.navigationItem.title = "Calendar"
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        if let indexPath = self.tableView!.indexPathForSelectedRow() {
+            self.tableView!.deselectRowAtIndexPath(indexPath, animated: true)
+        }
+        
+        self.pageViewController!.pageControl.hidden = false
+        self.navigationController!.navigationBar.setTitleVerticalPositionAdjustment(-8, forBarMetrics: UIBarMetrics.Default)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -93,64 +109,24 @@ class CalendarTableViewController: UIViewController, UITableViewDataSource, UITa
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterViewWithIdentifier("CalendarTableHeaderViewIdentifier") as CalendarTableHeaderView
         header.label!.text = self.sortedKeys[section]
-//        if (section == 0) {
-//            var underlap = self.navigationController!.navigationBar.frame.height + UIApplication.sharedApplication().statusBarFrame.height
-//            header.frame = CGRectMake(header.frame.minX, header.frame.minY + underlap, header.frame.width, header.frame.height + underlap)
-//            header.alignBorder()
-//        }
         return header
     }
+
+    // MARK: - Table view delegate
     
-//    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        if (section == 0) {
-//            return self.navigationController!.navigationBar.frame.height + UIApplication.sharedApplication().statusBarFrame.height + tableView.sectionHeaderHeight
-//        }
-//        return tableView.sectionHeaderHeight
-//    }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
-        return true
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.performSegueWithIdentifier("eventSegue", sender: indexPath)
     }
-    */
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        if (segue.identifier == "eventSegue") {
+            self.pageViewController!.pageControl.hidden = true
+            (segue.destinationViewController as EventViewController).calendarEvent = eventForIndexPath(self.tableView!.indexPathForSelectedRow()!)
+        }
     }
-    */
 
 }

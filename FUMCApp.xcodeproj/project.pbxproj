@@ -31,6 +31,8 @@
 		3A758BD419E885B500A54F6C /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A758BD319E885B500A54F6C /* CollectionViewCell.xib */; };
 		3A76F4C21A128C77002BC759 /* CalendarTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A76F4C11A128C77002BC759 /* CalendarTableHeaderView.swift */; };
 		3A76F4C41A128C9F002BC759 /* CalendarTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A76F4C31A128C9F002BC759 /* CalendarTableHeaderView.xib */; };
+		3A76F4C61A13AC33002BC759 /* FeaturedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A76F4C51A13AC33002BC759 /* FeaturedViewController.swift */; };
+		3A76F4C81A13B6C3002BC759 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A76F4C71A13B6C3002BC759 /* EventViewController.swift */; };
 		3A7FE2C41A0801A500E33424 /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A7FE2C11A0801A500E33424 /* TwitterKit.framework */; };
 		3A7FE2C51A0801A500E33424 /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A7FE2C11A0801A500E33424 /* TwitterKit.framework */; };
 		3A7FE2C61A0801A500E33424 /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3A7FE2C21A0801A500E33424 /* TwitterKitResources.bundle */; };
@@ -52,6 +54,7 @@
 		3AFD01F51A1192A90037F0FD /* BebasNeue Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AFD01EC1A1192A90037F0FD /* BebasNeue Regular.otf */; };
 		3AFD01F61A1192A90037F0FD /* BebasNeue Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AFD01ED1A1192A90037F0FD /* BebasNeue Thin.otf */; };
 		3AFD01F71A1192A90037F0FD /* BebasNeue Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AFD01ED1A1192A90037F0FD /* BebasNeue Thin.otf */; };
+		B88431A17FEFC727080ECBC6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE4B71E479693E02C8F478AD /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +68,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F635373A8FADA8A90EB08AC /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		3A02CA601A13DCCD006A6EE1 /* FUMCApp-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "FUMCApp-Bridging-Header.h"; path = "FUMCApp/FUMCApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		3A212B651A0178EA00757466 /* Bulletin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bulletin.swift; sourceTree = "<group>"; };
 		3A3C088E19EC7ABB00EFBD8D /* MediaTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaTableViewController.swift; sourceTree = "<group>"; };
 		3A3C089119EC8B4D00EFBD8D /* MyriadPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-Regular.otf"; sourceTree = "<group>"; };
@@ -90,6 +95,8 @@
 		3A758BD319E885B500A54F6C /* CollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
 		3A76F4C11A128C77002BC759 /* CalendarTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarTableHeaderView.swift; sourceTree = "<group>"; };
 		3A76F4C31A128C9F002BC759 /* CalendarTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarTableHeaderView.xib; sourceTree = "<group>"; };
+		3A76F4C51A13AC33002BC759 /* FeaturedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturedViewController.swift; sourceTree = "<group>"; };
+		3A76F4C71A13B6C3002BC759 /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		3A7FE2C11A0801A500E33424 /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterKit.framework; sourceTree = "<group>"; };
 		3A7FE2C21A0801A500E33424 /* TwitterKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle; sourceTree = "<group>"; };
 		3A7FE2C31A0801A500E33424 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
@@ -103,6 +110,8 @@
 		3AFD01EB1A1192A90037F0FD /* BebasNeue Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BebasNeue Light.otf"; sourceTree = "<group>"; };
 		3AFD01EC1A1192A90037F0FD /* BebasNeue Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BebasNeue Regular.otf"; sourceTree = "<group>"; };
 		3AFD01ED1A1192A90037F0FD /* BebasNeue Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BebasNeue Thin.otf"; sourceTree = "<group>"; };
+		98EE777E485CF8833F4A1FB3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		FE4B71E479693E02C8F478AD /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +121,7 @@
 			files = (
 				3A7FE2C41A0801A500E33424 /* TwitterKit.framework in Frameworks */,
 				3A7FE2C81A0801A500E33424 /* Fabric.framework in Frameworks */,
+				B88431A17FEFC727080ECBC6 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,6 +137,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		36C946048033F60611CA2D3E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FE4B71E479693E02C8F478AD /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		3A212B671A0178F500757466 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -140,12 +158,15 @@
 		3A758B9319E6B81A00A54F6C = {
 			isa = PBXGroup;
 			children = (
+				3A02CA601A13DCCD006A6EE1 /* FUMCApp-Bridging-Header.h */,
 				3A758B9E19E6B81A00A54F6C /* FUMCApp */,
 				3A758BB619E6B81A00A54F6C /* FUMCAppTests */,
 				3A758B9D19E6B81A00A54F6C /* Products */,
 				3A7FE2C11A0801A500E33424 /* TwitterKit.framework */,
 				3A7FE2C21A0801A500E33424 /* TwitterKitResources.bundle */,
 				3A7FE2C31A0801A500E33424 /* Fabric.framework */,
+				EDA43817B9F8453359F596E2 /* Pods */,
+				36C946048033F60611CA2D3E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -254,6 +275,8 @@
 			children = (
 				3A758BA319E6B81A00A54F6C /* HomeViewController.swift */,
 				3AFD01E11A1157790037F0FD /* CalendarTableViewController.swift */,
+				3A76F4C71A13B6C3002BC759 /* EventViewController.swift */,
+				3A76F4C51A13AC33002BC759 /* FeaturedViewController.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -283,6 +306,15 @@
 			name = "Data Sources";
 			sourceTree = "<group>";
 		};
+		EDA43817B9F8453359F596E2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0F635373A8FADA8A90EB08AC /* Pods.debug.xcconfig */,
+				98EE777E485CF8833F4A1FB3 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -290,10 +322,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3A758BBD19E6B81A00A54F6C /* Build configuration list for PBXNativeTarget "FUMCApp" */;
 			buildPhases = (
+				FE556788C6398238D14EA237 /* Check Pods Manifest.lock */,
 				3A758B9819E6B81A00A54F6C /* Sources */,
 				3A758B9919E6B81A00A54F6C /* Frameworks */,
 				3A758B9A19E6B81A00A54F6C /* Resources */,
 				3A7FE2C01A08012800E33424 /* ShellScript */,
+				0616CD201437EC0A611A6BA2 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -399,6 +433,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0616CD201437EC0A611A6BA2 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		3A7FE2C01A08012800E33424 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -412,6 +461,21 @@
 			shellPath = /bin/sh;
 			shellScript = "./Fabric.framework/run ffe8c572c11cd4916b1c232ff022514dba9174df 7b52158f37654210cb77cc42c52fae28f2ada702147917d297c3f0aae786e69f";
 		};
+		FE556788C6398238D14EA237 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -423,6 +487,8 @@
 				3A3C089819ECCF6600EFBD8D /* RootTabBarController.swift in Sources */,
 				3A7243AC1A02BFB0002AA176 /* WitnessesDataSource.swift in Sources */,
 				3A7243AE1A02C2C5002AA176 /* Witness.swift in Sources */,
+				3A76F4C61A13AC33002BC759 /* FeaturedViewController.swift in Sources */,
+				3A76F4C81A13B6C3002BC759 /* EventViewController.swift in Sources */,
 				3A76F4C21A128C77002BC759 /* CalendarTableHeaderView.swift in Sources */,
 				3A758BCB19E6DBB200A54F6C /* CollectionViewLayout.swift in Sources */,
 				3AC6C5CE1A0144C4002A18D8 /* BulletinsDataSource.swift in Sources */,
@@ -550,6 +616,7 @@
 		};
 		3A758BBE19E6B81A00A54F6C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0F635373A8FADA8A90EB08AC /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -562,13 +629,15 @@
 				INFOPLIST_FILE = FUMCApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = FUMCApp;
-				SWIFT_OBJC_BRIDGING_HEADER = "FUMCApp-Bridging-Header.h";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "FUMCApp/FUMCApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		3A758BBF19E6B81A00A54F6C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 98EE777E485CF8833F4A1FB3 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -581,7 +650,8 @@
 				INFOPLIST_FILE = FUMCApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = FUMCApp;
-				SWIFT_OBJC_BRIDGING_HEADER = "FUMCApp-Bridging-Header.h";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "FUMCApp/FUMCApp-Bridging-Header.h";
 			};
 			name = Release;
 		};
