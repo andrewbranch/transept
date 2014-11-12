@@ -20,6 +20,9 @@ class CalendarTableViewController: UIViewController, UITableViewDataSource, UITa
 
         self.tableView!.registerNib(UINib(nibName: "CalendarTableViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "calendarTableViewCell")
         self.tableView!.registerNib(UINib(nibName: "CalendarTableHeaderView", bundle: NSBundle.mainBundle()), forHeaderFooterViewReuseIdentifier: "CalendarTableHeaderViewIdentifier")
+        var insets = UIEdgeInsetsMake(self.navigationController!.navigationBar.frame.height + UIApplication.sharedApplication().statusBarFrame.height, 0, 0, 0)
+        self.tableView!.contentInset = insets
+        self.tableView!.scrollIndicatorInsets = insets
         
         dateFormatter.dateFormat = "MM.dd.yyyy"
         let from = dateFormatter.stringFromDate(NSDate())
@@ -87,15 +90,23 @@ class CalendarTableViewController: UIViewController, UITableViewDataSource, UITa
         return cell
     }
     
-//    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        return self.sortedKeys[section]
-//    }
-    
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterViewWithIdentifier("CalendarTableHeaderViewIdentifier") as CalendarTableHeaderView
         header.label!.text = self.sortedKeys[section]
+//        if (section == 0) {
+//            var underlap = self.navigationController!.navigationBar.frame.height + UIApplication.sharedApplication().statusBarFrame.height
+//            header.frame = CGRectMake(header.frame.minX, header.frame.minY + underlap, header.frame.width, header.frame.height + underlap)
+//            header.alignBorder()
+//        }
         return header
     }
+    
+//    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        if (section == 0) {
+//            return self.navigationController!.navigationBar.frame.height + UIApplication.sharedApplication().statusBarFrame.height + tableView.sectionHeaderHeight
+//        }
+//        return tableView.sectionHeaderHeight
+//    }
 
     /*
     // Override to support conditional editing of the table view.

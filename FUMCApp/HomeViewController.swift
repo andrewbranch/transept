@@ -9,85 +9,53 @@
 import UIKit
 import TwitterKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
-    @IBOutlet var segmentedControl: UISegmentedControl?
-    var currentViewController: UIViewController?
-    var viewControllers = [UIViewController]()
+    var pageControl = UIPageControl()
+    var pages = [UIViewController]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let calendarViewController = self.storyboard!.instantiateViewControllerWithIdentifier("calendarViewController") as UIViewController
+        let calendarViewController = self.storyboard!.instantiateViewControllerWithIdentifier("calendarViewController") as CalendarTableViewController
+        let featuredViewController = self.storyboard!.instantiateViewControllerWithIdentifier("featuredViewController") as UIViewController
         
-        self.viewControllers.append(UIViewController())
-        self.viewControllers.append(calendarViewController)
-        self.viewControllers.append(UIViewController())
+        self.pages = [calendarViewController, featuredViewController]
+        self.dataSource = self
+        self.delegate = self
+        self.setViewControllers([calendarViewController], direction: UIPageViewControllerNavigationDirection.Forward, animated: false, completion: nil)
         
-        self.cycleFromViewController(self.currentViewController, to: self.viewControllers[self.segmentedControl!.selectedSegmentIndex])
+        self.pageControl.frame = CGRectMake(self.navigationController!.navigationBar.bounds.size.width / 2, 32, 0, 0)
+        self.pageControl.pageIndicatorTintColor = UIColor.lightGrayColor()
+        self.pageControl.currentPageIndicatorTintColor = UIColor.darkGrayColor()
+        self.pageControl.numberOfPages = self.pages.count
+        
+        self.navigationController!.navigationBar.setTitleVerticalPositionAdjustment(-8, forBarMetrics: UIBarMetrics.Default)
+        self.navigationController!.navigationBar.addSubview(self.pageControl)
+
     }
     
     override func viewDidAppear(animated: Bool) {
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default
     }
     
-    func cycleFromViewController(from: UIViewController?, to: UIViewController?) {
-    
-        // Do nothing if we are attempting to swap to the same view controller
-        if (from === to) {
-            return
+    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
+        let index = find(self.pages, viewController)
+        if (index == 0) {
+            return nil
         }
-        
-        // Check the newVC is non-nil otherwise expect a crash: NSInvalidArgumentException
-        if (to != nil) {
-        
-            // Set the new view controller frame (in this case to be the size of the available screen bounds)
-            // Calulate any other frame animations here (e.g. for the oldVC)
-            to!.view.frame = CGRectMake(CGRectGetMinX(self.view.bounds), CGRectGetMinY(self.view.bounds) + 85, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 85);
-            
-            // Check the oldVC is non-nil otherwise expect a crash: NSInvalidArgumentException
-            if (from != nil) {
-            
-                // Start both the view controller transitions
-                from!.willMoveToParentViewController(nil)
-                self.addChildViewController(to!)
-                
-                // Swap the view controllers
-                // No frame animations in this code but these would go in the animations block
-                self.transitionFromViewController(from!, toViewController: to!, duration: 0.25, options: UIViewAnimationOptions.LayoutSubviews, animations: nil) { (Bool) -> Void in
-                    // Finish both the view controller transitions
-                    from!.removeFromParentViewController()
-                    to!.didMoveToParentViewController(self)
-                    // Store a reference to the current controller
-                    self.currentViewController = to!
-                }
-            
-            } else {
-                
-                // Otherwise we are adding a view controller for the first time
-                // Start the view controller transition
-                self.addChildViewController(to!)
-                
-                // Add the new view controller view to the ciew hierarchy
-                self.view.addSubview(to!.view)
-                
-                // End the view controller transition
-                to!.didMoveToParentViewController(self)
-                
-                // Store a reference to the current controller
-                self.currentViewController = to!
-            }
-        }
+        return self.pages[index! - 1]
     }
     
-    @IBAction func indexDidChangeForSegmentedControl(sender: UISegmentedControl) {
-        
-        let index = sender.selectedSegmentIndex;
-        
-        if (UISegmentedControlNoSegment != index) {
-            let incomingViewController = self.viewControllers[index]
-            self.cycleFromViewController(self.currentViewController, to: incomingViewController)
+    func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
+        let index = find(self.pages, viewController)
+        if (index == self.pages.count - 1) {
+            return nil
         }
+        return self.pages[index! + 1]
+    }
     
+    func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [AnyObject]) {
+        self.pageControl.currentPage = find(self.pages, pendingViewControllers.first! as UIViewController)!
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
