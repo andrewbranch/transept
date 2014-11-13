@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol MediaTableViewDataSource: UITableViewDataSource {
+protocol MediaTableViewDataSource: UITableViewDataSource, UITableViewDelegate {
     var title: NSString { get }
     var delegate: MediaTableViewDataSourceDelegate! { get set }
     
@@ -29,9 +29,9 @@ class MediaTableViewController: UITableViewController, MediaTableViewDataSourceD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         self.navigationItem.title = self.dataSource!.title
         self.tableView.dataSource = self.dataSource!
+        self.tableView.delegate = self.dataSource!
         
         self.clearsSelectionOnViewWillAppear = false
     }

@@ -60,7 +60,11 @@ class CalendarTableViewController: UIViewController, UITableViewDataSource, UITa
     
     override func viewDidAppear(animated: Bool) {
         self.pageViewController!.didTransitionToViewController(self)
-        self.pageViewController!.navigationItem.title = "Calendar"
+        self.navigationController!.navigationItem.title = "Calendar"
+        UIView.animateWithDuration(0.25, animations: { () -> Void in
+            // self.navigationController!.navigationBar.setTitleVerticalPositionAdjustment(-8, forBarMetrics: UIBarMetrics.Default)
+            self.pageViewController!.pageControl.alpha = 1
+        })
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -68,9 +72,6 @@ class CalendarTableViewController: UIViewController, UITableViewDataSource, UITa
         if let indexPath = self.tableView!.indexPathForSelectedRow() {
             self.tableView!.deselectRowAtIndexPath(indexPath, animated: true)
         }
-        
-        self.pageViewController!.pageControl.hidden = false
-        self.navigationController!.navigationBar.setTitleVerticalPositionAdjustment(-8, forBarMetrics: UIBarMetrics.Default)
     }
 
     override func didReceiveMemoryWarning() {
@@ -124,7 +125,10 @@ class CalendarTableViewController: UIViewController, UITableViewDataSource, UITa
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "eventSegue") {
-            self.pageViewController!.pageControl.hidden = true
+            UIView.animateWithDuration(0.25, animations: { () -> Void in
+                self.pageViewController!.pageControl.alpha = 0
+            })
+            // self.navigationController!.navigationBar.setTitleVerticalPositionAdjustment(0, forBarMetrics: UIBarMetrics.Default)
             (segue.destinationViewController as EventViewController).calendarEvent = eventForIndexPath(self.tableView!.indexPathForSelectedRow()!)
         }
     }

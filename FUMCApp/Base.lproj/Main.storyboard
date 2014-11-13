@@ -441,7 +441,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Give" image="give" id="i0L-QC-vIj"/>
+                    <tabBarItem key="tabBarItem" title="Give" image="give-selected" id="i0L-QC-vIj"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="85C-qs-Aj8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -460,7 +460,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Connect" image="connect" id="I7q-GB-Xme"/>
+                    <tabBarItem key="tabBarItem" title="Connect" image="connect-selected" id="I7q-GB-Xme"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e4n-jk-pc8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -475,6 +475,7 @@
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="selectedImageTintColor" red="0.78365048882681565" green="0.29271011345489512" blue="0.33184059275009903" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="F01-YL-vfW" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
@@ -491,11 +492,12 @@
         <scene sceneID="xCi-lz-y5Y">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Vfr-j3-gCB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Media" image="media" id="1Aj-iz-zyj"/>
+                    <tabBarItem key="tabBarItem" title="Media" image="media-selected" id="1Aj-iz-zyj"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="lfa-ks-0MD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.56862747670000002" green="0.066666670139999995" blue="0.043137256059999997" alpha="1" colorSpace="deviceRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -510,11 +512,16 @@
         <scene sceneID="jpF-mE-EhB">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="F01-YL-vfW" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="home" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="home-selected" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="TRo-Mu-Ckd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.56862747670000002" green="0.066666670139999995" blue="0.043137256059999997" alpha="1" colorSpace="deviceRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="0.0"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -527,9 +534,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="connect" width="40" height="40"/>
-        <image name="give" width="35" height="35"/>
-        <image name="home" width="30" height="30"/>
-        <image name="media" width="35" height="30"/>
+        <image name="connect-selected" width="40" height="40"/>
+        <image name="give-selected" width="35" height="35"/>
+        <image name="home-selected" width="30" height="30"/>
+        <image name="media-selected" width="35" height="30"/>
     </resources>
 </document>

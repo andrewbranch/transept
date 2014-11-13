@@ -71,15 +71,25 @@ class WitnessesDataSource: NSObject, MediaTableViewDataSource {
         return self.witnesses[self.witnesses.keys.array[section]]!.count
     }
     
-    
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return self.witnesses.keys.array[section]
+    }
+    
+    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if let font = UIFont(name: "MyriadPro-Regular", size: 14) {
+            (view as UITableViewHeaderFooterView).textLabel.font = font
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("mediaTableViewCell", forIndexPath: indexPath) as UITableViewCell
         let witness = self.witnessForIndexPath(indexPath)
         self.dateFormatter.dateFormat = "MMMM d"
+        
+        if let font = UIFont(name: "MyriadPro-Regular", size: 16) {
+            cell.textLabel.font = font
+            cell.detailTextLabel?.font = font
+        }
         
         cell.textLabel.text = NSString(format: "Issue %i", witness.issue)
         cell.detailTextLabel!.text = NSString(format: "%@ – %@", self.dateFormatter.stringFromDate(witness.from), self.dateFormatter.stringFromDate(witness.to))
