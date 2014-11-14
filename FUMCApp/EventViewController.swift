@@ -30,7 +30,6 @@ class EventViewController: UIViewController, BEMAnalogClockDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Event Detail"
-        self.navigationController!.navigationBar.setTitleVerticalPositionAdjustment(0, forBarMetrics: UIBarMetrics.Default)
         self.clockView!.delegate = self
         
         self.clockView!.hourHandColor = UIColor(white: 0.2, alpha: 1)
@@ -61,6 +60,10 @@ class EventViewController: UIViewController, BEMAnalogClockDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidAppear(animated: Bool) {
+        //self.navigationController!.navigationBar.setTitleVerticalPositionAdjustment(0, forBarMetrics: UIBarMetrics.Default)
+    }
+    
     override func viewWillAppear(animated: Bool) {
         var dateComponents = NSCalendar.currentCalendar().components(NSCalendarUnit.CalendarUnitHour | NSCalendarUnit.CalendarUnitMinute, fromDate: self.calendarEvent!.from)
         self.clockView!.hours = dateComponents.hour
@@ -85,7 +88,10 @@ class EventViewController: UIViewController, BEMAnalogClockDelegate {
         self.dateFormatter.dateFormat = "a"
         self.fromMeridiemLabel!.text = self.dateFormatter.stringFromDate(self.calendarEvent!.from)
         self.toMeridiemLabel!.text = self.dateFormatter.stringFromDate(self.calendarEvent!.to)
-        self.descriptionLabel!.text = self.calendarEvent!.descript
+        
+        var paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 6
+        self.descriptionLabel!.attributedText = NSAttributedString(string: self.calendarEvent!.descript, attributes: [NSParagraphStyleAttributeName: paragraphStyle])
     }
     
     func analogClock(clock: BEMAnalogClockView!, graduationColorForIndex index: Int) -> UIColor! {
@@ -114,14 +120,13 @@ class EventViewController: UIViewController, BEMAnalogClockDelegate {
         return 1
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        // self.navigationController!.navigationBar.setTitleVerticalPositionAdjustment(-8, forBarMetrics: UIBarMetrics.Default)
     }
-    */
+    
 
 }

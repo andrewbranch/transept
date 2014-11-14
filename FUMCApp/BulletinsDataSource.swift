@@ -70,13 +70,21 @@ class BulletinsDataSource: NSObject, MediaTableViewDataSource {
         return self.bulletins[self.bulletins.keys.array[section]]!.count
     }
     
-    
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return self.bulletins.keys.array[section]
     }
     
+    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if let font = UIFont(name: "MyriadPro-Regular", size: 14) {
+            (view as UITableViewHeaderFooterView).textLabel.font = font
+        }
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("mediaTableViewCell", forIndexPath: indexPath) as UITableViewCell
+        if let font = UIFont(name: "MyriadPro-Regular", size: 16) {
+            cell.textLabel.font = font
+        }
         cell.textLabel.text = self.bulletinForIndexPath(indexPath).service
         cell.detailTextLabel?.text = ""
         return cell

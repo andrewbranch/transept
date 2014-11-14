@@ -30,18 +30,15 @@ class HomeViewController: UIPageViewController, UIPageViewControllerDataSource, 
         self.delegate = self
         self.setViewControllers([calendarViewController], direction: UIPageViewControllerNavigationDirection.Forward, animated: false, completion: nil)
         
-        self.pageControl.frame = CGRectMake(self.navigationController!.navigationBar.bounds.size.width / 2, 32, 0, 0)
-        self.pageControl.pageIndicatorTintColor = UIColor.lightGrayColor()
-        self.pageControl.currentPageIndicatorTintColor = UIColor.darkGrayColor()
+        self.pageControl.frame = CGRectMake(self.navigationController!.navigationBar.bounds.size.width / 2, 37, 0, 0)
+        self.pageControl.transform = CGAffineTransformMakeScale(0.6, 0.6)
+        // self.pageControl.pageIndicatorTintColor = UIColor.lightGrayColor()
+        // self.pageControl.currentPageIndicatorTintColor = UIColor.darkGrayColor()
         self.pageControl.numberOfPages = self.pages.count
         
-        self.navigationController!.navigationBar.setTitleVerticalPositionAdjustment(-8, forBarMetrics: UIBarMetrics.Default)
+        // self.navigationController!.navigationBar.setTitleVerticalPositionAdjustment(-8, forBarMetrics: UIBarMetrics.Default)
         self.navigationController!.navigationBar.addSubview(self.pageControl)
 
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {

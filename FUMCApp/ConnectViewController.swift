@@ -14,10 +14,6 @@ class ConnectViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-    
-    override func viewDidAppear(animated: Bool) {
-        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

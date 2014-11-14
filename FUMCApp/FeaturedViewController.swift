@@ -27,7 +27,7 @@ class FeaturedViewController: UIViewController, HomeViewPage {
         self.pageViewController!.didTransitionToViewController(self)
         self.pageViewController!.navigationItem.title = "Featured"
         self.pageViewController!.pageControl.hidden = false
-        self.navigationController!.navigationBar.setTitleVerticalPositionAdjustment(-8, forBarMetrics: UIBarMetrics.Default)
+        // self.navigationController!.navigationBar.setTitleVerticalPositionAdjustment(-8, forBarMetrics: UIBarMetrics.Default)
     }
     
 
