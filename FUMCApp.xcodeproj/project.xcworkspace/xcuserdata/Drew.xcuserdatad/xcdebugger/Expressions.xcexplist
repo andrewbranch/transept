@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "FUMCApp.MediaNavigationController.viewDidLoad (FUMCApp.MediaNavigationController)() -&gt; ():MediaNavigationController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.heading!">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[CollectionViewCell applyLayoutAttributes:]:CollectionViewCell.m">
+      </ContextState>
+      <ContextState
+         contextName = "FUMCApp.MediaCollectionViewController.prepareForSegue (FUMCApp.MediaCollectionViewController)(ObjectiveC.UIStoryboardSegue, sender : Swift.ImplicitlyUnwrappedOptional&lt;Swift.AnyObject&gt;) -&gt; ():MediaCollectionViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "indexPath.item">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "FUMCApp.CollectionViewCell.applyLayoutAttributes (FUMCApp.CollectionViewCell)(ObjectiveC.UICollectionViewLayoutAttributes) -&gt; ():CollectionViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "layoutAttributes.transform">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "FUMCApp.MediaCollectionViewController.collectionView (FUMCApp.MediaCollectionViewController)(ObjectiveC.UICollectionView, cellForItemAtIndexPath : ObjectiveC.NSIndexPath) -&gt; ObjectiveC.UICollectionViewCell:MediaCollectionViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "cell.transform">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

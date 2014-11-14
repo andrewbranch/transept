@@ -26,9 +26,6 @@
 		3A758BC419E6BE3200A54F6C /* GiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A758BC319E6BE3200A54F6C /* GiveViewController.swift */; };
 		3A758BC619E6BE4F00A54F6C /* ConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A758BC519E6BE4F00A54F6C /* ConnectViewController.swift */; };
 		3A758BCB19E6DBB200A54F6C /* CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A758BCA19E6DBB200A54F6C /* CollectionViewLayout.swift */; };
-		3A758BCD19E6DEC600A54F6C /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A758BCC19E6DEC600A54F6C /* CollectionViewCell.swift */; };
-		3A758BD219E884EC00A54F6C /* MediaCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A758BD119E884EC00A54F6C /* MediaCollectionViewController.swift */; };
-		3A758BD419E885B500A54F6C /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A758BD319E885B500A54F6C /* CollectionViewCell.xib */; };
 		3A76F4C21A128C77002BC759 /* CalendarTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A76F4C11A128C77002BC759 /* CalendarTableHeaderView.swift */; };
 		3A76F4C41A128C9F002BC759 /* CalendarTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A76F4C31A128C9F002BC759 /* CalendarTableHeaderView.xib */; };
 		3A76F4C61A13AC33002BC759 /* FeaturedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A76F4C51A13AC33002BC759 /* FeaturedViewController.swift */; };
@@ -40,6 +37,9 @@
 		3A7FE2C81A0801A500E33424 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A7FE2C31A0801A500E33424 /* Fabric.framework */; };
 		3A7FE2C91A0801A500E33424 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A7FE2C31A0801A500E33424 /* Fabric.framework */; };
 		3AC6C5CE1A0144C4002A18D8 /* BulletinsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC6C5CD1A0144C4002A18D8 /* BulletinsDataSource.swift */; };
+		3AE79C421A164AD40081E487 /* MediaMasterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE79C411A164AD40081E487 /* MediaMasterTableViewController.swift */; };
+		3AE79C451A164BC50081E487 /* MediaMasterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE79C431A164BC50081E487 /* MediaMasterTableViewCell.swift */; };
+		3AE79C461A164BC50081E487 /* MediaMasterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AE79C441A164BC50081E487 /* MediaMasterTableViewCell.xib */; };
 		3AFD01E21A1157790037F0FD /* CalendarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFD01E11A1157790037F0FD /* CalendarTableViewController.swift */; };
 		3AFD01E41A115C080037F0FD /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFD01E31A115C080037F0FD /* CalendarEvent.swift */; };
 		3AFD01E71A11840C0037F0FD /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFD01E51A11840C0037F0FD /* CalendarTableViewCell.swift */; };
@@ -90,9 +90,6 @@
 		3A758BC319E6BE3200A54F6C /* GiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiveViewController.swift; sourceTree = "<group>"; };
 		3A758BC519E6BE4F00A54F6C /* ConnectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectViewController.swift; sourceTree = "<group>"; };
 		3A758BCA19E6DBB200A54F6C /* CollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewLayout.swift; sourceTree = "<group>"; };
-		3A758BCC19E6DEC600A54F6C /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
-		3A758BD119E884EC00A54F6C /* MediaCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaCollectionViewController.swift; sourceTree = "<group>"; };
-		3A758BD319E885B500A54F6C /* CollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
 		3A76F4C11A128C77002BC759 /* CalendarTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarTableHeaderView.swift; sourceTree = "<group>"; };
 		3A76F4C31A128C9F002BC759 /* CalendarTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarTableHeaderView.xib; sourceTree = "<group>"; };
 		3A76F4C51A13AC33002BC759 /* FeaturedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturedViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +98,9 @@
 		3A7FE2C21A0801A500E33424 /* TwitterKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle; sourceTree = "<group>"; };
 		3A7FE2C31A0801A500E33424 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		3AC6C5CD1A0144C4002A18D8 /* BulletinsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulletinsDataSource.swift; sourceTree = "<group>"; };
+		3AE79C411A164AD40081E487 /* MediaMasterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaMasterTableViewController.swift; sourceTree = "<group>"; };
+		3AE79C431A164BC50081E487 /* MediaMasterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaMasterTableViewCell.swift; sourceTree = "<group>"; };
+		3AE79C441A164BC50081E487 /* MediaMasterTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MediaMasterTableViewCell.xib; sourceTree = "<group>"; };
 		3AFD01E11A1157790037F0FD /* CalendarTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarTableViewController.swift; sourceTree = "<group>"; };
 		3AFD01E31A115C080037F0FD /* CalendarEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarEvent.swift; sourceTree = "<group>"; };
 		3AFD01E51A11840C0037F0FD /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
@@ -243,12 +243,12 @@
 		3A758BCE19E6DECA00A54F6C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				3A758BCC19E6DEC600A54F6C /* CollectionViewCell.swift */,
-				3A758BD319E885B500A54F6C /* CollectionViewCell.xib */,
 				3AFD01E51A11840C0037F0FD /* CalendarTableViewCell.swift */,
 				3AFD01E61A11840C0037F0FD /* CalendarTableViewCell.xib */,
 				3A76F4C11A128C77002BC759 /* CalendarTableHeaderView.swift */,
 				3A76F4C31A128C9F002BC759 /* CalendarTableHeaderView.xib */,
+				3AE79C431A164BC50081E487 /* MediaMasterTableViewCell.swift */,
+				3AE79C441A164BC50081E487 /* MediaMasterTableViewCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -263,7 +263,7 @@
 		3A7FE2CA1A092F8500E33424 /* Media */ = {
 			isa = PBXGroup;
 			children = (
-				3A758BD119E884EC00A54F6C /* MediaCollectionViewController.swift */,
+				3AE79C411A164AD40081E487 /* MediaMasterTableViewController.swift */,
 				3A3C088E19EC7ABB00EFBD8D /* MediaTableViewController.swift */,
 				3A7243A91A02818B002AA176 /* MediaWebViewController.swift */,
 			);
@@ -403,8 +403,8 @@
 				3A758BA919E6B81A00A54F6C /* Main.storyboard in Resources */,
 				3A7FE2C61A0801A500E33424 /* TwitterKitResources.bundle in Resources */,
 				3A3C089219EC8B4D00EFBD8D /* MyriadPro-Regular.otf in Resources */,
+				3AE79C461A164BC50081E487 /* MediaMasterTableViewCell.xib in Resources */,
 				3A758BAB19E6B81A00A54F6C /* Images.xcassets in Resources */,
-				3A758BD419E885B500A54F6C /* CollectionViewCell.xib in Resources */,
 				3A3C089519EC8BAD00EFBD8D /* MyriadPro-Semibold.otf in Resources */,
 				3AFD01F41A1192A90037F0FD /* BebasNeue Regular.otf in Resources */,
 				3AFD01EE1A1192A90037F0FD /* BebasNeue Bold.otf in Resources */,
@@ -483,6 +483,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AE79C421A164AD40081E487 /* MediaMasterTableViewController.swift in Sources */,
 				3A3C088F19EC7ABB00EFBD8D /* MediaTableViewController.swift in Sources */,
 				3A3C089819ECCF6600EFBD8D /* RootTabBarController.swift in Sources */,
 				3A7243AC1A02BFB0002AA176 /* WitnessesDataSource.swift in Sources */,
@@ -490,16 +491,15 @@
 				3A76F4C61A13AC33002BC759 /* FeaturedViewController.swift in Sources */,
 				3A76F4C81A13B6C3002BC759 /* EventViewController.swift in Sources */,
 				3A76F4C21A128C77002BC759 /* CalendarTableHeaderView.swift in Sources */,
+				3AE79C451A164BC50081E487 /* MediaMasterTableViewCell.swift in Sources */,
 				3A758BCB19E6DBB200A54F6C /* CollectionViewLayout.swift in Sources */,
 				3AC6C5CE1A0144C4002A18D8 /* BulletinsDataSource.swift in Sources */,
 				3A7243AA1A02818B002AA176 /* MediaWebViewController.swift in Sources */,
-				3A758BD219E884EC00A54F6C /* MediaCollectionViewController.swift in Sources */,
 				3A212B661A0178EA00757466 /* Bulletin.swift in Sources */,
 				3A758BC619E6BE4F00A54F6C /* ConnectViewController.swift in Sources */,
 				3AFD01E41A115C080037F0FD /* CalendarEvent.swift in Sources */,
 				3A758BC419E6BE3200A54F6C /* GiveViewController.swift in Sources */,
 				3AFD01E21A1157790037F0FD /* CalendarTableViewController.swift in Sources */,
-				3A758BCD19E6DEC600A54F6C /* CollectionViewCell.swift in Sources */,
 				3AFD01E71A11840C0037F0FD /* CalendarTableViewCell.swift in Sources */,
 				3A758BA219E6B81A00A54F6C /* AppDelegate.swift in Sources */,
 				3A758BA419E6B81A00A54F6C /* HomeViewController.swift in Sources */,
