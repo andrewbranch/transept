@@ -24,7 +24,6 @@
 		3A758BAB19E6B81A00A54F6C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A758BAA19E6B81A00A54F6C /* Images.xcassets */; };
 		3A758BBA19E6B81A00A54F6C /* FUMCAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A758BB919E6B81A00A54F6C /* FUMCAppTests.swift */; };
 		3A758BC419E6BE3200A54F6C /* GiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A758BC319E6BE3200A54F6C /* GiveViewController.swift */; };
-		3A758BC619E6BE4F00A54F6C /* ConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A758BC519E6BE4F00A54F6C /* ConnectViewController.swift */; };
 		3A758BCB19E6DBB200A54F6C /* CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A758BCA19E6DBB200A54F6C /* CollectionViewLayout.swift */; };
 		3A76F4C21A128C77002BC759 /* CalendarTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A76F4C11A128C77002BC759 /* CalendarTableHeaderView.swift */; };
 		3A76F4C41A128C9F002BC759 /* CalendarTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A76F4C31A128C9F002BC759 /* CalendarTableHeaderView.xib */; };
@@ -54,6 +53,9 @@
 		3AFD01F51A1192A90037F0FD /* BebasNeue Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AFD01EC1A1192A90037F0FD /* BebasNeue Regular.otf */; };
 		3AFD01F61A1192A90037F0FD /* BebasNeue Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AFD01ED1A1192A90037F0FD /* BebasNeue Thin.otf */; };
 		3AFD01F71A1192A90037F0FD /* BebasNeue Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AFD01ED1A1192A90037F0FD /* BebasNeue Thin.otf */; };
+		49319D671A17F3C1005598A4 /* ConnectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49319D651A17F3C1005598A4 /* ConnectTableViewCell.swift */; };
+		49319D681A17F3C1005598A4 /* ConnectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49319D661A17F3C1005598A4 /* ConnectTableViewCell.xib */; };
+		49319D6A1A17F683005598A4 /* ConnectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49319D691A17F683005598A4 /* ConnectTableViewController.swift */; };
 		B88431A17FEFC727080ECBC6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE4B71E479693E02C8F478AD /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -88,7 +90,6 @@
 		3A758BB819E6B81A00A54F6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A758BB919E6B81A00A54F6C /* FUMCAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FUMCAppTests.swift; sourceTree = "<group>"; };
 		3A758BC319E6BE3200A54F6C /* GiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiveViewController.swift; sourceTree = "<group>"; };
-		3A758BC519E6BE4F00A54F6C /* ConnectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectViewController.swift; sourceTree = "<group>"; };
 		3A758BCA19E6DBB200A54F6C /* CollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewLayout.swift; sourceTree = "<group>"; };
 		3A76F4C11A128C77002BC759 /* CalendarTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarTableHeaderView.swift; sourceTree = "<group>"; };
 		3A76F4C31A128C9F002BC759 /* CalendarTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarTableHeaderView.xib; sourceTree = "<group>"; };
@@ -110,6 +111,9 @@
 		3AFD01EB1A1192A90037F0FD /* BebasNeue Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BebasNeue Light.otf"; sourceTree = "<group>"; };
 		3AFD01EC1A1192A90037F0FD /* BebasNeue Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BebasNeue Regular.otf"; sourceTree = "<group>"; };
 		3AFD01ED1A1192A90037F0FD /* BebasNeue Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BebasNeue Thin.otf"; sourceTree = "<group>"; };
+		49319D651A17F3C1005598A4 /* ConnectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectTableViewCell.swift; sourceTree = "<group>"; };
+		49319D661A17F3C1005598A4 /* ConnectTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConnectTableViewCell.xib; sourceTree = "<group>"; };
+		49319D691A17F683005598A4 /* ConnectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectTableViewController.swift; sourceTree = "<group>"; };
 		98EE777E485CF8833F4A1FB3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		FE4B71E479693E02C8F478AD /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -249,6 +253,8 @@
 				3A76F4C31A128C9F002BC759 /* CalendarTableHeaderView.xib */,
 				3AE79C431A164BC50081E487 /* MediaMasterTableViewCell.swift */,
 				3AE79C441A164BC50081E487 /* MediaMasterTableViewCell.xib */,
+				49319D651A17F3C1005598A4 /* ConnectTableViewCell.swift */,
+				49319D661A17F3C1005598A4 /* ConnectTableViewCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -292,7 +298,7 @@
 		3A7FE2CD1A092FAB00E33424 /* Connect */ = {
 			isa = PBXGroup;
 			children = (
-				3A758BC519E6BE4F00A54F6C /* ConnectViewController.swift */,
+				49319D691A17F683005598A4 /* ConnectTableViewController.swift */,
 			);
 			name = Connect;
 			sourceTree = "<group>";
@@ -411,6 +417,7 @@
 				3A76F4C41A128C9F002BC759 /* CalendarTableHeaderView.xib in Resources */,
 				3AFD01F21A1192A90037F0FD /* BebasNeue Light.otf in Resources */,
 				3AFD01F61A1192A90037F0FD /* BebasNeue Thin.otf in Resources */,
+				49319D681A17F3C1005598A4 /* ConnectTableViewCell.xib in Resources */,
 				3AFD01E81A11840C0037F0FD /* CalendarTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -483,6 +490,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49319D6A1A17F683005598A4 /* ConnectTableViewController.swift in Sources */,
 				3AE79C421A164AD40081E487 /* MediaMasterTableViewController.swift in Sources */,
 				3A3C088F19EC7ABB00EFBD8D /* MediaTableViewController.swift in Sources */,
 				3A3C089819ECCF6600EFBD8D /* RootTabBarController.swift in Sources */,
@@ -496,8 +504,8 @@
 				3AC6C5CE1A0144C4002A18D8 /* BulletinsDataSource.swift in Sources */,
 				3A7243AA1A02818B002AA176 /* MediaWebViewController.swift in Sources */,
 				3A212B661A0178EA00757466 /* Bulletin.swift in Sources */,
-				3A758BC619E6BE4F00A54F6C /* ConnectViewController.swift in Sources */,
 				3AFD01E41A115C080037F0FD /* CalendarEvent.swift in Sources */,
+				49319D671A17F3C1005598A4 /* ConnectTableViewCell.swift in Sources */,
 				3A758BC419E6BE3200A54F6C /* GiveViewController.swift in Sources */,
 				3AFD01E21A1157790037F0FD /* CalendarTableViewController.swift in Sources */,
 				3AFD01E71A11840C0037F0FD /* CalendarTableViewCell.swift in Sources */,
@@ -621,6 +629,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -629,6 +638,7 @@
 				INFOPLIST_FILE = FUMCApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = FUMCApp;
+				PROVISIONING_PROFILE = "";
 				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "FUMCApp/FUMCApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -642,6 +652,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -650,6 +661,7 @@
 				INFOPLIST_FILE = FUMCApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = FUMCApp;
+				PROVISIONING_PROFILE = "";
 				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "FUMCApp/FUMCApp-Bridging-Header.h";
 			};

@@ -135,7 +135,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wednesday, December 12th, 2014" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="18K-ej-Jdt">
-                                                <rect key="frame" x="90" y="61" width="199" height="14"/>
+                                                <rect key="frame" x="90" y="61" width="198.5" height="14"/>
                                                 <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="14"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -158,31 +158,31 @@
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gb4-3K-B0c">
-                                                        <rect key="frame" x="119" y="10" width="45" height="24"/>
+                                                        <rect key="frame" x="118" y="10" width="44.5" height="24"/>
                                                         <fontDescription key="fontDescription" name="MyriadPro-Semibold" family="Myriad Pro" pointSize="24"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="to" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCp-mV-clu">
-                                                        <rect key="frame" x="95" y="17" width="14" height="15"/>
+                                                        <rect key="frame" x="94.5" y="17" width="13.5" height="15"/>
                                                         <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="15"/>
                                                         <color key="textColor" white="0.79981203007518797" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fwU-bH-73y">
-                                                        <rect key="frame" x="64" y="17" width="21" height="15"/>
+                                                        <rect key="frame" x="63.5" y="17" width="21" height="15"/>
                                                         <fontDescription key="fontDescription" name="MyriadPro-Semibold" family="Myriad Pro" pointSize="15"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hf2-YY-ajQ">
-                                                        <rect key="frame" x="166" y="17" width="21" height="15"/>
+                                                        <rect key="frame" x="164.5" y="17" width="21" height="15"/>
                                                         <fontDescription key="fontDescription" name="MyriadPro-Semibold" family="Myriad Pro" pointSize="15"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6:30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9I7-TY-xWA">
-                                                        <rect key="frame" x="17" y="10" width="45" height="24"/>
+                                                        <rect key="frame" x="17" y="10" width="44.5" height="24"/>
                                                         <fontDescription key="fontDescription" name="MyriadPro-Semibold" family="Myriad Pro" pointSize="24"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
@@ -219,6 +219,7 @@
                                                         <attributes>
                                                             <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <font key="NSFont" size="14" name="MyriadPro-Regular"/>
+                                                            <font key="NSOriginalFont" size="14" name="MyriadPro-Regular"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="6"/>
                                                         </attributes>
                                                     </fragment>
@@ -437,25 +438,6 @@
             </objects>
             <point key="canvasLocation" x="1002" y="88"/>
         </scene>
-        <!--Connect-->
-        <scene sceneID="4zs-bg-Uht">
-            <objects>
-                <viewController id="kR0-o9-9gB" customClass="ConnectViewController" customModule="FUMCApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Rsk-l2-5B5"/>
-                        <viewControllerLayoutGuide type="bottom" id="e0c-CM-KVx"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="NpD-IC-n8G">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Connect" image="connect-selected" id="I7q-GB-Xme"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="e4n-jk-pc8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1002" y="870"/>
-        </scene>
         <!--Root Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
@@ -471,7 +453,7 @@
                         <segue destination="F01-YL-vfW" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="Vfr-j3-gCB" kind="relationship" relationship="viewControllers" id="TRb-vE-61L"/>
                         <segue destination="CO3-AT-V9C" kind="relationship" relationship="viewControllers" id="FL8-EP-5wc"/>
-                        <segue destination="kR0-o9-9gB" kind="relationship" relationship="viewControllers" id="BMx-i6-p7l"/>
+                        <segue destination="R3l-68-kGD" kind="relationship" relationship="viewControllers" id="BMx-i6-p7l"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -522,9 +504,63 @@
             </objects>
             <point key="canvasLocation" x="1002" y="-1541"/>
         </scene>
+        <!--Connect-->
+        <scene sceneID="Nyt-jJ-6q2">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="R3l-68-kGD" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Connect" image="connect-selected" id="I7q-GB-Xme"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="q34-aj-DqA">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.56862747670000002" green="0.066666670139999995" blue="0.043137256059999997" alpha="1" colorSpace="deviceRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="o2W-WH-Hck" kind="relationship" relationship="rootViewController" id="Bfu-na-QYi"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QtC-sO-dE2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1002" y="870"/>
+        </scene>
+        <!--Connect-->
+        <scene sceneID="0TO-EI-K7n">
+            <objects>
+                <tableViewController id="o2W-WH-Hck" customClass="ConnectTableViewController" customModule="FUMCApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="110" sectionHeaderHeight="22" sectionFooterHeight="22" id="kgk-2Z-Hbg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="connectTableCell" id="M3c-s4-Ja0" customClass="ConnectTableViewCell" customModule="FUMCApp" customModuleProvider="target">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M3c-s4-Ja0" id="Thq-Wg-ckS">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="o2W-WH-Hck" id="ByD-rX-Ifd"/>
+                            <outlet property="delegate" destination="o2W-WH-Hck" id="uH0-qh-JPG"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Connect" id="exB-Pu-oat">
+                        <barButtonItem key="leftBarButtonItem" image="contact" id="BS3-Jy-Rve">
+                            <connections>
+                                <action selector="displayContactCard" destination="o2W-WH-Hck" id="N2c-Mq-wSI"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p27-lD-mFv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1673" y="870"/>
+        </scene>
     </scenes>
     <resources>
         <image name="connect-selected" width="40" height="40"/>
+        <image name="contact" width="22" height="22"/>
         <image name="give-selected" width="35" height="35"/>
         <image name="home-selected" width="30" height="30"/>
         <image name="media-selected" width="35" height="30"/>

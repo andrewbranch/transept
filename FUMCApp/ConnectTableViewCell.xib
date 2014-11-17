@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="BebasNeue Bold.otf">
+            <string>BebasNeueBold</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="connectTableCell" rowHeight="110" id="KGk-i7-Jjw" customClass="ConnectTableViewCell" customModule="FUMCApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hands" translatesAutoresizingMaskIntoConstraints="NO" id="KE9-7F-R44">
+                        <rect key="frame" x="8" y="10" width="90" height="90"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="90" id="68G-xd-t2m"/>
+                            <constraint firstAttribute="width" secondItem="KE9-7F-R44" secondAttribute="height" multiplier="1:1" id="C25-S4-Din"/>
+                            <constraint firstAttribute="height" constant="100" id="aeC-qk-ozP"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="aeC-qk-ozP"/>
+                            </mask>
+                        </variation>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Prayer Request" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mtG-nJ-IIe">
+                        <rect key="frame" x="108" y="48" width="171" height="22"/>
+                        <fontDescription key="fontDescription" name="BebasNeueBold" family="Bebas Neue" pointSize="22"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="centerY" secondItem="KE9-7F-R44" secondAttribute="centerY" id="7IQ-ck-QvI"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="mtG-nJ-IIe" secondAttribute="trailing" id="e7B-zO-cwX"/>
+                    <constraint firstItem="mtG-nJ-IIe" firstAttribute="leading" secondItem="KE9-7F-R44" secondAttribute="trailing" constant="10" id="qmS-b9-az8"/>
+                    <constraint firstItem="KE9-7F-R44" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="tkj-sm-AfE"/>
+                    <constraint firstAttribute="centerY" secondItem="mtG-nJ-IIe" secondAttribute="centerY" constant="-4" id="vjy-LA-MBt"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="iconView" destination="KE9-7F-R44" id="Qv2-1D-chL"/>
+                <outlet property="label" destination="mtG-nJ-IIe" id="zdb-x1-VSf"/>
+            </connections>
+            <point key="canvasLocation" x="400" y="272"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="hands" width="100" height="100"/>
+    </resources>
+</document>

@@ -60,7 +60,7 @@ class CalendarTableViewController: UIViewController, UITableViewDataSource, UITa
     
     override func viewDidAppear(animated: Bool) {
         self.pageViewController!.didTransitionToViewController(self)
-        self.navigationController!.navigationItem.title = "Calendar"
+        self.pageViewController!.navigationItem.title = "Calendar"
         UIView.animateWithDuration(0.25, animations: { () -> Void in
             // self.navigationController!.navigationBar.setTitleVerticalPositionAdjustment(-8, forBarMetrics: UIBarMetrics.Default)
             self.pageViewController!.pageControl.alpha = 1
