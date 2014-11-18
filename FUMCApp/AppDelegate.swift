@@ -76,6 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             ], forState: UIControlState.Normal)
         }
         
+        UINavigationBar.appearance().barTintColor = UIColor.fumcRedColor()
         UINavigationBar.appearance().tintColor = translucentWhite
         UITabBar.appearance().selectedImageTintColor = UIColor.whiteColor()
         UITabBar.appearance().barTintColor = UIColor(white: 0.1, alpha: 1)

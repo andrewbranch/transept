@@ -127,6 +127,8 @@ class ConnectTableViewController: UITableViewController, UITableViewDataSource, 
                 tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }
     }
+    
+    
 
 
     // MARK: - Navigation
