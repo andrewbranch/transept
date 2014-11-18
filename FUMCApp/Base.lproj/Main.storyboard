@@ -557,6 +557,139 @@
             </objects>
             <point key="canvasLocation" x="1673" y="870"/>
         </scene>
+        <!--Prayer Request-->
+        <scene sceneID="qbt-Rg-k3e">
+            <objects>
+                <viewController storyboardIdentifier="prayerRequestViewController" id="ffq-j7-gHR" customClass="PrayerRequestViewController" customModule="FUMCApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="byD-ft-TKD"/>
+                        <viewControllerLayoutGuide type="bottom" id="jZs-0z-jwt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="OXI-Md-vyg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PtB-QW-fe7">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yzN-OO-W6L">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="580"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MMk-r5-KYz">
+                                                <rect key="frame" x="8" y="18" width="584" height="68"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment>
+                                                        <string key="content">The Pastoral Care Team would like to pray for you and our family at First United Methodist Church.  Please indicate below the specific petition or praise that you would like to call to our attention. This request will then be sent to members of the Pastoral Care Team. Your request will be anonymous unless you include your name or contact information.</string>
+                                                        <attributes>
+                                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <font key="NSFont" size="14" name="MyriadPro-Regular"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="4"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UxE-tV-uMg" customClass="UIPlaceHolderTextView">
+                                                <rect key="frame" x="0.0" y="96" width="600" height="140"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="140" id="6yO-fw-mXF"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MOV-nM-w0H">
+                                                <rect key="frame" x="221" y="244" width="159" height="30"/>
+                                                <state key="normal" title="Submit Prayer Request">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="sendRequest:" destination="ffq-j7-gHR" eventType="touchUpInside" id="FCp-mA-0di"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="centerX" secondItem="MOV-nM-w0H" secondAttribute="centerX" id="4F1-Mj-c2b"/>
+                                            <constraint firstItem="UxE-tV-uMg" firstAttribute="top" secondItem="yzN-OO-W6L" secondAttribute="topMargin" id="5by-Gn-e2k"/>
+                                            <constraint firstItem="MMk-r5-KYz" firstAttribute="top" secondItem="yzN-OO-W6L" secondAttribute="topMargin" id="6Za-1T-LtX"/>
+                                            <constraint firstItem="MOV-nM-w0H" firstAttribute="top" secondItem="UxE-tV-uMg" secondAttribute="bottom" constant="8" id="ATE-Zj-Q4g"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="MMk-r5-KYz" secondAttribute="trailing" id="Esy-PV-Fds"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="MMk-r5-KYz" secondAttribute="trailing" id="QyY-dq-Vez"/>
+                                            <constraint firstItem="MMk-r5-KYz" firstAttribute="leading" secondItem="UxE-tV-uMg" secondAttribute="trailing" id="VIj-Xo-FJB"/>
+                                            <constraint firstItem="UxE-tV-uMg" firstAttribute="leading" secondItem="yzN-OO-W6L" secondAttribute="leading" id="VmF-9e-WnB"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="MMk-r5-KYz" secondAttribute="trailing" id="aHU-aP-FTT"/>
+                                            <constraint firstAttribute="trailing" secondItem="UxE-tV-uMg" secondAttribute="trailing" id="dIq-PN-cPf"/>
+                                            <constraint firstAttribute="trailing" secondItem="UxE-tV-uMg" secondAttribute="trailing" id="fFa-jd-tto"/>
+                                            <constraint firstItem="MMk-r5-KYz" firstAttribute="leading" secondItem="yzN-OO-W6L" secondAttribute="leadingMargin" id="g2h-4R-VUa"/>
+                                            <constraint firstItem="MMk-r5-KYz" firstAttribute="leading" secondItem="UxE-tV-uMg" secondAttribute="trailing" id="gDY-Vb-RI6"/>
+                                            <constraint firstItem="UxE-tV-uMg" firstAttribute="top" secondItem="MMk-r5-KYz" secondAttribute="bottom" constant="10" id="hL0-0S-avS"/>
+                                            <constraint firstItem="MMk-r5-KYz" firstAttribute="leading" secondItem="yzN-OO-W6L" secondAttribute="leadingMargin" id="nR6-JU-ivM"/>
+                                            <constraint firstItem="MMk-r5-KYz" firstAttribute="top" secondItem="yzN-OO-W6L" secondAttribute="topMargin" constant="10" id="xbo-SE-YpS"/>
+                                            <constraint firstItem="MOV-nM-w0H" firstAttribute="leading" secondItem="UxE-tV-uMg" secondAttribute="trailing" id="xup-LR-v8w"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="6Za-1T-LtX"/>
+                                                <exclude reference="Esy-PV-Fds"/>
+                                                <exclude reference="QyY-dq-Vez"/>
+                                                <exclude reference="VIj-Xo-FJB"/>
+                                                <exclude reference="gDY-Vb-RI6"/>
+                                                <exclude reference="nR6-JU-ivM"/>
+                                                <exclude reference="5by-Gn-e2k"/>
+                                                <exclude reference="fFa-jd-tto"/>
+                                                <exclude reference="xup-LR-v8w"/>
+                                            </mask>
+                                        </variation>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="yzN-OO-W6L" secondAttribute="bottom" id="8O1-GY-odV"/>
+                                    <constraint firstAttribute="bottom" secondItem="yzN-OO-W6L" secondAttribute="bottom" id="CAY-2p-Sg1"/>
+                                    <constraint firstItem="yzN-OO-W6L" firstAttribute="height" secondItem="PtB-QW-fe7" secondAttribute="height" id="ene-uG-ZCp"/>
+                                    <constraint firstItem="yzN-OO-W6L" firstAttribute="leading" secondItem="PtB-QW-fe7" secondAttribute="leading" id="huG-ft-hxh"/>
+                                    <constraint firstAttribute="trailing" secondItem="yzN-OO-W6L" secondAttribute="trailing" id="hwN-9H-Cf8"/>
+                                    <constraint firstItem="yzN-OO-W6L" firstAttribute="leading" secondItem="PtB-QW-fe7" secondAttribute="leading" id="ktT-Cj-hAK"/>
+                                    <constraint firstItem="yzN-OO-W6L" firstAttribute="top" secondItem="PtB-QW-fe7" secondAttribute="top" id="vsp-z6-SWj"/>
+                                    <constraint firstItem="yzN-OO-W6L" firstAttribute="width" secondItem="PtB-QW-fe7" secondAttribute="width" id="y1M-IZ-cvb"/>
+                                    <constraint firstAttribute="trailing" secondItem="yzN-OO-W6L" secondAttribute="trailing" id="zI9-kz-IX2"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="8O1-GY-odV"/>
+                                        <exclude reference="huG-ft-hxh"/>
+                                        <exclude reference="zI9-kz-IX2"/>
+                                    </mask>
+                                </variation>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="jZs-0z-jwt" firstAttribute="top" secondItem="PtB-QW-fe7" secondAttribute="bottom" id="64h-iw-9cr"/>
+                            <constraint firstItem="PtB-QW-fe7" firstAttribute="top" secondItem="byD-ft-TKD" secondAttribute="bottom" id="K3B-eZ-yTQ"/>
+                            <constraint firstItem="PtB-QW-fe7" firstAttribute="leading" secondItem="OXI-Md-vyg" secondAttribute="leading" id="YGa-3w-4KA"/>
+                            <constraint firstItem="PtB-QW-fe7" firstAttribute="top" secondItem="byD-ft-TKD" secondAttribute="bottom" id="Z3Q-nd-AR3"/>
+                            <constraint firstItem="jZs-0z-jwt" firstAttribute="top" secondItem="PtB-QW-fe7" secondAttribute="bottom" id="ava-oQ-Ihb"/>
+                            <constraint firstAttribute="trailing" secondItem="PtB-QW-fe7" secondAttribute="trailing" id="zjO-8t-AzG"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="K3B-eZ-yTQ"/>
+                                <exclude reference="64h-iw-9cr"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="Prayer Request" id="1MW-Ya-sYw"/>
+                    <connections>
+                        <outlet property="button" destination="MOV-nM-w0H" id="z8D-Bk-qUn"/>
+                        <outlet property="label" destination="MMk-r5-KYz" id="8fB-sQ-8KJ"/>
+                        <outlet property="scrollView" destination="PtB-QW-fe7" id="ebH-7B-ec0"/>
+                        <outlet property="textView" destination="UxE-tV-uMg" id="445-eJ-DUo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zeA-KP-2La" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2334" y="870"/>
+        </scene>
     </scenes>
     <resources>
         <image name="connect-selected" width="40" height="40"/>

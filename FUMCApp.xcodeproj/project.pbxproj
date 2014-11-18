@@ -53,6 +53,8 @@
 		3AFD01F51A1192A90037F0FD /* BebasNeue Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AFD01EC1A1192A90037F0FD /* BebasNeue Regular.otf */; };
 		3AFD01F61A1192A90037F0FD /* BebasNeue Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AFD01ED1A1192A90037F0FD /* BebasNeue Thin.otf */; };
 		3AFD01F71A1192A90037F0FD /* BebasNeue Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AFD01ED1A1192A90037F0FD /* BebasNeue Thin.otf */; };
+		492AAD4B1A1A81D900DBD04E /* PrayerRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492AAD4A1A1A81D900DBD04E /* PrayerRequestViewController.swift */; };
+		492AAD4F1A1BB2B100DBD04E /* UIPlaceHolderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 492AAD4E1A1BB2B100DBD04E /* UIPlaceHolderTextView.m */; };
 		49319D671A17F3C1005598A4 /* ConnectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49319D651A17F3C1005598A4 /* ConnectTableViewCell.swift */; };
 		49319D681A17F3C1005598A4 /* ConnectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49319D661A17F3C1005598A4 /* ConnectTableViewCell.xib */; };
 		49319D6A1A17F683005598A4 /* ConnectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49319D691A17F683005598A4 /* ConnectTableViewController.swift */; };
@@ -111,6 +113,9 @@
 		3AFD01EB1A1192A90037F0FD /* BebasNeue Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BebasNeue Light.otf"; sourceTree = "<group>"; };
 		3AFD01EC1A1192A90037F0FD /* BebasNeue Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BebasNeue Regular.otf"; sourceTree = "<group>"; };
 		3AFD01ED1A1192A90037F0FD /* BebasNeue Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BebasNeue Thin.otf"; sourceTree = "<group>"; };
+		492AAD4A1A1A81D900DBD04E /* PrayerRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayerRequestViewController.swift; sourceTree = "<group>"; };
+		492AAD4E1A1BB2B100DBD04E /* UIPlaceHolderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPlaceHolderTextView.m; sourceTree = "<group>"; };
+		492AAD501A1BB2D600DBD04E /* UIPlaceHolderTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIPlaceHolderTextView.h; sourceTree = "<group>"; };
 		49319D651A17F3C1005598A4 /* ConnectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectTableViewCell.swift; sourceTree = "<group>"; };
 		49319D661A17F3C1005598A4 /* ConnectTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConnectTableViewCell.xib; sourceTree = "<group>"; };
 		49319D691A17F683005598A4 /* ConnectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectTableViewController.swift; sourceTree = "<group>"; };
@@ -262,6 +267,8 @@
 		3A758BDB19E9EDD500A54F6C /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				492AAD501A1BB2D600DBD04E /* UIPlaceHolderTextView.h */,
+				492AAD4E1A1BB2B100DBD04E /* UIPlaceHolderTextView.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -299,6 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				49319D691A17F683005598A4 /* ConnectTableViewController.swift */,
+				492AAD4A1A1A81D900DBD04E /* PrayerRequestViewController.swift */,
 			);
 			name = Connect;
 			sourceTree = "<group>";
@@ -491,6 +499,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49319D6A1A17F683005598A4 /* ConnectTableViewController.swift in Sources */,
+				492AAD4B1A1A81D900DBD04E /* PrayerRequestViewController.swift in Sources */,
 				3AE79C421A164AD40081E487 /* MediaMasterTableViewController.swift in Sources */,
 				3A3C088F19EC7ABB00EFBD8D /* MediaTableViewController.swift in Sources */,
 				3A3C089819ECCF6600EFBD8D /* RootTabBarController.swift in Sources */,
@@ -507,6 +516,7 @@
 				3AFD01E41A115C080037F0FD /* CalendarEvent.swift in Sources */,
 				49319D671A17F3C1005598A4 /* ConnectTableViewCell.swift in Sources */,
 				3A758BC419E6BE3200A54F6C /* GiveViewController.swift in Sources */,
+				492AAD4F1A1BB2B100DBD04E /* UIPlaceHolderTextView.m in Sources */,
 				3AFD01E21A1157790037F0FD /* CalendarTableViewController.swift in Sources */,
 				3AFD01E71A11840C0037F0FD /* CalendarTableViewCell.swift in Sources */,
 				3A758BA219E6B81A00A54F6C /* AppDelegate.swift in Sources */,

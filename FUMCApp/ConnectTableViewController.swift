@@ -11,6 +11,7 @@ import AddressBookUI
 
 class ConnectTableViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
     
+    private var prayerRequestViewController: PrayerRequestViewController?
     private let podcastURL = NSURL(string: "itms-pcast://itunes.apple.com/us/podcast/first-umc-of-pensacola-fl/id313924198?mt=2&uo=4")
     private let font = UIFont(name: "BebasNeue Bold", size: 10)
     private let labels = [
@@ -30,6 +31,7 @@ class ConnectTableViewController: UITableViewController, UITableViewDataSource, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.prayerRequestViewController = self.storyboard!.instantiateViewControllerWithIdentifier("prayerRequestViewController") as? PrayerRequestViewController
         self.clearsSelectionOnViewWillAppear = false
         self.tableView.registerNib(UINib(nibName: "ConnectTableViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "connectTableCell")
 
@@ -117,19 +119,20 @@ class ConnectTableViewController: UITableViewController, UITableViewDataSource, 
                 UIApplication.sharedApplication().openURL(NSURL(string: "http://fumcpensacola.com")!)
                 tableView.deselectRowAtIndexPath(indexPath, animated: true)
                 break
+            case 3:
+                // For some reason, using the segue here results in the prayerRequestViewController.navigationController
+                // being nil the second time you navigate to it
+                self.navigationController!.pushViewController(self.prayerRequestViewController!, animated: true)
             default:
                 tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }
     }
 
-    /*
+
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        
+//    }
 
 }

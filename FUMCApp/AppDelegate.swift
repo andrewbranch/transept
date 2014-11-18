@@ -39,6 +39,12 @@ extension UIImage {
     }
 }
 
+extension UIColor {
+    class func fumcRedColor() -> UIColor {
+        return UIColor(red: 132/255, green: 21/255, blue: 33/255, alpha: 1)
+    }
+}
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -59,10 +65,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if let font = UIFont(name: "MyriadPro-Regular", size: 18.0) {
             UIBarButtonItem.appearance().setTitleTextAttributes([
-                NSFontAttributeName: font,
-                NSForegroundColorAttributeName: translucentWhite
+                NSFontAttributeName: font
             ], forState: UIControlState.Normal)
         }
+        UIBarButtonItem.appearance().tintColor = translucentWhite
         
         if let font = UIFont(name: "MyriadPro-Regular", size: 10.0) {
             UITabBarItem.appearance().setTitleTextAttributes([
