@@ -34,6 +34,7 @@ class ConnectTableViewController: UITableViewController, UITableViewDataSource, 
         self.prayerRequestViewController = self.storyboard!.instantiateViewControllerWithIdentifier("prayerRequestViewController") as? PrayerRequestViewController
         self.clearsSelectionOnViewWillAppear = false
         self.tableView.registerNib(UINib(nibName: "ConnectTableViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "connectTableCell")
+        self.tableView.registerNib(UINib(nibName: "ConnectTableFooterView", bundle: NSBundle.mainBundle()), forHeaderFooterViewReuseIdentifier: "ConnectTableFooterViewIdentifier")
 
         
         self.contact = ABPersonCreate().takeUnretainedValue()
@@ -101,6 +102,11 @@ class ConnectTableViewController: UITableViewController, UITableViewDataSource, 
             cell.label!.font = font
         }
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let footer = tableView.dequeueReusableHeaderFooterViewWithIdentifier("ConnectTableFooterViewIdentifier") as ConnectTableFooterView
+        return footer
     }
     
     // MARK: - Table view delegate

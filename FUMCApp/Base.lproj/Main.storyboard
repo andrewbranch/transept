@@ -528,10 +528,10 @@
         <scene sceneID="0TO-EI-K7n">
             <objects>
                 <tableViewController id="o2W-WH-Hck" customClass="ConnectTableViewController" customModule="FUMCApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="110" sectionHeaderHeight="22" sectionFooterHeight="22" id="kgk-2Z-Hbg">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="110" sectionHeaderHeight="50" sectionFooterHeight="50" id="kgk-2Z-Hbg">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="connectTableCell" id="M3c-s4-Ja0" customClass="ConnectTableViewCell" customModule="FUMCApp" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
