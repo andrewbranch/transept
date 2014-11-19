@@ -8,3 +8,4 @@
 
 #import "BEMAnalogClockView.h"
 #import "UIPlaceHolderTextView.h"
+#import "UIDevice+Hardware.h"

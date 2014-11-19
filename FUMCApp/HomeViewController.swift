@@ -22,6 +22,7 @@ class HomeViewController: UIPageViewController, UIPageViewControllerDataSource, 
         super.viewDidLoad()
         let calendarViewController = self.storyboard!.instantiateViewControllerWithIdentifier("calendarViewController") as CalendarTableViewController
         let featuredViewController = self.storyboard!.instantiateViewControllerWithIdentifier("featuredViewController") as FeaturedViewController
+        
         calendarViewController.pageViewController = self
         featuredViewController.pageViewController = self
         
@@ -38,6 +39,9 @@ class HomeViewController: UIPageViewController, UIPageViewControllerDataSource, 
         
         // self.navigationController!.navigationBar.setTitleVerticalPositionAdjustment(-8, forBarMetrics: UIBarMetrics.Default)
         self.navigationController!.navigationBar.addSubview(self.pageControl)
+        
+        // Preload featured view
+        let preload = featuredViewController.view
 
     }
     

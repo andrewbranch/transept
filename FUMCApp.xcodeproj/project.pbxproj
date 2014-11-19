@@ -53,6 +53,7 @@
 		3AFD01F51A1192A90037F0FD /* BebasNeue Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AFD01EC1A1192A90037F0FD /* BebasNeue Regular.otf */; };
 		3AFD01F61A1192A90037F0FD /* BebasNeue Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AFD01ED1A1192A90037F0FD /* BebasNeue Thin.otf */; };
 		3AFD01F71A1192A90037F0FD /* BebasNeue Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AFD01ED1A1192A90037F0FD /* BebasNeue Thin.otf */; };
+		490FAD9C1A1CF15D00AF968C /* UIDevice+Hardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 490FAD9B1A1CF15D00AF968C /* UIDevice+Hardware.m */; };
 		492AAD4B1A1A81D900DBD04E /* PrayerRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492AAD4A1A1A81D900DBD04E /* PrayerRequestViewController.swift */; };
 		492AAD4F1A1BB2B100DBD04E /* UIPlaceHolderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 492AAD4E1A1BB2B100DBD04E /* UIPlaceHolderTextView.m */; };
 		492AAD521A1BF52600DBD04E /* ConnectTableFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492AAD511A1BF52600DBD04E /* ConnectTableFooterView.swift */; };
@@ -115,6 +116,8 @@
 		3AFD01EB1A1192A90037F0FD /* BebasNeue Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BebasNeue Light.otf"; sourceTree = "<group>"; };
 		3AFD01EC1A1192A90037F0FD /* BebasNeue Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BebasNeue Regular.otf"; sourceTree = "<group>"; };
 		3AFD01ED1A1192A90037F0FD /* BebasNeue Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BebasNeue Thin.otf"; sourceTree = "<group>"; };
+		490FAD9A1A1CF14400AF968C /* UIDevice+Hardware.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIDevice+Hardware.h"; sourceTree = "<group>"; };
+		490FAD9B1A1CF15D00AF968C /* UIDevice+Hardware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+Hardware.m"; sourceTree = "<group>"; };
 		492AAD4A1A1A81D900DBD04E /* PrayerRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayerRequestViewController.swift; sourceTree = "<group>"; };
 		492AAD4E1A1BB2B100DBD04E /* UIPlaceHolderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPlaceHolderTextView.m; sourceTree = "<group>"; };
 		492AAD501A1BB2D600DBD04E /* UIPlaceHolderTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIPlaceHolderTextView.h; sourceTree = "<group>"; };
@@ -275,6 +278,8 @@
 			children = (
 				492AAD501A1BB2D600DBD04E /* UIPlaceHolderTextView.h */,
 				492AAD4E1A1BB2B100DBD04E /* UIPlaceHolderTextView.m */,
+				490FAD9A1A1CF14400AF968C /* UIDevice+Hardware.h */,
+				490FAD9B1A1CF15D00AF968C /* UIDevice+Hardware.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -505,6 +510,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				490FAD9C1A1CF15D00AF968C /* UIDevice+Hardware.m in Sources */,
 				49319D6A1A17F683005598A4 /* ConnectTableViewController.swift in Sources */,
 				492AAD4B1A1A81D900DBD04E /* PrayerRequestViewController.swift in Sources */,
 				3AE79C421A164AD40081E487 /* MediaMasterTableViewController.swift in Sources */,
