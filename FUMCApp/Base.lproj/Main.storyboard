@@ -45,13 +45,14 @@
                             <constraint firstAttribute="trailing" secondItem="Qhs-et-9OK" secondAttribute="trailing" id="QCC-Lh-lJU"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="HpE-YQ-7Mh"/>
                     <connections>
                         <outlet property="imageView" destination="Qhs-et-9OK" id="h2G-6R-oJs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wFC-GN-rwY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1746" y="-2882"/>
+            <point key="canvasLocation" x="1746" y="-2857"/>
         </scene>
         <!--Calendar Table View Controller-->
         <scene sceneID="G66-xP-SFT">
@@ -500,7 +501,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="F01-YL-vfW" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="home-selected" id="acW-dT-cKf"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TRo-Mu-Ckd">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="TRo-Mu-Ckd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.56862747670000002" green="0.066666670139999995" blue="0.043137256059999997" alpha="1" colorSpace="deviceRGB"/>

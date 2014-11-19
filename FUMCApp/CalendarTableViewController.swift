@@ -21,9 +21,9 @@ class CalendarTableViewController: UIViewController, UITableViewDataSource, UITa
 
         self.tableView!.registerNib(UINib(nibName: "CalendarTableViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "calendarTableViewCell")
         self.tableView!.registerNib(UINib(nibName: "CalendarTableHeaderView", bundle: NSBundle.mainBundle()), forHeaderFooterViewReuseIdentifier: "CalendarTableHeaderViewIdentifier")
-        var insets = UIEdgeInsetsMake(self.navigationController!.navigationBar.frame.height + UIApplication.sharedApplication().statusBarFrame.height, 0, 0, 0)
-        self.tableView!.contentInset = insets
-        self.tableView!.scrollIndicatorInsets = insets
+//        var insets = UIEdgeInsetsMake(self.navigationController!.navigationBar.frame.height + UIApplication.sharedApplication().statusBarFrame.height, 0, 0, 0)
+//        self.tableView!.contentInset = insets
+//        self.tableView!.scrollIndicatorInsets = insets
         
         dateFormatter.dateFormat = "MM.dd.yyyy"
         let from = dateFormatter.stringFromDate(NSDate())

@@ -13,6 +13,7 @@ class FeaturedViewController: UIViewController, HomeViewPage {
     @IBOutlet var imageView: UIImageView?
     var pageViewController: HomeViewController?
     private var appearedOnce = false
+    private var featureId: Int?
     private let deviceImageMap = [
         "iPhone3,1": "iphoneFourImage",
         "iPhone3,2": "iphoneFourImage",
@@ -57,6 +58,15 @@ class FeaturedViewController: UIViewController, HomeViewPage {
                         let image = UIImage(data: data)
                         if let img = image {
                             self.imageView!.image = img
+                            self.featureId = jsonDictionaries[0]["id"] as? Int
+                            if (NSUserDefaults.standardUserDefaults().integerForKey("lastSeenFeatureId") != self.featureId?) {
+                                // New feature
+                                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(500 * NSEC_PER_MSEC)), dispatch_get_main_queue()) {
+                                    self.pageViewController!.setViewControllers([self], direction: UIPageViewControllerNavigationDirection.Forward, animated: true) { (finished) -> Void in
+                                        self.pageViewController!.didTransitionToViewController(self)
+                                    }
+                                }
+                            }
                         } else {
                             // TODO
                         }
@@ -69,15 +79,6 @@ class FeaturedViewController: UIViewController, HomeViewPage {
             }
         }
     }
-    
-    override func viewWillAppear(animated: Bool) {
-        if (!self.appearedOnce) {
-            let offsetTop = UIApplication.sharedApplication().statusBarFrame.height + self.navigationController!.navigationBar.frame.height
-            let offsetBottom = UIScreen.mainScreen().bounds.height - self.tabBarController!.tabBar.frame.height - offsetTop
-            self.view.frame = CGRectMake(0, offsetTop, self.view.frame.width, offsetBottom)
-            self.appearedOnce = true
-        }
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -88,7 +89,9 @@ class FeaturedViewController: UIViewController, HomeViewPage {
         self.pageViewController!.didTransitionToViewController(self)
         self.pageViewController!.navigationItem.title = "Featured"
         self.pageViewController!.pageControl.hidden = false
-        // self.navigationController!.navigationBar.setTitleVerticalPositionAdjustment(-8, forBarMetrics: UIBarMetrics.Default)
+        if let id = self.featureId {
+            NSUserDefaults.standardUserDefaults().setInteger(id, forKey: "lastSeenFeatureId")
+        }
     }
     
 
