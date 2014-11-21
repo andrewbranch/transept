@@ -11,6 +11,8 @@ import UIKit
 class FeaturedViewController: UIViewController, HomeViewPage {
     
     @IBOutlet var imageView: UIImageView?
+    @IBOutlet var label: UILabel?
+    
     var pageViewController: HomeViewController?
     private var appearedOnce = false
     private var featureId: Int?
@@ -32,6 +34,10 @@ class FeaturedViewController: UIViewController, HomeViewPage {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let font = UIFont(name: "MyriadPro-Regular", size: 27) {
+           self.label!.font = font
+        }
+        
         let url = NSURL(string: "https://fumc.herokuapp.com/api/features?active=true")
         let request = NSURLRequest(URL: url!)
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in

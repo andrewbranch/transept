@@ -12,16 +12,6 @@ class RootTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        var homeItem = self.tabBar.items?[0] as UITabBarItem
-        var mediaItem = self.tabBar.items?[1] as UITabBarItem
-        var giveItem = self.tabBar.items?[2] as UITabBarItem
-        var connectItem = self.tabBar.items?[3] as UITabBarItem
-        
-        homeItem.selectedImage = UIImage(named: "home-selected")
-        mediaItem.selectedImage = UIImage(named: "media-selected")
-        giveItem.selectedImage = UIImage(named: "give-selected")
-        connectItem.selectedImage = UIImage(named: "connect-selected")
     }
 
     override func didReceiveMemoryWarning() {

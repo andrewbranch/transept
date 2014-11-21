@@ -61,6 +61,7 @@
 		49319D671A17F3C1005598A4 /* ConnectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49319D651A17F3C1005598A4 /* ConnectTableViewCell.swift */; };
 		49319D681A17F3C1005598A4 /* ConnectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49319D661A17F3C1005598A4 /* ConnectTableViewCell.xib */; };
 		49319D6A1A17F683005598A4 /* ConnectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49319D691A17F683005598A4 /* ConnectTableViewController.swift */; };
+		49D2689C1A1E93F400F564F9 /* UIChangingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D2689B1A1E93F400F564F9 /* UIChangingLabel.swift */; };
 		B88431A17FEFC727080ECBC6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE4B71E479693E02C8F478AD /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -126,6 +127,7 @@
 		49319D651A17F3C1005598A4 /* ConnectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectTableViewCell.swift; sourceTree = "<group>"; };
 		49319D661A17F3C1005598A4 /* ConnectTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConnectTableViewCell.xib; sourceTree = "<group>"; };
 		49319D691A17F683005598A4 /* ConnectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectTableViewController.swift; sourceTree = "<group>"; };
+		49D2689B1A1E93F400F564F9 /* UIChangingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIChangingLabel.swift; sourceTree = "<group>"; };
 		98EE777E485CF8833F4A1FB3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		FE4B71E479693E02C8F478AD /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -280,6 +282,7 @@
 				492AAD4E1A1BB2B100DBD04E /* UIPlaceHolderTextView.m */,
 				490FAD9A1A1CF14400AF968C /* UIDevice+Hardware.h */,
 				490FAD9B1A1CF15D00AF968C /* UIDevice+Hardware.m */,
+				49D2689B1A1E93F400F564F9 /* UIChangingLabel.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -521,6 +524,7 @@
 				3A7243AE1A02C2C5002AA176 /* Witness.swift in Sources */,
 				3A76F4C61A13AC33002BC759 /* FeaturedViewController.swift in Sources */,
 				3A76F4C81A13B6C3002BC759 /* EventViewController.swift in Sources */,
+				49D2689C1A1E93F400F564F9 /* UIChangingLabel.swift in Sources */,
 				3A76F4C21A128C77002BC759 /* CalendarTableHeaderView.swift in Sources */,
 				3AE79C451A164BC50081E487 /* MediaMasterTableViewCell.swift in Sources */,
 				3A758BCB19E6DBB200A54F6C /* CollectionViewLayout.swift in Sources */,
