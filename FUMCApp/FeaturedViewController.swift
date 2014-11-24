@@ -34,9 +34,7 @@ class FeaturedViewController: UIViewController, HomeViewPage {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let font = UIFont(name: "MyriadPro-Regular", size: 27) {
-           self.label!.font = font
-        }
+        self.label!.font = UIFont.fumcMainFontRegular26
         
         let url = NSURL(string: "https://fumc.herokuapp.com/api/features?active=true")
         let request = NSURLRequest(URL: url!)

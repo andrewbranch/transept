@@ -21,18 +21,14 @@ class GiveViewController: UIViewController {
         self.header!.label.alpha = 1
         self.header!.label.enabled = true
         self.header!.label.textAlignment = NSTextAlignment.Center
-        if let font = UIFont(name: "MyriadPro-Regular", size: 26) {
-            self.header!.label.font = font
-        }
+        self.header!.label.font = UIFont.fumcMainFontRegular26
         self.header!.texts = [
             "with a cheerful heart",
             "out of love",
             "from a spirit of thanks"
         ]
         
-        if let font = UIFont(name: "MyriadPro-Regular", size: 16) {
-            self.textLabel!.font = font
-        }
+        self.textLabel!.font = UIFont.fumcMainFontRegular16
         
         self.button!.layer.borderColor = UIColor.fumcMagentaColor().CGColor
         self.button!.layer.borderWidth = 2

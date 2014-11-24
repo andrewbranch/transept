@@ -60,6 +60,9 @@
 		49319D671A17F3C1005598A4 /* ConnectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49319D651A17F3C1005598A4 /* ConnectTableViewCell.swift */; };
 		49319D681A17F3C1005598A4 /* ConnectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49319D661A17F3C1005598A4 /* ConnectTableViewCell.xib */; };
 		49319D6A1A17F683005598A4 /* ConnectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49319D691A17F683005598A4 /* ConnectTableViewController.swift */; };
+		499478471A23F218009AAE7D /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499478461A23F218009AAE7D /* UIImageExtensions.swift */; };
+		499478491A23F254009AAE7D /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499478481A23F254009AAE7D /* UIColorExtensions.swift */; };
+		4994784B1A23F3AC009AAE7D /* UIFontExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4994784A1A23F3AC009AAE7D /* UIFontExtensions.swift */; };
 		49D2689C1A1E93F400F564F9 /* UIChangingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D2689B1A1E93F400F564F9 /* UIChangingLabel.swift */; };
 		49D2689E1A23971500F564F9 /* CustomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D2689D1A23971500F564F9 /* CustomTableViewController.swift */; };
 		B88431A17FEFC727080ECBC6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE4B71E479693E02C8F478AD /* libPods.a */; };
@@ -126,6 +129,9 @@
 		49319D651A17F3C1005598A4 /* ConnectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectTableViewCell.swift; sourceTree = "<group>"; };
 		49319D661A17F3C1005598A4 /* ConnectTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConnectTableViewCell.xib; sourceTree = "<group>"; };
 		49319D691A17F683005598A4 /* ConnectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectTableViewController.swift; sourceTree = "<group>"; };
+		499478461A23F218009AAE7D /* UIImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
+		499478481A23F254009AAE7D /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
+		4994784A1A23F3AC009AAE7D /* UIFontExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFontExtensions.swift; sourceTree = "<group>"; };
 		49D2689B1A1E93F400F564F9 /* UIChangingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIChangingLabel.swift; sourceTree = "<group>"; };
 		49D2689D1A23971500F564F9 /* CustomTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewController.swift; sourceTree = "<group>"; };
 		98EE777E485CF8833F4A1FB3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -283,6 +289,9 @@
 				490FAD9A1A1CF14400AF968C /* UIDevice+Hardware.h */,
 				490FAD9B1A1CF15D00AF968C /* UIDevice+Hardware.m */,
 				49D2689B1A1E93F400F564F9 /* UIChangingLabel.swift */,
+				499478461A23F218009AAE7D /* UIImageExtensions.swift */,
+				499478481A23F254009AAE7D /* UIColorExtensions.swift */,
+				4994784A1A23F3AC009AAE7D /* UIFontExtensions.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -515,11 +524,13 @@
 			files = (
 				490FAD9C1A1CF15D00AF968C /* UIDevice+Hardware.m in Sources */,
 				49319D6A1A17F683005598A4 /* ConnectTableViewController.swift in Sources */,
+				499478471A23F218009AAE7D /* UIImageExtensions.swift in Sources */,
 				492AAD4B1A1A81D900DBD04E /* PrayerRequestViewController.swift in Sources */,
 				3AE79C421A164AD40081E487 /* MediaMasterTableViewController.swift in Sources */,
 				492AAD521A1BF52600DBD04E /* ConnectTableFooterView.swift in Sources */,
 				3A3C088F19EC7ABB00EFBD8D /* MediaTableViewController.swift in Sources */,
 				3A3C089819ECCF6600EFBD8D /* RootTabBarController.swift in Sources */,
+				4994784B1A23F3AC009AAE7D /* UIFontExtensions.swift in Sources */,
 				3A7243AC1A02BFB0002AA176 /* WitnessesDataSource.swift in Sources */,
 				3A7243AE1A02C2C5002AA176 /* Witness.swift in Sources */,
 				3A76F4C61A13AC33002BC759 /* FeaturedViewController.swift in Sources */,
@@ -527,6 +538,7 @@
 				49D2689C1A1E93F400F564F9 /* UIChangingLabel.swift in Sources */,
 				3A76F4C21A128C77002BC759 /* CalendarTableHeaderView.swift in Sources */,
 				3AE79C451A164BC50081E487 /* MediaMasterTableViewCell.swift in Sources */,
+				499478491A23F254009AAE7D /* UIColorExtensions.swift in Sources */,
 				3AC6C5CE1A0144C4002A18D8 /* BulletinsDataSource.swift in Sources */,
 				3A7243AA1A02818B002AA176 /* MediaWebViewController.swift in Sources */,
 				3A212B661A0178EA00757466 /* Bulletin.swift in Sources */,

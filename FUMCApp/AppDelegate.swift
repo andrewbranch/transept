@@ -10,44 +10,6 @@ import UIKit
 import Fabric
 import TwitterKit
 
-extension UIImage {
-    class func imageFromColor(color: UIColor, forSize size: CGSize) -> UIImage {
-        var rect = CGRectMake(0, 0, size.width, size.height)
-        UIGraphicsBeginImageContext(rect.size)
-        
-        var context = UIGraphicsGetCurrentContext()
-        CGContextSetFillColorWithColor(context, color.CGColor)
-        CGContextFillRect(context, rect)
-        
-        var image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        // Begin a new image that will be the new image with the rounded corners
-        // (here with the size of an UIImageView)
-        UIGraphicsBeginImageContext(size);
-        
-        // Draw your image
-        image.drawInRect(rect)
-        
-        // Get the image, here setting the UIImageView image
-        image = UIGraphicsGetImageFromCurrentImageContext()
-        
-        // Lets forget about that we were drawing
-        UIGraphicsEndImageContext()
-        
-        return image
-    }
-}
-
-extension UIColor {
-    class func fumcRedColor() -> UIColor {
-        return UIColor(red: 132/255, green: 21/255, blue: 33/255, alpha: 1)
-    }
-    class func fumcMagentaColor() -> UIColor {
-        return UIColor(red: 190/255, green: 64/255, blue: 127/255, alpha: 1)
-    }
-}
-
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -57,35 +19,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
-        var translucentWhite = UIColor(white: 0.95, alpha: 0.8)
-        
-        if let font = UIFont(name: "MyriadPro-Semibold", size: 18.0) {
-            UINavigationBar.appearance().titleTextAttributes = [
-                NSFontAttributeName: font,
-                NSForegroundColorAttributeName: UIColor.whiteColor()
-            ]
-        }
-        
-        if let font = UIFont(name: "MyriadPro-Regular", size: 18.0) {
-            UIBarButtonItem.appearance().setTitleTextAttributes([
-                NSFontAttributeName: font
-            ], forState: UIControlState.Normal)
-        }
+        let translucentWhite = UIColor(white: 0.95, alpha: 0.8)
+
+        UINavigationBar.appearance().titleTextAttributes = [
+            NSFontAttributeName: UIFont.fumcMainFontBold18,
+            NSForegroundColorAttributeName: UIColor.whiteColor()
+        ]
+
+        UIBarButtonItem.appearance().setTitleTextAttributes([
+            NSFontAttributeName: UIFont.fumcMainFontRegular18
+        ], forState: UIControlState.Normal)
         UIBarButtonItem.appearance().tintColor = translucentWhite
         
-        if let font = UIFont(name: "MyriadPro-Regular", size: 10.0) {
-            UITabBarItem.appearance().setTitleTextAttributes([
-                NSFontAttributeName: font
-            ], forState: UIControlState.Normal)
-        }
+        UITabBarItem.appearance().setTitleTextAttributes([
+            NSFontAttributeName: UIFont.fumcMainFontRegular10
+        ], forState: UIControlState.Normal)
         
         UINavigationBar.appearance().barTintColor = UIColor.fumcRedColor()
         UINavigationBar.appearance().tintColor = translucentWhite
         UITabBar.appearance().selectedImageTintColor = UIColor.whiteColor()
         UITabBar.appearance().barTintColor = UIColor(white: 0.1, alpha: 1)
         UITabBar.appearance().selectionIndicatorImage = UIImage.imageFromColor(UIColor.blackColor(), forSize: CGSizeMake(UIScreen.mainScreen().bounds.width / 4, 49))
-        
-        Fabric.with([Twitter()])
 
         return true
     }

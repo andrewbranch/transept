@@ -49,9 +49,7 @@ class EventViewController: UIViewController, BEMAnalogClockDelegate {
         self.clockView!.borderColor = UIColor(white: 0.2, alpha: 1)
         self.clockView!.borderWidth = 4
         
-        if let font = UIFont(name: "MyriadPro-Regular", size: 14) {
-            self.descriptionLabel!.font = font
-        }
+        self.descriptionLabel!.font = UIFont.fumcMainFontRegular14
         
     }
 

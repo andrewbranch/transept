@@ -22,9 +22,7 @@ class PrayerRequestViewController: UIViewController, UITextViewDelegate, UIAlert
         super.viewDidLoad()
         self.automaticallyAdjustsScrollViewInsets = false
         
-        if let font = UIFont(name: "MyriadPro-Regular", size: 14) {
-            self.label!.font = font
-        }
+        self.label!.font = UIFont.fumcMainFontRegular14
         
         var toolbar = UIToolbar(frame: CGRectMake(0, 0, 320, 50))
         toolbar.barStyle = UIBarStyle.Default

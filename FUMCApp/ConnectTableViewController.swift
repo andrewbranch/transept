@@ -13,7 +13,6 @@ class ConnectTableViewController: UITableViewController, UITableViewDataSource, 
     
     private var prayerRequestViewController: PrayerRequestViewController?
     private let podcastURL = NSURL(string: "itms-pcast://itunes.apple.com/us/podcast/first-umc-of-pensacola-fl/id313924198?mt=2&uo=4")
-    private let font = UIFont(name: "BebasNeue Bold", size: 10)
     private let labels = [
         NSAttributedString(string: "Phone", attributes: [NSKernAttributeName: 4]),
         NSAttributedString(string: "Email", attributes: [NSKernAttributeName: 4]),
@@ -98,9 +97,7 @@ class ConnectTableViewController: UITableViewController, UITableViewDataSource, 
         
         cell.iconView!.image = self.images[indexPath.row]
         cell.label!.attributedText = self.labels[indexPath.row]
-        if let font = self.font {
-            cell.label!.font = font
-        }
+        cell.label!.font = UIFont.fumcAltFontBold22
         return cell
     }
     

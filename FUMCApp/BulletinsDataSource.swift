@@ -84,16 +84,12 @@ class BulletinsDataSource: NSObject, MediaTableViewDataSource {
     }
     
     func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        if let font = UIFont(name: "MyriadPro-Regular", size: 14) {
-            (view as UITableViewHeaderFooterView).textLabel.font = font
-        }
+        (view as UITableViewHeaderFooterView).textLabel.font = UIFont.fumcMainFontRegular14
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("mediaTableViewCell", forIndexPath: indexPath) as UITableViewCell
-        if let font = UIFont(name: "MyriadPro-Regular", size: 16) {
-            cell.textLabel.font = font
-        }
+        cell.textLabel.font = UIFont.fumcMainFontRegular16
         cell.textLabel.text = self.bulletinForIndexPath(indexPath).service
         cell.detailTextLabel?.text = ""
         return cell

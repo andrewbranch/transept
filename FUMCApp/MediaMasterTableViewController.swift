@@ -11,7 +11,6 @@ import UIKit
 class MediaMasterTableViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
     
     private let podcastURL = NSURL(string: "itms-pcast://itunes.apple.com/us/podcast/first-umc-of-pensacola-fl/id313924198?mt=2&uo=4")
-    private let font = UIFont(name: "BebasNeue Bold", size: 30)
     private let labels = [NSAttributedString(string: "Bulletins", attributes: [NSKernAttributeName: 5]), NSAttributedString(string: "Witnesses", attributes: [NSKernAttributeName: 5]), NSAttributedString(string: "Sermons", attributes: [NSKernAttributeName: 5])]
     private let images = [UIImage(named: "bulletins-dark"), UIImage(named: "witnesses-dark"), UIImage(named: "sermons-dark")]
     
@@ -51,9 +50,7 @@ class MediaMasterTableViewController: UITableViewController, UITableViewDataSour
 
         cell.iconView!.image = self.images[indexPath.row]
         cell.label!.attributedText = self.labels[indexPath.row]
-        if let font = self.font {
-            cell.label!.font = font
-        }
+        cell.label!.font = UIFont.fumcAltFontBold30
         
         return cell
     }

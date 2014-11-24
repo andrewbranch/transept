@@ -22,15 +22,15 @@ class MediaWebViewController: UIViewController, UIWebViewDelegate, UIScrollViewD
         self.webView!.scrollView.delegate = self
         self.webView!.hidden = true
         self.webView!.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
-//        let insets = UIEdgeInsetsMake(self.navigationController!.navigationBar.frame.height + UIApplication.sharedApplication().statusBarFrame.height, 0, 0, 0)
-//        self.webView!.scrollView.contentInset = insets
-//        self.webView!.scrollView.scrollIndicatorInsets = insets
+        self.webView!.scalesPageToFit = true
         
         if let url = self.url {
             var request = NSURLRequest(URL: url)
             self.webView!.loadRequest(request)
         }
     }
+    
+    // MARK: - Web View Delegate
     
     func webViewDidStartLoad(webView: UIWebView) {
         self.activityIndicator!.startAnimating()
@@ -39,10 +39,18 @@ class MediaWebViewController: UIViewController, UIWebViewDelegate, UIScrollViewD
     func webViewDidFinishLoad(webView: UIWebView) {
         self.activityIndicator!.stopAnimating()
         self.webView!.hidden = false
-//        self.view.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height + self.view.frame.origin.y)
-//        (self.navigationController!.navigationBar as GTScrollNavigationBar).scrollView = self.webView!.scrollView
-//        self.webView!.scrollView.setContentOffset(<#contentOffset: CGPoint#>, animated: <#Bool#>)
     }
+    
+    func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        if (navigationType == UIWebViewNavigationType.LinkClicked) {
+            UIApplication.sharedApplication().openURL(request.URL)
+            return false
+        }
+        
+        return true
+    }
+    
+    // MARK: - Scroll View Delegate
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
         var frame = self.navigationController!.navigationBar.frame
