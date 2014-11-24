@@ -21,19 +21,41 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
         self.tableView!.registerNib(UINib(nibName: "CalendarTableViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "calendarTableViewCell")
         self.tableView!.registerNib(UINib(nibName: "CalendarTableHeaderView", bundle: NSBundle.mainBundle()), forHeaderFooterViewReuseIdentifier: "CalendarTableHeaderViewIdentifier")
         
+        self.showLoadingView()
+        requestData() {
+            self.hideLoadingView()
+        }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        self.pageViewController!.didTransitionToViewController(self)
+        self.pageViewController!.navigationItem.title = "Calendar"
+        UIView.animateWithDuration(0.25) {
+            self.pageViewController!.pageControl.alpha = 1
+        }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        if let indexPath = self.tableView!.indexPathForSelectedRow() {
+            self.tableView!.deselectRowAtIndexPath(indexPath, animated: true)
+        }
+    }
+    
+    func requestData(completed: () -> Void = { }) {
         dateFormatter.dateFormat = "MM.dd.yyyy"
         let from = dateFormatter.stringFromDate(NSDate())
         let to = dateFormatter.stringFromDate(NSDate(timeIntervalSinceNow: 60 * 60 * 24 * 7))
         
         let url = NSURL(string: "https://fumc.herokuapp.com/api/calendars/all.json?from=\(from)&to=\(to)")
         let request = NSURLRequest(URL: url!)
-        self.showLoadingView()
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
             if (error != nil) {
                 self.hideLoadingView()
                 // TODO
             } else {
                 let eventsDictionaries: [NSDictionary] = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.allZeros, error: nil) as [NSDictionary]
+                self.events.removeAll(keepCapacity: true)
                 for (var i = eventsDictionaries.count - 1; i >= 0; i--) {
                     let event = CalendarEvent(jsonDictionary: eventsDictionaries[i], dateFormatter: self.dateFormatter)
                     
@@ -52,24 +74,14 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
                 })
                 
                 self.tableView!.reloadData()
-                self.hideLoadingView()
+                completed()
             }
         }
     }
     
-    override func viewDidAppear(animated: Bool) {
-        self.pageViewController!.didTransitionToViewController(self)
-        self.pageViewController!.navigationItem.title = "Calendar"
-        UIView.animateWithDuration(0.25, animations: { () -> Void in
-            // self.navigationController!.navigationBar.setTitleVerticalPositionAdjustment(-8, forBarMetrics: UIBarMetrics.Default)
-            self.pageViewController!.pageControl.alpha = 1
-        })
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        if let indexPath = self.tableView!.indexPathForSelectedRow() {
-            self.tableView!.deselectRowAtIndexPath(indexPath, animated: true)
+    override func reloadData() {
+        requestData() {
+            self.refreshControl.endRefreshing()
         }
     }
 

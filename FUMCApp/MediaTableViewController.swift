@@ -13,6 +13,7 @@ protocol MediaTableViewDataSource: UITableViewDataSource, UITableViewDelegate {
     var delegate: MediaTableViewDataSourceDelegate! { get set }
     
     init(delegate: MediaTableViewDataSourceDelegate)
+    func refresh() -> Void
     func urlForIndexPath(indexPath: NSIndexPath) -> NSURL?
 }
 
@@ -45,6 +46,10 @@ class MediaTableViewController: CustomTableViewController, MediaTableViewDataSou
         // Dispose of any resources that can be recreated.
     }
     
+    override func reloadData() {
+        self.dataSource!.refresh()
+    }
+    
     
     // MARK: - MediaTableViewDataSourceDelegate
     
@@ -54,7 +59,11 @@ class MediaTableViewController: CustomTableViewController, MediaTableViewDataSou
     
     func dataSourceDidFinishLoadingAPI(dataSource: MediaTableViewDataSource) {
         self.tableView!.reloadData()
-        self.hideLoadingView()
+        if (self.refreshControl.refreshing) {
+            self.refreshControl.endRefreshing()
+        } else {
+            self.hideLoadingView()
+        }
     }
 
 

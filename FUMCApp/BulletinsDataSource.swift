@@ -18,19 +18,29 @@ class BulletinsDataSource: NSObject, MediaTableViewDataSource {
     
     required init(delegate: MediaTableViewDataSourceDelegate) {
         super.init()
-        
         self.delegate = delegate
-        let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
-        
-        var request = NSURLRequest(URL: url!)
         self.delegate.dataSourceDidStartLoadingAPI(self)
+        requestData() {
+            self.delegate.dataSourceDidFinishLoadingAPI(self)
+        }
+    }
+    
+    func refresh() {
+        requestData() {
+            self.delegate.dataSourceDidFinishLoadingAPI(self)
+        }
+    }
+    
+    func requestData(completed: () -> Void = { }) {
+        var request = NSURLRequest(URL: url!)
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
             if (error != nil) {
                 // TODO
             } else {
                 var bulletinsDictionary: [NSDictionary] = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as [NSDictionary]
+                self.bulletins.removeAll(keepCapacity: true)
                 for (var i = 0; i < bulletinsDictionary.count; i++) {
-
+                    
                     self.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.sssZ"
                     var date = self.dateFormatter.dateFromString(bulletinsDictionary[i].objectForKey("date") as String)
                     
@@ -46,10 +56,8 @@ class BulletinsDataSource: NSObject, MediaTableViewDataSource {
                         self.bulletins[day] = [b]
                     }
                 }
-                
-                self.delegate.dataSourceDidFinishLoadingAPI(self)
+                completed()
             }
-            
         }
     }
     

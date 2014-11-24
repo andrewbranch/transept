@@ -33,11 +33,8 @@ class HomeViewController: UIPageViewController, UIPageViewControllerDataSource, 
         
         self.pageControl.frame = CGRectMake(self.navigationController!.navigationBar.bounds.size.width / 2, 37, 0, 0)
         self.pageControl.transform = CGAffineTransformMakeScale(0.6, 0.6)
-        // self.pageControl.pageIndicatorTintColor = UIColor.lightGrayColor()
-        // self.pageControl.currentPageIndicatorTintColor = UIColor.darkGrayColor()
         self.pageControl.numberOfPages = self.pages.count
         
-        // self.navigationController!.navigationBar.setTitleVerticalPositionAdjustment(-8, forBarMetrics: UIBarMetrics.Default)
         self.navigationController!.navigationBar.addSubview(self.pageControl)
         
         // Preload featured view
@@ -63,10 +60,6 @@ class HomeViewController: UIPageViewController, UIPageViewControllerDataSource, 
     
     func didTransitionToViewController(viewController: UIViewController) {
         self.pageControl.currentPage = find(self.pages, viewController)!
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-
     }
 
     override func didReceiveMemoryWarning() {
