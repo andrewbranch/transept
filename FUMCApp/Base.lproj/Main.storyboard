@@ -444,22 +444,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="onI-FZ-bHd">
-                                <rect key="frame" x="16" y="0.0" width="568" height="487"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Uad-L7-2BP">
-                                <rect key="frame" x="290" y="233.5" width="20" height="20"/>
+                                <rect key="frame" x="290" y="233" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="Uad-L7-2BP" secondAttribute="centerX" id="BbS-tX-O0D"/>
                             <constraint firstAttribute="centerY" secondItem="Uad-L7-2BP" secondAttribute="centerY" id="X6u-gp-PnZ"/>
-                            <constraint firstItem="onI-FZ-bHd" firstAttribute="leading" secondItem="idO-dO-4bG" secondAttribute="leadingMargin" id="gWD-1m-gYY"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="onI-FZ-bHd" secondAttribute="trailing" id="hbc-Ft-QI1"/>
+                            <constraint firstItem="onI-FZ-bHd" firstAttribute="leading" secondItem="idO-dO-4bG" secondAttribute="leading" id="gWD-1m-gYY"/>
+                            <constraint firstAttribute="trailing" secondItem="onI-FZ-bHd" secondAttribute="trailing" id="hbc-Ft-QI1"/>
                             <constraint firstItem="onI-FZ-bHd" firstAttribute="top" secondItem="cAD-GE-ywh" secondAttribute="bottom" id="jMW-bU-xOY"/>
                             <constraint firstItem="JpA-mj-vcx" firstAttribute="top" secondItem="onI-FZ-bHd" secondAttribute="bottom" id="svu-yO-8H3"/>
+                            <constraint firstItem="onI-FZ-bHd" firstAttribute="top" secondItem="idO-dO-4bG" secondAttribute="top" id="x5n-FK-0y5"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="jMW-bU-xOY"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="Uad-L7-2BP" id="nEW-lU-iqq"/>
@@ -504,7 +510,8 @@
                                 </constraints>
                                 <attributedString key="attributedText">
                                     <fragment>
-                                        <string key="content">Your prayers, presence, gifts, service, and witness allow our church family to minister to our community and the world.Thank you for your generous support of First United Methodist Church of Pensacola.</string>
+                                        <string key="content">Your prayers, presence, gifts, service, and witness allow our church family to minister to our community and the world.
+Thank you for your generous support of First United Methodist Church of Pensacola.</string>
                                         <attributes>
                                             <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <font key="NSFont" size="16" name="MyriadPro-Regular"/>
