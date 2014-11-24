@@ -21,6 +21,7 @@ class WitnessesDataSource: NSObject, MediaTableViewDataSource {
         self.delegate = delegate
         
         var request = NSURLRequest(URL: url!)
+        self.delegate.dataSourceDidStartLoadingAPI(self)
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
             if (error != nil) {
                 // TODO

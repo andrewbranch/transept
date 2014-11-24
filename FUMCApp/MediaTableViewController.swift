@@ -17,23 +17,20 @@ protocol MediaTableViewDataSource: UITableViewDataSource, UITableViewDelegate {
 }
 
 protocol MediaTableViewDataSourceDelegate {
-    func dataStartDidStartLoadingAPI(dataSource: MediaTableViewDataSource) -> Void
+    func dataSourceDidStartLoadingAPI(dataSource: MediaTableViewDataSource) -> Void
     func dataSourceDidFinishLoadingAPI(dataSource: MediaTableViewDataSource) -> Void
 }
 
-class MediaTableViewController: UITableViewController, MediaTableViewDataSourceDelegate {
+class MediaTableViewController: CustomTableViewController, MediaTableViewDataSourceDelegate {
     
     var dataSource: MediaTableViewDataSource?
-    // @IBOutlet var activityIndicator: UIActivityIndicatorView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationItem.title = self.dataSource!.title
-        self.tableView.dataSource = self.dataSource!
-        self.tableView.delegate = self.dataSource!
-        
-        self.clearsSelectionOnViewWillAppear = false
+        self.tableView!.dataSource = self.dataSource!
+        self.tableView!.delegate = self.dataSource!
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -51,13 +48,13 @@ class MediaTableViewController: UITableViewController, MediaTableViewDataSourceD
     
     // MARK: - MediaTableViewDataSourceDelegate
     
-    func dataStartDidStartLoadingAPI(dataSource: MediaTableViewDataSource) {
-        // self.activityIndicator!.startAnimating()
+    func dataSourceDidStartLoadingAPI(dataSource: MediaTableViewDataSource) {
+        self.showLoadingView()
     }
     
     func dataSourceDidFinishLoadingAPI(dataSource: MediaTableViewDataSource) {
-        // self.activityIndicator!.stopAnimating()
-        self.tableView.reloadData()
+        self.tableView!.reloadData()
+        self.hideLoadingView()
     }
 
 
@@ -66,7 +63,7 @@ class MediaTableViewController: UITableViewController, MediaTableViewDataSourceD
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "mediaTableCellSelection") {
             var viewController = segue.destinationViewController as MediaWebViewController
-            var indexPath = self.tableView.indexPathForSelectedRow()
+            var indexPath = self.tableView!.indexPathForSelectedRow()
             
             viewController.url = self.dataSource!.urlForIndexPath(indexPath!)
         }

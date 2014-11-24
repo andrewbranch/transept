@@ -8,22 +8,18 @@
 
 import UIKit
 
-class CalendarTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, HomeViewPage {
+class CalendarTableViewController: CustomTableViewController, UITableViewDataSource, UITableViewDelegate, HomeViewPage {
     
     var pageViewController: HomeViewController?
     var events: Dictionary<NSString, [CalendarEvent]> = Dictionary<NSString, [CalendarEvent]>()
     var sortedKeys = [NSString]()
     let dateFormatter = NSDateFormatter()
-    @IBOutlet var tableView: UITableView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.tableView!.registerNib(UINib(nibName: "CalendarTableViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "calendarTableViewCell")
         self.tableView!.registerNib(UINib(nibName: "CalendarTableHeaderView", bundle: NSBundle.mainBundle()), forHeaderFooterViewReuseIdentifier: "CalendarTableHeaderViewIdentifier")
-//        var insets = UIEdgeInsetsMake(self.navigationController!.navigationBar.frame.height + UIApplication.sharedApplication().statusBarFrame.height, 0, 0, 0)
-//        self.tableView!.contentInset = insets
-//        self.tableView!.scrollIndicatorInsets = insets
         
         dateFormatter.dateFormat = "MM.dd.yyyy"
         let from = dateFormatter.stringFromDate(NSDate())
@@ -31,8 +27,10 @@ class CalendarTableViewController: UIViewController, UITableViewDataSource, UITa
         
         let url = NSURL(string: "https://fumc.herokuapp.com/api/calendars/all.json?from=\(from)&to=\(to)")
         let request = NSURLRequest(URL: url!)
+        self.showLoadingView()
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
             if (error != nil) {
+                self.hideLoadingView()
                 // TODO
             } else {
                 let eventsDictionaries: [NSDictionary] = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.allZeros, error: nil) as [NSDictionary]
@@ -54,6 +52,7 @@ class CalendarTableViewController: UIViewController, UITableViewDataSource, UITa
                 })
                 
                 self.tableView!.reloadData()
+                self.hideLoadingView()
             }
         }
     }
