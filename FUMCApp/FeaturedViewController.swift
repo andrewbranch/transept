@@ -40,13 +40,15 @@ class FeaturedViewController: UIViewController, HomeViewPage {
         let request = NSURLRequest(URL: url!)
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
             if (error != nil || data.length == 0 || (response as NSHTTPURLResponse).statusCode != 200) {
-                // TODO
+                ErrorAlerter.loadingAlertBasedOnReachability().show()
                 return
             }
             var err: NSError?
             let jsonDictionaries: [NSDictionary] = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.allZeros, error: &err) as [NSDictionary]
-            if (err != nil || jsonDictionaries.count == 0) {
-                // TODO
+            if (err != nil) {
+                ErrorAlerter.loadingAlertBasedOnReachability().show()
+                return
+            } else if (jsonDictionaries.count == 0) {
                 return
             }
 
@@ -56,7 +58,7 @@ class FeaturedViewController: UIViewController, HomeViewPage {
                     let fileRequest = NSURLRequest(URL: NSURL(string: "https://fumc.herokuapp.com/api/file/\(key)")!)
                     NSURLConnection.sendAsynchronousRequest(fileRequest, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
                         if (error != nil || data.length == 0 || (response as NSHTTPURLResponse).statusCode != 200) {
-                            // TODO
+                            ErrorAlerter.loadingAlertBasedOnReachability().show()
                             return
                         }
                         let image = UIImage(data: data)
@@ -72,14 +74,14 @@ class FeaturedViewController: UIViewController, HomeViewPage {
                                 }
                             }
                         } else {
-                            // TODO
+                            ErrorAlerter.loadingAlertBasedOnReachability().show()
                         }
                     }
                 } else {
-                    // TODO
+                    ErrorAlerter.loadingAlertBasedOnReachability().show()
                 }
             } else {
-                // TODO
+                ErrorAlerter.loadingAlertBasedOnReachability().show()
             }
         }
     }

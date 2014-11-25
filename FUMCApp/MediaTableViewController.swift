@@ -20,6 +20,7 @@ protocol MediaTableViewDataSource: UITableViewDataSource, UITableViewDelegate {
 protocol MediaTableViewDataSourceDelegate {
     func dataSourceDidStartLoadingAPI(dataSource: MediaTableViewDataSource) -> Void
     func dataSourceDidFinishLoadingAPI(dataSource: MediaTableViewDataSource) -> Void
+    func dataSource(dataSource: MediaTableViewDataSource, failedToLoadWithError error: NSError?) -> Void
 }
 
 class MediaTableViewController: CustomTableViewController, MediaTableViewDataSourceDelegate {
@@ -64,6 +65,11 @@ class MediaTableViewController: CustomTableViewController, MediaTableViewDataSou
         } else {
             self.hideLoadingView()
         }
+    }
+    
+    func dataSource(dataSource: MediaTableViewDataSource, failedToLoadWithError error: NSError?) {
+        ErrorAlerter.loadingAlertBasedOnReachability().show()
+        dataSourceDidFinishLoadingAPI(self.dataSource!)
     }
 
 

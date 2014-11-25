@@ -51,10 +51,17 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
         let request = NSURLRequest(URL: url!)
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
             if (error != nil) {
-                self.hideLoadingView()
-                // TODO
+                completed()
+                ErrorAlerter.loadingAlertBasedOnReachability().show()
             } else {
-                let eventsDictionaries: [NSDictionary] = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.allZeros, error: nil) as [NSDictionary]
+                var error: NSError?
+                let eventsDictionaries: [NSDictionary] = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.allZeros, error: &error) as [NSDictionary]
+                if (error != nil) {
+                    completed()
+                    ErrorAlerter.loadingAlertBasedOnReachability().show()
+                    return
+                }
+                
                 self.events.removeAll(keepCapacity: true)
                 for (var i = eventsDictionaries.count - 1; i >= 0; i--) {
                     let event = CalendarEvent(jsonDictionary: eventsDictionaries[i], dateFormatter: self.dateFormatter)

@@ -63,6 +63,8 @@
 		499478471A23F218009AAE7D /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499478461A23F218009AAE7D /* UIImageExtensions.swift */; };
 		499478491A23F254009AAE7D /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499478481A23F254009AAE7D /* UIColorExtensions.swift */; };
 		4994784B1A23F3AC009AAE7D /* UIFontExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4994784A1A23F3AC009AAE7D /* UIFontExtensions.swift */; };
+		4994784E1A2404F2009AAE7D /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 4994784D1A2404F2009AAE7D /* Reachability.m */; };
+		499478501A24F830009AAE7D /* ErrorAlerter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4994784F1A24F830009AAE7D /* ErrorAlerter.swift */; };
 		49D2689C1A1E93F400F564F9 /* UIChangingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D2689B1A1E93F400F564F9 /* UIChangingLabel.swift */; };
 		49D2689E1A23971500F564F9 /* CustomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D2689D1A23971500F564F9 /* CustomTableViewController.swift */; };
 		B88431A17FEFC727080ECBC6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE4B71E479693E02C8F478AD /* libPods.a */; };
@@ -132,6 +134,9 @@
 		499478461A23F218009AAE7D /* UIImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		499478481A23F254009AAE7D /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		4994784A1A23F3AC009AAE7D /* UIFontExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFontExtensions.swift; sourceTree = "<group>"; };
+		4994784C1A2404D3009AAE7D /* Reachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		4994784D1A2404F2009AAE7D /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		4994784F1A24F830009AAE7D /* ErrorAlerter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorAlerter.swift; sourceTree = "<group>"; };
 		49D2689B1A1E93F400F564F9 /* UIChangingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIChangingLabel.swift; sourceTree = "<group>"; };
 		49D2689D1A23971500F564F9 /* CustomTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewController.swift; sourceTree = "<group>"; };
 		98EE777E485CF8833F4A1FB3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -292,6 +297,9 @@
 				499478461A23F218009AAE7D /* UIImageExtensions.swift */,
 				499478481A23F254009AAE7D /* UIColorExtensions.swift */,
 				4994784A1A23F3AC009AAE7D /* UIFontExtensions.swift */,
+				4994784C1A2404D3009AAE7D /* Reachability.h */,
+				4994784D1A2404F2009AAE7D /* Reachability.m */,
+				4994784F1A24F830009AAE7D /* ErrorAlerter.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -526,6 +534,7 @@
 				49319D6A1A17F683005598A4 /* ConnectTableViewController.swift in Sources */,
 				499478471A23F218009AAE7D /* UIImageExtensions.swift in Sources */,
 				492AAD4B1A1A81D900DBD04E /* PrayerRequestViewController.swift in Sources */,
+				4994784E1A2404F2009AAE7D /* Reachability.m in Sources */,
 				3AE79C421A164AD40081E487 /* MediaMasterTableViewController.swift in Sources */,
 				492AAD521A1BF52600DBD04E /* ConnectTableFooterView.swift in Sources */,
 				3A3C088F19EC7ABB00EFBD8D /* MediaTableViewController.swift in Sources */,
@@ -546,6 +555,7 @@
 				49D2689E1A23971500F564F9 /* CustomTableViewController.swift in Sources */,
 				49319D671A17F3C1005598A4 /* ConnectTableViewCell.swift in Sources */,
 				3A758BC419E6BE3200A54F6C /* GiveViewController.swift in Sources */,
+				499478501A24F830009AAE7D /* ErrorAlerter.swift in Sources */,
 				492AAD4F1A1BB2B100DBD04E /* UIPlaceHolderTextView.m in Sources */,
 				3AFD01E21A1157790037F0FD /* CalendarTableViewController.swift in Sources */,
 				3AFD01E71A11840C0037F0FD /* CalendarTableViewCell.swift in Sources */,

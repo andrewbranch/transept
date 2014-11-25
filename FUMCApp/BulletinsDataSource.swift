@@ -35,9 +35,18 @@ class BulletinsDataSource: NSObject, MediaTableViewDataSource {
         var request = NSURLRequest(URL: url!)
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
             if (error != nil) {
-                // TODO
+                self.delegate.dataSource(self, failedToLoadWithError: error)
+            } else if ((response as NSHTTPURLResponse).statusCode != 200) {
+                let error = NSError(domain: "NSURLDomainError", code: 0, userInfo: ["response": response])
+                self.delegate.dataSource(self, failedToLoadWithError: error)
             } else {
-                var bulletinsDictionary: [NSDictionary] = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as [NSDictionary]
+                var error: NSError?
+                var bulletinsDictionary: [NSDictionary] = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &error) as [NSDictionary]
+                if (error != nil) {
+                    self.delegate.dataSource(self, failedToLoadWithError: error!)
+                    return
+                }
+                
                 self.bulletins.removeAll(keepCapacity: true)
                 for (var i = 0; i < bulletinsDictionary.count; i++) {
                     

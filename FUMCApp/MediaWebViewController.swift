@@ -27,6 +27,8 @@ class MediaWebViewController: UIViewController, UIWebViewDelegate, UIScrollViewD
         if let url = self.url {
             var request = NSURLRequest(URL: url)
             self.webView!.loadRequest(request)
+        } else {
+            ErrorAlerter.loadingAlertBasedOnReachability().show()
         }
     }
     
@@ -39,6 +41,10 @@ class MediaWebViewController: UIViewController, UIWebViewDelegate, UIScrollViewD
     func webViewDidFinishLoad(webView: UIWebView) {
         self.activityIndicator!.stopAnimating()
         self.webView!.hidden = false
+    }
+    
+    func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
+        ErrorAlerter.loadingAlertBasedOnReachability().show()
     }
     
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {

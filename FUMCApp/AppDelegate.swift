@@ -15,7 +15,8 @@ import TwitterKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var serverReachability = Reachability(hostName: "fumc.herokuapp.com")
+    var internetReachability = Reachability.reachabilityForInternetConnection()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
@@ -40,6 +41,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().selectedImageTintColor = UIColor.whiteColor()
         UITabBar.appearance().barTintColor = UIColor(white: 0.1, alpha: 1)
         UITabBar.appearance().selectionIndicatorImage = UIImage.imageFromColor(UIColor.blackColor(), forSize: CGSizeMake(UIScreen.mainScreen().bounds.width / 4, 49))
+        
+        
+        // Enable the status notifications:
+        self.serverReachability.startNotifier()
+        self.internetReachability.startNotifier()
 
         return true
     }
