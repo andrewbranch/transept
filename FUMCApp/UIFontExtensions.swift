@@ -8,7 +8,7 @@
 
 private let _MAIN_FONT_REGULAR = "MyriadPro-Regular"
 private let _MAIN_FONT_BOLD = "MyriadPro-Semibold"
-private let _ALT_FONT_BOLD = "BebasNeue Bold"
+private let _ALT_FONT_BOLD = "BebasNeueBold"
 
 extension UIFont {
     
