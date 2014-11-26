@@ -1,10 +1,13 @@
 PODS:
   - BEMAnalogClock (1.4)
+  - ZeroPush (2.0.3)
 
 DEPENDENCIES:
   - BEMAnalogClock
+  - ZeroPush
 
 SPEC CHECKSUMS:
   BEMAnalogClock: 619c581d0cc1cac59e59289ae31dd49354589bb9
+  ZeroPush: 1251bdeecbf0d70e2fdf85a7c968f886f82cc57a
 
 COCOAPODS: 0.35.0

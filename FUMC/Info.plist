@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.fumcpensacola.$(PRODUCT_NAME:rfc1034identifier)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>$(PRODUCT_NAME)</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>Fabric</key>
+	<dict>
+		<key>APIKey</key>
+		<string>ffe8c572c11cd4916b1c232ff022514dba9174df</string>
+		<key>Kits</key>
+		<array>
+			<dict>
+				<key>KitInfo</key>
+				<dict>
+					<key>consumerKey</key>
+					<string>Z51g1Aqln6hk1KBI7h0bCB5VA</string>
+					<key>consumerSecret</key>
+					<string>nfy5Vjqn10o7x8lyzhmUUjfMuBogH9nNpBIkZwd9yB0eRLhzrc</string>
+				</dict>
+				<key>KitName</key>
+				<string>Twitter</string>
+			</dict>
+			<dict>
+				<key>KitInfo</key>
+				<dict/>
+				<key>KitName</key>
+				<string>Crashlytics</string>
+			</dict>
+		</array>
+	</dict>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>BebasNeue Thin.otf</string>
+		<string>BebasNeue Light.otf</string>
+		<string>BebasNeue Regular.otf</string>
+		<string>BebasNeue Book.otf</string>
+		<string>BebasNeue Bold.otf</string>
+		<string>MyriadPro-Regular.otf</string>
+		<string>MyriadPro-Semibold.otf</string>
+	</array>
+	<key>UILaunchStoryboardName</key>
+	<string>Main</string>
+	<key>UIMainStoryboardFile</key>
+	<string>Main</string>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>armv7</string>
+	</array>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleLightContent</string>
+	<key>UIStatusBarTintParameters</key>
+	<dict>
+		<key>UINavigationBar</key>
+		<dict>
+			<key>Style</key>
+			<string>UIBarStyleDefault</string>
+			<key>Translucent</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
+</dict>
+</plist>
