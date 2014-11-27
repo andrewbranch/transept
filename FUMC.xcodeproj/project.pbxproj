@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0668526FF3E0C871644D3E6B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBEFB0F663F019D719FE0983 /* libPods.a */; };
+		49952EE21A26888B002B06FA /* NotificationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49952EE11A26888B002B06FA /* NotificationsTableViewController.swift */; };
+		49952EE41A268BF5002B06FA /* NotificationBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49952EE31A268BF5002B06FA /* NotificationBarButtonItem.swift */; };
+		49952EE61A269040002B06FA /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49952EE51A269040002B06FA /* Notification.swift */; };
 		49B2A2EF1A268023004EED86 /* FUMCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B2A2EE1A268023004EED86 /* FUMCTests.swift */; };
 		49B2A32C1A268070004EED86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B2A2F81A268070004EED86 /* AppDelegate.swift */; };
 		49B2A32D1A268070004EED86 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49B2A2FA1A268070004EED86 /* Main.storyboard */; };
@@ -70,6 +73,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		49952EE11A26888B002B06FA /* NotificationsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationsTableViewController.swift; path = FUMC/NotificationsTableViewController.swift; sourceTree = "<group>"; };
+		49952EE31A268BF5002B06FA /* NotificationBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationBarButtonItem.swift; path = FUMC/NotificationBarButtonItem.swift; sourceTree = "<group>"; };
+		49952EE51A269040002B06FA /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		49B2A2D11A268022004EED86 /* FUMC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FUMC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49B2A2E81A268022004EED86 /* FUMCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FUMCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		49B2A2ED1A268023004EED86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -233,6 +239,7 @@
 				49B2A3031A268070004EED86 /* CalendarEvent.swift */,
 				49B2A3011A268070004EED86 /* Bulletin.swift */,
 				49B2A32A1A268070004EED86 /* Witness.swift */,
+				49952EE51A269040002B06FA /* Notification.swift */,
 			);
 			name = Models;
 			path = ..;
@@ -261,6 +268,7 @@
 				49B2A3071A268070004EED86 /* CalendarTableViewCell.xib */,
 				49B2A3171A268070004EED86 /* MediaMasterTableViewCell.swift */,
 				49B2A3181A268070004EED86 /* MediaMasterTableViewCell.xib */,
+				49952EE31A268BF5002B06FA /* NotificationBarButtonItem.swift */,
 			);
 			name = Views;
 			path = ..;
@@ -271,6 +279,7 @@
 			children = (
 				49B2A3211A268070004EED86 /* RootTabBarController.swift */,
 				49B2A30E1A268070004EED86 /* CustomTableViewController.swift */,
+				49952EE11A26888B002B06FA /* NotificationsTableViewController.swift */,
 				49B2A35F1A2680CD004EED86 /* Home */,
 				49B2A3631A26816D004EED86 /* Media */,
 				49B2A3601A2680E5004EED86 /* Connect */,
@@ -503,6 +512,7 @@
 			files = (
 				49B2A3511A268070004EED86 /* RootTabBarController.swift in Sources */,
 				49B2A3331A268070004EED86 /* Bulletin.swift in Sources */,
+				49952EE21A26888B002B06FA /* NotificationsTableViewController.swift in Sources */,
 				49B2A3341A268070004EED86 /* BulletinsDataSource.swift in Sources */,
 				49B2A3421A268070004EED86 /* EventViewController.swift in Sources */,
 				49B2A3411A268070004EED86 /* ErrorAlerter.swift in Sources */,
@@ -516,6 +526,7 @@
 				49B2A3541A268070004EED86 /* UIDevice+Hardware.m in Sources */,
 				49B2A3591A268070004EED86 /* WitnessesDataSource.swift in Sources */,
 				49B2A3581A268070004EED86 /* Witness.swift in Sources */,
+				49952EE61A269040002B06FA /* Notification.swift in Sources */,
 				49B2A33B1A268070004EED86 /* ConnectTableFooterView.swift in Sources */,
 				49B2A33A1A268070004EED86 /* CalendarTableViewController.swift in Sources */,
 				49B2A3481A268070004EED86 /* MediaMasterTableViewCell.swift in Sources */,
@@ -530,6 +541,7 @@
 				49B2A3561A268070004EED86 /* UIImageExtensions.swift in Sources */,
 				49B2A32C1A268070004EED86 /* AppDelegate.swift in Sources */,
 				49B2A3521A268070004EED86 /* UIChangingLabel.swift in Sources */,
+				49952EE41A268BF5002B06FA /* NotificationBarButtonItem.swift in Sources */,
 				49B2A34F1A268070004EED86 /* PrayerRequestViewController.swift in Sources */,
 				49B2A3381A268070004EED86 /* CalendarTableViewCell.swift in Sources */,
 			);

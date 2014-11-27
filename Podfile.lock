@@ -1,12 +1,15 @@
 PODS:
+  - BBBadgeBarButtonItem (1.1)
   - BEMAnalogClock (1.4)
   - ZeroPush (2.0.3)
 
 DEPENDENCIES:
+  - BBBadgeBarButtonItem
   - BEMAnalogClock
   - ZeroPush
 
 SPEC CHECKSUMS:
+  BBBadgeBarButtonItem: 457055ec6c09197e78e681df74062ad9acb29836
   BEMAnalogClock: 619c581d0cc1cac59e59289ae31dd49354589bb9
   ZeroPush: 1251bdeecbf0d70e2fdf85a7c968f886f82cc57a
 

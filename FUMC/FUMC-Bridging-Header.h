@@ -11,3 +11,4 @@
 #import "UIDevice+Hardware.h"
 #import "Reachability.h"
 #import "ZeroPush.h"
+#import "BBBadgeBarButtonItem.h"

@@ -338,7 +338,7 @@
             <objects>
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Cno-kf-7pY" customClass="HomeViewController" customModule="FUMC" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="Calendar" id="MaS-da-apn">
-                        <barButtonItem key="rightBarButtonItem" image="bell" id="n5k-3f-aRX">
+                        <barButtonItem key="rightBarButtonItem" image="bell" id="n5k-3f-aRX" customClass="NotificationBarButtonItem" customModule="FUMC" customModuleProvider="target">
                             <connections>
                                 <segue destination="MgL-sn-56f" kind="presentation" id="2Wh-uN-6Oj"/>
                             </connections>
@@ -352,13 +352,13 @@
         <!--Notifications-->
         <scene sceneID="PWL-iB-IJg">
             <objects>
-                <tableViewController id="05V-1r-PXp" sceneMemberID="viewController">
+                <tableViewController id="05V-1r-PXp" customClass="NotificationsTableViewController" customModule="FUMC" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="nBX-n8-W7k">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="QNa-FG-tqM">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="notificationTableCell" id="QNa-FG-tqM">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QNa-FG-tqM" id="s6T-Zd-Yxa">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -371,7 +371,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Notifications" id="H2r-XU-HUo">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="iTY-xg-nlc"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="iTY-xg-nlc">
+                            <connections>
+                                <action selector="dismiss" destination="05V-1r-PXp" id="2ac-mD-Sj5"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rEA-fc-PF5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -400,7 +404,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Media" id="ulJ-M4-Ib0">
-                        <barButtonItem key="rightBarButtonItem" image="bell" id="1dd-iG-vwY">
+                        <barButtonItem key="rightBarButtonItem" image="bell" id="1dd-iG-vwY" customClass="NotificationBarButtonItem" customModule="FUMC" customModuleProvider="target">
                             <connections>
                                 <segue destination="MgL-sn-56f" kind="presentation" id="ydr-pj-oAu"/>
                             </connections>
@@ -592,7 +596,7 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Give" id="IMd-8X-zko">
-                        <barButtonItem key="rightBarButtonItem" image="bell" id="7hJ-Jg-L0e">
+                        <barButtonItem key="rightBarButtonItem" image="bell" id="7hJ-Jg-L0e" customClass="NotificationBarButtonItem" customModule="FUMC" customModuleProvider="target">
                             <connections>
                                 <segue destination="MgL-sn-56f" kind="presentation" id="RH1-2f-tX4"/>
                             </connections>
@@ -721,7 +725,7 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                                 <action selector="displayContactCard" destination="o2W-WH-Hck" id="N2c-Mq-wSI"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="bell" id="oP3-yY-TkA">
+                        <barButtonItem key="rightBarButtonItem" image="bell" id="oP3-yY-TkA" customClass="NotificationBarButtonItem" customModule="FUMC" customModuleProvider="target">
                             <connections>
                                 <segue destination="MgL-sn-56f" kind="presentation" id="OvP-dl-gHY"/>
                             </connections>
@@ -890,7 +894,7 @@ Thank you for your generous support of First United Methodist Church of Pensacol
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MgL-sn-56f" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Yz0-ki-ujg">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Yz0-ki-ujg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -914,6 +918,6 @@ Thank you for your generous support of First United Methodist Church of Pensacol
         <image name="media-alt" width="35" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="RH1-2f-tX4"/>
+        <segue reference="OvP-dl-gHY"/>
     </inferredMetricsTieBreakers>
 </document>

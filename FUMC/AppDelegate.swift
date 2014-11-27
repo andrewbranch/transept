@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ZeroPushDelegate {
     var window: UIWindow?
     var serverReachability = Reachability(hostName: "fumc.herokuapp.com")
     var internetReachability = Reachability.reachabilityForInternetConnection()
+    var notificationDelegates = [NotificationDelegate]()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
@@ -74,6 +75,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ZeroPushDelegate {
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         ZeroPush.shared().registerDeviceToken(deviceToken)
+    }
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        for delegate in self.notificationDelegates {
+            delegate.appDelegate(self, didReceiveNotification: Notification(userInfo: userInfo))
+        }
+    }
+    
+    func clearNotifications() {
+        ZeroPush.shared().setBadge(0)
+        for delegate in self.notificationDelegates {
+            delegate.applicationUpdatedBadgeCount(0)
+        }
     }
 
 
