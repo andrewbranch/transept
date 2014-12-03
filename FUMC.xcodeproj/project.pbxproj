@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0668526FF3E0C871644D3E6B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBEFB0F663F019D719FE0983 /* libPods.a */; };
+		495B5C281A2E54180033DE8D /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495B5C271A2E54180033DE8D /* Notification.swift */; };
+		495B5C2A1A2E558F0033DE8D /* NotificationsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495B5C291A2E558F0033DE8D /* NotificationsDataSource.swift */; };
 		49952EE21A26888B002B06FA /* NotificationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49952EE11A26888B002B06FA /* NotificationsTableViewController.swift */; };
 		49952EE41A268BF5002B06FA /* NotificationBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49952EE31A268BF5002B06FA /* NotificationBarButtonItem.swift */; };
-		49952EE61A269040002B06FA /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49952EE51A269040002B06FA /* Notification.swift */; };
 		49B2A2EF1A268023004EED86 /* FUMCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B2A2EE1A268023004EED86 /* FUMCTests.swift */; };
 		49B2A32C1A268070004EED86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B2A2F81A268070004EED86 /* AppDelegate.swift */; };
 		49B2A32D1A268070004EED86 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49B2A2FA1A268070004EED86 /* Main.storyboard */; };
@@ -60,6 +61,8 @@
 		49B2A3671A26829D004EED86 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B2A3641A26829D004EED86 /* Crashlytics.framework */; };
 		49B2A3681A26829D004EED86 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B2A3651A26829D004EED86 /* Fabric.framework */; };
 		49B2A3691A26829D004EED86 /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B2A3661A26829D004EED86 /* TwitterKit.framework */; };
+		49C83A1B1A2BCB3B00E02C96 /* NotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C83A1A1A2BCB3B00E02C96 /* NotificationsTableViewCell.swift */; };
+		49C83A1F1A2BCB8A00E02C96 /* NotificationsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49C83A1E1A2BCB8A00E02C96 /* NotificationsTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,9 +76,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		495B5BEC1A2E44870033DE8D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		495B5C271A2E54180033DE8D /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Notification.swift; path = FUMC/Notification.swift; sourceTree = "<group>"; };
+		495B5C291A2E558F0033DE8D /* NotificationsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationsDataSource.swift; path = FUMC/NotificationsDataSource.swift; sourceTree = "<group>"; };
 		49952EE11A26888B002B06FA /* NotificationsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationsTableViewController.swift; path = FUMC/NotificationsTableViewController.swift; sourceTree = "<group>"; };
 		49952EE31A268BF5002B06FA /* NotificationBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationBarButtonItem.swift; path = FUMC/NotificationBarButtonItem.swift; sourceTree = "<group>"; };
-		49952EE51A269040002B06FA /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		49B2A2D11A268022004EED86 /* FUMC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FUMC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49B2A2E81A268022004EED86 /* FUMCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FUMCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		49B2A2ED1A268023004EED86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -133,6 +138,8 @@
 		49B2A3641A26829D004EED86 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		49B2A3651A26829D004EED86 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		49B2A3661A26829D004EED86 /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterKit.framework; sourceTree = "<group>"; };
+		49C83A1A1A2BCB3B00E02C96 /* NotificationsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationsTableViewCell.swift; path = FUMC/NotificationsTableViewCell.swift; sourceTree = "<group>"; };
+		49C83A1E1A2BCB8A00E02C96 /* NotificationsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NotificationsTableViewCell.xib; path = FUMC/NotificationsTableViewCell.xib; sourceTree = "<group>"; };
 		5D4F8AA89947C82EF5AC8E35 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		BBEFB0F663F019D719FE0983 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBC1F7B2E80AFF5BEE370E33 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -239,7 +246,7 @@
 				49B2A3031A268070004EED86 /* CalendarEvent.swift */,
 				49B2A3011A268070004EED86 /* Bulletin.swift */,
 				49B2A32A1A268070004EED86 /* Witness.swift */,
-				49952EE51A269040002B06FA /* Notification.swift */,
+				495B5C271A2E54180033DE8D /* Notification.swift */,
 			);
 			name = Models;
 			path = ..;
@@ -250,6 +257,7 @@
 			children = (
 				49B2A3021A268070004EED86 /* BulletinsDataSource.swift */,
 				49B2A32B1A268070004EED86 /* WitnessesDataSource.swift */,
+				495B5C291A2E558F0033DE8D /* NotificationsDataSource.swift */,
 			);
 			name = "Data Sources";
 			path = ..;
@@ -269,6 +277,8 @@
 				49B2A3171A268070004EED86 /* MediaMasterTableViewCell.swift */,
 				49B2A3181A268070004EED86 /* MediaMasterTableViewCell.xib */,
 				49952EE31A268BF5002B06FA /* NotificationBarButtonItem.swift */,
+				49C83A1A1A2BCB3B00E02C96 /* NotificationsTableViewCell.swift */,
+				49C83A1E1A2BCB8A00E02C96 /* NotificationsTableViewCell.xib */,
 			);
 			name = Views;
 			path = ..;
@@ -349,6 +359,7 @@
 		7B69E7F3C551EDB41F9B412B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				495B5BEC1A2E44870033DE8D /* CoreData.framework */,
 				BBEFB0F663F019D719FE0983 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -415,6 +426,11 @@
 					49B2A2D01A268022004EED86 = {
 						CreatedOnToolsVersion = 6.1;
 						DevelopmentTeam = Y7U83U369J;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+						};
 					};
 					49B2A2E71A268022004EED86 = {
 						CreatedOnToolsVersion = 6.1;
@@ -451,6 +467,7 @@
 				49B2A33E1A268070004EED86 /* ConnectTableViewCell.xib in Resources */,
 				49B2A3311A268070004EED86 /* BebasNeue Regular.otf in Resources */,
 				49B2A3461A268070004EED86 /* Images.xcassets in Resources */,
+				49C83A1F1A2BCB8A00E02C96 /* NotificationsTableViewCell.xib in Resources */,
 				49B2A32F1A268070004EED86 /* BebasNeue Book.otf in Resources */,
 				49B2A32E1A268070004EED86 /* BebasNeue Bold.otf in Resources */,
 				49B2A34E1A268070004EED86 /* MyriadPro-Semibold.otf in Resources */,
@@ -526,11 +543,13 @@
 				49B2A3541A268070004EED86 /* UIDevice+Hardware.m in Sources */,
 				49B2A3591A268070004EED86 /* WitnessesDataSource.swift in Sources */,
 				49B2A3581A268070004EED86 /* Witness.swift in Sources */,
-				49952EE61A269040002B06FA /* Notification.swift in Sources */,
 				49B2A33B1A268070004EED86 /* ConnectTableFooterView.swift in Sources */,
+				495B5C2A1A2E558F0033DE8D /* NotificationsDataSource.swift in Sources */,
 				49B2A33A1A268070004EED86 /* CalendarTableViewController.swift in Sources */,
 				49B2A3481A268070004EED86 /* MediaMasterTableViewCell.swift in Sources */,
 				49B2A3401A268070004EED86 /* CustomTableViewController.swift in Sources */,
+				495B5C281A2E54180033DE8D /* Notification.swift in Sources */,
+				49C83A1B1A2BCB3B00E02C96 /* NotificationsTableViewCell.swift in Sources */,
 				49B2A33F1A268070004EED86 /* ConnectTableViewController.swift in Sources */,
 				49B2A3501A268070004EED86 /* Reachability.m in Sources */,
 				49B2A3571A268070004EED86 /* UIPlaceHolderTextView.m in Sources */,

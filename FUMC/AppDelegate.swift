@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ZeroPushDelegate {
     var serverReachability = Reachability(hostName: "fumc.herokuapp.com")
     var internetReachability = Reachability.reachabilityForInternetConnection()
     var notificationDelegates = [NotificationDelegate]()
+    var notificationsDataSource: NotificationsDataSource?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
@@ -44,6 +45,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ZeroPushDelegate {
         UITabBar.appearance().selectionIndicatorImage = UIImage.imageFromColor(UIColor.blackColor(), forSize: CGSizeMake(UIScreen.mainScreen().bounds.width / 4, 49))
         
         Fabric.with([Crashlytics()])
+        
+        self.notificationsDataSource = NotificationsDataSource()
 
         return true
     }
@@ -60,6 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ZeroPushDelegate {
 
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+        
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
@@ -78,9 +82,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ZeroPushDelegate {
     }
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        let notification = Notification(userInfo: userInfo)
         for delegate in self.notificationDelegates {
-            delegate.appDelegate(self, didReceiveNotification: Notification(userInfo: userInfo))
+            delegate.appDelegate(self, didReceiveNotification: notification)
         }
+        self.notificationsDataSource?.incorporateNotificationFromPush(notification)
     }
     
     func clearNotifications() {

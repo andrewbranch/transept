@@ -106,10 +106,10 @@ class WitnessesDataSource: NSObject, MediaTableViewDataSource {
         let witness = self.witnessForIndexPath(indexPath)
         self.dateFormatter.dateFormat = "MMMM d"
         
-        cell.textLabel.font = UIFont.fumcMainFontRegular16
+        cell.textLabel!.font = UIFont.fumcMainFontRegular16
         cell.detailTextLabel?.font = UIFont.fumcMainFontRegular16
         
-        cell.textLabel.text = NSString(format: "Issue %i", witness.issue)
+        cell.textLabel!.text = NSString(format: "Issue %i", witness.issue)
         cell.detailTextLabel!.text = NSString(format: "%@ – %@", self.dateFormatter.stringFromDate(witness.from), self.dateFormatter.stringFromDate(witness.to))
         return cell
     }

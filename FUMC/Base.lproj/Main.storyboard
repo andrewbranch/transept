@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -348,39 +348,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WTs-V4-3bS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1746" y="-1541"/>
-        </scene>
-        <!--Notifications-->
-        <scene sceneID="PWL-iB-IJg">
-            <objects>
-                <tableViewController id="05V-1r-PXp" customClass="NotificationsTableViewController" customModule="FUMC" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="nBX-n8-W7k">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="notificationTableCell" id="QNa-FG-tqM">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QNa-FG-tqM" id="s6T-Zd-Yxa">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="05V-1r-PXp" id="ACM-sP-6iY"/>
-                            <outlet property="delegate" destination="05V-1r-PXp" id="qKE-er-u0f"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Notifications" id="H2r-XU-HUo">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="iTY-xg-nlc">
-                            <connections>
-                                <action selector="dismiss" destination="05V-1r-PXp" id="2ac-mD-Sj5"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rEA-fc-PF5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3301" y="-1541"/>
         </scene>
         <!--Media-->
         <scene sceneID="F1x-Xt-ryw">
@@ -900,12 +867,52 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="05V-1r-PXp" kind="relationship" relationship="rootViewController" id="bDh-Sc-d4k"/>
+                        <segue destination="gNx-aV-YZj" kind="relationship" relationship="rootViewController" id="NVZ-P7-EHX"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OGs-Vy-RPW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2489" y="-1541"/>
+        </scene>
+        <!--Notifications-->
+        <scene sceneID="5tV-I5-rCG">
+            <objects>
+                <viewController id="gNx-aV-YZj" customClass="NotificationsTableViewController" customModule="FUMC" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Smg-pR-71T"/>
+                        <viewControllerLayoutGuide type="bottom" id="0Y2-UB-lpU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2ur-tz-USi">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="64" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Fv9-MI-ZB8">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Fv9-MI-ZB8" firstAttribute="top" secondItem="2ur-tz-USi" secondAttribute="top" id="E9b-L7-p63"/>
+                            <constraint firstAttribute="bottom" secondItem="Fv9-MI-ZB8" secondAttribute="bottom" id="Ek8-Sy-SIs"/>
+                            <constraint firstItem="Fv9-MI-ZB8" firstAttribute="leading" secondItem="2ur-tz-USi" secondAttribute="leading" id="QKu-6F-ovi"/>
+                            <constraint firstAttribute="trailing" secondItem="Fv9-MI-ZB8" secondAttribute="trailing" id="z1g-eK-A1G"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Notifications" id="CEW-NN-K6e">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="eXg-vy-bQh">
+                            <connections>
+                                <action selector="dismiss" destination="gNx-aV-YZj" id="vjK-vx-wwh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="Fv9-MI-ZB8" id="Gku-uB-hZk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qoa-M5-oUs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3297" y="-1541"/>
         </scene>
     </scenes>
     <resources>

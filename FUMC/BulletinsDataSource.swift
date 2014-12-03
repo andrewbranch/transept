@@ -98,8 +98,8 @@ class BulletinsDataSource: NSObject, MediaTableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("mediaTableViewCell", forIndexPath: indexPath) as UITableViewCell
-        cell.textLabel.font = UIFont.fumcMainFontRegular16
-        cell.textLabel.text = self.bulletinForIndexPath(indexPath).service
+        cell.textLabel!.font = UIFont.fumcMainFontRegular16
+        cell.textLabel!.text = self.bulletinForIndexPath(indexPath).service
         cell.detailTextLabel?.text = ""
         return cell
     }
