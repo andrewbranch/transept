@@ -12,13 +12,16 @@ import Crashlytics
 
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, ZeroPushDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, ZeroPushDelegate, RKDropdownAlertDelegate {
 
     var window: UIWindow?
     var serverReachability = Reachability(hostName: "fumc.herokuapp.com")
     var internetReachability = Reachability.reachabilityForInternetConnection()
     var notificationDelegates = [NotificationDelegate]()
     var notificationsDataSource: NotificationsDataSource?
+    var rootViewController: RootTabBarController?
+    var notificationToShowOnLaunch: Notification?
+    var notificationsViewIsOpen = false
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
@@ -47,6 +50,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ZeroPushDelegate {
         Fabric.with([Crashlytics()])
         
         self.notificationsDataSource = NotificationsDataSource()
+        if let userInfo = launchOptions?[UIApplicationLaunchOptionsRemoteNotificationKey] as? NSDictionary {
+            self.notificationToShowOnLaunch = Notification(userInfo: userInfo)
+            self.notificationsDataSource!.incorporateNotificationFromPush(self.notificationToShowOnLaunch!)
+        }
 
         return true
     }
@@ -63,6 +70,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ZeroPushDelegate {
 
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+        self.notificationsDataSource!.refresh()
+        for delegate in self.notificationDelegates {
+            delegate.applicationUpdatedBadgeCount(UIApplication.sharedApplication().applicationIconBadgeNumber)
+        }
         
     }
 
@@ -87,6 +98,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ZeroPushDelegate {
             delegate.appDelegate(self, didReceiveNotification: notification)
         }
         self.notificationsDataSource?.incorporateNotificationFromPush(notification)
+        
+        
+        if (!self.notificationsViewIsOpen) {
+            if (UIApplication.sharedApplication().applicationState != UIApplicationState.Active) {
+                // App entered with notification
+                self.rootViewController?.performSegueWithIdentifier("showNotifications", sender: [notification])
+            } else {
+                ZeroPush.shared().setBadge(UIApplication.sharedApplication().applicationIconBadgeNumber + 1)
+                RKDropdownAlert.title("Tap to view", message: notification.message, backgroundColor: UIColor.fumcNavyColor(), textColor: UIColor.whiteColor(), time: 10, delegate: self, userInfo: notification)
+            }
+        }
     }
     
     func clearNotifications() {
@@ -95,7 +117,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ZeroPushDelegate {
             delegate.applicationUpdatedBadgeCount(0)
         }
     }
+    
+    func setBadgeCount(badgeCount: Int) {
+        ZeroPush.shared().setBadge(badgeCount)
+        for delegate in self.notificationDelegates {
+            delegate.applicationUpdatedBadgeCount(badgeCount)
+        }
+    }
 
+    func dropdownAlertWasTapped(alert: RKDropdownAlert!) -> Bool {
+        self.rootViewController?.performSegueWithIdentifier("showNotifications", sender: [alert.userInfo as Notification])
+        return true
+    }
 
 }
 

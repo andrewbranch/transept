@@ -10,6 +10,7 @@
 		0668526FF3E0C871644D3E6B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBEFB0F663F019D719FE0983 /* libPods.a */; };
 		495B5C281A2E54180033DE8D /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495B5C271A2E54180033DE8D /* Notification.swift */; };
 		495B5C2A1A2E558F0033DE8D /* NotificationsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495B5C291A2E558F0033DE8D /* NotificationsDataSource.swift */; };
+		49940D6D1A2F89BA00E97CD7 /* RKDropdownAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 49940D6C1A2F89BA00E97CD7 /* RKDropdownAlert.m */; };
 		49952EE21A26888B002B06FA /* NotificationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49952EE11A26888B002B06FA /* NotificationsTableViewController.swift */; };
 		49952EE41A268BF5002B06FA /* NotificationBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49952EE31A268BF5002B06FA /* NotificationBarButtonItem.swift */; };
 		49B2A2EF1A268023004EED86 /* FUMCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B2A2EE1A268023004EED86 /* FUMCTests.swift */; };
@@ -79,6 +80,8 @@
 		495B5BEC1A2E44870033DE8D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		495B5C271A2E54180033DE8D /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Notification.swift; path = FUMC/Notification.swift; sourceTree = "<group>"; };
 		495B5C291A2E558F0033DE8D /* NotificationsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationsDataSource.swift; path = FUMC/NotificationsDataSource.swift; sourceTree = "<group>"; };
+		49940D6B1A2F89BA00E97CD7 /* RKDropdownAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RKDropdownAlert.h; path = FUMC/RKDropdownAlert.h; sourceTree = "<group>"; };
+		49940D6C1A2F89BA00E97CD7 /* RKDropdownAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RKDropdownAlert.m; path = FUMC/RKDropdownAlert.m; sourceTree = "<group>"; };
 		49952EE11A26888B002B06FA /* NotificationsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationsTableViewController.swift; path = FUMC/NotificationsTableViewController.swift; sourceTree = "<group>"; };
 		49952EE31A268BF5002B06FA /* NotificationBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationBarButtonItem.swift; path = FUMC/NotificationBarButtonItem.swift; sourceTree = "<group>"; };
 		49B2A2D11A268022004EED86 /* FUMC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FUMC.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -322,6 +325,8 @@
 		49B2A3611A2680F3004EED86 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				49940D6B1A2F89BA00E97CD7 /* RKDropdownAlert.h */,
+				49940D6C1A2F89BA00E97CD7 /* RKDropdownAlert.m */,
 				49B2A30F1A268070004EED86 /* ErrorAlerter.swift */,
 				49B2A31F1A268070004EED86 /* Reachability.h */,
 				49B2A3201A268070004EED86 /* Reachability.m */,
@@ -530,6 +535,7 @@
 				49B2A3511A268070004EED86 /* RootTabBarController.swift in Sources */,
 				49B2A3331A268070004EED86 /* Bulletin.swift in Sources */,
 				49952EE21A26888B002B06FA /* NotificationsTableViewController.swift in Sources */,
+				49940D6D1A2F89BA00E97CD7 /* RKDropdownAlert.m in Sources */,
 				49B2A3341A268070004EED86 /* BulletinsDataSource.swift in Sources */,
 				49B2A3421A268070004EED86 /* EventViewController.swift in Sources */,
 				49B2A3411A268070004EED86 /* ErrorAlerter.swift in Sources */,

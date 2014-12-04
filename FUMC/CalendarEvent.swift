@@ -18,7 +18,7 @@ class CalendarEvent: NSObject {
     
     init(jsonDictionary: NSDictionary, dateFormatter: NSDateFormatter) {
         
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.sssZ"
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         
         self.name = jsonDictionary["name"] as String
         self.from = dateFormatter.dateFromString(jsonDictionary["from"] as String)!

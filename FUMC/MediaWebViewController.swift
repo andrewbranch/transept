@@ -32,6 +32,10 @@ class MediaWebViewController: UIViewController, UIWebViewDelegate, UIScrollViewD
         }
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        animateNavBarTo(UIApplication.sharedApplication().statusBarFrame.height)
+    }
+    
     // MARK: - Web View Delegate
     
     func webViewDidStartLoad(webView: UIWebView) {

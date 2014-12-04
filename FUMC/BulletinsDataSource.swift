@@ -50,7 +50,7 @@ class BulletinsDataSource: NSObject, MediaTableViewDataSource {
                 self.bulletins.removeAll(keepCapacity: true)
                 for (var i = 0; i < bulletinsDictionary.count; i++) {
                     
-                    self.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.sssZ"
+                    self.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
                     var date = self.dateFormatter.dateFromString(bulletinsDictionary[i].objectForKey("date") as String)
                     
                     var b = Bulletin()

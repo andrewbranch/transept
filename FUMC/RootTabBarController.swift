@@ -12,6 +12,15 @@ class RootTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        (UIApplication.sharedApplication().delegate as AppDelegate).rootViewController = self
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        var appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        if let launchNotification = appDelegate.notificationToShowOnLaunch {
+            self.performSegueWithIdentifier("showNotifications", sender: [launchNotification])
+            appDelegate.notificationToShowOnLaunch = nil
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -20,15 +29,13 @@ class RootTabBarController: UITabBarController {
     }
     
     
-
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "showNotifications") {
+            ((segue.destinationViewController as UINavigationController).viewControllers.first! as NotificationsTableViewController).dataSource!.highlightedIds = (sender as [Notification]).map { $0.id }
+        }
     }
-    */
 
 }

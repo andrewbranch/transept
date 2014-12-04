@@ -20,11 +20,14 @@ class Notification: NSObject {
         let data = userInfo["aps"] as NSDictionary
         let custom = userInfo["info"] as NSDictionary
         var dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.sssZ"
-        let sendDateString = String(Array(custom["sendDate"] as String)[0...18]) + ".000Z"
-
-        self.id = (custom["id"] as String).toInt()!
-        self.sendDate = dateFormatter.dateFromString(sendDateString)!
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZ"
+        
+        self.id = 0
+        // This will be nil if the notification sent but failed to save to Postgres
+        if let id = custom["id"] as? String {
+            self.id = id.toInt()!
+        }
+        self.sendDate = dateFormatter.dateFromString(custom["sendDate"] as String)!
         self.expirationDate = nil // don't care about this
         self.message = data["alert"] as String
         self.url = custom["url"] as String

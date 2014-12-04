@@ -1,16 +1,19 @@
 PODS:
   - BBBadgeBarButtonItem (1.1)
   - BEMAnalogClock (1.4)
+  - NSDate+TimeAgo (1.0.3)
   - ZeroPush (2.0.3)
 
 DEPENDENCIES:
   - BBBadgeBarButtonItem
   - BEMAnalogClock
+  - NSDate+TimeAgo
   - ZeroPush
 
 SPEC CHECKSUMS:
   BBBadgeBarButtonItem: 457055ec6c09197e78e681df74062ad9acb29836
   BEMAnalogClock: 619c581d0cc1cac59e59289ae31dd49354589bb9
+  NSDate+TimeAgo: f3533e0198fab05b716368b19f8c2185d53d6f3b
   ZeroPush: 1251bdeecbf0d70e2fdf85a7c968f886f82cc57a
 
 COCOAPODS: 0.35.0

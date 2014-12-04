@@ -13,4 +13,7 @@ extension UIColor {
     class func fumcMagentaColor() -> UIColor {
         return UIColor(red: 190/255, green: 64/255, blue: 127/255, alpha: 1)
     }
+    class func fumcNavyColor() -> UIColor {
+        return UIColor(red: 10/255, green: 89/255, blue: 124/255, alpha: 1)
+    }
 }

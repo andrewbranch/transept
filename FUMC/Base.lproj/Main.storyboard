@@ -595,6 +595,7 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                         <segue destination="Vfr-j3-gCB" kind="relationship" relationship="viewControllers" id="TRb-vE-61L"/>
                         <segue destination="Z5N-s7-vGE" kind="relationship" relationship="viewControllers" id="FL8-EP-5wc"/>
                         <segue destination="R3l-68-kGD" kind="relationship" relationship="viewControllers" id="BMx-i6-p7l"/>
+                        <segue destination="MgL-sn-56f" kind="presentation" identifier="showNotifications" id="lCV-Rg-9Tn"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -925,6 +926,6 @@ Thank you for your generous support of First United Methodist Church of Pensacol
         <image name="media-alt" width="35" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="OvP-dl-gHY"/>
+        <segue reference="lCV-Rg-9Tn"/>
     </inferredMetricsTieBreakers>
 </document>

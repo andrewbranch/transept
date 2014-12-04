@@ -50,7 +50,7 @@ class WitnessesDataSource: NSObject, MediaTableViewDataSource {
                 self.witnesses.removeAll(keepCapacity: true)
                 for (var i = 0; i < witnessesDictionaries.count; i++) {
                     
-                    self.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.sssZ"
+                    self.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
                     let from = self.dateFormatter.dateFromString(witnessesDictionaries[i].objectForKey("from") as String)
                     let to = self.dateFormatter.dateFromString(witnessesDictionaries[i].objectForKey("to") as String)
                     
