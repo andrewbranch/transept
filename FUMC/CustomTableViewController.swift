@@ -13,6 +13,9 @@ class CustomTableViewController: UIViewController {
     @IBOutlet var tableView: UITableView?
     let activityView = UIView(frame: CGRectMake(0, 0, 100, 100))
     let refreshControl = UIRefreshControl()
+    lazy var tableViewController: UITableViewController = {
+       return UITableViewController(style: self.tableView!.style)
+    }()
     
     private var showWhenLoaded = false
 
@@ -28,8 +31,9 @@ class CustomTableViewController: UIViewController {
         self.activityView.center = self.view.center
         self.activityView.frame = CGRectMake(self.activityView.frame.minX, self.activityView.frame.minY - 80, self.activityView.frame.width, self.activityView.frame.height)
         
+        self.tableViewController.tableView = self.tableView!
+        self.tableViewController.refreshControl = self.refreshControl
         self.refreshControl.addTarget(self, action: "reloadData", forControlEvents: UIControlEvents.ValueChanged)
-        self.tableView!.addSubview(self.refreshControl)
         
         if (self.showWhenLoaded) {
             showLoadingView()
