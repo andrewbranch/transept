@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0668526FF3E0C871644D3E6B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBEFB0F663F019D719FE0983 /* libPods.a */; };
+		494F80981A3155C000403C6B /* CalendarSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494F80971A3155C000403C6B /* CalendarSettingsViewController.swift */; };
 		495B5C281A2E54180033DE8D /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495B5C271A2E54180033DE8D /* Notification.swift */; };
 		495B5C2A1A2E558F0033DE8D /* NotificationsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495B5C291A2E558F0033DE8D /* NotificationsDataSource.swift */; };
 		49940D6D1A2F89BA00E97CD7 /* RKDropdownAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 49940D6C1A2F89BA00E97CD7 /* RKDropdownAlert.m */; };
@@ -77,6 +78,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		494F80971A3155C000403C6B /* CalendarSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarSettingsViewController.swift; path = FUMC/CalendarSettingsViewController.swift; sourceTree = "<group>"; };
 		495B5BEC1A2E44870033DE8D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		495B5C271A2E54180033DE8D /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Notification.swift; path = FUMC/Notification.swift; sourceTree = "<group>"; };
 		495B5C291A2E558F0033DE8D /* NotificationsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationsDataSource.swift; path = FUMC/NotificationsDataSource.swift; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 				49B2A3111A268070004EED86 /* FeaturedViewController.swift */,
 				49B2A3081A268070004EED86 /* CalendarTableViewController.swift */,
 				49B2A3101A268070004EED86 /* EventViewController.swift */,
+				494F80971A3155C000403C6B /* CalendarSettingsViewController.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -563,6 +566,7 @@
 				49B2A3431A268070004EED86 /* FeaturedViewController.swift in Sources */,
 				49B2A3351A268070004EED86 /* CalendarEvent.swift in Sources */,
 				49B2A34B1A268070004EED86 /* MediaTableViewController.swift in Sources */,
+				494F80981A3155C000403C6B /* CalendarSettingsViewController.swift in Sources */,
 				49B2A3561A268070004EED86 /* UIImageExtensions.swift in Sources */,
 				49B2A32C1A268070004EED86 /* AppDelegate.swift in Sources */,
 				49B2A3521A268070004EED86 /* UIChangingLabel.swift in Sources */,

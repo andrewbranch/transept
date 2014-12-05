@@ -10,6 +10,8 @@
             <string>MyriadPro-Regular</string>
             <string>MyriadPro-Regular</string>
             <string>MyriadPro-Regular</string>
+            <string>MyriadPro-Regular</string>
+            <string>MyriadPro-Regular</string>
         </mutableArray>
         <mutableArray key="MyriadPro-Semibold.otf">
             <string>MyriadPro-Semibold</string>
@@ -336,6 +338,11 @@
             <objects>
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Cno-kf-7pY" customClass="HomeViewController" customModule="FUMC" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="Calendar" id="MaS-da-apn">
+                        <barButtonItem key="leftBarButtonItem" image="gear" id="wEu-KW-eBr">
+                            <connections>
+                                <segue destination="7am-XD-3Jf" kind="presentation" modalPresentationStyle="overFullScreen" id="7te-ka-RD1"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="bell" id="n5k-3f-aRX" customClass="NotificationBarButtonItem" customModule="FUMC" customModuleProvider="target">
                             <connections>
                                 <segue destination="MgL-sn-56f" kind="presentation" id="2Wh-uN-6Oj"/>
@@ -619,6 +626,81 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MOY-93-n1q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1002" y="-710"/>
+        </scene>
+        <!--Calendar Settings View Controller-->
+        <scene sceneID="JXQ-rG-dET">
+            <objects>
+                <viewController storyboardIdentifier="calendarSettingsViewController" extendedLayoutIncludesOpaqueBars="YES" id="7am-XD-3Jf" customClass="CalendarSettingsViewController" customModule="FUMC" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zWF-dX-Eyi"/>
+                        <viewControllerLayoutGuide type="bottom" id="uUo-5f-y1k"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Fuj-ud-5cE">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PbT-88-ULq">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gnG-eL-P71">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Calendars" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c6r-aM-4Bi">
+                                            <rect key="frame" x="8" y="58" width="592" height="24"/>
+                                            <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="24"/>
+                                            <color key="textColor" white="1" alpha="0.90000000000000002" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qv3-2e-2M9">
+                                            <rect key="frame" x="277.5" y="540" width="46" height="32"/>
+                                            <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="20"/>
+                                            <state key="normal" title="Done">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="dismiss" destination="7am-XD-3Jf" eventType="touchUpInside" id="3Q2-ba-mpW"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="c6r-aM-4Bi" firstAttribute="top" secondItem="gnG-eL-P71" secondAttribute="topMargin" constant="50" id="2fw-5U-6ok"/>
+                                        <constraint firstAttribute="trailing" secondItem="c6r-aM-4Bi" secondAttribute="trailing" id="Gka-tp-LIl"/>
+                                        <constraint firstAttribute="centerX" secondItem="Qv3-2e-2M9" secondAttribute="centerX" id="R0f-FD-BbW"/>
+                                        <constraint firstAttribute="trailing" secondItem="Qv3-2e-2M9" secondAttribute="trailing" constant="20" id="m1S-kh-XTx"/>
+                                        <constraint firstItem="Qv3-2e-2M9" firstAttribute="top" secondItem="gnG-eL-P71" secondAttribute="top" constant="30" id="mXt-qV-L6b"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Qv3-2e-2M9" secondAttribute="bottom" constant="20" id="uDF-Kj-660"/>
+                                        <constraint firstItem="c6r-aM-4Bi" firstAttribute="leading" secondItem="gnG-eL-P71" secondAttribute="leadingMargin" id="vUE-fw-6ek"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="m1S-kh-XTx"/>
+                                            <exclude reference="mXt-qV-L6b"/>
+                                        </mask>
+                                    </variation>
+                                </view>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="PbT-88-ULq" firstAttribute="top" secondItem="zWF-dX-Eyi" secondAttribute="bottom" id="1mU-EP-hkw"/>
+                            <constraint firstItem="PbT-88-ULq" firstAttribute="height" secondItem="Fuj-ud-5cE" secondAttribute="height" id="7T0-U0-gOO"/>
+                            <constraint firstItem="PbT-88-ULq" firstAttribute="leading" secondItem="Fuj-ud-5cE" secondAttribute="leading" id="8kq-4W-WJ4"/>
+                            <constraint firstAttribute="trailing" secondItem="PbT-88-ULq" secondAttribute="trailing" id="Det-Ch-5Gf"/>
+                            <constraint firstItem="uUo-5f-y1k" firstAttribute="top" secondItem="PbT-88-ULq" secondAttribute="bottom" id="UXu-8a-Quc"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="1mU-EP-hkw"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vhb-n5-2Qh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1002" y="-2204"/>
         </scene>
         <!--Home-->
         <scene sceneID="jpF-mE-EhB">
@@ -918,6 +1000,7 @@ Thank you for your generous support of First United Methodist Church of Pensacol
         <image name="bell" width="25" height="25"/>
         <image name="connect-alt" width="40" height="40"/>
         <image name="contact" width="22" height="22"/>
+        <image name="gear" width="22" height="22"/>
         <image name="give-alt" width="35" height="35"/>
         <image name="heart" width="50" height="44"/>
         <image name="home-alt" width="30" height="30"/>
