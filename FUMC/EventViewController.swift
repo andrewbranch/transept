@@ -58,10 +58,6 @@ class EventViewController: UIViewController, BEMAnalogClockDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewDidAppear(animated: Bool) {
-        //self.navigationController!.navigationBar.setTitleVerticalPositionAdjustment(0, forBarMetrics: UIBarMetrics.Default)
-    }
-    
     override func viewWillAppear(animated: Bool) {
         var dateComponents = NSCalendar.currentCalendar().components(NSCalendarUnit.CalendarUnitHour | NSCalendarUnit.CalendarUnitMinute, fromDate: self.calendarEvent!.from)
         self.clockView!.hours = dateComponents.hour
@@ -116,14 +112,6 @@ class EventViewController: UIViewController, BEMAnalogClockDelegate {
     
     func analogClock(clock: BEMAnalogClockView!, graduationOffsetForIndex index: Int) -> CGFloat {
         return 1
-    }
-
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // self.navigationController!.navigationBar.setTitleVerticalPositionAdjustment(-8, forBarMetrics: UIBarMetrics.Default)
     }
     
 

@@ -127,10 +127,21 @@ class NotificationsDataSource: NSObject, UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("notificationsTableViewCell", forIndexPath: indexPath) as NotificationsTableViewCell
         let notification = notificationForIndexPath(indexPath)
+        setupCell(cell, withNotification: notification)
+        cell.messageLabel!.font = UIFont.fumcMainFontRegular16
+        cell.tintColor = UIColor.fumcNavyColor().colorWithAlphaComponent(0.5)
         
+        if (find(self.highlightedIds, notification.id) != nil) {
+            cell.backgroundColor = UIColor.fumcNavyColor().colorWithAlphaComponent(0.5)
+        }
+        
+        return cell
+    }
+    
+    func setupCell(cell: NotificationsTableViewCell, withNotification notification: Notification) {
         cell.unreadImageView!.hidden = find(self.readIds, notification.id) != nil
         cell.dateLabel!.text = notification.sendDate.timeAgo()
-        cell.messageLabel!.text = notification.message
+        cell.messageLabel!.attributedText = NSAttributedString(string: notification.message)
         
         if (notification.url.isEmpty) {
             cell.selectionStyle = UITableViewCellSelectionStyle.None
@@ -138,12 +149,6 @@ class NotificationsDataSource: NSObject, UITableViewDataSource {
         } else {
             cell.accessoryType = UITableViewCellAccessoryType.DetailButton
         }
-        
-        if (find(self.highlightedIds, notification.id) != nil) {
-            cell.backgroundColor = UIColor.fumcNavyColor().colorWithAlphaComponent(0.2)
-        }
-        
-        return cell
     }
    
 }

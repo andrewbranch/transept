@@ -143,10 +143,9 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "eventSegue") {
-            UIView.animateWithDuration(0.25, animations: { () -> Void in
+            UIView.animateWithDuration(0.25) {
                 self.pageViewController!.pageControl.alpha = 0
-            })
-            // self.navigationController!.navigationBar.setTitleVerticalPositionAdjustment(0, forBarMetrics: UIBarMetrics.Default)
+            }
             (segue.destinationViewController as EventViewController).calendarEvent = eventForIndexPath(self.tableView!.indexPathForSelectedRow()!)
         }
     }

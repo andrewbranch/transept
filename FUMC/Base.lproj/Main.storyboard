@@ -98,9 +98,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="99"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="LOE-cv-epK" kind="show" identifier="eventSegue" id="DiT-lF-guU"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
@@ -126,6 +123,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="ijV-vw-Xi4" id="dla-wL-kul"/>
+                        <segue destination="LOE-cv-epK" kind="show" identifier="eventSegue" id="pDD-dN-r9O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WtP-7M-awR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -257,7 +255,7 @@
                                                             <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <font key="NSFont" size="14" name="MyriadPro-Regular"/>
                                                             <font key="NSOriginalFont" size="14" name="MyriadPro-Regular"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="6"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5"/>
                                                         </attributes>
                                                     </fragment>
                                                 </attributedString>
@@ -723,21 +721,21 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="580"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MMk-r5-KYz">
-                                                <rect key="frame" x="8" y="18" width="584" height="68"/>
+                                                <rect key="frame" x="8" y="18" width="584" height="71"/>
                                                 <attributedString key="attributedText">
                                                     <fragment>
                                                         <string key="content">The Pastoral Care Team would like to pray for you and our family at First United Methodist Church.  Please indicate below the specific petition or praise that you would like to call to our attention. This request will then be sent to members of the Pastoral Care Team. Your request will be anonymous unless you include your name or contact information.</string>
                                                         <attributes>
                                                             <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <font key="NSFont" size="14" name="MyriadPro-Regular"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="4"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5"/>
                                                         </attributes>
                                                     </fragment>
                                                 </attributedString>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UxE-tV-uMg" customClass="UIPlaceHolderTextView">
-                                                <rect key="frame" x="0.0" y="96" width="600" height="140"/>
+                                                <rect key="frame" x="0.0" y="99" width="600" height="140"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="140" id="6yO-fw-mXF"/>
@@ -746,7 +744,7 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MOV-nM-w0H">
-                                                <rect key="frame" x="221" y="244" width="159" height="30"/>
+                                                <rect key="frame" x="221" y="247" width="159" height="30"/>
                                                 <state key="normal" title="Submit Prayer Request">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -926,6 +924,6 @@ Thank you for your generous support of First United Methodist Church of Pensacol
         <image name="media-alt" width="35" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lCV-Rg-9Tn"/>
+        <segue reference="2Wh-uN-6Oj"/>
     </inferredMetricsTieBreakers>
 </document>
