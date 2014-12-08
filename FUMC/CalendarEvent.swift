@@ -15,6 +15,8 @@ class CalendarEvent: NSObject {
     var from: NSDate
     var to: NSDate
     var location: String
+    var calendar: String
+    var calendarId: String
     
     init(jsonDictionary: NSDictionary, dateFormatter: NSDateFormatter) {
         
@@ -25,6 +27,8 @@ class CalendarEvent: NSObject {
         self.to = dateFormatter.dateFromString(jsonDictionary["to"] as String)!
         self.descript = ""
         self.location = ""
+        self.calendarId = jsonDictionary["calendarId"] as String
+        self.calendar = jsonDictionary["calendar"] as String
         
         if let description: String = jsonDictionary["description"] as? String {
             self.descript = description
@@ -34,6 +38,5 @@ class CalendarEvent: NSObject {
             self.location = location["name"] as String
         }
     }
-    
    
 }

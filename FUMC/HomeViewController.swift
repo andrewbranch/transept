@@ -17,6 +17,8 @@ class HomeViewController: UIPageViewController, UIPageViewControllerDataSource, 
     
     var pageControl = UIPageControl()
     var pages = [UIViewController]()
+    var calendarsDataSource: CalendarsDataSource?
+    var calendarViewController: CalendarTableViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,9 +39,11 @@ class HomeViewController: UIPageViewController, UIPageViewControllerDataSource, 
         
         self.navigationController!.navigationBar.addSubview(self.pageControl)
         
+        self.calendarsDataSource = CalendarsDataSource(settingsDelegate: nil, calendarDelegate: calendarViewController)
+        self.calendarViewController = calendarViewController
+        
         // Preload featured view
         let preload = featuredViewController.view
-
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
@@ -65,6 +69,15 @@ class HomeViewController: UIPageViewController, UIPageViewControllerDataSource, 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "calendarSettingsSegue") {
+            let viewController = (segue.destinationViewController as CalendarSettingsViewController)
+            self.calendarsDataSource!.settingsDelegate = viewController
+            viewController.dataSource = self.calendarsDataSource!
+            viewController.delegate = self.calendarViewController
+        }
     }
 
 }

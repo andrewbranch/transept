@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 FUMC Pensacola. All rights reserved.
 //
 
-@objc protocol NotificationsDataSourceDelegate {
+protocol NotificationsDataSourceDelegate {
     var tableView: UITableView? { get set }
     func dataSourceDidStartLoadingAPI(dataSource: NotificationsDataSource) -> Void
     func dataSourceDidFinishLoadingAPI(dataSource: NotificationsDataSource) -> Void
