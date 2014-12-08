@@ -8,11 +8,10 @@
 
 import UIKit
 
-class EventViewController: UIViewController, BEMAnalogClockDelegate {
+class EventViewController: UIViewController {
     
     @IBOutlet var scrollView: UIScrollView?
-    @IBOutlet var clockView: BEMAnalogClockView?
-    
+    @IBOutlet var dateContainer: UIVisualEffectView?
     @IBOutlet var monthLabel: UILabel?
     @IBOutlet var dayLabel: UILabel?
     @IBOutlet var titleLabel: UILabel?
@@ -30,27 +29,10 @@ class EventViewController: UIViewController, BEMAnalogClockDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Event Detail"
-        self.clockView!.delegate = self
-        
-        self.clockView!.hourHandColor = UIColor(white: 0.2, alpha: 1)
-        self.clockView!.hourHandWidth = 2
-        self.clockView!.hourHandLength = 20
-        self.clockView!.hourHandOffsideLength = 7
-        
-        self.clockView!.minuteHandColor = UIColor.darkGrayColor()
-        self.clockView!.minuteHandWidth = 1
-        self.clockView!.minuteHandLength = 32
-        self.clockView!.minuteHandOffsideLength = 7
-        
-        self.clockView!.secondHandAlpha = 0
-        
-        self.clockView!.faceBackgroundColor = UIColor.whiteColor()
-        self.clockView!.faceBackgroundAlpha = 1
-        self.clockView!.borderColor = UIColor(white: 0.2, alpha: 1)
-        self.clockView!.borderWidth = 4
-        
         self.descriptionLabel!.font = UIFont.fumcMainFontRegular14
-        
+        self.dateContainer!.layer.cornerRadius = 10
+        self.dateContainer!.layer.borderWidth = 3
+        self.dateContainer!.layer.borderColor = UIColor(white: 54/255, alpha: 1).CGColor
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,8 +42,6 @@ class EventViewController: UIViewController, BEMAnalogClockDelegate {
     
     override func viewWillAppear(animated: Bool) {
         var dateComponents = NSCalendar.currentCalendar().components(NSCalendarUnit.CalendarUnitHour | NSCalendarUnit.CalendarUnitMinute, fromDate: self.calendarEvent!.from)
-        self.clockView!.hours = dateComponents.hour
-        self.clockView!.minutes = dateComponents.minute
         self.dateFormatter.dateFormat = "MMM"
         self.monthLabel!.text = String(Array(self.dateFormatter.stringFromDate(self.calendarEvent!.from))[0...2]).uppercaseString
         self.dateFormatter.dateFormat = "dd"
@@ -87,32 +67,4 @@ class EventViewController: UIViewController, BEMAnalogClockDelegate {
         paragraphStyle.lineSpacing = 6
         self.descriptionLabel!.attributedText = NSAttributedString(string: self.calendarEvent!.descript, attributes: [NSParagraphStyleAttributeName: paragraphStyle])
     }
-    
-    func analogClock(clock: BEMAnalogClockView!, graduationColorForIndex index: Int) -> UIColor! {
-        if (index % 15 == 0) {
-            return UIColor.darkGrayColor()
-        }
-        return UIColor.lightGrayColor()
-    }
-    
-    func analogClock(clock: BEMAnalogClockView!, graduationAlphaForIndex index: Int) -> CGFloat {
-        if (index % 5 == 0) {
-            return 1
-        }
-        return 0
-    }
-    
-    func analogClock(clock: BEMAnalogClockView!, graduationLengthForIndex index: Int) -> CGFloat {
-        return 5
-    }
-    
-    func analogClock(clock: BEMAnalogClockView!, graduationWidthForIndex index: Int) -> CGFloat {
-        return 0.5
-    }
-    
-    func analogClock(clock: BEMAnalogClockView!, graduationOffsetForIndex index: Int) -> CGFloat {
-        return 1
-    }
-    
-
 }
