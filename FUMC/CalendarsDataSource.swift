@@ -77,8 +77,7 @@ class CalendarsDataSource: NSObject, UITableViewDataSource {
         cell.color = calendar.color
         
         cell.label!.textColor = cell.color!
-        cell.borderView!.layer.borderColor = cell.color!.CGColor
-        cell.checkView!.tintColor = cell.color!
+        cell.checkView!.color = cell.color!
 
         return cell
     }

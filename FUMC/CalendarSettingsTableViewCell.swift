@@ -11,22 +11,12 @@ import UIKit
 class CalendarSettingsTableViewCell: UITableViewCell {
     
     @IBOutlet var label: UILabel?
-    @IBOutlet var borderView: UIView?
-    @IBOutlet var checkView: UIImageView?
+    @IBOutlet var checkView: RadioView?
     var color: UIColor?
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        self.borderView!.layer.cornerRadius = 10
-        self.checkView!.image = self.checkView!.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-        self.checkView!.alpha = 0
-        // Initialization code
-    }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        self.borderView!.layer.borderWidth = selected ? 2 : 0
-        self.checkView!.alpha = selected ? 1 : 0
+        self.checkView!.selected = selected
     }
 
 }

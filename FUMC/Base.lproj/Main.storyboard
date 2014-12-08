@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -652,60 +653,49 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                                             <color key="textColor" white="1" alpha="0.90000000000000002" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsMultipleSelection="YES" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="4fs-ut-w6C">
-                                            <rect key="frame" x="8" y="102" width="584" height="430"/>
+                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsMultipleSelection="YES" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="4fs-ut-w6C">
+                                            <rect key="frame" x="8" y="102" width="584" height="428"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                             <prototypes>
-                                                <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="calendarSettingsTableViewCell" rowHeight="60" id="D5b-r5-GeG" customClass="CalendarSettingsTableViewCell" customModule="FUMC" customModuleProvider="target">
+                                                <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="calendarSettingsTableViewCell" rowHeight="50" id="D5b-r5-GeG" customClass="CalendarSettingsTableViewCell" customModule="FUMC" customModuleProvider="target">
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="D5b-r5-GeG" id="5Eo-aJ-aP6">
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mVM-MA-nx8">
-                                                                <rect key="frame" x="8" y="8" width="568" height="44"/>
-                                                                <subviews>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check" translatesAutoresizingMaskIntoConstraints="NO" id="yRr-g4-hya">
-                                                                        <rect key="frame" x="538" y="17" width="10" height="10"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="width" constant="10" id="Xaq-zq-YQk"/>
-                                                                            <constraint firstAttribute="height" constant="10" id="Zf9-4Q-4Sy"/>
-                                                                        </constraints>
-                                                                    </imageView>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BcG-IB-Rij">
-                                                                        <rect key="frame" x="45" y="12" width="478" height="20"/>
-                                                                        <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="20"/>
-                                                                        <color key="textColor" white="1" alpha="0.90000000000000002" colorSpace="calibratedWhite"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                </subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BcG-IB-Rij">
+                                                                <rect key="frame" x="43" y="18" width="533" height="18"/>
+                                                                <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="18"/>
+                                                                <color key="textColor" white="1" alpha="0.90000000000000002" colorSpace="calibratedWhite"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X6B-vm-jcD" customClass="RadioView" customModule="FUMC" customModuleProvider="target">
+                                                                <rect key="frame" x="8" y="15" width="20" height="20"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="centerY" secondItem="yRr-g4-hya" secondAttribute="centerY" id="9G2-N9-0pv"/>
-                                                                    <constraint firstItem="BcG-IB-Rij" firstAttribute="leading" secondItem="mVM-MA-nx8" secondAttribute="leading" constant="45" id="BG5-u0-A3N"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="BcG-IB-Rij" secondAttribute="trailing" constant="45" id="F0u-cv-QmZ"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="yRr-g4-hya" secondAttribute="trailing" constant="20" id="NCe-yy-lRV"/>
-                                                                    <constraint firstAttribute="centerY" secondItem="BcG-IB-Rij" secondAttribute="centerY" constant="0.5" id="xHI-gI-OaQ"/>
+                                                                    <constraint firstAttribute="height" constant="20" id="kk8-7A-ZMG"/>
+                                                                    <constraint firstAttribute="width" secondItem="X6B-vm-jcD" secondAttribute="height" multiplier="1:1" id="q9Y-Zf-H8a"/>
                                                                 </constraints>
                                                             </view>
                                                         </subviews>
                                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                                         <constraints>
-                                                            <constraint firstItem="mVM-MA-nx8" firstAttribute="leading" secondItem="5Eo-aJ-aP6" secondAttribute="leadingMargin" id="Eyv-S1-O8F"/>
-                                                            <constraint firstAttribute="trailingMargin" secondItem="mVM-MA-nx8" secondAttribute="trailing" id="POb-aR-byQ"/>
-                                                            <constraint firstItem="mVM-MA-nx8" firstAttribute="top" secondItem="5Eo-aJ-aP6" secondAttribute="topMargin" id="VO3-Di-2No"/>
-                                                            <constraint firstAttribute="bottomMargin" secondItem="mVM-MA-nx8" secondAttribute="bottom" id="xH1-1j-WnV"/>
+                                                            <constraint firstAttribute="centerY" secondItem="X6B-vm-jcD" secondAttribute="centerY" id="Qku-mv-xjz"/>
+                                                            <constraint firstAttribute="centerY" secondItem="BcG-IB-Rij" secondAttribute="centerY" constant="-2" id="SPG-Mp-dyy"/>
+                                                            <constraint firstItem="X6B-vm-jcD" firstAttribute="leading" secondItem="5Eo-aJ-aP6" secondAttribute="leadingMargin" id="X1R-wP-5ef"/>
+                                                            <constraint firstItem="BcG-IB-Rij" firstAttribute="leading" secondItem="X6B-vm-jcD" secondAttribute="trailing" constant="15" id="bUT-75-rko"/>
+                                                            <constraint firstAttribute="trailingMargin" secondItem="BcG-IB-Rij" secondAttribute="trailing" id="vPP-zD-OM1"/>
                                                         </constraints>
                                                     </tableViewCellContentView>
                                                     <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <connections>
-                                                        <outlet property="borderView" destination="mVM-MA-nx8" id="V02-SF-7te"/>
-                                                        <outlet property="checkView" destination="yRr-g4-hya" id="N0B-fy-ZY2"/>
+                                                        <outlet property="checkView" destination="X6B-vm-jcD" id="07r-UM-Zxw"/>
                                                         <outlet property="label" destination="BcG-IB-Rij" id="5Nd-vE-DEa"/>
                                                     </connections>
                                                 </tableViewCell>
                                             </prototypes>
                                         </tableView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qv3-2e-2M9">
-                                            <rect key="frame" x="277" y="540" width="46" height="32"/>
+                                            <rect key="frame" x="277" y="552" width="46" height="32"/>
                                             <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="20"/>
                                             <state key="normal" title="Done">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -718,14 +708,14 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="c6r-aM-4Bi" firstAttribute="top" secondItem="gnG-eL-P71" secondAttribute="topMargin" constant="50" id="2fw-5U-6ok"/>
-                                        <constraint firstItem="Qv3-2e-2M9" firstAttribute="top" secondItem="4fs-ut-w6C" secondAttribute="bottom" constant="8" id="E6S-bj-7xm"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="4fs-ut-w6C" secondAttribute="bottom" constant="62" id="GTa-b8-5gz"/>
                                         <constraint firstAttribute="trailing" secondItem="c6r-aM-4Bi" secondAttribute="trailing" id="Gka-tp-LIl"/>
                                         <constraint firstItem="4fs-ut-w6C" firstAttribute="top" secondItem="c6r-aM-4Bi" secondAttribute="bottom" constant="20" id="OS0-iA-XVf"/>
                                         <constraint firstAttribute="centerX" secondItem="Qv3-2e-2M9" secondAttribute="centerX" id="R0f-FD-BbW"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="4fs-ut-w6C" secondAttribute="trailing" id="Ssm-2F-bPh"/>
                                         <constraint firstAttribute="trailing" secondItem="Qv3-2e-2M9" secondAttribute="trailing" constant="20" id="m1S-kh-XTx"/>
                                         <constraint firstItem="Qv3-2e-2M9" firstAttribute="top" secondItem="gnG-eL-P71" secondAttribute="top" constant="30" id="mXt-qV-L6b"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="Qv3-2e-2M9" secondAttribute="bottom" constant="20" id="uDF-Kj-660"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Qv3-2e-2M9" secondAttribute="bottom" constant="8" id="uDF-Kj-660"/>
                                         <constraint firstItem="c6r-aM-4Bi" firstAttribute="leading" secondItem="gnG-eL-P71" secondAttribute="leadingMargin" id="vUE-fw-6ek"/>
                                         <constraint firstItem="4fs-ut-w6C" firstAttribute="leading" secondItem="gnG-eL-P71" secondAttribute="leadingMargin" id="zVZ-dV-p4q"/>
                                     </constraints>
@@ -1058,7 +1048,6 @@ Thank you for your generous support of First United Methodist Church of Pensacol
     </scenes>
     <resources>
         <image name="bell" width="22" height="22"/>
-        <image name="check" width="10" height="10"/>
         <image name="connect-alt" width="40" height="40"/>
         <image name="contact" width="22" height="22"/>
         <image name="gear" width="22" height="22"/>
