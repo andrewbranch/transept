@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -20,7 +20,10 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="34"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wednesday, September 03" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JHJ-v1-pKO">
-                            <rect key="frame" x="8" y="11" width="304" height="18"/>
+                            <rect key="frame" x="8" y="11" width="207" height="18"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="18" id="B7G-t3-lSh"/>
+                            </constraints>
                             <fontDescription key="fontDescription" name="MyriadPro-Semibold" family="Myriad Pro" pointSize="18"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
@@ -31,8 +34,15 @@
                     <constraints>
                         <constraint firstAttribute="trailingMargin" secondItem="JHJ-v1-pKO" secondAttribute="trailing" id="3V2-jj-itt"/>
                         <constraint firstItem="JHJ-v1-pKO" firstAttribute="leading" secondItem="vQZ-Mm-fBB" secondAttribute="leadingMargin" id="OuX-bW-6ps"/>
+                        <constraint firstItem="JHJ-v1-pKO" firstAttribute="top" secondItem="vQZ-Mm-fBB" secondAttribute="top" constant="11" id="SXJ-Pd-Y5e"/>
                         <constraint firstAttribute="centerY" secondItem="JHJ-v1-pKO" secondAttribute="centerY" constant="-3" id="V1N-xH-8N2"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="3V2-jj-itt"/>
+                            <exclude reference="V1N-xH-8N2"/>
+                        </mask>
+                    </variation>
                 </view>
             </subviews>
             <constraints>
