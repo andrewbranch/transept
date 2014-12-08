@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 FUMC Pensacola. All rights reserved.
 //
 
-#import "BEMAnalogClockView.h"
 #import "UIPlaceHolderTextView.h"
 #import "UIDevice+Hardware.h"
 #import "Reachability.h"
