@@ -85,6 +85,8 @@
 		49B2A3691A26829D004EED86 /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B2A3661A26829D004EED86 /* TwitterKit.framework */; };
 		49C83A1B1A2BCB3B00E02C96 /* NotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C83A1A1A2BCB3B00E02C96 /* NotificationsTableViewCell.swift */; };
 		49C83A1F1A2BCB8A00E02C96 /* NotificationsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49C83A1E1A2BCB8A00E02C96 /* NotificationsTableViewCell.xib */; };
+		49D5079C1A37A33A00531F23 /* WSLHTMLEntities.lm in Sources */ = {isa = PBXBuildFile; fileRef = 49D507991A37A33A00531F23 /* WSLHTMLEntities.lm */; };
+		49D5079D1A37A33A00531F23 /* WSLHTMLEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D5079A1A37A33A00531F23 /* WSLHTMLEntities.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -226,6 +228,10 @@
 		49B2A3661A26829D004EED86 /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterKit.framework; sourceTree = "<group>"; };
 		49C83A1A1A2BCB3B00E02C96 /* NotificationsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationsTableViewCell.swift; path = FUMC/NotificationsTableViewCell.swift; sourceTree = "<group>"; };
 		49C83A1E1A2BCB8A00E02C96 /* NotificationsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NotificationsTableViewCell.xib; path = FUMC/NotificationsTableViewCell.xib; sourceTree = "<group>"; };
+		49D507981A37A33A00531F23 /* WSLHTMLEntities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WSLHTMLEntities.h; path = FUMC/WSLHTMLEntities.h; sourceTree = "<group>"; };
+		49D507991A37A33A00531F23 /* WSLHTMLEntities.lm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.lex; name = WSLHTMLEntities.lm; path = FUMC/WSLHTMLEntities.lm; sourceTree = "<group>"; };
+		49D5079A1A37A33A00531F23 /* WSLHTMLEntities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WSLHTMLEntities.m; path = FUMC/WSLHTMLEntities.m; sourceTree = "<group>"; };
+		49D5079B1A37A33A00531F23 /* WSLHTMLEntityDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WSLHTMLEntityDefinitions.h; path = FUMC/WSLHTMLEntityDefinitions.h; sourceTree = "<group>"; };
 		5D4F8AA89947C82EF5AC8E35 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		BBEFB0F663F019D719FE0983 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBC1F7B2E80AFF5BEE370E33 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -490,6 +496,10 @@
 				49B2A3281A268070004EED86 /* UIPlaceHolderTextView.h */,
 				49B2A3291A268070004EED86 /* UIPlaceHolderTextView.m */,
 				4900737C1A342D820086CE0B /* DictionaryExtensions.swift */,
+				49D507981A37A33A00531F23 /* WSLHTMLEntities.h */,
+				49D507991A37A33A00531F23 /* WSLHTMLEntities.lm */,
+				49D5079A1A37A33A00531F23 /* WSLHTMLEntities.m */,
+				49D5079B1A37A33A00531F23 /* WSLHTMLEntityDefinitions.h */,
 			);
 			name = Utilities;
 			path = ..;
@@ -742,6 +752,7 @@
 				49B2A3361A268070004EED86 /* CalendarTableHeaderView.swift in Sources */,
 				49B2A34A1A268070004EED86 /* MediaMasterTableViewController.swift in Sources */,
 				49B2A3551A268070004EED86 /* UIFontExtensions.swift in Sources */,
+				49D5079C1A37A33A00531F23 /* WSLHTMLEntities.lm in Sources */,
 				49B2A33D1A268070004EED86 /* ConnectTableViewCell.swift in Sources */,
 				49B2A3531A268070004EED86 /* UIColorExtensions.swift in Sources */,
 				49B2A34C1A268070004EED86 /* MediaWebViewController.swift in Sources */,
@@ -752,6 +763,7 @@
 				49B2A3581A268070004EED86 /* Witness.swift in Sources */,
 				49B2A33B1A268070004EED86 /* ConnectTableFooterView.swift in Sources */,
 				495B5C2A1A2E558F0033DE8D /* NotificationsDataSource.swift in Sources */,
+				49D5079D1A37A33A00531F23 /* WSLHTMLEntities.m in Sources */,
 				490C659F1A3230A700E87130 /* Calendar.swift in Sources */,
 				49B2A33A1A268070004EED86 /* CalendarTableViewController.swift in Sources */,
 				49B2A3481A268070004EED86 /* MediaMasterTableViewCell.swift in Sources */,

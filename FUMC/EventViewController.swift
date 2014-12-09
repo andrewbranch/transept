@@ -63,8 +63,11 @@ class EventViewController: UIViewController {
         self.fromMeridiemLabel!.text = self.dateFormatter.stringFromDate(self.calendarEvent!.from)
         self.toMeridiemLabel!.text = self.dateFormatter.stringFromDate(self.calendarEvent!.to)
         
+        let description = WSLHTMLEntities.convertHTMLtoString(self.calendarEvent!.descript)
         var paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 6
-        self.descriptionLabel!.attributedText = NSAttributedString(string: self.calendarEvent!.descript, attributes: [NSParagraphStyleAttributeName: paragraphStyle])
+        self.descriptionLabel!.attributedText = NSAttributedString(string: description, attributes: [
+            NSParagraphStyleAttributeName: paragraphStyle
+        ])
     }
 }
