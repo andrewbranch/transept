@@ -49,7 +49,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ZeroPushDelegate, RKDropd
         
         Fabric.with([Crashlytics()])
         
-        self.notificationsDataSource = NotificationsDataSource()
         if let userInfo = launchOptions?[UIApplicationLaunchOptionsRemoteNotificationKey] as? NSDictionary {
             self.notificationToShowOnLaunch = Notification(userInfo: userInfo)
             self.notificationsDataSource!.incorporateNotificationFromPush(self.notificationToShowOnLaunch!)
@@ -81,7 +80,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ZeroPushDelegate, RKDropd
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         ZeroPush.engageWithAPIKey("deecrPVM9Xsd53QMBcq8", delegate: self)
         ZeroPush.shared().registerForRemoteNotifications()
-        
+        if let dataSource = self.notificationsDataSource {
+            dataSource.refresh()
+        } else {
+            self.notificationsDataSource = NotificationsDataSource()
+        }
     }
 
     func applicationWillTerminate(application: UIApplication) {
@@ -90,6 +93,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ZeroPushDelegate, RKDropd
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         ZeroPush.shared().registerDeviceToken(deviceToken)
+        NSLog(ZeroPush.deviceTokenFromData(deviceToken))
+    }
+    
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        NSLog(error.description)
     }
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
@@ -106,7 +114,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ZeroPushDelegate, RKDropd
                 self.rootViewController?.performSegueWithIdentifier("showNotifications", sender: [notification])
             } else {
                 ZeroPush.shared().setBadge(UIApplication.sharedApplication().applicationIconBadgeNumber + 1)
-                RKDropdownAlert.title("Tap to view", message: notification.message, backgroundColor: UIColor.fumcNavyColor(), textColor: UIColor.whiteColor(), time: 10, delegate: self, userInfo: notification)
+                RKDropdownAlert.title("Tap to view", message: notification.message, backgroundColor: UIColor.fumcNavyColor(), textColor: UIColor.whiteColor(), time: 4, delegate: self, userInfo: notification)
             }
         }
     }
