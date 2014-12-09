@@ -18,6 +18,15 @@ class CustomTableViewController: UIViewController {
     }()
     
     private var showWhenLoaded = false
+    private lazy var backgroundView: UILabel = {
+        var backgroundLabel = UILabel(frame: self.tableView!.frame)
+        backgroundLabel.textAlignment = NSTextAlignment.Center
+        backgroundLabel.font = UIFont.fumcMainFontRegular26
+        backgroundLabel.textColor = UIColor.lightGrayColor()
+        backgroundLabel.text = "Nothing to display"
+        backgroundLabel.hidden = true
+        return backgroundLabel
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +43,8 @@ class CustomTableViewController: UIViewController {
         self.tableViewController.tableView = self.tableView!
         self.tableViewController.refreshControl = self.refreshControl
         self.refreshControl.addTarget(self, action: "reloadData", forControlEvents: UIControlEvents.ValueChanged)
+        
+        self.tableView!.backgroundView = self.backgroundView
         
         if (self.showWhenLoaded) {
             showLoadingView()

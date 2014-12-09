@@ -10,6 +10,7 @@ import UIKit
 
 protocol MediaTableViewDataSource: UITableViewDataSource, UITableViewDelegate {
     var title: NSString { get }
+    var loading: Bool { get }
     var delegate: MediaTableViewDataSourceDelegate! { get set }
     
     init(delegate: MediaTableViewDataSourceDelegate)
@@ -33,6 +34,8 @@ class MediaTableViewController: CustomTableViewController, MediaTableViewDataSou
         self.navigationItem.title = self.dataSource!.title
         self.tableView!.dataSource = self.dataSource!
         self.tableView!.delegate = self.dataSource!
+        
+        self.tableView!.backgroundView?.hidden = self.dataSource!.loading || self.dataSource!.tableView(self.tableView!, numberOfRowsInSection: 0) > 0
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -65,6 +68,8 @@ class MediaTableViewController: CustomTableViewController, MediaTableViewDataSou
         } else {
             self.hideLoadingView()
         }
+        
+        self.tableView!.backgroundView?.hidden = dataSource.tableView(self.tableView!, numberOfRowsInSection: 0) > 0
     }
     
     func dataSource(dataSource: MediaTableViewDataSource, failedToLoadWithError error: NSError?) {

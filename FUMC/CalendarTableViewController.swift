@@ -255,6 +255,8 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
         
         self.events = newEvents
         self.tableView!.endUpdates()
+        
+        self.tableView!.backgroundView?.hidden = self.displayEvents.count > 0
     }
 
     // MARK: - Navigation

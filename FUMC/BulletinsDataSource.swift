@@ -15,6 +15,7 @@ class BulletinsDataSource: NSObject, MediaTableViewDataSource {
     var bulletins: Dictionary<NSString, [Bulletin]> = Dictionary<NSString, [Bulletin]>()
     let dateFormatter = NSDateFormatter()
     var delegate: MediaTableViewDataSourceDelegate!
+    var loading = false
     
     required init(delegate: MediaTableViewDataSourceDelegate) {
         super.init()
@@ -32,17 +33,21 @@ class BulletinsDataSource: NSObject, MediaTableViewDataSource {
     }
     
     func requestData(completed: () -> Void = { }) {
+        self.loading = true
         var request = NSURLRequest(URL: url!)
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
             if (error != nil) {
+                self.loading = false
                 self.delegate.dataSource(self, failedToLoadWithError: error)
             } else if ((response as NSHTTPURLResponse).statusCode != 200) {
+                self.loading = false
                 let error = NSError(domain: "NSURLDomainError", code: 0, userInfo: ["response": response])
                 self.delegate.dataSource(self, failedToLoadWithError: error)
             } else {
                 var error: NSError?
                 var bulletinsDictionary: [NSDictionary] = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &error) as [NSDictionary]
                 if (error != nil) {
+                    self.loading = false
                     self.delegate.dataSource(self, failedToLoadWithError: error!)
                     return
                 }
@@ -65,6 +70,7 @@ class BulletinsDataSource: NSObject, MediaTableViewDataSource {
                         self.bulletins[day] = [b]
                     }
                 }
+                self.loading = false
                 completed()
             }
         }
@@ -85,6 +91,7 @@ class BulletinsDataSource: NSObject, MediaTableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if (self.bulletins.keys.array.isEmpty) { return 0 }
         return self.bulletins[self.bulletins.keys.array[section]]!.count
     }
     

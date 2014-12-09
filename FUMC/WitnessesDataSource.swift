@@ -15,6 +15,7 @@ class WitnessesDataSource: NSObject, MediaTableViewDataSource {
     var witnesses = Dictionary<NSString, [Witness]>()
     var url = NSURL(string: "https://fumc.herokuapp.com/api/witnesses?visible=true&orderBy=volume:Z,issue:Z")
     var dateFormatter = NSDateFormatter()
+    var loading = false
     
     required init(delegate: MediaTableViewDataSourceDelegate) {
         super.init()
@@ -32,17 +33,21 @@ class WitnessesDataSource: NSObject, MediaTableViewDataSource {
     }
     
     func requestData(completed: () -> Void = { }) {
+        self.loading = true
         var request = NSURLRequest(URL: url!)
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
             if (error != nil) {
+                self.loading = false
                 self.delegate.dataSource(self, failedToLoadWithError: error)
             } else if ((response as NSHTTPURLResponse).statusCode != 200) {
+                self.loading = false
                 let error = NSError(domain: "NSURLDomainError", code: 0, userInfo: ["response": response])
                 self.delegate.dataSource(self, failedToLoadWithError: error)
             } else {
                 var error: NSError?
                 var witnessesDictionaries: [NSDictionary] = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &error) as [NSDictionary]
                 if (error != nil) {
+                    self.loading = false
                     self.delegate.dataSource(self, failedToLoadWithError: error!)
                     return
                 }
@@ -68,6 +73,7 @@ class WitnessesDataSource: NSObject, MediaTableViewDataSource {
                     }
                 }
                 
+                self.loading = false
                 completed()
             }
             
@@ -90,6 +96,7 @@ class WitnessesDataSource: NSObject, MediaTableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if (self.witnesses.keys.array.isEmpty) { return 0 }
         return self.witnesses[self.witnesses.keys.array[section]]!.count
     }
     
