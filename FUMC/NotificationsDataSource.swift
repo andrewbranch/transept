@@ -143,11 +143,11 @@ class NotificationsDataSource: NSObject, UITableViewDataSource {
         cell.dateLabel!.text = notification.sendDate.timeAgo()
         cell.messageLabel!.attributedText = NSAttributedString(string: notification.message)
         
-        if (notification.url.isEmpty) {
-            cell.selectionStyle = UITableViewCellSelectionStyle.None
-            cell.userInteractionEnabled = false
-        } else {
-            cell.accessoryType = UITableViewCellAccessoryType.DetailButton
+        if (!notification.url.isEmpty) {
+            cell.accessoryView = UIImageView(image: UIImage(named: "link")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate))
+        } else if let accessory = cell.accessoryView {
+            accessory.removeFromSuperview()
+            cell.accessoryView = nil
         }
     }
    

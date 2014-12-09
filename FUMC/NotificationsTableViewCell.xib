@@ -35,7 +35,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="286" translatesAutoresizingMaskIntoConstraints="NO" id="nES-UZ-4xi">
-                        <rect key="frame" x="28" y="34" width="284" height="45.5"/>
+                        <rect key="frame" x="28" y="34" width="274" height="45.5"/>
                         <attributedString key="attributedText">
                             <fragment content="This label is, it is safe to say, somewhat likely to take up two lines.">
                                 <attributes>
@@ -54,7 +54,7 @@
                     <constraint firstItem="Pjp-zO-dNx" firstAttribute="leading" secondItem="nES-UZ-4xi" secondAttribute="leading" id="Jn5-ce-rqh"/>
                     <constraint firstAttribute="bottom" secondItem="nES-UZ-4xi" secondAttribute="bottom" constant="4" id="NYd-Ou-hB6"/>
                     <constraint firstItem="QEv-eq-4Ya" firstAttribute="centerY" secondItem="Pjp-zO-dNx" secondAttribute="centerY" constant="-1" id="PAa-Tz-7Ed"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="nES-UZ-4xi" secondAttribute="trailing" id="PWQ-sB-ofD"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="nES-UZ-4xi" secondAttribute="trailing" constant="10" id="PWQ-sB-ofD"/>
                     <constraint firstItem="QEv-eq-4Ya" firstAttribute="top" secondItem="naR-FG-RzP" secondAttribute="topMargin" id="Rsu-xy-6kB"/>
                     <constraint firstAttribute="bottom" secondItem="nES-UZ-4xi" secondAttribute="bottom" constant="8" id="TLG-nY-e6Q"/>
                     <constraint firstItem="QEv-eq-4Ya" firstAttribute="leading" secondItem="naR-FG-RzP" secondAttribute="leading" constant="10" id="ce1-j5-KE8"/>

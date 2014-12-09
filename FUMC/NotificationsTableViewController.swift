@@ -105,5 +105,23 @@ class NotificationsTableViewController: CustomTableViewController, Notifications
         Static.sizingCell!.layoutIfNeeded()
         return Static.sizingCell!.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize).height + 1
     }
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        let notification = self.dataSource!.notificationForIndexPath(indexPath)
+        if (notification.url.isEmpty) {
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
+            cell.userInteractionEnabled = false
+            if let accessory = cell.accessoryView {
+                accessory.removeFromSuperview()
+                cell.accessoryView = nil
+            }
+        } else {
+            cell.userInteractionEnabled = true
+            cell.selectionStyle = UITableViewCellSelectionStyle.Default
+            if (cell.accessoryView == nil) {
+                cell.accessoryView = UIImageView(image: UIImage(named: "link")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate))
+            }
+        }
+    }
 
 }
