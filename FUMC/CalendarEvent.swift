@@ -15,8 +15,7 @@ class CalendarEvent: NSObject {
     var from: NSDate
     var to: NSDate
     var location: String
-    var calendar: String
-    var calendarId: String
+    var calendar: Calendar
     var allDay: Bool {
         if (self.from.hour() == 0 && self.from.minute() == 0 && self.to.hour() == 23 && self.to.minute() == 59) {
             return true
@@ -24,7 +23,7 @@ class CalendarEvent: NSObject {
         return false
     }
     
-    init(jsonDictionary: NSDictionary, dateFormatter: NSDateFormatter) {
+    init(jsonDictionary: NSDictionary, calendar: Calendar, dateFormatter: NSDateFormatter) {
 
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         
@@ -33,8 +32,7 @@ class CalendarEvent: NSObject {
         self.to = dateFormatter.dateFromString(jsonDictionary["to"] as String)!
         self.descript = ""
         self.location = ""
-        self.calendarId = jsonDictionary["calendarId"] as String
-        self.calendar = jsonDictionary["calendar"] as String
+        self.calendar = calendar
         
         if let description: String = jsonDictionary["description"] as? String {
             self.descript = description

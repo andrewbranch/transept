@@ -39,6 +39,9 @@ class CalendarSettingsViewController: UIViewController, UITableViewDelegate, Cal
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        if (self.currentCalendarIds == nil) {
+            self.currentCalendarIds = self.dataSource!.calendars.map { $0.id }
+        }
         self.tableView!.dataSource = self.dataSource!
     }
 
@@ -66,8 +69,10 @@ class CalendarSettingsViewController: UIViewController, UITableViewDelegate, Cal
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        if (find(self.currentCalendarIds!, self.dataSource!.calendarForIndexPath(indexPath)!.id) != nil) {
-            tableView.selectRowAtIndexPath(indexPath, animated: false, scrollPosition: UITableViewScrollPosition.None)
+        if let calendar = self.dataSource!.calendarForIndexPath(indexPath) {
+            if (self.currentCalendarIds!.contains(calendar.id)) {
+                tableView.selectRowAtIndexPath(indexPath, animated: false, scrollPosition: UITableViewScrollPosition.None)
+            }
         }
     }
     

@@ -82,7 +82,6 @@
 		49B2A3591A268070004EED86 /* WitnessesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B2A32B1A268070004EED86 /* WitnessesDataSource.swift */; };
 		49B2A3671A26829D004EED86 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B2A3641A26829D004EED86 /* Crashlytics.framework */; };
 		49B2A3681A26829D004EED86 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B2A3651A26829D004EED86 /* Fabric.framework */; };
-		49B2A3691A26829D004EED86 /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B2A3661A26829D004EED86 /* TwitterKit.framework */; };
 		49C83A1B1A2BCB3B00E02C96 /* NotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C83A1A1A2BCB3B00E02C96 /* NotificationsTableViewCell.swift */; };
 		49C83A1F1A2BCB8A00E02C96 /* NotificationsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49C83A1E1A2BCB8A00E02C96 /* NotificationsTableViewCell.xib */; };
 		49D5079C1A37A33A00531F23 /* WSLHTMLEntities.lm in Sources */ = {isa = PBXBuildFile; fileRef = 49D507991A37A33A00531F23 /* WSLHTMLEntities.lm */; };
@@ -227,7 +226,6 @@
 		49B2A32B1A268070004EED86 /* WitnessesDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WitnessesDataSource.swift; path = FUMC/WitnessesDataSource.swift; sourceTree = "<group>"; };
 		49B2A3641A26829D004EED86 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		49B2A3651A26829D004EED86 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
-		49B2A3661A26829D004EED86 /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterKit.framework; sourceTree = "<group>"; };
 		49C83A1A1A2BCB3B00E02C96 /* NotificationsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationsTableViewCell.swift; path = FUMC/NotificationsTableViewCell.swift; sourceTree = "<group>"; };
 		49C83A1E1A2BCB8A00E02C96 /* NotificationsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NotificationsTableViewCell.xib; path = FUMC/NotificationsTableViewCell.xib; sourceTree = "<group>"; };
 		49D507981A37A33A00531F23 /* WSLHTMLEntities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WSLHTMLEntities.h; path = FUMC/WSLHTMLEntities.h; sourceTree = "<group>"; };
@@ -248,7 +246,6 @@
 			files = (
 				49B2A3671A26829D004EED86 /* Crashlytics.framework in Frameworks */,
 				49B2A3681A26829D004EED86 /* Fabric.framework in Frameworks */,
-				49B2A3691A26829D004EED86 /* TwitterKit.framework in Frameworks */,
 				0668526FF3E0C871644D3E6B /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -331,7 +328,6 @@
 				49B2A2D31A268022004EED86 /* FUMC */,
 				49B2A3641A26829D004EED86 /* Crashlytics.framework */,
 				49B2A3651A26829D004EED86 /* Fabric.framework */,
-				49B2A3661A26829D004EED86 /* TwitterKit.framework */,
 				49B2A2EB1A268022004EED86 /* FUMCTests */,
 				49B2A2D21A268022004EED86 /* Products */,
 				AB214726C9C4F430C63B422A /* Pods */,
@@ -559,6 +555,7 @@
 				49B2A2CE1A268022004EED86 /* Frameworks */,
 				49B2A2CF1A268022004EED86 /* Resources */,
 				15BA284B13D5E0CD3F8C831A /* Copy Pods Resources */,
+				49D507A41A38A9DC00531F23 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -719,6 +716,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		49D507A41A38A9DC00531F23 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run ffe8c572c11cd4916b1c232ff022514dba9174df 7b52158f37654210cb77cc42c52fae28f2ada702147917d297c3f0aae786e69f";
 		};
 		9FD9C7A987C66C284D9C710C /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

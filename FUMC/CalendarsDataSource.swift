@@ -25,6 +25,12 @@ class CalendarsDataSource: NSObject, UITableViewDataSource {
         }
     }
     
+    func refresh() {
+        requestCalendars() {
+            self.settingsDelegate!.dataSourceDidFinishLoadingAPI(self)
+        }
+    }
+    
     func requestCalendars(completed: () -> Void = { }) {
         let url = NSURL(string: "https://fumc.herokuapp.com/api/calendars/list")
         let request = NSURLRequest(URL: url!)
@@ -74,10 +80,17 @@ class CalendarsDataSource: NSObject, UITableViewDataSource {
         
         let calendar = self.calendars[indexPath.row]
         cell.label!.text = calendar.name
-        cell.color = calendar.color
         
-        cell.label!.textColor = cell.color!
-        cell.checkView!.color = cell.color!
+        var h: CGFloat = 0
+        var s: CGFloat = 0
+        var l: CGFloat = 0
+        
+        let transform: (CGFloat) -> CGFloat = { x in
+            return (-pow(100, -x) + 1) / 2 + 0.5
+        }
+        
+        calendar.color.getHue(&h, saturation: &s, brightness: &l, alpha: nil)
+        cell.checkView!.color = UIColor(hue: h, saturation: s, brightness: transform(l), alpha: 1)
 
         return cell
     }

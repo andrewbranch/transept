@@ -37,7 +37,7 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
         super.viewDidLoad()
 
         self.tableView!.registerNib(UINib(nibName: "CalendarTableViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "calendarTableViewCell")
-            self.tableView!.registerNib(UINib(nibName: "CalendarTableViewAllDayCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "calendarTableViewAllDayCell")
+        self.tableView!.registerNib(UINib(nibName: "CalendarTableViewAllDayCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "calendarTableViewAllDayCell")
         self.tableView!.registerNib(UINib(nibName: "CalendarTableHeaderView", bundle: NSBundle.mainBundle()), forHeaderFooterViewReuseIdentifier: "CalendarTableHeaderViewIdentifier")
         
         self.showLoadingView()
@@ -95,7 +95,7 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
                     let dateFormatter = NSDateFormatter()
                     calendar.events.removeAll(keepCapacity: true)
                     for json in eventDictionaries {
-                        calendar.events.append(CalendarEvent(jsonDictionary: json, dateFormatter: dateFormatter))
+                        calendar.events.append(CalendarEvent(jsonDictionary: json, calendar: calendar, dateFormatter: dateFormatter))
                     }
                     
                     requestsCompleted++
@@ -144,6 +144,7 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+
         let event = eventForIndexPath(indexPath)
         if (event.allDay) {
             let cell = tableView.dequeueReusableCellWithIdentifier("calendarTableViewAllDayCell", forIndexPath: indexPath) as CalendarTableViewAllDayCell
@@ -154,6 +155,10 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
         let cell = tableView.dequeueReusableCellWithIdentifier("calendarTableViewCell", forIndexPath: indexPath) as CalendarTableViewCell
         cell.titleLabel!.text = event.name
         cell.locationLabel!.text = event.location
+        
+        let colorView = UIView(frame: CGRectMake(0, 0, 10, cell.frame.height))
+        colorView.backgroundColor = event.calendar.color
+        cell.addSubview(colorView)
         
         if (event.allDay) {
             cell.timeLabel!.text = "All day"
@@ -181,12 +186,12 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
         self.performSegueWithIdentifier("eventSegue", sender: indexPath)
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if (self.eventForIndexPath(indexPath).allDay) {
-            return 34
-        }
-        return 50
-    }
+//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        if (self.eventForIndexPath(indexPath).allDay) {
+//            return 34
+//        }
+//        return 50
+//    }
     
     // MARK: - Calendar Settings Delegate
     

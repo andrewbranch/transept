@@ -34,7 +34,7 @@
                         <color key="textColor" red="0.035294117647058823" green="0.27450980392156865" blue="0.41568627450980394" alpha="0.64000000000000001" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="286" translatesAutoresizingMaskIntoConstraints="NO" id="nES-UZ-4xi">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nES-UZ-4xi">
                         <rect key="frame" x="28" y="34" width="274" height="45.5"/>
                         <attributedString key="attributedText">
                             <fragment content="This label is, it is safe to say, somewhat likely to take up two lines.">

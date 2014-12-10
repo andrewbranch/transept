@@ -12,7 +12,6 @@ class CalendarSettingsTableViewCell: UITableViewCell {
     
     @IBOutlet var label: UILabel?
     @IBOutlet var checkView: RadioView?
-    var color: UIColor?
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

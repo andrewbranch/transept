@@ -26,7 +26,8 @@ class NotificationsTableViewController: CustomTableViewController, Notifications
         self.tableView!.dataSource = self.dataSource!
         self.tableView!.registerNib(UINib(nibName: "NotificationsTableViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "notificationsTableViewCell")
         self.tableView!.delegate = self
-        self.refreshControl.removeFromSuperview()
+        self.tableView!.estimatedRowHeight = 60
+        self.tableView!.rowHeight = UITableViewAutomaticDimension
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -89,21 +90,6 @@ class NotificationsTableViewController: CustomTableViewController, Notifications
         
         UIApplication.sharedApplication().openURL(NSURL(string: notification.url)!)
         self.tableView!.deselectRowAtIndexPath(indexPath, animated: true)
-    }
-    
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        struct Static {
-            static var token: dispatch_once_t = 0
-            static var sizingCell: NotificationsTableViewCell?
-        }
-        dispatch_once(&Static.token) {
-            Static.sizingCell = tableView.dequeueReusableCellWithIdentifier("notificationsTableViewCell") as? NotificationsTableViewCell
-        }
-        
-        self.dataSource!.setupCell(Static.sizingCell!, withNotification: self.dataSource!.notificationForIndexPath(indexPath))
-        Static.sizingCell!.setNeedsLayout()
-        Static.sizingCell!.layoutIfNeeded()
-        return Static.sizingCell!.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize).height + 1
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
