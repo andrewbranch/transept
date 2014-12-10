@@ -352,11 +352,11 @@
             </objects>
             <point key="canvasLocation" x="2482" y="-2147"/>
         </scene>
-        <!--Calendar-->
+        <!--Home View Controller-->
         <scene sceneID="NhA-a5-UY6">
             <objects>
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Cno-kf-7pY" customClass="HomeViewController" customModule="FUMC" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" title="Calendar" id="MaS-da-apn">
+                    <navigationItem key="navigationItem" id="MaS-da-apn">
                         <barButtonItem key="leftBarButtonItem" image="gear" id="wEu-KW-eBr">
                             <connections>
                                 <segue destination="7am-XD-3Jf" kind="presentation" identifier="calendarSettingsSegue" modalPresentationStyle="overFullScreen" id="7te-ka-RD1"/>
@@ -558,9 +558,11 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uJk-UF-obG">
-                                <rect key="frame" x="175" y="349" width="250" height="60"/>
+                                <rect key="frame" x="175" y="407" width="250" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="4u0-jM-xNb"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="4u0-jM-xNb"/>
+                                    <constraint firstAttribute="height" priority="700" constant="60" id="5Z7-Qi-alX"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="60" id="CQl-cY-i4b"/>
                                     <constraint firstAttribute="width" constant="250" id="iq3-IA-35g"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="20"/>
@@ -578,12 +580,15 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                             <constraint firstAttribute="centerX" secondItem="uJk-UF-obG" secondAttribute="centerX" id="3Iw-gQ-mEp"/>
                             <constraint firstAttribute="centerX" secondItem="ABI-El-Z8S" secondAttribute="centerX" id="8Sn-Yx-54n"/>
                             <constraint firstAttribute="centerX" secondItem="gSR-d0-ogz" secondAttribute="centerX" id="DWm-HX-q2p"/>
-                            <constraint firstItem="gSR-d0-ogz" firstAttribute="top" secondItem="ABy-Qm-RIT" secondAttribute="bottom" constant="30" id="NDY-ho-WIF"/>
+                            <constraint firstItem="uJk-UF-obG" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ABI-El-Z8S" secondAttribute="bottom" constant="10" id="G5l-vb-e7O"/>
+                            <constraint firstItem="gSR-d0-ogz" firstAttribute="top" secondItem="ABy-Qm-RIT" secondAttribute="bottom" priority="750" constant="30" id="NDY-ho-WIF"/>
                             <constraint firstItem="ABy-Qm-RIT" firstAttribute="leading" secondItem="eE9-iX-dMu" secondAttribute="leadingMargin" constant="15" id="UuQ-xI-qyv"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ABy-Qm-RIT" secondAttribute="trailing" constant="15" id="Z8q-jc-Kae"/>
-                            <constraint firstItem="ABy-Qm-RIT" firstAttribute="top" secondItem="Ezc-al-ZFh" secondAttribute="bottom" constant="40" id="bDI-qD-HmJ"/>
-                            <constraint firstItem="ABI-El-Z8S" firstAttribute="top" secondItem="gSR-d0-ogz" secondAttribute="bottom" constant="20" id="hGE-Ej-jcc"/>
-                            <constraint firstItem="uJk-UF-obG" firstAttribute="top" secondItem="ABI-El-Z8S" secondAttribute="bottom" constant="15" id="tIf-kQ-lmU"/>
+                            <constraint firstItem="ABy-Qm-RIT" firstAttribute="top" secondItem="Ezc-al-ZFh" secondAttribute="bottom" priority="700" constant="40" id="bDI-qD-HmJ"/>
+                            <constraint firstItem="ABI-El-Z8S" firstAttribute="top" secondItem="gSR-d0-ogz" secondAttribute="bottom" priority="750" constant="20" id="hGE-Ej-jcc"/>
+                            <constraint firstItem="fOp-cO-oBf" firstAttribute="top" secondItem="uJk-UF-obG" secondAttribute="bottom" constant="20" id="r7o-df-KOA"/>
+                            <constraint firstItem="ABy-Qm-RIT" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Ezc-al-ZFh" secondAttribute="bottom" constant="20" id="rQl-3i-KL9"/>
+                            <constraint firstItem="gSR-d0-ogz" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ABy-Qm-RIT" secondAttribute="bottom" constant="15" id="wjc-EJ-Ahw"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Give" id="IMd-8X-zko">
@@ -612,7 +617,8 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <color key="selectedImageTintColor" red="0.78365048882681565" green="0.29271011345489512" blue="0.33184059275009903" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" white="0.10000000000000001" alpha="0.90000000000000002" colorSpace="calibratedWhite"/>
+                        <color key="selectedImageTintColor" white="1" alpha="0.90000000000000002" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
                         <segue destination="F01-YL-vfW" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>

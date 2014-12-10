@@ -32,6 +32,7 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
     }
     var sortedKeys = [NSString]()
     let dateFormatter = NSDateFormatter()
+    var currentCalendars = [Calendar]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,10 +108,13 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
         }
     }
     
-//    override func reloadData() {
-//        self.events.removeAll(keepCapacity: true)
-//        requestEventsForCurrentCalendars()
-//    }
+    override func reloadData() {
+        self.refreshControl.beginRefreshing()
+        requestEventsForCalendars(self.currentCalendars, page: 1) {
+            self.updateTableWithNewCalendars(self.currentCalendars)
+            self.refreshControl.endRefreshing()
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -196,22 +200,23 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
     // MARK: - Calendar Settings Delegate
     
     func calendarsDataSource(dataSource: CalendarsDataSource, didGetCalendars calendars: [Calendar]) {
-        var currentCalendars: [Calendar]
         if let currentCalendarIds = NSUserDefaults.standardUserDefaults().objectForKey("selectedCalendarIds") as? [String] {
-            currentCalendars = calendars.filter { find(currentCalendarIds, $0.id) != nil }
+            self.currentCalendars = calendars.filter { find(currentCalendarIds, $0.id) != nil }
         } else {
-            currentCalendars = calendars
+            self.currentCalendars = calendars
+            NSUserDefaults.standardUserDefaults().setObject(calendars.map { $0.id }, forKey: "selectedCalendarIds")
         }
         
         self.showLoadingView()
-        requestEventsForCalendars(currentCalendars, page: 1) {
-            self.updateTableWithNewCalendars(currentCalendars)
+        requestEventsForCalendars(self.currentCalendars, page: 1) {
+            self.updateTableWithNewCalendars(self.currentCalendars)
             self.hideLoadingView()
         }
     }
     
     func calendarSettingsController(viewController: CalendarSettingsViewController, didUpdateSelectionFrom oldCalendars: [Calendar], to newCalendars: [Calendar]) {
         self.showLoadingView()
+        self.currentCalendars = newCalendars
         let diffCalendars = newCalendars.filter { find(oldCalendars, $0) == nil }
         requestEventsForCalendars(diffCalendars, page: 1) {
             self.updateTableWithNewCalendars(newCalendars)

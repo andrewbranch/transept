@@ -34,6 +34,7 @@
 		49940D6D1A2F89BA00E97CD7 /* RKDropdownAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 49940D6C1A2F89BA00E97CD7 /* RKDropdownAlert.m */; };
 		49952EE21A26888B002B06FA /* NotificationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49952EE11A26888B002B06FA /* NotificationsTableViewController.swift */; };
 		49952EE41A268BF5002B06FA /* NotificationBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49952EE31A268BF5002B06FA /* NotificationBarButtonItem.swift */; };
+		49A5696D1A38D93C00B6F1E4 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49A5696C1A38D93C00B6F1E4 /* Launch Screen.xib */; };
 		49B2A2EF1A268023004EED86 /* FUMCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B2A2EE1A268023004EED86 /* FUMCTests.swift */; };
 		49B2A32C1A268070004EED86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B2A2F81A268070004EED86 /* AppDelegate.swift */; };
 		49B2A32D1A268070004EED86 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49B2A2FA1A268070004EED86 /* Main.storyboard */; };
@@ -170,6 +171,7 @@
 		49940D6C1A2F89BA00E97CD7 /* RKDropdownAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RKDropdownAlert.m; path = FUMC/RKDropdownAlert.m; sourceTree = "<group>"; };
 		49952EE11A26888B002B06FA /* NotificationsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationsTableViewController.swift; path = FUMC/NotificationsTableViewController.swift; sourceTree = "<group>"; };
 		49952EE31A268BF5002B06FA /* NotificationBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationBarButtonItem.swift; path = FUMC/NotificationBarButtonItem.swift; sourceTree = "<group>"; };
+		49A5696C1A38D93C00B6F1E4 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		49B2A2D11A268022004EED86 /* FUMC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FUMC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49B2A2E81A268022004EED86 /* FUMCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FUMCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		49B2A2ED1A268023004EED86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -357,6 +359,7 @@
 				49B2A35A1A26808C004EED86 /* Supporting Files */,
 				49B2A3151A268070004EED86 /* Images.xcassets */,
 				49B2A2FA1A268070004EED86 /* Main.storyboard */,
+				49A5696C1A38D93C00B6F1E4 /* Launch Screen.xib */,
 			);
 			path = FUMC;
 			sourceTree = "<group>";
@@ -679,6 +682,7 @@
 				49C83A1F1A2BCB8A00E02C96 /* NotificationsTableViewCell.xib in Resources */,
 				49B2A32F1A268070004EED86 /* BebasNeue Book.otf in Resources */,
 				49B2A32E1A268070004EED86 /* BebasNeue Bold.otf in Resources */,
+				49A5696D1A38D93C00B6F1E4 /* Launch Screen.xib in Resources */,
 				49B2A34E1A268070004EED86 /* MyriadPro-Semibold.otf in Resources */,
 				490073B51A34B9590086CE0B /* LICENSE in Resources */,
 				49B2A3321A268070004EED86 /* BebasNeue Thin.otf in Resources */,

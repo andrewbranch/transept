@@ -86,7 +86,7 @@ class CalendarsDataSource: NSObject, UITableViewDataSource {
         var l: CGFloat = 0
         
         let transform: (CGFloat) -> CGFloat = { x in
-            return (-pow(100, -x) + 1) / 2 + 0.5
+            return (-pow(100, -x + 0.15) + 1) / 5 + 0.8
         }
         
         calendar.color.getHue(&h, saturation: &s, brightness: &l, alpha: nil)
