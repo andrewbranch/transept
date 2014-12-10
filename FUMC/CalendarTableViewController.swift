@@ -37,6 +37,7 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
         super.viewDidLoad()
 
         self.tableView!.registerNib(UINib(nibName: "CalendarTableViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "calendarTableViewCell")
+            self.tableView!.registerNib(UINib(nibName: "CalendarTableViewAllDayCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "calendarTableViewAllDayCell")
         self.tableView!.registerNib(UINib(nibName: "CalendarTableHeaderView", bundle: NSBundle.mainBundle()), forHeaderFooterViewReuseIdentifier: "CalendarTableHeaderViewIdentifier")
         
         self.showLoadingView()
@@ -143,15 +144,26 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("calendarTableViewCell", forIndexPath: indexPath) as CalendarTableViewCell
         let event = eventForIndexPath(indexPath)
+        if (event.allDay) {
+            let cell = tableView.dequeueReusableCellWithIdentifier("calendarTableViewAllDayCell", forIndexPath: indexPath) as CalendarTableViewAllDayCell
+            cell.titleLabel!.text = event.name
+            return cell
+        }
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("calendarTableViewCell", forIndexPath: indexPath) as CalendarTableViewCell
         cell.titleLabel!.text = event.name
         cell.locationLabel!.text = event.location
         
-        self.dateFormatter.dateFormat = "h:mm"
-        cell.timeLabel!.text = self.dateFormatter.stringFromDate(event.from)
-        self.dateFormatter.dateFormat = "a"
-        cell.meridiemLabel!.text = self.dateFormatter.stringFromDate(event.from)
+        if (event.allDay) {
+            cell.timeLabel!.text = "All day"
+            cell.meridiemLabel!.text = ""
+        } else {
+            self.dateFormatter.dateFormat = "h:mm"
+            cell.timeLabel!.text = self.dateFormatter.stringFromDate(event.from)
+            self.dateFormatter.dateFormat = "a"
+            cell.meridiemLabel!.text = self.dateFormatter.stringFromDate(event.from)
+        }
 
         return cell
     }
@@ -167,6 +179,13 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.performSegueWithIdentifier("eventSegue", sender: indexPath)
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if (self.eventForIndexPath(indexPath).allDay) {
+            return 34
+        }
+        return 50
     }
     
     // MARK: - Calendar Settings Delegate

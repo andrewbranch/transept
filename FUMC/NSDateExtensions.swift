@@ -11,6 +11,14 @@ extension NSDate {
     func midnight() -> NSDate {
         return NSCalendar.currentCalendar().dateFromComponents(NSCalendar.currentCalendar().components(.YearCalendarUnit | .MonthCalendarUnit | .DayCalendarUnit, fromDate: self))!
     }
+    
+    func hour() -> Int {
+        return NSCalendar.currentCalendar().components(.HourCalendarUnit, fromDate: self).hour
+    }
+    
+    func minute() -> Int {
+        return NSCalendar.currentCalendar().components(.MinuteCalendarUnit, fromDate: self).minute
+    }
 }
 
 func >(lhs: NSDate, rhs: NSDate) -> Bool {

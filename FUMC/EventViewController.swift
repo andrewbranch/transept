@@ -48,20 +48,22 @@ class EventViewController: UIViewController {
         self.dayLabel!.text = self.dateFormatter.stringFromDate(self.calendarEvent!.from)
         self.titleLabel!.text = self.calendarEvent!.name
         
-        self.dateFormatter.dateFormat = "EEEE, MMMM d yyyy"
-        if (self.calendarEvent!.location.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()) == "") {
-            self.locationLabel!.text = self.dateFormatter.stringFromDate(self.calendarEvent!.from)
-            self.dateLabel!.text = ""
-        }
-        
         self.locationLabel!.text = self.calendarEvent!.location
+        self.dateFormatter.dateFormat = "EEEE, MMMM d yyyy"
         self.dateLabel!.text = self.dateFormatter.stringFromDate(self.calendarEvent!.from)
-        self.dateFormatter.dateFormat = "h:mm"
-        self.fromTimeLabel!.text = self.dateFormatter.stringFromDate(self.calendarEvent!.from)
-        self.toTimeLabel!.text = self.dateFormatter.stringFromDate(self.calendarEvent!.to)
-        self.dateFormatter.dateFormat = "a"
-        self.fromMeridiemLabel!.text = self.dateFormatter.stringFromDate(self.calendarEvent!.from)
-        self.toMeridiemLabel!.text = self.dateFormatter.stringFromDate(self.calendarEvent!.to)
+        
+        if (self.calendarEvent!.allDay) {
+            self.fromTimeLabel!.superview!.subviews.each { ($0 as UIView).hidden = true }
+            self.fromTimeLabel!.hidden = false
+            self.fromTimeLabel!.text = "All day"
+        } else {
+            self.dateFormatter.dateFormat = "h:mm"
+            self.fromTimeLabel!.text = self.dateFormatter.stringFromDate(self.calendarEvent!.from)
+            self.toTimeLabel!.text = self.dateFormatter.stringFromDate(self.calendarEvent!.to)
+            self.dateFormatter.dateFormat = "a"
+            self.fromMeridiemLabel!.text = self.dateFormatter.stringFromDate(self.calendarEvent!.from)
+            self.toMeridiemLabel!.text = self.dateFormatter.stringFromDate(self.calendarEvent!.to)
+        }
         
         let description = WSLHTMLEntities.convertHTMLtoString(self.calendarEvent!.descript)
         var paragraphStyle = NSMutableParagraphStyle()

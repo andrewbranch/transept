@@ -17,9 +17,15 @@ class CalendarEvent: NSObject {
     var location: String
     var calendar: String
     var calendarId: String
+    var allDay: Bool {
+        if (self.from.hour() == 0 && self.from.minute() == 0 && self.to.hour() == 23 && self.to.minute() == 59) {
+            return true
+        }
+        return false
+    }
     
     init(jsonDictionary: NSDictionary, dateFormatter: NSDateFormatter) {
-        
+
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         
         self.name = jsonDictionary["name"] as String
