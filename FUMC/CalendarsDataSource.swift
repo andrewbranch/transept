@@ -32,25 +32,15 @@ class CalendarsDataSource: NSObject, UITableViewDataSource {
     }
     
     func requestCalendars(completed: () -> Void = { }) {
-        let url = NSURL(string: "https://fumc.herokuapp.com/api/calendars/list")
-        let request = NSURLRequest(URL: url!)
-        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
-            if (error != nil || (response as NSHTTPURLResponse).statusCode != 200) {
+        API.shared().getCalendars() { calendars, error in
+            if (error != nil) {
                 self.settingsDelegate?.dataSource(self, failedToLoadWithError: error)
+                ErrorAlerter.showLoadingAlertInViewController(self.calendarDelegate!)
             } else {
-                var error: NSError?
-                let calendarDictionaries: [NSDictionary] = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.allZeros, error: &error) as [NSDictionary]
-                if (error != nil) {
-                    self.settingsDelegate?.dataSource(self, failedToLoadWithError: error)
-                    return
-                }
-                
-                self.calendars.removeAll(keepCapacity: true)
-                for json in calendarDictionaries {
-                    self.calendars.append(Calendar(jsonDictionary: json))
-                }
+                self.calendars = calendars
                 completed()
             }
+            
         }
     }
     

@@ -17,6 +17,7 @@ class HomeViewController: UIPageViewController, UIPageViewControllerDataSource, 
     var pageControl = UIPageControl()
     var pages = [UIViewController]()
     var calendarsDataSource: CalendarsDataSource?
+    var featuredViewController: FeaturedViewController?
     var calendarViewController: CalendarTableViewController?
 
     override func viewDidLoad() {
@@ -40,6 +41,8 @@ class HomeViewController: UIPageViewController, UIPageViewControllerDataSource, 
         
         self.calendarsDataSource = CalendarsDataSource(settingsDelegate: nil, calendarDelegate: calendarViewController)
         self.calendarViewController = calendarViewController
+        self.featuredViewController = featuredViewController
+        (UIApplication.sharedApplication().delegate as AppDelegate).featuredViewController = featuredViewController
         
         // Preload featured view
         let preload = featuredViewController.view

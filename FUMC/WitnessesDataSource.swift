@@ -12,8 +12,7 @@ class WitnessesDataSource: NSObject, MediaTableViewDataSource {
     
     var title: NSString = "The Methodist Witness"
     var delegate: MediaTableViewDataSourceDelegate!
-    var witnesses = Dictionary<NSString, [Witness]>()
-    var url = NSURL(string: "https://fumc.herokuapp.com/api/witnesses?visible=true&orderBy=volume:Z,issue:Z")
+    var witnesses = Dictionary<String, [Witness]>()
     var dateFormatter = NSDateFormatter()
     var loading = false
     
@@ -34,58 +33,33 @@ class WitnessesDataSource: NSObject, MediaTableViewDataSource {
     
     func requestData(completed: () -> Void = { }) {
         self.loading = true
-        var request = NSURLRequest(URL: url!)
-        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
+        API.shared().getWitnesses() { witnesses, error in
             if (error != nil) {
-                self.loading = false
-                self.delegate.dataSource(self, failedToLoadWithError: error)
-            } else if ((response as NSHTTPURLResponse).statusCode != 200) {
-                self.loading = false
-                let error = NSError(domain: "NSURLDomainError", code: 0, userInfo: ["response": response])
                 self.delegate.dataSource(self, failedToLoadWithError: error)
             } else {
-                var error: NSError?
-                var witnessesDictionaries: [NSDictionary] = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &error) as [NSDictionary]
-                if (error != nil) {
-                    self.loading = false
-                    self.delegate.dataSource(self, failedToLoadWithError: error!)
-                    return
-                }
-                
                 self.witnesses.removeAll(keepCapacity: true)
-                for (var i = 0; i < witnessesDictionaries.count; i++) {
-                    
-                    self.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-                    let from = self.dateFormatter.dateFromString(witnessesDictionaries[i].objectForKey("from") as String)
-                    let to = self.dateFormatter.dateFromString(witnessesDictionaries[i].objectForKey("to") as String)
-                    
-                    var w = Witness()
-                    w.setValuesForKeysWithDictionary(witnessesDictionaries[i])
-                    w.from = from!
-                    w.to = to!
-                    
-                    self.dateFormatter.dateFormat = "yyyy"
-                    let volume = NSString(format: "%@ • Volume %i", self.dateFormatter.stringFromDate(w.from), w.volume)
-                    if (self.witnesses.indexForKey(volume) != nil) {
-                        self.witnesses[volume]!.append(w)
+                for w in witnesses.sorted({ a, b in a.from > b.from }) {
+                    let sectionTitle = "\(w.from.year()) • Volume \(w.volume)"
+                    if (self.witnesses.has(sectionTitle)) {
+                        self.witnesses[sectionTitle]!.append(w)
                     } else {
-                        self.witnesses[volume] = [w]
+                        self.witnesses[sectionTitle] = [w]
                     }
                 }
-                
-                self.loading = false
-                completed()
+
             }
             
+            self.loading = false
+            completed()
         }
     }
     
     func witnessForIndexPath(indexPath: NSIndexPath) -> Witness {
-        return self.witnesses[self.witnesses.keys.array[indexPath.section]]![indexPath.row]
+        return self.witnesses[self.witnesses.keys.array.sorted(>)[indexPath.section]]![indexPath.row]
     }
     
     func urlForIndexPath(indexPath: NSIndexPath) -> NSURL? {
-        return NSURL(string: "https://fumc.herokuapp.com/api/file/" + self.witnessForIndexPath(indexPath).file)
+        return API.shared().fileURL(key: self.witnessForIndexPath(indexPath).file)
     }
     
     
@@ -97,11 +71,11 @@ class WitnessesDataSource: NSObject, MediaTableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (self.witnesses.keys.array.isEmpty) { return 0 }
-        return self.witnesses[self.witnesses.keys.array[section]]!.count
+        return self.witnesses[self.witnesses.keys.array.sorted(>)[section]]!.count
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return self.witnesses.keys.array[section]
+        return self.witnesses.keys.array.sorted(>)[section]
     }
     
     func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {

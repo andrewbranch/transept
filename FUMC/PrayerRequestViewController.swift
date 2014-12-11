@@ -16,7 +16,7 @@ class PrayerRequestViewController: UIViewController, UITextViewDelegate, UIAlert
     @IBOutlet var scrollView: UIScrollView?
     private var successAlert: UIAlertView?
     private var errorAlert: UIAlertView?
-    private let url = NSURL(string: "https://fumc.herokuapp.com/api/emailer/send")
+    private let activityView = ActivityIndicatorView(frame: CGRectMake(0, 0, 100, 100))
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,17 +77,25 @@ class PrayerRequestViewController: UIViewController, UITextViewDelegate, UIAlert
         }
     }
     
+    func beginLoading() {
+        self.textView!.backgroundColor = UIColor.lightGrayColor()
+        self.button!.enabled = false
+        self.activityView.center = CGPointMake(self.view.center.x, self.textView!.center.y)
+        self.scrollView!.addSubview(self.activityView)
+    }
+    
+    func endLoading() {
+        self.textView!.backgroundColor = UIColor.whiteColor()
+        self.button!.enabled = true
+        self.activityView.removeFromSuperview()
+    }
+    
     @IBAction func sendRequest(sender: AnyObject?) {
-        let request = NSMutableURLRequest(URL: self.url!)
-        let data = "{\"email\": \"\(self.textView!.text)\"}".dataUsingEncoding(NSUTF8StringEncoding)
-        request.HTTPMethod = "POST"
-        request.HTTPBody = data!
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("\(data!.length)", forHTTPHeaderField: "Content-Length")
-        
-        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
-            if (error != nil || (response as NSHTTPURLResponse).statusCode != 200) {
+        self.dismissKeyboard()
+        self.beginLoading()
+        API.shared().sendPrayerRequest(self.textView!.text) { error in
+            self.endLoading()
+            if (error != nil) {
                 self.errorAlert!.show()
             } else {
                 self.successAlert!.show()

@@ -35,53 +35,29 @@ class FeaturedViewController: UIViewController, HomeViewPage {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.label!.font = UIFont.fumcMainFontRegular26
-        
-        let url = NSURL(string: "https://fumc.herokuapp.com/api/features?active=true")
-        let request = NSURLRequest(URL: url!)
-        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
-            if (error != nil || data.length == 0 || (response as NSHTTPURLResponse).statusCode != 200) {
-                // ErrorAlerter.loadingAlertBasedOnReachability().show()
-                return
-            }
-            var err: NSError?
-            let jsonDictionaries: [NSDictionary] = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.allZeros, error: &err) as [NSDictionary]
-            if (err != nil) {
-                // ErrorAlerter.loadingAlertBasedOnReachability().show()
-                return
-            } else if (jsonDictionaries.count == 0) {
-                return
-            }
-
-            // Doesn't work in simulator
-            if let deviceImage = self.deviceImageMap[UIDevice.currentDevice().platform()] {
-                if let key = jsonDictionaries[0][deviceImage] as? NSString {
-                    let fileRequest = NSURLRequest(URL: NSURL(string: "https://fumc.herokuapp.com/api/file/\(key)")!)
-                    NSURLConnection.sendAsynchronousRequest(fileRequest, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
-                        if (error != nil || data.length == 0 || (response as NSHTTPURLResponse).statusCode != 200) {
-                            // ErrorAlerter.loadingAlertBasedOnReachability().show()
-                            return
-                        }
-                        let image = UIImage(data: data)
-                        if let img = image {
-                            self.imageView!.image = img
-                            self.featureId = jsonDictionaries[0]["id"] as? Int
-                            if (NSUserDefaults.standardUserDefaults().integerForKey("lastSeenFeatureId") != self.featureId?) {
-                                // New feature
-                                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(500 * NSEC_PER_MSEC)), dispatch_get_main_queue()) {
-                                    self.pageViewController!.setViewControllers([self], direction: UIPageViewControllerNavigationDirection.Forward, animated: true) { (finished) -> Void in
-                                        self.pageViewController!.didTransitionToViewController(self)
-                                    }
-                                }
-                            }
-                        } else {
-                            // ErrorAlerter.loadingAlertBasedOnReachability().show()
+        loadFeaturedContent()
+    }
+    
+    func loadFeaturedContent() {
+        self.label!.hidden = false
+        if let key = self.deviceImageMap[UIDevice.currentDevice().platform()] {
+            API.shared().getFeaturedContent(key) { image, id, error in
+                if (error != nil) {
+                    self.imageView!.image = nil
+                    return
+                }
+                
+                self.label!.hidden = true
+                self.imageView!.image = image!
+                self.featureId = id!
+                if (NSUserDefaults.standardUserDefaults().integerForKey("lastSeenFeatureId") != id!) {
+                    // New feature
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(500 * NSEC_PER_MSEC)), dispatch_get_main_queue()) {
+                        self.pageViewController!.setViewControllers([self], direction: UIPageViewControllerNavigationDirection.Forward, animated: true) { (finished) -> Void in
+                            self.pageViewController!.didTransitionToViewController(self)
                         }
                     }
-                } else {
-                    // ErrorAlerter.loadingAlertBasedOnReachability().show()
                 }
-            } else {
-                // ErrorAlerter.loadingAlertBasedOnReachability().show()
             }
         }
     }
