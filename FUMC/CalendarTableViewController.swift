@@ -65,46 +65,11 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
             return
         }
         
-        self.dateFormatter.dateFormat = "MM.dd.yyyy"
-        let from = dateFormatter.stringFromDate(NSDate(timeIntervalSinceNow: 60 * 60 * 24 * 7 * Double(page - 1)))
-        let to = dateFormatter.stringFromDate(NSDate(timeIntervalSinceNow: 60 * 60 * 24 * 7 * Double(page)))
-        
-        var requestsCompleted = 0
-        var requestsFailed = 0
-        let fail = { (completed: () -> Void) -> Void in
-            requestsFailed++
-            if (requestsCompleted + requestsFailed == calendars.count) {
-                completed()
+        API.shared().getEventsForCalendars(calendars) { calendars, error in
+            if (error != nil) {
                 ErrorAlerter.showLoadingAlertInViewController(self)
             }
-        }
-        
-        for calendar in calendars {
-            let url = NSURL(string: "https://fumc.herokuapp.com/api/calendars/\(calendar.id).json?from=\(from)&to=\(to)")
-            let request = NSURLRequest(URL: url!)
-            NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
-                if (error != nil || (response as NSHTTPURLResponse).statusCode != 200) {
-                    fail(completed)
-                } else {
-                    var error: NSError?
-                    let eventDictionaries: [NSDictionary] = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.allZeros, error: &error) as [NSDictionary]
-                    if (error != nil) {
-                        fail(completed)
-                        return
-                    }
-                    
-                    let dateFormatter = NSDateFormatter()
-                    calendar.events.removeAll(keepCapacity: true)
-                    for json in eventDictionaries {
-                        calendar.events.append(CalendarEvent(jsonDictionary: json, calendar: calendar, dateFormatter: dateFormatter))
-                    }
-                    
-                    requestsCompleted++
-                    if (requestsCompleted + requestsFailed == calendars.count) {
-                        completed()
-                    }
-                }
-            }
+            completed()
         }
     }
     
@@ -189,13 +154,6 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.performSegueWithIdentifier("eventSegue", sender: indexPath)
     }
-    
-//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        if (self.eventForIndexPath(indexPath).allDay) {
-//            return 34
-//        }
-//        return 50
-//    }
     
     // MARK: - Calendar Settings Delegate
     

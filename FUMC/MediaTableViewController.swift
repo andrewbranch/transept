@@ -34,6 +34,7 @@ class MediaTableViewController: CustomTableViewController, MediaTableViewDataSou
         self.navigationItem.title = self.dataSource!.title
         self.tableView!.dataSource = self.dataSource!
         self.tableView!.delegate = self.dataSource!
+        self.tableViewController.refreshControl = nil // Workaround for #26
         
         self.tableView!.backgroundView?.hidden = self.dataSource!.loading || self.dataSource!.tableView(self.tableView!, numberOfRowsInSection: 0) > 0
     }
@@ -44,6 +45,10 @@ class MediaTableViewController: CustomTableViewController, MediaTableViewDataSou
             self.tableView!.deselectRowAtIndexPath(indexPath, animated: true)
         }
     }
+    
+    override func viewDidDisappear(animated: Bool) {
+        self.dataSource!.refresh() // Workaround for #26
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -51,6 +56,7 @@ class MediaTableViewController: CustomTableViewController, MediaTableViewDataSou
     }
     
     override func reloadData() {
+        self.showLoadingView()
         self.dataSource!.refresh()
     }
     
@@ -63,11 +69,8 @@ class MediaTableViewController: CustomTableViewController, MediaTableViewDataSou
     
     func dataSourceDidFinishLoadingAPI(dataSource: MediaTableViewDataSource) {
         self.tableView!.reloadData()
-        if (self.refreshControl.refreshing) {
-            self.refreshControl.endRefreshing()
-        } else {
-            self.hideLoadingView()
-        }
+        // self.tableViewController.refreshControl!.endRefreshing()
+        self.hideLoadingView()
         
         self.tableView!.backgroundView?.hidden = dataSource.tableView(self.tableView!, numberOfRowsInSection: 0) > 0
     }

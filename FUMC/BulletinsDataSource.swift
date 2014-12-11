@@ -11,8 +11,7 @@ import UIKit
 class BulletinsDataSource: NSObject, MediaTableViewDataSource {
     
     var title: NSString = "Worship Bulletins"
-    let url = NSURL(string: "https://fumc.herokuapp.com/api/bulletins?visible=true&orderBy=date:Z,service:A")
-    var bulletins: Dictionary<NSString, [Bulletin]> = Dictionary<NSString, [Bulletin]>()
+    var bulletins = Dictionary<NSDate, [Bulletin]>()
     let dateFormatter = NSDateFormatter()
     var delegate: MediaTableViewDataSourceDelegate!
     var loading = false
@@ -34,54 +33,31 @@ class BulletinsDataSource: NSObject, MediaTableViewDataSource {
     
     func requestData(completed: () -> Void = { }) {
         self.loading = true
-        var request = NSURLRequest(URL: url!)
-        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
+        API.shared().getBulletins() { bulletins, error in
             if (error != nil) {
-                self.loading = false
-                self.delegate.dataSource(self, failedToLoadWithError: error)
-            } else if ((response as NSHTTPURLResponse).statusCode != 200) {
-                self.loading = false
-                let error = NSError(domain: "NSURLDomainError", code: 0, userInfo: ["response": response])
                 self.delegate.dataSource(self, failedToLoadWithError: error)
             } else {
-                var error: NSError?
-                var bulletinsDictionary: [NSDictionary] = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &error) as [NSDictionary]
-                if (error != nil) {
-                    self.loading = false
-                    self.delegate.dataSource(self, failedToLoadWithError: error!)
-                    return
-                }
-                
                 self.bulletins.removeAll(keepCapacity: true)
-                for (var i = 0; i < bulletinsDictionary.count; i++) {
-                    
-                    self.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-                    var date = self.dateFormatter.dateFromString(bulletinsDictionary[i].objectForKey("date") as String)
-                    
-                    var b = Bulletin()
-                    b.setValuesForKeysWithDictionary(bulletinsDictionary[i])
-                    b.date = date!
-                    
-                    self.dateFormatter.dateFormat = "EEEE, MMMM d, yyyy"
-                    var day = self.dateFormatter.stringFromDate(b.date)
-                    if (self.bulletins.indexForKey(day) != nil) {
-                        self.bulletins[day]!.append(b)
+                for b in bulletins {
+                    if (self.bulletins.has(b.date)) {
+                        self.bulletins[b.date]!.append(b)
                     } else {
-                        self.bulletins[day] = [b]
+                        self.bulletins[b.date] = [b]
                     }
                 }
-                self.loading = false
-                completed()
             }
+            
+            self.loading = false
+            completed()
         }
     }
     
     func urlForIndexPath(indexPath: NSIndexPath) -> NSURL? {
-        return NSURL(string: "https://fumc.herokuapp.com/api/file/" + self.bulletinForIndexPath(indexPath).file)
+        return API.shared().fileURL(key: self.bulletinForIndexPath(indexPath).file)
     }
     
     func bulletinForIndexPath(indexPath: NSIndexPath) -> Bulletin {
-        return self.bulletins[self.bulletins.keys.array[indexPath.section]]![indexPath.row]
+        return self.bulletins[self.bulletins.keys.array.sorted(>)[indexPath.section]]![indexPath.row]
     }
     
     // MARK: - Table view data source
@@ -92,11 +68,12 @@ class BulletinsDataSource: NSObject, MediaTableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (self.bulletins.keys.array.isEmpty) { return 0 }
-        return self.bulletins[self.bulletins.keys.array[section]]!.count
+        return self.bulletins[self.bulletins.keys.array.sorted(>)[section]]!.count
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return self.bulletins.keys.array[section]
+        self.dateFormatter.dateFormat = "EEEE, MMMM d, yyyy"
+        return self.dateFormatter.stringFromDate(self.bulletins.keys.array.sorted(>)[section])
     }
     
     func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -111,38 +88,4 @@ class BulletinsDataSource: NSObject, MediaTableViewDataSource {
         return cell
     }
     
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView!, canEditRowAtIndexPath indexPath: NSIndexPath!) -> Bool {
-    // Return NO if you do not want the specified item to be editable.
-    return true
-    }
-    */
-    
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!) {
-    if editingStyle == .Delete {
-    // Delete the row from the data source
-    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-    } else if editingStyle == .Insert {
-    // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }
-    }
-    */
-    
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView!, moveRowAtIndexPath fromIndexPath: NSIndexPath!, toIndexPath: NSIndexPath!) {
-    
-    }
-    */
-    
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView!, canMoveRowAtIndexPath indexPath: NSIndexPath!) -> Bool {
-    // Return NO if you do not want the item to be re-orderable.
-    return true
-    }
-    */
 }

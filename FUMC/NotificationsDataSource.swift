@@ -17,6 +17,7 @@ class NotificationsDataSource: NSObject, UITableViewDataSource {
     var dateFormatter = NSDateFormatter()
     var readIds = [Int]()
     var highlightedIds = [Int]()
+    var channels = [String]()
     lazy var linkImage: UIImage = {
         return UIImage(named: "link")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
     }()
@@ -26,8 +27,9 @@ class NotificationsDataSource: NSObject, UITableViewDataSource {
         self.delegate = delegate
         self.delegate!.dataSourceDidStartLoadingAPI(self)
         
-        self.getChannels() {
-            self.requestData() {
+        self.getChannels() { channels in
+            self.channels = channels
+            self.requestData(channels.contains("tester")) {
                 self.sortNotifications()
                 self.delegate!.dataSourceDidFinishLoadingAPI(self)
             }
@@ -36,73 +38,43 @@ class NotificationsDataSource: NSObject, UITableViewDataSource {
     
     override init() {
         super.init()
-        self.getChannels() {
-            self.requestData() {
+        self.getChannels() { channels in
+            self.channels = channels
+            self.requestData(channels.contains("tester")) {
                 self.sortNotifications()
                 self.delegate?.dataSourceDidFinishLoadingAPI(self)
             }
         }
     }
     
-    func getChannels(completed: () -> Void) {
-        let request = NSURLRequest(URL: NSURL(string: "https://api.zeropush.com/devices/1c97398039fe456a2110d45c44f5c08649fec77a91cbc6d31da61dbe376225ec?auth_token=deecrPVM9Xsd53QMBcq8")!)
+    func getChannels(completed: (channels: [String]) -> Void) {
+        let request = NSURLRequest(URL: NSURL(string: "https://api.zeropush.com/devices/\(ZeroPush.shared().deviceToken)?auth_token=\(ZeroPush.shared().apiKey)")!)
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { respone, data, error in
             if (error != nil) {
-                completed()
+                completed(channels: [])
                 return
             }
             var error: NSError?
             let json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.allZeros, error: &error) as NSDictionary
             if (error == nil) {
-                if ((json["channels"] as [String]).contains("testers")) {
-                    self.url = NSURL(string: "https://fumc.herokuapp.com/api/notifications/current?tester=true")
-                }
+                completed(channels: json["channels"] as [String])
+            } else {
+                completed(channels: [])
             }
-            completed()
         }
     }
     
     func refresh() {
-        requestData() {
+        requestData(self.channels.contains("tester")) {
             self.sortNotifications()
             self.delegate?.dataSourceDidFinishLoadingAPI(self)
         }
     }
     
-    func requestData(completed: () -> Void = { }) {
-        var request = NSURLRequest(URL: url!)
-        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
-            if (error != nil || (response as NSHTTPURLResponse).statusCode != 200) {
-                return
-            }
-            
-            var error: NSError?
-            var notificationsDictionaries: [NSDictionary] = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &error) as [NSDictionary]
-            if (error != nil) {
-                return
-            }
-            
-            self.notifications.removeAll(keepCapacity: true)
-            for (var i = 0; i < notificationsDictionaries.count; i++) {
-                
-                self.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-                let sendDate = self.dateFormatter.dateFromString(notificationsDictionaries[i]["sendDate"] as String)
-                let expirationDate = self.dateFormatter.dateFromString(notificationsDictionaries[i]["expirationDate"] as String)
-                
-                var n = Notification()
-                n.id = notificationsDictionaries[i]["id"] as Int
-                n.message = notificationsDictionaries[i]["message"] as String
-                if let url = notificationsDictionaries[i]["url"] as? String {
-                    n.url = url
-                }
-                n.sendDate = sendDate!
-                n.expirationDate = expirationDate!
-                
-                self.notifications.append(n)
-            }
-            
+    func requestData(tester: Bool, completed: () -> Void = { }) {
+        API.shared().getNotifications(tester) { notifications, error in
+            self.notifications = notifications
             completed()
-            
         }
     }
     

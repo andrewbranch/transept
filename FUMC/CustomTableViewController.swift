@@ -12,7 +12,7 @@ class CustomTableViewController: UIViewController, ErrorAlertable {
     
     @IBOutlet var tableView: UITableView?
     var errorAlertToBeShown: UIAlertView?
-    let activityView = UIView(frame: CGRectMake(0, 0, 100, 100))
+    let activityView = ActivityIndicatorView(frame: CGRectMake(0, 0, 100, 100))
     let refreshControl = UIRefreshControl()
     lazy var tableViewController: UITableViewController = {
        return UITableViewController(style: self.tableView!.style)
@@ -32,14 +32,7 @@ class CustomTableViewController: UIViewController, ErrorAlertable {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let activityIndicator = UIActivityIndicatorView(frame: CGRectMake(0, 0, 30, 30))
-        self.activityView.backgroundColor = UIColor(white: 0, alpha: 0.75)
-        self.activityView.layer.cornerRadius = 10
-        self.activityView.addSubview(activityIndicator)
-        activityIndicator.center = self.activityView.center
-        activityIndicator.startAnimating()
-        self.activityView.center = self.view.center
-        self.activityView.frame = CGRectMake(self.activityView.frame.minX, self.activityView.frame.minY - 80, self.activityView.frame.width, self.activityView.frame.height)
+        self.activityView.center = CGPointMake(self.view.center.x, self.view.center.y - 80)
         
         self.tableViewController.tableView = self.tableView!
         self.tableViewController.refreshControl = self.refreshControl
