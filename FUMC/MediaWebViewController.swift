@@ -40,7 +40,9 @@ class MediaWebViewController: UIViewController, UIWebViewDelegate, UIScrollViewD
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        animateNavBarTo(UIApplication.sharedApplication().statusBarFrame.height)
+        if (self.navController!.navigationBar.frame.origin.y < 0) {
+            animateNavBarTo(UIApplication.sharedApplication().statusBarFrame.height)
+        }
     }
     
     // MARK: - Web View Delegate
