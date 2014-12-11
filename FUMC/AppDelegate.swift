@@ -24,7 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ZeroPushDelegate, RKDropd
     var notificationsViewIsOpen = false
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-
+        
+        UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation: UIStatusBarAnimation.None)
+        
         let translucentWhite = UIColor(white: 0.95, alpha: 0.8)
 
         UINavigationBar.appearance().titleTextAttributes = [

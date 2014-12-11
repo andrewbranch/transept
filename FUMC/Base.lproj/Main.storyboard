@@ -150,7 +150,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hpt-XQ-bzC">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="287"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Young Professionals" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mmb-iI-Ppx">
                                                 <rect key="frame" x="24" y="175" width="568" height="18"/>
@@ -180,13 +180,13 @@
                                                 <rect key="frame" x="0.0" y="100" width="600" height="30"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gb4-3K-B0c">
-                                                        <rect key="frame" x="191.5" y="6" width="38.5" height="22"/>
+                                                        <rect key="frame" x="191" y="6" width="38.5" height="22"/>
                                                         <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="22"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="to" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCp-mV-clu">
-                                                        <rect key="frame" x="167.5" y="11" width="13.5" height="15"/>
+                                                        <rect key="frame" x="167" y="11" width="13.5" height="15"/>
                                                         <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="15"/>
                                                         <color key="textColor" white="0.79981203007518797" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
@@ -198,7 +198,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hf2-YY-ajQ">
-                                                        <rect key="frame" x="231.5" y="13" width="17.5" height="13"/>
+                                                        <rect key="frame" x="231" y="13" width="17.5" height="13"/>
                                                         <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="13"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
@@ -298,6 +298,7 @@
                                             <constraint firstItem="RST-Lh-miq" firstAttribute="top" secondItem="18K-ej-Jdt" secondAttribute="bottom" constant="20" id="hFp-JS-ENd"/>
                                             <constraint firstItem="mmb-iI-Ppx" firstAttribute="leading" secondItem="hpt-XQ-bzC" secondAttribute="leading" constant="24" id="kld-qb-NQg"/>
                                             <constraint firstItem="9I7-TY-xWA" firstAttribute="leading" secondItem="bYf-VK-zH4" secondAttribute="trailing" constant="10" id="oaT-gc-3Vd"/>
+                                            <constraint firstAttribute="bottom" secondItem="RST-Lh-miq" secondAttribute="bottom" constant="20" id="skI-oc-UoL"/>
                                             <constraint firstItem="18K-ej-Jdt" firstAttribute="leading" secondItem="RST-Lh-miq" secondAttribute="leading" id="tT6-h1-KkV"/>
                                             <constraint firstItem="Gmg-OC-hGG" firstAttribute="centerY" secondItem="bYf-VK-zH4" secondAttribute="centerY" id="ujF-1J-xMA"/>
                                             <constraint firstAttribute="trailing" secondItem="Gmg-OC-hGG" secondAttribute="trailing" id="xc6-91-5wr"/>
@@ -316,11 +317,20 @@
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="hpt-XQ-bzC" secondAttribute="bottom" id="8wh-ln-mWK"/>
                                     <constraint firstAttribute="bottom" secondItem="hpt-XQ-bzC" secondAttribute="bottom" id="OgR-L8-OS5"/>
+                                    <constraint firstItem="hpt-XQ-bzC" firstAttribute="height" secondItem="1zH-cA-kxL" secondAttribute="height" id="VVQ-Zh-dDo"/>
                                     <constraint firstItem="hpt-XQ-bzC" firstAttribute="leading" secondItem="1zH-cA-kxL" secondAttribute="leading" id="hWo-SS-5OD"/>
                                     <constraint firstItem="hpt-XQ-bzC" firstAttribute="top" secondItem="1zH-cA-kxL" secondAttribute="top" id="j1U-qM-7PK"/>
                                     <constraint firstAttribute="trailing" secondItem="hpt-XQ-bzC" secondAttribute="trailing" id="pFd-Wb-s2G"/>
+                                    <constraint firstItem="hpt-XQ-bzC" firstAttribute="width" secondItem="1zH-cA-kxL" secondAttribute="width" id="yhz-yu-Vog"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="OgR-L8-OS5"/>
+                                        <exclude reference="VVQ-Zh-dDo"/>
+                                    </mask>
+                                </variation>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -332,6 +342,12 @@
                             <constraint firstItem="Qux-Pp-Cmz" firstAttribute="top" secondItem="1zH-cA-kxL" secondAttribute="bottom" id="qB6-2R-4Ej"/>
                             <constraint firstAttribute="width" secondItem="hpt-XQ-bzC" secondAttribute="width" id="zj4-j6-lQq"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="36A-jK-ehA"/>
+                                <exclude reference="zj4-j6-lQq"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="dateContainer" destination="bYf-VK-zH4" id="eeg-d1-Bp0"/>
@@ -350,7 +366,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gyW-Ol-4VM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2482" y="-2147"/>
+            <point key="canvasLocation" x="2436" y="-2204"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="NhA-a5-UY6">
