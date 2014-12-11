@@ -82,7 +82,7 @@ char *WSLget_text (yyscan_t yyscanner );
                 break;
             case WSL_ENTITY_HEX_NUMBER:
                 // +3 to move past the '&#x'
-                expression = strtol(WSLget_text(scanner) + 3, NULL, 16);
+                expression = (int)strtol(WSLget_text(scanner) + 3, NULL, 16);
                 if (expression == 0 && errno == EINVAL) {
                     // TODO: the lexer should always return a valid hex number but we should still have some error handling here
                 }

@@ -13,6 +13,7 @@ class MediaWebViewController: UIViewController, UIWebViewDelegate, UIScrollViewD
     @IBOutlet var webView: UIWebView?
     @IBOutlet var activityIndicator: UIActivityIndicatorView?
     private var previousScrollViewYOffset = CGFloat(0)
+    private var navController: UINavigationController?
     
     var url: NSURL?
 
@@ -32,7 +33,13 @@ class MediaWebViewController: UIViewController, UIWebViewDelegate, UIScrollViewD
         }
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navController = self.navigationController
+    }
+    
     override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
         animateNavBarTo(UIApplication.sharedApplication().statusBarFrame.height)
     }
     
@@ -110,16 +117,18 @@ class MediaWebViewController: UIViewController, UIWebViewDelegate, UIScrollViewD
     func updateBarButtonItems(#alpha: CGFloat) {
         self.navigationItem.backBarButtonItem?.tintColor = self.navigationItem.backBarButtonItem?.tintColor.colorWithAlphaComponent(alpha)
         self.navigationItem.titleView?.alpha = alpha
-        self.navigationController!.navigationBar.tintColor = self.navigationController!.navigationBar.tintColor.colorWithAlphaComponent(alpha)
+        self.navController!.navigationBar.tintColor = self.navController!.navigationBar.tintColor.colorWithAlphaComponent(alpha)
     }
     
     func animateNavBarTo(y: CGFloat) {
-        UIView.animateWithDuration(0.2) {
-            var frame = self.navigationController!.navigationBar.frame
-            let alpha = frame.origin.y >= y ? 0 : 1
-            frame.origin.y = y
-            self.navigationController!.navigationBar.frame = frame
-            self.updateBarButtonItems(alpha: CGFloat(alpha))
+        if let navigationController = self.navController {
+            UIView.animateWithDuration(0.2) {
+                var frame = navigationController.navigationBar.frame
+                let alpha = frame.origin.y >= y ? 0 : 1
+                frame.origin.y = y
+                navigationController.navigationBar.frame = frame
+                self.updateBarButtonItems(alpha: CGFloat(alpha))
+            }
         }
     }
 
