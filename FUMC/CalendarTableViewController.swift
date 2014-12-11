@@ -75,7 +75,7 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
             requestsFailed++
             if (requestsCompleted + requestsFailed == calendars.count) {
                 completed()
-                ErrorAlerter.loadingAlertBasedOnReachability().show()
+                ErrorAlerter.showLoadingAlertInViewController(self)
             }
         }
         

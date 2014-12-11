@@ -6,6 +6,12 @@
 //  Copyright (c) 2014 FUMC Pensacola. All rights reserved.
 //
 
+protocol ErrorAlertable {
+    func isViewLoaded() -> Bool
+    var view: UIView! { get set }
+    var errorAlertToBeShown: UIAlertView? { get set }
+}
+
 class ErrorAlerter: NSObject {
     
     class func loadingAlertBasedOnReachability() -> UIAlertView {
@@ -21,6 +27,14 @@ class ErrorAlerter: NSObject {
         }
         return Static.genericLoadingErrorAlert
 
+    }
+    
+    class func showLoadingAlertInViewController(var viewController: ErrorAlertable) {
+        if (viewController.isViewLoaded() && viewController.view.window != nil) {
+            ErrorAlerter.loadingAlertBasedOnReachability().show()
+        } else {
+            viewController.errorAlertToBeShown = self.loadingAlertBasedOnReachability()
+        }
     }
     
 }

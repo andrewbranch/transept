@@ -73,7 +73,7 @@ class MediaTableViewController: CustomTableViewController, MediaTableViewDataSou
     }
     
     func dataSource(dataSource: MediaTableViewDataSource, failedToLoadWithError error: NSError?) {
-        ErrorAlerter.loadingAlertBasedOnReachability().show()
+        ErrorAlerter.showLoadingAlertInViewController(self)
         dataSourceDidFinishLoadingAPI(self.dataSource!)
     }
 

@@ -12,9 +12,10 @@ import UIKit
     var tableView: UITableView? { get set }
     optional func dataSourceDidStartLoadingAPI(dataSource: CalendarsDataSource) -> Void
     func dataSourceDidFinishLoadingAPI(dataSource: CalendarsDataSource) -> Void
+    func dataSource(dataSource: CalendarsDataSource, failedToLoadWithError error: NSError?) -> Void
 }
 
-class CalendarSettingsViewController: UIViewController, UITableViewDelegate, CalendarsDataSourceDelegate {
+class CalendarSettingsViewController: UIViewController, UITableViewDelegate, CalendarsDataSourceDelegate, ErrorAlertable {
     
     @IBOutlet var tableView: UITableView?
     var dataSource: CalendarsDataSource?
@@ -24,6 +25,7 @@ class CalendarSettingsViewController: UIViewController, UITableViewDelegate, Cal
         return UITableViewController(style: self.tableView!.style)
     }()
     
+    var errorAlertToBeShown: UIAlertView?
     var lastCalendarIds = NSUserDefaults.standardUserDefaults().objectForKey("selectedCalendarIds") as [String]?
     var currentCalendarIds: [String]? = NSUserDefaults.standardUserDefaults().objectForKey("selectedCalendarIds") as [String]? {
         didSet (oldValue) {
@@ -43,6 +45,13 @@ class CalendarSettingsViewController: UIViewController, UITableViewDelegate, Cal
             self.currentCalendarIds = self.dataSource!.calendars.map { $0.id }
         }
         self.tableView!.dataSource = self.dataSource!
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if let alert = self.errorAlertToBeShown {
+            alert.show()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -80,7 +89,9 @@ class CalendarSettingsViewController: UIViewController, UITableViewDelegate, Cal
         self.tableView?.reloadData()
     }
     
-    
+    func dataSource(dataSource: CalendarsDataSource, failedToLoadWithError error: NSError?) {
+        ErrorAlerter.showLoadingAlertInViewController(self)
+    }
 
     /*
     // MARK: - Navigation

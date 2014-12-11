@@ -36,14 +36,12 @@ class CalendarsDataSource: NSObject, UITableViewDataSource {
         let request = NSURLRequest(URL: url!)
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
             if (error != nil || (response as NSHTTPURLResponse).statusCode != 200) {
-                ErrorAlerter.loadingAlertBasedOnReachability().show()
-                completed()
+                self.settingsDelegate?.dataSource(self, failedToLoadWithError: error)
             } else {
                 var error: NSError?
                 let calendarDictionaries: [NSDictionary] = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.allZeros, error: &error) as [NSDictionary]
                 if (error != nil) {
-                    ErrorAlerter.loadingAlertBasedOnReachability().show()
-                    completed()
+                    self.settingsDelegate?.dataSource(self, failedToLoadWithError: error)
                     return
                 }
                 

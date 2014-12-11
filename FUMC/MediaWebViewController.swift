@@ -57,7 +57,9 @@ class MediaWebViewController: UIViewController, UIWebViewDelegate, UIScrollViewD
     }
     
     func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
-        ErrorAlerter.loadingAlertBasedOnReachability().show()
+        if (self.isViewLoaded() && self.view.window != nil) {
+            ErrorAlerter.loadingAlertBasedOnReachability().show()
+        }
     }
     
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {

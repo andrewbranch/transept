@@ -8,9 +8,10 @@
 
 import UIKit
 
-class CustomTableViewController: UIViewController {
+class CustomTableViewController: UIViewController, ErrorAlertable {
     
     @IBOutlet var tableView: UITableView?
+    var errorAlertToBeShown: UIAlertView?
     let activityView = UIView(frame: CGRectMake(0, 0, 100, 100))
     let refreshControl = UIRefreshControl()
     lazy var tableViewController: UITableViewController = {
@@ -49,6 +50,14 @@ class CustomTableViewController: UIViewController {
         if (self.showWhenLoaded) {
             showLoadingView()
             self.showWhenLoaded = false
+        }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        if let alert = self.errorAlertToBeShown {
+            alert.show()
+            self.errorAlertToBeShown = nil
         }
     }
     
