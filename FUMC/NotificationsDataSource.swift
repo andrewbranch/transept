@@ -48,19 +48,23 @@ class NotificationsDataSource: NSObject, UITableViewDataSource {
     }
     
     func getChannels(completed: (channels: [String]) -> Void) {
-        let request = NSURLRequest(URL: NSURL(string: "https://api.zeropush.com/devices/\(ZeroPush.shared().deviceToken)?auth_token=\(ZeroPush.shared().apiKey)")!)
-        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { respone, data, error in
-            if (error != nil) {
-                completed(channels: [])
-                return
+        if (!ZeroPush.shared().deviceToken.isEmpty) {
+            let request = NSURLRequest(URL: NSURL(string: "https://api.zeropush.com/devices/\(ZeroPush.shared().deviceToken)?auth_token=\(ZeroPush.shared().apiKey)")!)
+            NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { respone, data, error in
+                if (error != nil) {
+                    completed(channels: [])
+                    return
+                }
+                var error: NSError?
+                let json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.allZeros, error: &error) as NSDictionary
+                if (error == nil) {
+                    completed(channels: json["channels"] as [String])
+                } else {
+                    completed(channels: [])
+                }
             }
-            var error: NSError?
-            let json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.allZeros, error: &error) as NSDictionary
-            if (error == nil) {
-                completed(channels: json["channels"] as [String])
-            } else {
-                completed(channels: [])
-            }
+        } else {
+            completed(channels: [])
         }
     }
     
