@@ -121,8 +121,6 @@ class NotificationsDataSource: NSObject, UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("notificationsTableViewCell", forIndexPath: indexPath) as NotificationsTableViewCell
         let notification = notificationForIndexPath(indexPath)
-        cell.unreadImageView!.hidden = find(self.readIds, notification.id) != nil
-        cell.dateLabel!.text = notification.sendDate.timeAgo()
         
         if (!notification.url.isEmpty) {
             cell.accessoryView = UIImageView(image: self.linkImage)
@@ -130,15 +128,6 @@ class NotificationsDataSource: NSObject, UITableViewDataSource {
             accessory.removeFromSuperview()
             cell.accessoryView = nil
         }
-        
-        cell.messageLabel!.font = UIFont.fumcMainFontRegular16
-        cell.messageLabel!.attributedText = NSAttributedString(string: notification.message)
-        cell.tintColor = UIColor.fumcNavyColor().colorWithAlphaComponent(0.5)
-        
-        if (self.highlightedIds.contains(notification.id)) {
-            cell.backgroundColor = UIColor.fumcNavyColor().colorWithAlphaComponent(0.5)
-        }
-        
         return cell
     }
    
