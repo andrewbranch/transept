@@ -23,7 +23,11 @@ class API: NSObject {
     }
     
     private let dateFormatter = NSDateFormatter()
-    private let base = DEBUG == 1 ? "https://fumcdev.herokuapp.com/api" : "https://fumc.herokuapp.com/api"
+    #if DEBUG
+    private let base = "https://fumcdev.herokuapp.com/api"
+    #else
+    private let base = "https://fumc.herokuapp.com/api"
+    #endif
     
     func getCalendars(completed: (calendars: [Calendar], error: NSError?) -> Void) {
         let url = NSURL(string: "\(base)/calendars/list")

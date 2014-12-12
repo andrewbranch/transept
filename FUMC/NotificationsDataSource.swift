@@ -48,19 +48,23 @@ class NotificationsDataSource: NSObject, UITableViewDataSource {
     }
     
     func getChannels(completed: (channels: [String]) -> Void) {
-        let request = NSURLRequest(URL: NSURL(string: "https://api.zeropush.com/devices/\(ZeroPush.shared().deviceToken)?auth_token=\(ZeroPush.shared().apiKey)")!)
-        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { respone, data, error in
-            if (error != nil) {
-                completed(channels: [])
-                return
+        if (!ZeroPush.shared().deviceToken.isEmpty) {
+            let request = NSURLRequest(URL: NSURL(string: "https://api.zeropush.com/devices/\(ZeroPush.shared().deviceToken)?auth_token=\(ZeroPush.shared().apiKey)")!)
+            NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { respone, data, error in
+                if (error != nil) {
+                    completed(channels: [])
+                    return
+                }
+                var error: NSError?
+                let json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.allZeros, error: &error) as NSDictionary
+                if (error == nil) {
+                    completed(channels: json["channels"] as [String])
+                } else {
+                    completed(channels: [])
+                }
             }
-            var error: NSError?
-            let json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.allZeros, error: &error) as NSDictionary
-            if (error == nil) {
-                completed(channels: json["channels"] as [String])
-            } else {
-                completed(channels: [])
-            }
+        } else {
+            completed(channels: [])
         }
     }
     
@@ -121,8 +125,6 @@ class NotificationsDataSource: NSObject, UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("notificationsTableViewCell", forIndexPath: indexPath) as NotificationsTableViewCell
         let notification = notificationForIndexPath(indexPath)
-        cell.unreadImageView!.hidden = find(self.readIds, notification.id) != nil
-        cell.dateLabel!.text = notification.sendDate.timeAgo()
         
         if (!notification.url.isEmpty) {
             cell.accessoryView = UIImageView(image: self.linkImage)
@@ -130,15 +132,6 @@ class NotificationsDataSource: NSObject, UITableViewDataSource {
             accessory.removeFromSuperview()
             cell.accessoryView = nil
         }
-        
-        cell.messageLabel!.font = UIFont.fumcMainFontRegular16
-        cell.messageLabel!.attributedText = NSAttributedString(string: notification.message)
-        cell.tintColor = UIColor.fumcNavyColor().colorWithAlphaComponent(0.5)
-        
-        if (self.highlightedIds.contains(notification.id)) {
-            cell.backgroundColor = UIColor.fumcNavyColor().colorWithAlphaComponent(0.5)
-        }
-        
         return cell
     }
    
