@@ -58,7 +58,11 @@ class NotificationsDataSource: NSObject, UITableViewDataSource {
                 var error: NSError?
                 let json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.allZeros, error: &error) as NSDictionary
                 if (error == nil) {
-                    completed(channels: json["channels"] as [String])
+                    if let channels = json["channels"] as? [String] {
+                        completed(channels: channels)
+                    } else {
+                        completed(channels: [])
+                    }
                 } else {
                     completed(channels: [])
                 }

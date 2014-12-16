@@ -79,8 +79,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ZeroPushDelegate, RKDropd
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        ZeroPush.engageWithAPIKey("deecrPVM9Xsd53QMBcq8", delegate: self)
+        #if DEBUG
+        let apiKey = "psDtoDyjwcDbq6x8nYiZ"
+        #else
+        let apiKey = "zVr51xjJjiNgSBrHBMv5"
+        #endif
+        
+        ZeroPush.engageWithAPIKey(apiKey, delegate: self)
         ZeroPush.shared().registerForRemoteNotifications()
         if let dataSource = self.notificationsDataSource {
             dataSource.refresh()
