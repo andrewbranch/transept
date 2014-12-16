@@ -15,7 +15,9 @@ class CalendarSettingsTableViewCell: UITableViewCell {
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        self.checkView!.selected = selected
+        if let checkview = self.checkView {
+            self.checkView!.selected = selected
+        }
     }
 
 }

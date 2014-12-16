@@ -20,6 +20,7 @@ class CalendarSettingsViewController: UIViewController, UITableViewDelegate, Cal
     @IBOutlet var tableView: UITableView?
     var dataSource: CalendarsDataSource?
     var delegate: CalendarSettingsDelegate?
+    var selectButton: UIButton?
     
     lazy var tableViewController: UITableViewController = {
         return UITableViewController(style: self.tableView!.style)
@@ -30,6 +31,7 @@ class CalendarSettingsViewController: UIViewController, UITableViewDelegate, Cal
     var currentCalendarIds: [String]? = NSUserDefaults.standardUserDefaults().objectForKey("selectedCalendarIds") as [String]? {
         didSet (oldValue) {
             NSUserDefaults.standardUserDefaults().setObject(self.currentCalendarIds!, forKey: "selectedCalendarIds")
+            setButtonText()
         }
     }
 
@@ -37,6 +39,7 @@ class CalendarSettingsViewController: UIViewController, UITableViewDelegate, Cal
         super.viewDidLoad()
         self.tableViewController.tableView = self.tableView!
         self.tableViewController.tableView.delegate = self
+        self.tableView!.registerNib(UINib(nibName: "CalendarSettingsSelectTableViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "selectCell")
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -65,22 +68,50 @@ class CalendarSettingsViewController: UIViewController, UITableViewDelegate, Cal
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as CalendarSettingsTableViewCell
+        if (indexPath.row == 0) { return }
+        if let cell = tableView.cellForRowAtIndexPath(indexPath) as? CalendarSettingsTableViewCell {
+            cell.setSelected(true, animated: false)
+        }
         self.currentCalendarIds!.append(self.dataSource!.calendarForIndexPath(indexPath)!.id)
-        cell.setSelected(true, animated: false)
     }
     
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as CalendarSettingsTableViewCell
+        if (indexPath.row == 0) { return }
+        if let cell = tableView.cellForRowAtIndexPath(indexPath) as? CalendarSettingsTableViewCell {
+            cell.setSelected(false, animated: false)
+        }
         let index = find(self.currentCalendarIds!, self.dataSource!.calendarForIndexPath(indexPath)!.id)!
         self.currentCalendarIds!.removeAtIndex(index)
-        cell.setSelected(false, animated: false)
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         if let calendar = self.dataSource!.calendarForIndexPath(indexPath) {
             if (self.currentCalendarIds!.contains(calendar.id)) {
                 tableView.selectRowAtIndexPath(indexPath, animated: false, scrollPosition: UITableViewScrollPosition.None)
+            }
+        } else if (indexPath.row == 0) {
+            if (self.selectButton == nil) {
+                self.selectButton = (cell as CalendarSettingsSelectTableViewCell).selectButton
+                self.selectButton!.addTarget(self, action: "toggleSelection:", forControlEvents: UIControlEvents.TouchUpInside)
+                setButtonText()
+            }
+        }
+    }
+    
+    func toggleSelection(sender: UIButton!) {
+        // Select all
+        if (self.currentCalendarIds!.count < self.dataSource!.calendars.count) {
+            for id in self.dataSource!.calendars.map({ $0.id }) - self.currentCalendarIds! {
+                let indexPath = self.dataSource!.indexPathForCalendarId(id)!
+                self.tableView!.selectRowAtIndexPath(indexPath, animated: false, scrollPosition: UITableViewScrollPosition.None)
+                self.tableView(self.tableView!, didSelectRowAtIndexPath: indexPath)
+            }
+        // Select none
+        } else {
+            for id in self.currentCalendarIds! {
+                let indexPath = self.dataSource!.indexPathForCalendarId(id)!
+                self.tableView!.deselectRowAtIndexPath(indexPath, animated: false)
+                self.tableView(self.tableView!, didDeselectRowAtIndexPath: indexPath)
             }
         }
     }
@@ -91,6 +122,18 @@ class CalendarSettingsViewController: UIViewController, UITableViewDelegate, Cal
     
     func dataSource(dataSource: CalendarsDataSource, failedToLoadWithError error: NSError?) {
         ErrorAlerter.showLoadingAlertInViewController(self)
+    }
+    
+    func setButtonText() {
+        if let button = self.selectButton {
+            UIView.setAnimationsEnabled(false)
+            if (self.currentCalendarIds!.count == self.dataSource!.calendars.count) {
+                button.setTitle("Select none", forState: UIControlState.Normal)
+            } else {
+                button.setTitle("Select all", forState: UIControlState.Normal)
+            }
+            UIView.setAnimationsEnabled(true)
+        }
     }
 
     /*

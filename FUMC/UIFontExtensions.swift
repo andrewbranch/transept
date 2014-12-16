@@ -52,6 +52,16 @@ extension UIFont {
         return UIFont.systemFontOfSize(18)
     }
     
+    class var fumcMainFontRegular20: UIFont {
+        struct Static {
+            static let font = UIFont(name: _MAIN_FONT_REGULAR, size: 20)
+        }
+        if let font = Static.font {
+            return font
+        }
+        return UIFont.systemFontOfSize(20)
+    }
+    
     class var fumcMainFontRegular26: UIFont {
         struct Static {
             static let font = UIFont(name: _MAIN_FONT_REGULAR, size: 26)
