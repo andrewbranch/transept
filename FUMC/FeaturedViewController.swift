@@ -35,15 +35,20 @@ class FeaturedViewController: UIViewController, HomeViewPage {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.label!.font = UIFont.fumcMainFontRegular26
+        self.label!.hidden = false
         loadFeaturedContent()
     }
     
     func loadFeaturedContent() {
-        self.label!.hidden = false
         if let key = self.deviceImageMap[UIDevice.currentDevice().platform()] {
             API.shared().getFeaturedContent(key) { image, id, error in
                 if (error != nil) {
                     self.imageView!.image = nil
+                    self.label!.hidden = false
+                    return
+                }
+                
+                if (self.featureId != nil && self.featureId! == id!) {
                     return
                 }
                 

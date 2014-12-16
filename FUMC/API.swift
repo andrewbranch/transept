@@ -232,7 +232,7 @@ class API: NSObject {
                 
                     // Doesn't work in simulator
                     
-                    if let key = jsonDictionaries[0][deviceKey] as? NSString {
+                    if let key = jsonDictionaries[0][deviceKey] as? String {
                         self.getFile(key) { data, error in
                             if (error != nil) {
                                 completed(image: nil, id: nil, error: error)
@@ -242,13 +242,16 @@ class API: NSObject {
                             let image = UIImage(data: data)
                             if let img = image {
                                 completed(image: img, id: jsonDictionaries[0]["id"] as? Int, error: nil)
-                                return
+                            } else {
+                                completed(image: nil, id: nil, error: NSError())
                             }
                         }
+                    } else {
+                        completed(image: nil, id: nil, error: NSError())
                     }
+                } else {
+                    completed(image: nil, id: nil, error: NSError())
                 }
-                
-                completed(image: nil, id: nil, error: NSError())
             }
         }
     }
