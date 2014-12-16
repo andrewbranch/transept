@@ -46,13 +46,14 @@ class CalendarsDataSource: NSObject, UITableViewDataSource {
     
     func indexPathForCalendarId(id: String) -> NSIndexPath? {
         if let index = find(self.calendars.map { $0.id }, id) {
-            return NSIndexPath(forRow: index, inSection: 1)
+            return NSIndexPath(forRow: index + 1, inSection: 0)
         }
         return nil
     }
     
     func calendarForIndexPath(indexPath: NSIndexPath) -> Calendar? {
-        return self.calendars[indexPath.row]
+        if (indexPath.row == 0) { return nil }
+        return self.calendars[indexPath.row - 1]
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -60,13 +61,17 @@ class CalendarsDataSource: NSObject, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.calendars.count
+        return self.calendars.count + 1
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("calendarSettingsTableViewCell", forIndexPath: indexPath) as CalendarSettingsTableViewCell
+        if (indexPath.row == 0) {
+            let cell = tableView.dequeueReusableCellWithIdentifier("selectCell") as CalendarSettingsSelectTableViewCell
+            return cell
+        }
         
-        let calendar = self.calendars[indexPath.row]
+        let cell = tableView.dequeueReusableCellWithIdentifier("calendarSettingsTableViewCell", forIndexPath: indexPath) as CalendarSettingsTableViewCell
+        let calendar = calendarForIndexPath(indexPath)!
         cell.label!.text = calendar.name
         
         var h: CGFloat = 0

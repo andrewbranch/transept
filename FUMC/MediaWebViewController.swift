@@ -74,28 +74,30 @@ class MediaWebViewController: UIViewController, UIWebViewDelegate, UIScrollViewD
     // MARK: - Scroll View Delegate
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        var frame = self.navigationController!.navigationBar.frame
-        let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.height
-        let size = frame.size.height - statusBarHeight;
-        let framePercentageHidden = ((statusBarHeight - frame.origin.y) / (frame.size.height - 1))
-        let scrollOffset = scrollView.contentOffset.y
-        let scrollDiff = scrollOffset - self.previousScrollViewYOffset
-        let scrollHeight = scrollView.frame.size.height
-        let scrollContentSizeHeight = scrollView.contentSize.height + scrollView.contentInset.bottom
-        
-        if (scrollOffset <= -scrollView.contentInset.top) {
-            frame.origin.y = statusBarHeight
-        } else if ((scrollOffset + scrollHeight) >= scrollContentSizeHeight) {
-            frame.origin.y = -size
-        } else {
-            frame.origin.y = min(statusBarHeight, max(-size, frame.origin.y - 4 * (frame.size.height * (scrollDiff / scrollHeight))))
+        if let navigationController = self.navigationController {
+            var frame = navigationController.navigationBar.frame
+            let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.height
+            let size = frame.size.height - statusBarHeight;
+            let framePercentageHidden = ((statusBarHeight - frame.origin.y) / (frame.size.height - 1))
+            let scrollOffset = scrollView.contentOffset.y
+            let scrollDiff = scrollOffset - self.previousScrollViewYOffset
+            let scrollHeight = scrollView.frame.size.height
+            let scrollContentSizeHeight = scrollView.contentSize.height + scrollView.contentInset.bottom
+            
+            if (scrollOffset <= -scrollView.contentInset.top) {
+                frame.origin.y = statusBarHeight
+            } else if ((scrollOffset + scrollHeight) >= scrollContentSizeHeight) {
+                frame.origin.y = -size
+            } else {
+                frame.origin.y = min(statusBarHeight, max(-size, frame.origin.y - 4 * (frame.size.height * (scrollDiff / scrollHeight))))
+            }
+            
+            navigationController.navigationBar.frame = frame
+            self.view.frame = CGRectMake(0, frame.maxY, self.view.frame.width, self.view.frame.height + self.view.frame.origin.y - frame.maxY)
+            
+            self.updateBarButtonItems(alpha: 1 - framePercentageHidden)
+            self.previousScrollViewYOffset = scrollOffset
         }
-        
-        self.navigationController!.navigationBar.frame = frame
-        self.view.frame = CGRectMake(0, frame.maxY, self.view.frame.width, self.view.frame.height + self.view.frame.origin.y - frame.maxY)
-        
-        self.updateBarButtonItems(alpha: 1 - framePercentageHidden)
-        self.previousScrollViewYOffset = scrollOffset
     }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
@@ -109,12 +111,14 @@ class MediaWebViewController: UIViewController, UIWebViewDelegate, UIScrollViewD
     }
     
     func stoppedScrolling() {
-        let frame = self.navigationController!.navigationBar.frame
-        let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.height
-        
-        // Stopped in between
-        if (frame.origin.y < statusBarHeight && frame.origin.y > statusBarHeight - frame.height) {
-            animateNavBarTo(statusBarHeight)
+        if let navigationController = self.navigationController {
+            let frame = navigationController.navigationBar.frame
+            let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.height
+            
+            // Stopped in between
+            if (frame.origin.y < statusBarHeight && frame.origin.y > statusBarHeight - frame.height) {
+                animateNavBarTo(statusBarHeight)
+            }
         }
     }
     

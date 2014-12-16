@@ -125,9 +125,10 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
         cell.titleLabel!.text = event.name
         cell.locationLabel!.text = event.location
         
-        let colorView = UIView(frame: CGRectMake(0, 0, 10, cell.frame.height))
-        colorView.backgroundColor = event.calendar.color
-        cell.addSubview(colorView)
+        let colorLayer = CALayer()
+        colorLayer.frame = CGRectMake(0, 0, 10, cell.frame.height)
+        colorLayer.backgroundColor = event.calendar.color.CGColor
+        cell.contentView.layer.addSublayer(colorLayer)
         
         if (event.allDay) {
             cell.timeLabel!.text = "All day"
