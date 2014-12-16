@@ -17,7 +17,13 @@ class NotificationsTableViewController: CustomTableViewController, Notifications
     var dataSource: NotificationsDataSource?
     
     override func awakeFromNib() {
-        self.dataSource = (UIApplication.sharedApplication().delegate as AppDelegate).notificationsDataSource!
+        let appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
+        if let dataSource = appDelegate.notificationsDataSource {
+            self.dataSource = dataSource
+        } else {
+            self.dataSource = NotificationsDataSource(delegate: self)
+            appDelegate.notificationsDataSource = self.dataSource!
+        }
         self.dataSource!.delegate = self
     }
     

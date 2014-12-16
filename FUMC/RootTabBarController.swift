@@ -35,7 +35,13 @@ class RootTabBarController: UITabBarController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "showNotifications") {
-            ((segue.destinationViewController as UINavigationController).viewControllers.first! as NotificationsTableViewController).dataSource!.highlightedIds = (sender as [Notification]).map { $0.id }
+            let viewController = (segue.destinationViewController as UINavigationController).viewControllers.first! as NotificationsTableViewController
+            for n in sender as [Notification] {
+                if (!viewController.dataSource!.notifications.contains(n)) {
+                    viewController.dataSource!.incorporateNotificationFromPush(n)
+                }
+            }
+            viewController.dataSource!.highlightedIds = (sender as [Notification]).map { $0.id }
         }
     }
 

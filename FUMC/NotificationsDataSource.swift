@@ -69,9 +69,12 @@ class NotificationsDataSource: NSObject, UITableViewDataSource {
     }
     
     func refresh() {
-        requestData(self.channels.contains("tester")) {
-            self.sortNotifications()
-            self.delegate?.dataSourceDidFinishLoadingAPI(self)
+        getChannels() { channels in
+            self.channels = channels
+            self.requestData(channels.contains("tester")) {
+                self.sortNotifications()
+                self.delegate?.dataSourceDidFinishLoadingAPI(self)
+            }
         }
     }
     
@@ -125,6 +128,16 @@ class NotificationsDataSource: NSObject, UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("notificationsTableViewCell", forIndexPath: indexPath) as NotificationsTableViewCell
         let notification = notificationForIndexPath(indexPath)
+        
+        cell.unreadImageView!.hidden = self.readIds.contains(notification.id)
+        cell.dateLabel!.text = notification.sendDate.timeAgo()
+        cell.messageLabel!.attributedText = NSAttributedString(string: notification.message)
+        cell.messageLabel!.font = UIFont.fumcMainFontRegular16
+        cell.tintColor = UIColor.fumcNavyColor().colorWithAlphaComponent(0.5)
+        
+        if (self.highlightedIds.contains(notification.id)) {
+            cell.backgroundColor = UIColor.fumcNavyColor().colorWithAlphaComponent(0.5)
+        }
         
         if (!notification.url.isEmpty) {
             cell.accessoryView = UIImageView(image: self.linkImage)

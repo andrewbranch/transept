@@ -54,7 +54,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ZeroPushDelegate, RKDropd
         
         if let userInfo = launchOptions?[UIApplicationLaunchOptionsRemoteNotificationKey] as? NSDictionary {
             self.notificationToShowOnLaunch = Notification(userInfo: userInfo)
-            self.notificationsDataSource!.incorporateNotificationFromPush(self.notificationToShowOnLaunch!)
         }
 
         return true
