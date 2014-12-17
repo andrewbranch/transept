@@ -92,6 +92,12 @@ class WitnessesDataSource: NSObject, MediaTableViewDataSource {
         
         cell.textLabel!.text = NSString(format: "Issue %i", witness.issue)
         cell.detailTextLabel!.text = NSString(format: "%@ – %@", self.dateFormatter.stringFromDate(witness.from), self.dateFormatter.stringFromDate(witness.to))
+        
+        if (witness.to.midnight().dateByAddingTimeInterval(24 * 60 * 60 - 1) > NSDate()) {
+            cell.textLabel!.textColor = UIColor.fumcRedColor()
+            cell.detailTextLabel!.textColor = UIColor.fumcRedColor().colorWithAlphaComponent(0.5)
+        }
+        
         return cell
     }
     

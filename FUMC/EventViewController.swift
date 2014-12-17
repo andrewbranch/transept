@@ -22,6 +22,7 @@ class EventViewController: UIViewController {
     @IBOutlet var toTimeLabel: UILabel?
     @IBOutlet var toMeridiemLabel: UILabel?
     @IBOutlet var descriptionLabel: UILabel?
+    @IBOutlet var imageView: UIImageView?
     
     var calendarEvent: CalendarEvent?
     var dateFormatter = NSDateFormatter()
@@ -41,7 +42,6 @@ class EventViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        var dateComponents = NSCalendar.currentCalendar().components(NSCalendarUnit.CalendarUnitHour | NSCalendarUnit.CalendarUnitMinute, fromDate: self.calendarEvent!.from)
         self.dateFormatter.dateFormat = "MMM"
         self.monthLabel!.text = String(Array(self.dateFormatter.stringFromDate(self.calendarEvent!.from))[0...2]).uppercaseString
         self.dateFormatter.dateFormat = "dd"
@@ -71,5 +71,11 @@ class EventViewController: UIViewController {
         self.descriptionLabel!.attributedText = NSAttributedString(string: description, attributes: [
             NSParagraphStyleAttributeName: paragraphStyle
         ])
+        
+        if let image = self.calendarEvent!.calendar.defaultImage {
+            UIView.transitionWithView(self.imageView!, duration: 0.3, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
+                self.imageView!.image = image
+            }, completion: nil)
+        }
     }
 }

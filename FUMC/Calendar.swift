@@ -10,22 +10,30 @@ import UIKit
 
 class Calendar: NSObject {
     
-    var id: String
-    var name: String
+    var id: String = ""
+    var name: String = ""
     var colorString: String?
+    var defaultImageKey: String?
+    
     var color = UIColor(white: 0.9, alpha: 0.9)
     var events = [CalendarEvent]()
-    
-    override init() {
-        self.id = ""
-        self.name = ""
-    }
+    var defaultImage = UIImage(named: "default-event")
     
     init(jsonDictionary: NSDictionary) {
+        super.init()
         self.id = jsonDictionary["id"] as String
         self.name = jsonDictionary["name"] as String
         if let colorString = jsonDictionary["colorString"] as? String {
              self.color = UIColor.colorWithHexString(colorString)
+        }
+        if let key = jsonDictionary["defaultImageKey"] as? String {
+            self.defaultImageKey = key
+            API.shared().getFile(key) { data, error in
+                if (error != nil) { return }
+                if let image = UIImage(data: data) {
+                    self.defaultImage = image
+                }
+            }
         }
     }
    

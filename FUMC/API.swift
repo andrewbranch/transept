@@ -214,20 +214,20 @@ class API: NSObject {
         }
     }
     
-    func getFeaturedContent(deviceKey: String, completed: (image: UIImage?, id: Int?, error: NSError?) -> Void) {
+    func getFeaturedContent(deviceKey: String, completed: (image: UIImage?, id: Int?, url: NSURL?, error: NSError?) -> Void) {
         let url = NSURL(string: "\(base)/features?active=true")
         let request = NSURLRequest(URL: url!)
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { response, data, error in
             if (error != nil) {
-                completed(image: nil, id: nil, error: error)
+                completed(image: nil, id: nil, url: nil, error: error)
             } else if (data.length == 0 || (response as NSHTTPURLResponse).statusCode != 200) {
                 let error = NSError(domain: NSURLErrorDomain, code: 0, userInfo: ["response": (response as NSHTTPURLResponse)])
-                completed(image: nil, id: nil, error: error)
+                completed(image: nil, id: nil, url: nil, error: error)
             } else {
                 var error: NSError?
                 let jsonDictionaries: [NSDictionary] = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.allZeros, error: &error) as [NSDictionary]
                 if (error != nil) {
-                    completed(image: nil, id: nil, error: error)
+                    completed(image: nil, id: nil, url: nil, error: error)
                 } else if (jsonDictionaries.count > 0) {
                 
                     // Doesn't work in simulator
@@ -235,22 +235,26 @@ class API: NSObject {
                     if let key = jsonDictionaries[0][deviceKey] as? String {
                         self.getFile(key) { data, error in
                             if (error != nil) {
-                                completed(image: nil, id: nil, error: error)
+                                completed(image: nil, id: nil, url: nil, error: error)
                                 return
                             }
                             
                             let image = UIImage(data: data)
                             if let img = image {
-                                completed(image: img, id: jsonDictionaries[0]["id"] as? Int, error: nil)
+                                var url: NSURL?
+                                if let urlString = jsonDictionaries[0]["url"] as? String {
+                                    url = NSURL(string: urlString)
+                                }
+                                completed(image: img, id: jsonDictionaries[0]["id"] as Int?, url: url, error: nil)
                             } else {
-                                completed(image: nil, id: nil, error: NSError())
+                                completed(image: nil, id: nil, url: nil, error: NSError())
                             }
                         }
                     } else {
-                        completed(image: nil, id: nil, error: NSError())
+                        completed(image: nil, id: nil, url: nil, error: NSError())
                     }
                 } else {
-                    completed(image: nil, id: nil, error: NSError())
+                    completed(image: nil, id: nil, url: nil, error: NSError())
                 }
             }
         }
