@@ -15,9 +15,9 @@ class CalendarSettingsTableViewCell: UITableViewCell {
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        if let checkview = self.checkView {
-            self.checkView!.selected = selected
-        }
+        self.checkView!.selected = selected
+        self.label!.textColor = selected ? UIColor.darkGrayColor() : UIColor.lightGrayColor()
+        
     }
 
 }

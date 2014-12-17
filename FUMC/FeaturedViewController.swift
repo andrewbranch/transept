@@ -14,6 +14,7 @@ class FeaturedViewController: UIViewController, HomeViewPage {
     @IBOutlet var label: UILabel?
     
     var pageViewController: HomeViewController?
+    private var url: NSURL?
     private var appearedOnce = false
     private var featureId: Int?
     private let deviceImageMap = [
@@ -39,13 +40,28 @@ class FeaturedViewController: UIViewController, HomeViewPage {
         loadFeaturedContent()
     }
     
+    func openURL() {
+        if let url = self.url {
+            UIApplication.sharedApplication().openURL(url)
+        }
+    }
+    
     func loadFeaturedContent() {
         if let key = self.deviceImageMap[UIDevice.currentDevice().platform()] {
-            API.shared().getFeaturedContent(key) { image, id, error in
+            API.shared().getFeaturedContent(key) { image, id, url, error in
                 if (error != nil) {
                     self.imageView!.image = nil
                     self.label!.hidden = false
                     return
+                }
+                
+                self.imageView!.gestureRecognizers?.removeAll(keepCapacity: false)
+                self.url = url
+                if (url != nil) {
+                    self.imageView!.userInteractionEnabled = true
+                    self.imageView!.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "openURL"))
+                } else {
+                    self.imageView!.userInteractionEnabled = false
                 }
                 
                 if (self.featureId != nil && self.featureId! == id!) {

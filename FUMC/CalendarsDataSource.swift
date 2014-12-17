@@ -73,17 +73,7 @@ class CalendarsDataSource: NSObject, UITableViewDataSource {
         let cell = tableView.dequeueReusableCellWithIdentifier("calendarSettingsTableViewCell", forIndexPath: indexPath) as CalendarSettingsTableViewCell
         let calendar = calendarForIndexPath(indexPath)!
         cell.label!.text = calendar.name
-        
-        var h: CGFloat = 0
-        var s: CGFloat = 0
-        var l: CGFloat = 0
-        
-        let transform: (CGFloat) -> CGFloat = { x in
-            return (-pow(100, -x + 0.15) + 1) / 5 + 0.8
-        }
-        
-        calendar.color.getHue(&h, saturation: &s, brightness: &l, alpha: nil)
-        cell.checkView!.color = UIColor(hue: h, saturation: s, brightness: transform(l), alpha: 1)
+        cell.checkView!.color = calendar.color
 
         return cell
     }

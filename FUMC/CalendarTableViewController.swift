@@ -126,7 +126,7 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
         cell.locationLabel!.text = event.location
         
         let colorLayer = CALayer()
-        colorLayer.frame = CGRectMake(0, 0, 10, cell.frame.height)
+        colorLayer.frame = CGRectMake(-1, 0, 10, cell.frame.height + 1)
         colorLayer.backgroundColor = event.calendar.color.CGColor
         cell.contentView.layer.addSublayer(colorLayer)
         

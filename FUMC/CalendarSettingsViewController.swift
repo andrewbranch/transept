@@ -69,16 +69,19 @@ class CalendarSettingsViewController: UIViewController, UITableViewDelegate, Cal
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if (indexPath.row == 0) { return }
+        let calendar = self.dataSource!.calendarForIndexPath(indexPath)!
         if let cell = tableView.cellForRowAtIndexPath(indexPath) as? CalendarSettingsTableViewCell {
             cell.setSelected(true, animated: false)
+            cell.checkView!.color = calendar.color
         }
-        self.currentCalendarIds!.append(self.dataSource!.calendarForIndexPath(indexPath)!.id)
+        self.currentCalendarIds!.append(calendar.id)
     }
     
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
         if (indexPath.row == 0) { return }
         if let cell = tableView.cellForRowAtIndexPath(indexPath) as? CalendarSettingsTableViewCell {
             cell.setSelected(false, animated: false)
+            cell.checkView!.color = UIColor.lightGrayColor()
         }
         let index = find(self.currentCalendarIds!, self.dataSource!.calendarForIndexPath(indexPath)!.id)!
         self.currentCalendarIds!.removeAtIndex(index)
@@ -88,6 +91,8 @@ class CalendarSettingsViewController: UIViewController, UITableViewDelegate, Cal
         if let calendar = self.dataSource!.calendarForIndexPath(indexPath) {
             if (self.currentCalendarIds!.contains(calendar.id)) {
                 tableView.selectRowAtIndexPath(indexPath, animated: false, scrollPosition: UITableViewScrollPosition.None)
+            } else {
+                (cell as CalendarSettingsTableViewCell).checkView!.color = UIColor.lightGrayColor()
             }
         } else if (indexPath.row == 0) {
             if (self.selectButton == nil) {

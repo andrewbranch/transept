@@ -16,6 +16,15 @@ extension NSDate {
         return NSCalendar.currentCalendar().components(.YearCalendarUnit, fromDate: self).year
     }
     
+    func dayOfWeek() -> Int {
+        return NSCalendar.currentCalendar().components(.WeekdayCalendarUnit, fromDate: self).weekday
+    }
+    
+    func dayOfWorkWeek() -> Int {
+        let weekday = NSCalendar.currentCalendar().components(.WeekdayCalendarUnit, fromDate: self).weekday
+        return weekday == 0 ? 6 : weekday - 1
+    }
+    
     func hour() -> Int {
         return NSCalendar.currentCalendar().components(.HourCalendarUnit, fromDate: self).hour
     }
@@ -25,10 +34,14 @@ extension NSDate {
     }
 }
 
-func >(lhs: NSDate, rhs: NSDate) -> Bool {
+func > (lhs: NSDate, rhs: NSDate) -> Bool {
     return lhs.timeIntervalSinceReferenceDate > rhs.timeIntervalSinceReferenceDate
 }
 
-func <(lhs: NSDate, rhs: NSDate) -> Bool {
+func < (lhs: NSDate, rhs: NSDate) -> Bool {
     return lhs.timeIntervalSinceReferenceDate < rhs.timeIntervalSinceReferenceDate
+}
+
+func - (lhs: NSDate, rhs: NSDate) -> NSTimeInterval {
+    return lhs.timeIntervalSinceDate(rhs)
 }

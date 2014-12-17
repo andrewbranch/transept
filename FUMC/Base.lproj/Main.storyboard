@@ -18,6 +18,7 @@
             <string>MyriadPro-Regular</string>
             <string>MyriadPro-Regular</string>
             <string>MyriadPro-Regular</string>
+            <string>MyriadPro-Regular</string>
         </mutableArray>
         <mutableArray key="MyriadPro-Semibold.otf">
             <string>MyriadPro-Semibold</string>
@@ -150,34 +151,40 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hpt-XQ-bzC">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="287"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="374.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Young Professionals" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mmb-iI-Ppx">
-                                                <rect key="frame" x="24" y="175" width="568" height="18"/>
+                                                <rect key="frame" x="24" y="262.5" width="568" height="18"/>
                                                 <fontDescription key="fontDescription" name="MyriadPro-Semibold" family="Myriad Pro" pointSize="18"/>
                                                 <color key="textColor" white="0.19833764097744361" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wednesday, December 12th, 2014" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="18K-ej-Jdt">
-                                                <rect key="frame" x="24" y="219" width="198.5" height="14"/>
+                                                <rect key="frame" x="24" y="306.5" width="198.5" height="14"/>
                                                 <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="14"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Yard" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GEw-ka-HsS">
-                                                <rect key="frame" x="24" y="199" width="50" height="14"/>
+                                                <rect key="frame" x="24" y="286.5" width="50" height="14"/>
                                                 <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="14"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default-event" translatesAutoresizingMaskIntoConstraints="NO" id="ZKD-fK-2Ag">
-                                                <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="600" height="187.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="Jxb-Vl-8Ar"/>
+                                                    <constraint firstAttribute="width" secondItem="ZKD-fK-2Ag" secondAttribute="height" multiplier="3.2:1" id="cJR-xl-dJo"/>
                                                 </constraints>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="Jxb-Vl-8Ar"/>
+                                                    </mask>
+                                                </variation>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gmg-OC-hGG">
-                                                <rect key="frame" x="0.0" y="100" width="600" height="30"/>
+                                                <rect key="frame" x="0.0" y="187.5" width="600" height="30"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gb4-3K-B0c">
                                                         <rect key="frame" x="191" y="6" width="38.5" height="22"/>
@@ -233,7 +240,7 @@
                                                 </variation>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RST-Lh-miq">
-                                                <rect key="frame" x="24" y="253" width="552" height="14"/>
+                                                <rect key="frame" x="24" y="340.5" width="552" height="14"/>
                                                 <attributedString key="attributedText">
                                                     <fragment content="Class leader Scott Grantland">
                                                         <attributes>
@@ -247,7 +254,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bYf-VK-zH4">
-                                                <rect key="frame" x="10" y="75" width="80" height="80"/>
+                                                <rect key="frame" x="10" y="162.5" width="80" height="80"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="qlw-Xl-kJc">
                                                     <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -356,6 +363,7 @@
                         <outlet property="descriptionLabel" destination="RST-Lh-miq" id="CL3-o0-weV"/>
                         <outlet property="fromMeridiemLabel" destination="fwU-bH-73y" id="W7o-Zk-9VT"/>
                         <outlet property="fromTimeLabel" destination="9I7-TY-xWA" id="4gQ-mt-E8K"/>
+                        <outlet property="imageView" destination="ZKD-fK-2Ag" id="cz4-4c-W1C"/>
                         <outlet property="locationLabel" destination="GEw-ka-HsS" id="sf4-e0-0SM"/>
                         <outlet property="monthLabel" destination="Z6w-hi-PeQ" id="kKu-cF-K1T"/>
                         <outlet property="scrollView" destination="1zH-cA-kxL" id="pDP-iF-P0m"/>
@@ -637,11 +645,11 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                         <color key="selectedImageTintColor" white="1" alpha="0.90000000000000002" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <segue destination="MgL-sn-56f" kind="presentation" identifier="showNotifications" id="lCV-Rg-9Tn"/>
                         <segue destination="F01-YL-vfW" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="Vfr-j3-gCB" kind="relationship" relationship="viewControllers" id="TRb-vE-61L"/>
-                        <segue destination="Z5N-s7-vGE" kind="relationship" relationship="viewControllers" id="FL8-EP-5wc"/>
                         <segue destination="R3l-68-kGD" kind="relationship" relationship="viewControllers" id="BMx-i6-p7l"/>
-                        <segue destination="MgL-sn-56f" kind="presentation" identifier="showNotifications" id="lCV-Rg-9Tn"/>
+                        <segue destination="Z5N-s7-vGE" kind="relationship" relationship="viewControllers" id="FL8-EP-5wc"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -689,7 +697,7 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Calendars" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c6r-aM-4Bi">
                                             <rect key="frame" x="8" y="58" width="592" height="24"/>
                                             <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="24"/>
-                                            <color key="textColor" white="1" alpha="0.90000000000000002" colorSpace="calibratedWhite"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsMultipleSelection="YES" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="4fs-ut-w6C">
@@ -704,7 +712,7 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BcG-IB-Rij">
                                                                 <rect key="frame" x="43" y="18" width="41" height="18"/>
                                                                 <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="18"/>
-                                                                <color key="textColor" white="1" alpha="0.80000000000000004" colorSpace="calibratedWhite"/>
+                                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X6B-vm-jcD" customClass="RadioView" customModule="FUMC" customModuleProvider="target">
@@ -742,7 +750,7 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                                             <rect key="frame" x="277" y="552" width="46" height="32"/>
                                             <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="20"/>
                                             <state key="normal" title="Done">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
@@ -770,7 +778,7 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                                         </mask>
                                     </variation>
                                 </view>
-                                <blurEffect style="dark"/>
+                                <blurEffect style="extraLight"/>
                             </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
@@ -824,7 +832,7 @@ Thank you for your generous support of First United Methodist Church of Pensacol
         <scene sceneID="Nyt-jJ-6q2">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="R3l-68-kGD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Connect" image="connect-alt" id="I7q-GB-Xme"/>
+                    <tabBarItem key="tabBarItem" title="Connect" image="connect-alt2" id="I7q-GB-Xme"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="q34-aj-DqA">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -897,7 +905,7 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="580"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MMk-r5-KYz">
-                                                <rect key="frame" x="8" y="18" width="584" height="71"/>
+                                                <rect key="frame" x="18" y="23" width="564" height="71"/>
                                                 <attributedString key="attributedText">
                                                     <fragment>
                                                         <string key="content">The Pastoral Care Team would like to pray for you and our family at First United Methodist Church.  Please indicate below the specific petition or praise that you would like to call to our attention. This request will then be sent to members of the Pastoral Care Team. Your request will be anonymous unless you include your name or contact information.</string>
@@ -911,7 +919,7 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UxE-tV-uMg" customClass="UIPlaceHolderTextView">
-                                                <rect key="frame" x="0.0" y="99" width="600" height="140"/>
+                                                <rect key="frame" x="0.0" y="109" width="600" height="140"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="140" id="6yO-fw-mXF"/>
@@ -920,7 +928,8 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MOV-nM-w0H">
-                                                <rect key="frame" x="221" y="247" width="159" height="30"/>
+                                                <rect key="frame" x="225" y="259" width="151" height="28"/>
+                                                <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="16"/>
                                                 <state key="normal" title="Submit Prayer Request">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -933,19 +942,19 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                                             <constraint firstAttribute="centerX" secondItem="MOV-nM-w0H" secondAttribute="centerX" id="4F1-Mj-c2b"/>
                                             <constraint firstItem="UxE-tV-uMg" firstAttribute="top" secondItem="yzN-OO-W6L" secondAttribute="topMargin" id="5by-Gn-e2k"/>
                                             <constraint firstItem="MMk-r5-KYz" firstAttribute="top" secondItem="yzN-OO-W6L" secondAttribute="topMargin" id="6Za-1T-LtX"/>
-                                            <constraint firstItem="MOV-nM-w0H" firstAttribute="top" secondItem="UxE-tV-uMg" secondAttribute="bottom" constant="8" id="ATE-Zj-Q4g"/>
+                                            <constraint firstItem="MOV-nM-w0H" firstAttribute="top" secondItem="UxE-tV-uMg" secondAttribute="bottom" constant="10" id="ATE-Zj-Q4g"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="MMk-r5-KYz" secondAttribute="trailing" id="Esy-PV-Fds"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="MMk-r5-KYz" secondAttribute="trailing" id="QyY-dq-Vez"/>
                                             <constraint firstItem="MMk-r5-KYz" firstAttribute="leading" secondItem="UxE-tV-uMg" secondAttribute="trailing" id="VIj-Xo-FJB"/>
                                             <constraint firstItem="UxE-tV-uMg" firstAttribute="leading" secondItem="yzN-OO-W6L" secondAttribute="leading" id="VmF-9e-WnB"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="MMk-r5-KYz" secondAttribute="trailing" id="aHU-aP-FTT"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="MMk-r5-KYz" secondAttribute="trailing" constant="10" id="aHU-aP-FTT"/>
                                             <constraint firstAttribute="trailing" secondItem="UxE-tV-uMg" secondAttribute="trailing" id="dIq-PN-cPf"/>
                                             <constraint firstAttribute="trailing" secondItem="UxE-tV-uMg" secondAttribute="trailing" id="fFa-jd-tto"/>
-                                            <constraint firstItem="MMk-r5-KYz" firstAttribute="leading" secondItem="yzN-OO-W6L" secondAttribute="leadingMargin" id="g2h-4R-VUa"/>
+                                            <constraint firstItem="MMk-r5-KYz" firstAttribute="leading" secondItem="yzN-OO-W6L" secondAttribute="leadingMargin" constant="10" id="g2h-4R-VUa"/>
                                             <constraint firstItem="MMk-r5-KYz" firstAttribute="leading" secondItem="UxE-tV-uMg" secondAttribute="trailing" id="gDY-Vb-RI6"/>
-                                            <constraint firstItem="UxE-tV-uMg" firstAttribute="top" secondItem="MMk-r5-KYz" secondAttribute="bottom" constant="10" id="hL0-0S-avS"/>
+                                            <constraint firstItem="UxE-tV-uMg" firstAttribute="top" secondItem="MMk-r5-KYz" secondAttribute="bottom" constant="15" id="hL0-0S-avS"/>
                                             <constraint firstItem="MMk-r5-KYz" firstAttribute="leading" secondItem="yzN-OO-W6L" secondAttribute="leadingMargin" id="nR6-JU-ivM"/>
-                                            <constraint firstItem="MMk-r5-KYz" firstAttribute="top" secondItem="yzN-OO-W6L" secondAttribute="topMargin" constant="10" id="xbo-SE-YpS"/>
+                                            <constraint firstItem="MMk-r5-KYz" firstAttribute="top" secondItem="yzN-OO-W6L" secondAttribute="topMargin" constant="15" id="xbo-SE-YpS"/>
                                             <constraint firstItem="MOV-nM-w0H" firstAttribute="leading" secondItem="UxE-tV-uMg" secondAttribute="trailing" id="xup-LR-v8w"/>
                                         </constraints>
                                         <variation key="default">
@@ -1092,9 +1101,9 @@ Thank you for your generous support of First United Methodist Church of Pensacol
     </scenes>
     <resources>
         <image name="bell" width="22" height="22"/>
-        <image name="connect-alt" width="40" height="40"/>
+        <image name="connect-alt2" width="30" height="30"/>
         <image name="contact" width="22" height="22"/>
-        <image name="default-event" width="320" height="100"/>
+        <image name="default-event" width="640" height="200"/>
         <image name="gear" width="22" height="22"/>
         <image name="give-alt" width="35" height="35"/>
         <image name="heart" width="50" height="44"/>

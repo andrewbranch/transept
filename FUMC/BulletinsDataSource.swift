@@ -72,12 +72,24 @@ class BulletinsDataSource: NSObject, MediaTableViewDataSource {
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        self.dateFormatter.dateFormat = "EEEE, MMMM d, yyyy"
-        return self.dateFormatter.stringFromDate(self.bulletins.keys.array.sorted(>)[section])
+        let date = self.bulletins.keys.array.sorted(>)[section]
+        self.dateFormatter.dateFormat = "EEEE, MMMM d"
+        if (date.midnight() - NSDate().midnight() <= 6 * 24 * 60 * 60 && date.midnight() - NSDate().midnight() >= 0) {
+            if (date.dayOfWorkWeek() <= NSDate().dayOfWorkWeek()) {
+                self.dateFormatter.dateFormat = "'Next' EEEE, MMMM d"
+            } else {
+                self.dateFormatter.dateFormat = "'This' EEEE, MMMM d"
+            }
+        }
+        return self.dateFormatter.stringFromDate(date)
     }
     
     func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        (view as UITableViewHeaderFooterView).textLabel.font = UIFont.fumcMainFontRegular14
+        let headerView = view as UITableViewHeaderFooterView
+        headerView.textLabel.font = UIFont.fumcMainFontRegular14
+        if (headerView.textLabel.text!.hasPrefix("NEXT") || headerView.textLabel.text!.hasPrefix("THIS")) {
+            headerView.textLabel.textColor = UIColor.fumcRedColor()
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
