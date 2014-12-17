@@ -637,11 +637,11 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                         <color key="selectedImageTintColor" white="1" alpha="0.90000000000000002" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <segue destination="MgL-sn-56f" kind="presentation" identifier="showNotifications" id="lCV-Rg-9Tn"/>
                         <segue destination="F01-YL-vfW" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="Vfr-j3-gCB" kind="relationship" relationship="viewControllers" id="TRb-vE-61L"/>
-                        <segue destination="Z5N-s7-vGE" kind="relationship" relationship="viewControllers" id="FL8-EP-5wc"/>
                         <segue destination="R3l-68-kGD" kind="relationship" relationship="viewControllers" id="BMx-i6-p7l"/>
-                        <segue destination="MgL-sn-56f" kind="presentation" identifier="showNotifications" id="lCV-Rg-9Tn"/>
+                        <segue destination="Z5N-s7-vGE" kind="relationship" relationship="viewControllers" id="FL8-EP-5wc"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -689,7 +689,7 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Calendars" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c6r-aM-4Bi">
                                             <rect key="frame" x="8" y="58" width="592" height="24"/>
                                             <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="24"/>
-                                            <color key="textColor" white="1" alpha="0.90000000000000002" colorSpace="calibratedWhite"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsMultipleSelection="YES" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="4fs-ut-w6C">
@@ -704,7 +704,7 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BcG-IB-Rij">
                                                                 <rect key="frame" x="43" y="18" width="41" height="18"/>
                                                                 <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="18"/>
-                                                                <color key="textColor" white="1" alpha="0.80000000000000004" colorSpace="calibratedWhite"/>
+                                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X6B-vm-jcD" customClass="RadioView" customModule="FUMC" customModuleProvider="target">
@@ -742,7 +742,7 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                                             <rect key="frame" x="277" y="552" width="46" height="32"/>
                                             <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="20"/>
                                             <state key="normal" title="Done">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
@@ -770,7 +770,7 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                                         </mask>
                                     </variation>
                                 </view>
-                                <blurEffect style="dark"/>
+                                <blurEffect style="extraLight"/>
                             </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
@@ -824,7 +824,7 @@ Thank you for your generous support of First United Methodist Church of Pensacol
         <scene sceneID="Nyt-jJ-6q2">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="R3l-68-kGD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Connect" image="connect-alt" id="I7q-GB-Xme"/>
+                    <tabBarItem key="tabBarItem" title="Connect" image="connect-alt2" id="I7q-GB-Xme"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="q34-aj-DqA">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1092,7 +1092,7 @@ Thank you for your generous support of First United Methodist Church of Pensacol
     </scenes>
     <resources>
         <image name="bell" width="22" height="22"/>
-        <image name="connect-alt" width="40" height="40"/>
+        <image name="connect-alt2" width="30" height="30"/>
         <image name="contact" width="22" height="22"/>
         <image name="default-event" width="320" height="100"/>
         <image name="gear" width="22" height="22"/>
