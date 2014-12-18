@@ -71,14 +71,14 @@ class FeaturedViewController: UIViewController, HomeViewPage {
                 self.label!.hidden = true
                 self.imageView!.image = image!
                 self.featureId = id!
-                if (NSUserDefaults.standardUserDefaults().integerForKey("lastSeenFeatureId") != id!) {
-                    // New feature
-                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(500 * NSEC_PER_MSEC)), dispatch_get_main_queue()) {
-                        self.pageViewController!.setViewControllers([self], direction: UIPageViewControllerNavigationDirection.Forward, animated: true) { (finished) -> Void in
-                            self.pageViewController!.didTransitionToViewController(self)
-                        }
-                    }
-                }
+//                if (NSUserDefaults.standardUserDefaults().integerForKey("lastSeenFeatureId") != id!) {
+//                    // New feature
+//                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(500 * NSEC_PER_MSEC)), dispatch_get_main_queue()) {
+//                        self.pageViewController!.setViewControllers([self], direction: UIPageViewControllerNavigationDirection.Forward, animated: true) { (finished) -> Void in
+//                            self.pageViewController!.didTransitionToViewController(self)
+//                        }
+//                    }
+//                }
             }
         }
     }
