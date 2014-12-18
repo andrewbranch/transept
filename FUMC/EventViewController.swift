@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import EventKit
+import EventKitUI
 
-class EventViewController: UIViewController {
+class EventViewController: UIViewController, EKEventEditViewDelegate, UITableViewDelegate {
     
     @IBOutlet var scrollView: UIScrollView?
     @IBOutlet var dateContainer: UIVisualEffectView?
@@ -26,6 +28,7 @@ class EventViewController: UIViewController {
     
     var calendarEvent: CalendarEvent?
     var dateFormatter = NSDateFormatter()
+    private var ekEvent: EKEvent?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +37,9 @@ class EventViewController: UIViewController {
         self.dateContainer!.layer.cornerRadius = 10
         self.dateContainer!.layer.borderWidth = 3
         self.dateContainer!.layer.borderColor = UIColor(white: 54/255, alpha: 1).CGColor
+        if let savedEventIds = NSUserDefaults.standardUserDefaults().objectForKey("savedEventIds") as? [String] {
+            
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -78,4 +84,56 @@ class EventViewController: UIViewController {
             }, completion: nil)
         }
     }
+    
+    func addEvent() {
+        let eventStore = EKEventStore()
+        eventStore.requestAccessToEntityType(EKEntityTypeEvent) { granted, error in
+            if (error != nil) {
+                let alert = UIAlertView(title: "Error Accessing Calendar", message: "Hmm. There was a problem accessing your calendar. Sorry!", delegate: nil, cancelButtonTitle: "Cancel")
+                alert.show()
+            }
+            if (granted) {
+                let event = EKEvent(eventStore: eventStore)
+                event.title = self.calendarEvent!.name
+                event.startDate = self.calendarEvent!.from
+                event.endDate = self.calendarEvent!.to
+                event.location = self.calendarEvent!.location
+                event.allDay = self.calendarEvent!.allDay
+                self.ekEvent = event
+                let eventViewController = EKEventEditViewController()
+                eventViewController.eventStore = eventStore
+                eventViewController.event = event
+                eventViewController.editViewDelegate = self
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.presentViewController(eventViewController, animated: true, completion: nil)
+                }
+            }
+        }
+    }
+    
+    func eventEditViewController(controller: EKEventEditViewController!, didCompleteWithAction action: EKEventEditViewAction) {
+        if (action.value == EKEventEditViewActionSaved.value) {
+            let alert = UIAlertView(title: "Event Saved", message: "\(self.calendarEvent!.name) has been saved to your calendar.", delegate: nil, cancelButtonTitle: "Close")
+            alert.show()
+//            if let savedEventIds = NSUserDefaults.standardUserDefaults().objectForKey("savedEventIds") as? [String] {
+//                NSUserDefaults.standardUserDefaults().setObject(savedEventIds + [self.ekEvent!.eventIdentifier], forKey: "savedEventIds")
+//            } else {
+//                NSUserDefaults.standardUserDefaults().setObject([self.ekEvent!.eventIdentifier], forKey: "savedEventIds")
+//            }
+            
+        }
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.addEvent()
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "addToCalendarEmbed") {
+            (segue.destinationViewController as UITableViewController).tableView.delegate = self
+        }
+    }
+    
 }

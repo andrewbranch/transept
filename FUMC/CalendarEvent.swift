@@ -10,6 +10,7 @@ import UIKit
 
 class CalendarEvent: NSObject {
     
+    var id: String
     var name: String
     var descript: String
     var from: NSDate
@@ -27,6 +28,7 @@ class CalendarEvent: NSObject {
 
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         
+        self.id = jsonDictionary["id"] as String
         self.name = jsonDictionary["name"] as String
         self.from = dateFormatter.dateFromString(jsonDictionary["from"] as String)!
         self.to = dateFormatter.dateFromString(jsonDictionary["to"] as String)!
