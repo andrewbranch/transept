@@ -46,6 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ZeroPushDelegate, RKDropd
         
         UINavigationBar.appearance().barTintColor = UIColor.fumcRedColor()
         UINavigationBar.appearance().tintColor = translucentWhite
+        UINavigationBar.appearance().translucent = false
         UITabBar.appearance().selectedImageTintColor = UIColor.whiteColor()
         UITabBar.appearance().barTintColor = UIColor(white: 0.1, alpha: 1)
         UITabBar.appearance().selectionIndicatorImage = UIImage.imageFromColor(UIColor.blackColor(), forSize: CGSizeMake(UIScreen.mainScreen().bounds.width / 4, 49))

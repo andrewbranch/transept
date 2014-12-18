@@ -19,6 +19,7 @@
             <string>MyriadPro-Regular</string>
             <string>MyriadPro-Regular</string>
             <string>MyriadPro-Regular</string>
+            <string>MyriadPro-Regular</string>
         </mutableArray>
         <mutableArray key="MyriadPro-Semibold.otf">
             <string>MyriadPro-Semibold</string>
@@ -151,22 +152,22 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hpt-XQ-bzC">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="374.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="444"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Young Professionals" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mmb-iI-Ppx">
-                                                <rect key="frame" x="24" y="262.5" width="568" height="18"/>
+                                                <rect key="frame" x="24" y="262" width="568" height="18"/>
                                                 <fontDescription key="fontDescription" name="MyriadPro-Semibold" family="Myriad Pro" pointSize="18"/>
                                                 <color key="textColor" white="0.19833764097744361" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wednesday, December 12th, 2014" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="18K-ej-Jdt">
-                                                <rect key="frame" x="24" y="306.5" width="198.5" height="14"/>
+                                                <rect key="frame" x="24" y="306" width="198.5" height="14"/>
                                                 <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="14"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Yard" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GEw-ka-HsS">
-                                                <rect key="frame" x="24" y="286.5" width="50" height="14"/>
+                                                <rect key="frame" x="24" y="286" width="50" height="14"/>
                                                 <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="14"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -184,7 +185,7 @@
                                                 </variation>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gmg-OC-hGG">
-                                                <rect key="frame" x="0.0" y="187.5" width="600" height="30"/>
+                                                <rect key="frame" x="0.0" y="187" width="600" height="30"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gb4-3K-B0c">
                                                         <rect key="frame" x="191" y="6" width="38.5" height="22"/>
@@ -240,7 +241,7 @@
                                                 </variation>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RST-Lh-miq">
-                                                <rect key="frame" x="24" y="340.5" width="552" height="14"/>
+                                                <rect key="frame" x="24" y="340" width="552" height="14"/>
                                                 <attributedString key="attributedText">
                                                     <fragment content="Class leader Scott Grantland">
                                                         <attributes>
@@ -254,7 +255,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bYf-VK-zH4">
-                                                <rect key="frame" x="10" y="162.5" width="80" height="80"/>
+                                                <rect key="frame" x="10" y="162" width="80" height="80"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="qlw-Xl-kJc">
                                                     <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -285,6 +286,15 @@
                                                 </constraints>
                                                 <blurEffect style="extraLight"/>
                                             </visualEffectView>
+                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PyX-Hy-S5T">
+                                                <rect key="frame" x="0.0" y="374" width="600" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="bge-AP-PYl"/>
+                                                </constraints>
+                                                <connections>
+                                                    <segue destination="n27-QG-RCA" kind="embed" identifier="addToCalendarEmbed" id="7t2-iC-Yfj"/>
+                                                </connections>
+                                            </containerView>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="RST-Lh-miq" secondAttribute="trailing" constant="24" id="1Eg-hF-ykk"/>
@@ -294,9 +304,11 @@
                                             <constraint firstItem="Gmg-OC-hGG" firstAttribute="top" secondItem="ZKD-fK-2Ag" secondAttribute="bottom" id="672-fq-TEw"/>
                                             <constraint firstItem="sqS-dA-S35" firstAttribute="leading" secondItem="mmb-iI-Ppx" secondAttribute="leading" constant="5" id="7hF-ic-tui"/>
                                             <constraint firstItem="mmb-iI-Ppx" firstAttribute="top" secondItem="bYf-VK-zH4" secondAttribute="bottom" constant="20" id="AOd-3Y-A5Y"/>
+                                            <constraint firstItem="PyX-Hy-S5T" firstAttribute="leading" secondItem="hpt-XQ-bzC" secondAttribute="leading" id="BXP-DC-999"/>
                                             <constraint firstItem="mmb-iI-Ppx" firstAttribute="leading" secondItem="GEw-ka-HsS" secondAttribute="leading" id="FiW-wA-0nl"/>
                                             <constraint firstItem="ZKD-fK-2Ag" firstAttribute="top" secondItem="hpt-XQ-bzC" secondAttribute="top" id="Kxm-0b-eEP"/>
                                             <constraint firstItem="18K-ej-Jdt" firstAttribute="leading" secondItem="RST-Lh-miq" secondAttribute="leading" constant="3" id="Lp8-72-Jsu"/>
+                                            <constraint firstAttribute="trailing" secondItem="PyX-Hy-S5T" secondAttribute="trailing" id="R6B-oW-Csz"/>
                                             <constraint firstItem="bYf-VK-zH4" firstAttribute="leading" secondItem="hpt-XQ-bzC" secondAttribute="leading" constant="10" id="TrC-SA-qO5"/>
                                             <constraint firstAttribute="trailing" secondItem="ZKD-fK-2Ag" secondAttribute="trailing" id="Tw8-Jq-diQ"/>
                                             <constraint firstItem="bYf-VK-zH4" firstAttribute="top" secondItem="hpt-XQ-bzC" secondAttribute="top" id="UzU-CB-SiB"/>
@@ -305,12 +317,13 @@
                                             <constraint firstItem="RST-Lh-miq" firstAttribute="top" secondItem="18K-ej-Jdt" secondAttribute="bottom" constant="20" id="hFp-JS-ENd"/>
                                             <constraint firstItem="mmb-iI-Ppx" firstAttribute="leading" secondItem="hpt-XQ-bzC" secondAttribute="leading" constant="24" id="kld-qb-NQg"/>
                                             <constraint firstItem="9I7-TY-xWA" firstAttribute="leading" secondItem="bYf-VK-zH4" secondAttribute="trailing" constant="10" id="oaT-gc-3Vd"/>
-                                            <constraint firstAttribute="bottom" secondItem="RST-Lh-miq" secondAttribute="bottom" constant="20" id="skI-oc-UoL"/>
                                             <constraint firstItem="18K-ej-Jdt" firstAttribute="leading" secondItem="RST-Lh-miq" secondAttribute="leading" id="tT6-h1-KkV"/>
                                             <constraint firstItem="Gmg-OC-hGG" firstAttribute="centerY" secondItem="bYf-VK-zH4" secondAttribute="centerY" id="ujF-1J-xMA"/>
                                             <constraint firstAttribute="trailing" secondItem="Gmg-OC-hGG" secondAttribute="trailing" id="xc6-91-5wr"/>
+                                            <constraint firstAttribute="bottom" secondItem="PyX-Hy-S5T" secondAttribute="bottom" constant="20" id="xic-nZ-b7a"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="mmb-iI-Ppx" secondAttribute="trailing" id="y0O-Sv-4mg"/>
                                             <constraint firstItem="ZKD-fK-2Ag" firstAttribute="leading" secondItem="hpt-XQ-bzC" secondAttribute="leading" id="yBL-85-8mL"/>
+                                            <constraint firstItem="PyX-Hy-S5T" firstAttribute="top" secondItem="RST-Lh-miq" secondAttribute="bottom" constant="20" id="yv5-yI-pgp"/>
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
@@ -374,7 +387,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gyW-Ol-4VM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2436" y="-2204"/>
+            <point key="canvasLocation" x="2432" y="-2204"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="NhA-a5-UY6">
@@ -1057,6 +1070,56 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OGs-Vy-RPW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2489" y="-1541"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="6M8-8y-zvj">
+            <objects>
+                <tableViewController id="n27-QG-RCA" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="static" style="plain" separatorStyle="none" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" id="DqC-Hv-cAC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection id="0pC-wn-7yJ">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="SZE-X3-WCJ" style="IBUITableViewCellStyleDefault" id="sY5-bS-L4M">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sY5-bS-L4M" id="LSk-EP-ukp">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Add to calendar" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SZE-X3-WCJ">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="18"/>
+                                                    <color key="textColor" red="0.56862747670000002" green="0.066666670139999995" blue="0.043137256059999997" alpha="1" colorSpace="deviceRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="cdc-P2-iWT">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cdc-P2-iWT" id="UvM-Yn-h5F">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="wod-Xa-CZO">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wod-Xa-CZO" id="dZ4-ge-GGf">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="n27-QG-RCA" id="uOX-a0-wtO"/>
+                            <outlet property="delegate" destination="n27-QG-RCA" id="fy1-SM-PBM"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pie-iA-v0X" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3121" y="-2091"/>
         </scene>
         <!--Notifications-->
         <scene sceneID="5tV-I5-rCG">

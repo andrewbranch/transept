@@ -107,16 +107,18 @@ class CalendarSettingsViewController: UIViewController, UITableViewDelegate, Cal
         // Select all
         if (self.currentCalendarIds!.count < self.dataSource!.calendars.count) {
             for id in self.dataSource!.calendars.map({ $0.id }) - self.currentCalendarIds! {
-                let indexPath = self.dataSource!.indexPathForCalendarId(id)!
-                self.tableView!.selectRowAtIndexPath(indexPath, animated: false, scrollPosition: UITableViewScrollPosition.None)
-                self.tableView(self.tableView!, didSelectRowAtIndexPath: indexPath)
+                if let indexPath = self.dataSource!.indexPathForCalendarId(id) {
+                    self.tableView!.selectRowAtIndexPath(indexPath, animated: false, scrollPosition: UITableViewScrollPosition.None)
+                    self.tableView(self.tableView!, didSelectRowAtIndexPath: indexPath)
+                }
             }
         // Select none
         } else {
             for id in self.currentCalendarIds! {
-                let indexPath = self.dataSource!.indexPathForCalendarId(id)!
-                self.tableView!.deselectRowAtIndexPath(indexPath, animated: false)
-                self.tableView(self.tableView!, didDeselectRowAtIndexPath: indexPath)
+                if let indexPath = self.dataSource!.indexPathForCalendarId(id) {
+                    self.tableView!.deselectRowAtIndexPath(indexPath, animated: false)
+                    self.tableView(self.tableView!, didDeselectRowAtIndexPath: indexPath)
+                }
             }
         }
     }
