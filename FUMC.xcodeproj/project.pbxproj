@@ -9,20 +9,6 @@
 /* Begin PBXBuildFile section */
 		0668526FF3E0C871644D3E6B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBEFB0F663F019D719FE0983 /* libPods.a */; };
 		4900737D1A342D820086CE0B /* DictionaryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4900737C1A342D820086CE0B /* DictionaryExtensions.swift */; };
-		4900739E1A34B9590086CE0B /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490073801A34B9590086CE0B /* Array.swift */; };
-		4900739F1A34B9590086CE0B /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490073811A34B9590086CE0B /* Dictionary.swift */; };
-		490073A01A34B9590086CE0B /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490073821A34B9590086CE0B /* Double.swift */; };
-		490073A11A34B9590086CE0B /* ExSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490073841A34B9590086CE0B /* ExSwift.swift */; };
-		490073A21A34B9590086CE0B /* Float.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490073851A34B9590086CE0B /* Float.swift */; };
-		490073A31A34B9590086CE0B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 490073861A34B9590086CE0B /* Info.plist */; };
-		490073A41A34B9590086CE0B /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490073871A34B9590086CE0B /* Int.swift */; };
-		490073A51A34B9590086CE0B /* NSArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490073881A34B9590086CE0B /* NSArray.swift */; };
-		490073A61A34B9590086CE0B /* Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490073891A34B9590086CE0B /* Range.swift */; };
-		490073A71A34B9590086CE0B /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4900738A1A34B9590086CE0B /* Sequence.swift */; };
-		490073A81A34B9590086CE0B /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4900738B1A34B9590086CE0B /* String.swift */; };
-		490073A91A34B9590086CE0B /* ExSwift.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 4900738D1A34B9590086CE0B /* ExSwift.podspec */; };
-		490073B41A34B9590086CE0B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 490073991A34B9590086CE0B /* Info.plist */; };
-		490073B51A34B9590086CE0B /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 4900739B1A34B9590086CE0B /* LICENSE */; };
 		490C659F1A3230A700E87130 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C659E1A3230A700E87130 /* Calendar.swift */; };
 		490C65A41A324F7700E87130 /* CalendarsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C65A31A324F7700E87130 /* CalendarsDataSource.swift */; };
 		490C65A61A33895D00E87130 /* NSDateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C65A51A33895D00E87130 /* NSDateExtensions.swift */; };
@@ -96,34 +82,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		492569DA1A34EE030006C252 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4900738E1A34B9590086CE0B /* ExSwift.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1E11AF841943222D006BCE48;
-			remoteInfo = ExSwift;
-		};
-		492569DC1A34EE030006C252 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4900738E1A34B9590086CE0B /* ExSwift.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1E11AF8F1943222D006BCE48;
-			remoteInfo = ExSwiftTests;
-		};
-		492569DE1A34EE030006C252 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4900738E1A34B9590086CE0B /* ExSwift.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 2E8CE8EB194ECF2A008B9919;
-			remoteInfo = "ExSwift-iOS";
-		};
-		492569E01A34EE030006C252 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4900738E1A34B9590086CE0B /* ExSwift.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 2EC02FBD194ED0D500619CB5;
-			remoteInfo = "ExSwift-iOS Tests";
-		};
 		49B2A2E91A268022004EED86 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 49B2A2C91A268022004EED86 /* Project object */;
@@ -135,33 +93,6 @@
 
 /* Begin PBXFileReference section */
 		4900737C1A342D820086CE0B /* DictionaryExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DictionaryExtensions.swift; path = FUMC/DictionaryExtensions.swift; sourceTree = "<group>"; };
-		490073801A34B9590086CE0B /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
-		490073811A34B9590086CE0B /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
-		490073821A34B9590086CE0B /* Double.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
-		490073831A34B9590086CE0B /* ExSwift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExSwift.h; sourceTree = "<group>"; };
-		490073841A34B9590086CE0B /* ExSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExSwift.swift; sourceTree = "<group>"; };
-		490073851A34B9590086CE0B /* Float.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Float.swift; sourceTree = "<group>"; };
-		490073861A34B9590086CE0B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		490073871A34B9590086CE0B /* Int.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
-		490073881A34B9590086CE0B /* NSArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSArray.swift; sourceTree = "<group>"; };
-		490073891A34B9590086CE0B /* Range.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Range.swift; sourceTree = "<group>"; };
-		4900738A1A34B9590086CE0B /* Sequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sequence.swift; sourceTree = "<group>"; };
-		4900738B1A34B9590086CE0B /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		4900738D1A34B9590086CE0B /* ExSwift.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ExSwift.podspec; sourceTree = "<group>"; };
-		4900738E1A34B9590086CE0B /* ExSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = ExSwift.xcodeproj; sourceTree = "<group>"; };
-		4900738F1A34B9590086CE0B /* ExSwiftArrayTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExSwiftArrayTests.swift; sourceTree = "<group>"; };
-		490073901A34B9590086CE0B /* ExSwiftDictionaryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExSwiftDictionaryTests.swift; sourceTree = "<group>"; };
-		490073911A34B9590086CE0B /* ExSwiftDoubleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExSwiftDoubleTests.swift; sourceTree = "<group>"; };
-		490073921A34B9590086CE0B /* ExSwiftFloatTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExSwiftFloatTests.swift; sourceTree = "<group>"; };
-		490073931A34B9590086CE0B /* ExSwiftIntTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExSwiftIntTests.swift; sourceTree = "<group>"; };
-		490073941A34B9590086CE0B /* ExSwiftNSArrayTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExSwiftNSArrayTests.swift; sourceTree = "<group>"; };
-		490073951A34B9590086CE0B /* ExSwiftRangeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExSwiftRangeTests.swift; sourceTree = "<group>"; };
-		490073961A34B9590086CE0B /* ExSwiftSequenceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExSwiftSequenceTests.swift; sourceTree = "<group>"; };
-		490073971A34B9590086CE0B /* ExSwiftStringTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExSwiftStringTests.swift; sourceTree = "<group>"; };
-		490073981A34B9590086CE0B /* ExSwiftTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExSwiftTests.swift; sourceTree = "<group>"; };
-		490073991A34B9590086CE0B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4900739B1A34B9590086CE0B /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		4900739C1A34B9590086CE0B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		490C659E1A3230A700E87130 /* Calendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Calendar.swift; path = FUMC/Calendar.swift; sourceTree = "<group>"; };
 		490C65A31A324F7700E87130 /* CalendarsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarsDataSource.swift; path = FUMC/CalendarsDataSource.swift; sourceTree = "<group>"; };
 		490C65A51A33895D00E87130 /* NSDateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSDateExtensions.swift; path = FUMC/NSDateExtensions.swift; sourceTree = "<group>"; };
@@ -270,67 +201,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4900738C1A34B9590086CE0B /* ExSwift */ = {
-			isa = PBXGroup;
-			children = (
-				490073801A34B9590086CE0B /* Array.swift */,
-				490073811A34B9590086CE0B /* Dictionary.swift */,
-				490073821A34B9590086CE0B /* Double.swift */,
-				490073831A34B9590086CE0B /* ExSwift.h */,
-				490073841A34B9590086CE0B /* ExSwift.swift */,
-				490073851A34B9590086CE0B /* Float.swift */,
-				490073861A34B9590086CE0B /* Info.plist */,
-				490073871A34B9590086CE0B /* Int.swift */,
-				490073881A34B9590086CE0B /* NSArray.swift */,
-				490073891A34B9590086CE0B /* Range.swift */,
-				4900738A1A34B9590086CE0B /* Sequence.swift */,
-				4900738B1A34B9590086CE0B /* String.swift */,
-			);
-			path = ExSwift;
-			sourceTree = "<group>";
-		};
-		4900739A1A34B9590086CE0B /* ExSwiftTests */ = {
-			isa = PBXGroup;
-			children = (
-				4900738F1A34B9590086CE0B /* ExSwiftArrayTests.swift */,
-				490073901A34B9590086CE0B /* ExSwiftDictionaryTests.swift */,
-				490073911A34B9590086CE0B /* ExSwiftDoubleTests.swift */,
-				490073921A34B9590086CE0B /* ExSwiftFloatTests.swift */,
-				490073931A34B9590086CE0B /* ExSwiftIntTests.swift */,
-				490073941A34B9590086CE0B /* ExSwiftNSArrayTests.swift */,
-				490073951A34B9590086CE0B /* ExSwiftRangeTests.swift */,
-				490073961A34B9590086CE0B /* ExSwiftSequenceTests.swift */,
-				490073971A34B9590086CE0B /* ExSwiftStringTests.swift */,
-				490073981A34B9590086CE0B /* ExSwiftTests.swift */,
-				490073991A34B9590086CE0B /* Info.plist */,
-			);
-			path = ExSwiftTests;
-			sourceTree = "<group>";
-		};
-		4900739D1A34B9590086CE0B /* ExSwift */ = {
-			isa = PBXGroup;
-			children = (
-				4900738C1A34B9590086CE0B /* ExSwift */,
-				4900738D1A34B9590086CE0B /* ExSwift.podspec */,
-				4900738E1A34B9590086CE0B /* ExSwift.xcodeproj */,
-				4900739A1A34B9590086CE0B /* ExSwiftTests */,
-				4900739B1A34B9590086CE0B /* LICENSE */,
-				4900739C1A34B9590086CE0B /* README.md */,
-			);
-			path = ExSwift;
-			sourceTree = "<group>";
-		};
-		492569D41A34EE030006C252 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				492569DB1A34EE030006C252 /* ExSwift.framework */,
-				492569DD1A34EE030006C252 /* ExSwiftTests.xctest */,
-				492569DF1A34EE030006C252 /* ExSwift.framework */,
-				492569E11A34EE030006C252 /* ExSwift-iOS Tests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		49B2A2C81A268022004EED86 = {
 			isa = PBXGroup;
 			children = (
@@ -342,7 +212,6 @@
 				49B2A2D21A268022004EED86 /* Products */,
 				AB214726C9C4F430C63B422A /* Pods */,
 				7B69E7F3C551EDB41F9B412B /* Frameworks */,
-				4900739D1A34B9590086CE0B /* ExSwift */,
 			);
 			sourceTree = "<group>";
 		};
@@ -635,12 +504,6 @@
 			mainGroup = 49B2A2C81A268022004EED86;
 			productRefGroup = 49B2A2D21A268022004EED86 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 492569D41A34EE030006C252 /* Products */;
-					ProjectRef = 4900738E1A34B9590086CE0B /* ExSwift.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				49B2A2D01A268022004EED86 /* FUMC */,
@@ -649,45 +512,12 @@
 		};
 /* End PBXProject section */
 
-/* Begin PBXReferenceProxy section */
-		492569DB1A34EE030006C252 /* ExSwift.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = ExSwift.framework;
-			remoteRef = 492569DA1A34EE030006C252 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		492569DD1A34EE030006C252 /* ExSwiftTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ExSwiftTests.xctest;
-			remoteRef = 492569DC1A34EE030006C252 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		492569DF1A34EE030006C252 /* ExSwift.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = ExSwift.framework;
-			remoteRef = 492569DE1A34EE030006C252 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		492569E11A34EE030006C252 /* ExSwift-iOS Tests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "ExSwift-iOS Tests.xctest";
-			remoteRef = 492569E01A34EE030006C252 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
-
 /* Begin PBXResourcesBuildPhase section */
 		49B2A2CF1A268022004EED86 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				490073A31A34B9590086CE0B /* Info.plist in Resources */,
 				49B2A3371A268070004EED86 /* CalendarTableHeaderView.xib in Resources */,
-				490073B41A34B9590086CE0B /* Info.plist in Resources */,
 				49B2A3301A268070004EED86 /* BebasNeue Light.otf in Resources */,
 				49B2A33E1A268070004EED86 /* ConnectTableViewCell.xib in Resources */,
 				49B2A3311A268070004EED86 /* BebasNeue Regular.otf in Resources */,
@@ -697,10 +527,8 @@
 				49B2A32E1A268070004EED86 /* BebasNeue Bold.otf in Resources */,
 				49A5696D1A38D93C00B6F1E4 /* Launch Screen.xib in Resources */,
 				49B2A34E1A268070004EED86 /* MyriadPro-Semibold.otf in Resources */,
-				490073B51A34B9590086CE0B /* LICENSE in Resources */,
 				49B2A3321A268070004EED86 /* BebasNeue Thin.otf in Resources */,
 				49B2A3491A268070004EED86 /* MediaMasterTableViewCell.xib in Resources */,
-				490073A91A34B9590086CE0B /* ExSwift.podspec in Resources */,
 				49A569891A40807500B6F1E4 /* CalendarSettingsSelectTableViewCell.xib in Resources */,
 				49B2A34D1A268070004EED86 /* MyriadPro-Regular.otf in Resources */,
 				49D507A31A37C18E00531F23 /* CalendarTableViewAllDayCell.xib in Resources */,
@@ -783,15 +611,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				490073A51A34B9590086CE0B /* NSArray.swift in Sources */,
 				49B2A3511A268070004EED86 /* RootTabBarController.swift in Sources */,
 				49B2A3331A268070004EED86 /* Bulletin.swift in Sources */,
 				49952EE21A26888B002B06FA /* NotificationsTableViewController.swift in Sources */,
-				490073A41A34B9590086CE0B /* Int.swift in Sources */,
 				49940D6D1A2F89BA00E97CD7 /* RKDropdownAlert.m in Sources */,
 				49209A511A360BD600DDD45E /* RadioView.swift in Sources */,
-				490073A81A34B9590086CE0B /* String.swift in Sources */,
-				490073A71A34B9590086CE0B /* Sequence.swift in Sources */,
 				49D507A21A37C18E00531F23 /* CalendarTableViewAllDayCell.swift in Sources */,
 				49A569881A40807500B6F1E4 /* CalendarSettingsSelectTableViewCell.swift in Sources */,
 				49B2A3341A268070004EED86 /* BulletinsDataSource.swift in Sources */,
@@ -808,9 +632,7 @@
 				49B2A3531A268070004EED86 /* UIColorExtensions.swift in Sources */,
 				49B2A34C1A268070004EED86 /* MediaWebViewController.swift in Sources */,
 				49B2A3541A268070004EED86 /* UIDevice+Hardware.m in Sources */,
-				490073A11A34B9590086CE0B /* ExSwift.swift in Sources */,
 				49B2A3591A268070004EED86 /* WitnessesDataSource.swift in Sources */,
-				4900739E1A34B9590086CE0B /* Array.swift in Sources */,
 				49B2A3581A268070004EED86 /* Witness.swift in Sources */,
 				49B2A33B1A268070004EED86 /* ConnectTableFooterView.swift in Sources */,
 				495B5C2A1A2E558F0033DE8D /* NotificationsDataSource.swift in Sources */,
@@ -828,9 +650,7 @@
 				49B2A3571A268070004EED86 /* UIPlaceHolderTextView.m in Sources */,
 				49B2A3451A268070004EED86 /* HomeViewController.swift in Sources */,
 				494DF9DB1A3200C60040D02C /* CalendarSettingsTableViewCell.swift in Sources */,
-				490073A61A34B9590086CE0B /* Range.swift in Sources */,
 				49B2A3431A268070004EED86 /* FeaturedViewController.swift in Sources */,
-				490073A01A34B9590086CE0B /* Double.swift in Sources */,
 				49B2A3351A268070004EED86 /* CalendarEvent.swift in Sources */,
 				49B2A34B1A268070004EED86 /* MediaTableViewController.swift in Sources */,
 				494F80981A3155C000403C6B /* CalendarSettingsViewController.swift in Sources */,
@@ -838,8 +658,6 @@
 				49B2A3561A268070004EED86 /* UIImageExtensions.swift in Sources */,
 				49B2A32C1A268070004EED86 /* AppDelegate.swift in Sources */,
 				49B2A3521A268070004EED86 /* UIChangingLabel.swift in Sources */,
-				4900739F1A34B9590086CE0B /* Dictionary.swift in Sources */,
-				490073A21A34B9590086CE0B /* Float.swift in Sources */,
 				49952EE41A268BF5002B06FA /* NotificationBarButtonItem.swift in Sources */,
 				49B2A34F1A268070004EED86 /* PrayerRequestViewController.swift in Sources */,
 				49B2A3381A268070004EED86 /* CalendarTableViewCell.swift in Sources */,
