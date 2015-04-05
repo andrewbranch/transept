@@ -39,7 +39,7 @@ class WitnessesDataSource: NSObject, MediaTableViewDataSource {
             } else {
                 self.witnesses.removeAll(keepCapacity: true)
                 for w in witnesses.sorted({ a, b in a.from > b.from }) {
-                    let sectionTitle = "\(w.from.year()) • Volume \(w.volume)"
+                    let sectionTitle = "\(w.from.year) • Volume \(w.volume)"
                     if (self.witnesses.has(sectionTitle)) {
                         self.witnesses[sectionTitle]!.append(w)
                     } else {

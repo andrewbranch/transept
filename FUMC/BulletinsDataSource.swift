@@ -74,11 +74,11 @@ class BulletinsDataSource: NSObject, MediaTableViewDataSource {
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let date = self.bulletins.keys.array.sorted(>)[section]
         self.dateFormatter.dateFormat = "EEEE, MMMM d"
-        if (date.midnight() - NSDate().midnight() <= 6 * 24 * 60 * 60 && date.midnight() - NSDate().midnight() >= 0) {
-            if (date.dayOfWorkWeek() <= NSDate().dayOfWorkWeek()) {
-                self.dateFormatter.dateFormat = "'Next' EEEE, MMMM d"
-            } else {
+        if (date.midnight() - NSDate().midnight() <= 7 * 24 * 60 * 60 && date.midnight() - NSDate().midnight() >= 0) {
+            if (date.dayOfWorkWeek() < NSDate().dayOfWorkWeek()) {
                 self.dateFormatter.dateFormat = "'This' EEEE, MMMM d"
+            } else {
+                self.dateFormatter.dateFormat = "'Next' EEEE, MMMM d"
             }
         }
         return self.dateFormatter.stringFromDate(date)

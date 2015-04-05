@@ -12,10 +12,6 @@ extension NSDate {
         return NSCalendar.currentCalendar().dateFromComponents(NSCalendar.currentCalendar().components(.YearCalendarUnit | .MonthCalendarUnit | .DayCalendarUnit, fromDate: self))!
     }
     
-    func year() -> Int {
-        return NSCalendar.currentCalendar().components(.YearCalendarUnit, fromDate: self).year
-    }
-    
     func dayOfWeek() -> Int {
         return NSCalendar.currentCalendar().components(.WeekdayCalendarUnit, fromDate: self).weekday
     }
@@ -34,14 +30,6 @@ extension NSDate {
     }
 }
 
-func > (lhs: NSDate, rhs: NSDate) -> Bool {
+public func > (lhs: NSDate, rhs: NSDate) -> Bool {
     return lhs.timeIntervalSinceReferenceDate > rhs.timeIntervalSinceReferenceDate
-}
-
-func < (lhs: NSDate, rhs: NSDate) -> Bool {
-    return lhs.timeIntervalSinceReferenceDate < rhs.timeIntervalSinceReferenceDate
-}
-
-func - (lhs: NSDate, rhs: NSDate) -> NSTimeInterval {
-    return lhs.timeIntervalSinceDate(rhs)
 }

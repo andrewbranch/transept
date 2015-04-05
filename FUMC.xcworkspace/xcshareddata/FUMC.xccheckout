@@ -12,6 +12,8 @@
 	<dict>
 		<key>5A15F44501BEC13543EECF89047922E23677004F</key>
 		<string>github.com:andrewbranch/FUMCApp.git</string>
+		<key>E2F476CE895D3596DBE8080E8F363F8F94823E70</key>
+		<string>https://github.com/pNre/ExSwift.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>FUMC.xcworkspace</string>
@@ -19,6 +21,8 @@
 	<dict>
 		<key>5A15F44501BEC13543EECF89047922E23677004F</key>
 		<string>..</string>
+		<key>E2F476CE895D3596DBE8080E8F363F8F94823E70</key>
+		<string>../ExSwift/</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>github.com:andrewbranch/FUMCApp.git</string>
@@ -28,6 +32,14 @@
 	<string>5A15F44501BEC13543EECF89047922E23677004F</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E2F476CE895D3596DBE8080E8F363F8F94823E70</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ExSwift</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
