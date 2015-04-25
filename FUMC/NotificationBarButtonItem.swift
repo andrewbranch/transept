@@ -34,7 +34,7 @@ class NotificationBarButtonItem: BBBadgeBarButtonItem, NotificationDelegate {
         
         button.addTarget(self.target!, action: self.action, forControlEvents: UIControlEvents.TouchUpInside)
         
-        (UIApplication.sharedApplication().delegate! as AppDelegate).notificationDelegates.append(self)
+        (UIApplication.sharedApplication().delegate! as! AppDelegate).notificationDelegates.append(self)
     }
     
     func appDelegate(appDelegate: AppDelegate, didReceiveNotification notification: Notification) {

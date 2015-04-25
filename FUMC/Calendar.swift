@@ -21,8 +21,8 @@ class Calendar: NSObject {
     
     init(jsonDictionary: NSDictionary) {
         super.init()
-        self.id = jsonDictionary["id"] as String
-        self.name = jsonDictionary["name"] as String
+        self.id = jsonDictionary["id"] as! String
+        self.name = jsonDictionary["name"] as! String
         if let colorString = jsonDictionary["colorString"] as? String {
              self.color = UIColor.colorWithHexString(colorString)
         }

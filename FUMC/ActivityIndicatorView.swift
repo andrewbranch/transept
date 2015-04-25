@@ -9,11 +9,6 @@
 import UIKit
 
 class ActivityIndicatorView: UIView {
-
-    override init() {
-        super.init()
-        setup()
-    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)

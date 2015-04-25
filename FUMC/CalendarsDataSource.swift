@@ -66,11 +66,11 @@ class CalendarsDataSource: NSObject, UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if (indexPath.row == 0) {
-            let cell = tableView.dequeueReusableCellWithIdentifier("selectCell") as CalendarSettingsSelectTableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("selectCell") as! CalendarSettingsSelectTableViewCell
             return cell
         }
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("calendarSettingsTableViewCell", forIndexPath: indexPath) as CalendarSettingsTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("calendarSettingsTableViewCell", forIndexPath: indexPath) as! CalendarSettingsTableViewCell
         let calendar = calendarForIndexPath(indexPath)!
         cell.label!.text = calendar.name
         cell.checkView!.color = calendar.color

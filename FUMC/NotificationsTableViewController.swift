@@ -17,7 +17,7 @@ class NotificationsTableViewController: CustomTableViewController, Notifications
     var dataSource: NotificationsDataSource?
     
     override func awakeFromNib() {
-        let appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
+        let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         if let dataSource = appDelegate.notificationsDataSource {
             self.dataSource = dataSource
         } else {
@@ -43,7 +43,7 @@ class NotificationsTableViewController: CustomTableViewController, Notifications
     }
     
     override func viewDidAppear(animated: Bool) {
-        (UIApplication.sharedApplication().delegate! as AppDelegate).notificationsViewIsOpen = true
+        (UIApplication.sharedApplication().delegate! as! AppDelegate).notificationsViewIsOpen = true
         for indexPath in self.dataSource!.indexPathsForHighlightedCells() {
             if let cell = self.tableView!.cellForRowAtIndexPath(indexPath) {
                 UIView.animateWithDuration(0.5) {
@@ -62,7 +62,7 @@ class NotificationsTableViewController: CustomTableViewController, Notifications
     }
     
     override func reloadData() {
-        (self.tableView!.dataSource! as NotificationsDataSource).refresh()
+        (self.tableView!.dataSource! as! NotificationsDataSource).refresh()
     }
     
     func dataSourceDidStartLoadingAPI(dataSource: NotificationsDataSource) {
@@ -79,7 +79,7 @@ class NotificationsTableViewController: CustomTableViewController, Notifications
     }
     
     func markAllAsRead() {
-        let appDelegate = UIApplication.sharedApplication().delegate! as AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate! as! AppDelegate
         appDelegate.clearNotifications()
         appDelegate.notificationsViewIsOpen = false
         NSUserDefaults.standardUserDefaults().setObject(self.dataSource!.notifications.map { $0.id }, forKey: "readIds")
@@ -91,8 +91,8 @@ class NotificationsTableViewController: CustomTableViewController, Notifications
             self.dataSource!.readIds.append(notification.id)
             NSUserDefaults.standardUserDefaults().setObject(self.dataSource!.readIds, forKey: "readIds")
         }
-        (UIApplication.sharedApplication().delegate as AppDelegate).setBadgeCount(UIApplication.sharedApplication().applicationIconBadgeNumber - 1)
-        (self.tableView!.cellForRowAtIndexPath(indexPath) as NotificationsTableViewCell).unreadImageView!.hidden = true
+        (UIApplication.sharedApplication().delegate as! AppDelegate).setBadgeCount(UIApplication.sharedApplication().applicationIconBadgeNumber - 1)
+        (self.tableView!.cellForRowAtIndexPath(indexPath) as! NotificationsTableViewCell).unreadImageView!.hidden = true
         
         UIApplication.sharedApplication().openURL(NSURL(string: notification.url)!)
         self.tableView!.deselectRowAtIndexPath(indexPath, animated: true)

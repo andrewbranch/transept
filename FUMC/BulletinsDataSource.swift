@@ -53,7 +53,7 @@ class BulletinsDataSource: NSObject, MediaTableViewDataSource {
     }
     
     func urlForIndexPath(indexPath: NSIndexPath) -> NSURL? {
-        return API.shared().fileURL(key: self.bulletinForIndexPath(indexPath).file)
+        return API.shared().fileURL(key: self.bulletinForIndexPath(indexPath).file as String)
     }
     
     func bulletinForIndexPath(indexPath: NSIndexPath) -> Bulletin {
@@ -85,7 +85,7 @@ class BulletinsDataSource: NSObject, MediaTableViewDataSource {
     }
     
     func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        let headerView = view as UITableViewHeaderFooterView
+        let headerView = view as! UITableViewHeaderFooterView
         headerView.textLabel.font = UIFont.fumcMainFontRegular14
         if (headerView.textLabel.text!.hasPrefix("NEXT") || headerView.textLabel.text!.hasPrefix("THIS")) {
             headerView.textLabel.textColor = UIColor.fumcRedColor()
@@ -93,9 +93,9 @@ class BulletinsDataSource: NSObject, MediaTableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("mediaTableViewCell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("mediaTableViewCell", forIndexPath: indexPath) as! UITableViewCell
         cell.textLabel!.font = UIFont.fumcMainFontRegular16
-        cell.textLabel!.text = self.bulletinForIndexPath(indexPath).service
+        cell.textLabel!.text = self.bulletinForIndexPath(indexPath).service as String
         cell.detailTextLabel?.text = ""
         return cell
     }

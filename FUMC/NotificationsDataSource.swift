@@ -56,7 +56,7 @@ class NotificationsDataSource: NSObject, UITableViewDataSource {
                     return
                 }
                 var error: NSError?
-                let json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.allZeros, error: &error) as NSDictionary
+                let json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.allZeros, error: &error) as! NSDictionary
                 if (error == nil) {
                     if let channels = json["channels"] as? [String] {
                         completed(channels: channels)
@@ -100,7 +100,7 @@ class NotificationsDataSource: NSObject, UITableViewDataSource {
     func sortNotifications() {
         self.notifications.sort {
             // TODO incompatible with iOS < 8.0
-            NSCalendar.currentCalendar().compareDate($0.sendDate, toDate: $1.sendDate, toUnitGranularity: NSCalendarUnit.SecondCalendarUnit) == NSComparisonResult.OrderedDescending
+            NSCalendar.currentCalendar().compareDate($0.sendDate, toDate: $1.sendDate, toUnitGranularity: NSCalendarUnit.CalendarUnitSecond) == NSComparisonResult.OrderedDescending
         }
     }
     
@@ -130,7 +130,7 @@ class NotificationsDataSource: NSObject, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("notificationsTableViewCell", forIndexPath: indexPath) as NotificationsTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("notificationsTableViewCell", forIndexPath: indexPath) as! NotificationsTableViewCell
         let notification = notificationForIndexPath(indexPath)
         
         cell.unreadImageView!.hidden = self.readIds.contains(notification.id)

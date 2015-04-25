@@ -35,12 +35,12 @@ class API: NSObject {
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
             if (error != nil) {
                 completed(calendars: [], error: error)
-            } else if ((response as NSHTTPURLResponse).statusCode != 200) {
-                let error = NSError(domain: NSURLErrorDomain, code: 0, userInfo: ["response": response as NSHTTPURLResponse])
+            } else if ((response as! NSHTTPURLResponse).statusCode != 200) {
+                let error = NSError(domain: NSURLErrorDomain, code: 0, userInfo: ["response": response as! NSHTTPURLResponse])
                 completed(calendars: [], error: error)
             } else {
                 var error: NSError?
-                let calendarDictionaries: [NSDictionary] = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.allZeros, error: &error) as [NSDictionary]
+                let calendarDictionaries: [NSDictionary] = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.allZeros, error: &error) as! [NSDictionary]
                 if (error != nil) {
                     completed(calendars: [], error: error)
                     return
@@ -62,12 +62,12 @@ class API: NSObject {
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
             if (error != nil) {
                 completed(calendars: calendars, error: error)
-            } else if ((response as NSHTTPURLResponse).statusCode != 200) {
-                let error = NSError(domain: NSURLErrorDomain, code: 0, userInfo: ["response": response as NSHTTPURLResponse])
+            } else if ((response as! NSHTTPURLResponse).statusCode != 200) {
+                let error = NSError(domain: NSURLErrorDomain, code: 0, userInfo: ["response": response as! NSHTTPURLResponse])
                 completed(calendars: calendars, error: error)
             } else {
                 var error: NSError?
-                let eventDictionaries: NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.allZeros, error: &error) as NSDictionary
+                let eventDictionaries: NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.allZeros, error: &error) as! NSDictionary
                 if (error != nil) {
                     completed(calendars: calendars, error: error)
                     return
@@ -93,12 +93,12 @@ class API: NSObject {
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
             if (error != nil) {
                 completed(bulletins: [], error: error)
-            } else if ((response as NSHTTPURLResponse).statusCode != 200) {
+            } else if ((response as! NSHTTPURLResponse).statusCode != 200) {
                 let error = NSError(domain: "NSURLDomainError", code: 0, userInfo: ["response": response])
                 completed(bulletins: [], error: error)
             } else {
                 var error: NSError?
-                var bulletinsDictionary: [NSDictionary] = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &error) as [NSDictionary]
+                var bulletinsDictionary: [NSDictionary] = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &error) as! [NSDictionary]
                 if (error != nil) {
                     completed(bulletins: [], error: error)
                     return
@@ -108,10 +108,10 @@ class API: NSObject {
                 for json in bulletinsDictionary {
                     
                     self.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-                    var date = self.dateFormatter.dateFromString(json["date"] as String)
+                    var date = self.dateFormatter.dateFromString(json["date"] as! String)
                     
                     var b = Bulletin()
-                    b.setValuesForKeysWithDictionary(json)
+                    b.setValuesForKeysWithDictionary(json as [NSObject : AnyObject])
                     b.date = date!
                     
                     bulletins.append(b)
@@ -128,12 +128,12 @@ class API: NSObject {
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
             if (error != nil) {
                 completed(witnesses: [], error: error)
-            } else if ((response as NSHTTPURLResponse).statusCode != 200) {
+            } else if ((response as! NSHTTPURLResponse).statusCode != 200) {
                 let error = NSError(domain: "NSURLDomainError", code: 0, userInfo: ["response": response])
                 completed(witnesses: [], error: error)
             } else {
                 var error: NSError?
-                var witnessesDictionary: [NSDictionary] = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &error) as [NSDictionary]
+                var witnessesDictionary: [NSDictionary] = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &error) as! [NSDictionary]
                 if (error != nil) {
                     completed(witnesses: [], error: error)
                     return
@@ -143,11 +143,11 @@ class API: NSObject {
                 for json in witnessesDictionary {
                     
                     self.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-                    let from = self.dateFormatter.dateFromString(json["from"] as String)
-                    let to = self.dateFormatter.dateFromString(json["to"] as String)
+                    let from = self.dateFormatter.dateFromString(json["from"] as! String)
+                    let to = self.dateFormatter.dateFromString(json["to"] as! String)
                     
                     var w = Witness()
-                    w.setValuesForKeysWithDictionary(json)
+                    w.setValuesForKeysWithDictionary(json as [NSObject : AnyObject])
                     w.from = from!
                     w.to = to!
                     
@@ -165,12 +165,12 @@ class API: NSObject {
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
             if (error != nil) {
                 completed(notifications: [], error: error)
-            } else if ((response as NSHTTPURLResponse).statusCode != 200) {
+            } else if ((response as! NSHTTPURLResponse).statusCode != 200) {
                 let error = NSError(domain: "NSURLDomainError", code: 0, userInfo: ["response": response])
                 completed(notifications: [], error: error)
             } else {
                 var error: NSError?
-                var notificationsDictionaries: [NSDictionary] = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &error) as [NSDictionary]
+                var notificationsDictionaries: [NSDictionary] = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &error) as! [NSDictionary]
                 if (error != nil) {
                     completed(notifications: [], error: error)
                 }
@@ -179,12 +179,12 @@ class API: NSObject {
                 for json in notificationsDictionaries {
                     
                     self.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-                    let sendDate = self.dateFormatter.dateFromString(json["sendDate"] as String)
-                    let expirationDate = self.dateFormatter.dateFromString(json["expirationDate"] as String)
+                    let sendDate = self.dateFormatter.dateFromString(json["sendDate"] as! String)
+                    let expirationDate = self.dateFormatter.dateFromString(json["expirationDate"] as! String)
                     
                     var n = Notification()
-                    n.id = json["id"] as Int
-                    n.message = json["message"] as String
+                    n.id = json["id"] as! Int
+                    n.message = json["message"] as! String
                     if let url = json["url"] as? String {
                         n.url = url
                     }
@@ -205,8 +205,8 @@ class API: NSObject {
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { response, data, error in
             if (error != nil) {
                 completed(data: NSData(), error: error)
-            } else if (data.length == 0 || (response as NSHTTPURLResponse).statusCode != 200) {
-                let error = NSError(domain: NSURLErrorDomain, code: 0, userInfo: ["response": (response as NSHTTPURLResponse)])
+            } else if (data.length == 0 || (response as! NSHTTPURLResponse).statusCode != 200) {
+                let error = NSError(domain: NSURLErrorDomain, code: 0, userInfo: ["response": (response as! NSHTTPURLResponse)])
                 completed(data: NSData(), error: error)
             } else {
                 completed(data: data, error: nil)
@@ -220,12 +220,12 @@ class API: NSObject {
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { response, data, error in
             if (error != nil) {
                 completed(image: nil, id: nil, url: nil, error: error)
-            } else if (data.length == 0 || (response as NSHTTPURLResponse).statusCode != 200) {
-                let error = NSError(domain: NSURLErrorDomain, code: 0, userInfo: ["response": (response as NSHTTPURLResponse)])
+            } else if (data.length == 0 || (response as! NSHTTPURLResponse).statusCode != 200) {
+                let error = NSError(domain: NSURLErrorDomain, code: 0, userInfo: ["response": (response as! NSHTTPURLResponse)])
                 completed(image: nil, id: nil, url: nil, error: error)
             } else {
                 var error: NSError?
-                let jsonDictionaries: [NSDictionary] = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.allZeros, error: &error) as [NSDictionary]
+                let jsonDictionaries: [NSDictionary] = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.allZeros, error: &error) as! [NSDictionary]
                 if (error != nil) {
                     completed(image: nil, id: nil, url: nil, error: error)
                 } else if (jsonDictionaries.count > 0) {
@@ -245,7 +245,7 @@ class API: NSObject {
                                 if let urlString = jsonDictionaries[0]["url"] as? String {
                                     url = NSURL(string: urlString)
                                 }
-                                completed(image: img, id: jsonDictionaries[0]["id"] as Int?, url: url, error: nil)
+                                completed(image: img, id: jsonDictionaries[0]["id"] as! Int?, url: url, error: nil)
                             } else {
                                 completed(image: nil, id: nil, url: nil, error: NSError())
                             }
@@ -272,8 +272,8 @@ class API: NSObject {
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { response, data, error in
             if (error != nil) {
                 completed(error: error)
-            } else if ((response as NSHTTPURLResponse).statusCode != 200) {
-                let error = NSError(domain: NSURLErrorDomain, code: 0, userInfo: ["response": (response as NSHTTPURLResponse)])
+            } else if ((response as! NSHTTPURLResponse).statusCode != 200) {
+                let error = NSError(domain: NSURLErrorDomain, code: 0, userInfo: ["response": (response as! NSHTTPURLResponse)])
                 completed(error: error)
                 return
             }

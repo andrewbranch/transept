@@ -93,7 +93,7 @@ class ConnectTableViewController: UITableViewController, UITableViewDataSource, 
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("connectTableCell", forIndexPath: indexPath) as ConnectTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("connectTableCell", forIndexPath: indexPath) as! ConnectTableViewCell
         
         cell.iconView!.image = self.images[indexPath.row]
         cell.label!.attributedText = self.labels[indexPath.row]
@@ -102,7 +102,7 @@ class ConnectTableViewController: UITableViewController, UITableViewDataSource, 
     }
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let footer = tableView.dequeueReusableHeaderFooterViewWithIdentifier("ConnectTableFooterViewIdentifier") as ConnectTableFooterView
+        let footer = tableView.dequeueReusableHeaderFooterViewWithIdentifier("ConnectTableFooterViewIdentifier") as! ConnectTableFooterView
         return footer
     }
     

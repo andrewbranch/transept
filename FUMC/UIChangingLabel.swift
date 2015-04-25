@@ -24,11 +24,6 @@ class UIChangingLabel: UIView {
         }
     }
     
-    override init() {
-        super.init()
-        self.setup()
-    }
-    
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.setup()

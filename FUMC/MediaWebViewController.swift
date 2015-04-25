@@ -64,7 +64,7 @@ class MediaWebViewController: UIViewController, UIWebViewDelegate, UIScrollViewD
     
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         if (navigationType == UIWebViewNavigationType.LinkClicked) {
-            UIApplication.sharedApplication().openURL(request.URL)
+            UIApplication.sharedApplication().openURL(request.URL!)
             return false
         }
         

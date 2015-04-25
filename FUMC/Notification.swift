@@ -17,8 +17,8 @@ class Notification: NSObject {
     var url: String
     
     init(userInfo: [NSObject : AnyObject]) {
-        let data = userInfo["aps"] as NSDictionary
-        let custom = userInfo["info"] as NSDictionary
+        let data = userInfo["aps"] as! NSDictionary
+        let custom = userInfo["info"] as! NSDictionary
         var dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZ"
         
@@ -27,10 +27,10 @@ class Notification: NSObject {
         if let id = custom["id"] as? String {
             self.id = id.toInt()!
         }
-        self.sendDate = dateFormatter.dateFromString(custom["sendDate"] as String)!
+        self.sendDate = dateFormatter.dateFromString(custom["sendDate"] as! String)!
         self.expirationDate = nil // don't care about this
-        self.message = data["alert"] as String
-        self.url = custom["url"] as String
+        self.message = data["alert"] as! String
+        self.url = custom["url"] as! String
     }
     
     override init() {

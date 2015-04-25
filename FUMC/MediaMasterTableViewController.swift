@@ -46,7 +46,7 @@ class MediaMasterTableViewController: UITableViewController, UITableViewDataSour
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("mediaMasterTableViewCell", forIndexPath: indexPath) as MediaMasterTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("mediaMasterTableViewCell", forIndexPath: indexPath) as! MediaMasterTableViewCell
 
         cell.iconView!.image = self.images[indexPath.row]
         cell.label!.attributedText = self.labels[indexPath.row]
@@ -72,8 +72,8 @@ class MediaMasterTableViewController: UITableViewController, UITableViewDataSour
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "mediaMasterCellSelection") {
-            var tableViewController = segue.destinationViewController as MediaTableViewController
-            var indexPath = sender as NSIndexPath
+            var tableViewController = segue.destinationViewController as! MediaTableViewController
+            var indexPath = sender as! NSIndexPath
             switch (indexPath.item) {
                 
                 case 0:
