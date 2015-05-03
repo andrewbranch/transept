@@ -8,6 +8,7 @@
 
 protocol CalendarSettingsDelegate {
     func calendarsDataSource(dataSource: CalendarsDataSource, didGetCalendars calendars: [Calendar]) -> Void
+    func calendarsDataSource(dataSource: CalendarsDataSource, failedGettingCalendarsWithError error: NSError) -> Void
     func calendarSettingsController(viewController: CalendarSettingsViewController, didUpdateSelectionFrom oldCalendars: [Calendar], to newCalendars: [Calendar]) -> Void
 }
 
@@ -31,6 +32,7 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
     var sortedKeys = [NSString]()
     let dateFormatter = NSDateFormatter()
     var currentCalendars = [Calendar]()
+    var calendarsDataSource: CalendarsDataSource?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,12 +68,14 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
         API.shared().getEventsForCalendars(calendars) { calendars, error in
             if (error != nil) {
                 ErrorAlerter.showLoadingAlertInViewController(self)
+                self.hideLoadingView()
             }
             completed()
         }
     }
     
     override func reloadData() {
+        self.calendarsDataSource!.refresh()
         self.refreshControl.beginRefreshing()
         requestEventsForCalendars(self.currentCalendars, page: 1) {
             self.updateTableWithNewCalendars(self.currentCalendars)
@@ -169,6 +173,11 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
             self.updateTableWithNewCalendars(self.currentCalendars)
             self.hideLoadingView()
         }
+    }
+    
+    func calendarsDataSource(dataSource: CalendarsDataSource, failedGettingCalendarsWithError error: NSError) {
+        ErrorAlerter.loadingAlertBasedOnReachability().show()
+        self.hideLoadingView()
     }
     
     func calendarSettingsController(viewController: CalendarSettingsViewController, didUpdateSelectionFrom oldCalendars: [Calendar], to newCalendars: [Calendar]) {

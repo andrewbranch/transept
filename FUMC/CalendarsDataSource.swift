@@ -27,7 +27,8 @@ class CalendarsDataSource: NSObject, UITableViewDataSource {
     
     func refresh() {
         requestCalendars() {
-            self.settingsDelegate!.dataSourceDidFinishLoadingAPI(self)
+            self.settingsDelegate?.dataSourceDidFinishLoadingAPI(self)
+            self.calendarDelegate!.calendarsDataSource(self, didGetCalendars: self.calendars)
         }
     }
     
@@ -35,7 +36,7 @@ class CalendarsDataSource: NSObject, UITableViewDataSource {
         API.shared().getCalendars() { calendars, error in
             if (error != nil) {
                 self.settingsDelegate?.dataSource(self, failedToLoadWithError: error)
-                ErrorAlerter.showLoadingAlertInViewController(self.calendarDelegate!)
+                self.calendarDelegate!.calendarsDataSource(self, failedGettingCalendarsWithError: error!)
             } else {
                 self.calendars = calendars
                 completed()

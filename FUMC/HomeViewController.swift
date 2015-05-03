@@ -42,6 +42,7 @@ class HomeViewController: UIPageViewController, UIPageViewControllerDataSource, 
         self.calendarsDataSource = CalendarsDataSource(settingsDelegate: nil, calendarDelegate: calendarViewController)
         self.calendarViewController = calendarViewController
         self.featuredViewController = featuredViewController
+        self.calendarViewController!.calendarsDataSource = self.calendarsDataSource!
         (UIApplication.sharedApplication().delegate as! AppDelegate).featuredViewController = featuredViewController
         
         // Preload featured view
