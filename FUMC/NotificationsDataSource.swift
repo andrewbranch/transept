@@ -15,8 +15,8 @@ class NotificationsDataSource: NSObject, UITableViewDataSource {
     var notifications = [Notification]()
     var url = NSURL(string: "https://fumc.herokuapp.com/api/notifications/current")
     var dateFormatter = NSDateFormatter()
-    var readIds = [Int]()
-    var highlightedIds = [Int]()
+    var readIds = [String]()
+    var highlightedIds = [String]()
     var channels = [String]()
     lazy var linkImage: UIImage = {
         return UIImage(named: "link")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
@@ -29,7 +29,7 @@ class NotificationsDataSource: NSObject, UITableViewDataSource {
         
         self.getChannels() { channels in
             self.channels = channels
-            self.requestData(channels.contains("tester")) {
+            self.requestData(channels.contains("testers")) {
                 self.sortNotifications()
                 self.delegate!.dataSourceDidFinishLoadingAPI(self)
             }
@@ -40,7 +40,7 @@ class NotificationsDataSource: NSObject, UITableViewDataSource {
         super.init()
         self.getChannels() { channels in
             self.channels = channels
-            self.requestData(channels.contains("tester")) {
+            self.requestData(channels.contains("testers")) {
                 self.sortNotifications()
                 self.delegate?.dataSourceDidFinishLoadingAPI(self)
             }
@@ -75,7 +75,7 @@ class NotificationsDataSource: NSObject, UITableViewDataSource {
     func refresh() {
         getChannels() { channels in
             self.channels = channels
-            self.requestData(channels.contains("tester")) {
+            self.requestData(channels.contains("testers")) {
                 self.sortNotifications()
                 self.delegate?.dataSourceDidFinishLoadingAPI(self)
             }

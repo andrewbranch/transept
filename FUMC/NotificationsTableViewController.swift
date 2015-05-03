@@ -37,7 +37,7 @@ class NotificationsTableViewController: CustomTableViewController, Notifications
     }
     
     override func viewWillAppear(animated: Bool) {
-        if let readIds = NSUserDefaults.standardUserDefaults().objectForKey("readIds") as? [Int] {
+        if let readIds = NSUserDefaults.standardUserDefaults().objectForKey("readIds") as? [String] {
             self.dataSource?.readIds = readIds
         }
     }

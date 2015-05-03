@@ -16,7 +16,7 @@ class FeaturedViewController: UIViewController, HomeViewPage {
     var pageViewController: HomeViewController?
     private var url: NSURL?
     private var appearedOnce = false
-    private var featureId: Int?
+    private var featureId: String?
     private let deviceImageMap = [
         "iPhone3,1": "iphoneFourImage",
         "iPhone3,2": "iphoneFourImage",
@@ -71,7 +71,7 @@ class FeaturedViewController: UIViewController, HomeViewPage {
                 self.label!.hidden = true
                 self.imageView!.image = image!
                 self.featureId = id!
-//                if (NSUserDefaults.standardUserDefaults().integerForKey("lastSeenFeatureId") != id!) {
+//              if ((NSUserDefaults.standardUserDefaults().valueForKey("lastSeenFeatureId") as! String) != id!) {
 //                    // New feature
 //                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(500 * NSEC_PER_MSEC)), dispatch_get_main_queue()) {
 //                        self.pageViewController!.setViewControllers([self], direction: UIPageViewControllerNavigationDirection.Forward, animated: true) { (finished) -> Void in
@@ -93,7 +93,7 @@ class FeaturedViewController: UIViewController, HomeViewPage {
         self.pageViewController!.navigationItem.title = "Featured"
         self.pageViewController!.pageControl.hidden = false
         if let id = self.featureId {
-            NSUserDefaults.standardUserDefaults().setInteger(id, forKey: "lastSeenFeatureId")
+            NSUserDefaults.standardUserDefaults().setValue(id, forKey: "lastSeenFeatureId")
         }
     }
     
