@@ -32,6 +32,7 @@ class EventViewController: UIViewController, EKEventEditViewDelegate, UITableVie
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.dateFormatter.timeZone = NSTimeZone(abbreviation: "CST")
         self.navigationItem.title = "Event Detail"
         self.descriptionLabel!.font = UIFont.fumcMainFontRegular14
         self.dateContainer!.layer.cornerRadius = 10

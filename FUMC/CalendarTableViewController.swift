@@ -36,6 +36,7 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.dateFormatter.timeZone = NSTimeZone(abbreviation: "CST")
 
         self.tableView!.registerNib(UINib(nibName: "CalendarTableViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "calendarTableViewCell")
         self.tableView!.registerNib(UINib(nibName: "CalendarTableViewAllDayCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "calendarTableViewAllDayCell")

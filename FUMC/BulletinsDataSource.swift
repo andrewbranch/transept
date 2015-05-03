@@ -18,6 +18,7 @@ class BulletinsDataSource: NSObject, MediaTableViewDataSource {
     
     required init(delegate: MediaTableViewDataSourceDelegate) {
         super.init()
+        self.dateFormatter.timeZone = NSTimeZone(abbreviation: "CST")
         self.delegate = delegate
         self.delegate.dataSourceDidStartLoadingAPI(self)
         requestData() {
