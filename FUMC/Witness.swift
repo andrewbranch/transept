@@ -10,21 +10,23 @@ import UIKit
 
 class Witness: NSObject {
     
-    var id: Int
+    var id: String
     var from: NSDate
     var to: NSDate
-    var file: NSString
+    var file: String
     var volume: Int
     var issue: Int
     var visible: Bool
     
-    override init() {
-        self.id = 0
-        self.from = NSDate()
-        self.to = NSDate()
-        self.volume = 0
-        self.issue = 0
-        self.file = ""
-        self.visible = false
+    init(jsonDictionary: NSDictionary, dateFormatter: NSDateFormatter) {
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        
+        self.id = jsonDictionary["id"] as! String
+        self.from = dateFormatter.dateFromString(jsonDictionary["from"] as! String)!
+        self.to = dateFormatter.dateFromString(jsonDictionary["to"] as! String)!
+        self.volume = jsonDictionary["volume"] as! Int
+        self.issue = jsonDictionary["issue"] as! Int
+        self.file = jsonDictionary["file"] as! String
+        self.visible = jsonDictionary["visible"] as! Bool
     }
 }

@@ -6,10 +6,9 @@
 //  Copyright (c) 2014 FUMC Pensacola. All rights reserved.
 //
 
-import UIKit
-
 protocol CalendarSettingsDelegate {
     func calendarsDataSource(dataSource: CalendarsDataSource, didGetCalendars calendars: [Calendar]) -> Void
+    func calendarsDataSource(dataSource: CalendarsDataSource, failedGettingCalendarsWithError error: NSError) -> Void
     func calendarSettingsController(viewController: CalendarSettingsViewController, didUpdateSelectionFrom oldCalendars: [Calendar], to newCalendars: [Calendar]) -> Void
 }
 
@@ -33,9 +32,11 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
     var sortedKeys = [NSString]()
     let dateFormatter = NSDateFormatter()
     var currentCalendars = [Calendar]()
+    var calendarsDataSource: CalendarsDataSource?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.dateFormatter.timeZone = NSTimeZone(abbreviation: "CST")
 
         self.tableView!.registerNib(UINib(nibName: "CalendarTableViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "calendarTableViewCell")
         self.tableView!.registerNib(UINib(nibName: "CalendarTableViewAllDayCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "calendarTableViewAllDayCell")
@@ -68,12 +69,14 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
         API.shared().getEventsForCalendars(calendars) { calendars, error in
             if (error != nil) {
                 ErrorAlerter.showLoadingAlertInViewController(self)
+                self.hideLoadingView()
             }
             completed()
         }
     }
     
     override func reloadData() {
+        self.calendarsDataSource!.refresh()
         self.refreshControl.beginRefreshing()
         requestEventsForCalendars(self.currentCalendars, page: 1) {
             self.updateTableWithNewCalendars(self.currentCalendars)
@@ -89,7 +92,7 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
     func structureEventsFromCalendars(calendars: [Calendar]) -> Dictionary<NSDate, [CalendarEvent]> {
         var structured = Dictionary<NSDate, [CalendarEvent]>()
         let events = calendars.map({ $0.events }).reduce([], combine: +).sorted({
-            return NSCalendar.currentCalendar().compareDate($0.from, toDate: $1.from, toUnitGranularity: NSCalendarUnit.MinuteCalendarUnit) == NSComparisonResult.OrderedAscending
+            return NSCalendar.currentCalendar().compareDate($0.from, toDate: $1.from, toUnitGranularity: NSCalendarUnit.CalendarUnitMinute) == NSComparisonResult.OrderedAscending
         })
         for (var i = 0; i < 7; i++) {
             let date = NSDate(timeIntervalSinceNow: 60 * 60 * 24 * Double(i)).midnight()
@@ -116,12 +119,12 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
 
         let event = eventForIndexPath(indexPath)
         if (event.allDay) {
-            let cell = tableView.dequeueReusableCellWithIdentifier("calendarTableViewAllDayCell", forIndexPath: indexPath) as CalendarTableViewAllDayCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("calendarTableViewAllDayCell", forIndexPath: indexPath) as! CalendarTableViewAllDayCell
             cell.titleLabel!.text = event.name
             return cell
         }
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("calendarTableViewCell", forIndexPath: indexPath) as CalendarTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("calendarTableViewCell", forIndexPath: indexPath) as! CalendarTableViewCell
         cell.titleLabel!.text = event.name
         cell.locationLabel!.text = event.location
         
@@ -144,7 +147,7 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterViewWithIdentifier("CalendarTableHeaderViewIdentifier") as CalendarTableHeaderView
+        let header = tableView.dequeueReusableHeaderFooterViewWithIdentifier("CalendarTableHeaderViewIdentifier") as! CalendarTableHeaderView
         self.dateFormatter.dateFormat = "EEEE, MMMM d"
         header.label!.text = self.dateFormatter.stringFromDate(self.displayEvents.keys.array.sorted(<)[section])
         return header
@@ -171,6 +174,11 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
             self.updateTableWithNewCalendars(self.currentCalendars)
             self.hideLoadingView()
         }
+    }
+    
+    func calendarsDataSource(dataSource: CalendarsDataSource, failedGettingCalendarsWithError error: NSError) {
+        ErrorAlerter.loadingAlertBasedOnReachability().show()
+        self.hideLoadingView()
     }
     
     func calendarSettingsController(viewController: CalendarSettingsViewController, didUpdateSelectionFrom oldCalendars: [Calendar], to newCalendars: [Calendar]) {
@@ -255,7 +263,7 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
             UIView.animateWithDuration(0.25) {
                 self.pageViewController!.pageControl.alpha = 0
             }
-            (segue.destinationViewController as EventViewController).calendarEvent = eventForIndexPath(self.tableView!.indexPathForSelectedRow()!)
+            (segue.destinationViewController as! EventViewController).calendarEvent = eventForIndexPath(self.tableView!.indexPathForSelectedRow()!)
         }
     }
 

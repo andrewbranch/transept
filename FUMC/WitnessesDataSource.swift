@@ -18,6 +18,7 @@ class WitnessesDataSource: NSObject, MediaTableViewDataSource {
     
     required init(delegate: MediaTableViewDataSourceDelegate) {
         super.init()
+        self.dateFormatter.timeZone = NSTimeZone(abbreviation: "CST")
         self.delegate = delegate
         self.delegate.dataSourceDidStartLoadingAPI(self)
         requestData() {
@@ -59,7 +60,7 @@ class WitnessesDataSource: NSObject, MediaTableViewDataSource {
     }
     
     func urlForIndexPath(indexPath: NSIndexPath) -> NSURL? {
-        return API.shared().fileURL(key: self.witnessForIndexPath(indexPath).file)
+        return API.shared().fileURL(key: self.witnessForIndexPath(indexPath).file as String)
     }
     
     
@@ -79,19 +80,19 @@ class WitnessesDataSource: NSObject, MediaTableViewDataSource {
     }
     
     func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        (view as UITableViewHeaderFooterView).textLabel.font = UIFont.fumcMainFontRegular14
+        (view as! UITableViewHeaderFooterView).textLabel.font = UIFont.fumcMainFontRegular14
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("mediaTableViewCell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("mediaTableViewCell", forIndexPath: indexPath) as! UITableViewCell
         let witness = self.witnessForIndexPath(indexPath)
         self.dateFormatter.dateFormat = "MMMM d"
         
         cell.textLabel!.font = UIFont.fumcMainFontRegular16
         cell.detailTextLabel?.font = UIFont.fumcMainFontRegular16
         
-        cell.textLabel!.text = NSString(format: "Issue %i", witness.issue)
-        cell.detailTextLabel!.text = NSString(format: "%@ – %@", self.dateFormatter.stringFromDate(witness.from), self.dateFormatter.stringFromDate(witness.to))
+        cell.textLabel!.text = NSString(format: "Issue %i", witness.issue) as String
+        cell.detailTextLabel!.text = NSString(format: "%@ – %@", self.dateFormatter.stringFromDate(witness.from), self.dateFormatter.stringFromDate(witness.to)) as String
         
         if (witness.to.midnight().dateByAddingTimeInterval(24 * 60 * 60 - 1) > NSDate()) {
             cell.textLabel!.textColor = UIColor.fumcRedColor()

@@ -27,7 +27,8 @@ class CalendarsDataSource: NSObject, UITableViewDataSource {
     
     func refresh() {
         requestCalendars() {
-            self.settingsDelegate!.dataSourceDidFinishLoadingAPI(self)
+            self.settingsDelegate?.dataSourceDidFinishLoadingAPI(self)
+            self.calendarDelegate!.calendarsDataSource(self, didGetCalendars: self.calendars)
         }
     }
     
@@ -35,7 +36,7 @@ class CalendarsDataSource: NSObject, UITableViewDataSource {
         API.shared().getCalendars() { calendars, error in
             if (error != nil) {
                 self.settingsDelegate?.dataSource(self, failedToLoadWithError: error)
-                ErrorAlerter.showLoadingAlertInViewController(self.calendarDelegate!)
+                self.calendarDelegate!.calendarsDataSource(self, failedGettingCalendarsWithError: error!)
             } else {
                 self.calendars = calendars
                 completed()
@@ -66,11 +67,11 @@ class CalendarsDataSource: NSObject, UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if (indexPath.row == 0) {
-            let cell = tableView.dequeueReusableCellWithIdentifier("selectCell") as CalendarSettingsSelectTableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("selectCell") as! CalendarSettingsSelectTableViewCell
             return cell
         }
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("calendarSettingsTableViewCell", forIndexPath: indexPath) as CalendarSettingsTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("calendarSettingsTableViewCell", forIndexPath: indexPath) as! CalendarSettingsTableViewCell
         let calendar = calendarForIndexPath(indexPath)!
         cell.label!.text = calendar.name
         cell.checkView!.color = calendar.color

@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 FUMC Pensacola. All rights reserved.
 //
 
-import UIKit
-
 protocol MediaTableViewDataSource: UITableViewDataSource, UITableViewDelegate {
     var title: NSString { get }
     var loading: Bool { get }
@@ -31,7 +29,7 @@ class MediaTableViewController: CustomTableViewController, MediaTableViewDataSou
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = self.dataSource!.title
+        self.navigationItem.title = self.dataSource!.title as String
         self.tableView!.dataSource = self.dataSource!
         self.tableView!.delegate = self.dataSource!
         self.tableViewController.refreshControl = nil // Workaround for #26
@@ -85,7 +83,7 @@ class MediaTableViewController: CustomTableViewController, MediaTableViewDataSou
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "mediaTableCellSelection") {
-            var viewController = segue.destinationViewController as MediaWebViewController
+            var viewController = segue.destinationViewController as! MediaWebViewController
             var indexPath = self.tableView!.indexPathForSelectedRow()
             
             viewController.url = self.dataSource!.urlForIndexPath(indexPath!)

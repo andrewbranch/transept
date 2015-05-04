@@ -47,14 +47,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ZeroPushDelegate, RKDropd
         UINavigationBar.appearance().barTintColor = UIColor.fumcRedColor()
         UINavigationBar.appearance().tintColor = translucentWhite
         UINavigationBar.appearance().translucent = false
-        UITabBar.appearance().selectedImageTintColor = UIColor.whiteColor()
+        UITabBar.appearance().tintColor = UIColor.whiteColor()
         UITabBar.appearance().barTintColor = UIColor(white: 0.1, alpha: 1)
         UITabBar.appearance().selectionIndicatorImage = UIImage.imageFromColor(UIColor.blackColor(), forSize: CGSizeMake(UIScreen.mainScreen().bounds.width / 4, 49))
         
         Fabric.with([Crashlytics()])
         
         if let userInfo = launchOptions?[UIApplicationLaunchOptionsRemoteNotificationKey] as? NSDictionary {
-            self.notificationToShowOnLaunch = Notification(userInfo: userInfo)
+            self.notificationToShowOnLaunch = Notification(userInfo: userInfo as [NSObject : AnyObject])
         }
 
         return true
@@ -147,7 +147,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ZeroPushDelegate, RKDropd
     }
 
     func dropdownAlertWasTapped(alert: RKDropdownAlert!) -> Bool {
-        self.rootViewController?.performSegueWithIdentifier("showNotifications", sender: [alert.userInfo as Notification])
+        self.rootViewController?.performSegueWithIdentifier("showNotifications", sender: [alert.userInfo as! Notification])
         return true
     }
 

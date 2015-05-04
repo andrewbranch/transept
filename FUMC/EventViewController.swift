@@ -32,6 +32,7 @@ class EventViewController: UIViewController, EKEventEditViewDelegate, UITableVie
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.dateFormatter.timeZone = NSTimeZone(abbreviation: "CST")
         self.navigationItem.title = "Event Detail"
         self.descriptionLabel!.font = UIFont.fumcMainFontRegular14
         self.dateContainer!.layer.cornerRadius = 10
@@ -59,7 +60,7 @@ class EventViewController: UIViewController, EKEventEditViewDelegate, UITableVie
         self.dateLabel!.text = self.dateFormatter.stringFromDate(self.calendarEvent!.from)
         
         if (self.calendarEvent!.allDay) {
-            self.fromTimeLabel!.superview!.subviews.each { ($0 as UIView).hidden = true }
+            self.fromTimeLabel!.superview!.subviews.each { (view: AnyObject) in (view as! UIView).hidden = true }
             self.fromTimeLabel!.hidden = false
             self.fromTimeLabel!.text = "All day"
         } else {
@@ -132,7 +133,7 @@ class EventViewController: UIViewController, EKEventEditViewDelegate, UITableVie
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "addToCalendarEmbed") {
-            (segue.destinationViewController as UITableViewController).tableView.delegate = self
+            (segue.destinationViewController as! UITableViewController).tableView.delegate = self
         }
     }
     

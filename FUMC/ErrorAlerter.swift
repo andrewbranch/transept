@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 FUMC Pensacola. All rights reserved.
 //
 
-protocol ErrorAlertable {
+@objc protocol ErrorAlertable {
     func isViewLoaded() -> Bool
     var view: UIView! { get set }
     var errorAlertToBeShown: UIAlertView? { get set }
@@ -21,7 +21,7 @@ class ErrorAlerter: NSObject {
             static let genericLoadingErrorAlert = UIAlertView(title: "Error Loading Content", message: "We’re having trouble loading the content on our end. Please check back later.", delegate: nil, cancelButtonTitle: "Close")
         }
         
-        let appDelegate = UIApplication.sharedApplication().delegate! as AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate! as! AppDelegate
         if (appDelegate.internetReachability.currentReachabilityStatus() == .NotReachable) {
             return Static.internetNeededAlert
         }

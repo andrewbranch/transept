@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 FUMC Pensacola. All rights reserved.
 //
 
-import UIKit
-
 @objc protocol CalendarsDataSourceDelegate {
     var tableView: UITableView? { get set }
     optional func dataSourceDidStartLoadingAPI(dataSource: CalendarsDataSource) -> Void
@@ -27,8 +25,8 @@ class CalendarSettingsViewController: UIViewController, UITableViewDelegate, Cal
     }()
     
     var errorAlertToBeShown: UIAlertView?
-    var lastCalendarIds = NSUserDefaults.standardUserDefaults().objectForKey("selectedCalendarIds") as [String]?
-    var currentCalendarIds: [String]? = NSUserDefaults.standardUserDefaults().objectForKey("selectedCalendarIds") as [String]? {
+    var lastCalendarIds = NSUserDefaults.standardUserDefaults().objectForKey("selectedCalendarIds") as! [String]?
+    var currentCalendarIds: [String]? = NSUserDefaults.standardUserDefaults().objectForKey("selectedCalendarIds") as! [String]? {
         didSet (oldValue) {
             NSUserDefaults.standardUserDefaults().setObject(self.currentCalendarIds!, forKey: "selectedCalendarIds")
             setButtonText()
@@ -92,11 +90,11 @@ class CalendarSettingsViewController: UIViewController, UITableViewDelegate, Cal
             if (self.currentCalendarIds!.contains(calendar.id)) {
                 tableView.selectRowAtIndexPath(indexPath, animated: false, scrollPosition: UITableViewScrollPosition.None)
             } else {
-                (cell as CalendarSettingsTableViewCell).checkView!.color = UIColor.lightGrayColor()
+                (cell as! CalendarSettingsTableViewCell).checkView!.color = UIColor.lightGrayColor()
             }
         } else if (indexPath.row == 0) {
             if (self.selectButton == nil) {
-                self.selectButton = (cell as CalendarSettingsSelectTableViewCell).selectButton
+                self.selectButton = (cell as! CalendarSettingsSelectTableViewCell).selectButton
                 self.selectButton!.addTarget(self, action: "toggleSelection:", forControlEvents: UIControlEvents.TouchUpInside)
                 setButtonText()
             }

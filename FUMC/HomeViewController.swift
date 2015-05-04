@@ -22,8 +22,8 @@ class HomeViewController: UIPageViewController, UIPageViewControllerDataSource, 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let calendarViewController = self.storyboard!.instantiateViewControllerWithIdentifier("calendarViewController") as CalendarTableViewController
-        let featuredViewController = self.storyboard!.instantiateViewControllerWithIdentifier("featuredViewController") as FeaturedViewController
+        let calendarViewController = self.storyboard!.instantiateViewControllerWithIdentifier("calendarViewController") as! CalendarTableViewController
+        let featuredViewController = self.storyboard!.instantiateViewControllerWithIdentifier("featuredViewController") as! FeaturedViewController
         
         calendarViewController.pageViewController = self
         featuredViewController.pageViewController = self
@@ -42,7 +42,8 @@ class HomeViewController: UIPageViewController, UIPageViewControllerDataSource, 
         self.calendarsDataSource = CalendarsDataSource(settingsDelegate: nil, calendarDelegate: calendarViewController)
         self.calendarViewController = calendarViewController
         self.featuredViewController = featuredViewController
-        (UIApplication.sharedApplication().delegate as AppDelegate).featuredViewController = featuredViewController
+        self.calendarViewController!.calendarsDataSource = self.calendarsDataSource!
+        (UIApplication.sharedApplication().delegate as! AppDelegate).featuredViewController = featuredViewController
         
         // Preload featured view
         let preload = featuredViewController.view
@@ -75,7 +76,7 @@ class HomeViewController: UIPageViewController, UIPageViewControllerDataSource, 
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "calendarSettingsSegue") {
-            let viewController = (segue.destinationViewController as CalendarSettingsViewController)
+            let viewController = (segue.destinationViewController as! CalendarSettingsViewController)
             self.calendarsDataSource!.settingsDelegate = viewController
             viewController.dataSource = self.calendarsDataSource!
             viewController.delegate = self.calendarViewController

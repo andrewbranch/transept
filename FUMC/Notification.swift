@@ -10,35 +10,45 @@ import UIKit
 
 class Notification: NSObject {
     
-    var id: Int
+    var id: String
     var sendDate: NSDate
     var expirationDate: NSDate?
     var message: String
     var url: String
     
     init(userInfo: [NSObject : AnyObject]) {
-        let data = userInfo["aps"] as NSDictionary
-        let custom = userInfo["info"] as NSDictionary
+        let data = userInfo["aps"] as! NSDictionary
+        let custom = userInfo["info"] as! NSDictionary
         var dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZ"
         
-        self.id = 0
-        // This will be nil if the notification sent but failed to save to Postgres
+        self.id = ""
+        // This will be nil if the notification sent but failed to save to store
         if let id = custom["id"] as? String {
-            self.id = id.toInt()!
+            self.id = id
         }
-        self.sendDate = dateFormatter.dateFromString(custom["sendDate"] as String)!
+        self.sendDate = dateFormatter.dateFromString(custom["sendDate"] as! String)!
         self.expirationDate = nil // don't care about this
-        self.message = data["alert"] as String
-        self.url = custom["url"] as String
+        self.message = data["alert"] as! String
+        
+        self.url = ""
+        if let url = custom["url"] as? String {
+            self.url = url
+        }
     }
     
-    override init() {
-        self.id = 0
-        self.sendDate = NSDate()
-        self.expirationDate = NSDate()
-        self.message = ""
+    init(jsonDictionary: NSDictionary, dateFormatter: NSDateFormatter) {
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        
+        self.id = jsonDictionary["id"] as! String
+        self.sendDate = dateFormatter.dateFromString(jsonDictionary["sendDate"] as! String)!
+        self.expirationDate = dateFormatter.dateFromString(jsonDictionary["expirationDate"] as! String)!
+        self.message = jsonDictionary["message"] as! String
+        
         self.url = ""
+        if let url = jsonDictionary["url"] as? String {
+            self.url = url
+        }
     }
 
 }

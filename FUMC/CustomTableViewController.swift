@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 FUMC Pensacola. All rights reserved.
 //
 
-import UIKit
-
 class CustomTableViewController: UIViewController, ErrorAlertable {
     
     @IBOutlet var tableView: UITableView?

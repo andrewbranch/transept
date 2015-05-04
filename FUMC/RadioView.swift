@@ -19,12 +19,7 @@ class RadioView: UIView {
     
     private lazy var inner: UIView = {
         return UIView(frame: CGRectMake(0, 0, 0, 0))
-        }()
-    
-    override init() {
-        super.init()
-        layout()
-    }
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)

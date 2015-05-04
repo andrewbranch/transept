@@ -22,7 +22,7 @@
 		<key>5A15F44501BEC13543EECF89047922E23677004F</key>
 		<string>..</string>
 		<key>E2F476CE895D3596DBE8080E8F363F8F94823E70</key>
-		<string>../ExSwift/</string>
+		<string>../ExSwift</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>github.com:andrewbranch/FUMCApp.git</string>
