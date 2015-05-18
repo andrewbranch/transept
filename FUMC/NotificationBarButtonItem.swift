@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 FUMC Pensacola. All rights reserved.
 //
 
+import BBBadgeBarButtonItem
+
 protocol NotificationDelegate {
     func appDelegate(appDelegate: AppDelegate, didReceiveNotification notification: Notification) -> Void
     func applicationUpdatedBadgeCount(badgeCount: Int) -> Void

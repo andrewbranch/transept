@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 FUMC Pensacola. All rights reserved.
 //
 
+import UIKit
+
 extension UIImage {
     class func imageFromColor(color: UIColor, forSize size: CGSize) -> UIImage {
         var rect = CGRectMake(0, 0, size.width, size.height)

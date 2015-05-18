@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 FUMC Pensacola. All rights reserved.
 //
 
+import UIKit
+
 extension NSDate {
     
     func midnight() -> NSDate {

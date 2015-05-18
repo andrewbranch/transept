@@ -1,16 +1,19 @@
 PODS:
   - BBBadgeBarButtonItem (1.1)
   - NSDate+TimeAgo (1.0.3)
+  - PromiseKit/CorePromise (2.0.0)
   - ZeroPush (2.0.3)
 
 DEPENDENCIES:
   - BBBadgeBarButtonItem
   - NSDate+TimeAgo
+  - PromiseKit/CorePromise (~> 2.0)
   - ZeroPush
 
 SPEC CHECKSUMS:
   BBBadgeBarButtonItem: 958744e7c429e467b14af983040dbaae105b3355
   NSDate+TimeAgo: 416f55d2696d3744c313091c5a9280d47f8238fe
+  PromiseKit: 94a571258076767ae3458a4329bc6630f881f711
   ZeroPush: fb8490773a045fd783639a30b5407af95aa1ae57
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.36.3

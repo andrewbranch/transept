@@ -25,13 +25,13 @@ class API: NSObject {
     private let lock = NSLock()
     private let dateFormatter = NSDateFormatter()
     #if DEBUG   
-    private let base = "https://fumc.herokuapp.com/api/v2"
+    private let base = "http://api.fumcpensacola.com/v2"
     #else
-    private let base = "https://fumc.herokuapp.com/api/v2"
+    private let base = "http://api.fumcpensacola.com/v2"
     #endif
     
     func getCalendars(completed: (calendars: [Calendar], error: NSError?) -> Void) {
-        let url = NSURL(string: "\(base)/calendars/list")
+        let url = NSURL(string: "\(base)/calendars")
         let request = NSURLRequest(URL: url!)
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
             if (error != nil) {
@@ -41,13 +41,13 @@ class API: NSObject {
                 completed(calendars: [], error: error)
             } else {
                 var error: NSError?
-                let calendarDictionaries: [NSDictionary] = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.allZeros, error: &error) as! [NSDictionary]
+                let calendarDictionary: NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.allZeros, error: &error) as! NSDictionary
                 if (error != nil) {
                     completed(calendars: [], error: error)
                     return
                 }
                 
-                completed(calendars: calendarDictionaries.map { Calendar(jsonDictionary: $0) }, error: nil)
+                completed(calendars: (calendarDictionary["data"] as! [NSDictionary]).map { Calendar(jsonDictionary: $0) }, error: nil)
             }
         }
     }
@@ -55,12 +55,15 @@ class API: NSObject {
     func getEventsForCalendars(calendars: [Calendar], completed: (calendars: [Calendar], error: NSError?) -> Void) {
         let page = 1
         self.lock.lock()
-        self.dateFormatter.dateFormat = "MM.dd.yyyy"
-        let from = dateFormatter.stringFromDate(NSDate(timeIntervalSinceNow: 60 * 60 * 24 * 7 * Double(page - 1)))
-        let to = dateFormatter.stringFromDate(NSDate(timeIntervalSinceNow: 60 * 60 * 24 * 7 * Double(page)))
+        self.dateFormatter.dateFormat = "MM/dd/yyyy"
+        let start = dateFormatter.stringFromDate(NSDate(timeIntervalSinceNow: 60 * 60 * 24 * 7 * Double(page - 1)))
+        let end = dateFormatter.stringFromDate(NSDate(timeIntervalSinceNow: 60 * 60 * 24 * 7 * Double(page)))
         self.lock.unlock()
-        let ids = ",".join(calendars.map { $0.id })
-        let url = NSURL(string: "\(base)/calendars/\(ids).json?from=\(from)&to=\(to)")
+        
+        let calendarIdQuery = "".join(calendars.map { c in
+            return "&filter[simple][$or][\(calendars.indexOf(c)!)][calendar]=\(c.id)"
+        })
+        let url = NSURL(string: "\(self.base)/events?filter[simple][start][$gte]=\(start)&filter[simple][end][$lte]=\(end)\(calendarIdQuery)")
         let request = NSURLRequest(URL: url!)
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
             if (error != nil) {
@@ -70,18 +73,18 @@ class API: NSObject {
                 completed(calendars: calendars, error: error)
             } else {
                 var error: NSError?
-                let eventDictionaries: NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.allZeros, error: &error) as! NSDictionary
+                let eventsDictionary: NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.allZeros, error: &error) as! NSDictionary
                 if (error != nil) {
-                    completed(calendars: calendars, error: error)
-                    return
+                    return completed(calendars: calendars, error: error)
                 }
                 
+                let events = eventsDictionary["data"] as! [NSDictionary]
                 self.lock.lock()
-                for calendar in calendars {
-                    if let events = eventDictionaries[calendar.id] as? [NSDictionary] {
-                        calendar.events = events.map { CalendarEvent(jsonDictionary: $0, calendar: calendar, dateFormatter: self.dateFormatter) }
-                    } else {
-                        calendar.events.removeAll(keepCapacity: false)
+                for c in calendars {
+                    c.events = events.filter {
+                        return c.id == ((($0["links"] as! NSDictionary)["calendar"] as! NSDictionary)["linkage"] as! NSDictionary)["id"] as! String
+                    }.map {
+                        return CalendarEvent(jsonDictionary: $0, calendar: c, dateFormatter: self.dateFormatter)
                     }
                 }
                 self.lock.unlock()

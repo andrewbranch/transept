@@ -30,8 +30,8 @@ class CalendarEvent: NSObject {
         
         self.id = jsonDictionary["id"] as! String
         self.name = jsonDictionary["name"] as! String
-        self.from = dateFormatter.dateFromString(jsonDictionary["from"] as! String)!
-        self.to = dateFormatter.dateFromString(jsonDictionary["to"] as! String)!
+        self.from = dateFormatter.dateFromString(jsonDictionary["start"] as! String)!
+        self.to = dateFormatter.dateFromString(jsonDictionary["end"] as! String)!
         self.descript = ""
         self.location = ""
         self.calendar = calendar

@@ -9,6 +9,7 @@
 import UIKit
 import Fabric
 import Crashlytics
+import ZeroPush
 
 
 @UIApplicationMain

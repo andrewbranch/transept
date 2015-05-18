@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0668526FF3E0C871644D3E6B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBEFB0F663F019D719FE0983 /* libPods.a */; };
 		4900737D1A342D820086CE0B /* DictionaryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4900737C1A342D820086CE0B /* DictionaryExtensions.swift */; };
 		490C659F1A3230A700E87130 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C659E1A3230A700E87130 /* Calendar.swift */; };
 		490C65A41A324F7700E87130 /* CalendarsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C65A31A324F7700E87130 /* CalendarsDataSource.swift */; };
 		490C65A61A33895D00E87130 /* NSDateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C65A51A33895D00E87130 /* NSDateExtensions.swift */; };
+		491859CA1B07F9B300AFA077 /* RKDropdownAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 491859C91B07F9B300AFA077 /* RKDropdownAlert.m */; };
 		49209A511A360BD600DDD45E /* RadioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49209A501A360BD600DDD45E /* RadioView.swift */; };
 		494DF9DB1A3200C60040D02C /* CalendarSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494DF9DA1A3200C60040D02C /* CalendarSettingsTableViewCell.swift */; };
 		494F80981A3155C000403C6B /* CalendarSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494F80971A3155C000403C6B /* CalendarSettingsViewController.swift */; };
@@ -31,7 +31,6 @@
 		495C720A1AD0FAC50005833B /* Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495C71FC1AD0FAC50005833B /* Range.swift */; };
 		495C720B1AD0FAC50005833B /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495C71FD1AD0FAC50005833B /* Sequence.swift */; };
 		495C720C1AD0FAC50005833B /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495C71FE1AD0FAC50005833B /* String.swift */; };
-		49940D6D1A2F89BA00E97CD7 /* RKDropdownAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 49940D6C1A2F89BA00E97CD7 /* RKDropdownAlert.m */; };
 		49952EE21A26888B002B06FA /* NotificationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49952EE11A26888B002B06FA /* NotificationsTableViewController.swift */; };
 		49952EE41A268BF5002B06FA /* NotificationBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49952EE31A268BF5002B06FA /* NotificationBarButtonItem.swift */; };
 		49A5696D1A38D93C00B6F1E4 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49A5696C1A38D93C00B6F1E4 /* Launch Screen.xib */; };
@@ -93,6 +92,7 @@
 		49D5079D1A37A33A00531F23 /* WSLHTMLEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D5079A1A37A33A00531F23 /* WSLHTMLEntities.m */; };
 		49D507A21A37C18E00531F23 /* CalendarTableViewAllDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D507A01A37C18E00531F23 /* CalendarTableViewAllDayCell.swift */; };
 		49D507A31A37C18E00531F23 /* CalendarTableViewAllDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49D507A11A37C18E00531F23 /* CalendarTableViewAllDayCell.xib */; };
+		D9518422F16F7C52F0D0C646 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA7425126BE2BA297FAE61BC /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +110,8 @@
 		490C659E1A3230A700E87130 /* Calendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Calendar.swift; path = FUMC/Calendar.swift; sourceTree = "<group>"; };
 		490C65A31A324F7700E87130 /* CalendarsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarsDataSource.swift; path = FUMC/CalendarsDataSource.swift; sourceTree = "<group>"; };
 		490C65A51A33895D00E87130 /* NSDateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSDateExtensions.swift; path = FUMC/NSDateExtensions.swift; sourceTree = "<group>"; };
+		491859C81B07F9B300AFA077 /* RKDropdownAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RKDropdownAlert.h; path = FUMC/RKDropdownAlert.h; sourceTree = "<group>"; };
+		491859C91B07F9B300AFA077 /* RKDropdownAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RKDropdownAlert.m; path = FUMC/RKDropdownAlert.m; sourceTree = "<group>"; };
 		49209A501A360BD600DDD45E /* RadioView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RadioView.swift; path = FUMC/RadioView.swift; sourceTree = "<group>"; };
 		494DF9DA1A3200C60040D02C /* CalendarSettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarSettingsTableViewCell.swift; path = FUMC/CalendarSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		494F80971A3155C000403C6B /* CalendarSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarSettingsViewController.swift; path = FUMC/CalendarSettingsViewController.swift; sourceTree = "<group>"; };
@@ -131,8 +133,6 @@
 		495C71FC1AD0FAC50005833B /* Range.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Range.swift; sourceTree = "<group>"; };
 		495C71FD1AD0FAC50005833B /* Sequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sequence.swift; sourceTree = "<group>"; };
 		495C71FE1AD0FAC50005833B /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		49940D6B1A2F89BA00E97CD7 /* RKDropdownAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RKDropdownAlert.h; path = FUMC/RKDropdownAlert.h; sourceTree = "<group>"; };
-		49940D6C1A2F89BA00E97CD7 /* RKDropdownAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RKDropdownAlert.m; path = FUMC/RKDropdownAlert.m; sourceTree = "<group>"; };
 		49952EE11A26888B002B06FA /* NotificationsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationsTableViewController.swift; path = FUMC/NotificationsTableViewController.swift; sourceTree = "<group>"; };
 		49952EE31A268BF5002B06FA /* NotificationBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationBarButtonItem.swift; path = FUMC/NotificationBarButtonItem.swift; sourceTree = "<group>"; };
 		49A5696C1A38D93C00B6F1E4 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
@@ -205,8 +205,8 @@
 		49D507A01A37C18E00531F23 /* CalendarTableViewAllDayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarTableViewAllDayCell.swift; path = FUMC/CalendarTableViewAllDayCell.swift; sourceTree = "<group>"; };
 		49D507A11A37C18E00531F23 /* CalendarTableViewAllDayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CalendarTableViewAllDayCell.xib; path = FUMC/CalendarTableViewAllDayCell.xib; sourceTree = "<group>"; };
 		5D4F8AA89947C82EF5AC8E35 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		BBEFB0F663F019D719FE0983 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBC1F7B2E80AFF5BEE370E33 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		DA7425126BE2BA297FAE61BC /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,7 +216,7 @@
 			files = (
 				49B2A3671A26829D004EED86 /* Crashlytics.framework in Frameworks */,
 				49B2A3681A26829D004EED86 /* Fabric.framework in Frameworks */,
-				0668526FF3E0C871644D3E6B /* libPods.a in Frameworks */,
+				D9518422F16F7C52F0D0C646 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,8 +420,8 @@
 		49B2A3611A2680F3004EED86 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				49940D6B1A2F89BA00E97CD7 /* RKDropdownAlert.h */,
-				49940D6C1A2F89BA00E97CD7 /* RKDropdownAlert.m */,
+				491859C81B07F9B300AFA077 /* RKDropdownAlert.h */,
+				491859C91B07F9B300AFA077 /* RKDropdownAlert.m */,
 				49B2A30F1A268070004EED86 /* ErrorAlerter.swift */,
 				49B2A31F1A268070004EED86 /* Reachability.h */,
 				49B2A3201A268070004EED86 /* Reachability.m */,
@@ -466,7 +466,7 @@
 			isa = PBXGroup;
 			children = (
 				495B5BEC1A2E44870033DE8D /* CoreData.framework */,
-				BBEFB0F663F019D719FE0983 /* libPods.a */,
+				DA7425126BE2BA297FAE61BC /* Pods.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -494,6 +494,7 @@
 				15BA284B13D5E0CD3F8C831A /* Copy Pods Resources */,
 				49D507A41A38A9DC00531F23 /* ShellScript */,
 				49A5696E1A3919ED00B6F1E4 /* ShellScript */,
+				7AA2D174A263F638416FCFF2 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -643,6 +644,21 @@
 			shellPath = /bin/sh;
 			shellScript = "./Fabric.framework/run ffe8c572c11cd4916b1c232ff022514dba9174df 7b52158f37654210cb77cc42c52fae28f2ada702147917d297c3f0aae786e69f";
 		};
+		7AA2D174A263F638416FCFF2 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		9FD9C7A987C66C284D9C710C /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -670,8 +686,8 @@
 				495C72041AD0FAC50005833B /* ExSwift.swift in Sources */,
 				495C72071AD0FAC50005833B /* Int.swift in Sources */,
 				49952EE21A26888B002B06FA /* NotificationsTableViewController.swift in Sources */,
+				491859CA1B07F9B300AFA077 /* RKDropdownAlert.m in Sources */,
 				495C71FF1AD0FAC50005833B /* Array.swift in Sources */,
-				49940D6D1A2F89BA00E97CD7 /* RKDropdownAlert.m in Sources */,
 				495C72021AD0FAC50005833B /* Dictionary.swift in Sources */,
 				49209A511A360BD600DDD45E /* RadioView.swift in Sources */,
 				49D507A21A37C18E00531F23 /* CalendarTableViewAllDayCell.swift in Sources */,
@@ -851,18 +867,9 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = FUMC/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-l\"Pods-BBBadgeBarButtonItem\"",
-					"-l\"Pods-NSDate+TimeAgo\"",
-					"-l\"Pods-ZeroPush\"",
-					"-framework",
-					"\"Foundation\"",
-					"-framework",
-					"\"UIKit\"",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				"OTHER_SWIFT_FLAGS[arch=*]" = "-D DEBUG";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -883,18 +890,9 @@
 				);
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = FUMC/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-l\"Pods-BBBadgeBarButtonItem\"",
-					"-l\"Pods-NSDate+TimeAgo\"",
-					"-l\"Pods-ZeroPush\"",
-					"-framework",
-					"\"Foundation\"",
-					"-framework",
-					"\"UIKit\"",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "FUMC/FUMC-Bridging-Header.h";
