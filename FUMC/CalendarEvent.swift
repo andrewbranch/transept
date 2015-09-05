@@ -28,21 +28,15 @@ class CalendarEvent: NSObject {
 
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         
+        let attrs = jsonDictionary["attributes"] as! NSDictionary
         self.id = jsonDictionary["id"] as! String
-        self.name = jsonDictionary["name"] as! String
-        self.from = dateFormatter.dateFromString(jsonDictionary["start"] as! String)!
-        self.to = dateFormatter.dateFromString(jsonDictionary["end"] as! String)!
-        self.descript = ""
-        self.location = ""
+        
+        self.name = attrs["name"] as! String
+        self.from = dateFormatter.dateFromString(attrs["start"] as! String)!
+        self.to = dateFormatter.dateFromString(attrs["end"] as! String)!
+        self.location = attrs["location"] as? String ?? ""
+        self.descript = attrs["description"] as? String ?? ""
         self.calendar = calendar
-        
-        if let description: String = jsonDictionary["description"] as? String {
-            self.descript = description
-        }
-        
-        if let location: NSDictionary = jsonDictionary["location"] as? NSDictionary {
-            self.location = location["name"] as! String
-        }
     }
    
 }

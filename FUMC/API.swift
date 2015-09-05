@@ -25,9 +25,9 @@ class API: NSObject {
     private let lock = NSLock()
     private let dateFormatter = NSDateFormatter()
     #if DEBUG   
-    private let base = "http://api.fumcpensacola.com/v2"
+    private let base = "http://api.fumcpensacola.com/v3"
     #else
-    private let base = "http://api.fumcpensacola.com/v2"
+    private let base = "http://api.fumcpensacola.com/v3"
     #endif
     
     func getCalendars(completed: (calendars: [Calendar], error: ErrorType?) -> Void) {
@@ -76,7 +76,7 @@ class API: NSObject {
                     self.lock.lock()
                     for c in calendars {
                         c.events = events.filter {
-                            return c.id == ((($0["links"] as! NSDictionary)["calendar"] as! NSDictionary)["linkage"] as! NSDictionary)["id"] as! String
+                            return c.id == ((($0["relationships"] as! NSDictionary)["calendar"] as! NSDictionary)["data"] as! NSDictionary)["id"] as! String
                         }.map {
                             return CalendarEvent(jsonDictionary: $0, calendar: c, dateFormatter: self.dateFormatter)
                         }

@@ -21,12 +21,14 @@ class Witness: NSObject {
     init(jsonDictionary: NSDictionary, dateFormatter: NSDateFormatter) {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         
+        let attrs = jsonDictionary["attributes"] as! NSDictionary
         self.id = jsonDictionary["id"] as! String
-        self.from = dateFormatter.dateFromString(jsonDictionary["from"] as! String)!
-        self.to = dateFormatter.dateFromString(jsonDictionary["to"] as! String)!
-        self.volume = jsonDictionary["volume"] as! Int
-        self.issue = jsonDictionary["issue"] as! Int
-        self.file = jsonDictionary["file"] as! String
-        self.visible = jsonDictionary["visible"] as! Bool
+        
+        self.from = dateFormatter.dateFromString(attrs["from"] as! String)!
+        self.to = dateFormatter.dateFromString(attrs["to"] as! String)!
+        self.volume = attrs["volume"] as! Int
+        self.issue = attrs["issue"] as! Int
+        self.file = attrs["file"] as! String
+        self.visible = attrs["visible"] as! Bool
     }
 }

@@ -21,12 +21,15 @@ class Calendar: NSObject {
     
     init(jsonDictionary: NSDictionary) {
         super.init()
+        
+        let attrs = jsonDictionary["attributes"] as! NSDictionary
         self.id = jsonDictionary["id"] as! String
-        self.name = jsonDictionary["name"] as! String
-        if let colorString = jsonDictionary["color"] as? String {
+        
+        self.name = attrs["name"] as! String
+        if let colorString = attrs["color"] as? String {
              self.color = UIColor.colorWithHexString(colorString)
         }
-        if let key = jsonDictionary["image"] as? String {
+        if let key = attrs["image"] as? String {
             self.defaultImageKey = key
             API.shared().getFile(key) { data, error in
                 if (error != nil) { return }

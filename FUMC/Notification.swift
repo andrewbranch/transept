@@ -40,13 +40,15 @@ class Notification: NSObject {
     init(jsonDictionary: NSDictionary, dateFormatter: NSDateFormatter) {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         
+        let attrs = jsonDictionary["attributes"] as! NSDictionary
         self.id = jsonDictionary["id"] as! String
-        self.sendDate = dateFormatter.dateFromString(jsonDictionary["sendDate"] as! String)!
-        self.expirationDate = dateFormatter.dateFromString(jsonDictionary["expirationDate"] as! String)!
-        self.message = jsonDictionary["message"] as! String
+        
+        self.sendDate = dateFormatter.dateFromString(attrs["sendDate"] as! String)!
+        self.expirationDate = dateFormatter.dateFromString(attrs["expirationDate"] as! String)!
+        self.message = attrs["message"] as! String
         
         self.url = ""
-        if let url = jsonDictionary["url"] as? String {
+        if let url = attrs["url"] as? String {
             self.url = url
         }
     }

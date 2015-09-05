@@ -19,10 +19,12 @@ class Bulletin : NSObject {
     init(jsonDictionary: NSDictionary, dateFormatter: NSDateFormatter) {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         
+        let attrs = jsonDictionary["attributes"] as! NSDictionary
         self.id = jsonDictionary["id"] as! String
-        self.service = jsonDictionary["service"] as! String
-        self.date = dateFormatter.dateFromString(jsonDictionary["date"] as! String)!
-        self.file = jsonDictionary["file"] as! String
-        self.visible = jsonDictionary["visible"] as! Bool
+        
+        self.service = attrs["service"] as! String
+        self.date = dateFormatter.dateFromString(attrs["date"] as! String)!
+        self.file = attrs["file"] as! String
+        self.visible = attrs["visible"] as! Bool
     }
 }
