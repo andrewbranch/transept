@@ -7,7 +7,7 @@
 //
 
 protocol NotificationsDataSourceDelegate {
-    var tableView: UITableView? { get set }
+    var tableView: UITableView? { get }
     func dataSourceDidStartLoadingAPI(dataSource: NotificationsDataSource) -> Void
     func dataSourceDidFinishLoadingAPI(dataSource: NotificationsDataSource) -> Void
 }
@@ -87,7 +87,7 @@ class NotificationsTableViewController: CustomTableViewController, Notifications
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let notification = self.dataSource!.notificationForIndexPath(indexPath)
-        if (find(self.dataSource!.readIds, notification.id) == nil) {
+        if (self.dataSource!.readIds.indexOf(notification.id) == nil) {
             self.dataSource!.readIds.append(notification.id)
             NSUserDefaults.standardUserDefaults().setObject(self.dataSource!.readIds, forKey: "readIds")
         }

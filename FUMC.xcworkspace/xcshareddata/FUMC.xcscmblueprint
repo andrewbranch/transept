@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "5A15F44501BEC13543EECF89047922E23677004F",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "5A15F44501BEC13543EECF89047922E23677004F" : 0,
+    "E2F476CE895D3596DBE8080E8F363F8F94823E70" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "FEA725FF-6D80-48C9-9DC7-EAD86D37121F",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "5A15F44501BEC13543EECF89047922E23677004F" : "FUMC",
+    "E2F476CE895D3596DBE8080E8F363F8F94823E70" : "FUMC\/ExSwift"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "FUMC",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 203,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "FUMC.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:andrewbranch\/FUMCApp.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "5A15F44501BEC13543EECF89047922E23677004F"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/pNre\/ExSwift.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E2F476CE895D3596DBE8080E8F363F8F94823E70"
+    }
+  ]
+}

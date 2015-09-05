@@ -58,7 +58,7 @@ class BulletinsDataSource: NSObject, MediaTableViewDataSource {
     }
     
     func bulletinForIndexPath(indexPath: NSIndexPath) -> Bulletin {
-        return self.bulletins[self.bulletins.keys.array.sorted(>)[indexPath.section]]![indexPath.row]
+        return self.bulletins[self.bulletins.keys.sort(>)[indexPath.section]]![indexPath.row]
     }
     
     // MARK: - Table view data source
@@ -68,12 +68,12 @@ class BulletinsDataSource: NSObject, MediaTableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (self.bulletins.keys.array.isEmpty) { return 0 }
-        return self.bulletins[self.bulletins.keys.array.sorted(>)[section]]!.count
+        if (self.bulletins.keys.isEmpty) { return 0 }
+        return self.bulletins[self.bulletins.keys.sort(>)[section]]!.count
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let date = self.bulletins.keys.array.sorted(>)[section]
+        let date = self.bulletins.keys.sort(>)[section]
         self.dateFormatter.dateFormat = "EEEE, MMMM d"
         if (date.midnight() - NSDate().midnight() <= 7 * 24 * 60 * 60 && date.midnight() - NSDate().midnight() >= 0) {
             if (date.dayOfWorkWeek() < NSDate().dayOfWorkWeek()) {
@@ -87,14 +87,14 @@ class BulletinsDataSource: NSObject, MediaTableViewDataSource {
     
     func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let headerView = view as! UITableViewHeaderFooterView
-        headerView.textLabel.font = UIFont.fumcMainFontRegular14
-        if (headerView.textLabel.text!.hasPrefix("NEXT") || headerView.textLabel.text!.hasPrefix("THIS")) {
-            headerView.textLabel.textColor = UIColor.fumcRedColor()
+        headerView.textLabel!.font = UIFont.fumcMainFontRegular14
+        if (headerView.textLabel!.text!.hasPrefix("NEXT") || headerView.textLabel!.text!.hasPrefix("THIS")) {
+            headerView.textLabel!.textColor = UIColor.fumcRedColor()
         }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("mediaTableViewCell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("mediaTableViewCell", forIndexPath: indexPath) as UITableViewCell
         cell.textLabel!.font = UIFont.fumcMainFontRegular16
         cell.textLabel!.text = self.bulletinForIndexPath(indexPath).service as String
         cell.detailTextLabel?.text = ""

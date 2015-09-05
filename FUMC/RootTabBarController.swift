@@ -17,7 +17,7 @@ class RootTabBarController: UITabBarController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         if let launchNotification = appDelegate.notificationToShowOnLaunch {
             self.performSegueWithIdentifier("showNotifications", sender: [launchNotification])
             appDelegate.notificationToShowOnLaunch = nil

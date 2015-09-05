@@ -39,7 +39,7 @@ class WitnessesDataSource: NSObject, MediaTableViewDataSource {
                 self.delegate.dataSource(self, failedToLoadWithError: error)
             } else {
                 self.witnesses.removeAll(keepCapacity: true)
-                for w in witnesses.sorted({ a, b in a.from > b.from }) {
+                for w in witnesses.sort({ a, b in a.from > b.from }) {
                     let sectionTitle = "\(w.from.year) • Volume \(w.volume)"
                     if (self.witnesses.has(sectionTitle)) {
                         self.witnesses[sectionTitle]!.append(w)
@@ -56,7 +56,7 @@ class WitnessesDataSource: NSObject, MediaTableViewDataSource {
     }
     
     func witnessForIndexPath(indexPath: NSIndexPath) -> Witness {
-        return self.witnesses[self.witnesses.keys.array.sorted(>)[indexPath.section]]![indexPath.row]
+        return self.witnesses[self.witnesses.keys.sort(>)[indexPath.section]]![indexPath.row]
     }
     
     func urlForIndexPath(indexPath: NSIndexPath) -> NSURL? {
@@ -71,20 +71,20 @@ class WitnessesDataSource: NSObject, MediaTableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (self.witnesses.keys.array.isEmpty) { return 0 }
-        return self.witnesses[self.witnesses.keys.array.sorted(>)[section]]!.count
+        if (self.witnesses.keys.isEmpty) { return 0 }
+        return self.witnesses[self.witnesses.keys.sort(>)[section]]!.count
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return self.witnesses.keys.array.sorted(>)[section]
+        return self.witnesses.keys.sort(>)[section]
     }
     
     func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        (view as! UITableViewHeaderFooterView).textLabel.font = UIFont.fumcMainFontRegular14
+        (view as! UITableViewHeaderFooterView).textLabel!.font = UIFont.fumcMainFontRegular14
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("mediaTableViewCell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("mediaTableViewCell", forIndexPath: indexPath) as UITableViewCell
         let witness = self.witnessForIndexPath(indexPath)
         self.dateFormatter.dateFormat = "MMMM d"
         

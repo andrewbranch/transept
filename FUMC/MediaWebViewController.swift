@@ -22,11 +22,11 @@ class MediaWebViewController: UIViewController, UIWebViewDelegate, UIScrollViewD
         self.webView!.delegate = self
         self.webView!.scrollView.delegate = self
         self.webView!.hidden = true
-        self.webView!.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
+        self.webView!.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
         self.webView!.scalesPageToFit = true
         
         if let url = self.url {
-            var request = NSURLRequest(URL: url)
+            let request = NSURLRequest(URL: url)
             self.webView!.loadRequest(request)
         } else {
             ErrorAlerter.loadingAlertBasedOnReachability().show()
@@ -56,7 +56,7 @@ class MediaWebViewController: UIViewController, UIWebViewDelegate, UIScrollViewD
         self.webView!.hidden = false
     }
     
-    func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
+    func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
         if (self.isViewLoaded() && self.view.window != nil) {
             ErrorAlerter.loadingAlertBasedOnReachability().show()
         }
@@ -122,8 +122,8 @@ class MediaWebViewController: UIViewController, UIWebViewDelegate, UIScrollViewD
         }
     }
     
-    func updateBarButtonItems(#alpha: CGFloat) {
-        self.navigationItem.backBarButtonItem?.tintColor = self.navigationItem.backBarButtonItem?.tintColor.colorWithAlphaComponent(alpha)
+    func updateBarButtonItems(alpha alpha: CGFloat) {
+        self.navigationItem.backBarButtonItem?.tintColor = self.navigationItem.backBarButtonItem?.tintColor!.colorWithAlphaComponent(alpha)
         self.navigationItem.titleView?.alpha = alpha
         self.navController!.navigationBar.tintColor = self.navController!.navigationBar.tintColor.colorWithAlphaComponent(alpha)
     }

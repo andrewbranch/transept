@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MediaMasterTableViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
+class MediaMasterTableViewController: UITableViewController {
     
     private let podcastURL = NSURL(string: "itms-pcast://itunes.apple.com/us/podcast/first-umc-of-pensacola-fl/id313924198?mt=2&uo=4")
     private let labels = [NSAttributedString(string: "Bulletins", attributes: [NSKernAttributeName: 5]), NSAttributedString(string: "Witnesses", attributes: [NSKernAttributeName: 5]), NSAttributedString(string: "Sermons", attributes: [NSKernAttributeName: 5])]
@@ -24,7 +24,7 @@ class MediaMasterTableViewController: UITableViewController, UITableViewDataSour
     }
     
     override func viewWillAppear(animated: Bool) {
-        if let indexPath = self.tableView.indexPathForSelectedRow() {
+        if let indexPath = self.tableView.indexPathForSelectedRow {
             self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }
     }
@@ -72,8 +72,8 @@ class MediaMasterTableViewController: UITableViewController, UITableViewDataSour
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "mediaMasterCellSelection") {
-            var tableViewController = segue.destinationViewController as! MediaTableViewController
-            var indexPath = sender as! NSIndexPath
+            let tableViewController = segue.destinationViewController as! MediaTableViewController
+            let indexPath = sender as! NSIndexPath
             switch (indexPath.item) {
                 
                 case 0:

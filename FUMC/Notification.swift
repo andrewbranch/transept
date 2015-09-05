@@ -19,7 +19,7 @@ class Notification: NSObject {
     init(userInfo: [NSObject : AnyObject]) {
         let data = userInfo["aps"] as! NSDictionary
         let custom = userInfo["info"] as! NSDictionary
-        var dateFormatter = NSDateFormatter()
+        let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZ"
         
         self.id = ""

@@ -19,7 +19,7 @@ protocol MediaTableViewDataSource: UITableViewDataSource, UITableViewDelegate {
 protocol MediaTableViewDataSourceDelegate {
     func dataSourceDidStartLoadingAPI(dataSource: MediaTableViewDataSource) -> Void
     func dataSourceDidFinishLoadingAPI(dataSource: MediaTableViewDataSource) -> Void
-    func dataSource(dataSource: MediaTableViewDataSource, failedToLoadWithError error: NSError?) -> Void
+    func dataSource(dataSource: MediaTableViewDataSource, failedToLoadWithError error: ErrorType?) -> Void
 }
 
 class MediaTableViewController: CustomTableViewController, MediaTableViewDataSourceDelegate {
@@ -39,7 +39,7 @@ class MediaTableViewController: CustomTableViewController, MediaTableViewDataSou
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        if let indexPath = self.tableView!.indexPathForSelectedRow() {
+        if let indexPath = self.tableView!.indexPathForSelectedRow {
             self.tableView!.deselectRowAtIndexPath(indexPath, animated: true)
         }
     }
@@ -73,7 +73,7 @@ class MediaTableViewController: CustomTableViewController, MediaTableViewDataSou
         self.tableView!.backgroundView?.hidden = dataSource.tableView(self.tableView!, numberOfRowsInSection: 0) > 0
     }
     
-    func dataSource(dataSource: MediaTableViewDataSource, failedToLoadWithError error: NSError?) {
+    func dataSource(dataSource: MediaTableViewDataSource, failedToLoadWithError error: ErrorType?) {
         ErrorAlerter.showLoadingAlertInViewController(self)
         dataSourceDidFinishLoadingAPI(self.dataSource!)
     }
@@ -83,8 +83,8 @@ class MediaTableViewController: CustomTableViewController, MediaTableViewDataSou
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "mediaTableCellSelection") {
-            var viewController = segue.destinationViewController as! MediaWebViewController
-            var indexPath = self.tableView!.indexPathForSelectedRow()
+            let viewController = segue.destinationViewController as! MediaWebViewController
+            let indexPath = self.tableView!.indexPathForSelectedRow
             
             viewController.url = self.dataSource!.urlForIndexPath(indexPath!)
         }

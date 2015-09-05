@@ -27,7 +27,7 @@ class RadioView: UIView {
     }
     
     required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)!
         layout()
     }
     
@@ -44,7 +44,7 @@ class RadioView: UIView {
         self.layer.borderWidth = self.frame.width / 12
         self.layer.borderColor = self.color.CGColor
         
-        self.inner.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.inner.translatesAutoresizingMaskIntoConstraints = false
         self.inner.addConstraint(NSLayoutConstraint(item: self.inner, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Width, multiplier: 1, constant: self.frame.width * 0.6))
         self.inner.addConstraint(NSLayoutConstraint(item: self.inner, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Height, multiplier: 1, constant: self.frame.height * 0.6))
         self.addSubview(inner)

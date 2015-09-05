@@ -46,11 +46,11 @@ class HomeViewController: UIPageViewController, UIPageViewControllerDataSource, 
         (UIApplication.sharedApplication().delegate as! AppDelegate).featuredViewController = featuredViewController
         
         // Preload featured view
-        let preload = featuredViewController.view
+        let _ = featuredViewController.view
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-        let index = find(self.pages, viewController)
+        let index = self.pages.indexOf(viewController)
         if (index == 0) {
             return nil
         }
@@ -58,7 +58,7 @@ class HomeViewController: UIPageViewController, UIPageViewControllerDataSource, 
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-        let index = find(self.pages, viewController)
+        let index = self.pages.indexOf(viewController)
         if (index == self.pages.count - 1) {
             return nil
         }
@@ -66,7 +66,7 @@ class HomeViewController: UIPageViewController, UIPageViewControllerDataSource, 
     }
     
     func didTransitionToViewController(viewController: UIViewController) {
-        self.pageControl.currentPage = find(self.pages, viewController)!
+        self.pageControl.currentPage = self.pages.indexOf(viewController)!
     }
 
     override func didReceiveMemoryWarning() {

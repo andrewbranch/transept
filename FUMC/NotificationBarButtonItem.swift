@@ -17,7 +17,7 @@ class NotificationBarButtonItem: BBBadgeBarButtonItem, NotificationDelegate {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        var button = UIButton(frame: CGRectMake(0, 0, self.image!.size.width, self.image!.size.height))
+        let button = UIButton(frame: CGRectMake(0, 0, self.image!.size.width, self.image!.size.height))
         button.setImage(self.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate), forState: UIControlState.Normal)
         self.customView = button
         

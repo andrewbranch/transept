@@ -29,7 +29,7 @@ class ErrorAlerter: NSObject {
 
     }
     
-    class func showLoadingAlertInViewController(var viewController: ErrorAlertable) {
+    class func showLoadingAlertInViewController(let viewController: ErrorAlertable) {
         if (viewController.isViewLoaded() && viewController.view.window != nil) {
             ErrorAlerter.loadingAlertBasedOnReachability().show()
         } else {
