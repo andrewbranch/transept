@@ -64,9 +64,7 @@
 		49B2A3401A268070004EED86 /* CustomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B2A30E1A268070004EED86 /* CustomTableViewController.swift */; };
 		49B2A3411A268070004EED86 /* ErrorAlerter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B2A30F1A268070004EED86 /* ErrorAlerter.swift */; };
 		49B2A3421A268070004EED86 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B2A3101A268070004EED86 /* EventViewController.swift */; };
-		49B2A3431A268070004EED86 /* FeaturedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B2A3111A268070004EED86 /* FeaturedViewController.swift */; };
 		49B2A3441A268070004EED86 /* GiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B2A3131A268070004EED86 /* GiveViewController.swift */; };
-		49B2A3451A268070004EED86 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B2A3141A268070004EED86 /* HomeViewController.swift */; };
 		49B2A3461A268070004EED86 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49B2A3151A268070004EED86 /* Images.xcassets */; };
 		49B2A3481A268070004EED86 /* MediaMasterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B2A3171A268070004EED86 /* MediaMasterTableViewCell.swift */; };
 		49B2A3491A268070004EED86 /* MediaMasterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49B2A3181A268070004EED86 /* MediaMasterTableViewCell.xib */; };
@@ -171,10 +169,8 @@
 		49B2A30E1A268070004EED86 /* CustomTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomTableViewController.swift; path = FUMC/CustomTableViewController.swift; sourceTree = "<group>"; };
 		49B2A30F1A268070004EED86 /* ErrorAlerter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ErrorAlerter.swift; path = FUMC/ErrorAlerter.swift; sourceTree = "<group>"; };
 		49B2A3101A268070004EED86 /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventViewController.swift; path = FUMC/EventViewController.swift; sourceTree = "<group>"; };
-		49B2A3111A268070004EED86 /* FeaturedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeaturedViewController.swift; path = FUMC/FeaturedViewController.swift; sourceTree = "<group>"; };
 		49B2A3121A268070004EED86 /* FUMC-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "FUMC-Bridging-Header.h"; path = "FUMC/FUMC-Bridging-Header.h"; sourceTree = "<group>"; };
 		49B2A3131A268070004EED86 /* GiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GiveViewController.swift; path = FUMC/GiveViewController.swift; sourceTree = "<group>"; };
-		49B2A3141A268070004EED86 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = FUMC/HomeViewController.swift; sourceTree = "<group>"; };
 		49B2A3151A268070004EED86 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		49B2A3161A268070004EED86 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = FUMC/Info.plist; sourceTree = "<group>"; };
 		49B2A3171A268070004EED86 /* MediaMasterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MediaMasterTableViewCell.swift; path = FUMC/MediaMasterTableViewCell.swift; sourceTree = "<group>"; };
@@ -405,8 +401,6 @@
 		49B2A35F1A2680CD004EED86 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				49B2A3141A268070004EED86 /* HomeViewController.swift */,
-				49B2A3111A268070004EED86 /* FeaturedViewController.swift */,
 				49B2A3081A268070004EED86 /* CalendarTableViewController.swift */,
 				49B2A3101A268070004EED86 /* EventViewController.swift */,
 				494F80971A3155C000403C6B /* CalendarSettingsViewController.swift */,
@@ -737,9 +731,7 @@
 				4900737D1A342D820086CE0B /* DictionaryExtensions.swift in Sources */,
 				49B2A3571A268070004EED86 /* UIPlaceHolderTextView.m in Sources */,
 				495C72081AD0FAC50005833B /* NSArray.swift in Sources */,
-				49B2A3451A268070004EED86 /* HomeViewController.swift in Sources */,
 				494DF9DB1A3200C60040D02C /* CalendarSettingsTableViewCell.swift in Sources */,
-				49B2A3431A268070004EED86 /* FeaturedViewController.swift in Sources */,
 				495C72001AD0FAC50005833B /* Bool.swift in Sources */,
 				49B2A3351A268070004EED86 /* CalendarEvent.swift in Sources */,
 				49B2A34B1A268070004EED86 /* MediaTableViewController.swift in Sources */,

@@ -12,9 +12,8 @@ protocol CalendarSettingsDelegate {
     func calendarSettingsController(viewController: CalendarSettingsViewController, didUpdateSelectionFrom oldCalendars: [Calendar], to newCalendars: [Calendar]) -> Void
 }
 
-class CalendarTableViewController: CustomTableViewController, UITableViewDataSource, UITableViewDelegate, CalendarSettingsDelegate, HomeViewPage {
+class CalendarTableViewController: CustomTableViewController, UITableViewDataSource, UITableViewDelegate, CalendarSettingsDelegate {
     
-    var pageViewController: HomeViewController?
     lazy var events: Dictionary<NSDate, [CalendarEvent]> = {
         return [
             NSDate(timeIntervalSinceNow: 60 * 60 * 24 * 0).midnight(): [],
@@ -32,7 +31,9 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
     var sortedKeys = [NSString]()
     let dateFormatter = NSDateFormatter()
     var currentCalendars = [Calendar]()
-    var calendarsDataSource: CalendarsDataSource?
+    lazy var calendarsDataSource: CalendarsDataSource = {
+        return CalendarsDataSource(settingsDelegate: nil, calendarDelegate: self)
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,14 +44,6 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
         self.tableView!.registerNib(UINib(nibName: "CalendarTableHeaderView", bundle: NSBundle.mainBundle()), forHeaderFooterViewReuseIdentifier: "CalendarTableHeaderViewIdentifier")
         
         self.showLoadingView()
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        self.pageViewController!.didTransitionToViewController(self)
-        self.pageViewController!.navigationItem.title = "Calendar"
-        UIView.animateWithDuration(0.25) {
-            self.pageViewController!.pageControl.alpha = 1
-        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -76,7 +69,7 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
     }
     
     override func reloadData() {
-        self.calendarsDataSource!.refresh()
+        self.calendarsDataSource.refresh()
         self.refreshControl.beginRefreshing()
         requestEventsForCalendars(self.currentCalendars, page: 1) {
             self.updateTableWithNewCalendars(self.currentCalendars)
@@ -260,10 +253,12 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "eventSegue") {
-            UIView.animateWithDuration(0.25) {
-                self.pageViewController!.pageControl.alpha = 0
-            }
             (segue.destinationViewController as! EventViewController).calendarEvent = eventForIndexPath(self.tableView!.indexPathForSelectedRow!)
+        } else if (segue.identifier == "calendarSettingsSegue") {
+            let viewController = (segue.destinationViewController as! CalendarSettingsViewController)
+            self.calendarsDataSource.settingsDelegate = viewController
+            viewController.dataSource = self.calendarsDataSource
+            viewController.delegate = self
         }
     }
 

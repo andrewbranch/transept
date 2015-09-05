@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8121.17" systemVersion="15A204h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8187.4" systemVersion="15A279b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8101.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8151.3"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -29,64 +29,7 @@
         </mutableArray>
     </customFonts>
     <scenes>
-        <!--Featured View Controller-->
-        <scene sceneID="eXr-gi-DyZ">
-            <objects>
-                <viewController storyboardIdentifier="featuredViewController" id="CK5-eg-Cfx" customClass="FeaturedViewController" customModule="FUMC" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="7CC-Hn-gJs"/>
-                        <viewControllerLayoutGuide type="bottom" id="cFI-Tq-CGd"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="AYD-yT-z9F">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qhs-et-9OK">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
-                                <animations/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eX0-wl-fRS">
-                                <rect key="frame" x="175" y="189" width="250" height="122.5"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="250" id="EJg-aF-OzF"/>
-                                </constraints>
-                                <attributedString key="attributedText">
-                                    <fragment content="Check back later for the latest First Church announcements">
-                                        <attributes>
-                                            <color key="NSColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                            <font key="NSFont" size="27" name="MyriadPro-Regular"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.5" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                                <color key="shadowColor" red="0.5" green="0.5" blue="0.5" alpha="0.080000000000000002" colorSpace="calibratedRGB"/>
-                                <size key="shadowOffset" width="0.0" height="1"/>
-                            </label>
-                        </subviews>
-                        <animations/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="Qhs-et-9OK" firstAttribute="top" secondItem="7CC-Hn-gJs" secondAttribute="bottom" id="2My-Ts-nFw"/>
-                            <constraint firstAttribute="centerX" secondItem="eX0-wl-fRS" secondAttribute="centerX" id="7sF-f8-5qp"/>
-                            <constraint firstItem="Qhs-et-9OK" firstAttribute="leading" secondItem="AYD-yT-z9F" secondAttribute="leading" id="8lK-mG-PoA"/>
-                            <constraint firstAttribute="bottom" secondItem="Qhs-et-9OK" secondAttribute="bottom" id="NkO-9w-FNp"/>
-                            <constraint firstAttribute="trailing" secondItem="Qhs-et-9OK" secondAttribute="trailing" id="QCC-Lh-lJU"/>
-                            <constraint firstAttribute="centerY" secondItem="eX0-wl-fRS" secondAttribute="centerY" constant="50" id="b5p-8D-e3h"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="HpE-YQ-7Mh"/>
-                    <connections>
-                        <outlet property="imageView" destination="Qhs-et-9OK" id="h2G-6R-oJs"/>
-                        <outlet property="label" destination="eX0-wl-fRS" id="SuC-ye-VUu"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wFC-GN-rwY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1746" y="-2857"/>
-        </scene>
-        <!--Calendar Table View Controller-->
+        <!--Calendar-->
         <scene sceneID="G66-xP-SFT">
             <objects>
                 <viewController storyboardIdentifier="calendarViewController" id="RjT-LP-9x3" customClass="CalendarTableViewController" customModule="FUMC" customModuleProvider="target" sceneMemberID="viewController">
@@ -95,11 +38,11 @@
                         <viewControllerLayoutGuide type="bottom" id="YNA-jF-0Ai"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="lHT-Wd-zSy">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="50" sectionHeaderHeight="34" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ijV-vw-Xi4">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                                 <animations/>
                                 <color key="backgroundColor" white="0.96999999999999997" alpha="0.97999999999999998" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -136,6 +79,18 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" title="Calendar" id="FD8-J2-YlX">
+                        <barButtonItem key="leftBarButtonItem" image="gear" id="B9e-5e-eF1">
+                            <connections>
+                                <segue destination="7am-XD-3Jf" kind="presentation" identifier="calendarSettingsSegue" id="9g7-kT-KgF"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="bell" id="d3M-gs-NaR">
+                            <connections>
+                                <segue destination="MgL-sn-56f" kind="presentation" id="eT5-pJ-LP6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="ijV-vw-Xi4" id="dla-wL-kul"/>
                         <segue destination="LOE-cv-epK" kind="show" identifier="eventSegue" id="pDD-dN-r9O"/>
@@ -143,7 +98,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WtP-7M-awR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1746" y="-2204"/>
+            <point key="canvasLocation" x="1728" y="-1541"/>
         </scene>
         <!--Event View Controller-->
         <scene sceneID="H7u-RK-gUS">
@@ -154,38 +109,38 @@
                         <viewControllerLayoutGuide type="bottom" id="Qux-Pp-Cmz"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="1jy-wd-Zi7">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1zH-cA-kxL">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hpt-XQ-bzC">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="460"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="459.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Young Professionals" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mmb-iI-Ppx">
-                                                <rect key="frame" x="24" y="263" width="568" height="18"/>
+                                                <rect key="frame" x="24" y="262" width="568" height="18"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" name="MyriadPro-Semibold" family="Myriad Pro" pointSize="18"/>
                                                 <color key="textColor" white="0.19833764097744361" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wednesday, December 12th, 2014" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="18K-ej-Jdt">
-                                                <rect key="frame" x="24" y="307" width="199" height="14"/>
+                                                <rect key="frame" x="24" y="306" width="198.5" height="14"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="14"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Yard" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GEw-ka-HsS">
-                                                <rect key="frame" x="24" y="287" width="50" height="14"/>
+                                                <rect key="frame" x="24" y="286" width="50" height="14"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="14"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default-event" translatesAutoresizingMaskIntoConstraints="NO" id="ZKD-fK-2Ag">
-                                                <rect key="frame" x="0.0" y="0.0" width="600" height="188"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="600" height="187.5"/>
                                                 <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="Jxb-Vl-8Ar"/>
@@ -198,38 +153,38 @@
                                                 </variation>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gmg-OC-hGG">
-                                                <rect key="frame" x="0.0" y="188" width="600" height="30"/>
+                                                <rect key="frame" x="0.0" y="187" width="600" height="30"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="8:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gb4-3K-B0c">
-                                                        <rect key="frame" x="193" y="7" width="39" height="22"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gb4-3K-B0c">
+                                                        <rect key="frame" x="191.5" y="6" width="38.5" height="22"/>
                                                         <animations/>
                                                         <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="22"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="to" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCp-mV-clu">
-                                                        <rect key="frame" x="169" y="13" width="14" height="15"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="to" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCp-mV-clu">
+                                                        <rect key="frame" x="168" y="11" width="13.5" height="15"/>
                                                         <animations/>
                                                         <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="15"/>
                                                         <color key="textColor" white="0.79981203007518797" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="PM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fwU-bH-73y">
-                                                        <rect key="frame" x="141" y="14" width="18" height="13"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fwU-bH-73y">
+                                                        <rect key="frame" x="140.5" y="13" width="17.5" height="13"/>
                                                         <animations/>
                                                         <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="13"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="PM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hf2-YY-ajQ">
-                                                        <rect key="frame" x="234" y="14" width="18" height="13"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hf2-YY-ajQ">
+                                                        <rect key="frame" x="232" y="13" width="17.5" height="13"/>
                                                         <animations/>
                                                         <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="13"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="6:30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9I7-TY-xWA">
-                                                        <rect key="frame" x="100" y="7" width="39" height="22"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6:30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9I7-TY-xWA">
+                                                        <rect key="frame" x="100" y="6" width="38.5" height="22"/>
                                                         <animations/>
                                                         <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="22"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -260,7 +215,7 @@
                                                 </variation>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RST-Lh-miq">
-                                                <rect key="frame" x="24" y="341" width="552" height="14"/>
+                                                <rect key="frame" x="24" y="340" width="552" height="14"/>
                                                 <animations/>
                                                 <attributedString key="attributedText">
                                                     <fragment content="Class leader Scott Grantland">
@@ -275,20 +230,20 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bYf-VK-zH4">
-                                                <rect key="frame" x="10" y="163" width="80" height="80"/>
+                                                <rect key="frame" x="10" y="162" width="80" height="80"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="qlw-Xl-kJc">
                                                     <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="DEC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z6w-hi-PeQ">
-                                                            <rect key="frame" x="25" y="15" width="29" height="16"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DEC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z6w-hi-PeQ">
+                                                            <rect key="frame" x="25" y="14" width="29" height="16"/>
                                                             <animations/>
                                                             <fontDescription key="fontDescription" name="MyriadPro-Semibold" family="Myriad Pro" pointSize="16"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="25" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sqS-dA-S35">
-                                                            <rect key="frame" x="13" y="31" width="54" height="50"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sqS-dA-S35">
+                                                            <rect key="frame" x="13" y="30" width="54" height="50"/>
                                                             <animations/>
                                                             <fontDescription key="fontDescription" name="MyriadPro-Semibold" family="Myriad Pro" pointSize="50"/>
                                                             <color key="textColor" red="0.67485119049999998" green="0.13021456209999999" blue="0.1244646464" alpha="1" colorSpace="calibratedRGB"/>
@@ -311,7 +266,7 @@
                                                 <blurEffect style="extraLight"/>
                                             </visualEffectView>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PyX-Hy-S5T">
-                                                <rect key="frame" x="0.0" y="355" width="600" height="85"/>
+                                                <rect key="frame" x="0.0" y="354" width="600" height="85"/>
                                                 <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="85" id="bge-AP-PYl"/>
@@ -362,7 +317,7 @@
                                     </view>
                                 </subviews>
                                 <animations/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="hpt-XQ-bzC" secondAttribute="bottom" id="8wh-ln-mWK"/>
                                     <constraint firstAttribute="bottom" secondItem="hpt-XQ-bzC" secondAttribute="bottom" id="OgR-L8-OS5"/>
@@ -416,27 +371,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gyW-Ol-4VM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2432" y="-2204"/>
-        </scene>
-        <!--Home View Controller-->
-        <scene sceneID="NhA-a5-UY6">
-            <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Cno-kf-7pY" customClass="HomeViewController" customModule="FUMC" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="MaS-da-apn">
-                        <barButtonItem key="leftBarButtonItem" image="gear" id="wEu-KW-eBr">
-                            <connections>
-                                <segue destination="7am-XD-3Jf" kind="presentation" identifier="calendarSettingsSegue" modalPresentationStyle="overFullScreen" id="7te-ka-RD1"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="bell" id="n5k-3f-aRX" customClass="NotificationBarButtonItem" customModule="FUMC" customModuleProvider="target">
-                            <connections>
-                                <segue destination="MgL-sn-56f" kind="presentation" id="2Wh-uN-6Oj"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </pageViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WTs-V4-3bS" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1746" y="-1541"/>
         </scene>
         <!--Media-->
         <scene sceneID="F1x-Xt-ryw">
@@ -494,7 +428,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="oUt-Qq-1TI">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                                 <animations/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="mediaTableViewCell" textLabel="kS4-jP-mGj" detailTextLabel="efW-pY-KlU" style="IBUITableViewCellStyleValue1" id="JWL-Yy-EoM">
                                         <rect key="frame" x="0.0" y="49.5" width="600" height="44"/>
@@ -508,7 +442,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="efW-pY-KlU">
@@ -570,7 +504,7 @@
                             </activityIndicatorView>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="Uad-L7-2BP" secondAttribute="centerX" id="BbS-tX-O0D"/>
                             <constraint firstAttribute="centerY" secondItem="Uad-L7-2BP" secondAttribute="centerY" id="X6u-gp-PnZ"/>
@@ -607,8 +541,8 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ABy-Qm-RIT" customClass="UIChangingLabel" customModule="FUMC" customModuleProvider="target">
-                                <rect key="frame" x="31" y="40" width="538" height="20"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ABy-Qm-RIT" customClass="UIChangingLabel" customModule="FUMC" customModuleProvider="target">
+                                <rect key="frame" x="35" y="40" width="530" height="20"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -900,7 +834,7 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Cno-kf-7pY" kind="relationship" relationship="rootViewController" id="LKy-r8-kNh"/>
+                        <segue destination="RjT-LP-9x3" kind="relationship" relationship="rootViewController" id="eid-ru-QPu"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ffi-Ud-gvI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -936,7 +870,7 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                         <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="connectTableCell" id="M3c-s4-Ja0" customClass="ConnectTableViewCell" customModule="FUMC" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="50" width="600" height="110"/>
@@ -996,7 +930,7 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                                                     <fragment>
                                                         <string key="content">The Pastoral Care Team would like to pray for you and our family at First United Methodist Church.  Please indicate below the specific petition or praise that you would like to call to our attention. This request will then be sent to members of the Pastoral Care Team. Your request will be anonymous unless you include your name or contact information.</string>
                                                         <attributes>
-                                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <font key="NSFont" size="14" name="MyriadPro-Regular"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
@@ -1083,7 +1017,7 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                             </scrollView>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="jZs-0z-jwt" firstAttribute="top" secondItem="PtB-QW-fe7" secondAttribute="bottom" id="64h-iw-9cr"/>
                             <constraint firstItem="PtB-QW-fe7" firstAttribute="top" secondItem="byD-ft-TKD" secondAttribute="bottom" id="K3B-eZ-yTQ"/>
@@ -1159,7 +1093,7 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                         <rect key="frame" x="0.0" y="0.0" width="600" height="85"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection id="0pC-wn-7yJ">
                                 <cells>
@@ -1252,6 +1186,6 @@ Thank you for your generous support of First United Methodist Church of Pensacol
         <image name="media-alt" width="35" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2Wh-uN-6Oj"/>
+        <segue reference="eT5-pJ-LP6"/>
     </inferredMetricsTieBreakers>
 </document>

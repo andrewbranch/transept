@@ -23,7 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ZeroPushDelegate, RKDropd
     var rootViewController: RootTabBarController?
     var notificationToShowOnLaunch: Notification?
     var notificationsViewIsOpen = false
-    var featuredViewController: FeaturedViewController?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
@@ -93,11 +92,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ZeroPushDelegate, RKDropd
             dataSource.refresh()
         } else {
             self.notificationsDataSource = NotificationsDataSource()
-        }
-        
-        // Refresh every now and then
-        if let featuredViewController = self.featuredViewController {
-            featuredViewController.loadFeaturedContent()
         }
     }
 
