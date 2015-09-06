@@ -816,11 +816,11 @@ Thank you for your generous support of First United Methodist Church of Pensacol
             </objects>
             <point key="canvasLocation" x="1002" y="-2204"/>
         </scene>
-        <!--Home-->
+        <!--Calendar-->
         <scene sceneID="jpF-mE-EhB">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="F01-YL-vfW" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="home-alt" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Calendar" image="calendar" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="TRo-Mu-Ckd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1176,13 +1176,13 @@ Thank you for your generous support of First United Methodist Church of Pensacol
     </scenes>
     <resources>
         <image name="bell" width="22" height="22"/>
+        <image name="calendar" width="30" height="30"/>
         <image name="connect-alt2" width="30" height="30"/>
         <image name="contact" width="22" height="22"/>
         <image name="default-event" width="640" height="200"/>
         <image name="gear" width="22" height="22"/>
         <image name="give-alt" width="35" height="35"/>
         <image name="heart" width="50" height="44"/>
-        <image name="home-alt" width="30" height="30"/>
         <image name="media-alt" width="35" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>

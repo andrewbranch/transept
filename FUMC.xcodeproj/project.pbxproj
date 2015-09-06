@@ -389,7 +389,7 @@
 				49B2A3211A268070004EED86 /* RootTabBarController.swift */,
 				49B2A30E1A268070004EED86 /* CustomTableViewController.swift */,
 				49952EE11A26888B002B06FA /* NotificationsTableViewController.swift */,
-				49B2A35F1A2680CD004EED86 /* Home */,
+				49B2A35F1A2680CD004EED86 /* Calendar */,
 				49B2A3631A26816D004EED86 /* Media */,
 				49B2A3601A2680E5004EED86 /* Connect */,
 				49B2A3621A268126004EED86 /* Give */,
@@ -398,14 +398,14 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		49B2A35F1A2680CD004EED86 /* Home */ = {
+		49B2A35F1A2680CD004EED86 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
 				49B2A3081A268070004EED86 /* CalendarTableViewController.swift */,
 				49B2A3101A268070004EED86 /* EventViewController.swift */,
 				494F80971A3155C000403C6B /* CalendarSettingsViewController.swift */,
 			);
-			name = Home;
+			name = Calendar;
 			sourceTree = "<group>";
 		};
 		49B2A3601A2680E5004EED86 /* Connect */ = {

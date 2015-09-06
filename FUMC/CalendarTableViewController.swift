@@ -31,9 +31,7 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
     var sortedKeys = [NSString]()
     let dateFormatter = NSDateFormatter()
     var currentCalendars = [Calendar]()
-    lazy var calendarsDataSource: CalendarsDataSource = {
-        return CalendarsDataSource(settingsDelegate: nil, calendarDelegate: self)
-    }()
+    var calendarsDataSource: CalendarsDataSource?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +41,7 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
         self.tableView!.registerNib(UINib(nibName: "CalendarTableViewAllDayCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "calendarTableViewAllDayCell")
         self.tableView!.registerNib(UINib(nibName: "CalendarTableHeaderView", bundle: NSBundle.mainBundle()), forHeaderFooterViewReuseIdentifier: "CalendarTableHeaderViewIdentifier")
         
+        self.calendarsDataSource = CalendarsDataSource(settingsDelegate: nil, calendarDelegate: self)
         self.showLoadingView()
     }
     
@@ -69,7 +68,7 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
     }
     
     override func reloadData() {
-        self.calendarsDataSource.refresh()
+        self.calendarsDataSource!.refresh()
         self.refreshControl.beginRefreshing()
         requestEventsForCalendars(self.currentCalendars, page: 1) {
             self.updateTableWithNewCalendars(self.currentCalendars)
@@ -256,7 +255,7 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
             (segue.destinationViewController as! EventViewController).calendarEvent = eventForIndexPath(self.tableView!.indexPathForSelectedRow!)
         } else if (segue.identifier == "calendarSettingsSegue") {
             let viewController = (segue.destinationViewController as! CalendarSettingsViewController)
-            self.calendarsDataSource.settingsDelegate = viewController
+            self.calendarsDataSource!.settingsDelegate = viewController
             viewController.dataSource = self.calendarsDataSource
             viewController.delegate = self
         }
