@@ -25,9 +25,9 @@ class API: NSObject {
     private let lock = NSLock()
     private let dateFormatter = NSDateFormatter()
     #if DEBUG   
-    private let base = "http://api.fumcpensacola.com/v3"
+    private let base = "https://api.fumcpensacola.com/v3"
     #else
-    private let base = "http://api.fumcpensacola.com/v3"
+    private let base = "https://api.fumcpensacola.com/v3"
     #endif
     
     func getCalendars(completed: (calendars: [Calendar], error: ErrorType?) -> Void) {
@@ -264,7 +264,7 @@ class API: NSObject {
     }
     
     func fileURL(key key: String) -> NSURL? {
-        return NSURL(string: "\(base)/file/\(key.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet()))")
+         return NSURL(string: "\(base)/file/\(key.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!)")
     }
    
 }
