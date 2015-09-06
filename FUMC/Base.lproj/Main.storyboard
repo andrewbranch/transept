@@ -1176,7 +1176,7 @@ Thank you for your generous support of First United Methodist Church of Pensacol
     </scenes>
     <resources>
         <image name="bell" width="22" height="22"/>
-        <image name="calendar" width="30" height="30"/>
+        <image name="calendar" width="25" height="25"/>
         <image name="connect-alt2" width="30" height="30"/>
         <image name="contact" width="22" height="22"/>
         <image name="default-event" width="640" height="200"/>
