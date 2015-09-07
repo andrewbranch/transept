@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol BulletinDelegate {
+    func bulletin(bulletin: Bulletin, didLoadPreviewImage image: UIImage)
+}
+
 public class Bulletin : NSObject {
     
     var id: String
@@ -18,6 +22,8 @@ public class Bulletin : NSObject {
     var preview: String?
     var previewImage: UIImage?
     var visible: Bool
+    
+    var delegate: BulletinDelegate?
     
     public init(jsonDictionary: NSDictionary, dateFormatter: NSDateFormatter) throws {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
@@ -39,6 +45,7 @@ public class Bulletin : NSObject {
                 }
                 if let image = UIImage(data: data) {
                     self.previewImage = image
+                    self.delegate?.bulletin(self, didLoadPreviewImage: image)
                 }
             }
         }

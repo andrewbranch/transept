@@ -92,6 +92,9 @@
 		49D5079D1A37A33A00531F23 /* WSLHTMLEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D5079A1A37A33A00531F23 /* WSLHTMLEntities.m */; };
 		49D507A21A37C18E00531F23 /* CalendarTableViewAllDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D507A01A37C18E00531F23 /* CalendarTableViewAllDayCell.swift */; };
 		49D507A31A37C18E00531F23 /* CalendarTableViewAllDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49D507A11A37C18E00531F23 /* CalendarTableViewAllDayCell.xib */; };
+		49F261561B9CE5F600FE027D /* BulletinTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F261551B9CE5F600FE027D /* BulletinTest.swift */; settings = {ASSET_TAGS = (); }; };
+		49F2615B1B9CF20D00FE027D /* MediaTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F2615A1B9CF20D00FE027D /* MediaTableHeaderView.swift */; settings = {ASSET_TAGS = (); }; };
+		49F2615D1B9CF22700FE027D /* MediaTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49F2615C1B9CF22700FE027D /* MediaTableHeaderView.xib */; settings = {ASSET_TAGS = (); }; };
 		D9518422F16F7C52F0D0C646 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA7425126BE2BA297FAE61BC /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -204,6 +207,9 @@
 		49D5079B1A37A33A00531F23 /* WSLHTMLEntityDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WSLHTMLEntityDefinitions.h; path = FUMC/WSLHTMLEntityDefinitions.h; sourceTree = "<group>"; };
 		49D507A01A37C18E00531F23 /* CalendarTableViewAllDayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarTableViewAllDayCell.swift; path = FUMC/CalendarTableViewAllDayCell.swift; sourceTree = "<group>"; };
 		49D507A11A37C18E00531F23 /* CalendarTableViewAllDayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CalendarTableViewAllDayCell.xib; path = FUMC/CalendarTableViewAllDayCell.xib; sourceTree = "<group>"; };
+		49F261551B9CE5F600FE027D /* BulletinTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulletinTest.swift; sourceTree = "<group>"; };
+		49F2615A1B9CF20D00FE027D /* MediaTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MediaTableHeaderView.swift; path = FUMC/MediaTableHeaderView.swift; sourceTree = "<group>"; };
+		49F2615C1B9CF22700FE027D /* MediaTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MediaTableHeaderView.xib; path = FUMC/MediaTableHeaderView.xib; sourceTree = "<group>"; };
 		5D4F8AA89947C82EF5AC8E35 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		CBC1F7B2E80AFF5BEE370E33 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		DA7425126BE2BA297FAE61BC /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -300,6 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				49B2A2EE1A268023004EED86 /* FUMCTests.swift */,
+				49F261571B9CE5FD00FE027D /* Models */,
 				49B2A2EC1A268023004EED86 /* Supporting Files */,
 			);
 			path = FUMCTests;
@@ -378,6 +385,8 @@
 				49C83A1E1A2BCB8A00E02C96 /* NotificationsTableViewCell.xib */,
 				49209A501A360BD600DDD45E /* RadioView.swift */,
 				49A569731A3A5ACD00B6F1E4 /* ActivityIndicatorView.swift */,
+				49F2615A1B9CF20D00FE027D /* MediaTableHeaderView.swift */,
+				49F2615C1B9CF22700FE027D /* MediaTableHeaderView.xib */,
 			);
 			name = Views;
 			path = ..;
@@ -460,6 +469,14 @@
 				49B2A31B1A268070004EED86 /* MediaWebViewController.swift */,
 			);
 			name = Media;
+			sourceTree = "<group>";
+		};
+		49F261571B9CE5FD00FE027D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				49F261551B9CE5F600FE027D /* BulletinTest.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		7B69E7F3C551EDB41F9B412B /* Frameworks */ = {
@@ -591,6 +608,7 @@
 				49B2A34D1A268070004EED86 /* MyriadPro-Regular.otf in Resources */,
 				49D507A31A37C18E00531F23 /* CalendarTableViewAllDayCell.xib in Resources */,
 				49B2A33C1A268070004EED86 /* ConnectTableFooterView.xib in Resources */,
+				49F2615D1B9CF22700FE027D /* MediaTableHeaderView.xib in Resources */,
 				49B2A32D1A268070004EED86 /* Main.storyboard in Resources */,
 				49B2A3391A268070004EED86 /* CalendarTableViewCell.xib in Resources */,
 			);
@@ -693,6 +711,7 @@
 				495C71FF1AD0FAC50005833B /* Array.swift in Sources */,
 				495C72021AD0FAC50005833B /* Dictionary.swift in Sources */,
 				49209A511A360BD600DDD45E /* RadioView.swift in Sources */,
+				49F2615B1B9CF20D00FE027D /* MediaTableHeaderView.swift in Sources */,
 				49D507A21A37C18E00531F23 /* CalendarTableViewAllDayCell.swift in Sources */,
 				49A569881A40807500B6F1E4 /* CalendarSettingsSelectTableViewCell.swift in Sources */,
 				49B2A3341A268070004EED86 /* BulletinsDataSource.swift in Sources */,
@@ -752,6 +771,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49F261561B9CE5F600FE027D /* BulletinTest.swift in Sources */,
 				49B2A2EF1A268023004EED86 /* FUMCTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -73,10 +73,6 @@ class BulletinsDataSource: NSObject, MediaTableViewDataSource {
         return 70
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 60
-    }
-    
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterViewWithIdentifier("MediaTableHeaderViewIdentifier") as! MediaTableHeaderView
         let date = self.bulletins.keys.sort(>)[section]
@@ -90,6 +86,12 @@ class BulletinsDataSource: NSObject, MediaTableViewDataSource {
         }
         header.dateLabel!.text = self.dateFormatter.stringFromDate(date).uppercaseString
         header.liturgicalDayLabel!.text = self.bulletins[date]?[0].liturgicalDay
+        if let image = self.bulletins[date]?[0].previewImage {
+            header.imageView!.image = image
+        } else {
+            header.imageView!.image = nil
+        }
+        
         return header
     }
     
@@ -106,9 +108,6 @@ class BulletinsDataSource: NSObject, MediaTableViewDataSource {
         cell.textLabel!.font = UIFont.fumcMainFontRegular16
         cell.textLabel!.text = bulletin.service as String
         cell.detailTextLabel?.text = ""
-        if let image = bulletin.previewImage {
-            cell.imageView!.image = image
-        }
         
         return cell
     }
