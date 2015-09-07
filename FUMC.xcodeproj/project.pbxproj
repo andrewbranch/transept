@@ -95,6 +95,9 @@
 		49F261561B9CE5F600FE027D /* BulletinTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F261551B9CE5F600FE027D /* BulletinTest.swift */; settings = {ASSET_TAGS = (); }; };
 		49F2615B1B9CF20D00FE027D /* MediaTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F2615A1B9CF20D00FE027D /* MediaTableHeaderView.swift */; settings = {ASSET_TAGS = (); }; };
 		49F2615D1B9CF22700FE027D /* MediaTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49F2615C1B9CF22700FE027D /* MediaTableHeaderView.xib */; settings = {ASSET_TAGS = (); }; };
+		49F2615F1B9E216100FE027D /* BulletinsDataSourceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F2615E1B9E216100FE027D /* BulletinsDataSourceTest.swift */; settings = {ASSET_TAGS = (); }; };
+		49F261611B9E277A00FE027D /* MediaTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49F2615C1B9CF22700FE027D /* MediaTableHeaderView.xib */; settings = {ASSET_TAGS = (); }; };
+		49F261631B9E2E7A00FE027D /* NSDateExtensionsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F261621B9E2E7A00FE027D /* NSDateExtensionsTest.swift */; settings = {ASSET_TAGS = (); }; };
 		D9518422F16F7C52F0D0C646 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA7425126BE2BA297FAE61BC /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -210,6 +213,8 @@
 		49F261551B9CE5F600FE027D /* BulletinTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulletinTest.swift; sourceTree = "<group>"; };
 		49F2615A1B9CF20D00FE027D /* MediaTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MediaTableHeaderView.swift; path = FUMC/MediaTableHeaderView.swift; sourceTree = "<group>"; };
 		49F2615C1B9CF22700FE027D /* MediaTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MediaTableHeaderView.xib; path = FUMC/MediaTableHeaderView.xib; sourceTree = "<group>"; };
+		49F2615E1B9E216100FE027D /* BulletinsDataSourceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulletinsDataSourceTest.swift; sourceTree = "<group>"; };
+		49F261621B9E2E7A00FE027D /* NSDateExtensionsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtensionsTest.swift; sourceTree = "<group>"; };
 		5D4F8AA89947C82EF5AC8E35 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		CBC1F7B2E80AFF5BEE370E33 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		DA7425126BE2BA297FAE61BC /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -307,6 +312,8 @@
 			children = (
 				49B2A2EE1A268023004EED86 /* FUMCTests.swift */,
 				49F261571B9CE5FD00FE027D /* Models */,
+				49F261641B9E2E7F00FE027D /* Utilities */,
+				49F261601B9E216900FE027D /* Data Sources */,
 				49B2A2EC1A268023004EED86 /* Supporting Files */,
 			);
 			path = FUMCTests;
@@ -479,6 +486,22 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		49F261601B9E216900FE027D /* Data Sources */ = {
+			isa = PBXGroup;
+			children = (
+				49F2615E1B9E216100FE027D /* BulletinsDataSourceTest.swift */,
+			);
+			name = "Data Sources";
+			sourceTree = "<group>";
+		};
+		49F261641B9E2E7F00FE027D /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				49F261621B9E2E7A00FE027D /* NSDateExtensionsTest.swift */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
 		7B69E7F3C551EDB41F9B412B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -618,6 +641,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49F261611B9E277A00FE027D /* MediaTableHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -771,6 +795,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49F261631B9E2E7A00FE027D /* NSDateExtensionsTest.swift in Sources */,
+				49F2615F1B9E216100FE027D /* BulletinsDataSourceTest.swift in Sources */,
 				49F261561B9CE5F600FE027D /* BulletinTest.swift in Sources */,
 				49B2A2EF1A268023004EED86 /* FUMCTests.swift in Sources */,
 			);

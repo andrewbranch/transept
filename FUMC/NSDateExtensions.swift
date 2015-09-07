@@ -8,19 +8,19 @@
 
 import UIKit
 
-extension NSDate {
+public extension NSDate {
     
     func midnight() -> NSDate {
         return NSCalendar.currentCalendar().dateFromComponents(NSCalendar.currentCalendar().components([NSCalendarUnit.Year, NSCalendarUnit.Month, NSCalendarUnit.Day], fromDate: self))!
     }
     
-    func dayOfWeek() -> Int {
+    public func dayOfWeek() -> Int {
         return NSCalendar.currentCalendar().components(NSCalendarUnit.Weekday, fromDate: self).weekday
     }
     
-    func dayOfWorkWeek() -> Int {
+    public func dayOfWorkWeek() -> Int {
         let weekday = NSCalendar.currentCalendar().components(NSCalendarUnit.Weekday, fromDate: self).weekday
-        return weekday == 0 ? 6 : weekday - 1
+        return weekday == 1 ? 7 : weekday - 1
     }
     
     func hour() -> Int {

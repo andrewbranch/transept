@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 FUMC Pensacola. All rights reserved.
 //
 
-class CustomTableViewController: UIViewController, ErrorAlertable {
+public class CustomTableViewController: UIViewController, ErrorAlertable {
     
     @IBOutlet var tableView: UITableView?
     var errorAlertToBeShown: UIAlertView?
@@ -27,7 +27,7 @@ class CustomTableViewController: UIViewController, ErrorAlertable {
         return backgroundLabel
     }()
 
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         
         self.activityView.center = CGPointMake(self.view.center.x, self.view.center.y - 80)
@@ -44,7 +44,7 @@ class CustomTableViewController: UIViewController, ErrorAlertable {
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override public func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         if let alert = self.errorAlertToBeShown {
             alert.show()

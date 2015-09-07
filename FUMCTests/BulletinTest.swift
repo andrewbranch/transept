@@ -15,7 +15,7 @@ class BulletinTest: XCTestCase {
         let badData = [
             "id": "1",
             "attributes": [
-                "liturgicalDay": "Easter",
+                "liturgical-day": "Easter",
                 "date": "2015-08-23T05:00:00.000Z",
                 "service":"ICON",
                 "visible": true
@@ -28,7 +28,7 @@ class BulletinTest: XCTestCase {
         let goodData = [
             "id": "1",
             "attributes": [
-                "liturgicalDay": "Easter",
+                "liturgical-day": "Easter",
                 "date": "2015-08-23T05:00:00.000Z",
                 "service":"ICON",
                 "visible": true,

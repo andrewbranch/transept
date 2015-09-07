@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 FUMC Pensacola. All rights reserved.
 //
 
-protocol MediaTableViewDataSource: UITableViewDataSource, UITableViewDelegate {
+public protocol MediaTableViewDataSource: UITableViewDataSource, UITableViewDelegate {
     var title: NSString { get }
     var loading: Bool { get }
     var delegate: MediaTableViewDataSourceDelegate? { get set }
@@ -16,17 +16,17 @@ protocol MediaTableViewDataSource: UITableViewDataSource, UITableViewDelegate {
     func urlForIndexPath(indexPath: NSIndexPath) -> NSURL?
 }
 
-protocol MediaTableViewDataSourceDelegate {
+public protocol MediaTableViewDataSourceDelegate {
     func dataSourceDidStartLoadingAPI(dataSource: MediaTableViewDataSource) -> Void
     func dataSourceDidFinishLoadingAPI(dataSource: MediaTableViewDataSource) -> Void
     func dataSource(dataSource: MediaTableViewDataSource, failedToLoadWithError error: ErrorType?) -> Void
 }
 
-class MediaTableViewController: CustomTableViewController, MediaTableViewDataSourceDelegate, BulletinDelegate {
+public class MediaTableViewController: CustomTableViewController, MediaTableViewDataSourceDelegate, BulletinDelegate {
     
     var dataSource: MediaTableViewDataSource?
 
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationItem.title = self.dataSource!.title as String
@@ -39,14 +39,14 @@ class MediaTableViewController: CustomTableViewController, MediaTableViewDataSou
         self.registerWithBulletins()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override public func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         if let indexPath = self.tableView!.indexPathForSelectedRow {
             self.tableView!.deselectRowAtIndexPath(indexPath, animated: true)
         }
     }
 
-    override func didReceiveMemoryWarning() {
+    override public func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
@@ -79,11 +79,11 @@ class MediaTableViewController: CustomTableViewController, MediaTableViewDataSou
     
     // MARK: - MediaTableViewDataSourceDelegate
     
-    func dataSourceDidStartLoadingAPI(dataSource: MediaTableViewDataSource) {
+    public func dataSourceDidStartLoadingAPI(dataSource: MediaTableViewDataSource) {
         self.showLoadingView()
     }
     
-    func dataSourceDidFinishLoadingAPI(dataSource: MediaTableViewDataSource) {
+    public func dataSourceDidFinishLoadingAPI(dataSource: MediaTableViewDataSource) {
         self.registerWithBulletins()
         self.tableView!.reloadData()
         self.tableViewController.refreshControl!.endRefreshing()
@@ -92,7 +92,7 @@ class MediaTableViewController: CustomTableViewController, MediaTableViewDataSou
         self.tableView!.backgroundView?.hidden = dataSource.tableView(self.tableView!, numberOfRowsInSection: 0) > 0
     }
     
-    func dataSource(dataSource: MediaTableViewDataSource, failedToLoadWithError error: ErrorType?) {
+    public func dataSource(dataSource: MediaTableViewDataSource, failedToLoadWithError error: ErrorType?) {
         ErrorAlerter.showLoadingAlertInViewController(self)
         dataSourceDidFinishLoadingAPI(self.dataSource!)
     }
@@ -100,7 +100,7 @@ class MediaTableViewController: CustomTableViewController, MediaTableViewDataSou
 
     // MARK: - Navigation
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+    override public func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "mediaTableCellSelection") {
             let viewController = segue.destinationViewController as! MediaWebViewController
             let indexPath = self.tableView!.indexPathForSelectedRow

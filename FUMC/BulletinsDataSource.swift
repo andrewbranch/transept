@@ -8,21 +8,22 @@
 
 import UIKit
 
-class BulletinsDataSource: NSObject, MediaTableViewDataSource {
+public class BulletinsDataSource: NSObject, MediaTableViewDataSource {
     
-    var title: NSString = "Worship Bulletins"
-    var bulletins = Dictionary<NSDate, [Bulletin]>()
+    public var title: NSString = "Worship Bulletins"
+    public var bulletins = Dictionary<NSDate, [Bulletin]>()
+    public var delegate: MediaTableViewDataSourceDelegate?
+    public var loading = false
+    public var referenceDate = NSDate() // For overriding in tests
     let dateFormatter = NSDateFormatter()
-    var delegate: MediaTableViewDataSourceDelegate?
-    var loading = false
     
-    required init(delegate: MediaTableViewDataSourceDelegate?) {
+    required public init(delegate: MediaTableViewDataSourceDelegate?) {
         super.init()
         self.dateFormatter.timeZone = NSTimeZone(abbreviation: "CST")
         self.delegate = delegate
     }
     
-    func refresh() {
+    public func refresh() {
         self.delegate?.dataSourceDidStartLoadingAPI(self)
         requestData() {
             self.delegate?.dataSourceDidFinishLoadingAPI(self)
@@ -30,6 +31,7 @@ class BulletinsDataSource: NSObject, MediaTableViewDataSource {
     }
     
     func requestData(completed: () -> Void = { }) {
+        self.referenceDate = NSDate()
         self.loading = true
         API.shared().getBulletins() { bulletins, error in
             if (error != nil) {
@@ -50,7 +52,7 @@ class BulletinsDataSource: NSObject, MediaTableViewDataSource {
         }
     }
     
-    func urlForIndexPath(indexPath: NSIndexPath) -> NSURL? {
+    public func urlForIndexPath(indexPath: NSIndexPath) -> NSURL? {
         return API.shared().fileURL(key: self.bulletinForIndexPath(indexPath).file as String)
     }
     
@@ -60,25 +62,35 @@ class BulletinsDataSource: NSObject, MediaTableViewDataSource {
     
     // MARK: - Table view data source
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return self.bulletins.count
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (self.bulletins.keys.isEmpty) { return 0 }
         return self.bulletins[self.bulletins.keys.sort(>)[section]]!.count
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    public func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 70
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    public func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterViewWithIdentifier("MediaTableHeaderViewIdentifier") as! MediaTableHeaderView
         let date = self.bulletins.keys.sort(>)[section]
         self.dateFormatter.dateFormat = "EEEE, MMMM d"
-        if (date.midnight() - NSDate().midnight() <= 7 * 24 * 60 * 60 && date.midnight() - NSDate().midnight() >= 0) {
-            if (date.dayOfWorkWeek() < NSDate().dayOfWorkWeek()) {
+        if (date.midnight() == self.referenceDate.midnight()) {
+            self.dateFormatter.dateFormat = "'Today,' MMMM d"
+        // Date is within the next seven days
+        } else if (date.midnight() - self.referenceDate.midnight() <= 7 * 24 * 60 * 60 && date.midnight() - self.referenceDate.midnight() >= 0) {
+            // People talk differently on Sundays (the whole next week is “this” until Sunday)
+            if (self.referenceDate.dayOfWeek() == 1) {
+                if (date.dayOfWeek() == 1) {
+                    self.dateFormatter.dateFormat = "'Next' EEEE, MMMM d"
+                } else {
+                    self.dateFormatter.dateFormat = "'This' EEEE, MMMM d"
+                }
+            } else if (self.referenceDate.dayOfWorkWeek() < date.dayOfWorkWeek()) {
                 self.dateFormatter.dateFormat = "'This' EEEE, MMMM d"
             } else {
                 self.dateFormatter.dateFormat = "'Next' EEEE, MMMM d"
@@ -95,14 +107,14 @@ class BulletinsDataSource: NSObject, MediaTableViewDataSource {
         return header
     }
     
-    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+    public func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let headerView = view as! MediaTableHeaderView
         if (headerView.dateLabel!.text!.hasPrefix("NEXT") || headerView.dateLabel!.text!.hasPrefix("THIS")) {
             headerView.dateLabel!.textColor = UIColor.fumcRedColor()
         }
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("mediaTableViewCell", forIndexPath: indexPath) as UITableViewCell
         let bulletin = self.bulletinForIndexPath(indexPath)
         cell.textLabel!.font = UIFont.fumcMainFontRegular16

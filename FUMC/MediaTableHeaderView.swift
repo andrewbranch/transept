@@ -8,9 +8,9 @@
 
 import UIKit
 
-class MediaTableHeaderView: UITableViewHeaderFooterView {
+public class MediaTableHeaderView: UITableViewHeaderFooterView {
 
-    @IBOutlet var dateLabel: UILabel?
+    @IBOutlet public var dateLabel: UILabel?
     @IBOutlet var liturgicalDayLabel: UILabel?
     @IBOutlet var imageView: UIImageView?
 
