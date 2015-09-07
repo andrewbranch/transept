@@ -53,7 +53,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ZeroPushDelegate, RKDropd
         UITabBar.appearance().barTintColor = UIColor(white: 0.1, alpha: 1)
         UITabBar.appearance().selectionIndicatorImage = UIImage.imageFromColor(UIColor.blackColor(), forSize: CGSizeMake(UIScreen.mainScreen().bounds.width / 4, 49))
         
+        #if !DEBUG
         Fabric.with([Crashlytics()])
+        #endif
         
         if let userInfo = launchOptions?[UIApplicationLaunchOptionsRemoteNotificationKey] as? NSDictionary {
             self.notificationToShowOnLaunch = Notification(userInfo: userInfo as [NSObject : AnyObject])
