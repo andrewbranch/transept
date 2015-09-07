@@ -13,22 +13,19 @@ class BulletinsDataSource: NSObject, MediaTableViewDataSource {
     var title: NSString = "Worship Bulletins"
     var bulletins = Dictionary<NSDate, [Bulletin]>()
     let dateFormatter = NSDateFormatter()
-    var delegate: MediaTableViewDataSourceDelegate!
+    var delegate: MediaTableViewDataSourceDelegate?
     var loading = false
     
-    required init(delegate: MediaTableViewDataSourceDelegate) {
+    required init(delegate: MediaTableViewDataSourceDelegate?) {
         super.init()
         self.dateFormatter.timeZone = NSTimeZone(abbreviation: "CST")
         self.delegate = delegate
-        self.delegate.dataSourceDidStartLoadingAPI(self)
-        requestData() {
-            self.delegate.dataSourceDidFinishLoadingAPI(self)
-        }
     }
     
     func refresh() {
+        self.delegate?.dataSourceDidStartLoadingAPI(self)
         requestData() {
-            self.delegate.dataSourceDidFinishLoadingAPI(self)
+            self.delegate?.dataSourceDidFinishLoadingAPI(self)
         }
     }
     
@@ -36,7 +33,7 @@ class BulletinsDataSource: NSObject, MediaTableViewDataSource {
         self.loading = true
         API.shared().getBulletins() { bulletins, error in
             if (error != nil) {
-                self.delegate.dataSource(self, failedToLoadWithError: error)
+                self.delegate?.dataSource(self, failedToLoadWithError: error)
             } else {
                 self.bulletins.removeAll(keepCapacity: true)
                 for b in bulletins {
@@ -72,7 +69,16 @@ class BulletinsDataSource: NSObject, MediaTableViewDataSource {
         return self.bulletins[self.bulletins.keys.sort(>)[section]]!.count
     }
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 70
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 60
+    }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableHeaderFooterViewWithIdentifier("MediaTableHeaderViewIdentifier") as! MediaTableHeaderView
         let date = self.bulletins.keys.sort(>)[section]
         self.dateFormatter.dateFormat = "EEEE, MMMM d"
         if (date.midnight() - NSDate().midnight() <= 7 * 24 * 60 * 60 && date.midnight() - NSDate().midnight() >= 0) {
@@ -82,22 +88,28 @@ class BulletinsDataSource: NSObject, MediaTableViewDataSource {
                 self.dateFormatter.dateFormat = "'Next' EEEE, MMMM d"
             }
         }
-        return self.dateFormatter.stringFromDate(date)
+        header.dateLabel!.text = self.dateFormatter.stringFromDate(date).uppercaseString
+        header.liturgicalDayLabel!.text = self.bulletins[date]?[0].liturgicalDay
+        return header
     }
     
     func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        let headerView = view as! UITableViewHeaderFooterView
-        headerView.textLabel!.font = UIFont.fumcMainFontRegular14
-        if (headerView.textLabel!.text!.hasPrefix("NEXT") || headerView.textLabel!.text!.hasPrefix("THIS")) {
-            headerView.textLabel!.textColor = UIColor.fumcRedColor()
+        let headerView = view as! MediaTableHeaderView
+        if (headerView.dateLabel!.text!.hasPrefix("NEXT") || headerView.dateLabel!.text!.hasPrefix("THIS")) {
+            headerView.dateLabel!.textColor = UIColor.fumcRedColor()
         }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("mediaTableViewCell", forIndexPath: indexPath) as UITableViewCell
+        let bulletin = self.bulletinForIndexPath(indexPath)
         cell.textLabel!.font = UIFont.fumcMainFontRegular16
-        cell.textLabel!.text = self.bulletinForIndexPath(indexPath).service as String
+        cell.textLabel!.text = bulletin.service as String
         cell.detailTextLabel?.text = ""
+        if let image = bulletin.previewImage {
+            cell.imageView!.image = image
+        }
+        
         return cell
     }
     

@@ -8,23 +8,45 @@
 
 import UIKit
 
-class Bulletin : NSObject {
+public class Bulletin : NSObject {
     
     var id: String
     var service: String
+    var liturgicalDay: String
     var date: NSDate
-    var file: String
+    var file: String!
+    var preview: String?
+    var previewImage: UIImage?
     var visible: Bool
     
-    init(jsonDictionary: NSDictionary, dateFormatter: NSDateFormatter) {
+    public init(jsonDictionary: NSDictionary, dateFormatter: NSDateFormatter) throws {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         
         let attrs = jsonDictionary["attributes"] as! NSDictionary
         self.id = jsonDictionary["id"] as! String
         
         self.service = attrs["service"] as! String
+        self.liturgicalDay = attrs["liturgical-day"] as! String
         self.date = dateFormatter.dateFromString(attrs["date"] as! String)!
-        self.file = attrs["file"] as! String
         self.visible = attrs["visible"] as! Bool
+        
+        super.init()
+        if let preview = attrs["preview"] as? String {
+            self.preview = preview
+            API.shared().getFile(preview) { data, err in
+                if (err != nil) {
+                    return
+                }
+                if let image = UIImage(data: data) {
+                    self.previewImage = image
+                }
+            }
+        }
+        
+        guard let file = attrs["file"] as? String else {
+            throw NSError(domain: "com.fumcpensacola", code: 1, userInfo: nil)
+        }
+        
+        self.file = file
     }
 }

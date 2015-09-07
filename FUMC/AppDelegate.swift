@@ -19,7 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ZeroPushDelegate, RKDropd
     var serverReachability = Reachability(hostName: "fumc.herokuapp.com")
     var internetReachability = Reachability.reachabilityForInternetConnection()
     var notificationDelegates = [NotificationDelegate]()
-    var notificationsDataSource: NotificationsDataSource?
+    var notificationsDataSource = NotificationsDataSource()
+    var bulletinsDataSource = BulletinsDataSource(delegate: nil)
+    var witnessesDataSource = WitnessesDataSource(delegate: nil)
     var rootViewController: RootTabBarController?
     var notificationToShowOnLaunch: Notification?
     var notificationsViewIsOpen = false
@@ -72,7 +74,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ZeroPushDelegate, RKDropd
 
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-        self.notificationsDataSource!.refresh()
         for delegate in self.notificationDelegates {
             delegate.applicationUpdatedBadgeCount(UIApplication.sharedApplication().applicationIconBadgeNumber)
         }
@@ -88,11 +89,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ZeroPushDelegate, RKDropd
         
         ZeroPush.engageWithAPIKey(apiKey, delegate: self)
         ZeroPush.shared().registerForRemoteNotifications()
-        if let dataSource = self.notificationsDataSource {
-            dataSource.refresh()
-        } else {
-            self.notificationsDataSource = NotificationsDataSource()
-        }
+        
+        self.notificationsDataSource.refresh()
+        self.bulletinsDataSource.refresh()
+        self.witnessesDataSource.refresh()
     }
 
     func applicationWillTerminate(application: UIApplication) {
@@ -113,7 +113,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ZeroPushDelegate, RKDropd
         for delegate in self.notificationDelegates {
             delegate.appDelegate(self, didReceiveNotification: notification)
         }
-        self.notificationsDataSource?.incorporateNotificationFromPush(notification)
+        self.notificationsDataSource.incorporateNotificationFromPush(notification)
         
         
         if (!self.notificationsViewIsOpen) {

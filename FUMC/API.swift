@@ -106,8 +106,9 @@ class API: NSObject {
                     var bulletins = [Bulletin]()
                     self.lock.lock()
                     for json in (bulletinsDictionary["data"] as! [NSDictionary]) {
-                        let b = Bulletin(jsonDictionary: json, dateFormatter: self.dateFormatter)
-                        bulletins.append(b)
+                        if let b = try? Bulletin(jsonDictionary: json, dateFormatter: self.dateFormatter) {
+                            bulletins.append(b)
+                        }
                     }
                     self.lock.unlock()
                     

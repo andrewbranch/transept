@@ -69,6 +69,7 @@ class CustomTableViewController: UIViewController, ErrorAlertable {
     }
     
     func reloadData() {
+        // to be overridden
         self.refreshControl.endRefreshing()
     }
 

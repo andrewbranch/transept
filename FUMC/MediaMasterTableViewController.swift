@@ -14,9 +14,6 @@ class MediaMasterTableViewController: UITableViewController {
     private let labels = [NSAttributedString(string: "Bulletins", attributes: [NSKernAttributeName: 5]), NSAttributedString(string: "Witnesses", attributes: [NSKernAttributeName: 5]), NSAttributedString(string: "Sermons", attributes: [NSKernAttributeName: 5])]
     private let images = [UIImage(named: "bulletins-dark"), UIImage(named: "witnesses-dark"), UIImage(named: "sermons-dark")]
     
-    private var bulletinsDataSource: BulletinsDataSource?
-    private var witnessesDataSource: WitnessesDataSource?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.clearsSelectionOnViewWillAppear = false
@@ -74,20 +71,17 @@ class MediaMasterTableViewController: UITableViewController {
         if (segue.identifier == "mediaMasterCellSelection") {
             let tableViewController = segue.destinationViewController as! MediaTableViewController
             let indexPath = sender as! NSIndexPath
+            let appDelegate = UIApplication.sharedApplication().delegate! as! AppDelegate
             switch (indexPath.item) {
                 
                 case 0:
-                    if (self.bulletinsDataSource == nil) {
-                        self.bulletinsDataSource = BulletinsDataSource(delegate: tableViewController)
-                    }
-                    tableViewController.dataSource = self.bulletinsDataSource!
+                    tableViewController.dataSource = appDelegate.bulletinsDataSource
+                    appDelegate.bulletinsDataSource.delegate = tableViewController
                     break
                     
                 case 1:
-                    if (self.witnessesDataSource == nil) {
-                        self.witnessesDataSource = WitnessesDataSource(delegate: tableViewController)
-                    }
-                    tableViewController.dataSource = self.witnessesDataSource!
+                    tableViewController.dataSource = appDelegate.witnessesDataSource
+                    appDelegate.witnessesDataSource.delegate = tableViewController
                     break
                     
                 default:

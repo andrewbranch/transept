@@ -9,9 +9,9 @@
 protocol MediaTableViewDataSource: UITableViewDataSource, UITableViewDelegate {
     var title: NSString { get }
     var loading: Bool { get }
-    var delegate: MediaTableViewDataSourceDelegate! { get set }
+    var delegate: MediaTableViewDataSourceDelegate? { get set }
     
-    init(delegate: MediaTableViewDataSourceDelegate)
+    init(delegate: MediaTableViewDataSourceDelegate?)
     func refresh() -> Void
     func urlForIndexPath(indexPath: NSIndexPath) -> NSURL?
 }
@@ -32,9 +32,10 @@ class MediaTableViewController: CustomTableViewController, MediaTableViewDataSou
         self.navigationItem.title = self.dataSource!.title as String
         self.tableView!.dataSource = self.dataSource!
         self.tableView!.delegate = self.dataSource!
-        self.tableViewController.refreshControl = nil // Workaround for #26
         
         self.tableView!.backgroundView?.hidden = self.dataSource!.loading || self.dataSource!.tableView(self.tableView!, numberOfRowsInSection: 0) > 0
+        
+        self.tableView!.registerNib(UINib(nibName: "MediaTableHeaderView", bundle: NSBundle.mainBundle()), forHeaderFooterViewReuseIdentifier: "MediaTableHeaderViewIdentifier")
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -42,10 +43,6 @@ class MediaTableViewController: CustomTableViewController, MediaTableViewDataSou
         if let indexPath = self.tableView!.indexPathForSelectedRow {
             self.tableView!.deselectRowAtIndexPath(indexPath, animated: true)
         }
-    }
-    
-    override func viewDidDisappear(animated: Bool) {
-        self.dataSource!.refresh() // Workaround for #26
     }
 
     override func didReceiveMemoryWarning() {
@@ -67,7 +64,7 @@ class MediaTableViewController: CustomTableViewController, MediaTableViewDataSou
     
     func dataSourceDidFinishLoadingAPI(dataSource: MediaTableViewDataSource) {
         self.tableView!.reloadData()
-        // self.tableViewController.refreshControl!.endRefreshing()
+        self.tableViewController.refreshControl!.endRefreshing()
         self.hideLoadingView()
         
         self.tableView!.backgroundView?.hidden = dataSource.tableView(self.tableView!, numberOfRowsInSection: 0) > 0

@@ -11,24 +11,21 @@ import UIKit
 class WitnessesDataSource: NSObject, MediaTableViewDataSource {
     
     var title: NSString = "The Methodist Witness"
-    var delegate: MediaTableViewDataSourceDelegate!
+    var delegate: MediaTableViewDataSourceDelegate?
     var witnesses = Dictionary<String, [Witness]>()
     var dateFormatter = NSDateFormatter()
     var loading = false
     
-    required init(delegate: MediaTableViewDataSourceDelegate) {
+    required init(delegate: MediaTableViewDataSourceDelegate?) {
         super.init()
         self.dateFormatter.timeZone = NSTimeZone(abbreviation: "CST")
         self.delegate = delegate
-        self.delegate.dataSourceDidStartLoadingAPI(self)
-        requestData() {
-            self.delegate.dataSourceDidFinishLoadingAPI(self)
-        }
     }
     
     func refresh() {
+        self.delegate?.dataSourceDidStartLoadingAPI(self)
         requestData() {
-            self.delegate.dataSourceDidFinishLoadingAPI(self)
+            self.delegate?.dataSourceDidFinishLoadingAPI(self)
         }
     }
     
@@ -36,7 +33,7 @@ class WitnessesDataSource: NSObject, MediaTableViewDataSource {
         self.loading = true
         API.shared().getWitnesses() { witnesses, error in
             if (error != nil) {
-                self.delegate.dataSource(self, failedToLoadWithError: error)
+                self.delegate?.dataSource(self, failedToLoadWithError: error)
             } else {
                 self.witnesses.removeAll(keepCapacity: true)
                 for w in witnesses.sort({ a, b in a.from > b.from }) {
