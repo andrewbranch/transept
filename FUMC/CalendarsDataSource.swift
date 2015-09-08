@@ -35,7 +35,7 @@ class CalendarsDataSource: NSObject, UITableViewDataSource {
     func requestCalendars(completed: () -> Void = { }) {
         API.shared().getCalendars() { calendars, error in
             if (error != nil) {
-                self.settingsDelegate?.dataSource(self, failedToLoadWithError: error)
+                self.settingsDelegate?.dataSource(self, failedToLoadWithError: error as? NSError)
                 self.calendarDelegate!.calendarsDataSource(self, failedGettingCalendarsWithError: error!)
             } else {
                 self.calendars = calendars
@@ -46,7 +46,7 @@ class CalendarsDataSource: NSObject, UITableViewDataSource {
     }
     
     func indexPathForCalendarId(id: String) -> NSIndexPath? {
-        if let index = find(self.calendars.map { $0.id }, id) {
+        if let index = self.calendars.map({ $0.id }).indexOf(id) {
             return NSIndexPath(forRow: index + 1, inSection: 0)
         }
         return nil

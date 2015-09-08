@@ -6,27 +6,29 @@
 //  Copyright (c) 2014 FUMC Pensacola. All rights reserved.
 //
 
-extension NSDate {
+import UIKit
+
+public extension NSDate {
     
     func midnight() -> NSDate {
-        return NSCalendar.currentCalendar().dateFromComponents(NSCalendar.currentCalendar().components(.CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitDay, fromDate: self))!
+        return NSCalendar.currentCalendar().dateFromComponents(NSCalendar.currentCalendar().components([NSCalendarUnit.Year, NSCalendarUnit.Month, NSCalendarUnit.Day], fromDate: self))!
     }
     
-    func dayOfWeek() -> Int {
-        return NSCalendar.currentCalendar().components(.CalendarUnitWeekday, fromDate: self).weekday
+    public func dayOfWeek() -> Int {
+        return NSCalendar.currentCalendar().components(NSCalendarUnit.Weekday, fromDate: self).weekday
     }
     
-    func dayOfWorkWeek() -> Int {
-        let weekday = NSCalendar.currentCalendar().components(.CalendarUnitWeekday, fromDate: self).weekday
-        return weekday == 0 ? 6 : weekday - 1
+    public func dayOfWorkWeek() -> Int {
+        let weekday = NSCalendar.currentCalendar().components(NSCalendarUnit.Weekday, fromDate: self).weekday
+        return weekday == 1 ? 7 : weekday - 1
     }
     
     func hour() -> Int {
-        return NSCalendar.currentCalendar().components(.CalendarUnitHour, fromDate: self).hour
+        return NSCalendar.currentCalendar().components(NSCalendarUnit.Hour, fromDate: self).hour
     }
     
     func minute() -> Int {
-        return NSCalendar.currentCalendar().components(.CalendarUnitMinute, fromDate: self).minute
+        return NSCalendar.currentCalendar().components(NSCalendarUnit.Minute, fromDate: self).minute
     }
 }
 

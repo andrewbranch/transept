@@ -24,13 +24,13 @@ class PrayerRequestViewController: UIViewController, UITextViewDelegate, UIAlert
         
         self.label!.font = UIFont.fumcMainFontRegular14
         
-        var toolbar = UIToolbar(frame: CGRectMake(0, 0, 320, 50))
+        let toolbar = UIToolbar(frame: CGRectMake(0, 0, 320, 50))
         toolbar.barStyle = UIBarStyle.Default
         toolbar.items = [
             UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target:nil, action:nil),
             UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: "dismissKeyboard"),
         ]
-        (toolbar.items![1] as! UIBarButtonItem).setTitleTextAttributes([
+        (toolbar.items![1] as UIBarButtonItem).setTitleTextAttributes([
             NSFontAttributeName: UIFont.systemFontOfSize(16),
             NSForegroundColorAttributeName: UIColor.fumcRedColor()
         ], forState: UIControlState.Normal)
@@ -44,7 +44,7 @@ class PrayerRequestViewController: UIViewController, UITextViewDelegate, UIAlert
         self.errorAlert = UIAlertView(title: "Error Submitting", message: "We’re having trouble processing your request right now. Do you want to copy your request into a new email message?", delegate: self, cancelButtonTitle: "Cancel", otherButtonTitles: "Copy to Email")
         
         NSNotificationCenter.defaultCenter().addObserverForName(UIKeyboardWillShowNotification, object: nil, queue: NSOperationQueue.mainQueue()) { (notification) -> Void in
-            let keyboardSize = notification.userInfo![UIKeyboardFrameBeginUserInfoKey]?.CGRectValue().size
+            let keyboardSize = notification.userInfo![UIKeyboardFrameBeginUserInfoKey]?.CGRectValue.size
             let contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize!.height - self.navigationController!.navigationBar.frame.height, 0.0)
             self.scrollView!.contentInset = contentInsets
             self.scrollView!.scrollIndicatorInsets = contentInsets
@@ -108,7 +108,7 @@ class PrayerRequestViewController: UIViewController, UITextViewDelegate, UIAlert
     
     func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
         if (alertView === self.errorAlert! && buttonIndex == 1) {
-            let emailURL = NSURL(string: "mailto:fumc@pensacolafirstchurch.com?subject=Prayer Request&body=\(self.textView!.text)".stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!)
+            let emailURL = NSURL(string: "mailto:fumc@pensacolafirstchurch.com?subject=Prayer Request&body=\(self.textView!.text)".stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!)
             if let url = emailURL {
                 UIApplication.sharedApplication().openURL(url)
             } else {

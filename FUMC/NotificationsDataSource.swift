@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import ZeroPush
+import NSDate_TimeAgo
 
 class NotificationsDataSource: NSObject, UITableViewDataSource {
     
@@ -55,15 +57,14 @@ class NotificationsDataSource: NSObject, UITableViewDataSource {
                     completed(channels: [])
                     return
                 }
-                var error: NSError?
-                let json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.allZeros, error: &error) as! NSDictionary
-                if (error == nil) {
+                do {
+                    let json = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
                     if let channels = json["channels"] as? [String] {
                         completed(channels: channels)
                     } else {
                         completed(channels: [])
                     }
-                } else {
+                } catch {
                     completed(channels: [])
                 }
             }
@@ -90,17 +91,17 @@ class NotificationsDataSource: NSObject, UITableViewDataSource {
     }
     
     func incorporateNotificationFromPush(notification: Notification) {
-        self.delegate?.tableView?.beginUpdates()
+        self.delegate?.tableView!.beginUpdates()
         self.notifications.append(notification)
         self.sortNotifications()
-        self.delegate?.tableView?.insertRowsAtIndexPaths([indexPathForNotification(notification)], withRowAnimation: UITableViewRowAnimation.Automatic)
-        self.delegate?.tableView?.endUpdates()
+        self.delegate?.tableView!.insertRowsAtIndexPaths([indexPathForNotification(notification)], withRowAnimation: UITableViewRowAnimation.Automatic)
+        self.delegate?.tableView!.endUpdates()
     }
     
     func sortNotifications() {
-        self.notifications.sort {
+        self.notifications.sortInPlace {
             // TODO incompatible with iOS < 8.0
-            NSCalendar.currentCalendar().compareDate($0.sendDate, toDate: $1.sendDate, toUnitGranularity: NSCalendarUnit.CalendarUnitSecond) == NSComparisonResult.OrderedDescending
+            NSCalendar.currentCalendar().compareDate($0.sendDate, toDate: $1.sendDate, toUnitGranularity: NSCalendarUnit.Second) == NSComparisonResult.OrderedDescending
         }
     }
     
@@ -109,13 +110,13 @@ class NotificationsDataSource: NSObject, UITableViewDataSource {
     }
     
     func indexPathForNotification(notification: Notification) -> NSIndexPath {
-        return NSIndexPath(forRow: find(self.notifications, notification)!, inSection: 0)
+        return NSIndexPath(forRow: self.notifications.indexOf(notification)!, inSection: 0)
     }
     
     func indexPathsForHighlightedCells() -> [NSIndexPath] {
         var indexPaths = [NSIndexPath]()
         for id in self.highlightedIds {
-            indexPaths.extend(self.notifications.filter({ $0.id == id }).map { NSIndexPath(forItem: self.notifications.indexOf($0)!, inSection: 0) })
+            indexPaths.appendContentsOf(self.notifications.filter({ $0.id == id }).map { NSIndexPath(forItem: self.notifications.indexOf($0)!, inSection: 0) })
         }
         self.highlightedIds.removeAll(keepCapacity: false)
         return indexPaths

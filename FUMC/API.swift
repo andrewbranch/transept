@@ -25,13 +25,13 @@ class API: NSObject {
     private let lock = NSLock()
     private let dateFormatter = NSDateFormatter()
     #if DEBUG   
-    private let base = "https://fumc.herokuapp.com/api/v2"
+    private let base = "https://api.fumcpensacola.com/v3"
     #else
-    private let base = "https://fumc.herokuapp.com/api/v2"
+    private let base = "https://api.fumcpensacola.com/v3"
     #endif
     
-    func getCalendars(completed: (calendars: [Calendar], error: NSError?) -> Void) {
-        let url = NSURL(string: "\(base)/calendars/list")
+    func getCalendars(completed: (calendars: [Calendar], error: ErrorType?) -> Void) {
+        let url = NSURL(string: "\(base)/calendars")
         let request = NSURLRequest(URL: url!)
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
             if (error != nil) {
@@ -40,27 +40,28 @@ class API: NSObject {
                 let error = NSError(domain: NSURLErrorDomain, code: 0, userInfo: ["response": response as! NSHTTPURLResponse])
                 completed(calendars: [], error: error)
             } else {
-                var error: NSError?
-                let calendarDictionaries: [NSDictionary] = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.allZeros, error: &error) as! [NSDictionary]
-                if (error != nil) {
+                do {
+                    let calendarDictionary: NSDictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+                    completed(calendars: (calendarDictionary["data"] as! [NSDictionary]).map { Calendar(jsonDictionary: $0) }, error: nil)
+                } catch let error {
                     completed(calendars: [], error: error)
-                    return
                 }
-                
-                completed(calendars: calendarDictionaries.map { Calendar(jsonDictionary: $0) }, error: nil)
             }
         }
     }
     
-    func getEventsForCalendars(calendars: [Calendar], completed: (calendars: [Calendar], error: NSError?) -> Void) {
+    func getEventsForCalendars(calendars: [Calendar], completed: (calendars: [Calendar], error: ErrorType?) -> Void) {
         let page = 1
         self.lock.lock()
-        self.dateFormatter.dateFormat = "MM.dd.yyyy"
-        let from = dateFormatter.stringFromDate(NSDate(timeIntervalSinceNow: 60 * 60 * 24 * 7 * Double(page - 1)))
-        let to = dateFormatter.stringFromDate(NSDate(timeIntervalSinceNow: 60 * 60 * 24 * 7 * Double(page)))
+        self.dateFormatter.dateFormat = "MM/dd/yyyy"
+        let start = dateFormatter.stringFromDate(NSDate(timeIntervalSinceNow: 60 * 60 * 24 * 7 * Double(page - 1)))
+        let end = dateFormatter.stringFromDate(NSDate(timeIntervalSinceNow: 60 * 60 * 24 * 7 * Double(page)))
         self.lock.unlock()
-        let ids = ",".join(calendars.map { $0.id })
-        let url = NSURL(string: "\(base)/calendars/\(ids).json?from=\(from)&to=\(to)")
+        
+        let calendarIdQuery = (calendars.map { c in
+            return "&filter[simple][$or][\(calendars.indexOf(c)!)][calendar]=\(c.id)"
+        }).joinWithSeparator("")
+        let url = NSURL(string: "\(self.base)/events?filter[simple][start][$gte]=\(start)&filter[simple][end][$lte]=\(end)\(calendarIdQuery)")
         let request = NSURLRequest(URL: url!)
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
             if (error != nil) {
@@ -69,176 +70,173 @@ class API: NSObject {
                 let error = NSError(domain: NSURLErrorDomain, code: 0, userInfo: ["response": response as! NSHTTPURLResponse])
                 completed(calendars: calendars, error: error)
             } else {
-                var error: NSError?
-                let eventDictionaries: NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.allZeros, error: &error) as! NSDictionary
-                if (error != nil) {
-                    completed(calendars: calendars, error: error)
-                    return
-                }
-                
-                self.lock.lock()
-                for calendar in calendars {
-                    if let events = eventDictionaries[calendar.id] as? [NSDictionary] {
-                        calendar.events = events.map { CalendarEvent(jsonDictionary: $0, calendar: calendar, dateFormatter: self.dateFormatter) }
-                    } else {
-                        calendar.events.removeAll(keepCapacity: false)
+                do {
+                    let eventsDictionary: NSDictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+                    let events = eventsDictionary["data"] as! [NSDictionary]
+                    self.lock.lock()
+                    for c in calendars {
+                        c.events = events.filter {
+                            return c.id == ((($0["relationships"] as! NSDictionary)["calendar"] as! NSDictionary)["data"] as! NSDictionary)["id"] as! String
+                        }.map {
+                            return CalendarEvent(jsonDictionary: $0, calendar: c, dateFormatter: self.dateFormatter)
+                        }
                     }
+                    self.lock.unlock()
+                    completed(calendars: calendars, error: nil)
+                } catch let error {
+                    completed(calendars: calendars, error: error)
                 }
-                self.lock.unlock()
-                completed(calendars: calendars, error: nil)
             }
         }
     }
     
-    func getBulletins(completed: (bulletins: [Bulletin], error: NSError?) -> Void) {
+    func getBulletins(completed: (bulletins: [Bulletin], error: ErrorType?) -> Void) {
         let url = NSURL(string: "\(base)/bulletins?filter[simple][visible]=true&sort=-date,%2Bservice")
         let request = NSURLRequest(URL: url!)
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
             if (error != nil) {
                 completed(bulletins: [], error: error)
             } else if ((response as! NSHTTPURLResponse).statusCode != 200) {
-                let error = NSError(domain: "NSURLDomainError", code: 0, userInfo: ["response": response])
+                let error = NSError(domain: "NSURLDomainError", code: 0, userInfo: ["response": response as! NSHTTPURLResponse])
                 completed(bulletins: [], error: error)
             } else {
-                var error: NSError?
-                var bulletinsDictionary: NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &error) as! NSDictionary
-                if (error != nil) {
+                do {
+                    let bulletinsDictionary: NSDictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+                
+                    var bulletins = [Bulletin]()
+                    self.lock.lock()
+                    for json in (bulletinsDictionary["data"] as! [NSDictionary]) {
+                        if let b = try? Bulletin(jsonDictionary: json, dateFormatter: self.dateFormatter) {
+                            bulletins.append(b)
+                        }
+                    }
+                    self.lock.unlock()
+                    
+                    completed(bulletins: bulletins, error: nil)
+                } catch let error {
                     completed(bulletins: [], error: error)
-                    return
                 }
-                
-                var bulletins = [Bulletin]()
-                self.lock.lock()
-                for json in (bulletinsDictionary["data"] as! [NSDictionary]) {
-                    var b = Bulletin(jsonDictionary: json, dateFormatter: self.dateFormatter)
-                    bulletins.append(b)
-                }
-                self.lock.unlock()
-                
-                completed(bulletins: bulletins, error: nil)
             }
         }
     }
     
-    func getWitnesses(completed: (witnesses: [Witness], error: NSError?) -> Void) {
+    func getWitnesses(completed: (witnesses: [Witness], error: ErrorType?) -> Void) {
         let url = NSURL(string: "\(base)/witnesses?filter[simple][visible]=true&sort=-volume,-issue")
         let request = NSURLRequest(URL: url!)
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
             if (error != nil) {
                 completed(witnesses: [], error: error)
             } else if ((response as! NSHTTPURLResponse).statusCode != 200) {
-                let error = NSError(domain: "NSURLDomainError", code: 0, userInfo: ["response": response])
+                let error = NSError(domain: "NSURLDomainError", code: 0, userInfo: ["response": response as! NSHTTPURLResponse])
                 completed(witnesses: [], error: error)
             } else {
-                var error: NSError?
-                var witnessesDictionary: NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &error) as! NSDictionary
-                if (error != nil) {
+                do {
+                    let witnessesDictionary: NSDictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+                    var witnesses = [Witness]()
+                    
+                    self.lock.lock()
+                    for json in (witnessesDictionary["data"] as! [NSDictionary]) {
+                        let w = Witness(jsonDictionary: json, dateFormatter: self.dateFormatter)
+                        witnesses.append(w)
+                    }
+                    self.lock.unlock()
+                    
+                    completed(witnesses: witnesses, error: nil)
+                } catch let error {
                     completed(witnesses: [], error: error)
-                    return
                 }
-                
-                var witnesses = [Witness]()
-                
-                self.lock.lock()
-                for json in (witnessesDictionary["data"] as! [NSDictionary]) {
-                    var w = Witness(jsonDictionary: json, dateFormatter: self.dateFormatter)
-                    witnesses.append(w)
-                }
-                self.lock.unlock()
-                
-                completed(witnesses: witnesses, error: nil)
             }
         }
     }
     
-    func getNotifications(tester: Bool, completed: (notifications: [Notification], error: NSError?) -> Void) {
+    func getNotifications(tester: Bool, completed: (notifications: [Notification], error: ErrorType?) -> Void) {
         self.lock.lock()
         self.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         let urlString = "\(base)/notifications?filter[simple][expirationDate][$gt]=\(self.dateFormatter.stringFromDate(NSDate()))" + (tester ? "" : "&filter[simple][test]=false")
         self.lock.unlock()
-        var request = NSURLRequest(URL: NSURL(string: urlString)!)
+        let request = NSURLRequest(URL: NSURL(string: urlString)!)
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
             if (error != nil) {
                 completed(notifications: [], error: error)
             } else if ((response as! NSHTTPURLResponse).statusCode != 200) {
-                let error = NSError(domain: "NSURLDomainError", code: 0, userInfo: ["response": response])
+                let error = NSError(domain: "NSURLDomainError", code: 0, userInfo: ["response": response as! NSHTTPURLResponse])
                 completed(notifications: [], error: error)
             } else {
-                var error: NSError?
-                var notificationsDictionary: NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &error) as! NSDictionary
-                if (error != nil) {
+                do {
+                    let notificationsDictionary: NSDictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+
+                    var notifications = [Notification]()
+                    self.lock.lock()
+                    for json in (notificationsDictionary["data"] as! [NSDictionary]) {
+                        let n = Notification(jsonDictionary: json, dateFormatter: self.dateFormatter)
+                        notifications.append(n)
+                    }
+                    self.lock.unlock()
+                    completed(notifications: notifications, error: nil)
+                } catch let error {
                     completed(notifications: [], error: error)
                 }
-
-                var notifications = [Notification]()
-                self.lock.lock()
-                for json in (notificationsDictionary["data"] as! [NSDictionary]) {
-                    var n = Notification(jsonDictionary: json, dateFormatter: self.dateFormatter)
-                    notifications.append(n)
-                }
-                self.lock.unlock()
-                
-                completed(notifications: notifications, error: nil)
             }
         }
     }
     
-    func getFile(key: String, completed: (data: NSData, error: NSError?) -> Void) {
+    func getFile(key: String, completed: (data: NSData, error: ErrorType?) -> Void) {
         let url = self.fileURL(key: key)
         let request = NSURLRequest(URL: url!)
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { response, data, error in
             if (error != nil) {
                 completed(data: NSData(), error: error)
-            } else if (data.length == 0 || (response as! NSHTTPURLResponse).statusCode != 200) {
+            } else if (data!.length == 0 || (response as! NSHTTPURLResponse).statusCode != 200) {
                 let error = NSError(domain: NSURLErrorDomain, code: 0, userInfo: ["response": (response as! NSHTTPURLResponse)])
                 completed(data: NSData(), error: error)
             } else {
-                completed(data: data, error: nil)
+                completed(data: data!, error: nil)
             }
         }
     }
     
-    func getFeaturedContent(deviceKey: String, completed: (image: UIImage?, id: String?, url: NSURL?, error: NSError?) -> Void) {
+    func getFeaturedContent(deviceKey: String, completed: (image: UIImage?, id: String?, url: NSURL?, error: ErrorType?) -> Void) {
         let url = NSURL(string: "\(base)/features?filter[simple][active]=true")
         let request = NSURLRequest(URL: url!)
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { response, data, error in
             if (error != nil) {
                 completed(image: nil, id: nil, url: nil, error: error)
-            } else if (data.length == 0 || (response as! NSHTTPURLResponse).statusCode != 200) {
+            } else if (data!.length == 0 || (response as! NSHTTPURLResponse).statusCode != 200) {
                 let error = NSError(domain: NSURLErrorDomain, code: 0, userInfo: ["response": (response as! NSHTTPURLResponse)])
                 completed(image: nil, id: nil, url: nil, error: error)
             } else {
-                var error: NSError?
-                let featuresDictionary: NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.allZeros, error: &error) as! NSDictionary
-                if (error != nil) {
-                    completed(image: nil, id: nil, url: nil, error: error)
-                } else if (featuresDictionary["data"]!.count > 0) {
-                
-                    // Doesn't work in simulator
+                do {
+                    let featuresDictionary: NSDictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+                    if (featuresDictionary["data"]!.count > 0) {
                     
-                    if let key = featuresDictionary["data"]![0][deviceKey] as? String {
-                        self.getFile(key) { data, error in
-                            if (error != nil) {
-                                completed(image: nil, id: nil, url: nil, error: error)
-                                return
-                            }
-                            
-                            let image = UIImage(data: data)
-                            if let img = image {
-                                var url: NSURL?
-                                if let urlString = featuresDictionary["data"]![0]["url"] as? String {
-                                    url = NSURL(string: urlString)
+                        // Doesn't work in simulator
+                        
+                        if let key = featuresDictionary["data"]![0][deviceKey] as? String {
+                            self.getFile(key) { data, error in
+                                if (error != nil) {
+                                    completed(image: nil, id: nil, url: nil, error: error)
+                                    return
                                 }
-                                completed(image: img, id: (featuresDictionary["data"]![0]["id"] as! String), url: url, error: nil)
-                            } else {
-                                completed(image: nil, id: nil, url: nil, error: NSError())
+                                
+                                let image = UIImage(data: data)
+                                if let img = image {
+                                    var url: NSURL?
+                                    if let urlString = featuresDictionary["data"]![0]["url"] as? String {
+                                        url = NSURL(string: urlString)
+                                    }
+                                    completed(image: img, id: (featuresDictionary["data"]![0]["id"] as! String), url: url, error: nil)
+                                } else {
+                                    completed(image: nil, id: nil, url: nil, error: NSError(domain: "com.fumcpensacola.transept", code: 1, userInfo: nil))
+                                }
                             }
+                        } else {
+                            completed(image: nil, id: nil, url: nil, error: NSError(domain: "com.fumcpensacola.transept", code: 1, userInfo: nil))
                         }
                     } else {
-                        completed(image: nil, id: nil, url: nil, error: NSError())
+                        completed(image: nil, id: nil, url: nil, error: NSError(domain: "com.fumcpensacola.transept", code: 1, userInfo: nil))
                     }
-                } else {
-                    completed(image: nil, id: nil, url: nil, error: NSError())
+                } catch let error {
+                    completed(image: nil, id: nil, url: nil, error: error)
                 }
             }
         }
@@ -266,8 +264,8 @@ class API: NSObject {
         
     }
     
-    func fileURL(#key: String) -> NSURL? {
-        return NSURL(string: "\(base)/file/\(key.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!)")
+    func fileURL(key key: String) -> NSURL? {
+         return NSURL(string: "\(base)/file/\(key.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!)")
     }
    
 }

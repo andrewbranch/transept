@@ -18,14 +18,14 @@ class UIChangingLabel: UIView {
     var animationSpeed = NSTimeInterval(0.5)
     var texts: [String]? {
         didSet {
-            self.label.text = "\n".join(self.texts! + [self.texts![0]])
+            self.label.text = (self.texts! + [self.texts![0]]).joinWithSeparator("\n")
             self.setHeight()
             self.beginAnimating()
         }
     }
     
     required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)!
         self.setup()
     }
     
@@ -43,7 +43,7 @@ class UIChangingLabel: UIView {
         self.label.adjustsFontSizeToFitWidth = false
         self.label.lineBreakMode = NSLineBreakMode.ByClipping
         self.addSubview(self.label)
-        self.label.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.label.translatesAutoresizingMaskIntoConstraints = false
         self.addConstraint(NSLayoutConstraint(item: self.label, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: 0))
         self.addConstraint(NSLayoutConstraint(item: self.label, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0))
         self.addConstraint(NSLayoutConstraint(item: self.label, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Width, multiplier: 1, constant: 0))

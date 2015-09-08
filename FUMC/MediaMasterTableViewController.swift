@@ -8,14 +8,11 @@
 
 import UIKit
 
-class MediaMasterTableViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
+class MediaMasterTableViewController: UITableViewController {
     
     private let podcastURL = NSURL(string: "itms-pcast://itunes.apple.com/us/podcast/first-umc-of-pensacola-fl/id313924198?mt=2&uo=4")
     private let labels = [NSAttributedString(string: "Bulletins", attributes: [NSKernAttributeName: 5]), NSAttributedString(string: "Witnesses", attributes: [NSKernAttributeName: 5]), NSAttributedString(string: "Sermons", attributes: [NSKernAttributeName: 5])]
     private let images = [UIImage(named: "bulletins-dark"), UIImage(named: "witnesses-dark"), UIImage(named: "sermons-dark")]
-    
-    private var bulletinsDataSource: BulletinsDataSource?
-    private var witnessesDataSource: WitnessesDataSource?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +21,7 @@ class MediaMasterTableViewController: UITableViewController, UITableViewDataSour
     }
     
     override func viewWillAppear(animated: Bool) {
-        if let indexPath = self.tableView.indexPathForSelectedRow() {
+        if let indexPath = self.tableView.indexPathForSelectedRow {
             self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }
     }
@@ -72,22 +69,19 @@ class MediaMasterTableViewController: UITableViewController, UITableViewDataSour
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "mediaMasterCellSelection") {
-            var tableViewController = segue.destinationViewController as! MediaTableViewController
-            var indexPath = sender as! NSIndexPath
+            let tableViewController = segue.destinationViewController as! MediaTableViewController
+            let indexPath = sender as! NSIndexPath
+            let appDelegate = UIApplication.sharedApplication().delegate! as! AppDelegate
             switch (indexPath.item) {
                 
                 case 0:
-                    if (self.bulletinsDataSource == nil) {
-                        self.bulletinsDataSource = BulletinsDataSource(delegate: tableViewController)
-                    }
-                    tableViewController.dataSource = self.bulletinsDataSource!
+                    tableViewController.dataSource = appDelegate.bulletinsDataSource
+                    appDelegate.bulletinsDataSource.delegate = tableViewController
                     break
                     
                 case 1:
-                    if (self.witnessesDataSource == nil) {
-                        self.witnessesDataSource = WitnessesDataSource(delegate: tableViewController)
-                    }
-                    tableViewController.dataSource = self.witnessesDataSource!
+                    tableViewController.dataSource = appDelegate.witnessesDataSource
+                    appDelegate.witnessesDataSource.delegate = tableViewController
                     break
                     
                 default:

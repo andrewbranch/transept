@@ -7,7 +7,7 @@
 //
 
 protocol NotificationsDataSourceDelegate {
-    var tableView: UITableView? { get set }
+    var tableView: UITableView? { get }
     func dataSourceDidStartLoadingAPI(dataSource: NotificationsDataSource) -> Void
     func dataSourceDidFinishLoadingAPI(dataSource: NotificationsDataSource) -> Void
 }
@@ -18,12 +18,7 @@ class NotificationsTableViewController: CustomTableViewController, Notifications
     
     override func awakeFromNib() {
         let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
-        if let dataSource = appDelegate.notificationsDataSource {
-            self.dataSource = dataSource
-        } else {
-            self.dataSource = NotificationsDataSource(delegate: self)
-            appDelegate.notificationsDataSource = self.dataSource!
-        }
+        self.dataSource = appDelegate.notificationsDataSource
         self.dataSource!.delegate = self
     }
     
@@ -87,7 +82,7 @@ class NotificationsTableViewController: CustomTableViewController, Notifications
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let notification = self.dataSource!.notificationForIndexPath(indexPath)
-        if (find(self.dataSource!.readIds, notification.id) == nil) {
+        if (self.dataSource!.readIds.indexOf(notification.id) == nil) {
             self.dataSource!.readIds.append(notification.id)
             NSUserDefaults.standardUserDefaults().setObject(self.dataSource!.readIds, forKey: "readIds")
         }

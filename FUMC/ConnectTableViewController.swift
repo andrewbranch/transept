@@ -9,7 +9,7 @@
 import UIKit
 import AddressBookUI
 
-class ConnectTableViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
+class ConnectTableViewController: UITableViewController {
     
     private var prayerRequestViewController: PrayerRequestViewController?
     private let podcastURL = NSURL(string: "itms-pcast://itunes.apple.com/us/podcast/first-umc-of-pensacola-fl/id313924198?mt=2&uo=4")
@@ -48,7 +48,7 @@ class ConnectTableViewController: UITableViewController, UITableViewDataSource, 
         ABRecordSetValue(self.contact!, kABPersonPhoneProperty, phoneNumber, nil)
         ABRecordSetValue(self.contact!, kABPersonURLProperty, url, nil)
         ABRecordSetValue(self.contact!, kABPersonEmailProperty, email, nil)
-        ABPersonSetImageData(self.contact!, UIImageJPEGRepresentation(UIImage(named: "contact-image"), 0.7), nil)
+        ABPersonSetImageData(self.contact!, UIImageJPEGRepresentation(UIImage(named: "contact-image")!, 0.7), nil)
 
         
         let address: ABMutableMultiValueRef = createMultiStringRef(kABMultiDictionaryPropertyType)
@@ -73,7 +73,7 @@ class ConnectTableViewController: UITableViewController, UITableViewDataSource, 
     }
     
     override func viewWillAppear(animated: Bool) {
-        if let indexPath = self.tableView.indexPathForSelectedRow() {
+        if let indexPath = self.tableView.indexPathForSelectedRow {
             self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }
     }

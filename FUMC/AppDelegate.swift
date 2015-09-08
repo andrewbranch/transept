@@ -9,6 +9,7 @@
 import UIKit
 import Fabric
 import Crashlytics
+import ZeroPush
 
 
 @UIApplicationMain
@@ -18,11 +19,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ZeroPushDelegate, RKDropd
     var serverReachability = Reachability(hostName: "fumc.herokuapp.com")
     var internetReachability = Reachability.reachabilityForInternetConnection()
     var notificationDelegates = [NotificationDelegate]()
-    var notificationsDataSource: NotificationsDataSource?
+    var notificationsDataSource = NotificationsDataSource()
+    var bulletinsDataSource = BulletinsDataSource(delegate: nil)
+    var witnessesDataSource = WitnessesDataSource(delegate: nil)
     var rootViewController: RootTabBarController?
     var notificationToShowOnLaunch: Notification?
     var notificationsViewIsOpen = false
-    var featuredViewController: FeaturedViewController?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
@@ -51,7 +53,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ZeroPushDelegate, RKDropd
         UITabBar.appearance().barTintColor = UIColor(white: 0.1, alpha: 1)
         UITabBar.appearance().selectionIndicatorImage = UIImage.imageFromColor(UIColor.blackColor(), forSize: CGSizeMake(UIScreen.mainScreen().bounds.width / 4, 49))
         
+        #if !DEBUG
         Fabric.with([Crashlytics()])
+        #endif
         
         if let userInfo = launchOptions?[UIApplicationLaunchOptionsRemoteNotificationKey] as? NSDictionary {
             self.notificationToShowOnLaunch = Notification(userInfo: userInfo as [NSObject : AnyObject])
@@ -72,7 +76,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ZeroPushDelegate, RKDropd
 
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-        self.notificationsDataSource!.refresh()
         for delegate in self.notificationDelegates {
             delegate.applicationUpdatedBadgeCount(UIApplication.sharedApplication().applicationIconBadgeNumber)
         }
@@ -88,16 +91,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ZeroPushDelegate, RKDropd
         
         ZeroPush.engageWithAPIKey(apiKey, delegate: self)
         ZeroPush.shared().registerForRemoteNotifications()
-        if let dataSource = self.notificationsDataSource {
-            dataSource.refresh()
-        } else {
-            self.notificationsDataSource = NotificationsDataSource()
-        }
         
-        // Refresh every now and then
-        if let featuredViewController = self.featuredViewController {
-            featuredViewController.loadFeaturedContent()
-        }
+        self.notificationsDataSource.refresh()
+        self.bulletinsDataSource.refresh()
+        self.witnessesDataSource.refresh()
     }
 
     func applicationWillTerminate(application: UIApplication) {
@@ -118,7 +115,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ZeroPushDelegate, RKDropd
         for delegate in self.notificationDelegates {
             delegate.appDelegate(self, didReceiveNotification: notification)
         }
-        self.notificationsDataSource?.incorporateNotificationFromPush(notification)
+        self.notificationsDataSource.incorporateNotificationFromPush(notification)
         
         
         if (!self.notificationsViewIsOpen) {

@@ -13,17 +13,19 @@ class ConnectTableFooterView: UITableViewHeaderFooterView {
     @IBOutlet var facebookView: UIImageView?
     @IBOutlet var twitterView: UIImageView?
     @IBOutlet var vimeoView: UIImageView?
+    @IBOutlet var instagramView: UIImageView?
     var border: CALayer?
 
     override func awakeFromNib() {
         self.border = CALayer()
-        self.border!.frame = CGRectMake(0, self.frame.height - 1, self.frame.width, 1)
+        self.border!.frame = CGRectMake(0, self.frame.height - 1, self.superview?.frame.width ?? 1000, 1)
         self.border!.backgroundColor = UIColor(white: 0, alpha: 0.1).CGColor
         self.layer.addSublayer(self.border!)
 
         self.facebookView!.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "tappedFacebook"))
         self.twitterView!.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "tappedTwitter"))
         self.vimeoView!.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "tappedVimeo"))
+        self.instagramView!.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "tappedInstagram"))
     }
     
     func tappedFacebook() {
@@ -52,6 +54,18 @@ class ConnectTableFooterView: UITableViewHeaderFooterView {
     
     func tappedVimeo() {
         UIApplication.sharedApplication().openURL(NSURL(string: "http://vimeo.com/firstchurch")!)
+    }
+    
+    func tappedInstagram() {
+        let instagramURL = NSURL(string: "instagram://user?username=fumcpensacola")
+        if let url = instagramURL {
+            if (UIApplication.sharedApplication().canOpenURL(url)) {
+                UIApplication.sharedApplication().openURL(url)
+                return
+            }
+        }
+        
+        UIApplication.sharedApplication().openURL(NSURL(string: "https://instagram.com/fumcpensacola")!)
     }
     
 }

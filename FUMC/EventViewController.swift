@@ -38,9 +38,9 @@ class EventViewController: UIViewController, EKEventEditViewDelegate, UITableVie
         self.dateContainer!.layer.cornerRadius = 10
         self.dateContainer!.layer.borderWidth = 3
         self.dateContainer!.layer.borderColor = UIColor(white: 54/255, alpha: 1).CGColor
-        if let savedEventIds = NSUserDefaults.standardUserDefaults().objectForKey("savedEventIds") as? [String] {
-            
-        }
+//        if let savedEventIds = NSUserDefaults.standardUserDefaults().objectForKey("savedEventIds") as? [String] {
+//            
+//        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,7 +50,8 @@ class EventViewController: UIViewController, EKEventEditViewDelegate, UITableVie
     
     override func viewWillAppear(animated: Bool) {
         self.dateFormatter.dateFormat = "MMM"
-        self.monthLabel!.text = String(Array(self.dateFormatter.stringFromDate(self.calendarEvent!.from))[0...2]).uppercaseString
+        let fromString = self.dateFormatter.stringFromDate(self.calendarEvent!.from) as NSString
+        self.monthLabel!.text = fromString.substringToIndex(3).uppercaseString
         self.dateFormatter.dateFormat = "dd"
         self.dayLabel!.text = self.dateFormatter.stringFromDate(self.calendarEvent!.from)
         self.titleLabel!.text = self.calendarEvent!.name
@@ -73,7 +74,7 @@ class EventViewController: UIViewController, EKEventEditViewDelegate, UITableVie
         }
         
         let description = WSLHTMLEntities.convertHTMLtoString(self.calendarEvent!.descript)
-        var paragraphStyle = NSMutableParagraphStyle()
+        let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 6
         self.descriptionLabel!.attributedText = NSAttributedString(string: description, attributes: [
             NSParagraphStyleAttributeName: paragraphStyle
@@ -88,7 +89,7 @@ class EventViewController: UIViewController, EKEventEditViewDelegate, UITableVie
     
     func addEvent() {
         let eventStore = EKEventStore()
-        eventStore.requestAccessToEntityType(EKEntityTypeEvent) { granted, error in
+        eventStore.requestAccessToEntityType(EKEntityType.Event) { granted, error in
             if (error != nil) {
                 let alert = UIAlertView(title: "Error Accessing Calendar", message: "Hmm. There was a problem accessing your calendar. Sorry!", delegate: nil, cancelButtonTitle: "Cancel")
                 alert.show()
@@ -112,8 +113,8 @@ class EventViewController: UIViewController, EKEventEditViewDelegate, UITableVie
         }
     }
     
-    func eventEditViewController(controller: EKEventEditViewController!, didCompleteWithAction action: EKEventEditViewAction) {
-        if (action.value == EKEventEditViewActionSaved.value) {
+    func eventEditViewController(controller: EKEventEditViewController, didCompleteWithAction action: EKEventEditViewAction) {
+        if (action == EKEventEditViewAction.Saved) {
             let alert = UIAlertView(title: "Event Saved", message: "\(self.calendarEvent!.name) has been saved to your calendar.", delegate: nil, cancelButtonTitle: "Close")
             alert.show()
 //            if let savedEventIds = NSUserDefaults.standardUserDefaults().objectForKey("savedEventIds") as? [String] {

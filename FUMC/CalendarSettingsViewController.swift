@@ -61,7 +61,11 @@ class CalendarSettingsViewController: UIViewController, UITableViewDelegate, Cal
     }
     
     @IBAction func dismiss() {
-        self.delegate!.calendarSettingsController(self, didUpdateSelectionFrom: self.dataSource!.calendars.filter { find(self.lastCalendarIds!, $0.id) != nil }, to: self.dataSource!.calendars.filter { find(self.currentCalendarIds!, $0.id) != nil })
+        self.delegate!.calendarSettingsController(self, didUpdateSelectionFrom: self.dataSource!.calendars.filter {
+            self.lastCalendarIds!.indexOf($0.id) != nil
+        }, to: self.dataSource!.calendars.filter {
+            self.currentCalendarIds!.indexOf($0.id) != nil
+        })
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -81,7 +85,7 @@ class CalendarSettingsViewController: UIViewController, UITableViewDelegate, Cal
             cell.setSelected(false, animated: false)
             cell.checkView!.color = UIColor.lightGrayColor()
         }
-        let index = find(self.currentCalendarIds!, self.dataSource!.calendarForIndexPath(indexPath)!.id)!
+        let index = self.currentCalendarIds!.indexOf(self.dataSource!.calendarForIndexPath(indexPath)!.id)!
         self.currentCalendarIds!.removeAtIndex(index)
     }
     

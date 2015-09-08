@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 FUMC Pensacola. All rights reserved.
 //
 
+import UIKit
+
 extension UIColor {
     class func fumcRedColor() -> UIColor {
         return UIColor(red: 132/255, green: 21/255, blue: 33/255, alpha: 1)

@@ -8,21 +8,52 @@
 
 import UIKit
 
-class Bulletin : NSObject {
+protocol BulletinDelegate {
+    func bulletin(bulletin: Bulletin, didLoadPreviewImage image: UIImage)
+}
+
+public class Bulletin : NSObject {
     
     var id: String
     var service: String
+    var liturgicalDay: String
     var date: NSDate
-    var file: String
+    var file: String!
+    var preview: String?
+    var previewImage: UIImage?
     var visible: Bool
     
-    init(jsonDictionary: NSDictionary, dateFormatter: NSDateFormatter) {
+    var delegate: BulletinDelegate?
+    
+    public init(jsonDictionary: NSDictionary, dateFormatter: NSDateFormatter) throws {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         
+        let attrs = jsonDictionary["attributes"] as! NSDictionary
         self.id = jsonDictionary["id"] as! String
-        self.service = jsonDictionary["service"] as! String
-        self.date = dateFormatter.dateFromString(jsonDictionary["date"] as! String)!
-        self.file = jsonDictionary["file"] as! String
-        self.visible = jsonDictionary["visible"] as! Bool
+        
+        self.service = attrs["service"] as! String
+        self.liturgicalDay = attrs["liturgical-day"] as! String
+        self.date = dateFormatter.dateFromString(attrs["date"] as! String)!
+        self.visible = attrs["visible"] as! Bool
+        
+        super.init()
+        if let preview = attrs["preview"] as? String {
+            self.preview = preview
+            API.shared().getFile(preview) { data, err in
+                if (err != nil) {
+                    return
+                }
+                if let image = UIImage(data: data) {
+                    self.previewImage = image
+                    self.delegate?.bulletin(self, didLoadPreviewImage: image)
+                }
+            }
+        }
+        
+        guard let file = attrs["file"] as? String else {
+            throw NSError(domain: "com.fumcpensacola", code: 1, userInfo: nil)
+        }
+        
+        self.file = file
     }
 }
