@@ -26,9 +26,23 @@ class EventViewController: UIViewController, EKEventEditViewDelegate, UITableVie
     @IBOutlet var descriptionLabel: UILabel?
     @IBOutlet var imageView: UIImageView?
     
+    var eventButtonLabel: UILabel?
     var calendarEvent: CalendarEvent?
     var dateFormatter = NSDateFormatter()
-    private var ekEvent: EKEvent?
+    private var ekEvent: EKEvent? {
+        didSet {
+            if let label = self.eventButtonLabel {
+                if (self.ekEvent == nil) {
+                    label.text = "Add to calendar"
+                } else {
+                    label.text = "View in calendar"
+                }
+            }
+        }
+    }
+    private lazy var eventStore: EKEventStore = {
+        return EKEventStore()
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,22 +99,25 @@ class EventViewController: UIViewController, EKEventEditViewDelegate, UITableVie
                 self.imageView!.image = image
             }, completion: nil)
         }
+        
+        if (EKEventStore.authorizationStatusForEntityType(EKEntityType.Event) == EKAuthorizationStatus.Authorized) {
+            self.tryMatchingEvent()
+        }
     }
     
     func addEvent() {
-        let eventStore = EKEventStore()
         guard EKEventStore.authorizationStatusForEntityType(EKEntityType.Event) != EKAuthorizationStatus.Denied else {
             let alert = UIAlertView(title: "Calendar Access Denied", message: "It looks like you’ve previously chosen not to allow this app to access your calendar. You can change that in Settings.", delegate: self, cancelButtonTitle: "Cancel", otherButtonTitles: "Settings")
             alert.show()
             return
         }
         
-        eventStore.requestAccessToEntityType(EKEntityType.Event) { granted, error in
+        self.eventStore.requestAccessToEntityType(EKEntityType.Event) { granted, error in
             if (error != nil) {
                 let alert = UIAlertView(title: "Error Accessing Calendar", message: "Hmm. There was a problem accessing your calendar. Sorry!", delegate: nil, cancelButtonTitle: "Cancel")
                 alert.show()
             } else if (granted) {
-                let event = EKEvent(eventStore: eventStore)
+                let event = EKEvent(eventStore: self.eventStore)
                 event.title = self.calendarEvent!.name
                 event.startDate = self.calendarEvent!.from
                 event.endDate = self.calendarEvent!.to
@@ -108,7 +125,7 @@ class EventViewController: UIViewController, EKEventEditViewDelegate, UITableVie
                 event.allDay = self.calendarEvent!.allDay
                 self.ekEvent = event
                 let eventViewController = EKEventEditViewController()
-                eventViewController.eventStore = eventStore
+                eventViewController.eventStore = self.eventStore
                 eventViewController.event = event
                 eventViewController.editViewDelegate = self
                 dispatch_async(dispatch_get_main_queue()) {
@@ -118,28 +135,50 @@ class EventViewController: UIViewController, EKEventEditViewDelegate, UITableVie
         }
     }
     
+    func viewEvent(event: EKEvent) {
+        let timestamp = event.startDate.timeIntervalSinceReferenceDate
+        UIApplication.sharedApplication().openURL(NSURL(string: "calshow:\(timestamp)")!)
+    }
+    
     func eventEditViewController(controller: EKEventEditViewController, didCompleteWithAction action: EKEventEditViewAction) {
         if (action == EKEventEditViewAction.Saved) {
             let alert = UIAlertView(title: "Event Saved", message: "\(self.calendarEvent!.name) has been saved to your calendar.", delegate: nil, cancelButtonTitle: "Close")
             alert.show()
-//            if let savedEventIds = NSUserDefaults.standardUserDefaults().objectForKey("savedEventIds") as? [String] {
-//                NSUserDefaults.standardUserDefaults().setObject(savedEventIds + [self.ekEvent!.eventIdentifier], forKey: "savedEventIds")
-//            } else {
-//                NSUserDefaults.standardUserDefaults().setObject([self.ekEvent!.eventIdentifier], forKey: "savedEventIds")
-//            }
-            
         }
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.addEvent()
+        if let event = self.ekEvent {
+            self.viewEvent(event)
+        } else {
+            self.addEvent()
+        }
+        
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    func tryMatchingEvent() {
+        guard let calendarEvent = self.calendarEvent else {
+            self.ekEvent = nil
+            return
+        }
+        
+        let predicate = self.eventStore.predicateForEventsWithStartDate(calendarEvent.from, endDate: calendarEvent.to, calendars: nil)
+        self.eventStore.enumerateEventsMatchingPredicate(predicate) { (event, stop) -> Void in
+            if (event.title == calendarEvent.name) {
+                stop.initialize(true)
+                self.ekEvent = event
+            }
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "addToCalendarEmbed") {
-            (segue.destinationViewController as! UITableViewController).tableView.delegate = self
+            let controller = segue.destinationViewController as! UITableViewController
+            let cell = controller.tableView(controller.tableView, cellForRowAtIndexPath: NSIndexPath(forRow: 0, inSection: 0))
+            self.eventButtonLabel = cell.textLabel
+            controller.tableView.delegate = self
         }
     }
     
