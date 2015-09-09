@@ -10,7 +10,7 @@ import UIKit
 import EventKit
 import EventKitUI
 
-class EventViewController: UIViewController, EKEventEditViewDelegate, UITableViewDelegate {
+class EventViewController: UIViewController, EKEventEditViewDelegate, UITableViewDelegate, UIAlertViewDelegate {
     
     @IBOutlet var scrollView: UIScrollView?
     @IBOutlet var dateContainer: UIVisualEffectView?
@@ -89,12 +89,17 @@ class EventViewController: UIViewController, EKEventEditViewDelegate, UITableVie
     
     func addEvent() {
         let eventStore = EKEventStore()
+        guard EKEventStore.authorizationStatusForEntityType(EKEntityType.Event) != EKAuthorizationStatus.Denied else {
+            let alert = UIAlertView(title: "Calendar Access Denied", message: "It looks like you’ve previously chosen not to allow this app to access your calendar. You can change that in Settings.", delegate: self, cancelButtonTitle: "Cancel", otherButtonTitles: "Settings")
+            alert.show()
+            return
+        }
+        
         eventStore.requestAccessToEntityType(EKEntityType.Event) { granted, error in
             if (error != nil) {
                 let alert = UIAlertView(title: "Error Accessing Calendar", message: "Hmm. There was a problem accessing your calendar. Sorry!", delegate: nil, cancelButtonTitle: "Cancel")
                 alert.show()
-            }
-            if (granted) {
+            } else if (granted) {
                 let event = EKEvent(eventStore: eventStore)
                 event.title = self.calendarEvent!.name
                 event.startDate = self.calendarEvent!.from
@@ -109,7 +114,7 @@ class EventViewController: UIViewController, EKEventEditViewDelegate, UITableVie
                 dispatch_async(dispatch_get_main_queue()) {
                     self.presentViewController(eventViewController, animated: true, completion: nil)
                 }
-            }
+            } 
         }
     }
     
@@ -135,6 +140,14 @@ class EventViewController: UIViewController, EKEventEditViewDelegate, UITableVie
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "addToCalendarEmbed") {
             (segue.destinationViewController as! UITableViewController).tableView.delegate = self
+        }
+    }
+    
+    // MARK - UIAlertViewDelegate
+    
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        if (buttonIndex == 1) {
+            UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
         }
     }
     
