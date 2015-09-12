@@ -86,18 +86,20 @@
 		49B2A3591A268070004EED86 /* WitnessesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B2A32B1A268070004EED86 /* WitnessesDataSource.swift */; };
 		49B2A3671A26829D004EED86 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B2A3641A26829D004EED86 /* Crashlytics.framework */; };
 		49B2A3681A26829D004EED86 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B2A3651A26829D004EED86 /* Fabric.framework */; };
+		49C225051BA4956B00D94552 /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49C225041BA4956B00D94552 /* Secrets.plist */; };
+		49C225071BA496A700D94552 /* Env.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C225061BA496A700D94552 /* Env.swift */; };
 		49C83A1B1A2BCB3B00E02C96 /* NotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C83A1A1A2BCB3B00E02C96 /* NotificationsTableViewCell.swift */; };
 		49C83A1F1A2BCB8A00E02C96 /* NotificationsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49C83A1E1A2BCB8A00E02C96 /* NotificationsTableViewCell.xib */; };
 		49D5079C1A37A33A00531F23 /* WSLHTMLEntities.lm in Sources */ = {isa = PBXBuildFile; fileRef = 49D507991A37A33A00531F23 /* WSLHTMLEntities.lm */; };
 		49D5079D1A37A33A00531F23 /* WSLHTMLEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D5079A1A37A33A00531F23 /* WSLHTMLEntities.m */; };
 		49D507A21A37C18E00531F23 /* CalendarTableViewAllDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D507A01A37C18E00531F23 /* CalendarTableViewAllDayCell.swift */; };
 		49D507A31A37C18E00531F23 /* CalendarTableViewAllDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49D507A11A37C18E00531F23 /* CalendarTableViewAllDayCell.xib */; };
-		49F261561B9CE5F600FE027D /* BulletinTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F261551B9CE5F600FE027D /* BulletinTest.swift */; settings = {ASSET_TAGS = (); }; };
-		49F2615B1B9CF20D00FE027D /* MediaTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F2615A1B9CF20D00FE027D /* MediaTableHeaderView.swift */; settings = {ASSET_TAGS = (); }; };
-		49F2615D1B9CF22700FE027D /* MediaTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49F2615C1B9CF22700FE027D /* MediaTableHeaderView.xib */; settings = {ASSET_TAGS = (); }; };
-		49F2615F1B9E216100FE027D /* BulletinsDataSourceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F2615E1B9E216100FE027D /* BulletinsDataSourceTest.swift */; settings = {ASSET_TAGS = (); }; };
-		49F261611B9E277A00FE027D /* MediaTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49F2615C1B9CF22700FE027D /* MediaTableHeaderView.xib */; settings = {ASSET_TAGS = (); }; };
-		49F261631B9E2E7A00FE027D /* NSDateExtensionsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F261621B9E2E7A00FE027D /* NSDateExtensionsTest.swift */; settings = {ASSET_TAGS = (); }; };
+		49F261561B9CE5F600FE027D /* BulletinTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F261551B9CE5F600FE027D /* BulletinTest.swift */; };
+		49F2615B1B9CF20D00FE027D /* MediaTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F2615A1B9CF20D00FE027D /* MediaTableHeaderView.swift */; };
+		49F2615D1B9CF22700FE027D /* MediaTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49F2615C1B9CF22700FE027D /* MediaTableHeaderView.xib */; };
+		49F2615F1B9E216100FE027D /* BulletinsDataSourceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F2615E1B9E216100FE027D /* BulletinsDataSourceTest.swift */; };
+		49F261611B9E277A00FE027D /* MediaTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49F2615C1B9CF22700FE027D /* MediaTableHeaderView.xib */; };
+		49F261631B9E2E7A00FE027D /* NSDateExtensionsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F261621B9E2E7A00FE027D /* NSDateExtensionsTest.swift */; };
 		D9518422F16F7C52F0D0C646 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA7425126BE2BA297FAE61BC /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -202,6 +204,8 @@
 		49B2A32B1A268070004EED86 /* WitnessesDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WitnessesDataSource.swift; path = FUMC/WitnessesDataSource.swift; sourceTree = "<group>"; };
 		49B2A3641A26829D004EED86 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		49B2A3651A26829D004EED86 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		49C225041BA4956B00D94552 /* Secrets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
+		49C225061BA496A700D94552 /* Env.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Env.swift; path = FUMC/Env.swift; sourceTree = "<group>"; };
 		49C83A1A1A2BCB3B00E02C96 /* NotificationsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationsTableViewCell.swift; path = FUMC/NotificationsTableViewCell.swift; sourceTree = "<group>"; };
 		49C83A1E1A2BCB8A00E02C96 /* NotificationsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NotificationsTableViewCell.xib; path = FUMC/NotificationsTableViewCell.xib; sourceTree = "<group>"; };
 		49D507981A37A33A00531F23 /* WSLHTMLEntities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WSLHTMLEntities.h; path = FUMC/WSLHTMLEntities.h; sourceTree = "<group>"; };
@@ -269,6 +273,7 @@
 		49B2A2C81A268022004EED86 = {
 			isa = PBXGroup;
 			children = (
+				49C225041BA4956B00D94552 /* Secrets.plist */,
 				49B2A3121A268070004EED86 /* FUMC-Bridging-Header.h */,
 				49B2A2D31A268022004EED86 /* FUMC */,
 				49B2A3641A26829D004EED86 /* Crashlytics.framework */,
@@ -455,6 +460,7 @@
 				49D507991A37A33A00531F23 /* WSLHTMLEntities.lm */,
 				49D5079A1A37A33A00531F23 /* WSLHTMLEntities.m */,
 				49D5079B1A37A33A00531F23 /* WSLHTMLEntityDefinitions.h */,
+				49C225061BA496A700D94552 /* Env.swift */,
 			);
 			name = Utilities;
 			path = ..;
@@ -625,6 +631,7 @@
 				49A5696D1A38D93C00B6F1E4 /* Launch Screen.xib in Resources */,
 				495C72061AD0FAC50005833B /* Info.plist in Resources */,
 				49B2A34E1A268070004EED86 /* MyriadPro-Semibold.otf in Resources */,
+				49C225051BA4956B00D94552 /* Secrets.plist in Resources */,
 				49B2A3321A268070004EED86 /* BebasNeue Thin.otf in Resources */,
 				49B2A3491A268070004EED86 /* MediaMasterTableViewCell.xib in Resources */,
 				49A569891A40807500B6F1E4 /* CalendarSettingsSelectTableViewCell.xib in Resources */,
@@ -774,6 +781,7 @@
 				4900737D1A342D820086CE0B /* DictionaryExtensions.swift in Sources */,
 				49B2A3571A268070004EED86 /* UIPlaceHolderTextView.m in Sources */,
 				495C72081AD0FAC50005833B /* NSArray.swift in Sources */,
+				49C225071BA496A700D94552 /* Env.swift in Sources */,
 				494DF9DB1A3200C60040D02C /* CalendarSettingsTableViewCell.swift in Sources */,
 				495C72001AD0FAC50005833B /* Bool.swift in Sources */,
 				49B2A3351A268070004EED86 /* CalendarEvent.swift in Sources */,
