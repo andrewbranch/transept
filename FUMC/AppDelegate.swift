@@ -16,7 +16,7 @@ import ZeroPush
 class AppDelegate: UIResponder, UIApplicationDelegate, ZeroPushDelegate, RKDropdownAlertDelegate {
 
     var window: UIWindow?
-    var serverReachability = Reachability(hostName: "fumc.herokuapp.com")
+    var serverReachability = Reachability(hostName: "api.fumcpensacola.com")
     var internetReachability = Reachability.reachabilityForInternetConnection()
     var notificationDelegates = [NotificationDelegate]()
     var notificationsDataSource = NotificationsDataSource()
