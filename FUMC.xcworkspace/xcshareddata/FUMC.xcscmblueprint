@@ -4,22 +4,43 @@
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "DC988842E10CB87453E068D180CA93EB1F07FC77" : 0,
+    "E2F476CE895D3596DBE8080E8F363F8F94823E70" : 0,
     "5A15F44501BEC13543EECF89047922E23677004F" : 0,
-    "E2F476CE895D3596DBE8080E8F363F8F94823E70" : 0
+    "DD20A1A48C66B5213E0FEBB87A95EF51D6C6F3E8" : 0,
+    "A52EB73EF4B08F7B4ED0DCD0C622906995FCBF7D" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "FEA725FF-6D80-48C9-9DC7-EAD86D37121F",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "DC988842E10CB87453E068D180CA93EB1F07FC77" : "FUMC\/VIMNetworking\/",
+    "E2F476CE895D3596DBE8080E8F363F8F94823E70" : "FUMC\/ExSwift",
     "5A15F44501BEC13543EECF89047922E23677004F" : "FUMC",
-    "E2F476CE895D3596DBE8080E8F363F8F94823E70" : "FUMC\/ExSwift"
+    "DD20A1A48C66B5213E0FEBB87A95EF51D6C6F3E8" : "FUMC\/AFNetworking\/",
+    "A52EB73EF4B08F7B4ED0DCD0C622906995FCBF7D" : "FUMC\/VIMObjectMapper\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "FUMC",
-  "DVTSourceControlWorkspaceBlueprintVersion" : 203,
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
   "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "FUMC.xcworkspace",
   "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:andrewbranch\/FUMCApp.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "5A15F44501BEC13543EECF89047922E23677004F"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:vimeo\/VIMObjectMapper.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A52EB73EF4B08F7B4ED0DCD0C622906995FCBF7D"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:vimeo\/VIMNetworking.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "DC988842E10CB87453E068D180CA93EB1F07FC77"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:AFNetworking\/AFNetworking.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "DD20A1A48C66B5213E0FEBB87A95EF51D6C6F3E8"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/pNre\/ExSwift.git",
