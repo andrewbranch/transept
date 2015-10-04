@@ -99,6 +99,8 @@
 		49A569741A3A5ACD00B6F1E4 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A569731A3A5ACD00B6F1E4 /* ActivityIndicatorView.swift */; };
 		49A569881A40807500B6F1E4 /* CalendarSettingsSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A569861A40807500B6F1E4 /* CalendarSettingsSelectTableViewCell.swift */; };
 		49A569891A40807500B6F1E4 /* CalendarSettingsSelectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49A569871A40807500B6F1E4 /* CalendarSettingsSelectTableViewCell.xib */; };
+		49A9B1761BA6026C00109D3D /* VideosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A9B1751BA6026C00109D3D /* VideosTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		49A9B1781BA602B100109D3D /* VideosDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A9B1771BA602B100109D3D /* VideosDataSource.swift */; settings = {ASSET_TAGS = (); }; };
 		49B2A2EF1A268023004EED86 /* FUMCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B2A2EE1A268023004EED86 /* FUMCTests.swift */; };
 		49B2A32C1A268070004EED86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B2A2F81A268070004EED86 /* AppDelegate.swift */; };
 		49B2A32D1A268070004EED86 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49B2A2FA1A268070004EED86 /* Main.storyboard */; };
@@ -334,6 +336,8 @@
 		49A569731A3A5ACD00B6F1E4 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActivityIndicatorView.swift; path = FUMC/ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		49A569861A40807500B6F1E4 /* CalendarSettingsSelectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarSettingsSelectTableViewCell.swift; path = FUMC/CalendarSettingsSelectTableViewCell.swift; sourceTree = "<group>"; };
 		49A569871A40807500B6F1E4 /* CalendarSettingsSelectTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CalendarSettingsSelectTableViewCell.xib; path = FUMC/CalendarSettingsSelectTableViewCell.xib; sourceTree = "<group>"; };
+		49A9B1751BA6026C00109D3D /* VideosTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideosTableViewController.swift; path = FUMC/VideosTableViewController.swift; sourceTree = "<group>"; };
+		49A9B1771BA602B100109D3D /* VideosDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideosDataSource.swift; path = FUMC/VideosDataSource.swift; sourceTree = "<group>"; };
 		49B2A2D11A268022004EED86 /* FUMC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FUMC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49B2A2E81A268022004EED86 /* FUMCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FUMCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		49B2A2ED1A268023004EED86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -817,6 +821,7 @@
 				49B2A32B1A268070004EED86 /* WitnessesDataSource.swift */,
 				495B5C291A2E558F0033DE8D /* NotificationsDataSource.swift */,
 				490C65A31A324F7700E87130 /* CalendarsDataSource.swift */,
+				49A9B1771BA602B100109D3D /* VideosDataSource.swift */,
 			);
 			name = "Data Sources";
 			path = ..;
@@ -928,6 +933,7 @@
 				49B2A3191A268070004EED86 /* MediaMasterTableViewController.swift */,
 				49B2A31A1A268070004EED86 /* MediaTableViewController.swift */,
 				49B2A31B1A268070004EED86 /* MediaWebViewController.swift */,
+				49A9B1751BA6026C00109D3D /* VideosTableViewController.swift */,
 			);
 			name = Media;
 			sourceTree = "<group>";
@@ -1034,6 +1040,9 @@
 						DevelopmentTeam = Y7U83U369J;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+							com.apple.Keychain = {
 								enabled = 0;
 							};
 						};
@@ -1250,6 +1259,7 @@
 				49605E7D1BA57206003633A1 /* VIMCategory.m in Sources */,
 				49605E891BA57207003633A1 /* VIMVideo.m in Sources */,
 				49B2A3591A268070004EED86 /* WitnessesDataSource.swift in Sources */,
+				49A9B1761BA6026C00109D3D /* VideosTableViewController.swift in Sources */,
 				49B2A3581A268070004EED86 /* Witness.swift in Sources */,
 				49B2A33B1A268070004EED86 /* ConnectTableFooterView.swift in Sources */,
 				495B5C2A1A2E558F0033DE8D /* NotificationsDataSource.swift in Sources */,
@@ -1271,6 +1281,7 @@
 				49605E811BA57206003633A1 /* VIMGroup.m in Sources */,
 				49605EA11BA57207003633A1 /* VIMAPIConfiguration.m in Sources */,
 				49A569741A3A5ACD00B6F1E4 /* ActivityIndicatorView.swift in Sources */,
+				49A9B1781BA602B100109D3D /* VideosDataSource.swift in Sources */,
 				49605DE41BA571E3003633A1 /* AFURLRequestSerialization.m in Sources */,
 				49605E801BA57206003633A1 /* VIMConnection.m in Sources */,
 				49C83A1B1A2BCB3B00E02C96 /* NotificationsTableViewCell.swift in Sources */,

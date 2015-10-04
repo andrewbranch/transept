@@ -8,11 +8,9 @@
 
 class Env: NSObject {
     
-    static var env: NSDictionary = {
-        return NSDictionary(contentsOfFile: NSBundle.mainBundle().pathForResource("Secrets", ofType: "plist")!)!
-    }()
+    static var env: NSDictionary = NSDictionary(contentsOfFile: NSBundle.mainBundle().pathForResource("Secrets", ofType: "plist")!)!
     
     class func get(key: String) -> String? {
-        return env[key] as? String
+        return self.env[key] as? String
     }
 }

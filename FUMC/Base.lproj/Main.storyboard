@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8187.4" systemVersion="15A279b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15B22c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8151.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -407,6 +407,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="kZH-bX-ag4" kind="show" identifier="mediaMasterCellSelection" id="OWO-X9-NRn"/>
+                        <segue destination="khw-XT-dOb" kind="show" identifier="videosSegueIdentifier" id="XgE-Gn-hzr"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FYL-DO-4qg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -479,7 +480,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mwz-3P-EAO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2577" y="-710"/>
+            <point key="canvasLocation" x="2563" y="-848"/>
         </scene>
         <!--Media Web View Controller-->
         <scene sceneID="iY3-my-iVE">
@@ -527,7 +528,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ONZ-Vo-Cwp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3306" y="-714"/>
+            <point key="canvasLocation" x="3302" y="-848"/>
         </scene>
         <!--Give-->
         <scene sceneID="JiP-Y7-CvA">
@@ -629,6 +630,37 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                 <placeholder placeholderIdentifier="IBFirstResponder" id="85C-qs-Aj8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1814" y="88"/>
+        </scene>
+        <!--Videos-->
+        <scene sceneID="b93-rf-eGp">
+            <objects>
+                <tableViewController title="Videos" id="khw-XT-dOb" customClass="SermonsTableViewController" customModule="FUMC" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="fqY-RB-RoO">
+                        <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="XBc-Dw-RuV">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XBc-Dw-RuV" id="uEU-CA-qwv">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="khw-XT-dOb" id="dpD-lW-jBd"/>
+                            <outlet property="delegate" destination="khw-XT-dOb" id="7wx-Jh-RiX"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="95t-AB-b3Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2563" y="-151"/>
         </scene>
         <!--Root Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -1186,6 +1218,6 @@ Thank you for your generous support of First United Methodist Church of Pensacol
         <image name="media-alt" width="35" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="eT5-pJ-LP6"/>
+        <segue reference="ydr-pj-oAu"/>
     </inferredMetricsTieBreakers>
 </document>

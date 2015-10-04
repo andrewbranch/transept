@@ -17,3 +17,7 @@
 #import "AFNetworking.h"
 #import "VIMNetworking.h"
 #import "VIMObjectMapper.h"
+#import "VIMVideo.h"
+#import "VIMSession.h"
+#import "VIMAuthenticator.h"
+#import "VIMRequestToken.h"
