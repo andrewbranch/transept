@@ -31,7 +31,3 @@ public extension NSDate {
         return NSCalendar.currentCalendar().components(NSCalendarUnit.Minute, fromDate: self).minute
     }
 }
-
-public func > (lhs: NSDate, rhs: NSDate) -> Bool {
-    return lhs.timeIntervalSinceReferenceDate > rhs.timeIntervalSinceReferenceDate
-}

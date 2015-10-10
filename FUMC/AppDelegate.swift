@@ -60,13 +60,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ZeroPushDelegate, RKDropd
         if let userInfo = launchOptions?[UIApplicationLaunchOptionsRemoteNotificationKey] as? NSDictionary {
             self.notificationToShowOnLaunch = Notification(userInfo: userInfo as [NSObject : AnyObject])
         }
-        
-        let vimConfig = VIMSessionConfiguration()
-        vimConfig.clientKey = Env.get("VIMEO_CLIENT_KEY")
-        vimConfig.clientSecret = Env.get("VIMEO_CLIENT_SECRET")
-        vimConfig.scope = "private"
-        vimConfig.keychainService = "VIMEO_KEYCHAIN"
-        VIMSession.setupWithConfiguration(vimConfig)
 
         return true
     }

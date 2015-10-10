@@ -180,6 +180,10 @@ class API: NSObject {
         }
     }
     
+    func getVideos(completed: (videos: [Video], error: ErrorType?) -> Void) {
+        
+    }
+    
     func getFile(key: String, completed: (data: NSData, error: ErrorType?) -> Void) {
         let url = self.fileURL(key: key)
         let request = NSURLRequest(URL: url!)

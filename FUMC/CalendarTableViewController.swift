@@ -26,7 +26,7 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
         ]
     }()
     var displayEvents: Dictionary<NSDate, [CalendarEvent]> {
-        return self.events.filter { key, value in value.count > 0 }
+        return self.events.filteredDictionary { key, value in value.count > 0 }
     }
     var sortedKeys = [NSString]()
     let dateFormatter = NSDateFormatter()
@@ -190,8 +190,8 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
         
         // Delete
         let sectionsToDelete = NSMutableIndexSet()
-        let currentSections = self.events.filter { key, value in value.count > 0 }
-        let removedEntries = self.events.filter { key, value in
+        let currentSections = self.events.filteredDictionary { key, value in value.count > 0 }
+        let removedEntries = self.events.filteredDictionary { key, value in
             value.count > 0 && newEvents[key]!.count == 0
         }
         removedEntries.each { key, value in
@@ -200,7 +200,7 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
         self.tableView!.deleteSections(sectionsToDelete, withRowAnimation: UITableViewRowAnimation.Automatic)
         
         var rowsToDelete = [NSIndexPath]()
-        let remainingEntries = self.events.filter { key, value in !removedEntries.has(key) && value.count > 0 }
+        let remainingEntries = self.events.filteredDictionary { key, value in !removedEntries.has(key) && value.count > 0 }
         var entriesAfterRowRemove = Dictionary<NSDate, [CalendarEvent]>()
         remainingEntries.each { key, value in
             let entriesToDelete = value.filter {
@@ -217,7 +217,7 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
         
         // Insert
         let sectionsToInsert = NSMutableIndexSet()
-        let insertedEntries = newEvents.filter { key, value in
+        let insertedEntries = newEvents.filteredDictionary { key, value in
             value.count > 0 && self.events[key]!.count == 0
         }
         let union = remainingEntries.union(insertedEntries)

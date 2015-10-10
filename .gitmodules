@@ -2,12 +2,3 @@
 	path = ExSwift
     url = https://github.com/pNre/ExSwift.git
     branch = Swift-2.0
-[submodule "VIMNetworking"]
-	path = VIMNetworking
-	url = git@github.com:vimeo/VIMNetworking.git
-[submodule "VIMObjectMapper"]
-	path = VIMObjectMapper
-	url = git@github.com:vimeo/VIMObjectMapper.git
-[submodule "AFNetworking"]
-	path = AFNetworking
-	url = git@github.com:AFNetworking/AFNetworking.git
