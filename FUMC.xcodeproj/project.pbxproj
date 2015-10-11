@@ -90,6 +90,7 @@
 		49C225071BA496A700D94552 /* Env.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C225061BA496A700D94552 /* Env.swift */; };
 		49C83A1B1A2BCB3B00E02C96 /* NotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C83A1A1A2BCB3B00E02C96 /* NotificationsTableViewCell.swift */; };
 		49C83A1F1A2BCB8A00E02C96 /* NotificationsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49C83A1E1A2BCB8A00E02C96 /* NotificationsTableViewCell.xib */; };
+		49D491B61BC9A8F0004B4D0E /* VideoAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D491B51BC9A8F0004B4D0E /* VideoAlbum.swift */; };
 		49D5079C1A37A33A00531F23 /* WSLHTMLEntities.lm in Sources */ = {isa = PBXBuildFile; fileRef = 49D507991A37A33A00531F23 /* WSLHTMLEntities.lm */; };
 		49D5079D1A37A33A00531F23 /* WSLHTMLEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D5079A1A37A33A00531F23 /* WSLHTMLEntities.m */; };
 		49D507A21A37C18E00531F23 /* CalendarTableViewAllDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D507A01A37C18E00531F23 /* CalendarTableViewAllDayCell.swift */; };
@@ -322,6 +323,7 @@
 		49C225061BA496A700D94552 /* Env.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Env.swift; path = FUMC/Env.swift; sourceTree = "<group>"; };
 		49C83A1A1A2BCB3B00E02C96 /* NotificationsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationsTableViewCell.swift; path = FUMC/NotificationsTableViewCell.swift; sourceTree = "<group>"; };
 		49C83A1E1A2BCB8A00E02C96 /* NotificationsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NotificationsTableViewCell.xib; path = FUMC/NotificationsTableViewCell.xib; sourceTree = "<group>"; };
+		49D491B51BC9A8F0004B4D0E /* VideoAlbum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoAlbum.swift; sourceTree = "<group>"; };
 		49D507981A37A33A00531F23 /* WSLHTMLEntities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WSLHTMLEntities.h; path = FUMC/WSLHTMLEntities.h; sourceTree = "<group>"; };
 		49D507991A37A33A00531F23 /* WSLHTMLEntities.lm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.lex; name = WSLHTMLEntities.lm; path = FUMC/WSLHTMLEntities.lm; sourceTree = "<group>"; };
 		49D5079A1A37A33A00531F23 /* WSLHTMLEntities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WSLHTMLEntities.m; path = FUMC/WSLHTMLEntities.m; sourceTree = "<group>"; };
@@ -712,6 +714,7 @@
 				49B2A32A1A268070004EED86 /* Witness.swift */,
 				495B5C271A2E54180033DE8D /* Notification.swift */,
 				49214F8C1BC0D2FE0098D2B4 /* Video.swift */,
+				49D491B51BC9A8F0004B4D0E /* VideoAlbum.swift */,
 			);
 			name = Models;
 			path = ..;
@@ -1112,6 +1115,7 @@
 				49A569701A39F66500B6F1E4 /* API.swift in Sources */,
 				490C65A41A324F7700E87130 /* CalendarsDataSource.swift in Sources */,
 				49B2A3361A268070004EED86 /* CalendarTableHeaderView.swift in Sources */,
+				49D491B61BC9A8F0004B4D0E /* VideoAlbum.swift in Sources */,
 				49B2A34A1A268070004EED86 /* MediaMasterTableViewController.swift in Sources */,
 				49605DDE1BA571E3003633A1 /* AFHTTPRequestOperation.m in Sources */,
 				49B2A3551A268070004EED86 /* UIFontExtensions.swift in Sources */,

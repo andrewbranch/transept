@@ -39,7 +39,7 @@ public class Video: NSObject {
         let attrs = jsonDictionary["attributes"] as! NSDictionary
         self.id = jsonDictionary["id"] as! String
         
-        self.date = dateFormatter.dateFromString(attrs["sendDate"] as! String)!
+        self.date = dateFormatter.dateFromString(attrs["date"] as! String)!
         self.name = attrs["name"] as! String
         self.link = attrs["link"] as! String
         self.duration = attrs["duration"] as! Int

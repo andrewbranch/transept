@@ -13,11 +13,11 @@ public class VideosDataSource: NSObject, MediaTableViewDataSource, UITableViewDa
     public var delegate: MediaTableViewDataSourceDelegate?
     public var title: NSString = "Videos"
     public var loading = false
-    var videos: [Video] = []
+    var albums: [VideoAlbum] = []
     
     private func getError() -> NSError {
         return NSError(domain: NSBundle.mainBundle().bundleIdentifier!, code: 5, userInfo: [
-            "message": "There was an error connecting to Vimeo."
+            "message": "There was an error getting videos."
         ])
     }
     
@@ -28,19 +28,25 @@ public class VideosDataSource: NSObject, MediaTableViewDataSource, UITableViewDa
     
     public func refresh() {
         self.delegate?.dataSourceDidStartLoadingAPI(self)
-        requestData() { videos, err in
+        requestData() { albums, err in
             guard err == nil else {
                 self.delegate?.dataSource(self, failedToLoadWithError: err)
                 return
             }
             
-            self.videos = videos
+            self.albums = albums
             self.delegate?.dataSourceDidFinishLoadingAPI(self)
         }
     }
     
-    public func requestData(completed: ([Video], NSError?) -> Void) {
-        
+    public func requestData(completed: (albums: [VideoAlbum], error: ErrorType?) -> Void) {
+        API.shared().getVideos() { albums, error in
+            guard error == nil else {
+                completed(albums: [], error: error)
+                return
+            }
+            completed(albums: albums, error: nil)
+        }
     }
     
     public func urlForIndexPath(indexPath: NSIndexPath) -> NSURL? {
@@ -52,15 +58,15 @@ public class VideosDataSource: NSObject, MediaTableViewDataSource, UITableViewDa
     }
     
     public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return videos.count
+        return albums.count
     }
     
-    public func videoForIndexPath(indexPath: NSIndexPath) -> Video? {
+    public func videoForIndexPath(indexPath: NSIndexPath) -> VideoAlbum? {
         guard indexPath.section == 0 else {
             return nil
         }
         
-        return videos[indexPath.row]
+        return albums[indexPath.row]
     }
     
     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

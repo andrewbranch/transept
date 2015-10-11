@@ -180,8 +180,34 @@ class API: NSObject {
         }
     }
     
-    func getVideos(completed: (videos: [Video], error: ErrorType?) -> Void) {
-        
+    func getVideos(completed: (albums: [VideoAlbum], error: ErrorType?) -> Void) {
+        let url = NSURL(string: "\(base)/video-albums?filter[simple][visible]=true&include=videos")
+        let request = NSURLRequest(URL: url!)
+        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { response, data, error in
+            guard error == nil else {
+                completed(albums: [], error: error)
+                return
+            }
+            guard (response as! NSHTTPURLResponse).statusCode == 200 else {
+                completed(albums: [], error: NSError(domain: "NSURLDomainError", code: 0, userInfo: ["response": response as! NSHTTPURLResponse]))
+                return
+            }
+            
+            do {
+                let videoAlbumsDictionary: NSDictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+                var videoAlbums = [VideoAlbum]()
+                self.lock.lock()
+                for json in (videoAlbumsDictionary["data"] as! [NSDictionary]) {
+                    let a = VideoAlbum(jsonDictionary: json, dateFormatter: self.dateFormatter, included: videoAlbumsDictionary["included"] as? [NSDictionary])
+                    videoAlbums.append(a)
+                }
+                self.lock.unlock()
+                completed(albums: videoAlbums, error: nil)
+            } catch let error {
+                completed(albums: [], error: error)
+            }
+            
+        }
     }
     
     func getFile(key: String, completed: (data: NSData, error: ErrorType?) -> Void) {
