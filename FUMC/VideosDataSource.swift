@@ -61,7 +61,7 @@ public class VideosDataSource: NSObject, MediaTableViewDataSource, UITableViewDa
         return albums.count
     }
     
-    public func videoForIndexPath(indexPath: NSIndexPath) -> VideoAlbum? {
+    public func albumForIndexPath(indexPath: NSIndexPath) -> VideoAlbum? {
         guard indexPath.section == 0 else {
             return nil
         }
@@ -70,8 +70,8 @@ public class VideosDataSource: NSObject, MediaTableViewDataSource, UITableViewDa
     }
     
     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("videosTableViewCell", forIndexPath: indexPath)
-        cell.textLabel!.text = videoForIndexPath(indexPath)?.name
+        let cell = tableView.dequeueReusableCellWithIdentifier("videoAlbumsTableViewCell", forIndexPath: indexPath)
+        cell.textLabel!.text = albumForIndexPath(indexPath)?.name
         return cell
     }
     

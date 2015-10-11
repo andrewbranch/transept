@@ -11,6 +11,9 @@
 		490C659F1A3230A700E87130 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C659E1A3230A700E87130 /* Calendar.swift */; };
 		490C65A41A324F7700E87130 /* CalendarsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C65A31A324F7700E87130 /* CalendarsDataSource.swift */; };
 		490C65A61A33895D00E87130 /* NSDateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C65A51A33895D00E87130 /* NSDateExtensions.swift */; };
+		4915A7421BCAD389008D958F /* VideosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4915A7411BCAD389008D958F /* VideosTableViewController.swift */; };
+		4915A7441BCADAF0008D958F /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4915A7431BCADAF0008D958F /* AVKit.framework */; };
+		4915A7461BCADBBD008D958F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4915A7451BCADBBD008D958F /* AVFoundation.framework */; };
 		4916F2FD1B4118DB001412D3 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4916F2FB1B4118DB001412D3 /* EventKit.framework */; };
 		4916F2FE1B4118DB001412D3 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4916F2FC1B4118DB001412D3 /* EventKitUI.framework */; };
 		491859CA1B07F9B300AFA077 /* RKDropdownAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 491859C91B07F9B300AFA077 /* RKDropdownAlert.m */; };
@@ -38,7 +41,7 @@
 		49A569741A3A5ACD00B6F1E4 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A569731A3A5ACD00B6F1E4 /* ActivityIndicatorView.swift */; };
 		49A569881A40807500B6F1E4 /* CalendarSettingsSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A569861A40807500B6F1E4 /* CalendarSettingsSelectTableViewCell.swift */; };
 		49A569891A40807500B6F1E4 /* CalendarSettingsSelectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49A569871A40807500B6F1E4 /* CalendarSettingsSelectTableViewCell.xib */; };
-		49A9B1761BA6026C00109D3D /* VideosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A9B1751BA6026C00109D3D /* VideosTableViewController.swift */; };
+		49A9B1761BA6026C00109D3D /* VideoAlbumsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A9B1751BA6026C00109D3D /* VideoAlbumsTableViewController.swift */; };
 		49A9B1781BA602B100109D3D /* VideosDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A9B1771BA602B100109D3D /* VideosDataSource.swift */; };
 		49B2A2EF1A268023004EED86 /* FUMCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B2A2EE1A268023004EED86 /* FUMCTests.swift */; };
 		49B2A32C1A268070004EED86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B2A2F81A268070004EED86 /* AppDelegate.swift */; };
@@ -119,6 +122,9 @@
 		490C659E1A3230A700E87130 /* Calendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Calendar.swift; path = FUMC/Calendar.swift; sourceTree = "<group>"; };
 		490C65A31A324F7700E87130 /* CalendarsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarsDataSource.swift; path = FUMC/CalendarsDataSource.swift; sourceTree = "<group>"; };
 		490C65A51A33895D00E87130 /* NSDateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSDateExtensions.swift; path = FUMC/NSDateExtensions.swift; sourceTree = "<group>"; };
+		4915A7411BCAD389008D958F /* VideosTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideosTableViewController.swift; path = FUMC/VideosTableViewController.swift; sourceTree = "<group>"; };
+		4915A7431BCADAF0008D958F /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
+		4915A7451BCADBBD008D958F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		4916F2FB1B4118DB001412D3 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		4916F2FC1B4118DB001412D3 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
 		491859C81B07F9B300AFA077 /* RKDropdownAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RKDropdownAlert.h; path = FUMC/RKDropdownAlert.h; sourceTree = "<group>"; };
@@ -263,7 +269,7 @@
 		49A569731A3A5ACD00B6F1E4 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActivityIndicatorView.swift; path = FUMC/ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		49A569861A40807500B6F1E4 /* CalendarSettingsSelectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarSettingsSelectTableViewCell.swift; path = FUMC/CalendarSettingsSelectTableViewCell.swift; sourceTree = "<group>"; };
 		49A569871A40807500B6F1E4 /* CalendarSettingsSelectTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CalendarSettingsSelectTableViewCell.xib; path = FUMC/CalendarSettingsSelectTableViewCell.xib; sourceTree = "<group>"; };
-		49A9B1751BA6026C00109D3D /* VideosTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideosTableViewController.swift; path = FUMC/VideosTableViewController.swift; sourceTree = "<group>"; };
+		49A9B1751BA6026C00109D3D /* VideoAlbumsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideoAlbumsTableViewController.swift; path = FUMC/VideoAlbumsTableViewController.swift; sourceTree = "<group>"; };
 		49A9B1771BA602B100109D3D /* VideosDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideosDataSource.swift; path = FUMC/VideosDataSource.swift; sourceTree = "<group>"; };
 		49B2A2D11A268022004EED86 /* FUMC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FUMC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49B2A2E81A268022004EED86 /* FUMCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FUMCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -345,6 +351,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4915A7461BCADBBD008D958F /* AVFoundation.framework in Frameworks */,
+				4915A7441BCADAF0008D958F /* AVKit.framework in Frameworks */,
 				4916F2FD1B4118DB001412D3 /* EventKit.framework in Frameworks */,
 				4916F2FE1B4118DB001412D3 /* EventKitUI.framework in Frameworks */,
 				49B2A3671A26829D004EED86 /* Crashlytics.framework in Frameworks */,
@@ -840,7 +848,8 @@
 				49B2A3191A268070004EED86 /* MediaMasterTableViewController.swift */,
 				49B2A31A1A268070004EED86 /* MediaTableViewController.swift */,
 				49B2A31B1A268070004EED86 /* MediaWebViewController.swift */,
-				49A9B1751BA6026C00109D3D /* VideosTableViewController.swift */,
+				49A9B1751BA6026C00109D3D /* VideoAlbumsTableViewController.swift */,
+				4915A7411BCAD389008D958F /* VideosTableViewController.swift */,
 			);
 			name = Media;
 			sourceTree = "<group>";
@@ -872,6 +881,8 @@
 		7B69E7F3C551EDB41F9B412B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4915A7451BCADBBD008D958F /* AVFoundation.framework */,
+				4915A7431BCADAF0008D958F /* AVKit.framework */,
 				4916F2FB1B4118DB001412D3 /* EventKit.framework */,
 				4916F2FC1B4118DB001412D3 /* EventKitUI.framework */,
 				495B5BEC1A2E44870033DE8D /* CoreData.framework */,
@@ -1096,6 +1107,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4915A7421BCAD389008D958F /* VideosTableViewController.swift in Sources */,
 				49B2A3511A268070004EED86 /* RootTabBarController.swift in Sources */,
 				49B2A3331A268070004EED86 /* Bulletin.swift in Sources */,
 				49952EE21A26888B002B06FA /* NotificationsTableViewController.swift in Sources */,
@@ -1126,7 +1138,7 @@
 				49B2A34C1A268070004EED86 /* MediaWebViewController.swift in Sources */,
 				49B2A3541A268070004EED86 /* UIDevice+Hardware.m in Sources */,
 				49B2A3591A268070004EED86 /* WitnessesDataSource.swift in Sources */,
-				49A9B1761BA6026C00109D3D /* VideosTableViewController.swift in Sources */,
+				49A9B1761BA6026C00109D3D /* VideoAlbumsTableViewController.swift in Sources */,
 				49B2A3581A268070004EED86 /* Witness.swift in Sources */,
 				49B2A33B1A268070004EED86 /* ConnectTableFooterView.swift in Sources */,
 				495B5C2A1A2E558F0033DE8D /* NotificationsDataSource.swift in Sources */,

@@ -22,6 +22,10 @@
 
 import UIKit
 
+public protocol VideoDelegate {
+    func video(video: Video, didLoadThumbnail thumbnail: UIImage)
+}
+
 public class Video: NSObject {
     
     var id: String
@@ -32,6 +36,7 @@ public class Video: NSObject {
     var thumbnailURL: String = ""
     var thumbnail: UIImage?
     var fileHD: String
+    var delegate: VideoDelegate?
     
     init(jsonDictionary: NSDictionary, dateFormatter: NSDateFormatter) throws {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
@@ -53,11 +58,13 @@ public class Video: NSObject {
         }
         self.thumbnailURL = url
         NSURLConnection.sendAsynchronousRequest(NSURLRequest(URL: NSURL(string: url)!), queue: NSOperationQueue.mainQueue()) { response, data, error in
-            guard error == nil else {
+            guard error == nil || data == nil else {
                 return
             }
             
-            
+            if let image = UIImage(data: data!) {
+                self.delegate?.video(self, didLoadThumbnail: image)
+            }
         }
     }
 
