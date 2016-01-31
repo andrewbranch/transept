@@ -19,6 +19,8 @@ class VideosTableViewController: UITableViewController, VideoDelegate {
         super.viewDidLoad()
         dateFormatter.dateFormat = "MMMM d"
         registerWithVideos()
+        
+        self.tableView.registerNib(UINib(nibName: "VideosTableViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "videoCell")
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -40,9 +42,9 @@ class VideosTableViewController: UITableViewController, VideoDelegate {
     // MARK: - Video delegate
     
     func video(video: Video, didLoadThumbnail thumbnail: UIImage) {
-        let cell = self.tableView!.cellForRowAtIndexPath(indexPathForVideo(video))
-        cell!.imageView!.image = thumbnail
-        cell!.imageView!.setNeedsDisplay()
+        let cell = self.tableView!.cellForRowAtIndexPath(indexPathForVideo(video)) as! VideosTableViewCell
+        cell.thumbnail!.image = thumbnail
+        cell.thumbnail!.setNeedsDisplay()
     }
     
     func videoAtIndexPath(indexPath: NSIndexPath) -> Video {
@@ -62,17 +64,23 @@ class VideosTableViewController: UITableViewController, VideoDelegate {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 90
+    }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return videos.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("videoCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("videoCell", forIndexPath: indexPath) as! VideosTableViewCell
         let video = videoAtIndexPath(indexPath)
         
-        cell.textLabel!.text = video.name
-        cell.detailTextLabel!.text = dateFormatter.stringFromDate(video.date)
+        cell.titleLabel!.text = video.name
+        cell.dateLabel!.text = dateFormatter.stringFromDate(video.date)
+        cell.durationLabel!.text = "\(video.duration / 60) min"
+        cell.thumbnail!.image = video.thumbnail
         return cell
     }
 

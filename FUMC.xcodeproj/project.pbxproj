@@ -33,6 +33,10 @@
 		49605DE41BA571E3003633A1 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 49605DD81BA571E3003633A1 /* AFURLRequestSerialization.m */; };
 		49605DE51BA571E3003633A1 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 49605DDA1BA571E3003633A1 /* AFURLResponseSerialization.m */; };
 		49605DE61BA571E3003633A1 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 49605DDC1BA571E3003633A1 /* AFURLSessionManager.m */; };
+		49804B261C5E88CE005AE154 /* VideosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49804B241C5E88CE005AE154 /* VideosTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		49804B271C5E88CE005AE154 /* VideosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49804B241C5E88CE005AE154 /* VideosTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		49804B281C5E88CE005AE154 /* VideosTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49804B251C5E88CE005AE154 /* VideosTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
+		49804B291C5E88CE005AE154 /* VideosTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49804B251C5E88CE005AE154 /* VideosTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
 		49852DC81BC1E2D200E7F30E /* ExSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49852DC71BC1E2D200E7F30E /* ExSwift.swift */; };
 		49952EE21A26888B002B06FA /* NotificationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49952EE11A26888B002B06FA /* NotificationsTableViewController.swift */; };
 		49952EE41A268BF5002B06FA /* NotificationBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49952EE31A268BF5002B06FA /* NotificationBarButtonItem.swift */; };
@@ -261,6 +265,8 @@
 		49605EAB1BA5721F003633A1 /* VIMModelObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VIMModelObject.m; sourceTree = "<group>"; };
 		49605EAC1BA5721F003633A1 /* VIMObjectMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VIMObjectMapper.h; sourceTree = "<group>"; };
 		49605EAD1BA5721F003633A1 /* VIMObjectMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VIMObjectMapper.m; sourceTree = "<group>"; };
+		49804B241C5E88CE005AE154 /* VideosTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideosTableViewCell.swift; path = FUMC/VideosTableViewCell.swift; sourceTree = "<group>"; };
+		49804B251C5E88CE005AE154 /* VideosTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VideosTableViewCell.xib; path = FUMC/VideosTableViewCell.xib; sourceTree = "<group>"; };
 		49852DC71BC1E2D200E7F30E /* ExSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExSwift.swift; path = FUMC/ExSwift.swift; sourceTree = "<group>"; };
 		49952EE11A26888B002B06FA /* NotificationsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationsTableViewController.swift; path = FUMC/NotificationsTableViewController.swift; sourceTree = "<group>"; };
 		49952EE31A268BF5002B06FA /* NotificationBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationBarButtonItem.swift; path = FUMC/NotificationBarButtonItem.swift; sourceTree = "<group>"; };
@@ -766,6 +772,8 @@
 				49A569731A3A5ACD00B6F1E4 /* ActivityIndicatorView.swift */,
 				49F2615A1B9CF20D00FE027D /* MediaTableHeaderView.swift */,
 				49F2615C1B9CF22700FE027D /* MediaTableHeaderView.xib */,
+				49804B241C5E88CE005AE154 /* VideosTableViewCell.swift */,
+				49804B251C5E88CE005AE154 /* VideosTableViewCell.xib */,
 			);
 			name = Views;
 			path = ..;
@@ -1007,6 +1015,7 @@
 				49B2A34E1A268070004EED86 /* MyriadPro-Semibold.otf in Resources */,
 				49C225051BA4956B00D94552 /* Secrets.plist in Resources */,
 				49B2A3321A268070004EED86 /* BebasNeue Thin.otf in Resources */,
+				49804B281C5E88CE005AE154 /* VideosTableViewCell.xib in Resources */,
 				49B2A3491A268070004EED86 /* MediaMasterTableViewCell.xib in Resources */,
 				49A569891A40807500B6F1E4 /* CalendarSettingsSelectTableViewCell.xib in Resources */,
 				49B2A34D1A268070004EED86 /* MyriadPro-Regular.otf in Resources */,
@@ -1023,6 +1032,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49F261611B9E277A00FE027D /* MediaTableHeaderView.xib in Resources */,
+				49804B291C5E88CE005AE154 /* VideosTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1144,6 +1154,7 @@
 				495B5C2A1A2E558F0033DE8D /* NotificationsDataSource.swift in Sources */,
 				49D5079D1A37A33A00531F23 /* WSLHTMLEntities.m in Sources */,
 				490C659F1A3230A700E87130 /* Calendar.swift in Sources */,
+				49804B261C5E88CE005AE154 /* VideosTableViewCell.swift in Sources */,
 				49B2A33A1A268070004EED86 /* CalendarTableViewController.swift in Sources */,
 				49605DE51BA571E3003633A1 /* AFURLResponseSerialization.m in Sources */,
 				49B2A3481A268070004EED86 /* MediaMasterTableViewCell.swift in Sources */,
@@ -1180,6 +1191,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49F261631B9E2E7A00FE027D /* NSDateExtensionsTest.swift in Sources */,
+				49804B271C5E88CE005AE154 /* VideosTableViewCell.swift in Sources */,
 				49F2615F1B9E216100FE027D /* BulletinsDataSourceTest.swift in Sources */,
 				49F261561B9CE5F600FE027D /* BulletinTest.swift in Sources */,
 				49B2A2EF1A268023004EED86 /* FUMCTests.swift in Sources */,
