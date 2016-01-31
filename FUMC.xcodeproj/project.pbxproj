@@ -33,13 +33,15 @@
 		49605DE41BA571E3003633A1 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 49605DD81BA571E3003633A1 /* AFURLRequestSerialization.m */; };
 		49605DE51BA571E3003633A1 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 49605DDA1BA571E3003633A1 /* AFURLResponseSerialization.m */; };
 		49605DE61BA571E3003633A1 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 49605DDC1BA571E3003633A1 /* AFURLSessionManager.m */; };
-		49804B261C5E88CE005AE154 /* VideosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49804B241C5E88CE005AE154 /* VideosTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		49804B271C5E88CE005AE154 /* VideosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49804B241C5E88CE005AE154 /* VideosTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		49804B281C5E88CE005AE154 /* VideosTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49804B251C5E88CE005AE154 /* VideosTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
-		49804B291C5E88CE005AE154 /* VideosTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49804B251C5E88CE005AE154 /* VideosTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
+		49804B261C5E88CE005AE154 /* VideosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49804B241C5E88CE005AE154 /* VideosTableViewCell.swift */; };
+		49804B271C5E88CE005AE154 /* VideosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49804B241C5E88CE005AE154 /* VideosTableViewCell.swift */; };
+		49804B281C5E88CE005AE154 /* VideosTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49804B251C5E88CE005AE154 /* VideosTableViewCell.xib */; };
+		49804B291C5E88CE005AE154 /* VideosTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49804B251C5E88CE005AE154 /* VideosTableViewCell.xib */; };
 		49852DC81BC1E2D200E7F30E /* ExSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49852DC71BC1E2D200E7F30E /* ExSwift.swift */; };
 		49952EE21A26888B002B06FA /* NotificationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49952EE11A26888B002B06FA /* NotificationsTableViewController.swift */; };
 		49952EE41A268BF5002B06FA /* NotificationBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49952EE31A268BF5002B06FA /* NotificationBarButtonItem.swift */; };
+		499D1F4B1C5EB8AF00B1FF70 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D1F4A1C5EB8AF00B1FF70 /* StringExtensions.swift */; };
+		499D1F4C1C5EB8AF00B1FF70 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D1F4A1C5EB8AF00B1FF70 /* StringExtensions.swift */; };
 		49A5696D1A38D93C00B6F1E4 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49A5696C1A38D93C00B6F1E4 /* Launch Screen.xib */; };
 		49A569701A39F66500B6F1E4 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A5696F1A39F66500B6F1E4 /* API.swift */; };
 		49A569741A3A5ACD00B6F1E4 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A569731A3A5ACD00B6F1E4 /* ActivityIndicatorView.swift */; };
@@ -98,8 +100,6 @@
 		49C83A1B1A2BCB3B00E02C96 /* NotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C83A1A1A2BCB3B00E02C96 /* NotificationsTableViewCell.swift */; };
 		49C83A1F1A2BCB8A00E02C96 /* NotificationsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49C83A1E1A2BCB8A00E02C96 /* NotificationsTableViewCell.xib */; };
 		49D491B61BC9A8F0004B4D0E /* VideoAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D491B51BC9A8F0004B4D0E /* VideoAlbum.swift */; };
-		49D5079C1A37A33A00531F23 /* WSLHTMLEntities.lm in Sources */ = {isa = PBXBuildFile; fileRef = 49D507991A37A33A00531F23 /* WSLHTMLEntities.lm */; };
-		49D5079D1A37A33A00531F23 /* WSLHTMLEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D5079A1A37A33A00531F23 /* WSLHTMLEntities.m */; };
 		49D507A21A37C18E00531F23 /* CalendarTableViewAllDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D507A01A37C18E00531F23 /* CalendarTableViewAllDayCell.swift */; };
 		49D507A31A37C18E00531F23 /* CalendarTableViewAllDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49D507A11A37C18E00531F23 /* CalendarTableViewAllDayCell.xib */; };
 		49F261561B9CE5F600FE027D /* BulletinTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F261551B9CE5F600FE027D /* BulletinTest.swift */; };
@@ -270,6 +270,7 @@
 		49852DC71BC1E2D200E7F30E /* ExSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExSwift.swift; path = FUMC/ExSwift.swift; sourceTree = "<group>"; };
 		49952EE11A26888B002B06FA /* NotificationsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationsTableViewController.swift; path = FUMC/NotificationsTableViewController.swift; sourceTree = "<group>"; };
 		49952EE31A268BF5002B06FA /* NotificationBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationBarButtonItem.swift; path = FUMC/NotificationBarButtonItem.swift; sourceTree = "<group>"; };
+		499D1F4A1C5EB8AF00B1FF70 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtensions.swift; path = FUMC/StringExtensions.swift; sourceTree = "<group>"; };
 		49A5696C1A38D93C00B6F1E4 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		49A5696F1A39F66500B6F1E4 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API.swift; path = FUMC/API.swift; sourceTree = "<group>"; };
 		49A569731A3A5ACD00B6F1E4 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActivityIndicatorView.swift; path = FUMC/ActivityIndicatorView.swift; sourceTree = "<group>"; };
@@ -336,10 +337,6 @@
 		49C83A1A1A2BCB3B00E02C96 /* NotificationsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationsTableViewCell.swift; path = FUMC/NotificationsTableViewCell.swift; sourceTree = "<group>"; };
 		49C83A1E1A2BCB8A00E02C96 /* NotificationsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NotificationsTableViewCell.xib; path = FUMC/NotificationsTableViewCell.xib; sourceTree = "<group>"; };
 		49D491B51BC9A8F0004B4D0E /* VideoAlbum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoAlbum.swift; sourceTree = "<group>"; };
-		49D507981A37A33A00531F23 /* WSLHTMLEntities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WSLHTMLEntities.h; path = FUMC/WSLHTMLEntities.h; sourceTree = "<group>"; };
-		49D507991A37A33A00531F23 /* WSLHTMLEntities.lm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.lex; name = WSLHTMLEntities.lm; path = FUMC/WSLHTMLEntities.lm; sourceTree = "<group>"; };
-		49D5079A1A37A33A00531F23 /* WSLHTMLEntities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WSLHTMLEntities.m; path = FUMC/WSLHTMLEntities.m; sourceTree = "<group>"; };
-		49D5079B1A37A33A00531F23 /* WSLHTMLEntityDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WSLHTMLEntityDefinitions.h; path = FUMC/WSLHTMLEntityDefinitions.h; sourceTree = "<group>"; };
 		49D507A01A37C18E00531F23 /* CalendarTableViewAllDayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarTableViewAllDayCell.swift; path = FUMC/CalendarTableViewAllDayCell.swift; sourceTree = "<group>"; };
 		49D507A11A37C18E00531F23 /* CalendarTableViewAllDayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CalendarTableViewAllDayCell.xib; path = FUMC/CalendarTableViewAllDayCell.xib; sourceTree = "<group>"; };
 		49F261551B9CE5F600FE027D /* BulletinTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulletinTest.swift; sourceTree = "<group>"; };
@@ -832,11 +829,8 @@
 				49B2A3281A268070004EED86 /* UIPlaceHolderTextView.h */,
 				49B2A3291A268070004EED86 /* UIPlaceHolderTextView.m */,
 				4900737C1A342D820086CE0B /* DictionaryExtensions.swift */,
-				49D507981A37A33A00531F23 /* WSLHTMLEntities.h */,
-				49D507991A37A33A00531F23 /* WSLHTMLEntities.lm */,
-				49D5079A1A37A33A00531F23 /* WSLHTMLEntities.m */,
-				49D5079B1A37A33A00531F23 /* WSLHTMLEntityDefinitions.h */,
 				49C225061BA496A700D94552 /* Env.swift */,
+				499D1F4A1C5EB8AF00B1FF70 /* StringExtensions.swift */,
 			);
 			name = Utilities;
 			path = ..;
@@ -1141,7 +1135,6 @@
 				49B2A34A1A268070004EED86 /* MediaMasterTableViewController.swift in Sources */,
 				49605DDE1BA571E3003633A1 /* AFHTTPRequestOperation.m in Sources */,
 				49B2A3551A268070004EED86 /* UIFontExtensions.swift in Sources */,
-				49D5079C1A37A33A00531F23 /* WSLHTMLEntities.lm in Sources */,
 				49B2A33D1A268070004EED86 /* ConnectTableViewCell.swift in Sources */,
 				49B2A3531A268070004EED86 /* UIColorExtensions.swift in Sources */,
 				49605DE01BA571E3003633A1 /* AFHTTPSessionManager.m in Sources */,
@@ -1152,10 +1145,10 @@
 				49B2A3581A268070004EED86 /* Witness.swift in Sources */,
 				49B2A33B1A268070004EED86 /* ConnectTableFooterView.swift in Sources */,
 				495B5C2A1A2E558F0033DE8D /* NotificationsDataSource.swift in Sources */,
-				49D5079D1A37A33A00531F23 /* WSLHTMLEntities.m in Sources */,
 				490C659F1A3230A700E87130 /* Calendar.swift in Sources */,
 				49804B261C5E88CE005AE154 /* VideosTableViewCell.swift in Sources */,
 				49B2A33A1A268070004EED86 /* CalendarTableViewController.swift in Sources */,
+				499D1F4B1C5EB8AF00B1FF70 /* StringExtensions.swift in Sources */,
 				49605DE51BA571E3003633A1 /* AFURLResponseSerialization.m in Sources */,
 				49B2A3481A268070004EED86 /* MediaMasterTableViewCell.swift in Sources */,
 				49B2A3401A268070004EED86 /* CustomTableViewController.swift in Sources */,
@@ -1193,6 +1186,7 @@
 				49F261631B9E2E7A00FE027D /* NSDateExtensionsTest.swift in Sources */,
 				49804B271C5E88CE005AE154 /* VideosTableViewCell.swift in Sources */,
 				49F2615F1B9E216100FE027D /* BulletinsDataSourceTest.swift in Sources */,
+				499D1F4C1C5EB8AF00B1FF70 /* StringExtensions.swift in Sources */,
 				49F261561B9CE5F600FE027D /* BulletinTest.swift in Sources */,
 				49B2A2EF1A268023004EED86 /* FUMCTests.swift in Sources */,
 				49214F8E1BC0D2FE0098D2B4 /* Video.swift in Sources */,

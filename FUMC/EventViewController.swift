@@ -87,7 +87,7 @@ class EventViewController: UIViewController, EKEventEditViewDelegate, UITableVie
             self.toMeridiemLabel!.text = self.dateFormatter.stringFromDate(self.calendarEvent!.to)
         }
         
-        let description = WSLHTMLEntities.convertHTMLtoString(self.calendarEvent!.descript)
+        let description = String(htmlEncodedString: self.calendarEvent!.descript)
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 6
         self.descriptionLabel!.attributedText = NSAttributedString(string: description, attributes: [
