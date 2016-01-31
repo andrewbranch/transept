@@ -12,9 +12,9 @@ private let _MAIN_FONT_REGULAR = "MyriadPro-Regular"
 private let _MAIN_FONT_BOLD = "MyriadPro-Semibold"
 private let _ALT_FONT_BOLD = "BebasNeueBold"
 
-extension UIFont {
+public extension UIFont {
     
-    class var fumcMainFontRegular10: UIFont {
+    public class var fumcMainFontRegular10: UIFont {
         struct Static {
             static let font = UIFont(name: _MAIN_FONT_REGULAR, size: 10)
         }
@@ -24,7 +24,7 @@ extension UIFont {
         return UIFont.systemFontOfSize(10)
     }
     
-    class var fumcMainFontRegular14: UIFont {
+    public class var fumcMainFontRegular14: UIFont {
         struct Static {
             static let font = UIFont(name: _MAIN_FONT_REGULAR, size: 14)
         }
@@ -34,7 +34,7 @@ extension UIFont {
         return UIFont.systemFontOfSize(14)
     }
     
-    class var fumcMainFontRegular16: UIFont {
+    public class var fumcMainFontRegular16: UIFont {
         struct Static {
             static let font = UIFont(name: _MAIN_FONT_REGULAR, size: 16)
         }
@@ -44,7 +44,7 @@ extension UIFont {
         return UIFont.systemFontOfSize(16)
     }
     
-    class var fumcMainFontRegular18: UIFont {
+    public class var fumcMainFontRegular18: UIFont {
         struct Static {
             static let font = UIFont(name: _MAIN_FONT_REGULAR, size: 18)
         }
@@ -54,7 +54,7 @@ extension UIFont {
         return UIFont.systemFontOfSize(18)
     }
     
-    class var fumcMainFontRegular20: UIFont {
+    public class var fumcMainFontRegular20: UIFont {
         struct Static {
             static let font = UIFont(name: _MAIN_FONT_REGULAR, size: 20)
         }
@@ -64,7 +64,7 @@ extension UIFont {
         return UIFont.systemFontOfSize(20)
     }
     
-    class var fumcMainFontRegular26: UIFont {
+    public class var fumcMainFontRegular26: UIFont {
         struct Static {
             static let font = UIFont(name: _MAIN_FONT_REGULAR, size: 26)
         }
@@ -74,7 +74,7 @@ extension UIFont {
         return UIFont.systemFontOfSize(26)
     }
     
-    class var fumcMainFontBold18: UIFont {
+    public class var fumcMainFontBold18: UIFont {
         struct Static {
             static let font = UIFont(name: _MAIN_FONT_BOLD, size: 18)
         }
@@ -84,7 +84,7 @@ extension UIFont {
         return UIFont.systemFontOfSize(18)
     }
     
-    class var fumcAltFontBold22: UIFont {
+    public class var fumcAltFontBold22: UIFont {
         struct Static {
             static let font = UIFont(name: _ALT_FONT_BOLD, size: 22)
         }
@@ -94,7 +94,7 @@ extension UIFont {
         return UIFont.systemFontOfSize(22)
     }
     
-    class var fumcAltFontBold30: UIFont {
+    public class var fumcAltFontBold30: UIFont {
         struct Static {
             static let font = UIFont(name: _ALT_FONT_BOLD, size: 30)
         }

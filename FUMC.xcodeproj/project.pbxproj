@@ -42,6 +42,8 @@
 		49952EE41A268BF5002B06FA /* NotificationBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49952EE31A268BF5002B06FA /* NotificationBarButtonItem.swift */; };
 		499D1F4B1C5EB8AF00B1FF70 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D1F4A1C5EB8AF00B1FF70 /* StringExtensions.swift */; };
 		499D1F4C1C5EB8AF00B1FF70 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D1F4A1C5EB8AF00B1FF70 /* StringExtensions.swift */; };
+		499D1F4E1C5ECB9600B1FF70 /* YouCanLiveStreamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D1F4D1C5ECB9600B1FF70 /* YouCanLiveStreamViewController.swift */; };
+		499D1F4F1C5ECB9600B1FF70 /* YouCanLiveStreamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D1F4D1C5ECB9600B1FF70 /* YouCanLiveStreamViewController.swift */; };
 		49A5696D1A38D93C00B6F1E4 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49A5696C1A38D93C00B6F1E4 /* Launch Screen.xib */; };
 		49A569701A39F66500B6F1E4 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A5696F1A39F66500B6F1E4 /* API.swift */; };
 		49A569741A3A5ACD00B6F1E4 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A569731A3A5ACD00B6F1E4 /* ActivityIndicatorView.swift */; };
@@ -271,6 +273,7 @@
 		49952EE11A26888B002B06FA /* NotificationsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationsTableViewController.swift; path = FUMC/NotificationsTableViewController.swift; sourceTree = "<group>"; };
 		49952EE31A268BF5002B06FA /* NotificationBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationBarButtonItem.swift; path = FUMC/NotificationBarButtonItem.swift; sourceTree = "<group>"; };
 		499D1F4A1C5EB8AF00B1FF70 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtensions.swift; path = FUMC/StringExtensions.swift; sourceTree = "<group>"; };
+		499D1F4D1C5ECB9600B1FF70 /* YouCanLiveStreamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YouCanLiveStreamViewController.swift; path = FUMC/YouCanLiveStreamViewController.swift; sourceTree = "<group>"; };
 		49A5696C1A38D93C00B6F1E4 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		49A5696F1A39F66500B6F1E4 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API.swift; path = FUMC/API.swift; sourceTree = "<group>"; };
 		49A569731A3A5ACD00B6F1E4 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActivityIndicatorView.swift; path = FUMC/ActivityIndicatorView.swift; sourceTree = "<group>"; };
@@ -782,6 +785,7 @@
 				49B2A3211A268070004EED86 /* RootTabBarController.swift */,
 				49B2A30E1A268070004EED86 /* CustomTableViewController.swift */,
 				49952EE11A26888B002B06FA /* NotificationsTableViewController.swift */,
+				499D1F4D1C5ECB9600B1FF70 /* YouCanLiveStreamViewController.swift */,
 				49B2A35F1A2680CD004EED86 /* Calendar */,
 				49B2A3631A26816D004EED86 /* Media */,
 				49B2A3601A2680E5004EED86 /* Connect */,
@@ -1134,6 +1138,7 @@
 				49D491B61BC9A8F0004B4D0E /* VideoAlbum.swift in Sources */,
 				49B2A34A1A268070004EED86 /* MediaMasterTableViewController.swift in Sources */,
 				49605DDE1BA571E3003633A1 /* AFHTTPRequestOperation.m in Sources */,
+				499D1F4E1C5ECB9600B1FF70 /* YouCanLiveStreamViewController.swift in Sources */,
 				49B2A3551A268070004EED86 /* UIFontExtensions.swift in Sources */,
 				49B2A33D1A268070004EED86 /* ConnectTableViewCell.swift in Sources */,
 				49B2A3531A268070004EED86 /* UIColorExtensions.swift in Sources */,
@@ -1184,6 +1189,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49F261631B9E2E7A00FE027D /* NSDateExtensionsTest.swift in Sources */,
+				499D1F4F1C5ECB9600B1FF70 /* YouCanLiveStreamViewController.swift in Sources */,
 				49804B271C5E88CE005AE154 /* VideosTableViewCell.swift in Sources */,
 				49F2615F1B9E216100FE027D /* BulletinsDataSourceTest.swift in Sources */,
 				499D1F4C1C5EB8AF00B1FF70 /* StringExtensions.swift in Sources */,
