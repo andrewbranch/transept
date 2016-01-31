@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 FUMC Pensacola. All rights reserved.
 //
 
+import Crashlytics
+
 protocol CalendarSettingsDelegate {
     func calendarsDataSource(dataSource: CalendarsDataSource, didGetCalendars calendars: [Calendar]) -> Void
     func calendarsDataSource(dataSource: CalendarsDataSource, failedGettingCalendarsWithError error: ErrorType) -> Void
@@ -50,6 +52,13 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
         if let indexPath = self.tableView!.indexPathForSelectedRow {
             self.tableView!.deselectRowAtIndexPath(indexPath, animated: true)
         }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        Answers.logCustomEventWithName("Viewed tab", customAttributes: [
+            "Name": "Calendar",
+            "debug": AppDelegate.debug
+        ])
     }
     
     func requestEventsForCalendars(calendars: [Calendar], page: Int, completed: () -> Void = { }) {

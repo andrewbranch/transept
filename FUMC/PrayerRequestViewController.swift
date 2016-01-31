@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 class PrayerRequestViewController: UIViewController, UITextViewDelegate, UIAlertViewDelegate {
     
@@ -60,9 +61,8 @@ class PrayerRequestViewController: UIViewController, UITextViewDelegate, UIAlert
 
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewDidAppear(animated: Bool) {
+        Answers.logCustomEventWithName("Viewed prayer request scene", customAttributes: ["debug": AppDelegate.debug])
     }
     
     func dismissKeyboard() {

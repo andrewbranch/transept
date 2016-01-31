@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 FUMC Pensacola. All rights reserved.
 //
 
+import Crashlytics
+
 public protocol MediaTableViewDataSource: UITableViewDataSource, UITableViewDelegate {
     var title: NSString { get }
     var loading: Bool { get }
@@ -46,9 +48,11 @@ public class MediaTableViewController: CustomTableViewController, MediaTableView
         }
     }
 
-    override public func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override public func viewDidAppear(animated: Bool) {
+        Answers.logCustomEventWithName("Viewed media list", customAttributes: [
+            "Name": self.dataSource?.title ?? "",
+            "debug": AppDelegate.debug
+        ])
     }
     
     override func reloadData() {
@@ -106,6 +110,10 @@ public class MediaTableViewController: CustomTableViewController, MediaTableView
             let indexPath = self.tableView!.indexPathForSelectedRow
             
             viewController.url = self.dataSource!.urlForIndexPath(indexPath!)
+            Answers.logCustomEventWithName("Viewed media item", customAttributes: [
+                "Kind": self.dataSource?.title ?? "",
+                "URL": viewController.url?.absoluteString ?? ""
+            ])
         }
     }
 

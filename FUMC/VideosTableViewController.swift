@@ -9,6 +9,7 @@
 import UIKit
 import AVKit
 import AVFoundation
+import Crashlytics
 
 class VideosTableViewController: UITableViewController, VideoDelegate {
     
@@ -133,6 +134,14 @@ class VideosTableViewController: UITableViewController, VideoDelegate {
             let indexPath = self.tableView!.indexPathForSelectedRow!
             viewController.player = AVPlayer(URL: urlForIndexPath(indexPath)!)
             viewController.player?.play()
+            let video = videoAtIndexPath(indexPath)
+            
+            Answers.logCustomEventWithName("Video played", customAttributes: [
+                "Name": video.name,
+                "Album": self.title ?? "",
+                "URL": video.fileHD,
+                "debug": AppDelegate.debug
+            ])
         }
     }
 

@@ -9,6 +9,7 @@
 import UIKit
 import AVKit
 import AVFoundation
+import Crashlytics
 
 class VideoAlbumsTableViewController: UITableViewController, MediaTableViewDataSourceDelegate {
 
@@ -17,9 +18,11 @@ class VideoAlbumsTableViewController: UITableViewController, MediaTableViewDataS
         self.tableView.dataSource = (UIApplication.sharedApplication().delegate as! AppDelegate).videosDataSource
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewDidAppear(animated: Bool) {
+        Answers.logCustomEventWithName("Viewed media list", customAttributes: [
+            "Name": "Videos",
+            "debug": AppDelegate.debug
+        ])
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -68,12 +71,17 @@ class VideoAlbumsTableViewController: UITableViewController, MediaTableViewDataS
                 let album = (self.tableView.dataSource as! VideosDataSource).albumForIndexPath(indexPath)!
                 viewController.videos = album.videos
                 viewController.title = album.name
+                Answers.logCustomEventWithName("Viewed video album", customAttributes: [
+                    "Name": album.name,
+                    "debug": AppDelegate.debug
+                ])
                 break
             
             case "liveStreamSegue":
                 let viewController = segue.destinationViewController as! AVPlayerViewController
                 viewController.player = AVPlayer(URL: NSURL(string: "https://yourstreamlive.com/live/2110/hls")!)
                 viewController.player?.play()
+                Answers.logCustomEventWithName("Viewed live stream", customAttributes: ["debug": AppDelegate.debug])
                 break
             
             default:

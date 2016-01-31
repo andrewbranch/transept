@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 class MediaMasterTableViewController: UITableViewController {
     
@@ -23,6 +24,13 @@ class MediaMasterTableViewController: UITableViewController {
         if let indexPath = self.tableView.indexPathForSelectedRow {
             self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        Answers.logCustomEventWithName("Viewed tab", customAttributes: [
+            "Name": "Media",
+            "debug": AppDelegate.debug
+        ])
     }
 
     override func didReceiveMemoryWarning() {

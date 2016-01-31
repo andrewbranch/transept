@@ -9,6 +9,7 @@
 import UIKit
 import EventKit
 import EventKitUI
+import Crashlytics
 
 class EventViewController: UIViewController, EKEventEditViewDelegate, UITableViewDelegate, UIAlertViewDelegate {
     
@@ -52,9 +53,6 @@ class EventViewController: UIViewController, EKEventEditViewDelegate, UITableVie
         self.dateContainer!.layer.cornerRadius = 10
         self.dateContainer!.layer.borderWidth = 3
         self.dateContainer!.layer.borderColor = UIColor(white: 54/255, alpha: 1).CGColor
-//        if let savedEventIds = NSUserDefaults.standardUserDefaults().objectForKey("savedEventIds") as? [String] {
-//            
-//        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -103,6 +101,13 @@ class EventViewController: UIViewController, EKEventEditViewDelegate, UITableVie
         if (EKEventStore.authorizationStatusForEntityType(EKEntityType.Event) == EKAuthorizationStatus.Authorized) {
             self.tryMatchingEvent()
         }
+        
+        Answers.logCustomEventWithName("Viewed event", customAttributes: [
+            "Name": self.calendarEvent!.name,
+            "Calendar": self.calendarEvent!.calendar.name,
+            "Id": self.calendarEvent!.id,
+            "debug": AppDelegate.debug
+        ])
     }
     
     func addEvent() {
