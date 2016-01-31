@@ -181,7 +181,7 @@ class API: NSObject {
     }
     
     func getVideos(completed: (albums: [VideoAlbum], error: ErrorType?) -> Void) {
-        let url = NSURL(string: "\(base)/video-albums?filter[simple][visible]=true&include=videos")
+        let url = NSURL(string: "\(base)/video-albums?filter[simple][visible]=true&include=videos&sort=-featured")
         let request = NSURLRequest(URL: url!)
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { response, data, error in
             guard error == nil else {

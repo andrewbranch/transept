@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AVKit
+import AVFoundation
 
 class VideoAlbumsTableViewController: UITableViewController, MediaTableViewDataSourceDelegate {
 
@@ -18,6 +20,19 @@ class VideoAlbumsTableViewController: UITableViewController, MediaTableViewDataS
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 60
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        guard indexPath.section == 0 else {
+            return
+        }
+        
+        let segueId = indexPath.row == 0 ? "liveStreamSegue" : "videosSegue"
+        self.performSegueWithIdentifier(segueId, sender: indexPath)
     }
 
     // MARK: - MediaTableViewDataSourceDelegate
@@ -42,10 +57,27 @@ class VideoAlbumsTableViewController: UITableViewController, MediaTableViewDataS
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "videosSegue") {
-            let indexPath = self.tableView!.indexPathForSelectedRow!
-            let viewController = segue.destinationViewController as! VideosTableViewController
-            viewController.videos = (self.tableView.dataSource as! VideosDataSource).albumForIndexPath(indexPath)!.videos
+        guard let id = segue.identifier else {
+            return
+        }
+        
+        switch id {
+            case "videosSegue":
+                let indexPath = self.tableView!.indexPathForSelectedRow!
+                let viewController = segue.destinationViewController as! VideosTableViewController
+                let album = (self.tableView.dataSource as! VideosDataSource).albumForIndexPath(indexPath)!
+                viewController.videos = album.videos
+                viewController.title = album.name
+                break
+            
+            case "liveStreamSegue":
+                let viewController = segue.destinationViewController as! AVPlayerViewController
+                viewController.player = AVPlayer(URL: NSURL(string: "https://yourstreamlive.com/live/2110/hls")!)
+                viewController.player?.play()
+                break
+            
+            default:
+                return
         }
     }
 

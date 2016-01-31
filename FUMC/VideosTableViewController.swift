@@ -83,6 +83,10 @@ class VideosTableViewController: UITableViewController, VideoDelegate {
         cell.thumbnail!.image = video.thumbnail
         return cell
     }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.performSegueWithIdentifier("playVideoSegue", sender: indexPath)
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -128,6 +132,7 @@ class VideosTableViewController: UITableViewController, VideoDelegate {
             let viewController = segue.destinationViewController as! AVPlayerViewController
             let indexPath = self.tableView!.indexPathForSelectedRow!
             viewController.player = AVPlayer(URL: urlForIndexPath(indexPath)!)
+            viewController.player?.play()
         }
     }
 
