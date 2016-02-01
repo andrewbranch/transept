@@ -11,7 +11,6 @@ import Fabric
 import Crashlytics
 import ZeroPush
 
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, ZeroPushDelegate, RKDropdownAlertDelegate {
 
@@ -22,9 +21,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ZeroPushDelegate, RKDropd
     var notificationsDataSource = NotificationsDataSource()
     var bulletinsDataSource = BulletinsDataSource(delegate: nil)
     var witnessesDataSource = WitnessesDataSource(delegate: nil)
+    var videosDataSource = VideosDataSource(delegate: nil)
     var rootViewController: RootTabBarController?
     var notificationToShowOnLaunch: Notification?
     var notificationsViewIsOpen = false
+    
+    #if DEBUG
+    static let debug = true
+    #else
+    static let debug = false
+    #endif
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
@@ -54,7 +60,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ZeroPushDelegate, RKDropd
         UITabBar.appearance().selectionIndicatorImage = UIImage.imageFromColor(UIColor.blackColor(), forSize: CGSizeMake(UIScreen.mainScreen().bounds.width / 4, 49))
         
         #if !DEBUG
-        Fabric.with([Crashlytics()])
+        Fabric.with([Crashlytics(), Answers.self])
+        #else
+        Fabric.sharedSDK().debug = true
+        Fabric.with([Answers.self])
         #endif
         
         if let userInfo = launchOptions?[UIApplicationLaunchOptionsRemoteNotificationKey] as? NSDictionary {
@@ -95,6 +104,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ZeroPushDelegate, RKDropd
         self.notificationsDataSource.refresh()
         self.bulletinsDataSource.refresh()
         self.witnessesDataSource.refresh()
+        self.videosDataSource.refresh()
     }
 
     func applicationWillTerminate(application: UIApplication) {

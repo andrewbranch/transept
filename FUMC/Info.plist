@@ -19,7 +19,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>367</string>
+	<string>501</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -57,8 +57,20 @@
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
+			<key>player.vimeo.com</key>
+			<dict>
+				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
 			<key>s3.amazonaws.com</key>
 			<dict>
+				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
+			<key>yourstreamlive.com</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
 				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
 				<true/>
 			</dict>

@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8187.4" systemVersion="15A279b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15E27e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8151.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="MyriadPro-Regular.otf">
+            <string>MyriadPro-Regular</string>
+            <string>MyriadPro-Regular</string>
             <string>MyriadPro-Regular</string>
             <string>MyriadPro-Regular</string>
             <string>MyriadPro-Regular</string>
@@ -43,7 +45,6 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="50" sectionHeaderHeight="34" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ijV-vw-Xi4">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
-                                <animations/>
                                 <color key="backgroundColor" white="0.96999999999999997" alpha="0.97999999999999998" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="calendarTableViewCell" rowHeight="53" id="Bg4-W1-QEN" customClass="CalendarTableViewCell" customModule="FUMC" customModuleProvider="target">
@@ -52,9 +53,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Bg4-W1-QEN" id="qwK-pB-r8G">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="52.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <animations/>
                                         </tableViewCellContentView>
-                                        <animations/>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
@@ -64,7 +63,6 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ijV-vw-Xi4" firstAttribute="top" secondItem="aCp-GK-GZf" secondAttribute="bottom" constant="40" id="808-GU-Awu"/>
@@ -120,28 +118,24 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Young Professionals" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mmb-iI-Ppx">
                                                 <rect key="frame" x="24" y="262" width="568" height="18"/>
-                                                <animations/>
                                                 <fontDescription key="fontDescription" name="MyriadPro-Semibold" family="Myriad Pro" pointSize="18"/>
                                                 <color key="textColor" white="0.19833764097744361" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wednesday, December 12th, 2014" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="18K-ej-Jdt">
                                                 <rect key="frame" x="24" y="306" width="198.5" height="14"/>
-                                                <animations/>
                                                 <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="14"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Yard" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GEw-ka-HsS">
                                                 <rect key="frame" x="24" y="286" width="50" height="14"/>
-                                                <animations/>
                                                 <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="14"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default-event" translatesAutoresizingMaskIntoConstraints="NO" id="ZKD-fK-2Ag">
                                                 <rect key="frame" x="0.0" y="0.0" width="600" height="187.5"/>
-                                                <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="Jxb-Vl-8Ar"/>
                                                     <constraint firstAttribute="width" secondItem="ZKD-fK-2Ag" secondAttribute="height" multiplier="3.2:1" id="cJR-xl-dJo"/>
@@ -157,41 +151,35 @@
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gb4-3K-B0c">
                                                         <rect key="frame" x="191.5" y="6" width="38.5" height="22"/>
-                                                        <animations/>
                                                         <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="22"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="to" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCp-mV-clu">
                                                         <rect key="frame" x="168" y="11" width="13.5" height="15"/>
-                                                        <animations/>
                                                         <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="15"/>
                                                         <color key="textColor" white="0.79981203007518797" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fwU-bH-73y">
                                                         <rect key="frame" x="140.5" y="13" width="17.5" height="13"/>
-                                                        <animations/>
                                                         <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="13"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hf2-YY-ajQ">
                                                         <rect key="frame" x="232" y="13" width="17.5" height="13"/>
-                                                        <animations/>
                                                         <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="13"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6:30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9I7-TY-xWA">
                                                         <rect key="frame" x="100" y="6" width="38.5" height="22"/>
-                                                        <animations/>
                                                         <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="22"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <animations/>
                                                 <color key="backgroundColor" red="0.21214094065656564" green="0.21214094065656564" blue="0.21214094065656564" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="9I7-TY-xWA" firstAttribute="baseline" secondItem="GCp-mV-clu" secondAttribute="baseline" id="2hG-xp-kgm"/>
@@ -216,7 +204,6 @@
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RST-Lh-miq">
                                                 <rect key="frame" x="24" y="340" width="552" height="14"/>
-                                                <animations/>
                                                 <attributedString key="attributedText">
                                                     <fragment content="Class leader Scott Grantland">
                                                         <attributes>
@@ -237,20 +224,17 @@
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DEC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z6w-hi-PeQ">
                                                             <rect key="frame" x="25" y="14" width="29" height="16"/>
-                                                            <animations/>
                                                             <fontDescription key="fontDescription" name="MyriadPro-Semibold" family="Myriad Pro" pointSize="16"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sqS-dA-S35">
                                                             <rect key="frame" x="13" y="30" width="54" height="50"/>
-                                                            <animations/>
                                                             <fontDescription key="fontDescription" name="MyriadPro-Semibold" family="Myriad Pro" pointSize="50"/>
                                                             <color key="textColor" red="0.67485119049999998" green="0.13021456209999999" blue="0.1244646464" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="centerX" secondItem="sqS-dA-S35" secondAttribute="centerX" id="Rq6-fv-NBz"/>
                                                         <constraint firstItem="Z6w-hi-PeQ" firstAttribute="top" secondItem="qlw-Xl-kJc" secondAttribute="top" constant="14" id="VCe-wI-z0k"/>
@@ -258,7 +242,6 @@
                                                         <constraint firstAttribute="centerX" secondItem="Z6w-hi-PeQ" secondAttribute="centerX" constant="0.5" id="cgc-2W-3i5"/>
                                                     </constraints>
                                                 </view>
-                                                <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="80" id="10n-kn-oEH"/>
                                                     <constraint firstAttribute="width" secondItem="bYf-VK-zH4" secondAttribute="height" multiplier="1:1" id="fVr-mI-eMI"/>
@@ -267,7 +250,6 @@
                                             </visualEffectView>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PyX-Hy-S5T">
                                                 <rect key="frame" x="0.0" y="354" width="600" height="85"/>
-                                                <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="85" id="bge-AP-PYl"/>
                                                 </constraints>
@@ -276,7 +258,6 @@
                                                 </connections>
                                             </containerView>
                                         </subviews>
-                                        <animations/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="RST-Lh-miq" secondAttribute="trailing" constant="24" id="1Eg-hF-ykk"/>
                                             <constraint firstItem="GEw-ka-HsS" firstAttribute="top" secondItem="mmb-iI-Ppx" secondAttribute="bottom" constant="6" id="1x2-cj-n8U"/>
@@ -316,7 +297,6 @@
                                         </variation>
                                     </view>
                                 </subviews>
-                                <animations/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="hpt-XQ-bzC" secondAttribute="bottom" id="8wh-ln-mWK"/>
@@ -335,7 +315,6 @@
                                 </variation>
                             </scrollView>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" secondItem="hpt-XQ-bzC" secondAttribute="height" id="36A-jK-ehA"/>
@@ -379,7 +358,6 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="142" sectionHeaderHeight="22" sectionFooterHeight="22" id="0iN-Ld-Ghg">
                         <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="mediaMasterTableViewCell" id="1AO-TB-Wnc">
@@ -388,9 +366,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1AO-TB-Wnc" id="jf9-Ms-vcg">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="141.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <animations/>
                                 </tableViewCellContentView>
-                                <animations/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -407,6 +383,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="kZH-bX-ag4" kind="show" identifier="mediaMasterCellSelection" id="OWO-X9-NRn"/>
+                        <segue destination="khw-XT-dOb" kind="show" identifier="videosSegueIdentifier" id="XgE-Gn-hzr"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FYL-DO-4qg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -427,7 +404,6 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="50" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="oUt-Qq-1TI">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
-                                <animations/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="mediaTableViewCell" textLabel="kS4-jP-mGj" detailTextLabel="efW-pY-KlU" style="IBUITableViewCellStyleValue1" id="JWL-Yy-EoM">
@@ -440,7 +416,6 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kS4-jP-mGj">
                                                     <rect key="frame" x="15" y="12" width="31.5" height="19.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -448,15 +423,12 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="efW-pY-KlU">
                                                     <rect key="frame" x="523.5" y="12" width="41.5" height="19.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <animations/>
                                         </tableViewCellContentView>
-                                        <animations/>
                                         <connections>
                                             <segue destination="CU2-Bk-W1i" kind="show" identifier="mediaTableCellSelection" id="SDC-bn-Hql"/>
                                         </connections>
@@ -464,7 +436,6 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="oUt-Qq-1TI" firstAttribute="top" secondItem="s0N-Nt-dqy" secondAttribute="bottom" id="2W6-cN-Xju"/>
@@ -479,7 +450,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mwz-3P-EAO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2577" y="-710"/>
+            <point key="canvasLocation" x="2563" y="-848"/>
         </scene>
         <!--Media Web View Controller-->
         <scene sceneID="iY3-my-iVE">
@@ -495,15 +466,12 @@
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="onI-FZ-bHd">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
-                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Uad-L7-2BP">
                                 <rect key="frame" x="290" y="233" width="20" height="20"/>
-                                <animations/>
                             </activityIndicatorView>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="Uad-L7-2BP" secondAttribute="centerX" id="BbS-tX-O0D"/>
@@ -527,7 +495,62 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ONZ-Vo-Cwp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3306" y="-714"/>
+            <point key="canvasLocation" x="3302" y="-848"/>
+        </scene>
+        <!--Videos Table View Controller-->
+        <scene sceneID="ZTm-lJ-F2e">
+            <objects>
+                <tableViewController id="pIB-Wy-ffb" customClass="VideosTableViewController" customModule="FUMC" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="CrV-F3-Fpb">
+                        <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="videoCell" textLabel="nId-Hw-pS4" detailTextLabel="1Bv-xH-PKA" rowHeight="90" style="IBUITableViewCellStyleValue1" id="CFc-Tc-Y48">
+                                <rect key="frame" x="0.0" y="28" width="600" height="90"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CFc-Tc-Y48" id="Rls-Z2-7V7">
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="89.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nId-Hw-pS4">
+                                            <rect key="frame" x="15" y="35" width="31.5" height="19.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1Bv-xH-PKA">
+                                            <rect key="frame" x="523.5" y="35" width="41.5" height="19.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="KIH-0X-iAU" kind="presentation" identifier="playVideoSegue" id="pxD-wf-ObE"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="pIB-Wy-ffb" id="NJI-oH-OrR"/>
+                            <outlet property="delegate" destination="pIB-Wy-ffb" id="hLq-k4-flC"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VYM-1s-dHy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3302" y="-151"/>
+        </scene>
+        <!--AV Player View Controller-->
+        <scene sceneID="x8W-yx-vri">
+            <objects>
+                <avPlayerViewController videoGravity="AVLayerVideoGravityResizeAspect" id="KIH-0X-iAU" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VEC-E0-DF4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4012" y="-151"/>
         </scene>
         <!--Give-->
         <scene sceneID="JiP-Y7-CvA">
@@ -543,7 +566,6 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ABy-Qm-RIT" customClass="UIChangingLabel" customModule="FUMC" customModuleProvider="target">
                                 <rect key="frame" x="35" y="40" width="530" height="20"/>
-                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" placeholder="YES" id="lXv-r6-1bA"/>
@@ -551,7 +573,6 @@
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" translatesAutoresizingMaskIntoConstraints="NO" id="gSR-d0-ogz">
                                 <rect key="frame" x="275" y="90" width="50" height="44"/>
-                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="dmz-01-IcX"/>
                                     <constraint firstAttribute="width" constant="50" id="gl3-j5-JMA"/>
@@ -559,7 +580,6 @@
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ABI-El-Z8S">
                                 <rect key="frame" x="185" y="154" width="230" height="180"/>
-                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="230" id="K6y-7P-jCc"/>
                                     <constraint firstAttribute="height" constant="180" id="x5j-7f-5j9"/>
@@ -579,7 +599,6 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uJk-UF-obG">
                                 <rect key="frame" x="175" y="407" width="250" height="60"/>
-                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="4u0-jM-xNb"/>
                                     <constraint firstAttribute="height" priority="700" constant="60" id="5Z7-Qi-alX"/>
@@ -596,7 +615,6 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                                 </connections>
                             </button>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="uJk-UF-obG" secondAttribute="centerX" id="3Iw-gQ-mEp"/>
@@ -630,6 +648,47 @@ Thank you for your generous support of First United Methodist Church of Pensacol
             </objects>
             <point key="canvasLocation" x="1814" y="88"/>
         </scene>
+        <!--Videos-->
+        <scene sceneID="b93-rf-eGp">
+            <objects>
+                <tableViewController title="Videos" id="khw-XT-dOb" customClass="VideoAlbumsTableViewController" customModule="FUMC" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="fqY-RB-RoO">
+                        <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="videoAlbumsTableViewCell" textLabel="2Wb-QV-q5f" rowHeight="60" style="IBUITableViewCellStyleDefault" id="XBc-Dw-RuV">
+                                <rect key="frame" x="0.0" y="28" width="600" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XBc-Dw-RuV" id="uEU-CA-qwv">
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="59.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2Wb-QV-q5f">
+                                            <rect key="frame" x="15" y="0.0" width="550" height="59.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="khw-XT-dOb" id="dpD-lW-jBd"/>
+                            <outlet property="delegate" destination="khw-XT-dOb" id="7wx-Jh-RiX"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <segue destination="KIH-0X-iAU" kind="presentation" identifier="liveStreamSegue" id="MbW-TP-faR"/>
+                        <segue destination="pIB-Wy-ffb" kind="show" identifier="videosSegue" id="8YM-8f-q8J"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="95t-AB-b3Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2563" y="-15"/>
+        </scene>
         <!--Root Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
@@ -638,7 +697,6 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                     <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <animations/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" white="0.10000000000000001" alpha="0.90000000000000002" colorSpace="calibratedWhite"/>
                         <color key="selectedImageTintColor" white="1" alpha="0.90000000000000002" colorSpace="calibratedWhite"/>
@@ -649,6 +707,7 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                         <segue destination="Vfr-j3-gCB" kind="relationship" relationship="viewControllers" id="TRb-vE-61L"/>
                         <segue destination="R3l-68-kGD" kind="relationship" relationship="viewControllers" id="BMx-i6-p7l"/>
                         <segue destination="Z5N-s7-vGE" kind="relationship" relationship="viewControllers" id="FL8-EP-5wc"/>
+                        <segue destination="ACY-N0-XLh" kind="presentation" identifier="youCanLiveStreamNow" modalPresentationStyle="overCurrentContext" id="mzh-Cg-cr5"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -664,7 +723,6 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="lfa-ks-0MD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
                         <color key="barTintColor" red="0.56862747670000002" green="0.066666670139999995" blue="0.043137256059999997" alpha="1" colorSpace="deviceRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -696,14 +754,12 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Calendars" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c6r-aM-4Bi">
                                             <rect key="frame" x="8" y="58" width="592" height="24"/>
-                                            <animations/>
                                             <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="24"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsMultipleSelection="YES" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="4fs-ut-w6C">
                                             <rect key="frame" x="8" y="102" width="584" height="428"/>
-                                            <animations/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                             <prototypes>
                                                 <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="calendarSettingsTableViewCell" rowHeight="50" id="D5b-r5-GeG" customClass="CalendarSettingsTableViewCell" customModule="FUMC" customModuleProvider="target">
@@ -715,14 +771,12 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BcG-IB-Rij">
                                                                 <rect key="frame" x="43" y="18" width="41" height="18"/>
-                                                                <animations/>
                                                                 <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="18"/>
                                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X6B-vm-jcD" customClass="RadioView" customModule="FUMC" customModuleProvider="target">
                                                                 <rect key="frame" x="8" y="15" width="20" height="20"/>
-                                                                <animations/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="kk8-7A-ZMG"/>
@@ -730,7 +784,6 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                                                                 </constraints>
                                                             </view>
                                                         </subviews>
-                                                        <animations/>
                                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="centerY" secondItem="X6B-vm-jcD" secondAttribute="centerY" id="Qku-mv-xjz"/>
@@ -745,7 +798,6 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                                                             </mask>
                                                         </variation>
                                                     </tableViewCellContentView>
-                                                    <animations/>
                                                     <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <connections>
                                                         <outlet property="checkView" destination="X6B-vm-jcD" id="07r-UM-Zxw"/>
@@ -756,7 +808,6 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                                         </tableView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qv3-2e-2M9">
                                             <rect key="frame" x="277" y="552" width="46" height="32"/>
-                                            <animations/>
                                             <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="20"/>
                                             <state key="normal" title="Done">
                                                 <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -767,7 +818,6 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                                             </connections>
                                         </button>
                                     </subviews>
-                                    <animations/>
                                     <constraints>
                                         <constraint firstItem="c6r-aM-4Bi" firstAttribute="top" secondItem="gnG-eL-P71" secondAttribute="topMargin" constant="50" id="2fw-5U-6ok"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="4fs-ut-w6C" secondAttribute="bottom" constant="62" id="GTa-b8-5gz"/>
@@ -788,11 +838,9 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                                         </mask>
                                     </variation>
                                 </view>
-                                <animations/>
                                 <blurEffect style="extraLight"/>
                             </visualEffectView>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="PbT-88-ULq" firstAttribute="top" secondItem="zWF-dX-Eyi" secondAttribute="bottom" id="1mU-EP-hkw"/>
@@ -825,7 +873,6 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="TRo-Mu-Ckd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
                         <color key="barTintColor" red="0.56862747670000002" green="0.066666670139999995" blue="0.043137256059999997" alpha="1" colorSpace="deviceRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -850,7 +897,6 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="q34-aj-DqA">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
                         <color key="barTintColor" red="0.56862747670000002" green="0.066666670139999995" blue="0.043137256059999997" alpha="1" colorSpace="deviceRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -862,6 +908,70 @@ Thank you for your generous support of First United Methodist Church of Pensacol
             </objects>
             <point key="canvasLocation" x="1002" y="870"/>
         </scene>
+        <!--You Can Live Stream View Controller-->
+        <scene sceneID="yNk-ST-RIu">
+            <objects>
+                <viewController id="ACY-N0-XLh" customClass="YouCanLiveStreamViewController" customModule="FUMC" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="z9l-4Q-TM9"/>
+                        <viewControllerLayoutGuide type="bottom" id="FuU-Gg-iZb"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="UJ4-FO-FGE">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sGU-Pq-0Hp">
+                                <rect key="frame" x="176" y="140" width="248" height="134"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="260" id="xHp-vx-9zq"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="Live streaming and sermon recordings are now available in the Media tab.">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="26" name="MyriadPro-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="10" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uU4-Kf-ip9">
+                                <rect key="frame" x="241" y="524" width="118" height="46"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="kXm-Ed-D9u"/>
+                                    <constraint firstAttribute="width" constant="118" id="uCm-Pf-0eo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="18"/>
+                                <state key="normal" title="Got it!">
+                                    <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismiss" destination="ACY-N0-XLh" eventType="touchUpInside" id="IEr-JZ-QSf"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.85275021114864868" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="uU4-Kf-ip9" firstAttribute="top" relation="greaterThanOrEqual" secondItem="sGU-Pq-0Hp" secondAttribute="bottom" constant="20" id="Ny9-xV-dSe"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="sGU-Pq-0Hp" secondAttribute="trailing" id="ZHG-Gm-p2X"/>
+                            <constraint firstItem="FuU-Gg-iZb" firstAttribute="top" secondItem="uU4-Kf-ip9" secondAttribute="bottom" priority="1" constant="30" id="h7G-vt-C0P"/>
+                            <constraint firstItem="uU4-Kf-ip9" firstAttribute="centerX" secondItem="UJ4-FO-FGE" secondAttribute="centerX" id="hGn-ld-lsT"/>
+                            <constraint firstItem="sGU-Pq-0Hp" firstAttribute="top" secondItem="z9l-4Q-TM9" secondAttribute="bottom" priority="1" constant="120" id="hkk-2Y-pP6"/>
+                            <constraint firstItem="sGU-Pq-0Hp" firstAttribute="centerX" secondItem="UJ4-FO-FGE" secondAttribute="centerX" id="pOQ-1P-jC6"/>
+                            <constraint firstItem="sGU-Pq-0Hp" firstAttribute="top" relation="greaterThanOrEqual" secondItem="z9l-4Q-TM9" secondAttribute="bottom" priority="2" constant="50" id="rBp-lJ-5kX"/>
+                            <constraint firstItem="sGU-Pq-0Hp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="UJ4-FO-FGE" secondAttribute="leadingMargin" id="yMI-NU-NdQ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="dismissButton" destination="uU4-Kf-ip9" id="MlJ-N6-ZPA"/>
+                        <outlet property="label" destination="sGU-Pq-0Hp" id="o0Z-us-Qvo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OnJ-Ej-2aG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1000" y="1631"/>
+        </scene>
         <!--Connect-->
         <scene sceneID="0TO-EI-K7n">
             <objects>
@@ -869,7 +979,6 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="110" sectionHeaderHeight="50" sectionFooterHeight="50" id="kgk-2Z-Hbg">
                         <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="connectTableCell" id="M3c-s4-Ja0" customClass="ConnectTableViewCell" customModule="FUMC" customModuleProvider="target">
@@ -878,9 +987,7 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M3c-s4-Ja0" id="Thq-Wg-ckS">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="109.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <animations/>
                                 </tableViewCellContentView>
-                                <animations/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -925,7 +1032,6 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MMk-r5-KYz">
                                                 <rect key="frame" x="18" y="23" width="564" height="71"/>
-                                                <animations/>
                                                 <attributedString key="attributedText">
                                                     <fragment>
                                                         <string key="content">The Pastoral Care Team would like to pray for you and our family at First United Methodist Church.  Please indicate below the specific petition or praise that you would like to call to our attention. This request will then be sent to members of the Pastoral Care Team. Your request will be anonymous unless you include your name or contact information.</string>
@@ -940,7 +1046,6 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UxE-tV-uMg" customClass="UIPlaceHolderTextView">
                                                 <rect key="frame" x="0.0" y="109" width="600" height="140"/>
-                                                <animations/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="140" id="6yO-fw-mXF"/>
@@ -950,7 +1055,6 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                                             </textView>
                                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MOV-nM-w0H">
                                                 <rect key="frame" x="225" y="259" width="151" height="28"/>
-                                                <animations/>
                                                 <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="16"/>
                                                 <state key="normal" title="Submit Prayer Request">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -960,7 +1064,6 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <animations/>
                                         <constraints>
                                             <constraint firstAttribute="centerX" secondItem="MOV-nM-w0H" secondAttribute="centerX" id="4F1-Mj-c2b"/>
                                             <constraint firstItem="UxE-tV-uMg" firstAttribute="top" secondItem="yzN-OO-W6L" secondAttribute="topMargin" id="5by-Gn-e2k"/>
@@ -995,7 +1098,6 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                                         </variation>
                                     </view>
                                 </subviews>
-                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="yzN-OO-W6L" secondAttribute="bottom" id="8O1-GY-odV"/>
                                     <constraint firstAttribute="bottom" secondItem="yzN-OO-W6L" secondAttribute="bottom" id="CAY-2p-Sg1"/>
@@ -1016,7 +1118,6 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                                 </variation>
                             </scrollView>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="jZs-0z-jwt" firstAttribute="top" secondItem="PtB-QW-fe7" secondAttribute="bottom" id="64h-iw-9cr"/>
@@ -1054,7 +1155,6 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="igu-wy-WI8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
                         <color key="barTintColor" red="0.56862747670000002" green="0.066666670139999995" blue="0.043137256059999997" alpha="1" colorSpace="deviceRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1074,7 +1174,6 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Yz0-ki-ujg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -1092,7 +1191,6 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="static" style="grouped" rowHeight="50" sectionHeaderHeight="1" sectionFooterHeight="1" id="DqC-Hv-cAC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="85"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection id="0pC-wn-7yJ">
@@ -1107,15 +1205,12 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Add to calendar" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SZE-X3-WCJ">
                                                     <rect key="frame" x="15" y="0.0" width="570" height="49.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <animations/>
                                                     <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="18"/>
                                                     <color key="textColor" red="0.56862747670000002" green="0.066666670139999995" blue="0.043137256059999997" alpha="1" colorSpace="deviceRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <animations/>
                                         </tableViewCellContentView>
-                                        <animations/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                 </cells>
@@ -1145,11 +1240,9 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="64" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Fv9-MI-ZB8">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
-                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Fv9-MI-ZB8" firstAttribute="top" secondItem="2ur-tz-USi" secondAttribute="top" id="E9b-L7-p63"/>
@@ -1186,6 +1279,7 @@ Thank you for your generous support of First United Methodist Church of Pensacol
         <image name="media-alt" width="35" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="eT5-pJ-LP6"/>
+        <segue reference="lCV-Rg-9Tn"/>
+        <segue reference="MbW-TP-faR"/>
     </inferredMetricsTieBreakers>
 </document>

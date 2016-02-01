@@ -9,6 +9,10 @@
 import UIKit
 
 class RootTabBarController: UITabBarController {
+    
+    func knowsYouCanLiveStream() -> Bool {
+        return NSUserDefaults.standardUserDefaults().boolForKey("knowsYouCanLiveStream")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +25,8 @@ class RootTabBarController: UITabBarController {
         if let launchNotification = appDelegate.notificationToShowOnLaunch {
             self.performSegueWithIdentifier("showNotifications", sender: [launchNotification])
             appDelegate.notificationToShowOnLaunch = nil
+        } else if !self.knowsYouCanLiveStream() {
+            self.performSegueWithIdentifier("youCanLiveStreamNow", sender: self)
         }
     }
 

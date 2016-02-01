@@ -8,6 +8,7 @@
 
 import UIKit
 import AddressBookUI
+import Crashlytics
 
 class ConnectTableViewController: UITableViewController {
     
@@ -76,6 +77,13 @@ class ConnectTableViewController: UITableViewController {
         if let indexPath = self.tableView.indexPathForSelectedRow {
             self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        Answers.logCustomEventWithName("Viewed tab", customAttributes: [
+            "Name": "Connect",
+            "debug": AppDelegate.debug
+        ])
     }
     
     @IBAction func displayContactCard() {

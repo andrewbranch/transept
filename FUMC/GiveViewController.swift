@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 class GiveViewController: UIViewController {
     
@@ -35,9 +36,11 @@ class GiveViewController: UIViewController {
         self.button!.layer.cornerRadius = 10
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewDidAppear(animated: Bool) {
+        Answers.logCustomEventWithName("Viewed tab", customAttributes: [
+            "Name": "Give",
+            "debug": AppDelegate.debug
+        ])
     }
     
     @IBAction func give() {

@@ -7,11 +7,11 @@
 //
 
 import UIKit
+import Crashlytics
 
 class MediaMasterTableViewController: UITableViewController {
     
-    private let podcastURL = NSURL(string: "itms-pcast://itunes.apple.com/us/podcast/first-umc-of-pensacola-fl/id313924198?mt=2&uo=4")
-    private let labels = [NSAttributedString(string: "Bulletins", attributes: [NSKernAttributeName: 5]), NSAttributedString(string: "Witnesses", attributes: [NSKernAttributeName: 5]), NSAttributedString(string: "Sermons", attributes: [NSKernAttributeName: 5])]
+    private let labels = [NSAttributedString(string: "Bulletins", attributes: [NSKernAttributeName: 5]), NSAttributedString(string: "Witnesses", attributes: [NSKernAttributeName: 5]), NSAttributedString(string: "Videos", attributes: [NSKernAttributeName: 5])]
     private let images = [UIImage(named: "bulletins-dark"), UIImage(named: "witnesses-dark"), UIImage(named: "sermons-dark")]
     
     override func viewDidLoad() {
@@ -24,6 +24,13 @@ class MediaMasterTableViewController: UITableViewController {
         if let indexPath = self.tableView.indexPathForSelectedRow {
             self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        Answers.logCustomEventWithName("Viewed tab", customAttributes: [
+            "Name": "Media",
+            "debug": AppDelegate.debug
+        ])
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,8 +64,7 @@ class MediaMasterTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if (indexPath.row == 2) {
-            self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
-            UIApplication.sharedApplication().openURL(podcastURL!)
+            self.performSegueWithIdentifier("videosSegueIdentifier", sender: nil)
         } else {
             self.performSegueWithIdentifier("mediaMasterCellSelection", sender: indexPath)
         }
