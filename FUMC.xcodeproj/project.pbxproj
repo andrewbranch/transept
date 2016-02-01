@@ -44,6 +44,7 @@
 		499D1F4C1C5EB8AF00B1FF70 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D1F4A1C5EB8AF00B1FF70 /* StringExtensions.swift */; };
 		499D1F4E1C5ECB9600B1FF70 /* YouCanLiveStreamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D1F4D1C5ECB9600B1FF70 /* YouCanLiveStreamViewController.swift */; };
 		499D1F4F1C5ECB9600B1FF70 /* YouCanLiveStreamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D1F4D1C5ECB9600B1FF70 /* YouCanLiveStreamViewController.swift */; };
+		499D1F511C5ED9C700B1FF70 /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 499D1F501C5ED9C700B1FF70 /* Secrets.plist */; };
 		49A5696D1A38D93C00B6F1E4 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49A5696C1A38D93C00B6F1E4 /* Launch Screen.xib */; };
 		49A569701A39F66500B6F1E4 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A5696F1A39F66500B6F1E4 /* API.swift */; };
 		49A569741A3A5ACD00B6F1E4 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A569731A3A5ACD00B6F1E4 /* ActivityIndicatorView.swift */; };
@@ -97,7 +98,6 @@
 		49B2A3591A268070004EED86 /* WitnessesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B2A32B1A268070004EED86 /* WitnessesDataSource.swift */; };
 		49B2A3671A26829D004EED86 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B2A3641A26829D004EED86 /* Crashlytics.framework */; };
 		49B2A3681A26829D004EED86 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B2A3651A26829D004EED86 /* Fabric.framework */; };
-		49C225051BA4956B00D94552 /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49C225041BA4956B00D94552 /* Secrets.plist */; };
 		49C225071BA496A700D94552 /* Env.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C225061BA496A700D94552 /* Env.swift */; };
 		49C83A1B1A2BCB3B00E02C96 /* NotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C83A1A1A2BCB3B00E02C96 /* NotificationsTableViewCell.swift */; };
 		49C83A1F1A2BCB8A00E02C96 /* NotificationsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49C83A1E1A2BCB8A00E02C96 /* NotificationsTableViewCell.xib */; };
@@ -274,6 +274,7 @@
 		49952EE31A268BF5002B06FA /* NotificationBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationBarButtonItem.swift; path = FUMC/NotificationBarButtonItem.swift; sourceTree = "<group>"; };
 		499D1F4A1C5EB8AF00B1FF70 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtensions.swift; path = FUMC/StringExtensions.swift; sourceTree = "<group>"; };
 		499D1F4D1C5ECB9600B1FF70 /* YouCanLiveStreamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YouCanLiveStreamViewController.swift; path = FUMC/YouCanLiveStreamViewController.swift; sourceTree = "<group>"; };
+		499D1F501C5ED9C700B1FF70 /* Secrets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Secrets.plist; path = FUMC/Secrets.plist; sourceTree = "<group>"; };
 		49A5696C1A38D93C00B6F1E4 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		49A5696F1A39F66500B6F1E4 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API.swift; path = FUMC/API.swift; sourceTree = "<group>"; };
 		49A569731A3A5ACD00B6F1E4 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActivityIndicatorView.swift; path = FUMC/ActivityIndicatorView.swift; sourceTree = "<group>"; };
@@ -335,7 +336,6 @@
 		49B2A32B1A268070004EED86 /* WitnessesDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WitnessesDataSource.swift; path = FUMC/WitnessesDataSource.swift; sourceTree = "<group>"; };
 		49B2A3641A26829D004EED86 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		49B2A3651A26829D004EED86 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
-		49C225041BA4956B00D94552 /* Secrets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
 		49C225061BA496A700D94552 /* Env.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Env.swift; path = FUMC/Env.swift; sourceTree = "<group>"; };
 		49C83A1A1A2BCB3B00E02C96 /* NotificationsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationsTableViewCell.swift; path = FUMC/NotificationsTableViewCell.swift; sourceTree = "<group>"; };
 		49C83A1E1A2BCB8A00E02C96 /* NotificationsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NotificationsTableViewCell.xib; path = FUMC/NotificationsTableViewCell.xib; sourceTree = "<group>"; };
@@ -641,7 +641,7 @@
 		49B2A2C81A268022004EED86 = {
 			isa = PBXGroup;
 			children = (
-				49C225041BA4956B00D94552 /* Secrets.plist */,
+				499D1F501C5ED9C700B1FF70 /* Secrets.plist */,
 				49B2A3121A268070004EED86 /* FUMC-Bridging-Header.h */,
 				49B2A2D31A268022004EED86 /* FUMC */,
 				49B2A3641A26829D004EED86 /* Crashlytics.framework */,
@@ -1011,8 +1011,8 @@
 				49B2A32E1A268070004EED86 /* BebasNeue Bold.otf in Resources */,
 				49A5696D1A38D93C00B6F1E4 /* Launch Screen.xib in Resources */,
 				49B2A34E1A268070004EED86 /* MyriadPro-Semibold.otf in Resources */,
-				49C225051BA4956B00D94552 /* Secrets.plist in Resources */,
 				49B2A3321A268070004EED86 /* BebasNeue Thin.otf in Resources */,
+				499D1F511C5ED9C700B1FF70 /* Secrets.plist in Resources */,
 				49804B281C5E88CE005AE154 /* VideosTableViewCell.xib in Resources */,
 				49B2A3491A268070004EED86 /* MediaMasterTableViewCell.xib in Resources */,
 				49A569891A40807500B6F1E4 /* CalendarSettingsSelectTableViewCell.xib in Resources */,
