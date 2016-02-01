@@ -17,6 +17,13 @@ class VideoAlbumsTableViewController: UITableViewController, MediaTableViewDataS
         super.viewDidLoad()
         self.tableView.dataSource = (UIApplication.sharedApplication().delegate as! AppDelegate).videosDataSource
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        if let indexPath = self.tableView!.indexPathForSelectedRow {
+            self.tableView!.deselectRowAtIndexPath(indexPath, animated: true)
+        }
+    }
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
