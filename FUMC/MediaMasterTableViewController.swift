@@ -27,10 +27,10 @@ class MediaMasterTableViewController: UITableViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        Answers.logCustomEventWithName("Viewed tab", customAttributes: [
-            "Name": "Media",
-            "debug": AppDelegate.debug
-        ])
+        super.viewDidAppear(animated)
+        #if !DEBUG
+        Answers.logCustomEventWithName("Viewed tab", customAttributes: ["Name": "Media"])
+        #endif
     }
 
     override func didReceiveMemoryWarning() {

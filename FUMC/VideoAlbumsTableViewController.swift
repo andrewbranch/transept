@@ -19,10 +19,12 @@ class VideoAlbumsTableViewController: UITableViewController, MediaTableViewDataS
     }
 
     override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        #if !DEBUG
         Answers.logCustomEventWithName("Viewed media list", customAttributes: [
-            "Name": "Videos",
-            "debug": AppDelegate.debug
+            "Name": "Videos"
         ])
+        #endif
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -71,17 +73,20 @@ class VideoAlbumsTableViewController: UITableViewController, MediaTableViewDataS
                 let album = (self.tableView.dataSource as! VideosDataSource).albumForIndexPath(indexPath)!
                 viewController.videos = album.videos
                 viewController.title = album.name
+                #if !DEBUG
                 Answers.logCustomEventWithName("Viewed video album", customAttributes: [
-                    "Name": album.name,
-                    "debug": AppDelegate.debug
+                    "Name": album.name
                 ])
+                #endif
                 break
             
             case "liveStreamSegue":
                 let viewController = segue.destinationViewController as! AVPlayerViewController
                 viewController.player = AVPlayer(URL: NSURL(string: "https://yourstreamlive.com/live/2110/hls")!)
                 viewController.player?.play()
-                Answers.logCustomEventWithName("Viewed live stream", customAttributes: ["debug": AppDelegate.debug])
+                #if !DEBUG
+                Answers.logCustomEventWithName("Viewed live stream", customAttributes: nil)
+                #endif
                 break
             
             default:

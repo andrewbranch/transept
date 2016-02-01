@@ -80,10 +80,10 @@ class ConnectTableViewController: UITableViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        Answers.logCustomEventWithName("Viewed tab", customAttributes: [
-            "Name": "Connect",
-            "debug": AppDelegate.debug
-        ])
+        super.viewDidAppear(animated)
+        #if !DEBUG
+        Answers.logCustomEventWithName("Viewed tab", customAttributes: ["Name": "Connect"])
+        #endif
     }
     
     @IBAction func displayContactCard() {

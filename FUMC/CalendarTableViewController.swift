@@ -55,10 +55,10 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
     }
     
     override func viewDidAppear(animated: Bool) {
-        Answers.logCustomEventWithName("Viewed tab", customAttributes: [
-            "Name": "Calendar",
-            "debug": AppDelegate.debug
-        ])
+        super.viewDidAppear(animated)
+        #if !DEBUG
+        Answers.logCustomEventWithName("Viewed tab", customAttributes: ["Name": "Calendar"])
+        #endif
     }
     
     func requestEventsForCalendars(calendars: [Calendar], page: Int, completed: () -> Void = { }) {

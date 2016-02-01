@@ -62,7 +62,10 @@ class PrayerRequestViewController: UIViewController, UITextViewDelegate, UIAlert
     }
 
     override func viewDidAppear(animated: Bool) {
-        Answers.logCustomEventWithName("Viewed prayer request scene", customAttributes: ["debug": AppDelegate.debug])
+        super.viewDidAppear(animated)
+        #if !DEBUG
+        Answers.logCustomEventWithName("Viewed prayer request scene", customAttributes: nil)
+        #endif
     }
     
     func dismissKeyboard() {

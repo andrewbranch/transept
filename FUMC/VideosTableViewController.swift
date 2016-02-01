@@ -18,7 +18,7 @@ class VideosTableViewController: UITableViewController, VideoDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        dateFormatter.dateFormat = "MMMM d"
+        dateFormatter.dateFormat = "MMMM d, yyyy"
         registerWithVideos()
         
         self.tableView.registerNib(UINib(nibName: "VideosTableViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "videoCell")
@@ -136,12 +136,13 @@ class VideosTableViewController: UITableViewController, VideoDelegate {
             viewController.player?.play()
             let video = videoAtIndexPath(indexPath)
             
+            #if !DEBUG
             Answers.logCustomEventWithName("Video played", customAttributes: [
                 "Name": video.name,
                 "Album": self.title ?? "",
-                "URL": video.fileHD,
-                "debug": AppDelegate.debug
+                "URL": video.fileHD
             ])
+            #endif
         }
     }
 

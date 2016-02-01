@@ -102,12 +102,13 @@ class EventViewController: UIViewController, EKEventEditViewDelegate, UITableVie
             self.tryMatchingEvent()
         }
         
+        #if !DEBUG
         Answers.logCustomEventWithName("Viewed event", customAttributes: [
             "Name": self.calendarEvent!.name,
             "Calendar": self.calendarEvent!.calendar.name,
-            "Id": self.calendarEvent!.id,
-            "debug": AppDelegate.debug
+            "Id": self.calendarEvent!.id
         ])
+        #endif
     }
     
     func addEvent() {

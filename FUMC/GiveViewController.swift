@@ -37,13 +37,16 @@ class GiveViewController: UIViewController {
     }
 
     override func viewDidAppear(animated: Bool) {
-        Answers.logCustomEventWithName("Viewed tab", customAttributes: [
-            "Name": "Give",
-            "debug": AppDelegate.debug
-        ])
+        super.viewDidAppear(animated)
+        #if !DEBUG
+        Answers.logCustomEventWithName("Viewed tab", customAttributes: ["Name": "Give"])
+        #endif
     }
     
     @IBAction func give() {
+        #if !DEBUG
+        Answers.logCustomEventWithName("Tapped “Give”", customAttributes: nil)
+        #endif
         UIApplication.sharedApplication().openURL(NSURL(string: "http://fumcpensacola.com/www/welcomenews/givingpayments")!)
     }
     

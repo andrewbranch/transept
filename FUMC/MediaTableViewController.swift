@@ -49,10 +49,12 @@ public class MediaTableViewController: CustomTableViewController, MediaTableView
     }
 
     override public func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        #if !DEBUG
         Answers.logCustomEventWithName("Viewed media list", customAttributes: [
-            "Name": self.dataSource?.title ?? "",
-            "debug": AppDelegate.debug
+            "Name": self.dataSource?.title ?? ""
         ])
+        #endif
     }
     
     override func reloadData() {
@@ -110,10 +112,12 @@ public class MediaTableViewController: CustomTableViewController, MediaTableView
             let indexPath = self.tableView!.indexPathForSelectedRow
             
             viewController.url = self.dataSource!.urlForIndexPath(indexPath!)
+            #if !DEBUG
             Answers.logCustomEventWithName("Viewed media item", customAttributes: [
                 "Kind": self.dataSource?.title ?? "",
                 "URL": viewController.url?.absoluteString ?? ""
             ])
+            #endif
         }
     }
 
