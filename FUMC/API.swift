@@ -149,37 +149,6 @@ class API: NSObject {
         }
     }
     
-    func getNotifications(tester: Bool, completed: (notifications: [Notification], error: ErrorType?) -> Void) {
-        self.lock.lock()
-        self.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        let urlString = "\(base)/notifications?filter[simple][expirationDate][$gt]=\(self.dateFormatter.stringFromDate(NSDate()))" + (tester ? "" : "&filter[simple][test]=false")
-        self.lock.unlock()
-        let request = NSURLRequest(URL: NSURL(string: urlString)!)
-        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
-            if (error != nil) {
-                completed(notifications: [], error: error)
-            } else if ((response as! NSHTTPURLResponse).statusCode != 200) {
-                let error = NSError(domain: "NSURLDomainError", code: 0, userInfo: ["response": response as! NSHTTPURLResponse])
-                completed(notifications: [], error: error)
-            } else {
-                do {
-                    let notificationsDictionary: NSDictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
-
-                    var notifications = [Notification]()
-                    self.lock.lock()
-                    for json in (notificationsDictionary["data"] as! [NSDictionary]) {
-                        let n = Notification(jsonDictionary: json, dateFormatter: self.dateFormatter)
-                        notifications.append(n)
-                    }
-                    self.lock.unlock()
-                    completed(notifications: notifications, error: nil)
-                } catch let error {
-                    completed(notifications: [], error: error)
-                }
-            }
-        }
-    }
-    
     func getVideos(completed: (albums: [VideoAlbum], error: ErrorType?) -> Void) {
         let url = NSURL(string: "\(base)/video-albums?filter[simple][visible]=true&include=videos&sort=-featured")
         let request = NSURLRequest(URL: url!)

@@ -9,22 +9,17 @@
 import UIKit
 import Fabric
 import Crashlytics
-import ZeroPush
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, ZeroPushDelegate, RKDropdownAlertDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var serverReachability = Reachability(hostName: "api.fumcpensacola.com")
     var internetReachability = Reachability.reachabilityForInternetConnection()
-    var notificationDelegates = [NotificationDelegate]()
-    var notificationsDataSource = NotificationsDataSource()
     var bulletinsDataSource = BulletinsDataSource(delegate: nil)
     var witnessesDataSource = WitnessesDataSource(delegate: nil)
     var videosDataSource = VideosDataSource(delegate: nil)
     var rootViewController: RootTabBarController?
-    var notificationToShowOnLaunch: Notification?
-    var notificationsViewIsOpen = false
     
     #if DEBUG
     static let debug = true
@@ -61,14 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ZeroPushDelegate, RKDropd
         
         #if !DEBUG
         Fabric.with([Crashlytics(), Answers.self])
-        #else
-        Fabric.sharedSDK().debug = true
-        Fabric.with([Answers.self])
         #endif
-        
-        if let userInfo = launchOptions?[UIApplicationLaunchOptionsRemoteNotificationKey] as? NSDictionary {
-            self.notificationToShowOnLaunch = Notification(userInfo: userInfo as [NSObject : AnyObject])
-        }
 
         return true
     }
@@ -85,23 +73,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ZeroPushDelegate, RKDropd
 
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-        for delegate in self.notificationDelegates {
-            delegate.applicationUpdatedBadgeCount(UIApplication.sharedApplication().applicationIconBadgeNumber)
-        }
-        
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
-        #if DEBUG
-        let apiKey = "psDtoDyjwcDbq6x8nYiZ"
-        #else
-        let apiKey = "zVr51xjJjiNgSBrHBMv5"
-        #endif
-        
-        ZeroPush.engageWithAPIKey(apiKey, delegate: self)
-        ZeroPush.shared().registerForRemoteNotifications()
-        
-        self.notificationsDataSource.refresh()
         self.bulletinsDataSource.refresh()
         self.witnessesDataSource.refresh()
         self.videosDataSource.refresh()
@@ -110,53 +84,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ZeroPushDelegate, RKDropd
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-    
-    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-        ZeroPush.shared().registerDeviceToken(deviceToken)
-        NSLog(ZeroPush.deviceTokenFromData(deviceToken))
-    }
-    
-    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
-        NSLog(error.description)
-    }
-    
-    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-        let notification = Notification(userInfo: userInfo)
-        for delegate in self.notificationDelegates {
-            delegate.appDelegate(self, didReceiveNotification: notification)
-        }
-        self.notificationsDataSource.incorporateNotificationFromPush(notification)
-        
-        
-        if (!self.notificationsViewIsOpen) {
-            if (UIApplication.sharedApplication().applicationState != UIApplicationState.Active) {
-                // App entered with notification
-                self.rootViewController?.performSegueWithIdentifier("showNotifications", sender: [notification])
-            } else {
-                ZeroPush.shared().setBadge(UIApplication.sharedApplication().applicationIconBadgeNumber + 1)
-                RKDropdownAlert.title("Tap to view", message: notification.message, backgroundColor: UIColor.fumcNavyColor(), textColor: UIColor.whiteColor(), time: 4, delegate: self, userInfo: notification)
-            }
-        }
-    }
-    
-    func clearNotifications() {
-        ZeroPush.shared().setBadge(0)
-        for delegate in self.notificationDelegates {
-            delegate.applicationUpdatedBadgeCount(0)
-        }
-    }
-    
-    func setBadgeCount(badgeCount: Int) {
-        ZeroPush.shared().setBadge(badgeCount)
-        for delegate in self.notificationDelegates {
-            delegate.applicationUpdatedBadgeCount(badgeCount)
-        }
-    }
-
-    func dropdownAlertWasTapped(alert: RKDropdownAlert!) -> Bool {
-        self.rootViewController?.performSegueWithIdentifier("showNotifications", sender: [alert.userInfo as! Notification])
-        return true
-    }
-
 }
 
