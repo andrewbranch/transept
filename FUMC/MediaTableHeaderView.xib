@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8187.4" systemVersion="15A279b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8151.3"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -16,45 +15,32 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="5L3-tO-72c" customClass="MediaTableHeaderView" customModule="FUMC" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yL4-Gp-UYC">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g8A-7c-Azn">
-                            <rect key="frame" x="75" y="27" width="28" height="14"/>
-                            <animations/>
+                            <rect key="frame" x="8" y="7" width="28" height="14"/>
                             <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="14"/>
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Liturgical day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pWA-Cc-VNt">
-                            <rect key="frame" x="75" y="48" width="78.5" height="14"/>
-                            <animations/>
+                            <rect key="frame" x="8" y="28" width="78.5" height="14"/>
                             <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="14"/>
                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="33s-fA-gTt">
-                            <rect key="frame" x="10" y="12" width="50" height="50"/>
-                            <animations/>
-                            <constraints>
-                                <constraint firstAttribute="width" secondItem="33s-fA-gTt" secondAttribute="height" multiplier="1:1" id="1fh-7K-yX8"/>
-                                <constraint firstAttribute="width" constant="50" id="e1Q-J6-XZi"/>
-                            </constraints>
-                        </imageView>
                     </subviews>
-                    <animations/>
                     <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="g8A-7c-Azn" firstAttribute="top" secondItem="yL4-Gp-UYC" secondAttribute="topMargin" id="BcD-GV-FGX"/>
-                        <constraint firstItem="pWA-Cc-VNt" firstAttribute="leading" secondItem="33s-fA-gTt" secondAttribute="trailing" constant="15" id="GR5-AC-xxu"/>
+                        <constraint firstItem="g8A-7c-Azn" firstAttribute="leading" secondItem="yL4-Gp-UYC" secondAttribute="leadingMargin" id="F6V-08-ev2"/>
                         <constraint firstItem="pWA-Cc-VNt" firstAttribute="top" secondItem="g8A-7c-Azn" secondAttribute="bottom" constant="7" id="Gy7-BM-7rd"/>
                         <constraint firstAttribute="bottomMargin" secondItem="pWA-Cc-VNt" secondAttribute="bottom" id="Urg-Iy-cgc"/>
                         <constraint firstItem="g8A-7c-Azn" firstAttribute="leading" secondItem="pWA-Cc-VNt" secondAttribute="leading" id="fQQ-H7-XpC"/>
-                        <constraint firstItem="33s-fA-gTt" firstAttribute="bottom" secondItem="pWA-Cc-VNt" secondAttribute="bottom" id="rtn-uN-2eQ"/>
-                        <constraint firstItem="33s-fA-gTt" firstAttribute="leading" secondItem="yL4-Gp-UYC" secondAttribute="leading" constant="10" id="sdX-pA-Vz7"/>
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
@@ -63,7 +49,6 @@
                     </variation>
                 </view>
             </subviews>
-            <animations/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="yL4-Gp-UYC" secondAttribute="trailing" id="CZj-k0-y08"/>
                 <constraint firstItem="yL4-Gp-UYC" firstAttribute="leading" secondItem="5L3-tO-72c" secondAttribute="leading" id="N0l-45-j7s"/>
@@ -74,10 +59,9 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="dateLabel" destination="g8A-7c-Azn" id="ayy-P4-BIc"/>
-                <outlet property="imageView" destination="33s-fA-gTt" id="G6L-bn-cgJ"/>
                 <outlet property="liturgicalDayLabel" destination="pWA-Cc-VNt" id="0Ny-42-bwA"/>
             </connections>
-            <point key="canvasLocation" x="529" y="-481"/>
+            <point key="canvasLocation" x="529" y="-471"/>
         </view>
     </objects>
 </document>

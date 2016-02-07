@@ -24,7 +24,7 @@ public protocol MediaTableViewDataSourceDelegate {
     func dataSource(dataSource: MediaTableViewDataSource, failedToLoadWithError error: ErrorType?) -> Void
 }
 
-public class MediaTableViewController: CustomTableViewController, MediaTableViewDataSourceDelegate, BulletinDelegate {
+public class MediaTableViewController: CustomTableViewController, MediaTableViewDataSourceDelegate {
     
     var dataSource: MediaTableViewDataSource?
 
@@ -38,7 +38,6 @@ public class MediaTableViewController: CustomTableViewController, MediaTableView
         self.tableView!.backgroundView?.hidden = self.dataSource!.loading || self.dataSource!.tableView(self.tableView!, numberOfRowsInSection: 0) > 0
         
         self.tableView!.registerNib(UINib(nibName: "MediaTableHeaderView", bundle: NSBundle.mainBundle()), forHeaderFooterViewReuseIdentifier: "MediaTableHeaderViewIdentifier")
-        self.registerWithBulletins()
     }
     
     override public func viewWillAppear(animated: Bool) {
@@ -62,27 +61,6 @@ public class MediaTableViewController: CustomTableViewController, MediaTableView
         self.dataSource!.refresh()
     }
     
-    func registerWithBulletins() {
-        (self.dataSource! as? BulletinsDataSource)?.bulletins.values.flatten().forEach { b in
-            b.delegate = self
-        }
-    }
-    
-    // MARK: - Bulletin delegate
-    
-    func bulletin(bulletin: Bulletin, didLoadPreviewImage image: UIImage) {
-        let bulletinsDataSource = (self.dataSource! as? BulletinsDataSource)
-        if let section = bulletinsDataSource?.bulletins.keys.sort(>).indexOf(bulletin.date) {
-            if (bulletinsDataSource!.bulletins[bulletin.date]?.indexOf(bulletin) == 0) {
-                if let header = self.tableView!.headerViewForSection(section) as? MediaTableHeaderView {
-                    header.imageView!.image = image
-                    header.imageView!.setNeedsDisplay()
-                }
-            }
-        }
-    }
-    
-    
     // MARK: - MediaTableViewDataSourceDelegate
     
     public func dataSourceDidStartLoadingAPI(dataSource: MediaTableViewDataSource) {
@@ -90,7 +68,6 @@ public class MediaTableViewController: CustomTableViewController, MediaTableView
     }
     
     public func dataSourceDidFinishLoadingAPI(dataSource: MediaTableViewDataSource) {
-        self.registerWithBulletins()
         self.tableView!.reloadData()
         self.tableViewController.refreshControl!.endRefreshing()
         self.hideLoadingView()

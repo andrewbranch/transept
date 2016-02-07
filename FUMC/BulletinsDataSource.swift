@@ -98,11 +98,6 @@ public class BulletinsDataSource: NSObject, MediaTableViewDataSource {
         }
         header.dateLabel!.text = self.dateFormatter.stringFromDate(date).uppercaseString
         header.liturgicalDayLabel!.text = self.bulletins[date]?[0].liturgicalDay
-        if let image = self.bulletins[date]?[0].previewImage {
-            header.imageView!.image = image
-        } else {
-            header.imageView!.image = nil
-        }
         
         return header
     }
