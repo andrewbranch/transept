@@ -1,12 +1,15 @@
 PODS:
+  - Locksmith (2.0.6)
   - NSDate+TimeAgo (1.0.3)
   - SwiftMoment (0.4)
 
 DEPENDENCIES:
+  - Locksmith
   - NSDate+TimeAgo
   - SwiftMoment
 
 SPEC CHECKSUMS:
+  Locksmith: 42ec3d535448e3c218f4342782b07a222b1acfd1
   NSDate+TimeAgo: 416f55d2696d3744c313091c5a9280d47f8238fe
   SwiftMoment: e751c44be03a183fa6c949426d9473d26a66ef29
 

@@ -9,6 +9,7 @@
 import UIKit
 import Fabric
 import Crashlytics
+import DigitsKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -54,9 +55,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().barTintColor = UIColor(white: 0.1, alpha: 1)
         UITabBar.appearance().selectionIndicatorImage = UIImage.imageFromColor(UIColor.blackColor(), forSize: CGSizeMake(UIScreen.mainScreen().bounds.width / 4, 49))
         
+        Digits.sharedInstance().startWithConsumerKey(Env.get("DIGITS_CONSUMER_KEY")!, consumerSecret: Env.get("DIGITS_CONSUMER_SECRET")!)
         #if !DEBUG
-        Fabric.with([Crashlytics(), Answers.self])
+        Fabric.with([Crashlytics(), Answers.self, Digits.self])
+        #else
+        Fabric.with([Digits.self])
         #endif
+        
+        
 
         return true
     }

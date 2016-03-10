@@ -22,6 +22,11 @@
 		49214F8E1BC0D2FE0098D2B4 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49214F8C1BC0D2FE0098D2B4 /* Video.swift */; };
 		494DF9DB1A3200C60040D02C /* CalendarSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494DF9DA1A3200C60040D02C /* CalendarSettingsTableViewCell.swift */; };
 		494F80981A3155C000403C6B /* CalendarSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494F80971A3155C000403C6B /* CalendarSettingsViewController.swift */; };
+		495C471A1C8A83940018F677 /* DigitsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 495C47171C8A83940018F677 /* DigitsKit.framework */; };
+		495C471B1C8A83940018F677 /* DigitsKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 495C47181C8A83940018F677 /* DigitsKitResources.bundle */; };
+		495C471C1C8A83940018F677 /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 495C47191C8A83940018F677 /* TwitterCore.framework */; };
+		495C471E1C8AC1060018F677 /* UIDeviceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495C471D1C8AC1060018F677 /* UIDeviceExtensions.swift */; };
+		495C47201C8D2E2B0018F677 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495C471F1C8D2E2B0018F677 /* AccessToken.swift */; };
 		49605DDE1BA571E3003633A1 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 49605DCB1BA571E3003633A1 /* AFHTTPRequestOperation.m */; };
 		49605DDF1BA571E3003633A1 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 49605DCD1BA571E3003633A1 /* AFHTTPRequestOperationManager.m */; };
 		49605DE01BA571E3003633A1 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 49605DCF1BA571E3003633A1 /* AFHTTPSessionManager.m */; };
@@ -86,7 +91,6 @@
 		49B2A3511A268070004EED86 /* RootTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B2A3211A268070004EED86 /* RootTabBarController.swift */; };
 		49B2A3521A268070004EED86 /* UIChangingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B2A3221A268070004EED86 /* UIChangingLabel.swift */; };
 		49B2A3531A268070004EED86 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B2A3231A268070004EED86 /* UIColorExtensions.swift */; };
-		49B2A3541A268070004EED86 /* UIDevice+Hardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B2A3251A268070004EED86 /* UIDevice+Hardware.m */; };
 		49B2A3551A268070004EED86 /* UIFontExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B2A3261A268070004EED86 /* UIFontExtensions.swift */; };
 		49B2A3561A268070004EED86 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B2A3271A268070004EED86 /* UIImageExtensions.swift */; };
 		49B2A3571A268070004EED86 /* UIPlaceHolderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B2A3291A268070004EED86 /* UIPlaceHolderTextView.m */; };
@@ -134,6 +138,11 @@
 		494DF9DA1A3200C60040D02C /* CalendarSettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarSettingsTableViewCell.swift; path = FUMC/CalendarSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		494F80971A3155C000403C6B /* CalendarSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarSettingsViewController.swift; path = FUMC/CalendarSettingsViewController.swift; sourceTree = "<group>"; };
 		495B5BEC1A2E44870033DE8D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		495C47171C8A83940018F677 /* DigitsKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DigitsKit.framework; sourceTree = "<group>"; };
+		495C47181C8A83940018F677 /* DigitsKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = DigitsKitResources.bundle; path = DigitsKit.framework/Versions/A/Resources/DigitsKitResources.bundle; sourceTree = "<group>"; };
+		495C47191C8A83940018F677 /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterCore.framework; sourceTree = "<group>"; };
+		495C471D1C8AC1060018F677 /* UIDeviceExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIDeviceExtensions.swift; path = FUMC/UIDeviceExtensions.swift; sourceTree = "<group>"; };
+		495C471F1C8D2E2B0018F677 /* AccessToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccessToken.swift; path = FUMC/AccessToken.swift; sourceTree = "<group>"; };
 		49605DCA1BA571E3003633A1 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		49605DCB1BA571E3003633A1 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		49605DCC1BA571E3003633A1 /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -316,8 +325,6 @@
 		49B2A3211A268070004EED86 /* RootTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RootTabBarController.swift; path = FUMC/RootTabBarController.swift; sourceTree = "<group>"; };
 		49B2A3221A268070004EED86 /* UIChangingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIChangingLabel.swift; path = FUMC/UIChangingLabel.swift; sourceTree = "<group>"; };
 		49B2A3231A268070004EED86 /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColorExtensions.swift; path = FUMC/UIColorExtensions.swift; sourceTree = "<group>"; };
-		49B2A3241A268070004EED86 /* UIDevice+Hardware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIDevice+Hardware.h"; path = "FUMC/UIDevice+Hardware.h"; sourceTree = "<group>"; };
-		49B2A3251A268070004EED86 /* UIDevice+Hardware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIDevice+Hardware.m"; path = "FUMC/UIDevice+Hardware.m"; sourceTree = "<group>"; };
 		49B2A3261A268070004EED86 /* UIFontExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIFontExtensions.swift; path = FUMC/UIFontExtensions.swift; sourceTree = "<group>"; };
 		49B2A3271A268070004EED86 /* UIImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIImageExtensions.swift; path = FUMC/UIImageExtensions.swift; sourceTree = "<group>"; };
 		49B2A3281A268070004EED86 /* UIPlaceHolderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIPlaceHolderTextView.h; path = FUMC/UIPlaceHolderTextView.h; sourceTree = "<group>"; };
@@ -348,6 +355,8 @@
 				4915A7461BCADBBD008D958F /* AVFoundation.framework in Frameworks */,
 				4915A7441BCADAF0008D958F /* AVKit.framework in Frameworks */,
 				4916F2FD1B4118DB001412D3 /* EventKit.framework in Frameworks */,
+				495C471A1C8A83940018F677 /* DigitsKit.framework in Frameworks */,
+				495C471C1C8A83940018F677 /* TwitterCore.framework in Frameworks */,
 				4916F2FE1B4118DB001412D3 /* EventKitUI.framework in Frameworks */,
 				49B2A3671A26829D004EED86 /* Crashlytics.framework in Frameworks */,
 				49B2A3681A26829D004EED86 /* Fabric.framework in Frameworks */,
@@ -633,6 +642,9 @@
 				49B2A3121A268070004EED86 /* FUMC-Bridging-Header.h */,
 				49B2A2D31A268022004EED86 /* FUMC */,
 				49B2A3641A26829D004EED86 /* Crashlytics.framework */,
+				495C47171C8A83940018F677 /* DigitsKit.framework */,
+				495C47181C8A83940018F677 /* DigitsKitResources.bundle */,
+				495C47191C8A83940018F677 /* TwitterCore.framework */,
 				49B2A3651A26829D004EED86 /* Fabric.framework */,
 				49B2A2EB1A268022004EED86 /* FUMCTests */,
 				49B2A2D21A268022004EED86 /* Products */,
@@ -716,6 +728,7 @@
 				49B2A32A1A268070004EED86 /* Witness.swift */,
 				49214F8C1BC0D2FE0098D2B4 /* Video.swift */,
 				49D491B51BC9A8F0004B4D0E /* VideoAlbum.swift */,
+				495C471F1C8D2E2B0018F677 /* AccessToken.swift */,
 			);
 			name = Models;
 			path = ..;
@@ -807,8 +820,6 @@
 				49B2A3201A268070004EED86 /* Reachability.m */,
 				49B2A3221A268070004EED86 /* UIChangingLabel.swift */,
 				49B2A3231A268070004EED86 /* UIColorExtensions.swift */,
-				49B2A3241A268070004EED86 /* UIDevice+Hardware.h */,
-				49B2A3251A268070004EED86 /* UIDevice+Hardware.m */,
 				49B2A3261A268070004EED86 /* UIFontExtensions.swift */,
 				49B2A3271A268070004EED86 /* UIImageExtensions.swift */,
 				490C65A51A33895D00E87130 /* NSDateExtensions.swift */,
@@ -817,6 +828,7 @@
 				4900737C1A342D820086CE0B /* DictionaryExtensions.swift */,
 				49C225061BA496A700D94552 /* Env.swift */,
 				499D1F4A1C5EB8AF00B1FF70 /* StringExtensions.swift */,
+				495C471D1C8AC1060018F677 /* UIDeviceExtensions.swift */,
 			);
 			name = Utilities;
 			path = ..;
@@ -1003,6 +1015,7 @@
 				49F2615D1B9CF22700FE027D /* MediaTableHeaderView.xib in Resources */,
 				49B2A32D1A268070004EED86 /* Main.storyboard in Resources */,
 				49B2A3391A268070004EED86 /* CalendarTableViewCell.xib in Resources */,
+				495C471B1C8A83940018F677 /* DigitsKitResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1105,6 +1118,7 @@
 				49605DE61BA571E3003633A1 /* AFURLSessionManager.m in Sources */,
 				49209A511A360BD600DDD45E /* RadioView.swift in Sources */,
 				49F2615B1B9CF20D00FE027D /* MediaTableHeaderView.swift in Sources */,
+				495C47201C8D2E2B0018F677 /* AccessToken.swift in Sources */,
 				49D507A21A37C18E00531F23 /* CalendarTableViewAllDayCell.swift in Sources */,
 				49605DE31BA571E3003633A1 /* AFURLConnectionOperation.m in Sources */,
 				49A569881A40807500B6F1E4 /* CalendarSettingsSelectTableViewCell.swift in Sources */,
@@ -1124,7 +1138,6 @@
 				49B2A3531A268070004EED86 /* UIColorExtensions.swift in Sources */,
 				49605DE01BA571E3003633A1 /* AFHTTPSessionManager.m in Sources */,
 				49B2A34C1A268070004EED86 /* MediaWebViewController.swift in Sources */,
-				49B2A3541A268070004EED86 /* UIDevice+Hardware.m in Sources */,
 				49B2A3591A268070004EED86 /* WitnessesDataSource.swift in Sources */,
 				49A9B1761BA6026C00109D3D /* VideoAlbumsTableViewController.swift in Sources */,
 				49B2A3581A268070004EED86 /* Witness.swift in Sources */,
@@ -1134,6 +1147,7 @@
 				49B2A33A1A268070004EED86 /* CalendarTableViewController.swift in Sources */,
 				499D1F4B1C5EB8AF00B1FF70 /* StringExtensions.swift in Sources */,
 				49605DE51BA571E3003633A1 /* AFURLResponseSerialization.m in Sources */,
+				495C471E1C8AC1060018F677 /* UIDeviceExtensions.swift in Sources */,
 				49B2A3481A268070004EED86 /* MediaMasterTableViewCell.swift in Sources */,
 				49B2A3401A268070004EED86 /* CustomTableViewController.swift in Sources */,
 				49852DC81BC1E2D200E7F30E /* ExSwift.swift in Sources */,

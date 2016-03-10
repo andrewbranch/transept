@@ -3,3 +3,4 @@ use_frameworks!
 
 pod 'NSDate+TimeAgo', :inhibit_warnings => true
 pod 'SwiftMoment', :inhibit_warnings => true
+pod 'Locksmith'

@@ -8,8 +8,17 @@
 
 import Foundation
 import UIKit
+import DigitsKit
+
+public struct Result<T> {
+    let f: () throws -> T
+}
 
 class API: NSObject {
+    
+    enum Scopes: String {
+        case DirectoryFullReadAccess = "directory_full_read_access"
+    }
     
     private class var instance: API {
         struct Static {
@@ -25,7 +34,7 @@ class API: NSObject {
     private let lock = NSLock()
     private let dateFormatter = NSDateFormatter()
     #if DEBUG   
-    private let base = "https://api.fumcpensacola.com/v3"
+    private let base = "http://localhost:3000/v3"
     #else
     private let base = "https://api.fumcpensacola.com/v3"
     #endif
@@ -265,6 +274,39 @@ class API: NSObject {
     
     func fileURL(key key: String) -> NSURL? {
          return NSURL(string: "\(base)/file/\(key.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!)")
+    }
+    
+    func getAuthToken(session: DGTSession, scopes: [Scopes], completed: (token: Result<AccessToken>) -> Void) {
+        let digits = Digits.sharedInstance()
+        let oauthSigning = DGTOAuthSigning(authConfig: digits.authConfig, authSession: session)
+        let authHeaders = oauthSigning.OAuthEchoHeadersToVerifyCredentials() as! [String : AnyObject]
+        let url = NSURL(string: "\(base)/authenticate/digits")
+        let request = NSMutableURLRequest(URL: url!)
+        request.setValue(authHeaders["X-Auth-Service-Provider"] as! String!, forHTTPHeaderField: "X-Auth-Service-Provider")
+        request.setValue(authHeaders["X-Verify-Credentials-Authorization"] as! String!, forHTTPHeaderField: "X-Verify-Credentials-Authorization")
+        request.HTTPMethod = "POST"
+        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { response, data, error in
+            guard error == nil else {
+                return completed(token: Result { throw error! })
+            }
+            guard (response as! NSHTTPURLResponse).statusCode == 200 else {
+                return completed(token: Result<AccessToken> {
+                    throw NSError(domain: "NSURLDomainError", code: 0, userInfo: ["response": response as! NSHTTPURLResponse])
+                })
+            }
+            guard let data = data else {
+                return completed(token: Result {
+                    throw NSError(domain: "com.fumcpensacola.transept", code: 2, userInfo: nil)
+                })
+            }
+            guard let token = try? AccessToken(rawJSON: data) else {
+                return completed(token: Result {
+                    throw NSError(domain: "com.fumcpensacola.transept", code: 2, userInfo: nil)
+                })
+            }
+            
+            completed(token: Result { token })
+        }
     }
    
 }

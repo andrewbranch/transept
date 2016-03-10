@@ -7,7 +7,6 @@
 //
 
 #import "UIPlaceHolderTextView.h"
-#import "UIDevice+Hardware.h"
 #import "Reachability.h"
 //#import "BBBadgeBarButtonItem.h"
 //#import "NSDate+TimeAgo.h"
