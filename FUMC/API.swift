@@ -9,9 +9,10 @@
 import Foundation
 import UIKit
 import DigitsKit
+import Locksmith
 
 public struct Result<T> {
-    let f: () throws -> T
+    let value: () throws -> T
 }
 
 class API: NSObject {
@@ -38,6 +39,18 @@ class API: NSObject {
     #else
     private let base = "https://api.fumcpensacola.com/v3"
     #endif
+    
+    var accessToken: AccessToken?
+    var hasAccessToken: Bool {
+        return self.accessToken != nil
+    }
+    
+    override init() {
+        super.init()
+        if let keychainToken = try? Locksmith.loadDataForUserAccount("accessToken") {
+            self.accessToken = try? AccessToken(rawJSON: keychainToken!["rawJSON"] as! NSData)
+        }
+    }
     
     func getCalendars(completed: (calendars: [Calendar], error: ErrorType?) -> Void) {
         let url = NSURL(string: "\(base)/calendars")

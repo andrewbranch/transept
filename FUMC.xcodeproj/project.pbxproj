@@ -722,13 +722,13 @@
 			isa = PBXGroup;
 			children = (
 				49A5696F1A39F66500B6F1E4 /* API.swift */,
+				495C471F1C8D2E2B0018F677 /* AccessToken.swift */,
 				490C659E1A3230A700E87130 /* Calendar.swift */,
 				49B2A3031A268070004EED86 /* CalendarEvent.swift */,
 				49B2A3011A268070004EED86 /* Bulletin.swift */,
 				49B2A32A1A268070004EED86 /* Witness.swift */,
 				49214F8C1BC0D2FE0098D2B4 /* Video.swift */,
 				49D491B51BC9A8F0004B4D0E /* VideoAlbum.swift */,
-				495C471F1C8D2E2B0018F677 /* AccessToken.swift */,
 			);
 			name = Models;
 			path = ..;

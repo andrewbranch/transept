@@ -9,11 +9,11 @@
 import UIKit
 import SwiftMoment
 
-class AccessToken: NSObject {
-    var signed: String
-    var scopes: [String]
-    var expires: NSDate
-    var rawJSON: String
+struct AccessToken {
+    var signed: String!
+    var scopes: [String]!
+    var expires: NSDate!
+    var rawJSON: NSData!
     
     init(rawJSON: NSData) throws {
         guard let jsonDictionary = try? NSJSONSerialization.JSONObjectWithData(rawJSON, options: .AllowFragments) else {
@@ -23,6 +23,6 @@ class AccessToken: NSObject {
         self.signed = jsonDictionary["access_token"] as! String
         self.scopes = jsonDictionary["scopes"] as! [String]
         self.expires = moment(jsonDictionary["expires"] as! String)!.date
-        self.rawJSON = String(data: rawJSON, encoding: NSUTF8StringEncoding)!
+        self.rawJSON = rawJSON
     }
 }

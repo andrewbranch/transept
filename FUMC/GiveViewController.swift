@@ -9,6 +9,7 @@
 import UIKit
 import Crashlytics
 import DigitsKit
+import Locksmith
 
 class GiveViewController: UIViewController {
     
@@ -39,7 +40,12 @@ class GiveViewController: UIViewController {
         let authButton = DGTAuthenticateButton(authenticationCompletion: { (session: DGTSession?, error: NSError?) in
             if let session = session {
                 API.shared().getAuthToken(session, scopes: [.DirectoryFullReadAccess]) { token in
-                    if let token = try? token {
+                    do {
+                        let token = try token.value()
+                        API.shared().accessToken = token
+                        try Locksmith.saveData(["rawJSON": token.rawJSON], forUserAccount: "accessToken")
+                        
+                    } catch {
                         
                     }
                 }
