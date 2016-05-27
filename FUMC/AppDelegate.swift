@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var bulletinsDataSource = BulletinsDataSource(delegate: nil)
     var witnessesDataSource = WitnessesDataSource(delegate: nil)
     var videosDataSource = VideosDataSource(delegate: nil)
+    var directoryDataSource = DirectoryDataSource(delegate: nil)
     var rootViewController: RootTabBarController?
     
     #if DEBUG

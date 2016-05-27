@@ -36,26 +36,6 @@ class GiveViewController: UIViewController {
         self.button!.layer.borderColor = UIColor.fumcMagentaColor().CGColor
         self.button!.layer.borderWidth = 2
         self.button!.layer.cornerRadius = 10
-        
-        let authButton = DGTAuthenticateButton(authenticationCompletion: { (session: DGTSession?, error: NSError?) in
-            if let session = session {
-                API.shared().getAuthToken(session, scopes: [.DirectoryFullReadAccess]) { token in
-                    do {
-                        let token = try token.value()
-                        API.shared().accessToken = token
-                        try Locksmith.saveData(["rawJSON": token.rawJSON], forUserAccount: "accessToken")
-                        
-                    } catch {
-                        
-                    }
-                }
-            } else {
-                NSLog("Authentication error: %@", error!.localizedDescription)
-            }
-        })
-        authButton.center = self.view.center
-        self.view.addSubview(authButton)
-
     }
 
     override func viewDidAppear(animated: Bool) {

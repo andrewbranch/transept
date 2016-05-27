@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F31a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="MyriadPro-Regular.otf">
-            <string>MyriadPro-Regular</string>
             <string>MyriadPro-Regular</string>
             <string>MyriadPro-Regular</string>
             <string>MyriadPro-Regular</string>
@@ -688,9 +687,9 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                         <segue destination="MgL-sn-56f" kind="presentation" identifier="showNotifications" id="lCV-Rg-9Tn"/>
                         <segue destination="F01-YL-vfW" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="Vfr-j3-gCB" kind="relationship" relationship="viewControllers" id="TRb-vE-61L"/>
+                        <segue destination="Zj0-4s-Jod" kind="relationship" relationship="viewControllers" id="Qle-Xw-4qS"/>
                         <segue destination="R3l-68-kGD" kind="relationship" relationship="viewControllers" id="BMx-i6-p7l"/>
                         <segue destination="Z5N-s7-vGE" kind="relationship" relationship="viewControllers" id="FL8-EP-5wc"/>
-                        <segue destination="ACY-N0-XLh" kind="presentation" identifier="youCanLiveStreamNow" modalPresentationStyle="overCurrentContext" id="mzh-Cg-cr5"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -891,70 +890,6 @@ Thank you for your generous support of First United Methodist Church of Pensacol
             </objects>
             <point key="canvasLocation" x="1002" y="870"/>
         </scene>
-        <!--You Can Live Stream View Controller-->
-        <scene sceneID="yNk-ST-RIu">
-            <objects>
-                <viewController id="ACY-N0-XLh" customClass="YouCanLiveStreamViewController" customModule="FUMC" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="z9l-4Q-TM9"/>
-                        <viewControllerLayoutGuide type="bottom" id="FuU-Gg-iZb"/>
-                    </layoutGuides>
-                    <view key="view" opaque="NO" contentMode="scaleToFill" id="UJ4-FO-FGE">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sGU-Pq-0Hp">
-                                <rect key="frame" x="176" y="140" width="248" height="134"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="260" id="xHp-vx-9zq"/>
-                                </constraints>
-                                <attributedString key="attributedText">
-                                    <fragment content="Live streaming and sermon recordings are now available in the Media tab.">
-                                        <attributes>
-                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="26" name="MyriadPro-Regular"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="10" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uU4-Kf-ip9">
-                                <rect key="frame" x="241" y="524" width="118" height="46"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="46" id="kXm-Ed-D9u"/>
-                                    <constraint firstAttribute="width" constant="118" id="uCm-Pf-0eo"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="18"/>
-                                <state key="normal" title="Got it!">
-                                    <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="dismiss" destination="ACY-N0-XLh" eventType="touchUpInside" id="IEr-JZ-QSf"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.85275021114864868" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="uU4-Kf-ip9" firstAttribute="top" relation="greaterThanOrEqual" secondItem="sGU-Pq-0Hp" secondAttribute="bottom" constant="20" id="Ny9-xV-dSe"/>
-                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="sGU-Pq-0Hp" secondAttribute="trailing" id="ZHG-Gm-p2X"/>
-                            <constraint firstItem="FuU-Gg-iZb" firstAttribute="top" secondItem="uU4-Kf-ip9" secondAttribute="bottom" priority="1" constant="30" id="h7G-vt-C0P"/>
-                            <constraint firstItem="uU4-Kf-ip9" firstAttribute="centerX" secondItem="UJ4-FO-FGE" secondAttribute="centerX" id="hGn-ld-lsT"/>
-                            <constraint firstItem="sGU-Pq-0Hp" firstAttribute="top" secondItem="z9l-4Q-TM9" secondAttribute="bottom" priority="1" constant="120" id="hkk-2Y-pP6"/>
-                            <constraint firstItem="sGU-Pq-0Hp" firstAttribute="centerX" secondItem="UJ4-FO-FGE" secondAttribute="centerX" id="pOQ-1P-jC6"/>
-                            <constraint firstItem="sGU-Pq-0Hp" firstAttribute="top" relation="greaterThanOrEqual" secondItem="z9l-4Q-TM9" secondAttribute="bottom" priority="2" constant="50" id="rBp-lJ-5kX"/>
-                            <constraint firstItem="sGU-Pq-0Hp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="UJ4-FO-FGE" secondAttribute="leadingMargin" id="yMI-NU-NdQ"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="dismissButton" destination="uU4-Kf-ip9" id="MlJ-N6-ZPA"/>
-                        <outlet property="label" destination="sGU-Pq-0Hp" id="o0Z-us-Qvo"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="OnJ-Ej-2aG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1000" y="1631"/>
-        </scene>
         <!--Connect-->
         <scene sceneID="0TO-EI-K7n">
             <objects>
@@ -989,6 +924,35 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p27-lD-mFv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1673" y="870"/>
+        </scene>
+        <!--Directory-->
+        <scene sceneID="lL8-WX-xcf">
+            <objects>
+                <tableViewController id="NTO-8z-oGS" customClass="DirectoryTableViewController" customModule="FUMC" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="4y0-R4-an4">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="directoryTableVewCell" id="6e9-rX-ceK">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6e9-rX-ceK" id="46C-ID-abp">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="NTO-8z-oGS" id="Oyo-jC-ApI"/>
+                            <outlet property="delegate" destination="NTO-8z-oGS" id="5Wr-mO-kyf"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Directory" id="p8Z-Uf-aAB"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QD1-yb-MgJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1673" y="1583"/>
         </scene>
         <!--Prayer Request-->
         <scene sceneID="qbt-Rg-k3e">
@@ -1200,6 +1164,25 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pie-iA-v0X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3121" y="-2091"/>
+        </scene>
+        <!--Directory-->
+        <scene sceneID="SRx-fi-EHA">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Zj0-4s-Jod" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Directory" id="x8M-nQ-v8p"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gGB-dX-Q6Y">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="NTO-8z-oGS" kind="relationship" relationship="rootViewController" id="Kag-VM-E6D"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="olr-iL-Aem" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1002" y="1583"/>
         </scene>
     </scenes>
     <resources>

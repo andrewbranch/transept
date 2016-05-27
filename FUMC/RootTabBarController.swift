@@ -8,27 +8,19 @@
 
 import UIKit
 
-class RootTabBarController: UITabBarController {
+class RootTabBarController: UITabBarController, UITabBarControllerDelegate {
     
-    func knowsYouCanLiveStream() -> Bool {
-        return NSUserDefaults.standardUserDefaults().boolForKey("knowsYouCanLiveStream")
-    }
-
+    private var appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        (UIApplication.sharedApplication().delegate as! AppDelegate).rootViewController = self
+        self.delegate = self
+        appDelegate.rootViewController = self
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        if !self.knowsYouCanLiveStream() {
-            self.performSegueWithIdentifier("youCanLiveStreamNow", sender: self)
+    func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
+        if (viewController is DirectoryTableViewController) {
+            (viewController as! DirectoryTableViewController).dataSource = appDelegate.directoryDataSource
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 }

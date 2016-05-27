@@ -41,6 +41,8 @@
 		49804B281C5E88CE005AE154 /* VideosTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49804B251C5E88CE005AE154 /* VideosTableViewCell.xib */; };
 		49804B291C5E88CE005AE154 /* VideosTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49804B251C5E88CE005AE154 /* VideosTableViewCell.xib */; };
 		49852DC81BC1E2D200E7F30E /* ExSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49852DC71BC1E2D200E7F30E /* ExSwift.swift */; };
+		499C00C81CF7FE4400D4F94D /* DirectoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499C00C71CF7FE4400D4F94D /* DirectoryTableViewController.swift */; };
+		499C00CA1CF7FF5E00D4F94D /* DirectoryDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499C00C91CF7FF5E00D4F94D /* DirectoryDataSource.swift */; };
 		499D1F4B1C5EB8AF00B1FF70 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D1F4A1C5EB8AF00B1FF70 /* StringExtensions.swift */; };
 		499D1F4C1C5EB8AF00B1FF70 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D1F4A1C5EB8AF00B1FF70 /* StringExtensions.swift */; };
 		499D1F4E1C5ECB9600B1FF70 /* YouCanLiveStreamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D1F4D1C5ECB9600B1FF70 /* YouCanLiveStreamViewController.swift */; };
@@ -271,6 +273,8 @@
 		49804B241C5E88CE005AE154 /* VideosTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideosTableViewCell.swift; path = FUMC/VideosTableViewCell.swift; sourceTree = "<group>"; };
 		49804B251C5E88CE005AE154 /* VideosTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VideosTableViewCell.xib; path = FUMC/VideosTableViewCell.xib; sourceTree = "<group>"; };
 		49852DC71BC1E2D200E7F30E /* ExSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExSwift.swift; path = FUMC/ExSwift.swift; sourceTree = "<group>"; };
+		499C00C71CF7FE4400D4F94D /* DirectoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DirectoryTableViewController.swift; path = FUMC/DirectoryTableViewController.swift; sourceTree = "<group>"; };
+		499C00C91CF7FF5E00D4F94D /* DirectoryDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DirectoryDataSource.swift; path = FUMC/DirectoryDataSource.swift; sourceTree = "<group>"; };
 		499D1F4A1C5EB8AF00B1FF70 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtensions.swift; path = FUMC/StringExtensions.swift; sourceTree = "<group>"; };
 		499D1F4D1C5ECB9600B1FF70 /* YouCanLiveStreamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YouCanLiveStreamViewController.swift; path = FUMC/YouCanLiveStreamViewController.swift; sourceTree = "<group>"; };
 		499D1F501C5ED9C700B1FF70 /* Secrets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Secrets.plist; path = FUMC/Secrets.plist; sourceTree = "<group>"; };
@@ -635,6 +639,14 @@
 			path = VIMObjectMapper/VIMObjectMapper;
 			sourceTree = "<group>";
 		};
+		499C00C61CF7FDDB00D4F94D /* Directory */ = {
+			isa = PBXGroup;
+			children = (
+				499C00C71CF7FE4400D4F94D /* DirectoryTableViewController.swift */,
+			);
+			name = Directory;
+			sourceTree = "<group>";
+		};
 		49B2A2C81A268022004EED86 = {
 			isa = PBXGroup;
 			children = (
@@ -741,6 +753,7 @@
 				49B2A32B1A268070004EED86 /* WitnessesDataSource.swift */,
 				490C65A31A324F7700E87130 /* CalendarsDataSource.swift */,
 				49A9B1771BA602B100109D3D /* VideosDataSource.swift */,
+				499C00C91CF7FF5E00D4F94D /* DirectoryDataSource.swift */,
 			);
 			name = "Data Sources";
 			path = ..;
@@ -781,6 +794,7 @@
 				49B2A3211A268070004EED86 /* RootTabBarController.swift */,
 				49B2A30E1A268070004EED86 /* CustomTableViewController.swift */,
 				499D1F4D1C5ECB9600B1FF70 /* YouCanLiveStreamViewController.swift */,
+				499C00C61CF7FDDB00D4F94D /* Directory */,
 				49B2A35F1A2680CD004EED86 /* Calendar */,
 				49B2A3631A26816D004EED86 /* Media */,
 				49B2A3601A2680E5004EED86 /* Connect */,
@@ -1129,6 +1143,7 @@
 				49A569701A39F66500B6F1E4 /* API.swift in Sources */,
 				490C65A41A324F7700E87130 /* CalendarsDataSource.swift in Sources */,
 				49B2A3361A268070004EED86 /* CalendarTableHeaderView.swift in Sources */,
+				499C00CA1CF7FF5E00D4F94D /* DirectoryDataSource.swift in Sources */,
 				49D491B61BC9A8F0004B4D0E /* VideoAlbum.swift in Sources */,
 				49B2A34A1A268070004EED86 /* MediaMasterTableViewController.swift in Sources */,
 				49605DDE1BA571E3003633A1 /* AFHTTPRequestOperation.m in Sources */,
@@ -1152,6 +1167,7 @@
 				49B2A3401A268070004EED86 /* CustomTableViewController.swift in Sources */,
 				49852DC81BC1E2D200E7F30E /* ExSwift.swift in Sources */,
 				49A569741A3A5ACD00B6F1E4 /* ActivityIndicatorView.swift in Sources */,
+				499C00C81CF7FE4400D4F94D /* DirectoryTableViewController.swift in Sources */,
 				49A9B1781BA602B100109D3D /* VideosDataSource.swift in Sources */,
 				49605DE41BA571E3003633A1 /* AFURLRequestSerialization.m in Sources */,
 				49B2A33F1A268070004EED86 /* ConnectTableViewController.swift in Sources */,
