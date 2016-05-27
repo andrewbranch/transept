@@ -19,8 +19,8 @@ class RootTabBarController: UITabBarController, UITabBarControllerDelegate {
     }
     
     func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
-        if (viewController is DirectoryTableViewController) {
-            (viewController as! DirectoryTableViewController).dataSource = appDelegate.directoryDataSource
+        if (viewController is UINavigationController && (viewController as! UINavigationController).viewControllers[0] is DirectoryTableViewController) {
+            ((viewController as! UINavigationController).viewControllers[0] as! DirectoryTableViewController).dataSource = appDelegate.directoryDataSource
         }
     }
 }

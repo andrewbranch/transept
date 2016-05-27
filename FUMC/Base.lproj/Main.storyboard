@@ -926,31 +926,47 @@ Thank you for your generous support of First United Methodist Church of Pensacol
             <point key="canvasLocation" x="1673" y="870"/>
         </scene>
         <!--Directory-->
-        <scene sceneID="lL8-WX-xcf">
+        <scene sceneID="Bff-ch-22E">
             <objects>
-                <tableViewController id="NTO-8z-oGS" customClass="DirectoryTableViewController" customModule="FUMC" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="4y0-R4-an4">
+                <viewController id="iMA-af-USa" customClass="DirectoryTableViewController" customModule="FUMC" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Fz6-E3-t0d"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZW0-be-8dB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Zia-ty-23q">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Zmm-O1-W60">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="directoryTableViewCell" id="5eF-f8-cxt">
+                                        <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5eF-f8-cxt" id="3ou-oW-ZJR">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="directoryTableVewCell" id="6e9-rX-ceK">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6e9-rX-ceK" id="46C-ID-abp">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="NTO-8z-oGS" id="Oyo-jC-ApI"/>
-                            <outlet property="delegate" destination="NTO-8z-oGS" id="5Wr-mO-kyf"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Directory" id="p8Z-Uf-aAB"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QD1-yb-MgJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <constraints>
+                            <constraint firstItem="Zmm-O1-W60" firstAttribute="top" secondItem="Zia-ty-23q" secondAttribute="top" id="4X5-tZ-y6u"/>
+                            <constraint firstItem="Zmm-O1-W60" firstAttribute="leading" secondItem="Zia-ty-23q" secondAttribute="leading" id="NIL-Pj-iYC"/>
+                            <constraint firstAttribute="trailing" secondItem="Zmm-O1-W60" secondAttribute="trailing" id="RkP-Z8-OMc"/>
+                            <constraint firstItem="Zmm-O1-W60" firstAttribute="top" secondItem="Zia-ty-23q" secondAttribute="top" id="csu-jQ-kl9"/>
+                            <constraint firstItem="ZW0-be-8dB" firstAttribute="top" secondItem="Zmm-O1-W60" secondAttribute="bottom" id="nNR-Fz-Doh"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Directory" id="kxk-UY-s79"/>
+                    <connections>
+                        <outlet property="tableView" destination="Zmm-O1-W60" id="yfq-Cr-36C"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XQ1-BM-33i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1673" y="1583"/>
         </scene>
@@ -1177,7 +1193,7 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="NTO-8z-oGS" kind="relationship" relationship="rootViewController" id="Kag-VM-E6D"/>
+                        <segue destination="iMA-af-USa" kind="relationship" relationship="rootViewController" id="OMS-gy-dkN"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="olr-iL-Aem" userLabel="First Responder" sceneMemberID="firstResponder"/>
