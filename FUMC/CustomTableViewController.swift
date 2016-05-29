@@ -34,7 +34,7 @@ public class CustomTableViewController: UIViewController, ErrorAlertable {
         
         self.tableViewController.tableView = self.tableView!
         self.tableViewController.refreshControl = self.refreshControl
-        self.refreshControl.addTarget(self, action: "reloadData", forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl.addTarget(self, action: #selector(CustomTableViewController.reloadData), forControlEvents: UIControlEvents.ValueChanged)
         
         self.tableView!.backgroundView = self.backgroundView
         

@@ -45,12 +45,12 @@ class API: NSObject {
         return self.accessToken != nil
     }
     
-//    override init() {
-//        super.init()
-//        if let keychainToken = try? Locksmith.loadDataForUserAccount("accessToken") {
-//            self.accessToken = try? AccessToken(rawJSON: keychainToken!["rawJSON"] as! NSData)
-//        }
-//    }
+    override init() {
+        super.init()
+        if let keychainToken = Locksmith.loadDataForUserAccount("accessToken") {
+            self.accessToken = try? AccessToken(rawJSON: keychainToken["rawJSON"] as! NSData)
+        }
+    }
     
     func getCalendars(completed: (calendars: [Calendar], error: ErrorType?) -> Void) {
         let url = NSURL(string: "\(base)/calendars")

@@ -99,7 +99,7 @@ class CalendarSettingsViewController: UIViewController, UITableViewDelegate, Cal
         } else if (indexPath.row == 0) {
             if (self.selectButton == nil) {
                 self.selectButton = (cell as! CalendarSettingsSelectTableViewCell).selectButton
-                self.selectButton!.addTarget(self, action: "toggleSelection:", forControlEvents: UIControlEvents.TouchUpInside)
+                self.selectButton!.addTarget(self, action: #selector(CalendarSettingsViewController.toggleSelection(_:)), forControlEvents: UIControlEvents.TouchUpInside)
                 setButtonText()
             }
         }

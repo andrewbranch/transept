@@ -22,10 +22,10 @@ class ConnectTableFooterView: UITableViewHeaderFooterView {
         self.border!.backgroundColor = UIColor(white: 0, alpha: 0.1).CGColor
         self.layer.addSublayer(self.border!)
 
-        self.facebookView!.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "tappedFacebook"))
-        self.twitterView!.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "tappedTwitter"))
-        self.vimeoView!.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "tappedVimeo"))
-        self.instagramView!.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "tappedInstagram"))
+        self.facebookView!.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ConnectTableFooterView.tappedFacebook)))
+        self.twitterView!.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ConnectTableFooterView.tappedTwitter)))
+        self.vimeoView!.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ConnectTableFooterView.tappedVimeo)))
+        self.instagramView!.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ConnectTableFooterView.tappedInstagram)))
     }
     
     func tappedFacebook() {

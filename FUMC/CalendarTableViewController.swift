@@ -95,7 +95,7 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
         let events = calendars.map({ $0.events }).reduce([], combine: +).sort({
             return NSCalendar.currentCalendar().compareDate($0.from, toDate: $1.from, toUnitGranularity: NSCalendarUnit.Minute) == NSComparisonResult.OrderedAscending
         })
-        for (var i = 0; i < 7; i++) {
+        for (var i = 0; i < 7; i += 1) {
             let date = NSDate(timeIntervalSinceNow: 60 * 60 * 24 * Double(i)).midnight()
             structured[date] = events.filter { $0.from.midnight() == date }
         }

@@ -29,7 +29,7 @@ class PrayerRequestViewController: UIViewController, UITextViewDelegate, UIAlert
         toolbar.barStyle = UIBarStyle.Default
         toolbar.items = [
             UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target:nil, action:nil),
-            UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: "dismissKeyboard"),
+            UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: #selector(PrayerRequestViewController.dismissKeyboard)),
         ]
         (toolbar.items![1] as UIBarButtonItem).setTitleTextAttributes([
             NSFontAttributeName: UIFont.systemFontOfSize(16),

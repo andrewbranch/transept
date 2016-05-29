@@ -75,6 +75,6 @@ class UIChangingLabel: UIView {
     
     func beginAnimating() {
         timer?.invalidate()
-        self.timer = NSTimer.scheduledTimerWithTimeInterval(self.changeInterval, target: self, selector: "change", userInfo: nil, repeats: true)
+        self.timer = NSTimer.scheduledTimerWithTimeInterval(self.changeInterval, target: self, selector: #selector(UIChangingLabel.change), userInfo: nil, repeats: true)
     }
 }
