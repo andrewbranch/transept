@@ -11,7 +11,7 @@ import SwiftMoment
 
 struct AccessToken {
     var signed: String!
-    var scopes: [String]!
+    var scopes: [API.Scopes]!
     var expires: NSDate!
     var rawJSON: NSData!
     
@@ -21,7 +21,7 @@ struct AccessToken {
         }
         
         self.signed = jsonDictionary["access_token"] as! String
-        self.scopes = jsonDictionary["scopes"] as! [String]
+        self.scopes = (jsonDictionary["scopes"] as! [String]).flatMap { API.Scopes(rawValue: $0) }
         self.expires = moment(jsonDictionary["expires"] as! String)!.date
         self.rawJSON = rawJSON
     }

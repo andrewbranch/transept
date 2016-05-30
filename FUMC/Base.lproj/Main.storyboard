@@ -951,18 +951,38 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tza-cl-FS0">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Gv-OQ-6dV">
+                                        <rect key="frame" x="261" y="228.5" width="78" height="30"/>
+                                        <state key="normal" title="Get Access"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="7Gv-OQ-6dV" firstAttribute="centerX" secondItem="tza-cl-FS0" secondAttribute="centerX" id="wW8-z5-mha"/>
+                                    <constraint firstItem="7Gv-OQ-6dV" firstAttribute="centerY" secondItem="tza-cl-FS0" secondAttribute="centerY" id="yGx-Fm-RZX"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Zmm-O1-W60" firstAttribute="top" secondItem="Zia-ty-23q" secondAttribute="top" id="4X5-tZ-y6u"/>
+                            <constraint firstItem="tza-cl-FS0" firstAttribute="top" secondItem="Fz6-E3-t0d" secondAttribute="bottom" id="5nc-Ze-Bv8"/>
+                            <constraint firstItem="tza-cl-FS0" firstAttribute="leading" secondItem="Zia-ty-23q" secondAttribute="leading" id="IMQ-SG-bbX"/>
                             <constraint firstItem="Zmm-O1-W60" firstAttribute="leading" secondItem="Zia-ty-23q" secondAttribute="leading" id="NIL-Pj-iYC"/>
                             <constraint firstAttribute="trailing" secondItem="Zmm-O1-W60" secondAttribute="trailing" id="RkP-Z8-OMc"/>
                             <constraint firstItem="Zmm-O1-W60" firstAttribute="top" secondItem="Zia-ty-23q" secondAttribute="top" id="csu-jQ-kl9"/>
+                            <constraint firstAttribute="trailing" secondItem="tza-cl-FS0" secondAttribute="trailing" id="dUX-wH-XTM"/>
+                            <constraint firstItem="ZW0-be-8dB" firstAttribute="top" secondItem="tza-cl-FS0" secondAttribute="bottom" id="mm5-ht-z2v"/>
                             <constraint firstItem="ZW0-be-8dB" firstAttribute="top" secondItem="Zmm-O1-W60" secondAttribute="bottom" id="nNR-Fz-Doh"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Directory" id="kxk-UY-s79"/>
                     <connections>
+                        <outlet property="signInButton" destination="7Gv-OQ-6dV" id="8CC-BS-8aG"/>
+                        <outlet property="signInOverlay" destination="tza-cl-FS0" id="T28-Qf-FLq"/>
                         <outlet property="tableView" destination="Zmm-O1-W60" id="yfq-Cr-36C"/>
                     </connections>
                 </viewController>

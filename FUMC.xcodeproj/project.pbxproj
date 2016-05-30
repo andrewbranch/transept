@@ -17,6 +17,7 @@
 		4915A7461BCADBBD008D958F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4915A7451BCADBBD008D958F /* AVFoundation.framework */; };
 		4916F2FD1B4118DB001412D3 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4916F2FB1B4118DB001412D3 /* EventKit.framework */; };
 		4916F2FE1B4118DB001412D3 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4916F2FC1B4118DB001412D3 /* EventKitUI.framework */; };
+		4917C71A1CFBB31F004D85E0 /* AccessRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4917C7191CFBB31F004D85E0 /* AccessRequest.swift */; };
 		491859CA1B07F9B300AFA077 /* RKDropdownAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 491859C91B07F9B300AFA077 /* RKDropdownAlert.m */; };
 		49209A511A360BD600DDD45E /* RadioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49209A501A360BD600DDD45E /* RadioView.swift */; };
 		49214F8D1BC0D2FE0098D2B4 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49214F8C1BC0D2FE0098D2B4 /* Video.swift */; };
@@ -138,6 +139,7 @@
 		4915A7451BCADBBD008D958F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		4916F2FB1B4118DB001412D3 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		4916F2FC1B4118DB001412D3 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
+		4917C7191CFBB31F004D85E0 /* AccessRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccessRequest.swift; path = FUMC/AccessRequest.swift; sourceTree = "<group>"; };
 		491859C81B07F9B300AFA077 /* RKDropdownAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RKDropdownAlert.h; path = FUMC/RKDropdownAlert.h; sourceTree = "<group>"; };
 		491859C91B07F9B300AFA077 /* RKDropdownAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RKDropdownAlert.m; path = FUMC/RKDropdownAlert.m; sourceTree = "<group>"; };
 		49209A501A360BD600DDD45E /* RadioView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RadioView.swift; path = FUMC/RadioView.swift; sourceTree = "<group>"; };
@@ -741,6 +743,7 @@
 			children = (
 				49A5696F1A39F66500B6F1E4 /* API.swift */,
 				495C471F1C8D2E2B0018F677 /* AccessToken.swift */,
+				4917C7191CFBB31F004D85E0 /* AccessRequest.swift */,
 				490C659E1A3230A700E87130 /* Calendar.swift */,
 				49B2A3031A268070004EED86 /* CalendarEvent.swift */,
 				49B2A3011A268070004EED86 /* Bulletin.swift */,
@@ -1205,6 +1208,7 @@
 				49D491B61BC9A8F0004B4D0E /* VideoAlbum.swift in Sources */,
 				49B2A34A1A268070004EED86 /* MediaMasterTableViewController.swift in Sources */,
 				49605DDE1BA571E3003633A1 /* AFHTTPRequestOperation.m in Sources */,
+				4917C71A1CFBB31F004D85E0 /* AccessRequest.swift in Sources */,
 				499D1F4E1C5ECB9600B1FF70 /* YouCanLiveStreamViewController.swift in Sources */,
 				49B2A3551A268070004EED86 /* UIFontExtensions.swift in Sources */,
 				49B2A33D1A268070004EED86 /* ConnectTableViewCell.swift in Sources */,

@@ -321,5 +321,9 @@ class API: NSObject {
             completed(token: Result { token })
         }
     }
+    
+    func requestAccess(scopes: [Scopes], completed: (accessRequest: Result<AccessRequest>) -> Void) {
+        // TODO
+    }
    
 }
