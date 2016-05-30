@@ -25,7 +25,7 @@ class DirectoryTableViewController: CustomTableViewController, DirectoryDataSour
         self.navigationItem.title = self.dataSource!.title as String
         self.tableView!.dataSource = self.dataSource!
         
-        if (API.shared().accessToken != nil) {
+        if (API.shared().hasAccessToken) {
             signInOverlay!.hidden = true
         }
     }
@@ -43,6 +43,8 @@ class DirectoryTableViewController: CustomTableViewController, DirectoryDataSour
                         
                         return
                     }
+                    
+                    self.signInOverlay!.hidden = true
                 } catch {
                     
                 }

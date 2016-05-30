@@ -40,7 +40,20 @@ class API: NSObject {
     private let base = "https://api.fumcpensacola.com/v3"
     #endif
     
-    var accessToken: AccessToken?
+    private var _accessToken: AccessToken?
+    var accessToken: AccessToken? {
+        get {
+            return _accessToken
+        }
+        set(value) {
+            if let token = value {
+                do {
+                    try Locksmith.updateData(["rawJSON": token.rawJSON], forUserAccount: "accessToken")
+                } catch { }
+            }
+        }
+    }
+    
     var hasAccessToken: Bool {
         return self.accessToken != nil
     }
@@ -48,7 +61,7 @@ class API: NSObject {
     override init() {
         super.init()
         if let keychainToken = Locksmith.loadDataForUserAccount("accessToken") {
-            self.accessToken = try? AccessToken(rawJSON: keychainToken["rawJSON"] as! NSData)
+            self._accessToken = try? AccessToken(rawJSON: keychainToken["rawJSON"] as! NSData)
         }
     }
     
@@ -295,6 +308,7 @@ class API: NSObject {
         let authHeaders = oauthSigning.OAuthEchoHeadersToVerifyCredentials() as! [String : AnyObject]
         let url = NSURL(string: "\(base)/authenticate/digits")
         let request = NSMutableURLRequest(URL: url!)
+        request.setValue(Env.get("DIGITS_CONSUMER_KEY"), forHTTPHeaderField: "oauth_consumer_key")
         request.setValue(authHeaders["X-Auth-Service-Provider"] as! String!, forHTTPHeaderField: "X-Auth-Service-Provider")
         request.setValue(authHeaders["X-Verify-Credentials-Authorization"] as! String!, forHTTPHeaderField: "X-Verify-Credentials-Authorization")
         request.HTTPMethod = "POST"

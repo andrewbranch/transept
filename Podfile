@@ -3,7 +3,7 @@ use_frameworks!
 
 target 'FUMC' do
   pod 'NSDate+TimeAgo', :inhibit_warnings => true
-  pod 'SwiftMoment', :inhibit_warnings => true
+  pod 'SwiftMoment', :inhibit_warnings => true, :git => 'https://github.com/andrewbranch/SwiftMoment.git', :commit => 'e5882ea'
   pod 'Locksmith', '2.0.8'
 
   target 'FUMCTests' do

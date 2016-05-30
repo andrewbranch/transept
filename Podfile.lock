@@ -6,13 +6,23 @@ PODS:
 DEPENDENCIES:
   - Locksmith (= 2.0.8)
   - NSDate+TimeAgo
-  - SwiftMoment
+  - SwiftMoment (from `https://github.com/andrewbranch/SwiftMoment.git`, commit `e5882ea`)
+
+EXTERNAL SOURCES:
+  SwiftMoment:
+    :commit: e5882ea
+    :git: https://github.com/andrewbranch/SwiftMoment.git
+
+CHECKOUT OPTIONS:
+  SwiftMoment:
+    :commit: e5882ea
+    :git: https://github.com/andrewbranch/SwiftMoment.git
 
 SPEC CHECKSUMS:
   Locksmith: a8ed41ac4c06506ea8cb199d8ec8a8d3d108eb2a
   NSDate+TimeAgo: 416f55d2696d3744c313091c5a9280d47f8238fe
   SwiftMoment: e751c44be03a183fa6c949426d9473d26a66ef29
 
-PODFILE CHECKSUM: 841c38b4e341013327928029d431a87e24da647a
+PODFILE CHECKSUM: fc428d67a520a05da11135aa26b0ed2f4460c0c7
 
 COCOAPODS: 1.0.0

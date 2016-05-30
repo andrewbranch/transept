@@ -957,6 +957,9 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Gv-OQ-6dV">
                                         <rect key="frame" x="261" y="228.5" width="78" height="30"/>
                                         <state key="normal" title="Get Access"/>
+                                        <connections>
+                                            <action selector="didTapSignInButton" destination="iMA-af-USa" eventType="touchUpInside" id="f3c-5C-coX"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
