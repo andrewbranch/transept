@@ -317,7 +317,7 @@ class API: NSObject {
                 return completed(token: Result { throw error! })
             }
             guard (response as! NSHTTPURLResponse).statusCode == 200 else {
-                return completed(token: Result<AccessToken> {
+                return completed(token: Result {
                     throw NSError(domain: "NSURLDomainError", code: 0, userInfo: ["response": response as! NSHTTPURLResponse])
                 })
             }
@@ -337,7 +337,40 @@ class API: NSObject {
     }
     
     func requestAccess(scopes: [Scopes], completed: (accessRequest: Result<AccessRequest>) -> Void) {
-        // TODO
+        let url = NSURL(string: "\(base)/authenticate/request")
+        let request = NSMutableURLRequest(URL: url!)
+        let data = try! NSJSONSerialization.dataWithJSONObject([
+            "tokenId": accessToken!.id
+        ], options: NSJSONWritingOptions(rawValue: 0))
+        
+        request.HTTPBody = data
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("\(data.length)", forHTTPHeaderField: "Content-Length")
+        
+        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { response, data, error in
+            guard error == nil else {
+                return completed(accessRequest: Result { throw error! })
+            }
+            guard (response as! NSHTTPURLResponse).statusCode == 200 else {
+                return completed(accessRequest: Result {
+                    throw NSError(domain: "com.fumcpensacola.transept", code: 2, userInfo: nil)
+                })
+            }
+            guard let data = data else {
+                return completed(accessRequest: Result {
+                    throw NSError(domain: "com.fumcpensacola.transept", code: 2, userInfo: nil)
+                })
+            }
+            guard let accessRequest = try? AccessRequest(rawJSON: data) else {
+                return completed(accessRequest: Result {
+                    throw NSError(domain: "com.fumcpensacola.transept", code: 2, userInfo: nil)
+                })
+            }
+            
+            completed(accessRequest: Result { accessRequest })
+        }
+        
     }
    
 }

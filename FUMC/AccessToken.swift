@@ -10,6 +10,7 @@ import UIKit
 import SwiftMoment
 
 struct AccessToken {
+    var id: String!
     var signed: String!
     var scopes: [API.Scopes]!
     var expires: NSDate!
@@ -20,6 +21,7 @@ struct AccessToken {
             throw NSError(domain: "com.fumcpensacola.com", code: 2, userInfo: nil)
         }
         
+        self.id = jsonDictionary["id"] as! String
         self.signed = jsonDictionary["access_token"] as! String
         self.scopes = (jsonDictionary["scopes"] as! [String]).flatMap { API.Scopes(rawValue: $0) }
         self.expires = moment(jsonDictionary["expires"] as! String)!.date
