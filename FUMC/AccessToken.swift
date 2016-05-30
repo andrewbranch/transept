@@ -9,7 +9,7 @@
 import UIKit
 import SwiftMoment
 
-struct AccessToken {
+struct AccessToken : Deserializable {
     var id: String!
     var signed: String!
     var scopes: [API.Scopes]!

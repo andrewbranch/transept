@@ -9,7 +9,7 @@
 import UIKit
 import SwiftMoment
 
-struct AccessRequest {
+struct AccessRequest : Deserializable {
     enum Status: String {
         case Pending = "pending"
         case Approved = "approved"

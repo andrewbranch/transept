@@ -15,7 +15,14 @@ public struct Result<T> {
     let value: () throws -> T
 }
 
+public protocol Deserializable {
+    init(rawJSON: NSData) throws
+}
+
 class API: NSObject {
+    
+    static let ERROR_DOMAIN = "com.fumcpensacola.transept"
+    static let BAD_RESPONSE_MESSAGE = "Looks like we’re having some server troubles right now. We’re looking into it!"
     
     enum Scopes: String {
         case DirectoryFullReadAccess = "directory_full_read_access"
@@ -302,7 +309,7 @@ class API: NSObject {
          return NSURL(string: "\(base)/file/\(key.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!)")
     }
     
-    func getAuthToken(session: DGTSession, scopes: [Scopes], completed: (token: Result<AccessToken>) -> Void) {
+    func getAuthToken(session: DGTSession, scopes: [Scopes], completed: (token: Result<AccessToken>) -> Void) throws {
         let digits = Digits.sharedInstance()
         let oauthSigning = DGTOAuthSigning(authConfig: digits.authConfig, authSession: session)
         let authHeaders = oauthSigning.OAuthEchoHeadersToVerifyCredentials() as! [String : AnyObject]
@@ -312,65 +319,77 @@ class API: NSObject {
         request.setValue(authHeaders["X-Auth-Service-Provider"] as! String!, forHTTPHeaderField: "X-Auth-Service-Provider")
         request.setValue(authHeaders["X-Verify-Credentials-Authorization"] as! String!, forHTTPHeaderField: "X-Verify-Credentials-Authorization")
         request.HTTPMethod = "POST"
-        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { response, data, error in
-            guard error == nil else {
-                return completed(token: Result { throw error! })
+        
+        do {
+            try sendRequest(request) { accessToken in
+                completed(token: accessToken)
             }
-            guard (response as! NSHTTPURLResponse).statusCode == 200 else {
-                return completed(token: Result {
-                    throw NSError(domain: "NSURLDomainError", code: 0, userInfo: ["response": response as! NSHTTPURLResponse])
-                })
-            }
-            guard let data = data else {
-                return completed(token: Result {
-                    throw NSError(domain: "com.fumcpensacola.transept", code: 2, userInfo: nil)
-                })
-            }
-            guard let token = try? AccessToken(rawJSON: data) else {
-                return completed(token: Result {
-                    throw NSError(domain: "com.fumcpensacola.transept", code: 2, userInfo: nil)
-                })
-            }
-            
-            completed(token: Result { token })
+        } catch {
+            throw error
         }
     }
     
-    func requestAccess(scopes: [Scopes], completed: (accessRequest: Result<AccessRequest>) -> Void) {
-        let url = NSURL(string: "\(base)/authenticate/request")
-        let request = NSMutableURLRequest(URL: url!)
-        let data = try! NSJSONSerialization.dataWithJSONObject([
-            "tokenId": accessToken!.id
-        ], options: NSJSONWritingOptions(rawValue: 0))
+    func requestAccess(scopes: [Scopes], completed: (accessRequest: Result<AccessRequest>) -> Void) throws {
+        do {
+            let url = NSURL(string: "\(base)/authenticate/request")
+            let request = NSMutableURLRequest(URL: url!)
+            let data = try! NSJSONSerialization.dataWithJSONObject([
+                "tokenId": accessToken!.id,
+                "scopes": scopes.map { $0.rawValue }
+            ], options: NSJSONWritingOptions(rawValue: 0))
+            
+            request.HTTPBody = data
+            request.setValue("application/json", forHTTPHeaderField: "Accept")
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.setValue("\(data.length)", forHTTPHeaderField: "Content-Length")
+            
+            try sendAuthenticatedRequest(request) { accessRequest in
+                completed(accessRequest: accessRequest)
+            }
+        } catch {
+            throw error
+        }
+    }
+    
+    private func sendAuthenticatedRequest<TResponseType: Deserializable>(request: NSMutableURLRequest, completed: (result: Result<TResponseType>) -> Void) throws {
+        guard let token = accessToken else {
+            throw NSError(domain: API.ERROR_DOMAIN, code: 3, userInfo: ["developerMessage": "No access token present", "userMessage": AppDelegate.USER_UNKNOWN_ERROR_MESSAGE])
+        }
         
-        request.HTTPBody = data
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("\(data.length)", forHTTPHeaderField: "Content-Length")
+        request.setValue("Authorization", forHTTPHeaderField: "Bearer \(token.signed)")
+        do {
+            try sendRequest(request) { result in
+                completed(result: result)
+            }
+        } catch {
+            throw error
+        }
         
+    }
+    
+    private func sendRequest<TResponseType: Deserializable>(request: NSMutableURLRequest, completed: (result: Result<TResponseType>) -> Void) throws {
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { response, data, error in
             guard error == nil else {
-                return completed(accessRequest: Result { throw error! })
+                return completed(result: Result { throw error! })
             }
             guard (response as! NSHTTPURLResponse).statusCode == 200 else {
-                return completed(accessRequest: Result {
-                    throw NSError(domain: "com.fumcpensacola.transept", code: 2, userInfo: nil)
+                return completed(result: Result {
+                    throw NSError(domain: API.ERROR_DOMAIN, code: 2, userInfo: ["response": response!, "developerMessage": "Status code was \((response as! NSHTTPURLResponse).statusCode)", "userMessage": API.BAD_RESPONSE_MESSAGE])
                 })
             }
             guard let data = data else {
-                return completed(accessRequest: Result {
-                    throw NSError(domain: "com.fumcpensacola.transept", code: 2, userInfo: nil)
+                return completed(result: Result {
+                    throw NSError(domain: API.ERROR_DOMAIN, code: 2, userInfo: ["response": response!, "developerMessage": "No response body was present", "userMessage": API.BAD_RESPONSE_MESSAGE])
                 })
             }
-            guard let accessRequest = try? AccessRequest(rawJSON: data) else {
-                return completed(accessRequest: Result {
-                    throw NSError(domain: "com.fumcpensacola.transept", code: 2, userInfo: nil)
+            guard let result = try? TResponseType(rawJSON: data) else {
+                return completed(result: Result {
+                    throw NSError(domain: API.ERROR_DOMAIN, code: 2, userInfo: ["rawJSON": data, "developerMessage": "Could not deserialize response into \(String(TResponseType))", "userMessage": API.BAD_RESPONSE_MESSAGE])
                 })
             }
             
-            completed(accessRequest: Result { accessRequest })
+            completed(result: Result { result })
         }
-        
     }
    
 }

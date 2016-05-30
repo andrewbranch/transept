@@ -13,6 +13,8 @@ import DigitsKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    static let USER_UNKNOWN_ERROR_MESSAGE = "Something went wrong. We’re looking into it!" // TODO make this not a lie
 
     var window: UIWindow?
     var serverReachability = Reachability(hostName: "api.fumcpensacola.com")
