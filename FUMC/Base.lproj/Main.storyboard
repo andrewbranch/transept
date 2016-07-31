@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F31a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G19a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -951,41 +951,18 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tza-cl-FS0">
-                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Gv-OQ-6dV">
-                                        <rect key="frame" x="261" y="228.5" width="78" height="30"/>
-                                        <state key="normal" title="Get Access"/>
-                                        <connections>
-                                            <action selector="didTapSignInButton" destination="iMA-af-USa" eventType="touchUpInside" id="f3c-5C-coX"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="7Gv-OQ-6dV" firstAttribute="centerX" secondItem="tza-cl-FS0" secondAttribute="centerX" id="wW8-z5-mha"/>
-                                    <constraint firstItem="7Gv-OQ-6dV" firstAttribute="centerY" secondItem="tza-cl-FS0" secondAttribute="centerY" id="yGx-Fm-RZX"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Zmm-O1-W60" firstAttribute="top" secondItem="Zia-ty-23q" secondAttribute="top" id="4X5-tZ-y6u"/>
-                            <constraint firstItem="tza-cl-FS0" firstAttribute="top" secondItem="Fz6-E3-t0d" secondAttribute="bottom" id="5nc-Ze-Bv8"/>
-                            <constraint firstItem="tza-cl-FS0" firstAttribute="leading" secondItem="Zia-ty-23q" secondAttribute="leading" id="IMQ-SG-bbX"/>
                             <constraint firstItem="Zmm-O1-W60" firstAttribute="leading" secondItem="Zia-ty-23q" secondAttribute="leading" id="NIL-Pj-iYC"/>
                             <constraint firstAttribute="trailing" secondItem="Zmm-O1-W60" secondAttribute="trailing" id="RkP-Z8-OMc"/>
                             <constraint firstItem="Zmm-O1-W60" firstAttribute="top" secondItem="Zia-ty-23q" secondAttribute="top" id="csu-jQ-kl9"/>
-                            <constraint firstAttribute="trailing" secondItem="tza-cl-FS0" secondAttribute="trailing" id="dUX-wH-XTM"/>
-                            <constraint firstItem="ZW0-be-8dB" firstAttribute="top" secondItem="tza-cl-FS0" secondAttribute="bottom" id="mm5-ht-z2v"/>
                             <constraint firstItem="ZW0-be-8dB" firstAttribute="top" secondItem="Zmm-O1-W60" secondAttribute="bottom" id="nNR-Fz-Doh"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Directory" id="kxk-UY-s79"/>
                     <connections>
-                        <outlet property="signInButton" destination="7Gv-OQ-6dV" id="8CC-BS-8aG"/>
-                        <outlet property="signInOverlay" destination="tza-cl-FS0" id="T28-Qf-FLq"/>
                         <outlet property="tableView" destination="Zmm-O1-W60" id="yfq-Cr-36C"/>
                     </connections>
                 </viewController>
@@ -1222,6 +1199,42 @@ Thank you for your generous support of First United Methodist Church of Pensacol
                 <placeholder placeholderIdentifier="IBFirstResponder" id="olr-iL-Aem" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1002" y="1583"/>
+        </scene>
+        <!--Authentication View Controller-->
+        <scene sceneID="KyU-II-Fbi">
+            <objects>
+                <viewController storyboardIdentifier="AuthenticationViewController" id="A9c-iT-XCe" customClass="AuthenticationViewController" customModule="FUMC" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="p7t-2v-AJG"/>
+                        <viewControllerLayoutGuide type="bottom" id="JE1-As-sNs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3uU-ZZ-dm7">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jcc-B3-tY8">
+                                <rect key="frame" x="261" y="285" width="78" height="30"/>
+                                <state key="normal" title="Get Access"/>
+                                <connections>
+                                    <action selector="didTapSignInButton" destination="iMA-af-USa" eventType="touchUpInside" id="IpA-yN-61t"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jcc-B3-tY8" firstAttribute="centerX" secondItem="3uU-ZZ-dm7" secondAttribute="centerX" id="JUO-wa-P6x"/>
+                            <constraint firstItem="jcc-B3-tY8" firstAttribute="centerY" secondItem="3uU-ZZ-dm7" secondAttribute="centerY" id="YFH-16-oTX"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="jcc-B3-tY8"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BI3-aF-fXn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1002" y="2307"/>
         </scene>
     </scenes>
     <resources>

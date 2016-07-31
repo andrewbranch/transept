@@ -19,18 +19,19 @@ public protocol Deserializable {
     init(rawJSON: NSData) throws
 }
 
-class API: NSObject {
+public class API: NSObject {
     
     static let ERROR_DOMAIN = "com.fumcpensacola.transept"
     static let BAD_RESPONSE_MESSAGE = "Looks like we’re having some server troubles right now. We’re looking into it!"
     
-    enum Scopes: String {
+    public enum Scopes: String {
         case DirectoryFullReadAccess = "directory_full_read_access"
     }
     
-    enum Error: ErrorType {
+    public enum Error: ErrorType {
         case Unauthenticated
         case Unauthorized
+        case Unknown(userMessage: String?, developerMessage: String?, userInfo: [NSObject: AnyObject]?)
     }
     
     private class var instance: API {
@@ -376,17 +377,17 @@ class API: NSObject {
             }
             guard response.statusCode == 200 || response.statusCode == 204 else {
                 return completed(result: Result {
-                    throw NSError(domain: API.ERROR_DOMAIN, code: 2, userInfo: ["response": response, "developerMessage": "Status code was \(response.statusCode)", "userMessage": API.BAD_RESPONSE_MESSAGE])
+                    throw Error.Unknown(userMessage: API.BAD_RESPONSE_MESSAGE, developerMessage: "Status code was \(response.statusCode)", userInfo: ["response": response])
                 })
             }
             guard let data = data else {
                 return completed(result: Result {
-                    throw NSError(domain: API.ERROR_DOMAIN, code: 2, userInfo: ["response": response, "developerMessage": "No response body was present", "userMessage": API.BAD_RESPONSE_MESSAGE])
+                    throw Error.Unknown(userMessage: API.BAD_RESPONSE_MESSAGE, developerMessage: "No response body was present", userInfo: ["response": response])
                 })
             }
             guard let result = try? TResponseType(rawJSON: data) else {
                 return completed(result: Result {
-                    throw NSError(domain: API.ERROR_DOMAIN, code: 2, userInfo: ["rawJSON": data, "developerMessage": "Could not deserialize response into \(String(TResponseType))", "userMessage": API.BAD_RESPONSE_MESSAGE])
+                    throw Error.Unknown(userMessage: API.BAD_RESPONSE_MESSAGE, developerMessage: "Could not deserialize response into \(String(TResponseType))", userInfo: ["rawJSON": data])
                 })
             }
             

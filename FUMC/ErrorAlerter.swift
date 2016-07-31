@@ -30,13 +30,26 @@ class ErrorAlerter: NSObject {
         return Static.genericLoadingErrorAlert
     }
     
-    class func alertWithUserErrorMessage(error: NSError) -> UIAlertView {
+    private class func alertWithUserErrorMessage(message: String?) -> UIAlertView {
         return UIAlertView(
             title: "Oh dear.",
-            message: error.userInfo["userMessage"] as! String? ?? AppDelegate.USER_UNKNOWN_ERROR_MESSAGE,
+            message: message ?? AppDelegate.USER_UNKNOWN_ERROR_MESSAGE,
             delegate: nil,
             cancelButtonTitle: "Close"
         )
+    }
+    
+    class func alertWithUserErrorMessage(error: NSError) -> UIAlertView {
+        return self.alertWithUserErrorMessage(error.userInfo["userMessage"] as! String?)
+    }
+    
+    class func alertWithUserErrorMessage(error: API.Error) -> UIAlertView {
+        switch error {
+        case .Unknown(let userMessage, _, _):
+            return self.alertWithUserErrorMessage(userMessage)
+        default:
+            return self.alertWithUserErrorMessage(nil)
+        }
     }
     
     class func showUnknownErrorMessageInViewController(let viewController: ErrorAlertable, withOriginalError error: NSError?) {
@@ -56,6 +69,14 @@ class ErrorAlerter: NSObject {
     }
     
     class func showUserErrorMessage(error: NSError, let inViewController viewController: ErrorAlertable) {
+        if (viewController.isViewLoaded() && viewController.view.window != nil) {
+            self.alertWithUserErrorMessage(error).show()
+        } else {
+            viewController.errorAlertToBeShown = self.alertWithUserErrorMessage(error)
+        }
+    }
+    
+    class func showUserErrorMessage(error: API.Error, let inViewController viewController: ErrorAlertable) {
         if (viewController.isViewLoaded() && viewController.view.window != nil) {
             self.alertWithUserErrorMessage(error).show()
         } else {

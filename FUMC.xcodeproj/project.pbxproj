@@ -107,6 +107,8 @@
 		49D491B61BC9A8F0004B4D0E /* VideoAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D491B51BC9A8F0004B4D0E /* VideoAlbum.swift */; };
 		49D507A21A37C18E00531F23 /* CalendarTableViewAllDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D507A01A37C18E00531F23 /* CalendarTableViewAllDayCell.swift */; };
 		49D507A31A37C18E00531F23 /* CalendarTableViewAllDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49D507A11A37C18E00531F23 /* CalendarTableViewAllDayCell.xib */; };
+		49E09F701D4EA2040097A17B /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E09F6F1D4EA2040097A17B /* AuthenticationViewController.swift */; };
+		49E09F721D4EBABC0097A17B /* AuthenticationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49E09F711D4EBABC0097A17B /* AuthenticationViewController.xib */; };
 		49F261561B9CE5F600FE027D /* BulletinTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F261551B9CE5F600FE027D /* BulletinTest.swift */; };
 		49F2615B1B9CF20D00FE027D /* MediaTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F2615A1B9CF20D00FE027D /* MediaTableHeaderView.swift */; };
 		49F2615D1B9CF22700FE027D /* MediaTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49F2615C1B9CF22700FE027D /* MediaTableHeaderView.xib */; };
@@ -350,6 +352,8 @@
 		49D491B51BC9A8F0004B4D0E /* VideoAlbum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoAlbum.swift; sourceTree = "<group>"; };
 		49D507A01A37C18E00531F23 /* CalendarTableViewAllDayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarTableViewAllDayCell.swift; path = FUMC/CalendarTableViewAllDayCell.swift; sourceTree = "<group>"; };
 		49D507A11A37C18E00531F23 /* CalendarTableViewAllDayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CalendarTableViewAllDayCell.xib; path = FUMC/CalendarTableViewAllDayCell.xib; sourceTree = "<group>"; };
+		49E09F6F1D4EA2040097A17B /* AuthenticationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthenticationViewController.swift; path = FUMC/AuthenticationViewController.swift; sourceTree = "<group>"; };
+		49E09F711D4EBABC0097A17B /* AuthenticationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AuthenticationViewController.xib; path = FUMC/AuthenticationViewController.xib; sourceTree = "<group>"; };
 		49F261551B9CE5F600FE027D /* BulletinTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulletinTest.swift; sourceTree = "<group>"; };
 		49F2615A1B9CF20D00FE027D /* MediaTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MediaTableHeaderView.swift; path = FUMC/MediaTableHeaderView.swift; sourceTree = "<group>"; };
 		49F2615C1B9CF22700FE027D /* MediaTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MediaTableHeaderView.xib; path = FUMC/MediaTableHeaderView.xib; sourceTree = "<group>"; };
@@ -774,6 +778,7 @@
 		49B2A35D1A2680B9004EED86 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				49E09F711D4EBABC0097A17B /* AuthenticationViewController.xib */,
 				49B2A3091A268070004EED86 /* ConnectTableFooterView.swift */,
 				49B2A30A1A268070004EED86 /* ConnectTableFooterView.xib */,
 				49B2A30B1A268070004EED86 /* ConnectTableViewCell.swift */,
@@ -806,6 +811,7 @@
 				49B2A3211A268070004EED86 /* RootTabBarController.swift */,
 				49B2A30E1A268070004EED86 /* CustomTableViewController.swift */,
 				499D1F4D1C5ECB9600B1FF70 /* YouCanLiveStreamViewController.swift */,
+				49E09F6F1D4EA2040097A17B /* AuthenticationViewController.swift */,
 				499C00C61CF7FDDB00D4F94D /* Directory */,
 				49B2A35F1A2680CD004EED86 /* Calendar */,
 				49B2A3631A26816D004EED86 /* Media */,
@@ -1032,6 +1038,7 @@
 				49B2A3301A268070004EED86 /* BebasNeue Light.otf in Resources */,
 				49B2A33E1A268070004EED86 /* ConnectTableViewCell.xib in Resources */,
 				49B2A3311A268070004EED86 /* BebasNeue Regular.otf in Resources */,
+				49E09F721D4EBABC0097A17B /* AuthenticationViewController.xib in Resources */,
 				49B2A3461A268070004EED86 /* Images.xcassets in Resources */,
 				49B2A32F1A268070004EED86 /* BebasNeue Book.otf in Resources */,
 				49B2A32E1A268070004EED86 /* BebasNeue Bold.otf in Resources */,
@@ -1226,6 +1233,7 @@
 				490C659F1A3230A700E87130 /* Calendar.swift in Sources */,
 				49804B261C5E88CE005AE154 /* VideosTableViewCell.swift in Sources */,
 				49B2A33A1A268070004EED86 /* CalendarTableViewController.swift in Sources */,
+				49E09F701D4EA2040097A17B /* AuthenticationViewController.swift in Sources */,
 				499D1F4B1C5EB8AF00B1FF70 /* StringExtensions.swift in Sources */,
 				49605DE51BA571E3003633A1 /* AFURLResponseSerialization.m in Sources */,
 				495C471E1C8AC1060018F677 /* UIDeviceExtensions.swift in Sources */,
