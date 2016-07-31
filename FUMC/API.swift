@@ -28,6 +28,11 @@ class API: NSObject {
         case DirectoryFullReadAccess = "directory_full_read_access"
     }
     
+    enum Error: ErrorType {
+        case Unauthenticated
+        case Unauthorized
+    }
+    
     private class var instance: API {
         struct Static {
             static let instance = API()
@@ -47,7 +52,7 @@ class API: NSObject {
     private let base = "https://api.fumcpensacola.com/v3"
     #endif
     
-    private var _accessToken: AccessToken?
+    private var _accessToken: AccessToken? = nil
     var accessToken: AccessToken? {
         get {
             return _accessToken
@@ -69,6 +74,7 @@ class API: NSObject {
         super.init()
         if let keychainToken = Locksmith.loadDataForUserAccount("accessToken") {
             self._accessToken = try? AccessToken(rawJSON: keychainToken["rawJSON"] as! NSData)
+            // TODO refresh token
         }
     }
     
@@ -315,39 +321,33 @@ class API: NSObject {
         let authHeaders = oauthSigning.OAuthEchoHeadersToVerifyCredentials() as! [String : AnyObject]
         let url = NSURL(string: "\(base)/authenticate/digits")
         let request = NSMutableURLRequest(URL: url!)
+        let data = try NSJSONSerialization.dataWithJSONObject([ "scopes": scopes.map { $0.rawValue } ], options: NSJSONWritingOptions(rawValue: 0))
         request.setValue(Env.get("DIGITS_CONSUMER_KEY"), forHTTPHeaderField: "oauth_consumer_key")
         request.setValue(authHeaders["X-Auth-Service-Provider"] as! String!, forHTTPHeaderField: "X-Auth-Service-Provider")
         request.setValue(authHeaders["X-Verify-Credentials-Authorization"] as! String!, forHTTPHeaderField: "X-Verify-Credentials-Authorization")
         request.HTTPMethod = "POST"
+        request.HTTPBody = data
         
-        do {
-            try sendRequest(request) { accessToken in
-                completed(token: accessToken)
-            }
-        } catch {
-            throw error
+        try sendRequest(request) { accessToken in
+            completed(token: accessToken)
         }
     }
     
     func requestAccess(scopes: [Scopes], completed: (accessRequest: Result<AccessRequest>) -> Void) throws {
-        do {
-            let url = NSURL(string: "\(base)/authenticate/request")
-            let request = NSMutableURLRequest(URL: url!)
-            let data = try! NSJSONSerialization.dataWithJSONObject([
-                "tokenId": accessToken!.id,
-                "scopes": scopes.map { $0.rawValue }
-            ], options: NSJSONWritingOptions(rawValue: 0))
-            
-            request.HTTPBody = data
-            request.setValue("application/json", forHTTPHeaderField: "Accept")
-            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.setValue("\(data.length)", forHTTPHeaderField: "Content-Length")
-            
-            try sendAuthenticatedRequest(request) { accessRequest in
-                completed(accessRequest: accessRequest)
-            }
-        } catch {
-            throw error
+        let url = NSURL(string: "\(base)/authenticate/request")
+        let request = NSMutableURLRequest(URL: url!)
+        let data = try NSJSONSerialization.dataWithJSONObject([
+            "tokenId": accessToken!.id,
+            "scopes": scopes.map { $0.rawValue }
+        ], options: NSJSONWritingOptions(rawValue: 0))
+        
+        request.HTTPBody = data
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("\(data.length)", forHTTPHeaderField: "Content-Length")
+        
+        try sendAuthenticatedRequest(request) { accessRequest in
+            completed(accessRequest: accessRequest)
         }
     }
     
@@ -357,14 +357,9 @@ class API: NSObject {
         }
         
         request.setValue("Authorization", forHTTPHeaderField: "Bearer \(token.signed)")
-        do {
-            try sendRequest(request) { result in
-                completed(result: result)
-            }
-        } catch {
-            throw error
+        try sendRequest(request) { result in
+            completed(result: result)
         }
-        
     }
     
     private func sendRequest<TResponseType: Deserializable>(request: NSMutableURLRequest, completed: (result: Result<TResponseType>) -> Void) throws {
@@ -372,14 +367,21 @@ class API: NSObject {
             guard error == nil else {
                 return completed(result: Result { throw error! })
             }
-            guard (response as! NSHTTPURLResponse).statusCode == 200 else {
+            let response = response as! NSHTTPURLResponse
+            guard response.statusCode != 401 else {
+                return completed(result: Result { throw Error.Unauthenticated })
+            }
+            guard response.statusCode != 403 else {
+                return completed(result: Result { throw Error.Unauthorized })
+            }
+            guard response.statusCode == 200 || response.statusCode == 204 else {
                 return completed(result: Result {
-                    throw NSError(domain: API.ERROR_DOMAIN, code: 2, userInfo: ["response": response!, "developerMessage": "Status code was \((response as! NSHTTPURLResponse).statusCode)", "userMessage": API.BAD_RESPONSE_MESSAGE])
+                    throw NSError(domain: API.ERROR_DOMAIN, code: 2, userInfo: ["response": response, "developerMessage": "Status code was \(response.statusCode)", "userMessage": API.BAD_RESPONSE_MESSAGE])
                 })
             }
             guard let data = data else {
                 return completed(result: Result {
-                    throw NSError(domain: API.ERROR_DOMAIN, code: 2, userInfo: ["response": response!, "developerMessage": "No response body was present", "userMessage": API.BAD_RESPONSE_MESSAGE])
+                    throw NSError(domain: API.ERROR_DOMAIN, code: 2, userInfo: ["response": response, "developerMessage": "No response body was present", "userMessage": API.BAD_RESPONSE_MESSAGE])
                 })
             }
             guard let result = try? TResponseType(rawJSON: data) else {

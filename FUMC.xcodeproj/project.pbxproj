@@ -38,6 +38,7 @@
 		49605DE41BA571E3003633A1 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 49605DD81BA571E3003633A1 /* AFURLRequestSerialization.m */; };
 		49605DE51BA571E3003633A1 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 49605DDA1BA571E3003633A1 /* AFURLResponseSerialization.m */; };
 		49605DE61BA571E3003633A1 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 49605DDC1BA571E3003633A1 /* AFURLSessionManager.m */; };
+		497A01A91CFD1645005D3CB5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497A01A81CFD1645005D3CB5 /* User.swift */; };
 		49804B261C5E88CE005AE154 /* VideosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49804B241C5E88CE005AE154 /* VideosTableViewCell.swift */; };
 		49804B271C5E88CE005AE154 /* VideosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49804B241C5E88CE005AE154 /* VideosTableViewCell.swift */; };
 		49804B281C5E88CE005AE154 /* VideosTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49804B251C5E88CE005AE154 /* VideosTableViewCell.xib */; };
@@ -277,6 +278,7 @@
 		49605EAB1BA5721F003633A1 /* VIMModelObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VIMModelObject.m; sourceTree = "<group>"; };
 		49605EAC1BA5721F003633A1 /* VIMObjectMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VIMObjectMapper.h; sourceTree = "<group>"; };
 		49605EAD1BA5721F003633A1 /* VIMObjectMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VIMObjectMapper.m; sourceTree = "<group>"; };
+		497A01A81CFD1645005D3CB5 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = FUMC/User.swift; sourceTree = "<group>"; };
 		49804B241C5E88CE005AE154 /* VideosTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideosTableViewCell.swift; path = FUMC/VideosTableViewCell.swift; sourceTree = "<group>"; };
 		49804B251C5E88CE005AE154 /* VideosTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VideosTableViewCell.xib; path = FUMC/VideosTableViewCell.xib; sourceTree = "<group>"; };
 		49852DC71BC1E2D200E7F30E /* ExSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExSwift.swift; path = FUMC/ExSwift.swift; sourceTree = "<group>"; };
@@ -750,6 +752,7 @@
 				49B2A32A1A268070004EED86 /* Witness.swift */,
 				49214F8C1BC0D2FE0098D2B4 /* Video.swift */,
 				49D491B51BC9A8F0004B4D0E /* VideoAlbum.swift */,
+				497A01A81CFD1645005D3CB5 /* User.swift */,
 			);
 			name = Models;
 			path = ..;
@@ -1216,6 +1219,7 @@
 				49605DE01BA571E3003633A1 /* AFHTTPSessionManager.m in Sources */,
 				49B2A34C1A268070004EED86 /* MediaWebViewController.swift in Sources */,
 				49B2A3591A268070004EED86 /* WitnessesDataSource.swift in Sources */,
+				497A01A91CFD1645005D3CB5 /* User.swift in Sources */,
 				49A9B1761BA6026C00109D3D /* VideoAlbumsTableViewController.swift in Sources */,
 				49B2A3581A268070004EED86 /* Witness.swift in Sources */,
 				49B2A33B1A268070004EED86 /* ConnectTableFooterView.swift in Sources */,

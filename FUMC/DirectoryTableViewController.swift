@@ -32,22 +32,46 @@ class DirectoryTableViewController: CustomTableViewController, DirectoryDataSour
     
     @IBAction func didTapSignInButton() {
         Digits.sharedInstance().authenticateWithCompletion { session, error in
-            API.shared().getAuthToken(session, scopes: [.DirectoryFullReadAccess]) { token in
-                do {
-                    let token = try token.value()
-                    API.shared().accessToken = token
-                    guard token.scopes.contains(.DirectoryFullReadAccess) else {
-                        API.shared().requestAccess([.DirectoryFullReadAccess]) { accessRequest in
-                            
-                        }
+            guard error == nil else {
+                ErrorAlerter.showUnknownErrorMessageInViewController(self, withOriginalError: error!)
+                return
+            }
+            
+            do {
+                try API.shared().getAuthToken(session, scopes: [.DirectoryFullReadAccess]) { token in
+                    do {
+                        let token = try token.value()
+                        API.shared().accessToken = token
                         
-                        return
+                        // Logged in and has permission to read directory.
+                        if (token.needsVerification) {
+                            // New user, should confirm that identity is correct
+                        } else {
+                            // Known user, just hide the gate
+                            self.signInOverlay!.hidden = true
+                            self.dataSource!.refresh()
+                        }
+                    } catch API.Error.Unauthorized {
+                        // Could not grant requested scopes; start access request
+                        do {
+                            try API.shared().requestAccess([.DirectoryFullReadAccess]) { accessRequest in
+                                // Created access request.
+                                // Prompt to prove identity with Facebook or Twitter, or instruct to go to front office.
+                                
+                                // Indicate that an access request is open.
+                                // applicationDidBecomeActive should check this and review the status of the request.
+                                NSUserDefaults.standardUserDefaults().setBool(true, forKey: "accessRequestOpen")
+                            }
+                        } catch let error as NSError {
+                            // Failed to create access request
+                            ErrorAlerter.showUserErrorMessage(error, inViewController: self)
+                        }
+                    } catch let error as NSError {
+                        ErrorAlerter.showUserErrorMessage(error, inViewController: self)
                     }
-                    
-                    self.signInOverlay!.hidden = true
-                } catch {
-                    
                 }
+            } catch let error as NSError {
+                ErrorAlerter.showUserErrorMessage(error, inViewController: self)
             }
         }
     }

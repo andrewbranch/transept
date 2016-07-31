@@ -27,10 +27,7 @@ struct AccessRequest : Deserializable {
     var email: String?
     
     init(rawJSON: NSData) throws {
-        guard let jsonDictionary = try? NSJSONSerialization.JSONObjectWithData(rawJSON, options: .AllowFragments) else {
-            throw NSError(domain: "com.fumcpensacola.com", code: 2, userInfo: nil)
-        }
-        
+        let jsonDictionary = try NSJSONSerialization.JSONObjectWithData(rawJSON, options: .AllowFragments)
         dateRequested = moment(jsonDictionary["date-requested"]! as? String ?? "")?.date
         dateSettled = moment(jsonDictionary["date-settled"]! as? String ?? "")?.date
         status = Status(rawValue: jsonDictionary["status"] as! String)

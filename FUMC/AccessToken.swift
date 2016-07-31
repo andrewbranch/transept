@@ -10,21 +10,22 @@ import UIKit
 import SwiftMoment
 
 struct AccessToken : Deserializable {
-    var id: String!
-    var signed: String!
-    var scopes: [API.Scopes]!
-    var expires: NSDate!
-    var rawJSON: NSData!
+    var id: String
+    var signed: String
+    var scopes: [API.Scopes]
+    var expires: NSDate
+    var needsVerification: Bool
+    var rawJSON: NSData
+    var user: User
     
     init(rawJSON: NSData) throws {
-        guard let jsonDictionary = try? NSJSONSerialization.JSONObjectWithData(rawJSON, options: .AllowFragments) else {
-            throw NSError(domain: "com.fumcpensacola.com", code: 2, userInfo: nil)
-        }
-        
+        let jsonDictionary = try NSJSONSerialization.JSONObjectWithData(rawJSON, options: .AllowFragments)
         self.id = jsonDictionary["id"] as! String
         self.signed = jsonDictionary["access_token"] as! String
         self.scopes = (jsonDictionary["scopes"] as! [String]).flatMap { API.Scopes(rawValue: $0) }
         self.expires = moment(jsonDictionary["expires"] as! String)!.date
+        self.needsVerification = jsonDictionary["needsVerification"] as! Bool
+        self.user = try User(jsonDictionary: jsonDictionary["user"]! as! NSDictionary)
         self.rawJSON = rawJSON
     }
 }

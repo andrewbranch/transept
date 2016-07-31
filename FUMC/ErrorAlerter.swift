@@ -14,6 +14,8 @@
 
 class ErrorAlerter: NSObject {
     
+    static let ERROR_DOMAIN = "com.fumcpensacola.transept"
+    
     class func loadingAlertBasedOnReachability() -> UIAlertView {
         
         struct Static {
@@ -26,12 +28,44 @@ class ErrorAlerter: NSObject {
             return Static.internetNeededAlert
         }
         return Static.genericLoadingErrorAlert
-
+    }
+    
+    class func alertWithUserErrorMessage(error: NSError) -> UIAlertView {
+        return UIAlertView(
+            title: "Oh dear.",
+            message: error.userInfo["userMessage"] as! String? ?? AppDelegate.USER_UNKNOWN_ERROR_MESSAGE,
+            delegate: nil,
+            cancelButtonTitle: "Close"
+        )
+    }
+    
+    class func showUnknownErrorMessageInViewController(let viewController: ErrorAlertable, withOriginalError error: NSError?) {
+        let unknownErrorAlert = self.alertWithUserErrorMessage(NSError(
+            domain: self.ERROR_DOMAIN,
+            code: 0,
+            userInfo: ["userMessage": AppDelegate.USER_UNKNOWN_ERROR_MESSAGE]
+        ))
+        
+        if (viewController.isViewLoaded()) {
+            unknownErrorAlert.show()
+        } else {
+            viewController.errorAlertToBeShown = unknownErrorAlert
+        }
+        
+        // TODO log original error
+    }
+    
+    class func showUserErrorMessage(error: NSError, let inViewController viewController: ErrorAlertable) {
+        if (viewController.isViewLoaded() && viewController.view.window != nil) {
+            self.alertWithUserErrorMessage(error).show()
+        } else {
+            viewController.errorAlertToBeShown = self.alertWithUserErrorMessage(error)
+        }
     }
     
     class func showLoadingAlertInViewController(let viewController: ErrorAlertable) {
         if (viewController.isViewLoaded() && viewController.view.window != nil) {
-            ErrorAlerter.loadingAlertBasedOnReachability().show()
+            self.loadingAlertBasedOnReachability().show()
         } else {
             viewController.errorAlertToBeShown = self.loadingAlertBasedOnReachability()
         }
