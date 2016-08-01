@@ -30,9 +30,7 @@ class DirectoryTableViewController: CustomTableViewController, DirectoryDataSour
     }
     
     func launchAuthFlow() {
-        let authenticationViewController = AuthenticationViewController(nibName: "AuthenticationViewController", bundle: nil)
-        authenticationViewController.requestScopes = [API.Scopes.DirectoryFullReadAccess]
-        authenticationViewController.delegate = self
+        let authenticationViewController = AuthenticationViewController(requestScopes: [.DirectoryFullReadAccess], delegate: self)
         self.presentViewController(authenticationViewController, animated: true, completion: nil)
     }
     
@@ -55,6 +53,7 @@ class DirectoryTableViewController: CustomTableViewController, DirectoryDataSour
     
     func authenticationViewController(viewController: AuthenticationViewController, granted accessToken: AccessToken) {
         NSLog("granted access token")
+        self.dataSource!.refresh()
     }
     
     func authenticationViewController(viewController: AuthenticationViewController, opened accessRequest: AccessRequest) {

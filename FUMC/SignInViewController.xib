@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AuthenticationViewController" customModule="FUMC" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignInViewController" customModule="FUMC" customModuleProvider="target">
             <connections>
                 <outlet property="signInButton" destination="Z00-9Z-vpu" id="Xia-9r-k8q"/>
                 <outlet property="view" destination="iN0-l3-epB" id="tQo-70-psK"/>

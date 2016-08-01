@@ -15,64 +15,89 @@ protocol AuthenticationDelegate {
     func authenticationViewController(viewController: AuthenticationViewController, failedWith error: API.Error)
 }
 
-class AuthenticationViewController: UIViewController {
+class AuthenticationViewController: UIPageViewController, SignInDelegate, ConfirmDelegate {
 
-    @IBOutlet var signInButton: UIButton?
-    var delegate: AuthenticationDelegate?
+    var authenticationDelegate: AuthenticationDelegate!
     var requestScopes: [API.Scopes]!
     
-    @IBAction func didTapSignInButton() {
-        signInButton!.enabled = false
-        Digits.sharedInstance().authenticateWithCompletion { session, error in
-            guard error == nil else {
-                self.delegate?.authenticationViewController(self, failedWith: API.Error.Unknown(userMessage: nil, developerMessage: "Digits authentication failed", userInfo: nil))
-                return
-            }
-            
-            do {
-                try API.shared().getAuthToken(session, scopes: self.requestScopes) { token in
-                    do {
-                        let token = try token.value()
-                        API.shared().accessToken = token
-                        
-                        // Logged in and has permission to read directory.
-                        if (token.needsVerification) {
-                            // New user, should confirm that identity is correct
-                        } else {
-                            // Known user, just hide the gate
-                            self.dismissViewControllerAnimated(true) {
-                                self.delegate?.authenticationViewController(self, granted: token)
-                            }
-                        }
-                    } catch API.Error.Unauthorized {
-                        // Could not grant requested scopes; start access request
-                        do {
-                            try API.shared().requestAccess(self.requestScopes) { accessRequest in
-                                // Created access request.
-                                // Prompt to prove identity with Facebook or Twitter, or instruct to go to front office.
-                                
-                                // Indicate that an access request is open.
-                                // applicationDidBecomeActive should check this and review the status of the request.
-                                NSUserDefaults.standardUserDefaults().setBool(true, forKey: "accessRequestOpen")
-                            }
-                        } catch let error as API.Error {
-                            // Failed to create access request
-                            self.delegate?.authenticationViewController(self, failedWith: error)
-                        } catch {
-                            self.delegate?.authenticationViewController(self, failedWith: API.Error.Unknown(userMessage: nil, developerMessage: "Unknown error creating access request", userInfo: nil))
-                        }
-                    } catch let error as API.Error {
-                        self.delegate?.authenticationViewController(self, failedWith: error)
-                    } catch {
-                        self.delegate?.authenticationViewController(self, failedWith: API.Error.Unknown(userMessage: nil, developerMessage: "Unknown error requesting auth token", userInfo: nil))
-                    }
-                }
-            } catch let error as API.Error {
-                self.delegate?.authenticationViewController(self, failedWith: error)
-            } catch {
-                self.delegate?.authenticationViewController(self, failedWith: API.Error.Unknown(userMessage: nil, developerMessage: "Unknown error requesting auth token", userInfo: nil))
-            }
+    private var accessToken: AccessToken?
+    
+    init(requestScopes: [API.Scopes], delegate: AuthenticationDelegate) {
+        super.init(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
+        self.authenticationDelegate = delegate
+        self.requestScopes = requestScopes
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        if Digits.sharedInstance().session() != nil {
+            self.signIn()
         }
+    }
+    
+    private func signIn() {
+        let signInViewController = SignInViewController(nibName: "SignInViewController", bundle: nil)
+        signInViewController.requestScopes = requestScopes
+        signInViewController.delegate = self
+        self.setViewControllers([signInViewController], direction: .Forward, animated: false, completion: nil)
+    }
+    
+    private func confirmIdentity(token: AccessToken) {
+        let confirmViewController = ConfirmIdentityViewController(nibName: "ConfirmIdentityViewController", bundle: nil)
+        confirmViewController.delegate = self
+        confirmViewController.firstName = token.user.firstName
+        confirmViewController.lastName = token.user.lastName
+        self.setViewControllers([confirmViewController], direction: .Forward, animated: true, completion: nil)
+    }
+    
+    func signInViewController(viewController: SignInViewController, grantedUnknownUser token: AccessToken) {
+        self.accessToken = token
+        self.confirmIdentity(token)
+    }
+    
+    func signInViewController(viewController: SignInViewController, grantedKnownUser token: AccessToken) {
+        self.accessToken = token
+        self.authenticationDelegate.authenticationViewController(self, granted: token)
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func signInViewControllerCouldNotGrantToken(viewController viewController: SignInViewController) {
+        do {
+            try API.shared().requestAccess(self.requestScopes) { accessRequest in
+                // Created access request.
+                // Prompt to prove identity with Facebook or Twitter, or instruct to go to front office.
+                
+                // Indicate that an access request is open.
+                // applicationDidBecomeActive should check this and review the status of the request.
+                NSUserDefaults.standardUserDefaults().setBool(true, forKey: "accessRequestOpen")
+            }
+        } catch let error as API.Error {
+            // Failed to create access request
+            self.authenticationDelegate.authenticationViewController(self, failedWith: error)
+        } catch {
+            self.authenticationDelegate.authenticationViewController(self, failedWith: API.Error.Unknown(userMessage: nil, developerMessage: nil, userInfo: nil))
+        }
+    }
+    
+    func signInViewController(viewController: SignInViewController, failedWith error: NSError) {
+        if let apiError = error as? API.Error {
+            self.authenticationDelegate.authenticationViewController(self, failedWith: apiError)
+        } else {
+            self.authenticationDelegate.authenticationViewController(self, failedWith: API.Error.Unknown(userMessage: nil, developerMessage: nil, userInfo: nil))
+        }
+    }
+    
+    func confirmViewControllerConfirmedIdentity(viewController viewController: ConfirmIdentityViewController) {
+        self.authenticationDelegate.authenticationViewController(self, granted: self.accessToken!)
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func confirmViewControllerDeniedIdentity(viewController viewController: ConfirmIdentityViewController) {
+        
     }
 
 }

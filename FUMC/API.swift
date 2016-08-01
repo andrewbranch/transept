@@ -74,7 +74,7 @@ public class API: NSObject {
     override init() {
         super.init()
         if let keychainToken = Locksmith.loadDataForUserAccount("accessToken") {
-            self._accessToken = try? AccessToken(rawJSON: keychainToken["rawJSON"] as! NSData)
+//            self._accessToken = try? AccessToken(rawJSON: keychainToken["rawJSON"] as! NSData)
             // TODO refresh token
         }
     }
@@ -328,6 +328,9 @@ public class API: NSObject {
         request.setValue(authHeaders["X-Verify-Credentials-Authorization"] as! String!, forHTTPHeaderField: "X-Verify-Credentials-Authorization")
         request.HTTPMethod = "POST"
         request.HTTPBody = data
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("\(data.length)", forHTTPHeaderField: "Content-Length")
         
         try sendRequest(request) { accessToken in
             completed(token: accessToken)
