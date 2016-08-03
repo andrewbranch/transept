@@ -54,18 +54,7 @@ class AuthenticationViewController: UIPageViewController, SignInDelegate, Confir
         self.setViewControllers([confirmViewController], direction: .Forward, animated: true, completion: nil)
     }
     
-    func signInViewController(viewController: SignInViewController, grantedUnknownUser token: AccessToken) {
-        self.accessToken = token
-        self.confirmIdentity(token)
-    }
-    
-    func signInViewController(viewController: SignInViewController, grantedKnownUser token: AccessToken) {
-        self.accessToken = token
-        self.authenticationDelegate.authenticationViewController(self, granted: token)
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    func signInViewControllerCouldNotGrantToken(viewController viewController: SignInViewController) {
+    private func requestAccess(revokedToken revokedToken: AccessToken?) {
         do {
             try API.shared().requestAccess(self.requestScopes) { accessRequest in
                 // Created access request.
@@ -83,6 +72,21 @@ class AuthenticationViewController: UIPageViewController, SignInDelegate, Confir
         }
     }
     
+    func signInViewController(viewController: SignInViewController, grantedUnknownUser token: AccessToken) {
+        self.accessToken = token
+        self.confirmIdentity(token)
+    }
+    
+    func signInViewController(viewController: SignInViewController, grantedKnownUser token: AccessToken) {
+        self.accessToken = token
+        self.authenticationDelegate.authenticationViewController(self, granted: token)
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func signInViewControllerCouldNotGrantToken(viewController viewController: SignInViewController) {
+        requestAccess(revokedToken: nil)
+    }
+    
     func signInViewController(viewController: SignInViewController, failedWith error: NSError) {
         if let apiError = error as? API.Error {
             self.authenticationDelegate.authenticationViewController(self, failedWith: apiError)
@@ -97,7 +101,7 @@ class AuthenticationViewController: UIPageViewController, SignInDelegate, Confir
     }
     
     func confirmViewControllerDeniedIdentity(viewController viewController: ConfirmIdentityViewController) {
-        
+        // Revoke token and start access request process with some meta info describing phone number conflict
     }
 
 }
