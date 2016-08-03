@@ -118,8 +118,8 @@
 		49F2615F1B9E216100FE027D /* BulletinsDataSourceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F2615E1B9E216100FE027D /* BulletinsDataSourceTest.swift */; };
 		49F261611B9E277A00FE027D /* MediaTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49F2615C1B9CF22700FE027D /* MediaTableHeaderView.xib */; };
 		49F261631B9E2E7A00FE027D /* NSDateExtensionsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F261621B9E2E7A00FE027D /* NSDateExtensionsTest.swift */; };
-		49F52A191D51846E00E3BD47 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F52A171D51846E00E3BD47 /* FBSDKCoreKit.framework */; };
-		49F52A1A1D51846E00E3BD47 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F52A181D51846E00E3BD47 /* FBSDKLoginKit.framework */; };
+		49F52A1D1D51850800E3BD47 /* VerifyIdentityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F52A1B1D51850800E3BD47 /* VerifyIdentityViewController.swift */; };
+		49F52A1E1D51850800E3BD47 /* VerifyIdentityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49F52A1C1D51850800E3BD47 /* VerifyIdentityViewController.xib */; };
 		DEA0621A938D733CFECA758D /* Pods_FUMC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26A14102F76CEA3A472DCBDF /* Pods_FUMC.framework */; };
 /* End PBXBuildFile section */
 
@@ -367,8 +367,8 @@
 		49F2615C1B9CF22700FE027D /* MediaTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MediaTableHeaderView.xib; path = FUMC/MediaTableHeaderView.xib; sourceTree = "<group>"; };
 		49F2615E1B9E216100FE027D /* BulletinsDataSourceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulletinsDataSourceTest.swift; sourceTree = "<group>"; };
 		49F261621B9E2E7A00FE027D /* NSDateExtensionsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtensionsTest.swift; sourceTree = "<group>"; };
-		49F52A171D51846E00E3BD47 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		49F52A181D51846E00E3BD47 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		49F52A1B1D51850800E3BD47 /* VerifyIdentityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VerifyIdentityViewController.swift; path = FUMC/VerifyIdentityViewController.swift; sourceTree = "<group>"; };
+		49F52A1C1D51850800E3BD47 /* VerifyIdentityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VerifyIdentityViewController.xib; path = FUMC/VerifyIdentityViewController.xib; sourceTree = "<group>"; };
 		927BEB378353993D3A9AE5AF /* Pods-FUMC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FUMC.release.xcconfig"; path = "Pods/Target Support Files/Pods-FUMC/Pods-FUMC.release.xcconfig"; sourceTree = "<group>"; };
 		DA7425126BE2BA297FAE61BC /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E136BBB9DDE19D5EFC21E313 /* Pods_FUMCTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FUMCTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -384,10 +384,8 @@
 				4916F2FD1B4118DB001412D3 /* EventKit.framework in Frameworks */,
 				495C471A1C8A83940018F677 /* DigitsKit.framework in Frameworks */,
 				495C471C1C8A83940018F677 /* TwitterCore.framework in Frameworks */,
-				49F52A191D51846E00E3BD47 /* FBSDKCoreKit.framework in Frameworks */,
 				4916F2FE1B4118DB001412D3 /* EventKitUI.framework in Frameworks */,
 				49B2A3671A26829D004EED86 /* Crashlytics.framework in Frameworks */,
-				49F52A1A1D51846E00E3BD47 /* FBSDKLoginKit.framework in Frameworks */,
 				49B2A3681A26829D004EED86 /* Fabric.framework in Frameworks */,
 				DEA0621A938D733CFECA758D /* Pods_FUMC.framework in Frameworks */,
 			);
@@ -684,8 +682,6 @@
 				495C47181C8A83940018F677 /* DigitsKitResources.bundle */,
 				495C47191C8A83940018F677 /* TwitterCore.framework */,
 				49B2A3651A26829D004EED86 /* Fabric.framework */,
-				49F52A171D51846E00E3BD47 /* FBSDKCoreKit.framework */,
-				49F52A181D51846E00E3BD47 /* FBSDKLoginKit.framework */,
 				49B2A2EB1A268022004EED86 /* FUMCTests */,
 				49B2A2D21A268022004EED86 /* Products */,
 				7B69E7F3C551EDB41F9B412B /* Frameworks */,
@@ -906,6 +902,7 @@
 				49E09F6F1D4EA2040097A17B /* AuthenticationViewController.swift */,
 				49E09F771D4EDBEF0097A17B /* SignInViewController.swift */,
 				49E09F791D4EE9DF0097A17B /* ConfirmIdentityViewController.swift */,
+				49F52A1B1D51850800E3BD47 /* VerifyIdentityViewController.swift */,
 			);
 			name = Authentication;
 			sourceTree = "<group>";
@@ -915,6 +912,7 @@
 			children = (
 				49E09F7A1D4EE9E00097A17B /* ConfirmIdentityViewController.xib */,
 				49E09F711D4EBABC0097A17B /* SignInViewController.xib */,
+				49F52A1C1D51850800E3BD47 /* VerifyIdentityViewController.xib */,
 			);
 			name = Authentication;
 			sourceTree = "<group>";
@@ -1073,6 +1071,7 @@
 				49B2A3311A268070004EED86 /* BebasNeue Regular.otf in Resources */,
 				49E09F721D4EBABC0097A17B /* SignInViewController.xib in Resources */,
 				49B2A3461A268070004EED86 /* Images.xcassets in Resources */,
+				49F52A1E1D51850800E3BD47 /* VerifyIdentityViewController.xib in Resources */,
 				49E09F7C1D4EE9E00097A17B /* ConfirmIdentityViewController.xib in Resources */,
 				49B2A32F1A268070004EED86 /* BebasNeue Book.otf in Resources */,
 				49B2A32E1A268070004EED86 /* BebasNeue Bold.otf in Resources */,
@@ -1263,6 +1262,7 @@
 				49B2A3591A268070004EED86 /* WitnessesDataSource.swift in Sources */,
 				497A01A91CFD1645005D3CB5 /* User.swift in Sources */,
 				49A9B1761BA6026C00109D3D /* VideoAlbumsTableViewController.swift in Sources */,
+				49F52A1D1D51850800E3BD47 /* VerifyIdentityViewController.swift in Sources */,
 				49B2A3581A268070004EED86 /* Witness.swift in Sources */,
 				49B2A33B1A268070004EED86 /* ConnectTableFooterView.swift in Sources */,
 				490C659F1A3230A700E87130 /* Calendar.swift in Sources */,

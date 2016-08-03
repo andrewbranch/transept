@@ -20,22 +20,15 @@ struct AccessRequest : Deserializable {
     var dateSettled: NSDate?
     var status: Status!
     var scopes: [API.Scopes]!
-    var digitsId: String!
-    var phone: String!
-    var twitter: String?
-    var facebook: String?
-    var email: String?
+    var user: User!
     
     init(rawJSON: NSData) throws {
         let jsonDictionary = try NSJSONSerialization.JSONObjectWithData(rawJSON, options: .AllowFragments)
-        dateRequested = moment(jsonDictionary["date-requested"]! as? String ?? "")?.date
-        dateSettled = moment(jsonDictionary["date-settled"]! as? String ?? "")?.date
-        status = Status(rawValue: jsonDictionary["status"] as! String)
-        scopes = (jsonDictionary["scopes"] as! [String]).flatMap { API.Scopes(rawValue: $0) }
-        digitsId = jsonDictionary["digitsId"] as! String
-        phone = jsonDictionary["phone"] as! String
-        twitter = jsonDictionary["twitter"]! as! String?
-        facebook = jsonDictionary["facebook"]! as! String?
-        email = jsonDictionary["email"]! as! String?
+        let accessRequest = jsonDictionary["accessRequest"] as! NSDictionary
+        dateRequested = moment(accessRequest["dateRequested"] as? String ?? "")?.date
+        dateSettled = moment(accessRequest["dateSettled"] as? String ?? "")?.date
+        status = Status(rawValue: accessRequest["status"] as! String)
+        scopes = (accessRequest["scopes"] as! [String]).flatMap { API.Scopes(rawValue: $0) }
+        user = try User(jsonDictionary: jsonDictionary["user"] as! NSDictionary)
     }
 }

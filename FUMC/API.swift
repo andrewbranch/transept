@@ -316,16 +316,20 @@ public class API: NSObject {
          return NSURL(string: "\(base)/file/\(key.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!)")
     }
     
-    func getAuthToken(session: DGTSession, scopes: [Scopes], completed: (token: Result<AccessToken>) -> Void) throws {
+    private func setDigitsHeaders(request request: NSMutableURLRequest, digitsSession: DGTSession) {
         let digits = Digits.sharedInstance()
-        let oauthSigning = DGTOAuthSigning(authConfig: digits.authConfig, authSession: session)
+        let oauthSigning = DGTOAuthSigning(authConfig: digits.authConfig, authSession: digitsSession)
         let authHeaders = oauthSigning.OAuthEchoHeadersToVerifyCredentials() as! [String : AnyObject]
-        let url = NSURL(string: "\(base)/authenticate/digits")
-        let request = NSMutableURLRequest(URL: url!)
-        let data = try NSJSONSerialization.dataWithJSONObject([ "scopes": scopes.map { $0.rawValue } ], options: NSJSONWritingOptions(rawValue: 0))
         request.setValue(Env.get("DIGITS_CONSUMER_KEY"), forHTTPHeaderField: "oauth_consumer_key")
         request.setValue(authHeaders["X-Auth-Service-Provider"] as! String!, forHTTPHeaderField: "X-Auth-Service-Provider")
         request.setValue(authHeaders["X-Verify-Credentials-Authorization"] as! String!, forHTTPHeaderField: "X-Verify-Credentials-Authorization")
+    }
+    
+    func getAuthToken(session: DGTSession, scopes: [Scopes], completed: (token: Result<AccessToken>) -> Void) throws {
+        let url = NSURL(string: "\(base)/authenticate/digits")
+        let request = NSMutableURLRequest(URL: url!)
+        let data = try NSJSONSerialization.dataWithJSONObject([ "scopes": scopes.map { $0.rawValue } ], options: NSJSONWritingOptions(rawValue: 0))
+        setDigitsHeaders(request: request, digitsSession: session)
         request.HTTPMethod = "POST"
         request.HTTPBody = data
         request.setValue("application/json", forHTTPHeaderField: "Accept")
@@ -337,20 +341,21 @@ public class API: NSObject {
         }
     }
     
-    func requestAccess(scopes: [Scopes], completed: (accessRequest: Result<AccessRequest>) -> Void) throws {
-        let url = NSURL(string: "\(base)/authenticate/request")
+    func requestAccess(session: DGTSession, scopes: [Scopes], completed: (accessRequest: Result<AccessRequest>) -> Void) throws {
+        let url = NSURL(string: "\(base)/authenticate/digits/request")
         let request = NSMutableURLRequest(URL: url!)
         let data = try NSJSONSerialization.dataWithJSONObject([
-            "tokenId": accessToken!.id,
             "scopes": scopes.map { $0.rawValue }
         ], options: NSJSONWritingOptions(rawValue: 0))
         
+        setDigitsHeaders(request: request, digitsSession: session)
+        request.HTTPMethod = "POST"
         request.HTTPBody = data
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("\(data.length)", forHTTPHeaderField: "Content-Length")
         
-        try sendAuthenticatedRequest(request) { accessRequest in
+        try sendRequest(request) { accessRequest in
             completed(accessRequest: accessRequest)
         }
     }

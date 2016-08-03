@@ -12,6 +12,11 @@ struct User {
     var id: String
     var firstName: String?
     var lastName: String?
+    var twitter: String?
+    var facebook: String?
+    var email: String?
+    var digitsId: String?
+    var phone: String?
     
     init(jsonDictionary: NSDictionary) throws {
         id = jsonDictionary["id"] as! String

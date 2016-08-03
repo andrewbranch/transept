@@ -65,7 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Fabric.with([Digits.self])
         #endif
         
-        
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
         return true
     }
@@ -88,6 +88,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.bulletinsDataSource.refresh()
         self.witnessesDataSource.refresh()
         self.videosDataSource.refresh()
+    }
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
     }
 
     func applicationWillTerminate(application: UIApplication) {
