@@ -21,6 +21,7 @@ class AuthenticationViewController: UIPageViewController, SignInDelegate, Confir
     var requestScopes: [API.Scopes]!
     
     private var accessToken: AccessToken?
+    private var accessRequest: AccessRequest?
     
     init(requestScopes: [API.Scopes], delegate: AuthenticationDelegate) {
         super.init(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
@@ -86,6 +87,7 @@ class AuthenticationViewController: UIPageViewController, SignInDelegate, Confir
     }
     
     private func verifyIdentity(accessRequest: AccessRequest) {
+        self.accessRequest = accessRequest
         let verifyViewController = VerifyIdentityViewController(nibName: "VerifyIdentityViewController", bundle: nil)
         self.setViewControllers([verifyViewController], direction: .Forward, animated: true, completion: nil)
     }
@@ -123,7 +125,25 @@ class AuthenticationViewController: UIPageViewController, SignInDelegate, Confir
     }
     
     func verifyViewController(viewController: VerifyIdentityViewController, got facebookToken: FBSDKAccessToken) {
-        NSLog(facebookToken.tokenString)
+        do {
+            guard let session = Digits.sharedInstance().session() else {
+                throw API.Error.Unknown(userMessage: nil, developerMessage: "Digits session was nil", userInfo: nil)
+            }
+        
+            try API.shared().updateAccessRequest(self.accessRequest!, session: session, facebookToken: facebookToken.tokenString) { accessRequest in
+                do {
+                    self.accessRequest = try accessRequest.value()
+                } catch let error as API.Error {
+                    self.authenticationDelegate.authenticationViewController(self, failedWith: error)
+                } catch {
+                    self.authenticationDelegate.authenticationViewController(self, failedWith: API.Error.Unknown(userMessage: nil, developerMessage: nil, userInfo: nil))
+                }
+            }
+        } catch let error as API.Error {
+            self.authenticationDelegate.authenticationViewController(self, failedWith: error)
+        } catch {
+            self.authenticationDelegate.authenticationViewController(self, failedWith: API.Error.Unknown(userMessage: nil, developerMessage: nil, userInfo: nil))
+        }
     }
     
     func verifyViewController(viewController: VerifyIdentityViewController, failedWith error: NSError) {

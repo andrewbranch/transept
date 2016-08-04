@@ -16,6 +16,7 @@ struct AccessRequest : Deserializable {
         case Rejected = "rejected"
     }
     
+    var id: String!
     var dateRequested: NSDate?
     var dateSettled: NSDate?
     var status: Status!
@@ -25,6 +26,7 @@ struct AccessRequest : Deserializable {
     init(rawJSON: NSData) throws {
         let jsonDictionary = try NSJSONSerialization.JSONObjectWithData(rawJSON, options: .AllowFragments)
         let accessRequest = jsonDictionary["accessRequest"] as! NSDictionary
+        id = accessRequest["id"] as! String
         dateRequested = moment(accessRequest["dateRequested"] as? String ?? "")?.date
         dateSettled = moment(accessRequest["dateSettled"] as? String ?? "")?.date
         status = Status(rawValue: accessRequest["status"] as! String)
