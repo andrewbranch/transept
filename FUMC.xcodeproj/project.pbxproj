@@ -908,7 +908,6 @@
 				49E09F791D4EE9DF0097A17B /* ConfirmIdentityViewController.swift */,
 				49F52A1B1D51850800E3BD47 /* VerifyIdentityViewController.swift */,
 				497459981D5FDB6B007D8F2F /* PendingAccessViewController.swift */,
-				497459991D5FDB6B007D8F2F /* PendingAccessViewController.xib */,
 			);
 			name = Authentication;
 			sourceTree = "<group>";
@@ -919,6 +918,7 @@
 				49E09F7A1D4EE9E00097A17B /* ConfirmIdentityViewController.xib */,
 				49E09F711D4EBABC0097A17B /* SignInViewController.xib */,
 				49F52A1C1D51850800E3BD47 /* VerifyIdentityViewController.xib */,
+				497459991D5FDB6B007D8F2F /* PendingAccessViewController.xib */,
 			);
 			name = Authentication;
 			sourceTree = "<group>";

@@ -8,16 +8,25 @@
 
 import UIKit
 import DigitsKit
+import FBSDKLoginKit
 
 protocol PendingAccessDelegate {
     func pendingAccessViewController(viewController: PendingAccessViewController, granted accessToken: AccessToken)
     func pendingAccessViewController(viewController: PendingAccessViewController, failedWith error: NSError)
 }
 
-class PendingAccessViewController: UIViewController, SignInDelegate {
+class PendingAccessViewController: UIViewController, SignInDelegate, FBSDKLoginButtonDelegate {
+    @IBOutlet var updatingView: UIView!
+    @IBOutlet var approvedView: UIView!
+    @IBOutlet var pendingWithIdentityView: UIView!
+    @IBOutlet var pendingNeedsIdentityView: UIView!
+    @IBOutlet var deniedView: UIView!
+    @IBOutlet var facebookButtonContainer: UIView!
+    
     var delegate: PendingAccessDelegate!
     var scopes: [API.Scopes]!
     var requestId: String!
+    var accessToken: AccessToken?
     
     init(delegate: PendingAccessDelegate, scopes: [API.Scopes], accessRequestId: String) {
         super.init(nibName: "PendingAccessViewController", bundle: nil)
@@ -32,14 +41,18 @@ class PendingAccessViewController: UIViewController, SignInDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let facebookButton = FBSDKLoginButton(frame: facebookButtonContainer.frame)
+        facebookButton.delegate = self
+        facebookButtonContainer.addSubview(facebookButton)
+        
         if let digitsSession = Digits.sharedInstance().session() {
             // Already signed into Digits
             API.shared().getAuthToken(digitsSession, scopes: self.scopes) { accessToken in
                 do {
-                    let accessToken = try accessToken.value()
+                    self.accessToken = try accessToken.value()
                     // Access Request must have been approved
-                    self.delegate.pendingAccessViewController(self, granted: accessToken)
-                    API.shared().accessToken = accessToken
+                    API.shared().accessToken = self.accessToken!
+                    // Show approvedView
                 } catch API.Error.Unauthenticated {
                     // Access Request wasn’t approved; get status from server
                 } catch let error as NSError {
@@ -71,5 +84,26 @@ class PendingAccessViewController: UIViewController, SignInDelegate {
     
     func signInViewControllerCouldNotGrantToken(viewController viewController: SignInViewController) {
         // Access Request wasn’t approved; get status from server
+    }
+    
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+        // This is impossible
+    }
+    
+    func loginButtonWillLogin(loginButton: FBSDKLoginButton!) -> Bool {
+        // Don’t care
+        return true
+    }
+    
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+        guard error == nil && !result.isCancelled else {
+            return
+        }
+        
+        // Show pendingWithIdentityView
+    }
+    
+    @IBAction func tappedGetStarted() {
+        self.delegate.pendingAccessViewController(self, granted: accessToken!)
     }
 }
