@@ -35,9 +35,7 @@ class AuthenticationViewController: UIPageViewController, SignInDelegate, Confir
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if Digits.sharedInstance().session() != nil {
-            self.signIn()
-        }
+        self.signIn()
     }
     
     private func signIn() {
@@ -64,6 +62,8 @@ class AuthenticationViewController: UIPageViewController, SignInDelegate, Confir
             try API.shared().requestAccess(session, scopes: self.requestScopes) { accessRequest in
                 do {
                     let request = try accessRequest.value()
+                    // Created access request.
+                    // Prompt to prove identity with Facebook or Twitter, or instruct to go to front office.
                     self.verifyIdentity(request)
                 } catch let error as API.Error {
                     // Failed to create access request
@@ -71,12 +71,6 @@ class AuthenticationViewController: UIPageViewController, SignInDelegate, Confir
                 } catch {
                     self.authenticationDelegate.authenticationViewController(self, failedWith: API.Error.Unknown(userMessage: nil, developerMessage: nil, userInfo: nil))
                 }
-                // Created access request.
-                // Prompt to prove identity with Facebook or Twitter, or instruct to go to front office.
-                
-                // Indicate that an access request is open.
-                // applicationDidBecomeActive should check this and review the status of the request.
-                NSUserDefaults.standardUserDefaults().setBool(true, forKey: "accessRequestOpen")
             }
         } catch let error as API.Error {
             // Failed to create access request
@@ -100,7 +94,6 @@ class AuthenticationViewController: UIPageViewController, SignInDelegate, Confir
     func signInViewController(viewController: SignInViewController, grantedKnownUser token: AccessToken) {
         self.accessToken = token
         self.authenticationDelegate.authenticationViewController(self, granted: token)
-        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func signInViewControllerCouldNotGrantToken(viewController viewController: SignInViewController) {
@@ -117,7 +110,6 @@ class AuthenticationViewController: UIPageViewController, SignInDelegate, Confir
     
     func confirmViewControllerConfirmedIdentity(viewController viewController: ConfirmIdentityViewController) {
         self.authenticationDelegate.authenticationViewController(self, granted: self.accessToken!)
-        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func confirmViewControllerDeniedIdentity(viewController viewController: ConfirmIdentityViewController) {
@@ -133,6 +125,7 @@ class AuthenticationViewController: UIPageViewController, SignInDelegate, Confir
             try API.shared().updateAccessRequest(self.accessRequest!, session: session, facebookToken: facebookToken.tokenString) { accessRequest in
                 do {
                     self.accessRequest = try accessRequest.value()
+                    self.authenticationDelegate.authenticationViewController(self, opened: self.accessRequest!)
                 } catch let error as API.Error {
                     self.authenticationDelegate.authenticationViewController(self, failedWith: error)
                 } catch {

@@ -325,10 +325,10 @@ public class API: NSObject {
         request.setValue(authHeaders["X-Verify-Credentials-Authorization"] as! String!, forHTTPHeaderField: "X-Verify-Credentials-Authorization")
     }
     
-    func getAuthToken(session: DGTSession, scopes: [Scopes], completed: (token: Result<AccessToken>) -> Void) throws {
+    func getAuthToken(session: DGTSession, scopes: [Scopes], completed: (token: Result<AccessToken>) -> Void) {
         let url = NSURL(string: "\(base)/authenticate/digits")
         let request = NSMutableURLRequest(URL: url!)
-        let data = try NSJSONSerialization.dataWithJSONObject([ "scopes": scopes.map { $0.rawValue } ], options: NSJSONWritingOptions(rawValue: 0))
+        let data = try! NSJSONSerialization.dataWithJSONObject([ "scopes": scopes.map { $0.rawValue } ], options: NSJSONWritingOptions(rawValue: 0))
         setDigitsHeaders(request: request, digitsSession: session)
         request.HTTPMethod = "POST"
         request.HTTPBody = data
@@ -336,15 +336,15 @@ public class API: NSObject {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("\(data.length)", forHTTPHeaderField: "Content-Length")
         
-        try sendRequest(request) { accessToken in
+        sendRequest(request) { accessToken in
             completed(token: accessToken)
         }
     }
     
-    func requestAccess(session: DGTSession, scopes: [Scopes], completed: (accessRequest: Result<AccessRequest>) -> Void) throws {
+    func requestAccess(session: DGTSession, scopes: [Scopes], completed: (accessRequest: Result<AccessRequest>) -> Void) {
         let url = NSURL(string: "\(base)/authenticate/digits/request")
         let request = NSMutableURLRequest(URL: url!)
-        let data = try NSJSONSerialization.dataWithJSONObject([
+        let data = try! NSJSONSerialization.dataWithJSONObject([
             "scopes": scopes.map { $0.rawValue }
         ], options: NSJSONWritingOptions(rawValue: 0))
         
@@ -355,15 +355,15 @@ public class API: NSObject {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("\(data.length)", forHTTPHeaderField: "Content-Length")
         
-        try sendRequest(request) { accessRequest in
+        sendRequest(request) { accessRequest in
             completed(accessRequest: accessRequest)
         }
     }
     
-    func updateAccessRequest(accessRequest: AccessRequest, session: DGTSession, facebookToken: String, completed: (accessRequest: Result<AccessRequest>) -> Void) throws {
+    func updateAccessRequest(accessRequest: AccessRequest, session: DGTSession, facebookToken: String, completed: (accessRequest: Result<AccessRequest>) -> Void) {
         let url = NSURL(string: "\(base)/authenticate/digits/request/\(accessRequest.id)")
         let request = NSMutableURLRequest(URL: url!)
-        let data = try NSJSONSerialization.dataWithJSONObject([
+        let data = try! NSJSONSerialization.dataWithJSONObject([
             "facebookToken": facebookToken
         ], options: NSJSONWritingOptions(rawValue: 0))
         
@@ -374,23 +374,25 @@ public class API: NSObject {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("\(data.length)", forHTTPHeaderField: "Content-Length")
         
-        try sendRequest(request) { updatedAccessRequest in
+        sendRequest(request) { updatedAccessRequest in
             completed(accessRequest: updatedAccessRequest)
         }
     }
     
-    private func sendAuthenticatedRequest<TResponseType: Deserializable>(request: NSMutableURLRequest, completed: (result: Result<TResponseType>) -> Void) throws {
+    private func sendAuthenticatedRequest<TResponseType: Deserializable>(request: NSMutableURLRequest, completed: (result: Result<TResponseType>) -> Void) {
         guard let token = accessToken else {
-            throw NSError(domain: API.ERROR_DOMAIN, code: 3, userInfo: ["developerMessage": "No access token present", "userMessage": AppDelegate.USER_UNKNOWN_ERROR_MESSAGE])
+            return completed(result: Result {
+                throw API.Error.Unauthenticated
+            })
         }
         
         request.setValue("Authorization", forHTTPHeaderField: "Bearer \(token.signed)")
-        try sendRequest(request) { result in
+        sendRequest(request) { result in
             completed(result: result)
         }
     }
     
-    private func sendRequest<TResponseType: Deserializable>(request: NSMutableURLRequest, completed: (result: Result<TResponseType>) -> Void) throws {
+    private func sendRequest<TResponseType: Deserializable>(request: NSMutableURLRequest, completed: (result: Result<TResponseType>) -> Void) {
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { response, data, error in
             guard error == nil else {
                 return completed(result: Result { throw error! })

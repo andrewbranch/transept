@@ -38,6 +38,8 @@
 		49605DE41BA571E3003633A1 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 49605DD81BA571E3003633A1 /* AFURLRequestSerialization.m */; };
 		49605DE51BA571E3003633A1 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 49605DDA1BA571E3003633A1 /* AFURLResponseSerialization.m */; };
 		49605DE61BA571E3003633A1 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 49605DDC1BA571E3003633A1 /* AFURLSessionManager.m */; };
+		4974599A1D5FDB6B007D8F2F /* PendingAccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497459981D5FDB6B007D8F2F /* PendingAccessViewController.swift */; };
+		4974599B1D5FDB6B007D8F2F /* PendingAccessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 497459991D5FDB6B007D8F2F /* PendingAccessViewController.xib */; };
 		497A01A91CFD1645005D3CB5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497A01A81CFD1645005D3CB5 /* User.swift */; };
 		49804B261C5E88CE005AE154 /* VideosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49804B241C5E88CE005AE154 /* VideosTableViewCell.swift */; };
 		49804B271C5E88CE005AE154 /* VideosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49804B241C5E88CE005AE154 /* VideosTableViewCell.swift */; };
@@ -285,6 +287,8 @@
 		49605EAB1BA5721F003633A1 /* VIMModelObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VIMModelObject.m; sourceTree = "<group>"; };
 		49605EAC1BA5721F003633A1 /* VIMObjectMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VIMObjectMapper.h; sourceTree = "<group>"; };
 		49605EAD1BA5721F003633A1 /* VIMObjectMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VIMObjectMapper.m; sourceTree = "<group>"; };
+		497459981D5FDB6B007D8F2F /* PendingAccessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PendingAccessViewController.swift; path = FUMC/PendingAccessViewController.swift; sourceTree = "<group>"; };
+		497459991D5FDB6B007D8F2F /* PendingAccessViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PendingAccessViewController.xib; path = FUMC/PendingAccessViewController.xib; sourceTree = "<group>"; };
 		497A01A81CFD1645005D3CB5 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = FUMC/User.swift; sourceTree = "<group>"; };
 		49804B241C5E88CE005AE154 /* VideosTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideosTableViewCell.swift; path = FUMC/VideosTableViewCell.swift; sourceTree = "<group>"; };
 		49804B251C5E88CE005AE154 /* VideosTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VideosTableViewCell.xib; path = FUMC/VideosTableViewCell.xib; sourceTree = "<group>"; };
@@ -903,6 +907,8 @@
 				49E09F771D4EDBEF0097A17B /* SignInViewController.swift */,
 				49E09F791D4EE9DF0097A17B /* ConfirmIdentityViewController.swift */,
 				49F52A1B1D51850800E3BD47 /* VerifyIdentityViewController.swift */,
+				497459981D5FDB6B007D8F2F /* PendingAccessViewController.swift */,
+				497459991D5FDB6B007D8F2F /* PendingAccessViewController.xib */,
 			);
 			name = Authentication;
 			sourceTree = "<group>";
@@ -1086,6 +1092,7 @@
 				49D507A31A37C18E00531F23 /* CalendarTableViewAllDayCell.xib in Resources */,
 				49B2A33C1A268070004EED86 /* ConnectTableFooterView.xib in Resources */,
 				49F2615D1B9CF22700FE027D /* MediaTableHeaderView.xib in Resources */,
+				4974599B1D5FDB6B007D8F2F /* PendingAccessViewController.xib in Resources */,
 				49B2A32D1A268070004EED86 /* Main.storyboard in Resources */,
 				49B2A3391A268070004EED86 /* CalendarTableViewCell.xib in Resources */,
 				495C471B1C8A83940018F677 /* DigitsKitResources.bundle in Resources */,
@@ -1236,6 +1243,7 @@
 				49605DE61BA571E3003633A1 /* AFURLSessionManager.m in Sources */,
 				49209A511A360BD600DDD45E /* RadioView.swift in Sources */,
 				49F2615B1B9CF20D00FE027D /* MediaTableHeaderView.swift in Sources */,
+				4974599A1D5FDB6B007D8F2F /* PendingAccessViewController.swift in Sources */,
 				495C47201C8D2E2B0018F677 /* AccessToken.swift in Sources */,
 				49D507A21A37C18E00531F23 /* CalendarTableViewAllDayCell.swift in Sources */,
 				49605DE31BA571E3003633A1 /* AFURLConnectionOperation.m in Sources */,
