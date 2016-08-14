@@ -379,6 +379,15 @@ public class API: NSObject {
         }
     }
     
+    func getAccessRequest(id: String, session: DGTSession, completed: (accessRequest: Result<AccessRequest>) -> Void) {
+        let url = NSURL(string: "\(base)/authenticate/digits/request/\(id)")
+        let request = NSMutableURLRequest(URL: url!)
+        setDigitsHeaders(request: request, digitsSession: session)
+        sendRequest(request) { accessRequest in
+            completed(accessRequest: accessRequest)
+        }
+    }
+    
     private func sendAuthenticatedRequest<TResponseType: Deserializable>(request: NSMutableURLRequest, completed: (result: Result<TResponseType>) -> Void) {
         guard let token = accessToken else {
             return completed(result: Result {
