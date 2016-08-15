@@ -36,6 +36,13 @@ class PendingAccessViewController: UIViewController, SignInDelegate, FBSDKLoginB
         self.requestId = accessRequestId
     }
     
+    init(delegate: PendingAccessDelegate, scopes: [API.Scopes], accessRequest: AccessRequest) {
+        super.init(nibName: "PendingAccessViewController", bundle: nil)
+        self.delegate = delegate
+        self.scopes = scopes
+        self.accessRequest = accessRequest
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -48,16 +55,26 @@ class PendingAccessViewController: UIViewController, SignInDelegate, FBSDKLoginB
         
         if let digitsSession = Digits.sharedInstance().session() {
             // Already signed into Digits
-            API.shared().getAuthToken(digitsSession, scopes: self.scopes) { accessToken in
-                do {
-                    self.accessToken = try accessToken.value()
-                    // Access Request must have been approved
-                    API.shared().accessToken = self.accessToken!
-                    self.view.bringSubviewToFront(self.approvedView)
-                } catch API.Error.Unauthenticated {
-                    self.getAccessRequest(digitsSession)
-                } catch let error as NSError {
-                    self.delegate.pendingAccessViewController(self, failedWith: error)
+            if let accessRequest = self.accessRequest {
+                // We literally just created the access request
+                if accessRequest.user.facebook != nil {
+                    view.bringSubviewToFront(pendingWithIdentityView)
+                } else {
+                    view.bringSubviewToFront(pendingNeedsIdentityView)
+                }
+            } else {
+                // Access request could be approved by now, let’s find out
+                API.shared().getAuthToken(digitsSession, scopes: self.scopes) { accessToken in
+                    do {
+                        self.accessToken = try accessToken.value()
+                        // Access Request must have been approved
+                        API.shared().accessToken = self.accessToken!
+                        self.view.bringSubviewToFront(self.approvedView)
+                    } catch API.Error.Unauthenticated {
+                        self.getAccessRequest(digitsSession)
+                    } catch let error as NSError {
+                        self.delegate.pendingAccessViewController(self, failedWith: error)
+                    }
                 }
             }
         } else {

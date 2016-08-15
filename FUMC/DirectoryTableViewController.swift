@@ -27,19 +27,35 @@ class DirectoryTableViewController: CustomTableViewController, DirectoryDataSour
         
         if let requestId = NSUserDefaults.standardUserDefaults().valueForKey(accessRequestKey) as? String {
             // Access Request is open; show pending screen
-            let pendingAccessViewController = PendingAccessViewController(delegate: self, scopes: requiredScopes, accessRequestId: requestId)
-            self.addChildViewController(pendingAccessViewController)
-            pendingAccessViewController.view.frame = self.view.frame
-            self.view.addSubview(pendingAccessViewController.view)
-            pendingAccessViewController.didMoveToParentViewController(self)
+            launchPendingAccessFlow(requestId)
         } else if (!API.shared().hasAccessToken) {
             launchAuthFlow()
         }
     }
     
-    func launchAuthFlow() {
+    private func launchAuthFlow() {
         let authenticationViewController = AuthenticationViewController(requestScopes: requiredScopes, delegate: self)
         self.presentViewController(authenticationViewController, animated: true, completion: nil)
+    }
+    
+    private func launchPendingAccessFlow(requestId: String) {
+        launchPendingAccessFlow(
+            PendingAccessViewController(delegate: self, scopes: requiredScopes, accessRequestId: requestId)
+        )
+        
+    }
+    
+    private func launchPendingAccessFlow(request: AccessRequest) {
+        launchPendingAccessFlow(
+            PendingAccessViewController(delegate: self, scopes: requiredScopes, accessRequest: request)
+        )
+    }
+    
+    private func launchPendingAccessFlow(pendingAccessViewController: PendingAccessViewController) {
+        self.addChildViewController(pendingAccessViewController)
+        pendingAccessViewController.view.frame = self.view.frame
+        self.view.addSubview(pendingAccessViewController.view)
+        pendingAccessViewController.didMoveToParentViewController(self)
     }
     
     func dataSource(dataSource: DirectoryDataSource, failedToLoadWith error: API.Error) {
@@ -61,9 +77,8 @@ class DirectoryTableViewController: CustomTableViewController, DirectoryDataSour
     }
     
     func authenticationViewController(viewController: AuthenticationViewController, granted accessToken: AccessToken) {
-        NSLog("granted access token")
         viewController.dismissViewControllerAnimated(true, completion: nil)
-        self.dataSource!.refresh()
+        dataSource!.refresh()
     }
     
     func authenticationViewController(viewController: AuthenticationViewController, opened accessRequest: AccessRequest) {
@@ -71,12 +86,15 @@ class DirectoryTableViewController: CustomTableViewController, DirectoryDataSour
         // Indicate that an access request is open.
         // applicationDidBecomeActive should check this and review the status of the request.
         NSUserDefaults.standardUserDefaults().setValue(accessRequest.id, forKey: accessRequestKey)
-        NSLog("opened access request")
+        launchPendingAccessFlow(accessRequest)
     }
     
     func pendingAccessViewController(viewController: PendingAccessViewController, granted accessToken: AccessToken) {
-        self.dataSource!.refresh()
+        dataSource!.refresh()
         NSUserDefaults.standardUserDefaults().setValue(nil, forKey: self.accessRequestKey)
+        viewController.willMoveToParentViewController(nil)
+        viewController.view.removeFromSuperview()
+        viewController.removeFromParentViewController()
     }
     
     func pendingAccessViewController(viewController: PendingAccessViewController, failedWith error: NSError) {

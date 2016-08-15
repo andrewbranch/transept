@@ -64,7 +64,11 @@ class AuthenticationViewController: UIPageViewController, SignInDelegate, Confir
                 let request = try accessRequest.value()
                 // Created access request.
                 // Prompt to prove identity with Facebook or Twitter, or instruct to go to front office.
-                self.verifyIdentity(request)
+                if let facebookToken = FBSDKAccessToken.currentAccessToken() {
+                    self.updateAccessRequest(facebookToken)
+                } else {
+                    self.verifyIdentity(request)
+                }
             } catch let error as API.Error {
                 // Failed to create access request
                 self.authenticationDelegate.authenticationViewController(self, failedWith: error)
@@ -78,6 +82,24 @@ class AuthenticationViewController: UIPageViewController, SignInDelegate, Confir
         self.accessRequest = accessRequest
         let verifyViewController = VerifyIdentityViewController(nibName: "VerifyIdentityViewController", bundle: nil)
         self.setViewControllers([verifyViewController], direction: .Forward, animated: true, completion: nil)
+    }
+    
+    private func updateAccessRequest(facebookToken: FBSDKAccessToken) {
+        guard let session = Digits.sharedInstance().session() else {
+            self.authenticationDelegate.authenticationViewController(self, failedWith: API.Error.Unknown(userMessage: nil, developerMessage: "Digits session was nil", userInfo: nil))
+            return
+        }
+        
+        API.shared().updateAccessRequest(self.accessRequest!, session: session, facebookToken: facebookToken.tokenString) { accessRequest in
+            do {
+                self.accessRequest = try accessRequest.value()
+                self.authenticationDelegate.authenticationViewController(self, opened: self.accessRequest!)
+            } catch let error as API.Error {
+                self.authenticationDelegate.authenticationViewController(self, failedWith: error)
+            } catch {
+                self.authenticationDelegate.authenticationViewController(self, failedWith: API.Error.Unknown(userMessage: nil, developerMessage: nil, userInfo: nil))
+            }
+        }
     }
     
     func signInViewController(viewController: SignInViewController, grantedUnknownUser token: AccessToken) {
@@ -111,21 +133,7 @@ class AuthenticationViewController: UIPageViewController, SignInDelegate, Confir
     }
     
     func verifyViewController(viewController: VerifyIdentityViewController, got facebookToken: FBSDKAccessToken) {
-        guard let session = Digits.sharedInstance().session() else {
-            self.authenticationDelegate.authenticationViewController(self, failedWith: API.Error.Unknown(userMessage: nil, developerMessage: "Digits session was nil", userInfo: nil))
-            return
-        }
-    
-        API.shared().updateAccessRequest(self.accessRequest!, session: session, facebookToken: facebookToken.tokenString) { accessRequest in
-            do {
-                self.accessRequest = try accessRequest.value()
-                self.authenticationDelegate.authenticationViewController(self, opened: self.accessRequest!)
-            } catch let error as API.Error {
-                self.authenticationDelegate.authenticationViewController(self, failedWith: error)
-            } catch {
-                self.authenticationDelegate.authenticationViewController(self, failedWith: API.Error.Unknown(userMessage: nil, developerMessage: nil, userInfo: nil))
-            }
-        }
+        updateAccessRequest(facebookToken)
     }
     
     func verifyViewController(viewController: VerifyIdentityViewController, failedWith error: NSError) {
