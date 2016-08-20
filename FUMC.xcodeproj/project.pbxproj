@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		014E7DD7BD6BB1486341FA6E /* Pods_FUMCTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E136BBB9DDE19D5EFC21E313 /* Pods_FUMCTests.framework */; };
 		4900737D1A342D820086CE0B /* DictionaryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4900737C1A342D820086CE0B /* DictionaryExtensions.swift */; };
+		490784011D68FD9F00F951E3 /* AuthenticationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490784001D68FD9F00F951E3 /* AuthenticationTest.swift */; };
+		490784021D68FE3B00F951E3 /* DigitsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 495C47171C8A83940018F677 /* DigitsKit.framework */; };
 		490C659F1A3230A700E87130 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C659E1A3230A700E87130 /* Calendar.swift */; };
 		490C65A41A324F7700E87130 /* CalendarsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C65A31A324F7700E87130 /* CalendarsDataSource.swift */; };
 		490C65A61A33895D00E87130 /* NSDateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C65A51A33895D00E87130 /* NSDateExtensions.swift */; };
@@ -141,6 +143,7 @@
 		2E2C27FA47A8A0A18934BD29 /* Pods-FUMCTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FUMCTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FUMCTests/Pods-FUMCTests.debug.xcconfig"; sourceTree = "<group>"; };
 		42329D048BD8A7A193503153 /* Pods-FUMC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FUMC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FUMC/Pods-FUMC.debug.xcconfig"; sourceTree = "<group>"; };
 		4900737C1A342D820086CE0B /* DictionaryExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DictionaryExtensions.swift; path = FUMC/DictionaryExtensions.swift; sourceTree = "<group>"; };
+		490784001D68FD9F00F951E3 /* AuthenticationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationTest.swift; sourceTree = "<group>"; };
 		490C659E1A3230A700E87130 /* Calendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Calendar.swift; path = FUMC/Calendar.swift; sourceTree = "<group>"; };
 		490C65A31A324F7700E87130 /* CalendarsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarsDataSource.swift; path = FUMC/CalendarsDataSource.swift; sourceTree = "<group>"; };
 		490C65A51A33895D00E87130 /* NSDateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSDateExtensions.swift; path = FUMC/NSDateExtensions.swift; sourceTree = "<group>"; };
@@ -400,6 +403,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				014E7DD7BD6BB1486341FA6E /* Pods_FUMCTests.framework in Frameworks */,
+				490784021D68FE3B00F951E3 /* DigitsKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -730,6 +734,7 @@
 				49F261641B9E2E7F00FE027D /* Utilities */,
 				49F261601B9E216900FE027D /* Data Sources */,
 				49B2A2EC1A268023004EED86 /* Supporting Files */,
+				490784001D68FD9F00F951E3 /* AuthenticationTest.swift */,
 			);
 			path = FUMCTests;
 			sourceTree = "<group>";
@@ -1312,6 +1317,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				490784011D68FD9F00F951E3 /* AuthenticationTest.swift in Sources */,
 				49F261631B9E2E7A00FE027D /* NSDateExtensionsTest.swift in Sources */,
 				499D1F4F1C5ECB9600B1FF70 /* YouCanLiveStreamViewController.swift in Sources */,
 				49804B271C5E88CE005AE154 /* VideosTableViewCell.swift in Sources */,
@@ -1481,6 +1487,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1502,6 +1509,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = FUMCTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
