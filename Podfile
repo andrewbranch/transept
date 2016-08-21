@@ -5,7 +5,6 @@ target 'FUMC' do
   pod 'NSDate+TimeAgo', :inhibit_warnings => true
   pod 'SwiftMoment', :inhibit_warnings => true, :git => 'https://github.com/andrewbranch/SwiftMoment.git', :commit => 'e5882ea'
   pod 'Locksmith', '2.0.8'
-  # pod 'FBSDKCoreKit'
   pod 'FBSDKLoginKit'
 
   target 'FUMCTests' do
@@ -14,5 +13,6 @@ target 'FUMC' do
 
   target 'FUMCUITests' do
     inherit! :search_paths
+    pod 'Nocilla'
   end
 end
