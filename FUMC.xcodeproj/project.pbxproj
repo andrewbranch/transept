@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		014E7DD7BD6BB1486341FA6E /* Pods_FUMCTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E136BBB9DDE19D5EFC21E313 /* Pods_FUMCTests.framework */; };
 		4900737D1A342D820086CE0B /* DictionaryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4900737C1A342D820086CE0B /* DictionaryExtensions.swift */; };
-		4907840A1D69026100F951E3 /* FUMCUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490784091D69026100F951E3 /* FUMCUITests.swift */; };
 		490784121D69029400F951E3 /* AuthenticationUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490784111D69029400F951E3 /* AuthenticationUITest.swift */; };
 		490784131D6902BE00F951E3 /* DigitsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 495C47171C8A83940018F677 /* DigitsKit.framework */; };
 		490784141D690E5800F951E3 /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 495C47191C8A83940018F677 /* TwitterCore.framework */; };
@@ -197,7 +196,6 @@
 		48A02F97D2B79A8C3D201EA9 /* Pods-FUMCUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FUMCUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FUMCUITests/Pods-FUMCUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4900737C1A342D820086CE0B /* DictionaryExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DictionaryExtensions.swift; path = FUMC/DictionaryExtensions.swift; sourceTree = "<group>"; };
 		490784071D69026100F951E3 /* FUMCUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FUMCUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		490784091D69026100F951E3 /* FUMCUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FUMCUITests.swift; sourceTree = "<group>"; };
 		4907840B1D69026100F951E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		490784111D69029400F951E3 /* AuthenticationUITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationUITest.swift; sourceTree = "<group>"; };
 		490C659E1A3230A700E87130 /* Calendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Calendar.swift; path = FUMC/Calendar.swift; sourceTree = "<group>"; };
@@ -489,7 +487,6 @@
 		490784081D69026100F951E3 /* FUMCUITests */ = {
 			isa = PBXGroup;
 			children = (
-				490784091D69026100F951E3 /* FUMCUITests.swift */,
 				4907840B1D69026100F951E3 /* Info.plist */,
 				490784111D69029400F951E3 /* AuthenticationUITest.swift */,
 			);
@@ -1398,7 +1395,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				491578701D692C0500E71AC5 /* Env.swift in Sources */,
-				4907840A1D69026100F951E3 /* FUMCUITests.swift in Sources */,
 				490784121D69029400F951E3 /* AuthenticationUITest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

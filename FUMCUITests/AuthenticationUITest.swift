@@ -41,7 +41,9 @@ class AuthenticationUITest: XCTestCase {
         app.buttons["Reset Facebook"].tap()
         app.buttons["Mock Digits Unknown"].tap()
         app.buttons["Get Access"].tap()
-        app.buttons["Log in with Facebook"].tap()
+        let facebookButton =  app.buttons["Log in with Facebook"]
+        waitForElementToExist(facebookButton)
+        facebookButton.tap()
         
         let webViewsQuery = app.webViews
         if webViewsQuery.textFields["Email or Phone"].exists {
@@ -52,14 +54,24 @@ class AuthenticationUITest: XCTestCase {
             // press log in
         } else {
             let button = webViewsQuery.buttons["OK"]
-            let pageLoaded = NSPredicate(format: "exists == 1")
-            expectationForPredicate(pageLoaded, evaluatedWithObject: button, handler: nil)
-            waitForExpectationsWithTimeout(5, handler: nil)
+            waitForElementToExist(button)
             button.tap()
         }
         
         let pendingWithIdentityTextView = app.staticTexts["Your request is being reviewed."]
+        waitForElementToExist(pendingWithIdentityTextView)
         XCTAssert(pendingWithIdentityTextView.hittable)
+    }
+    
+    private func waitForElementToExist(element: XCUIElement, file: String = #file, line: UInt = #line) {
+        let existsPredicate = NSPredicate(format: "exists == true")
+        expectationForPredicate(existsPredicate, evaluatedWithObject: element, handler: nil)
+        waitForExpectationsWithTimeout(10) { (error) -> Void in
+            if (error != nil) {
+                let message = "Failed to find \(element) after 5 seconds."
+                self.recordFailureWithDescription(message, inFile: file, atLine: line, expected: true)
+            }
+        }
     }
     
 }

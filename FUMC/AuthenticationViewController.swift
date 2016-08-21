@@ -25,7 +25,7 @@ class AuthenticationViewController: UIPageViewController, SignInDelegate, Confir
     
     init(requestScopes: [API.Scopes], delegate: AuthenticationDelegate) {
         super.init(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
-        self.authenticationDelegate = delegate
+        authenticationDelegate = delegate
         self.requestScopes = requestScopes
     }
     
@@ -35,14 +35,14 @@ class AuthenticationViewController: UIPageViewController, SignInDelegate, Confir
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.signIn()
+        signIn()
     }
     
     private func signIn() {
         let signInViewController = SignInViewController(nibName: "SignInViewController", bundle: nil)
         signInViewController.requestScopes = requestScopes
         signInViewController.delegate = self
-        self.setViewControllers([signInViewController], direction: .Forward, animated: false, completion: nil)
+        setViewControllers([signInViewController], direction: .Forward, animated: false, completion: nil)
     }
     
     private func confirmIdentity(token: AccessToken) {
@@ -50,12 +50,12 @@ class AuthenticationViewController: UIPageViewController, SignInDelegate, Confir
         confirmViewController.delegate = self
         confirmViewController.firstName = token.user.firstName
         confirmViewController.lastName = token.user.lastName
-        self.setViewControllers([confirmViewController], direction: .Forward, animated: true, completion: nil)
+        setViewControllers([confirmViewController], direction: .Forward, animated: true, completion: nil)
     }
     
     private func requestAccess(revokedToken revokedToken: AccessToken?) {
         guard let session = Digits.sharedInstance().session() else {
-            self.authenticationDelegate.authenticationViewController(self, failedWith: API.Error.Unknown(userMessage: nil, developerMessage: nil, userInfo: nil))
+            authenticationDelegate.authenticationViewController(self, failedWith: API.Error.Unknown(userMessage: nil, developerMessage: nil, userInfo: nil))
             return
         }
         
@@ -83,12 +83,12 @@ class AuthenticationViewController: UIPageViewController, SignInDelegate, Confir
         self.accessRequest = accessRequest
         let verifyViewController = VerifyIdentityViewController(nibName: "VerifyIdentityViewController", bundle: nil)
         verifyViewController.delegate = self
-        self.setViewControllers([verifyViewController], direction: .Forward, animated: true, completion: nil)
+        setViewControllers([verifyViewController], direction: .Forward, animated: true, completion: nil)
     }
     
     private func updateAccessRequest(facebookToken: FBSDKAccessToken) {
         guard let session = Digits.sharedInstance().session() else {
-            self.authenticationDelegate.authenticationViewController(self, failedWith: API.Error.Unknown(userMessage: nil, developerMessage: "Digits session was nil", userInfo: nil))
+            authenticationDelegate.authenticationViewController(self, failedWith: API.Error.Unknown(userMessage: nil, developerMessage: "Digits session was nil", userInfo: nil))
             return
         }
         
@@ -105,13 +105,13 @@ class AuthenticationViewController: UIPageViewController, SignInDelegate, Confir
     }
     
     func signInViewController(viewController: SignInViewController, grantedUnknownUser token: AccessToken) {
-        self.accessToken = token
-        self.confirmIdentity(token)
+        accessToken = token
+        confirmIdentity(token)
     }
     
     func signInViewController(viewController: SignInViewController, grantedKnownUser token: AccessToken) {
-        self.accessToken = token
-        self.authenticationDelegate.authenticationViewController(self, granted: token)
+        accessToken = token
+        authenticationDelegate.authenticationViewController(self, granted: token)
     }
     
     func signInViewControllerCouldNotGrantToken(viewController viewController: SignInViewController) {
@@ -120,14 +120,14 @@ class AuthenticationViewController: UIPageViewController, SignInDelegate, Confir
     
     func signInViewController(viewController: SignInViewController, failedWith error: NSError) {
         if let apiError = error as? API.Error {
-            self.authenticationDelegate.authenticationViewController(self, failedWith: apiError)
+            authenticationDelegate.authenticationViewController(self, failedWith: apiError)
         } else {
-            self.authenticationDelegate.authenticationViewController(self, failedWith: API.Error.Unknown(userMessage: nil, developerMessage: nil, userInfo: nil))
+            authenticationDelegate.authenticationViewController(self, failedWith: API.Error.Unknown(userMessage: nil, developerMessage: nil, userInfo: nil))
         }
     }
     
     func confirmViewControllerConfirmedIdentity(viewController viewController: ConfirmIdentityViewController) {
-        self.authenticationDelegate.authenticationViewController(self, granted: self.accessToken!)
+        authenticationDelegate.authenticationViewController(self, granted: self.accessToken!)
     }
     
     func confirmViewControllerDeniedIdentity(viewController viewController: ConfirmIdentityViewController) {
@@ -139,7 +139,7 @@ class AuthenticationViewController: UIPageViewController, SignInDelegate, Confir
     }
     
     func verifyViewController(viewController: VerifyIdentityViewController, failedWith error: NSError) {
-        self.authenticationDelegate.authenticationViewController(self, failedWith: API.Error.Unknown(userMessage: nil, developerMessage: "Failed to log into Facebook", userInfo: nil))
+        authenticationDelegate.authenticationViewController(self, failedWith: API.Error.Unknown(userMessage: nil, developerMessage: "Failed to log into Facebook", userInfo: nil))
     }
 
 }

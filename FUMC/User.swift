@@ -22,5 +22,6 @@ struct User {
         id = jsonDictionary["id"] as! String
         firstName = jsonDictionary["firstName"] as! String?
         lastName = jsonDictionary["lastName"] as! String?
+        facebook = jsonDictionary["facebook"] as! String?
     }
 }

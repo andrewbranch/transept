@@ -33,7 +33,8 @@ class VerifyIdentityViewController: UIViewController, FBSDKLoginButtonDelegate {
             return
         }
         
-        self.delegate.verifyViewController(self, got: result.token)
+        facebookButtonContainer.removeFromSuperview()
+        delegate.verifyViewController(self, got: result.token)
     }
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
