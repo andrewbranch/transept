@@ -10,6 +10,7 @@ import UIKit
 import Fabric
 import Crashlytics
 import DigitsKit
+import FBSDKLoginKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

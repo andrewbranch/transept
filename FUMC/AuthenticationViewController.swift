@@ -64,6 +64,7 @@ class AuthenticationViewController: UIPageViewController, SignInDelegate, Confir
                 let request = try accessRequest.value()
                 // Created access request.
                 // Prompt to prove identity with Facebook or Twitter, or instruct to go to front office.
+                self.accessRequest = request
                 if let facebookToken = FBSDKAccessToken.currentAccessToken() {
                     self.updateAccessRequest(facebookToken)
                 } else {
@@ -81,6 +82,7 @@ class AuthenticationViewController: UIPageViewController, SignInDelegate, Confir
     private func verifyIdentity(accessRequest: AccessRequest) {
         self.accessRequest = accessRequest
         let verifyViewController = VerifyIdentityViewController(nibName: "VerifyIdentityViewController", bundle: nil)
+        verifyViewController.delegate = self
         self.setViewControllers([verifyViewController], direction: .Forward, animated: true, completion: nil)
     }
     

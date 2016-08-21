@@ -6,6 +6,8 @@
 //  Copyright © 2015 FUMC Pensacola. All rights reserved.
 //
 
+import Foundation
+
 class Env: NSObject {
     
     static var env: NSDictionary = NSDictionary(contentsOfFile: NSBundle.mainBundle().pathForResource("Secrets", ofType: "plist")!)!

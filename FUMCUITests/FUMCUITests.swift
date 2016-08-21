@@ -1,16 +1,14 @@
 //
-//  AuthenticationTest.swift
-//  FUMC
+//  FUMCUITests.swift
+//  FUMCUITests
 //
 //  Created by Andrew Branch on 8/20/16.
 //  Copyright © 2016 FUMC Pensacola. All rights reserved.
 //
 
 import XCTest
-import DigitsKit
 
-@available(iOS 9.0, *)
-class AuthenticationTest: XCTestCase {
+class FUMCUITests: XCTestCase {
         
     override func setUp() {
         super.setUp()
@@ -23,9 +21,6 @@ class AuthenticationTest: XCTestCase {
         XCUIApplication().launch()
 
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
-        let digits = Digits.sharedInstance()
-        let session = DGTDebugConfiguration.defaultDebugSession()
-        digits.debugOverrides = DGTDebugConfiguration(successStateWithDigitsSession: session)
     }
     
     override func tearDown() {
@@ -36,7 +31,6 @@ class AuthenticationTest: XCTestCase {
     func testExample() {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
-        
     }
     
 }

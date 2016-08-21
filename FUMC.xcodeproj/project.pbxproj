@@ -9,11 +9,28 @@
 /* Begin PBXBuildFile section */
 		014E7DD7BD6BB1486341FA6E /* Pods_FUMCTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E136BBB9DDE19D5EFC21E313 /* Pods_FUMCTests.framework */; };
 		4900737D1A342D820086CE0B /* DictionaryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4900737C1A342D820086CE0B /* DictionaryExtensions.swift */; };
-		490784011D68FD9F00F951E3 /* AuthenticationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490784001D68FD9F00F951E3 /* AuthenticationTest.swift */; };
-		490784021D68FE3B00F951E3 /* DigitsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 495C47171C8A83940018F677 /* DigitsKit.framework */; };
+		4907840A1D69026100F951E3 /* FUMCUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490784091D69026100F951E3 /* FUMCUITests.swift */; };
+		490784121D69029400F951E3 /* AuthenticationUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490784111D69029400F951E3 /* AuthenticationUITest.swift */; };
+		490784131D6902BE00F951E3 /* DigitsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 495C47171C8A83940018F677 /* DigitsKit.framework */; };
+		490784141D690E5800F951E3 /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 495C47191C8A83940018F677 /* TwitterCore.framework */; };
+		490784151D690E5C00F951E3 /* DigitsKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 495C47181C8A83940018F677 /* DigitsKitResources.bundle */; };
+		490784161D690E6400F951E3 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B2A3641A26829D004EED86 /* Crashlytics.framework */; };
+		490784171D690E6C00F951E3 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B2A3651A26829D004EED86 /* Fabric.framework */; };
 		490C659F1A3230A700E87130 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C659E1A3230A700E87130 /* Calendar.swift */; };
 		490C65A41A324F7700E87130 /* CalendarsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C65A31A324F7700E87130 /* CalendarsDataSource.swift */; };
 		490C65A61A33895D00E87130 /* NSDateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C65A51A33895D00E87130 /* NSDateExtensions.swift */; };
+		4915784A1D69148400E71AC5 /* Pods_FUMC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26A14102F76CEA3A472DCBDF /* Pods_FUMC.framework */; };
+		491578521D69184200E71AC5 /* Pods_FUMC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26A14102F76CEA3A472DCBDF /* Pods_FUMC.framework */; };
+		491578651D691B8A00E71AC5 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 491578641D691B8A00E71AC5 /* Bolts.framework */; };
+		491578661D691B8A00E71AC5 /* Bolts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 491578641D691B8A00E71AC5 /* Bolts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		491578681D691BB500E71AC5 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 491578671D691BB500E71AC5 /* FBSDKCoreKit.framework */; };
+		491578691D691BB500E71AC5 /* FBSDKCoreKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 491578671D691BB500E71AC5 /* FBSDKCoreKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4915786B1D691BB500E71AC5 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4915786A1D691BB500E71AC5 /* FBSDKLoginKit.framework */; };
+		4915786C1D691BB500E71AC5 /* FBSDKLoginKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4915786A1D691BB500E71AC5 /* FBSDKLoginKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4915786D1D691BE300E71AC5 /* FBSDKLoginKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4915786A1D691BB500E71AC5 /* FBSDKLoginKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4915786E1D691BE300E71AC5 /* FBSDKCoreKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 491578671D691BB500E71AC5 /* FBSDKCoreKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4915786F1D691BE300E71AC5 /* Bolts.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 491578641D691B8A00E71AC5 /* Bolts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		491578701D692C0500E71AC5 /* Env.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C225061BA496A700D94552 /* Env.swift */; };
 		4915A7421BCAD389008D958F /* VideosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4915A7411BCAD389008D958F /* VideosTableViewController.swift */; };
 		4915A7441BCADAF0008D958F /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4915A7431BCADAF0008D958F /* AVKit.framework */; };
 		4915A7461BCADBBD008D958F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4915A7451BCADBBD008D958F /* AVFoundation.framework */; };
@@ -124,10 +141,17 @@
 		49F261631B9E2E7A00FE027D /* NSDateExtensionsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F261621B9E2E7A00FE027D /* NSDateExtensionsTest.swift */; };
 		49F52A1D1D51850800E3BD47 /* VerifyIdentityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F52A1B1D51850800E3BD47 /* VerifyIdentityViewController.swift */; };
 		49F52A1E1D51850800E3BD47 /* VerifyIdentityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49F52A1C1D51850800E3BD47 /* VerifyIdentityViewController.xib */; };
-		DEA0621A938D733CFECA758D /* Pods_FUMC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26A14102F76CEA3A472DCBDF /* Pods_FUMC.framework */; };
+		CCA19232B138269E0DAE26A9 /* Pods_FUMCUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EDC8D615B078D1D805756C0 /* Pods_FUMCUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		4907840C1D69026100F951E3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 49B2A2C91A268022004EED86 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 49B2A2D01A268022004EED86;
+			remoteInfo = FUMC;
+		};
 		49B2A2E91A268022004EED86 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 49B2A2C91A268022004EED86 /* Project object */;
@@ -137,16 +161,51 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		4915785C1D6919D500E71AC5 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4915786D1D691BE300E71AC5 /* FBSDKLoginKit.framework in CopyFiles */,
+				4915786E1D691BE300E71AC5 /* FBSDKCoreKit.framework in CopyFiles */,
+				4915786F1D691BE300E71AC5 /* Bolts.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		491578631D691A0400E71AC5 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				491578661D691B8A00E71AC5 /* Bolts.framework in Embed Frameworks */,
+				491578691D691BB500E71AC5 /* FBSDKCoreKit.framework in Embed Frameworks */,
+				4915786C1D691BB500E71AC5 /* FBSDKLoginKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1D2F5C06B541BD9F8A528D8D /* Pods-FUMCTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FUMCTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FUMCTests/Pods-FUMCTests.release.xcconfig"; sourceTree = "<group>"; };
 		26A14102F76CEA3A472DCBDF /* Pods_FUMC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FUMC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E2C27FA47A8A0A18934BD29 /* Pods-FUMCTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FUMCTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FUMCTests/Pods-FUMCTests.debug.xcconfig"; sourceTree = "<group>"; };
 		42329D048BD8A7A193503153 /* Pods-FUMC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FUMC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FUMC/Pods-FUMC.debug.xcconfig"; sourceTree = "<group>"; };
+		48A02F97D2B79A8C3D201EA9 /* Pods-FUMCUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FUMCUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FUMCUITests/Pods-FUMCUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4900737C1A342D820086CE0B /* DictionaryExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DictionaryExtensions.swift; path = FUMC/DictionaryExtensions.swift; sourceTree = "<group>"; };
-		490784001D68FD9F00F951E3 /* AuthenticationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationTest.swift; sourceTree = "<group>"; };
+		490784071D69026100F951E3 /* FUMCUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FUMCUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		490784091D69026100F951E3 /* FUMCUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FUMCUITests.swift; sourceTree = "<group>"; };
+		4907840B1D69026100F951E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		490784111D69029400F951E3 /* AuthenticationUITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationUITest.swift; sourceTree = "<group>"; };
 		490C659E1A3230A700E87130 /* Calendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Calendar.swift; path = FUMC/Calendar.swift; sourceTree = "<group>"; };
 		490C65A31A324F7700E87130 /* CalendarsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarsDataSource.swift; path = FUMC/CalendarsDataSource.swift; sourceTree = "<group>"; };
 		490C65A51A33895D00E87130 /* NSDateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSDateExtensions.swift; path = FUMC/NSDateExtensions.swift; sourceTree = "<group>"; };
+		491578641D691B8A00E71AC5 /* Bolts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Bolts.framework; path = "/Users/Andrew/Library/Developer/Xcode/DerivedData/FUMC-flemodliksxzoeedxiefexraradc/Build/Products/Debug-iphonesimulator/Bolts/Bolts.framework"; sourceTree = "<absolute>"; };
+		491578671D691BB500E71AC5 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "/Users/Andrew/Library/Developer/Xcode/DerivedData/FUMC-flemodliksxzoeedxiefexraradc/Build/Products/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework"; sourceTree = "<absolute>"; };
+		4915786A1D691BB500E71AC5 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "/Users/Andrew/Library/Developer/Xcode/DerivedData/FUMC-flemodliksxzoeedxiefexraradc/Build/Products/Debug-iphonesimulator/FBSDKLoginKit/FBSDKLoginKit.framework"; sourceTree = "<absolute>"; };
 		4915A7411BCAD389008D958F /* VideosTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideosTableViewController.swift; path = FUMC/VideosTableViewController.swift; sourceTree = "<group>"; };
 		4915A7431BCADAF0008D958F /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		4915A7451BCADBBD008D958F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -376,25 +435,43 @@
 		49F261621B9E2E7A00FE027D /* NSDateExtensionsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtensionsTest.swift; sourceTree = "<group>"; };
 		49F52A1B1D51850800E3BD47 /* VerifyIdentityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VerifyIdentityViewController.swift; path = FUMC/VerifyIdentityViewController.swift; sourceTree = "<group>"; };
 		49F52A1C1D51850800E3BD47 /* VerifyIdentityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VerifyIdentityViewController.xib; path = FUMC/VerifyIdentityViewController.xib; sourceTree = "<group>"; };
+		5F9A753ED244913081708CD7 /* Pods-FUMCUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FUMCUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FUMCUITests/Pods-FUMCUITests.release.xcconfig"; sourceTree = "<group>"; };
+		6EDC8D615B078D1D805756C0 /* Pods_FUMCUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FUMCUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		927BEB378353993D3A9AE5AF /* Pods-FUMC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FUMC.release.xcconfig"; path = "Pods/Target Support Files/Pods-FUMC/Pods-FUMC.release.xcconfig"; sourceTree = "<group>"; };
 		DA7425126BE2BA297FAE61BC /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E136BBB9DDE19D5EFC21E313 /* Pods_FUMCTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FUMCTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		490784041D69026100F951E3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				490784131D6902BE00F951E3 /* DigitsKit.framework in Frameworks */,
+				490784171D690E6C00F951E3 /* Fabric.framework in Frameworks */,
+				490784141D690E5800F951E3 /* TwitterCore.framework in Frameworks */,
+				4915784A1D69148400E71AC5 /* Pods_FUMC.framework in Frameworks */,
+				490784161D690E6400F951E3 /* Crashlytics.framework in Frameworks */,
+				CCA19232B138269E0DAE26A9 /* Pods_FUMCUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		49B2A2CE1A268022004EED86 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				4915A7461BCADBBD008D958F /* AVFoundation.framework in Frameworks */,
 				4915A7441BCADAF0008D958F /* AVKit.framework in Frameworks */,
+				4915786B1D691BB500E71AC5 /* FBSDKLoginKit.framework in Frameworks */,
 				4916F2FD1B4118DB001412D3 /* EventKit.framework in Frameworks */,
+				491578681D691BB500E71AC5 /* FBSDKCoreKit.framework in Frameworks */,
+				491578521D69184200E71AC5 /* Pods_FUMC.framework in Frameworks */,
 				495C471A1C8A83940018F677 /* DigitsKit.framework in Frameworks */,
+				491578651D691B8A00E71AC5 /* Bolts.framework in Frameworks */,
 				495C471C1C8A83940018F677 /* TwitterCore.framework in Frameworks */,
 				4916F2FE1B4118DB001412D3 /* EventKitUI.framework in Frameworks */,
 				49B2A3671A26829D004EED86 /* Crashlytics.framework in Frameworks */,
 				49B2A3681A26829D004EED86 /* Fabric.framework in Frameworks */,
-				DEA0621A938D733CFECA758D /* Pods_FUMC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,13 +480,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				014E7DD7BD6BB1486341FA6E /* Pods_FUMCTests.framework in Frameworks */,
-				490784021D68FE3B00F951E3 /* DigitsKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		490784081D69026100F951E3 /* FUMCUITests */ = {
+			isa = PBXGroup;
+			children = (
+				490784091D69026100F951E3 /* FUMCUITests.swift */,
+				4907840B1D69026100F951E3 /* Info.plist */,
+				490784111D69029400F951E3 /* AuthenticationUITest.swift */,
+			);
+			path = FUMCUITests;
+			sourceTree = "<group>";
+		};
 		49605DDD1BA571E3003633A1 /* AFNetworking */ = {
 			isa = PBXGroup;
 			children = (
@@ -682,6 +768,9 @@
 		49B2A2C81A268022004EED86 = {
 			isa = PBXGroup;
 			children = (
+				4915786A1D691BB500E71AC5 /* FBSDKLoginKit.framework */,
+				491578671D691BB500E71AC5 /* FBSDKCoreKit.framework */,
+				491578641D691B8A00E71AC5 /* Bolts.framework */,
 				499D1F501C5ED9C700B1FF70 /* Secrets.plist */,
 				49B2A3121A268070004EED86 /* FUMC-Bridging-Header.h */,
 				49B2A2D31A268022004EED86 /* FUMC */,
@@ -691,6 +780,7 @@
 				495C47191C8A83940018F677 /* TwitterCore.framework */,
 				49B2A3651A26829D004EED86 /* Fabric.framework */,
 				49B2A2EB1A268022004EED86 /* FUMCTests */,
+				490784081D69026100F951E3 /* FUMCUITests */,
 				49B2A2D21A268022004EED86 /* Products */,
 				7B69E7F3C551EDB41F9B412B /* Frameworks */,
 				49605DDD1BA571E3003633A1 /* AFNetworking */,
@@ -705,6 +795,7 @@
 			children = (
 				49B2A2D11A268022004EED86 /* FUMC.app */,
 				49B2A2E81A268022004EED86 /* FUMCTests.xctest */,
+				490784071D69026100F951E3 /* FUMCUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -734,7 +825,6 @@
 				49F261641B9E2E7F00FE027D /* Utilities */,
 				49F261601B9E216900FE027D /* Data Sources */,
 				49B2A2EC1A268023004EED86 /* Supporting Files */,
-				490784001D68FD9F00F951E3 /* AuthenticationTest.swift */,
 			);
 			path = FUMCTests;
 			sourceTree = "<group>";
@@ -963,6 +1053,7 @@
 				DA7425126BE2BA297FAE61BC /* Pods.framework */,
 				26A14102F76CEA3A472DCBDF /* Pods_FUMC.framework */,
 				E136BBB9DDE19D5EFC21E313 /* Pods_FUMCTests.framework */,
+				6EDC8D615B078D1D805756C0 /* Pods_FUMCUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -974,6 +1065,8 @@
 				927BEB378353993D3A9AE5AF /* Pods-FUMC.release.xcconfig */,
 				2E2C27FA47A8A0A18934BD29 /* Pods-FUMCTests.debug.xcconfig */,
 				1D2F5C06B541BD9F8A528D8D /* Pods-FUMCTests.release.xcconfig */,
+				48A02F97D2B79A8C3D201EA9 /* Pods-FUMCUITests.debug.xcconfig */,
+				5F9A753ED244913081708CD7 /* Pods-FUMCUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -981,6 +1074,27 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		490784061D69026100F951E3 /* FUMCUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4907840E1D69026100F951E3 /* Build configuration list for PBXNativeTarget "FUMCUITests" */;
+			buildPhases = (
+				BE8A31E09707ED54AE97BDBB /* 📦 Check Pods Manifest.lock */,
+				490784031D69026100F951E3 /* Sources */,
+				490784041D69026100F951E3 /* Frameworks */,
+				490784051D69026100F951E3 /* Resources */,
+				CCD95C9A2B9C40BDBCAC3896 /* 📦 Copy Pods Resources */,
+				4915785C1D6919D500E71AC5 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4907840D1D69026100F951E3 /* PBXTargetDependency */,
+			);
+			name = FUMCUITests;
+			productName = FUMCUITests;
+			productReference = 490784071D69026100F951E3 /* FUMCUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		49B2A2D01A268022004EED86 /* FUMC */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 49B2A2F21A268023004EED86 /* Build configuration list for PBXNativeTarget "FUMC" */;
@@ -993,6 +1107,7 @@
 				49A5696E1A3919ED00B6F1E4 /* ShellScript */,
 				BC3950C619B78E6A9CD12F1A /* 📦 Embed Pods Frameworks */,
 				B7561D0C83AFAD9B639F23BE /* 📦 Copy Pods Resources */,
+				491578631D691A0400E71AC5 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1030,10 +1145,14 @@
 		49B2A2C91A268022004EED86 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0700;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "FUMC Pensacola";
 				TargetAttributes = {
+					490784061D69026100F951E3 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 49B2A2D01A268022004EED86;
+					};
 					49B2A2D01A268022004EED86 = {
 						CreatedOnToolsVersion = 6.1;
 						DevelopmentTeam = Y7U83U369J;
@@ -1067,11 +1186,20 @@
 			targets = (
 				49B2A2D01A268022004EED86 /* FUMC */,
 				49B2A2E71A268022004EED86 /* FUMCTests */,
+				490784061D69026100F951E3 /* FUMCUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		490784051D69026100F951E3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				490784151D690E5C00F951E3 /* DigitsKitResources.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		49B2A2CF1A268022004EED86 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1187,6 +1315,36 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FUMC/Pods-FUMC-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		BE8A31E09707ED54AE97BDBB /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CCD95C9A2B9C40BDBCAC3896 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FUMCUITests/Pods-FUMCUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		E069100252956CF669A85237 /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1235,6 +1393,16 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		490784031D69026100F951E3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				491578701D692C0500E71AC5 /* Env.swift in Sources */,
+				4907840A1D69026100F951E3 /* FUMCUITests.swift in Sources */,
+				490784121D69029400F951E3 /* AuthenticationUITest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		49B2A2CD1A268022004EED86 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1317,7 +1485,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				490784011D68FD9F00F951E3 /* AuthenticationTest.swift in Sources */,
 				49F261631B9E2E7A00FE027D /* NSDateExtensionsTest.swift in Sources */,
 				499D1F4F1C5ECB9600B1FF70 /* YouCanLiveStreamViewController.swift in Sources */,
 				49804B271C5E88CE005AE154 /* VideosTableViewCell.swift in Sources */,
@@ -1332,6 +1499,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		4907840D1D69026100F951E3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 49B2A2D01A268022004EED86 /* FUMC */;
+			targetProxy = 4907840C1D69026100F951E3 /* PBXContainerItemProxy */;
+		};
 		49B2A2EA1A268022004EED86 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 49B2A2D01A268022004EED86 /* FUMC */;
@@ -1352,6 +1524,49 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		4907840F1D69026100F951E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48A02F97D2B79A8C3D201EA9 /* Pods-FUMCUITests.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = FUMCUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.fumcpensacola.FUMCUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = FUMC;
+			};
+			name = Debug;
+		};
+		490784101D69026100F951E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F9A753ED244913081708CD7 /* Pods-FUMCUITests.release.xcconfig */;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = FUMCUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.fumcpensacola.FUMCUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = FUMC;
+			};
+			name = Release;
+		};
 		49B2A2F01A268023004EED86 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1522,6 +1737,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4907840E1D69026100F951E3 /* Build configuration list for PBXNativeTarget "FUMCUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4907840F1D69026100F951E3 /* Debug */,
+				490784101D69026100F951E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		49B2A2CC1A268022004EED86 /* Build configuration list for PBXProject "FUMC" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -413,7 +413,7 @@ public class API: NSObject {
             guard response.statusCode != 403 else {
                 return completed(result: Result { throw Error.Unauthorized })
             }
-            guard response.statusCode == 200 || response.statusCode == 204 else {
+            guard response.statusCode == 200 || response.statusCode == 201 || response.statusCode == 204 else {
                 return completed(result: Result {
                     throw Error.Unknown(userMessage: API.BAD_RESPONSE_MESSAGE, developerMessage: "Status code was \(response.statusCode)", userInfo: ["response": response])
                 })

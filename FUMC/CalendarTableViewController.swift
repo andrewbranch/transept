@@ -45,6 +45,14 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
         
         self.calendarsDataSource = CalendarsDataSource(settingsDelegate: nil, calendarDelegate: self)
         self.showLoadingView()
+        
+        #if DEBUG
+            let resetAccessRequestsButton = UIButton(frame: CGRect(x: 20, y: 20, width: 20, height: 20))
+            resetAccessRequestsButton.setTitle("Reset Access Requests", forState: .Normal)
+            resetAccessRequestsButton.addTarget(self, action: #selector(CalendarTableViewController.resetAccessRequests), forControlEvents: .TouchUpInside)
+            resetAccessRequestsButton.backgroundColor = UIColor.blueColor()
+            view.addSubview(resetAccessRequestsButton)
+        #endif
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -268,6 +276,12 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
             viewController.dataSource = self.calendarsDataSource
             viewController.delegate = self
         }
+    }
+    
+    
+    func resetAccessRequests() {
+        API.shared().accessToken = nil
+        NSUserDefaults.standardUserDefaults().setValue(nil, forKey: "directoryAccessRequestId")
     }
 
 }

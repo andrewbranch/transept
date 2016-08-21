@@ -53,6 +53,7 @@ class PendingAccessViewController: UIViewController, SignInDelegate, FBSDKLoginB
         facebookButton.delegate = self
         facebookButtonContainer.addSubview(facebookButton)
         
+        view.bringSubviewToFront(updatingView)
         if let digitsSession = Digits.sharedInstance().session() {
             // Already signed into Digits
             if let accessRequest = self.accessRequest {
@@ -83,10 +84,6 @@ class PendingAccessViewController: UIViewController, SignInDelegate, FBSDKLoginB
             signInViewController.requestScopes = scopes
             self.presentViewController(signInViewController, animated: true, completion: nil)
         }
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        view.bringSubviewToFront(updatingView)
     }
     
     func signInViewController(viewController: SignInViewController, failedWith error: NSError) {

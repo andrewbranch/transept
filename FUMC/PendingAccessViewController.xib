@@ -21,35 +21,13 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NjZ-5Q-3eN">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Checking on your request…" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xrQ-2G-87t">
-                            <rect key="frame" x="130" y="100" width="340" height="33.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="BvF-WU-Z1h">
-                            <rect key="frame" x="290" y="290" width="20" height="20"/>
-                        </activityIndicatorView>
-                    </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstItem="BvF-WU-Z1h" firstAttribute="top" relation="greaterThanOrEqual" secondItem="xrQ-2G-87t" secondAttribute="bottom" constant="100" id="8hf-gq-tYS"/>
-                        <constraint firstItem="xrQ-2G-87t" firstAttribute="top" secondItem="NjZ-5Q-3eN" secondAttribute="top" constant="100" id="Fme-2Z-XGr"/>
-                        <constraint firstItem="BvF-WU-Z1h" firstAttribute="centerY" secondItem="NjZ-5Q-3eN" secondAttribute="centerY" priority="500" id="Vqy-ga-Ava"/>
-                        <constraint firstItem="xrQ-2G-87t" firstAttribute="centerX" secondItem="NjZ-5Q-3eN" secondAttribute="centerX" id="bOb-T5-e1n"/>
-                        <constraint firstItem="BvF-WU-Z1h" firstAttribute="centerX" secondItem="NjZ-5Q-3eN" secondAttribute="centerX" id="dsd-5a-pqf"/>
-                    </constraints>
-                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DGR-wK-NQ0">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You’ve been approved!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ot8-hd-gyZ">
-                            <rect key="frame" x="158" y="100" width="284.5" height="34"/>
+                            <rect key="frame" x="40" y="100" width="520" height="34"/>
                             <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="13g-qn-mn0">
@@ -65,6 +43,8 @@
                         <constraint firstAttribute="bottom" secondItem="13g-qn-mn0" secondAttribute="bottom" priority="500" constant="100" id="KVh-YM-cwH"/>
                         <constraint firstItem="Ot8-hd-gyZ" firstAttribute="centerX" secondItem="DGR-wK-NQ0" secondAttribute="centerX" id="Loz-QY-fxg"/>
                         <constraint firstItem="13g-qn-mn0" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Ot8-hd-gyZ" secondAttribute="bottom" constant="100" id="Wru-5S-Ea2"/>
+                        <constraint firstItem="Ot8-hd-gyZ" firstAttribute="leading" secondItem="DGR-wK-NQ0" secondAttribute="leading" constant="40" id="ZJT-c1-45p"/>
+                        <constraint firstAttribute="trailing" secondItem="Ot8-hd-gyZ" secondAttribute="trailing" constant="40" id="fHF-IM-d4U"/>
                         <constraint firstItem="13g-qn-mn0" firstAttribute="centerX" secondItem="DGR-wK-NQ0" secondAttribute="centerX" id="o83-6z-CzN"/>
                         <constraint firstItem="Ot8-hd-gyZ" firstAttribute="top" secondItem="DGR-wK-NQ0" secondAttribute="top" priority="500" constant="100" id="uyz-uH-Idq"/>
                     </constraints>
@@ -73,9 +53,9 @@
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your request is being reviewed." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rih-qh-H1E">
-                            <rect key="frame" x="106" y="100" width="387" height="34"/>
+                            <rect key="frame" x="40" y="100" width="520" height="34"/>
                             <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blah de blah de blah" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mni-6C-cPc">
@@ -87,10 +67,12 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstItem="rih-qh-H1E" firstAttribute="leading" secondItem="mCx-QH-0fy" secondAttribute="leading" constant="40" id="21k-9O-mbg"/>
                         <constraint firstAttribute="trailing" secondItem="mni-6C-cPc" secondAttribute="trailing" constant="40" id="8zK-Wb-F0w"/>
                         <constraint firstItem="mni-6C-cPc" firstAttribute="leading" secondItem="mCx-QH-0fy" secondAttribute="leading" constant="40" id="9lX-TJ-FUd"/>
                         <constraint firstItem="mni-6C-cPc" firstAttribute="centerX" secondItem="mCx-QH-0fy" secondAttribute="centerX" id="Doh-Be-Llo"/>
                         <constraint firstItem="mni-6C-cPc" firstAttribute="top" secondItem="rih-qh-H1E" secondAttribute="bottom" constant="40" id="bY8-w4-pWI"/>
+                        <constraint firstAttribute="trailing" secondItem="rih-qh-H1E" secondAttribute="trailing" constant="40" id="eFr-3H-Bou"/>
                         <constraint firstItem="rih-qh-H1E" firstAttribute="centerX" secondItem="mCx-QH-0fy" secondAttribute="centerX" id="for-91-Z6o"/>
                         <constraint firstItem="rih-qh-H1E" firstAttribute="top" secondItem="mCx-QH-0fy" secondAttribute="top" constant="100" id="xjD-Z7-C4T"/>
                     </constraints>
@@ -99,9 +81,9 @@
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Come to the front office to get access." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VUp-Hm-EfM">
-                            <rect key="frame" x="62" y="100" width="476" height="34"/>
+                            <rect key="frame" x="40" y="100" width="520" height="34"/>
                             <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Or, sign in with Facebook to get access automatically." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFh-G0-7J5">
@@ -124,8 +106,10 @@
                         <constraint firstItem="OFh-G0-7J5" firstAttribute="top" secondItem="VUp-Hm-EfM" secondAttribute="bottom" constant="40" id="8Ar-kr-PIr"/>
                         <constraint firstItem="VUp-Hm-EfM" firstAttribute="centerX" secondItem="Nw5-gY-3pl" secondAttribute="centerX" id="EOZ-AW-hwi"/>
                         <constraint firstItem="OFh-G0-7J5" firstAttribute="leading" secondItem="Nw5-gY-3pl" secondAttribute="leading" constant="40" id="FpI-uS-SiT"/>
+                        <constraint firstItem="VUp-Hm-EfM" firstAttribute="leading" secondItem="Nw5-gY-3pl" secondAttribute="leading" constant="40" id="I5P-nm-4Sg"/>
                         <constraint firstItem="uzR-Ff-nYW" firstAttribute="top" relation="greaterThanOrEqual" secondItem="OFh-G0-7J5" secondAttribute="bottom" constant="100" id="JEl-PQ-rZt"/>
                         <constraint firstAttribute="trailing" secondItem="OFh-G0-7J5" secondAttribute="trailing" constant="40" id="TAy-MA-FLv"/>
+                        <constraint firstAttribute="trailing" secondItem="VUp-Hm-EfM" secondAttribute="trailing" constant="40" id="fDR-FD-x2Z"/>
                         <constraint firstAttribute="bottom" secondItem="uzR-Ff-nYW" secondAttribute="bottom" priority="500" constant="100" id="uuk-nr-ZJs"/>
                         <constraint firstItem="uzR-Ff-nYW" firstAttribute="centerX" secondItem="Nw5-gY-3pl" secondAttribute="centerX" id="xCP-dT-Ame"/>
                         <constraint firstItem="VUp-Hm-EfM" firstAttribute="top" secondItem="Nw5-gY-3pl" secondAttribute="top" constant="100" id="zoR-PZ-LZD"/>
@@ -135,15 +119,15 @@
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We weren’t able to give you access automatically. Come to the front office and let us know, and we’ll sort it out." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qdC-fR-SEZ">
-                            <rect key="frame" x="40" y="173.5" width="520" height="41"/>
+                            <rect key="frame" x="40" y="173" width="520" height="41"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This one’s a head-scratcher." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RRc-nx-TKe">
-                            <rect key="frame" x="124" y="100" width="352" height="33.5"/>
+                            <rect key="frame" x="40" y="100" width="520" height="33.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
@@ -152,10 +136,36 @@
                         <constraint firstItem="qdC-fR-SEZ" firstAttribute="leading" secondItem="nWv-aS-bdr" secondAttribute="leading" constant="40" id="12A-RH-cug"/>
                         <constraint firstAttribute="trailing" secondItem="qdC-fR-SEZ" secondAttribute="trailing" constant="40" id="2iR-g4-ryS"/>
                         <constraint firstItem="qdC-fR-SEZ" firstAttribute="leading" secondItem="nWv-aS-bdr" secondAttribute="leading" constant="40" id="Edk-dY-cnA"/>
+                        <constraint firstItem="RRc-nx-TKe" firstAttribute="leading" secondItem="nWv-aS-bdr" secondAttribute="leading" constant="40" id="FWw-hy-wQb"/>
                         <constraint firstItem="RRc-nx-TKe" firstAttribute="top" secondItem="nWv-aS-bdr" secondAttribute="top" constant="100" id="KaL-aW-aYz"/>
                         <constraint firstItem="RRc-nx-TKe" firstAttribute="centerX" secondItem="nWv-aS-bdr" secondAttribute="centerX" id="VVT-XF-XHe"/>
                         <constraint firstItem="qdC-fR-SEZ" firstAttribute="top" secondItem="RRc-nx-TKe" secondAttribute="bottom" constant="40" id="Z2B-d1-pRy"/>
+                        <constraint firstAttribute="trailing" secondItem="RRc-nx-TKe" secondAttribute="trailing" constant="40" id="l8b-PI-GS1"/>
                         <constraint firstAttribute="trailing" secondItem="qdC-fR-SEZ" secondAttribute="trailing" constant="40" id="s4y-q3-XOl"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NjZ-5Q-3eN">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Checking on your request…" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xrQ-2G-87t">
+                            <rect key="frame" x="40" y="100" width="520" height="33.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="BvF-WU-Z1h">
+                            <rect key="frame" x="290" y="290" width="20" height="20"/>
+                        </activityIndicatorView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="xrQ-2G-87t" firstAttribute="leading" secondItem="NjZ-5Q-3eN" secondAttribute="leading" constant="40" id="53C-IP-7Cr"/>
+                        <constraint firstItem="BvF-WU-Z1h" firstAttribute="top" relation="greaterThanOrEqual" secondItem="xrQ-2G-87t" secondAttribute="bottom" constant="100" id="8hf-gq-tYS"/>
+                        <constraint firstItem="xrQ-2G-87t" firstAttribute="top" secondItem="NjZ-5Q-3eN" secondAttribute="top" constant="100" id="Fme-2Z-XGr"/>
+                        <constraint firstAttribute="trailing" secondItem="xrQ-2G-87t" secondAttribute="trailing" constant="40" id="JyX-Ek-cu0"/>
+                        <constraint firstItem="BvF-WU-Z1h" firstAttribute="centerY" secondItem="NjZ-5Q-3eN" secondAttribute="centerY" priority="500" id="Vqy-ga-Ava"/>
+                        <constraint firstItem="xrQ-2G-87t" firstAttribute="centerX" secondItem="NjZ-5Q-3eN" secondAttribute="centerX" id="bOb-T5-e1n"/>
+                        <constraint firstItem="BvF-WU-Z1h" firstAttribute="centerX" secondItem="NjZ-5Q-3eN" secondAttribute="centerX" id="dsd-5a-pqf"/>
                     </constraints>
                 </view>
             </subviews>

@@ -53,7 +53,7 @@ class DirectoryTableViewController: CustomTableViewController, DirectoryDataSour
     
     private func launchPendingAccessFlow(pendingAccessViewController: PendingAccessViewController) {
         self.addChildViewController(pendingAccessViewController)
-        pendingAccessViewController.view.frame = self.view.frame
+        pendingAccessViewController.view.frame = self.view.bounds
         self.view.addSubview(pendingAccessViewController.view)
         pendingAccessViewController.didMoveToParentViewController(self)
     }
