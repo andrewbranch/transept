@@ -20,15 +20,6 @@
 		490C65A61A33895D00E87130 /* NSDateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C65A51A33895D00E87130 /* NSDateExtensions.swift */; };
 		4915784A1D69148400E71AC5 /* Pods_FUMC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26A14102F76CEA3A472DCBDF /* Pods_FUMC.framework */; };
 		491578521D69184200E71AC5 /* Pods_FUMC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26A14102F76CEA3A472DCBDF /* Pods_FUMC.framework */; };
-		491578651D691B8A00E71AC5 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 491578641D691B8A00E71AC5 /* Bolts.framework */; };
-		491578661D691B8A00E71AC5 /* Bolts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 491578641D691B8A00E71AC5 /* Bolts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		491578681D691BB500E71AC5 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 491578671D691BB500E71AC5 /* FBSDKCoreKit.framework */; };
-		491578691D691BB500E71AC5 /* FBSDKCoreKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 491578671D691BB500E71AC5 /* FBSDKCoreKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		4915786B1D691BB500E71AC5 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4915786A1D691BB500E71AC5 /* FBSDKLoginKit.framework */; };
-		4915786C1D691BB500E71AC5 /* FBSDKLoginKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4915786A1D691BB500E71AC5 /* FBSDKLoginKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		4915786D1D691BE300E71AC5 /* FBSDKLoginKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4915786A1D691BB500E71AC5 /* FBSDKLoginKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		4915786E1D691BE300E71AC5 /* FBSDKCoreKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 491578671D691BB500E71AC5 /* FBSDKCoreKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		4915786F1D691BE300E71AC5 /* Bolts.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 491578641D691B8A00E71AC5 /* Bolts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		491578701D692C0500E71AC5 /* Env.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C225061BA496A700D94552 /* Env.swift */; };
 		4915A7421BCAD389008D958F /* VideosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4915A7411BCAD389008D958F /* VideosTableViewController.swift */; };
 		4915A7441BCADAF0008D958F /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4915A7431BCADAF0008D958F /* AVKit.framework */; };
@@ -161,27 +152,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		4915785C1D6919D500E71AC5 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				4915786D1D691BE300E71AC5 /* FBSDKLoginKit.framework in CopyFiles */,
-				4915786E1D691BE300E71AC5 /* FBSDKCoreKit.framework in CopyFiles */,
-				4915786F1D691BE300E71AC5 /* Bolts.framework in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		491578631D691A0400E71AC5 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				491578661D691B8A00E71AC5 /* Bolts.framework in Embed Frameworks */,
-				491578691D691BB500E71AC5 /* FBSDKCoreKit.framework in Embed Frameworks */,
-				4915786C1D691BB500E71AC5 /* FBSDKLoginKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -201,9 +177,6 @@
 		490C659E1A3230A700E87130 /* Calendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Calendar.swift; path = FUMC/Calendar.swift; sourceTree = "<group>"; };
 		490C65A31A324F7700E87130 /* CalendarsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarsDataSource.swift; path = FUMC/CalendarsDataSource.swift; sourceTree = "<group>"; };
 		490C65A51A33895D00E87130 /* NSDateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSDateExtensions.swift; path = FUMC/NSDateExtensions.swift; sourceTree = "<group>"; };
-		491578641D691B8A00E71AC5 /* Bolts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Bolts.framework; path = "/Users/Andrew/Library/Developer/Xcode/DerivedData/FUMC-flemodliksxzoeedxiefexraradc/Build/Products/Debug-iphonesimulator/Bolts/Bolts.framework"; sourceTree = "<absolute>"; };
-		491578671D691BB500E71AC5 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "/Users/Andrew/Library/Developer/Xcode/DerivedData/FUMC-flemodliksxzoeedxiefexraradc/Build/Products/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework"; sourceTree = "<absolute>"; };
-		4915786A1D691BB500E71AC5 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "/Users/Andrew/Library/Developer/Xcode/DerivedData/FUMC-flemodliksxzoeedxiefexraradc/Build/Products/Debug-iphonesimulator/FBSDKLoginKit/FBSDKLoginKit.framework"; sourceTree = "<absolute>"; };
 		4915A7411BCAD389008D958F /* VideosTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideosTableViewController.swift; path = FUMC/VideosTableViewController.swift; sourceTree = "<group>"; };
 		4915A7431BCADAF0008D958F /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		4915A7451BCADBBD008D958F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -460,12 +433,9 @@
 			files = (
 				4915A7461BCADBBD008D958F /* AVFoundation.framework in Frameworks */,
 				4915A7441BCADAF0008D958F /* AVKit.framework in Frameworks */,
-				4915786B1D691BB500E71AC5 /* FBSDKLoginKit.framework in Frameworks */,
 				4916F2FD1B4118DB001412D3 /* EventKit.framework in Frameworks */,
-				491578681D691BB500E71AC5 /* FBSDKCoreKit.framework in Frameworks */,
 				491578521D69184200E71AC5 /* Pods_FUMC.framework in Frameworks */,
 				495C471A1C8A83940018F677 /* DigitsKit.framework in Frameworks */,
-				491578651D691B8A00E71AC5 /* Bolts.framework in Frameworks */,
 				495C471C1C8A83940018F677 /* TwitterCore.framework in Frameworks */,
 				4916F2FE1B4118DB001412D3 /* EventKitUI.framework in Frameworks */,
 				49B2A3671A26829D004EED86 /* Crashlytics.framework in Frameworks */,
@@ -765,9 +735,6 @@
 		49B2A2C81A268022004EED86 = {
 			isa = PBXGroup;
 			children = (
-				4915786A1D691BB500E71AC5 /* FBSDKLoginKit.framework */,
-				491578671D691BB500E71AC5 /* FBSDKCoreKit.framework */,
-				491578641D691B8A00E71AC5 /* Bolts.framework */,
 				499D1F501C5ED9C700B1FF70 /* Secrets.plist */,
 				49B2A3121A268070004EED86 /* FUMC-Bridging-Header.h */,
 				49B2A2D31A268022004EED86 /* FUMC */,
@@ -1079,8 +1046,8 @@
 				490784031D69026100F951E3 /* Sources */,
 				490784041D69026100F951E3 /* Frameworks */,
 				490784051D69026100F951E3 /* Resources */,
+				497471861D6A504A001CA838 /* ShellScript */,
 				CCD95C9A2B9C40BDBCAC3896 /* 📦 Copy Pods Resources */,
-				4915785C1D6919D500E71AC5 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -1241,6 +1208,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		497471861D6A504A001CA838 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FUMCUITests/Pods-FUMCUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		49A5696E1A3919ED00B6F1E4 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

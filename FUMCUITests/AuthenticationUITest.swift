@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import Nocilla
 
 class AuthenticationUITest: XCTestCase {
         
@@ -61,6 +62,8 @@ class AuthenticationUITest: XCTestCase {
         let pendingWithIdentityTextView = app.staticTexts["Your request is being reviewed."]
         waitForElementToExist(pendingWithIdentityTextView)
         XCTAssert(pendingWithIdentityTextView.hittable)
+        
+        
     }
     
     private func waitForElementToExist(element: XCUIElement, file: String = #file, line: UInt = #line) {
