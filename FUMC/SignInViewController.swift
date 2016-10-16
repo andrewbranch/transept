@@ -22,22 +22,6 @@ class SignInViewController: UIViewController {
     var requestScopes: [API.Scopes]!
     var delegate: SignInDelegate!
     
-    override func viewDidLoad() {
-        #if DEBUG
-            let resetDigitsButton = UIButton(frame: CGRect(x: 40, y: 20, width: 20, height: 20))
-            resetDigitsButton.setTitle("Mock Digits Unknown", forState: UIControlState.Normal)
-            resetDigitsButton.addTarget(self, action: #selector(SignInViewController.mockDigitsWithUnknownUser), forControlEvents: .TouchUpInside)
-            resetDigitsButton.backgroundColor = UIColor.greenColor()
-            view.addSubview(resetDigitsButton)
-            
-            let resetFacebookButton = UIButton(frame: CGRect(x: 20, y: 20, width: 20, height: 20))
-            resetFacebookButton.setTitle("Reset Facebook", forState: .Normal)
-            resetFacebookButton.addTarget(self, action: #selector(SignInViewController.resetFacebook), forControlEvents: .TouchUpInside)
-            resetFacebookButton.backgroundColor = UIColor.blueColor()
-            view.addSubview(resetFacebookButton)
-        #endif
-    }
-    
     @IBAction func didTapSignInButton() {
         signInButton!.enabled = false
         Digits.sharedInstance().authenticateWithCompletion { session, error in
@@ -66,21 +50,5 @@ class SignInViewController: UIViewController {
                 }
             }
         }
-    }
-    
-    func resetFacebook() {
-        FBSDKAccessToken.setCurrentAccessToken(nil)
-    }
-    
-    func mockDigitsWithUnknownUser() {
-        Digits.sharedInstance().logOut()
-        let defaultSession = DGTDebugConfiguration.defaultDebugSession()
-        let phone = Array(count: 7, repeatedValue: "").map({ _ in String(arc4random_uniform(10)) }).joinWithSeparator("")
-        Digits.sharedInstance().debugOverrides = DGTDebugConfiguration(successStateWithDigitsSession: DGTSession(
-            authToken: defaultSession.authToken,
-            authTokenSecret: defaultSession.authTokenSecret,
-            userID: defaultSession.userID,
-            phoneNumber: "+1555\(phone)"
-        ))
     }
 }

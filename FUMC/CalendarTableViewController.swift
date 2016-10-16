@@ -45,14 +45,6 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
         
         self.calendarsDataSource = CalendarsDataSource(settingsDelegate: nil, calendarDelegate: self)
         self.showLoadingView()
-        
-        #if DEBUG
-            let resetAccessRequestsButton = UIButton(frame: CGRect(x: 20, y: 20, width: 20, height: 20))
-            resetAccessRequestsButton.setTitle("Reset Access Requests", forState: .Normal)
-            resetAccessRequestsButton.addTarget(self, action: #selector(CalendarTableViewController.resetAccessRequests), forControlEvents: .TouchUpInside)
-            resetAccessRequestsButton.backgroundColor = UIColor.blueColor()
-            view.addSubview(resetAccessRequestsButton)
-        #endif
     }
     
     override func viewWillAppear(animated: Bool) {
