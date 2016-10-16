@@ -7,7 +7,6 @@
 //
 
 import XCTest
-import FUMC
 
 class NSDateExtensionsTest: XCTestCase {
     

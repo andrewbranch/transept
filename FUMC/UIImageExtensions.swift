@@ -14,8 +14,8 @@ extension UIImage {
         UIGraphicsBeginImageContext(rect.size)
         
         let context = UIGraphicsGetCurrentContext()
-        CGContextSetFillColorWithColor(context, color.CGColor)
-        CGContextFillRect(context, rect)
+        CGContextSetFillColorWithColor(context!, color.CGColor)
+        CGContextFillRect(context!, rect)
         
         var image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
@@ -25,7 +25,7 @@ extension UIImage {
         UIGraphicsBeginImageContext(size);
         
         // Draw your image
-        image.drawInRect(rect)
+        image!.drawInRect(rect)
         
         // Get the image, here setting the UIImageView image
         image = UIGraphicsGetImageFromCurrentImageContext()
@@ -33,6 +33,6 @@ extension UIImage {
         // Lets forget about that we were drawing
         UIGraphicsEndImageContext()
         
-        return image
+        return image!
     }
 }
