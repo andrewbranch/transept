@@ -71,7 +71,7 @@ class PendingAccessViewController: UIViewController, SignInDelegate, FBSDKLoginB
                         // Access Request must have been approved
                         API.shared().accessToken = self.accessToken!
                         self.view.bringSubviewToFront(self.approvedView)
-                    } catch API.Error.Unauthenticated {
+                    } catch API.Error.Unauthorized {
                         self.getAccessRequest(digitsSession)
                     } catch let error as NSError {
                         self.delegate.pendingAccessViewController(self, failedWith: error)
