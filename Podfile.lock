@@ -1,20 +1,20 @@
 PODS:
-  - Bolts (1.7.0):
-    - Bolts/AppLinks (= 1.7.0)
-    - Bolts/Tasks (= 1.7.0)
-  - Bolts/AppLinks (1.7.0):
+  - Bolts (1.8.4):
+    - Bolts/AppLinks (= 1.8.4)
+    - Bolts/Tasks (= 1.8.4)
+  - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
-  - Bolts/Tasks (1.7.0)
-  - FBSDKCoreKit (4.12.0):
+  - Bolts/Tasks (1.8.4)
+  - FBSDKCoreKit (4.16.0):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.12.0):
+  - FBSDKLoginKit (4.16.1):
     - FBSDKCoreKit
   - Locksmith (2.0.8)
   - NSDate+TimeAgo (1.0.3)
   - SwiftMoment (0.4)
 
 DEPENDENCIES:
-  - FBSDKLoginKit
+  - FBSDKLoginKit (= 4.16.1)
   - Locksmith (= 2.0.8)
   - NSDate+TimeAgo
   - SwiftMoment (from `https://github.com/andrewbranch/SwiftMoment.git`, commit `e5882ea`)
@@ -30,13 +30,13 @@ CHECKOUT OPTIONS:
     :git: https://github.com/andrewbranch/SwiftMoment.git
 
 SPEC CHECKSUMS:
-  Bolts: a0058fa3b331c5a1e4402d534f2dae36dbff31e4
-  FBSDKCoreKit: 6e56d5a2a64a755ad4efb5dbeee8f82fb1b99775
-  FBSDKLoginKit: 03f68a8d48c2c8bb81d7eb8097973d483543e1f6
+  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  FBSDKCoreKit: 7a6baaed4a2b2a244ba253346713bdbc74df135b
+  FBSDKLoginKit: 469a56cebe2e1ed62b1621d0b155970fd6aac2d8
   Locksmith: a8ed41ac4c06506ea8cb199d8ec8a8d3d108eb2a
   NSDate+TimeAgo: 416f55d2696d3744c313091c5a9280d47f8238fe
   SwiftMoment: e751c44be03a183fa6c949426d9473d26a66ef29
 
-PODFILE CHECKSUM: 78e6574934242ef3ed436d25523f7ba48195a2a7
+PODFILE CHECKSUM: 31735ac7ff354f2faff1e9f3cc7bf5916d66e69b
 
 COCOAPODS: 1.0.0

@@ -303,6 +303,7 @@
 		497459981D5FDB6B007D8F2F /* PendingAccessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PendingAccessViewController.swift; path = FUMC/PendingAccessViewController.swift; sourceTree = "<group>"; };
 		497459991D5FDB6B007D8F2F /* PendingAccessViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PendingAccessViewController.xib; path = FUMC/PendingAccessViewController.xib; sourceTree = "<group>"; };
 		497A01A81CFD1645005D3CB5 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = FUMC/User.swift; sourceTree = "<group>"; };
+		497FA6F11DB4304800D03395 /* FUMC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FUMC.entitlements; sourceTree = "<group>"; };
 		49804B241C5E88CE005AE154 /* VideosTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideosTableViewCell.swift; path = FUMC/VideosTableViewCell.swift; sourceTree = "<group>"; };
 		49804B251C5E88CE005AE154 /* VideosTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VideosTableViewCell.xib; path = FUMC/VideosTableViewCell.xib; sourceTree = "<group>"; };
 		49852DC71BC1E2D200E7F30E /* ExSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExSwift.swift; path = FUMC/ExSwift.swift; sourceTree = "<group>"; };
@@ -722,6 +723,7 @@
 		49B2A2D31A268022004EED86 /* FUMC */ = {
 			isa = PBXGroup;
 			children = (
+				497FA6F11DB4304800D03395 /* FUMC.entitlements */,
 				49B2A2F81A268070004EED86 /* AppDelegate.swift */,
 				49B2A35B1A26809B004EED86 /* Models */,
 				49B2A35C1A2680A8004EED86 /* Data Sources */,
@@ -1054,7 +1056,7 @@
 								enabled = 0;
 							};
 							com.apple.Keychain = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -1455,6 +1457,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FUMC/FUMC.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = YES;
@@ -1481,6 +1484,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FUMC/FUMC.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				ENABLE_BITCODE = YES;
