@@ -138,6 +138,11 @@ class AuthenticationViewController: UIPageViewController, SignInDelegate, Confir
         updateAccessRequest(facebookToken)
     }
     
+    func verifyViewControllerWillNotVerify(viewController viewController: VerifyIdentityViewController) {
+        // User wants to verify in person instead
+        self.authenticationDelegate.authenticationViewController(self, opened: self.accessRequest!)
+    }
+    
     func verifyViewController(viewController: VerifyIdentityViewController, failedWith error: NSError) {
         authenticationDelegate.authenticationViewController(self, failedWith: API.Error.Unknown(userMessage: nil, developerMessage: "Failed to log into Facebook", userInfo: nil))
     }

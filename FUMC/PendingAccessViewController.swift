@@ -49,9 +49,15 @@ class PendingAccessViewController: UIViewController, SignInDelegate, FBSDKLoginB
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let facebookButton = FBSDKLoginButton(frame: facebookButtonContainer.frame)
+        let facebookButton = FBSDKLoginButton(frame: CGRectZero)
         facebookButton.delegate = self
         facebookButtonContainer.addSubview(facebookButton)
+        facebookButton.translatesAutoresizingMaskIntoConstraints = false
+        facebookButtonContainer.addConstraints([
+            NSLayoutConstraint(item: facebookButton, attribute: .CenterX, relatedBy: .Equal, toItem: facebookButtonContainer, attribute: .CenterX, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: facebookButtonContainer, attribute: .Bottom, relatedBy: .Equal, toItem: facebookButton, attribute: .Bottom, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: facebookButtonContainer, attribute: .Top, relatedBy: .Equal, toItem: facebookButton, attribute: .Top, multiplier: 1, constant: 0)
+        ])
         
         view.bringSubviewToFront(updatingView)
         if let digitsSession = Digits.sharedInstance().session() {
