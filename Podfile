@@ -10,9 +10,4 @@ target 'FUMC' do
   target 'FUMCTests' do
     inherit! :search_paths
   end
-
-  target 'FUMCUITests' do
-    inherit! :search_paths
-    pod 'Nocilla'
-  end
 end

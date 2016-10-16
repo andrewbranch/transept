@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import DigitsKit
 import Locksmith
+import OHHTTPStubs
 
 public struct Result<T> {
     let value: () throws -> T
@@ -48,7 +49,7 @@ public class API: NSObject {
     private let lock = NSLock()
     private let dateFormatter = NSDateFormatter()
     #if DEBUG   
-    private let base = "http://localhost:3000/v3"
+    public var base = "http://localhost:3000/v3"
     #else
     private let base = "https://api.fumcpensacola.com/v3"
     #endif
@@ -73,6 +74,11 @@ public class API: NSObject {
     
     override init() {
         super.init()
+        stub(isPath("/v3/calendars")) { _ in
+            let data = "{\"links\":{\"self\":\"http://localhost:3000/v3/calendars\"},\"data\":[]}".dataUsingEncoding(NSUTF8StringEncoding)
+//            let data = "".dataUsingEncoding(NSUTF8StringEncoding)
+            return OHHTTPStubsResponse(data: data!, statusCode: 200, headers: nil)
+        }
         if let keychainToken = Locksmith.loadDataForUserAccount("accessToken") {
 //            self._accessToken = try? AccessToken(rawJSON: keychainToken["rawJSON"] as! NSData)
             // TODO refresh token
