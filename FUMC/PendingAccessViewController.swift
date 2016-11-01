@@ -8,37 +8,42 @@
 
 import UIKit
 import DigitsKit
-import FBSDKLoginKit
 
 protocol PendingAccessDelegate {
     func pendingAccessViewController(viewController: PendingAccessViewController, granted accessToken: AccessToken)
     func pendingAccessViewController(viewController: PendingAccessViewController, failedWith error: NSError)
 }
 
-class PendingAccessViewController: UIViewController, SignInDelegate, FBSDKLoginButtonDelegate {
-    @IBOutlet var updatingView: UIView!
-    @IBOutlet var approvedView: UIView!
-    @IBOutlet var pendingWithIdentityView: UIView!
-    @IBOutlet var pendingNeedsIdentityView: UIView!
-    @IBOutlet var deniedView: UIView!
-    @IBOutlet var facebookButtonContainer: UIView!
-    
-    var delegate: PendingAccessDelegate!
+class PendingAccessViewController: UIPageViewController, SignInDelegate, PendingNeedsIdentityDelegate, ApprovedDelegate {
+    var accessDelegate: PendingAccessDelegate!
     var scopes: [API.Scopes]!
     var requestId: String!
     var accessRequest: AccessRequest?
     var accessToken: AccessToken?
+    let updatingViewController = UIViewController(nibName: "UpdatingViewController", bundle: nil)
+    lazy var pendingWithIdentityViewController = { return UIViewController(nibName: "PendingWithIdentityViewController", bundle: nil) }()
+    lazy var deniedViewController = { return UIViewController(nibName: "DeniedViewController", bundle: nil) }()
+    
+    lazy var pendingNeedsIdentityViewController: PendingNeedsIdentityViewController = {
+      [unowned self] in
+      return PendingNeedsIdentityViewController(delegate: self)
+    }()
+    
+    lazy var approvedViewController: ApprovedViewController = {
+      [unowned self] in
+      return ApprovedViewController(delegate: self)
+    }()
     
     init(delegate: PendingAccessDelegate, scopes: [API.Scopes], accessRequestId: String) {
-        super.init(nibName: "PendingAccessViewController", bundle: nil)
-        self.delegate = delegate
+        super.init(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
+        self.accessDelegate = delegate
         self.scopes = scopes
         self.requestId = accessRequestId
     }
     
     init(delegate: PendingAccessDelegate, scopes: [API.Scopes], accessRequest: AccessRequest) {
-        super.init(nibName: "PendingAccessViewController", bundle: nil)
-        self.delegate = delegate
+        super.init(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
+        self.accessDelegate = delegate
         self.scopes = scopes
         self.accessRequest = accessRequest
     }
@@ -49,25 +54,16 @@ class PendingAccessViewController: UIViewController, SignInDelegate, FBSDKLoginB
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let facebookButton = FBSDKLoginButton(frame: CGRectZero)
-        facebookButton.delegate = self
-        facebookButtonContainer.addSubview(facebookButton)
-        facebookButton.translatesAutoresizingMaskIntoConstraints = false
-        facebookButtonContainer.addConstraints([
-            NSLayoutConstraint(item: facebookButton, attribute: .CenterX, relatedBy: .Equal, toItem: facebookButtonContainer, attribute: .CenterX, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: facebookButtonContainer, attribute: .Bottom, relatedBy: .Equal, toItem: facebookButton, attribute: .Bottom, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: facebookButtonContainer, attribute: .Top, relatedBy: .Equal, toItem: facebookButton, attribute: .Top, multiplier: 1, constant: 0)
-        ])
         
-        view.bringSubviewToFront(updatingView)
+        setViewControllers([updatingViewController], direction: .Forward, animated: false, completion: nil)
         if let digitsSession = Digits.sharedInstance().session() {
             // Already signed into Digits
             if let accessRequest = self.accessRequest {
                 // We literally just created the access request
                 if accessRequest.user.facebook != nil {
-                    view.bringSubviewToFront(pendingWithIdentityView)
+                    setViewControllers([pendingWithIdentityViewController], direction: .Forward, animated: true, completion: nil)
                 } else {
-                    view.bringSubviewToFront(pendingNeedsIdentityView)
+                    setViewControllers([pendingNeedsIdentityViewController], direction: .Forward, animated: true, completion: nil)
                 }
             } else {
                 // Access request could be approved by now, let’s find out
@@ -76,11 +72,11 @@ class PendingAccessViewController: UIViewController, SignInDelegate, FBSDKLoginB
                         self.accessToken = try accessToken.value()
                         // Access Request must have been approved
                         API.shared().accessToken = self.accessToken!
-                        self.view.bringSubviewToFront(self.approvedView)
+                        self.setViewControllers([self.approvedViewController], direction: .Forward, animated: true, completion: nil)
                     } catch API.Error.Unauthorized {
                         self.getAccessRequest(digitsSession)
                     } catch let error as NSError {
-                        self.delegate.pendingAccessViewController(self, failedWith: error)
+                        self.accessDelegate.pendingAccessViewController(self, failedWith: error)
                     }
                 }
             }
@@ -93,17 +89,17 @@ class PendingAccessViewController: UIViewController, SignInDelegate, FBSDKLoginB
     }
     
     func signInViewController(viewController: SignInViewController, failedWith error: NSError) {
-        self.delegate.pendingAccessViewController(self, failedWith: error)
+        accessDelegate.pendingAccessViewController(self, failedWith: error)
     }
     
     func signInViewController(viewController: SignInViewController, grantedKnownUser token: AccessToken) {
         accessToken = token
-        view.bringSubviewToFront(approvedView)
+        setViewControllers([approvedViewController], direction: .Forward, animated: true, completion: nil)
     }
     
     func signInViewController(viewController: SignInViewController, grantedUnknownUser token: AccessToken) {
         // This is impossible
-        self.delegate.pendingAccessViewController(self, failedWith: NSError(domain: API.ERROR_DOMAIN, code: 3, userInfo: [
+        accessDelegate.pendingAccessViewController(self, failedWith: NSError(domain: API.ERROR_DOMAIN, code: 3, userInfo: [
             "developerMessage": "PendingAccessViewController signed in but got an unknown user. Something is terribly wrong."
         ]))
     }
@@ -113,61 +109,48 @@ class PendingAccessViewController: UIViewController, SignInDelegate, FBSDKLoginB
         self.getAccessRequest(Digits.sharedInstance().session()!)
     }
     
-    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
-        // This is impossible
-    }
-    
-    func loginButtonWillLogin(loginButton: FBSDKLoginButton!) -> Bool {
-        // Don’t care
-        return true
-    }
-    
-    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-        guard error == nil && !result.isCancelled else {
-            return
-        }
-        
-        updateAccessRequest(result.token)
-    }
-    
-    @IBAction func tappedGetStarted() {
-        self.delegate.pendingAccessViewController(self, granted: accessToken!)
-    }
-    
     private func getAccessRequest(digitsSession: DGTSession) {
         API.shared().getAccessRequest(self.requestId, session: digitsSession) { accessRequest in
             do {
                 self.accessRequest = try accessRequest.value()
                 if (self.accessRequest!.status == .Rejected) {
-                    self.view.bringSubviewToFront(self.deniedView)
+                    self.setViewControllers([self.deniedViewController], direction: .Forward, animated: true, completion: nil)
                 } else {
                     if (self.accessRequest!.status == .Approved) {
                         // TODO alert the authorities but carry on pretending it’s pending
                     }
                     
                     if (self.accessRequest!.user.facebook != nil) {
-                        self.view.bringSubviewToFront(self.pendingWithIdentityView)
+                        self.setViewControllers([self.pendingWithIdentityViewController], direction: .Forward, animated: true, completion: nil)
                     } else {
                         if let facebookToken = FBSDKAccessToken.currentAccessToken() {
                             self.updateAccessRequest(facebookToken)
                         } else {
-                            self.view.bringSubviewToFront(self.pendingNeedsIdentityView)
+                            self.setViewControllers([self.pendingNeedsIdentityViewController], direction: .Forward, animated: true, completion: nil)
                         }
                     }
                 }
             } catch let error as NSError {
-                self.delegate.pendingAccessViewController(self, failedWith: error)
+                self.accessDelegate.pendingAccessViewController(self, failedWith: error)
             }
         }
+    }
+    
+    func pendingNeedsIdentity(viewController viewController: PendingNeedsIdentityViewController, received token: FBSDKAccessToken) {
+        updateAccessRequest(token)
+    }
+    
+    func approvedViewControllerTappedGetStarted(viewController viewController: ApprovedViewController) {
+        accessDelegate.pendingAccessViewController(self, granted: accessToken!)
     }
     
     private func updateAccessRequest(token: FBSDKAccessToken) {
         API.shared().updateAccessRequest(self.accessRequest!, session: Digits.sharedInstance().session()!, facebookToken: token.tokenString) { accessRequest in
             do {
                 self.accessRequest = try accessRequest.value()
-                self.view.bringSubviewToFront(self.pendingWithIdentityView)
+                self.setViewControllers([self.pendingWithIdentityViewController], direction: .Forward, animated: true, completion: nil)
             } catch let error as NSError {
-                self.delegate.pendingAccessViewController(self, failedWith: error)
+                self.accessDelegate.pendingAccessViewController(self, failedWith: error)
             }
         }
     }

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DeniedViewController" customModule="FUMC" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="2ug-Zd-9U7" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2ug-Zd-9U7">
+            <frame key="frameInset" minX="-66" minY="-61" width="375" height="667"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="We weren’t able to give you access automatically. Come to the front office and let us know, and we’ll sort it out." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0mK-Va-0Bk">
+                    <frame key="frameInset" minX="40" minY="207" width="295" height="61"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="This one’s a head-scratcher." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pcC-ht-DYb">
+                    <frame key="frameInset" minX="40" minY="100" width="295" height="67"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="0mK-Va-0Bk" secondAttribute="trailing" constant="40" id="51o-l9-gen"/>
+                <constraint firstItem="pcC-ht-DYb" firstAttribute="top" secondItem="2ug-Zd-9U7" secondAttribute="top" constant="100" id="6n3-ko-on1"/>
+                <constraint firstItem="pcC-ht-DYb" firstAttribute="centerX" secondItem="2ug-Zd-9U7" secondAttribute="centerX" id="QC7-9C-uwj"/>
+                <constraint firstItem="0mK-Va-0Bk" firstAttribute="leading" secondItem="2ug-Zd-9U7" secondAttribute="leading" constant="40" id="XO3-ZJ-v47"/>
+                <constraint firstAttribute="trailing" secondItem="pcC-ht-DYb" secondAttribute="trailing" constant="40" id="aPT-Sz-xSQ"/>
+                <constraint firstItem="pcC-ht-DYb" firstAttribute="leading" secondItem="2ug-Zd-9U7" secondAttribute="leading" constant="40" id="bJH-hh-vnX"/>
+                <constraint firstItem="0mK-Va-0Bk" firstAttribute="leading" secondItem="2ug-Zd-9U7" secondAttribute="leading" constant="40" id="dVc-FR-wkD"/>
+                <constraint firstItem="0mK-Va-0Bk" firstAttribute="top" secondItem="pcC-ht-DYb" secondAttribute="bottom" constant="40" id="hWz-TN-KF3"/>
+                <constraint firstAttribute="trailing" secondItem="0mK-Va-0Bk" secondAttribute="trailing" constant="40" id="ozB-5X-84Z"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

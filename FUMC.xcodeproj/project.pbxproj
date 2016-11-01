@@ -40,7 +40,6 @@
 		49605DE51BA571E3003633A1 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 49605DDA1BA571E3003633A1 /* AFURLResponseSerialization.m */; };
 		49605DE61BA571E3003633A1 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 49605DDC1BA571E3003633A1 /* AFURLSessionManager.m */; };
 		4974599A1D5FDB6B007D8F2F /* PendingAccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497459981D5FDB6B007D8F2F /* PendingAccessViewController.swift */; };
-		4974599B1D5FDB6B007D8F2F /* PendingAccessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 497459991D5FDB6B007D8F2F /* PendingAccessViewController.xib */; };
 		497A01A91CFD1645005D3CB5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497A01A81CFD1645005D3CB5 /* User.swift */; };
 		49804B261C5E88CE005AE154 /* VideosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49804B241C5E88CE005AE154 /* VideosTableViewCell.swift */; };
 		49804B271C5E88CE005AE154 /* VideosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49804B241C5E88CE005AE154 /* VideosTableViewCell.swift */; };
@@ -123,6 +122,14 @@
 		49F261631B9E2E7A00FE027D /* NSDateExtensionsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F261621B9E2E7A00FE027D /* NSDateExtensionsTest.swift */; };
 		49F52A1D1D51850800E3BD47 /* VerifyIdentityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F52A1B1D51850800E3BD47 /* VerifyIdentityViewController.swift */; };
 		49F52A1E1D51850800E3BD47 /* VerifyIdentityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49F52A1C1D51850800E3BD47 /* VerifyIdentityViewController.xib */; };
+		49FA2A001DC84A3300B1B9DB /* UpdatingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49FA29FE1DC84A3300B1B9DB /* UpdatingViewController.xib */; };
+		49FA2A031DC84BDA00B1B9DB /* ApprovedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FA2A011DC84BDA00B1B9DB /* ApprovedViewController.swift */; };
+		49FA2A041DC84BDA00B1B9DB /* ApprovedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49FA2A021DC84BDA00B1B9DB /* ApprovedViewController.xib */; };
+		49FA2A0C1DC84CDA00B1B9DB /* PendingWithIdentityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49FA2A0A1DC84CDA00B1B9DB /* PendingWithIdentityViewController.xib */; };
+		49FA2A0F1DC84E7900B1B9DB /* PendingNeedsIdentityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FA2A0D1DC84E7900B1B9DB /* PendingNeedsIdentityViewController.swift */; };
+		49FA2A101DC84E7900B1B9DB /* PendingNeedsIdentityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49FA2A0E1DC84E7900B1B9DB /* PendingNeedsIdentityViewController.xib */; };
+		49FA2A131DC84F4500B1B9DB /* DeniedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FA2A111DC84F4500B1B9DB /* DeniedViewController.swift */; };
+		49FA2A141DC84F4500B1B9DB /* DeniedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49FA2A121DC84F4500B1B9DB /* DeniedViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -301,7 +308,6 @@
 		49605EAC1BA5721F003633A1 /* VIMObjectMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VIMObjectMapper.h; sourceTree = "<group>"; };
 		49605EAD1BA5721F003633A1 /* VIMObjectMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VIMObjectMapper.m; sourceTree = "<group>"; };
 		497459981D5FDB6B007D8F2F /* PendingAccessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PendingAccessViewController.swift; path = FUMC/PendingAccessViewController.swift; sourceTree = "<group>"; };
-		497459991D5FDB6B007D8F2F /* PendingAccessViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PendingAccessViewController.xib; path = FUMC/PendingAccessViewController.xib; sourceTree = "<group>"; };
 		497A01A81CFD1645005D3CB5 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = FUMC/User.swift; sourceTree = "<group>"; };
 		497FA6F11DB4304800D03395 /* FUMC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FUMC.entitlements; sourceTree = "<group>"; };
 		49804B241C5E88CE005AE154 /* VideosTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideosTableViewCell.swift; path = FUMC/VideosTableViewCell.swift; sourceTree = "<group>"; };
@@ -387,6 +393,14 @@
 		49F261621B9E2E7A00FE027D /* NSDateExtensionsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtensionsTest.swift; sourceTree = "<group>"; };
 		49F52A1B1D51850800E3BD47 /* VerifyIdentityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VerifyIdentityViewController.swift; path = FUMC/VerifyIdentityViewController.swift; sourceTree = "<group>"; };
 		49F52A1C1D51850800E3BD47 /* VerifyIdentityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VerifyIdentityViewController.xib; path = FUMC/VerifyIdentityViewController.xib; sourceTree = "<group>"; };
+		49FA29FE1DC84A3300B1B9DB /* UpdatingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UpdatingViewController.xib; path = FUMC/UpdatingViewController.xib; sourceTree = "<group>"; };
+		49FA2A011DC84BDA00B1B9DB /* ApprovedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApprovedViewController.swift; path = FUMC/ApprovedViewController.swift; sourceTree = "<group>"; };
+		49FA2A021DC84BDA00B1B9DB /* ApprovedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ApprovedViewController.xib; path = FUMC/ApprovedViewController.xib; sourceTree = "<group>"; };
+		49FA2A0A1DC84CDA00B1B9DB /* PendingWithIdentityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PendingWithIdentityViewController.xib; path = FUMC/PendingWithIdentityViewController.xib; sourceTree = "<group>"; };
+		49FA2A0D1DC84E7900B1B9DB /* PendingNeedsIdentityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PendingNeedsIdentityViewController.swift; path = FUMC/PendingNeedsIdentityViewController.swift; sourceTree = "<group>"; };
+		49FA2A0E1DC84E7900B1B9DB /* PendingNeedsIdentityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PendingNeedsIdentityViewController.xib; path = FUMC/PendingNeedsIdentityViewController.xib; sourceTree = "<group>"; };
+		49FA2A111DC84F4500B1B9DB /* DeniedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DeniedViewController.swift; path = FUMC/DeniedViewController.swift; sourceTree = "<group>"; };
+		49FA2A121DC84F4500B1B9DB /* DeniedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DeniedViewController.xib; path = FUMC/DeniedViewController.xib; sourceTree = "<group>"; };
 		6EDC8D615B078D1D805756C0 /* Pods_FUMCUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FUMCUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		927BEB378353993D3A9AE5AF /* Pods-FUMC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FUMC.release.xcconfig"; path = "Pods/Target Support Files/Pods-FUMC/Pods-FUMC.release.xcconfig"; sourceTree = "<group>"; };
 		DA7425126BE2BA297FAE61BC /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -919,11 +933,11 @@
 		49E09F761D4EDBD90097A17B /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				49FA29FC1DC8498B00B1B9DB /* PendingAccess */,
 				49E09F6F1D4EA2040097A17B /* AuthenticationViewController.swift */,
 				49E09F771D4EDBEF0097A17B /* SignInViewController.swift */,
 				49E09F791D4EE9DF0097A17B /* ConfirmIdentityViewController.swift */,
 				49F52A1B1D51850800E3BD47 /* VerifyIdentityViewController.swift */,
-				497459981D5FDB6B007D8F2F /* PendingAccessViewController.swift */,
 			);
 			name = Authentication;
 			sourceTree = "<group>";
@@ -934,7 +948,6 @@
 				49E09F7A1D4EE9E00097A17B /* ConfirmIdentityViewController.xib */,
 				49E09F711D4EBABC0097A17B /* SignInViewController.xib */,
 				49F52A1C1D51850800E3BD47 /* VerifyIdentityViewController.xib */,
-				497459991D5FDB6B007D8F2F /* PendingAccessViewController.xib */,
 			);
 			name = Authentication;
 			sourceTree = "<group>";
@@ -961,6 +974,22 @@
 				49F261621B9E2E7A00FE027D /* NSDateExtensionsTest.swift */,
 			);
 			name = Utilities;
+			sourceTree = "<group>";
+		};
+		49FA29FC1DC8498B00B1B9DB /* PendingAccess */ = {
+			isa = PBXGroup;
+			children = (
+				497459981D5FDB6B007D8F2F /* PendingAccessViewController.swift */,
+				49FA29FE1DC84A3300B1B9DB /* UpdatingViewController.xib */,
+				49FA2A011DC84BDA00B1B9DB /* ApprovedViewController.swift */,
+				49FA2A021DC84BDA00B1B9DB /* ApprovedViewController.xib */,
+				49FA2A0A1DC84CDA00B1B9DB /* PendingWithIdentityViewController.xib */,
+				49FA2A0D1DC84E7900B1B9DB /* PendingNeedsIdentityViewController.swift */,
+				49FA2A0E1DC84E7900B1B9DB /* PendingNeedsIdentityViewController.xib */,
+				49FA2A111DC84F4500B1B9DB /* DeniedViewController.swift */,
+				49FA2A121DC84F4500B1B9DB /* DeniedViewController.xib */,
+			);
+			name = PendingAccess;
 			sourceTree = "<group>";
 		};
 		7B69E7F3C551EDB41F9B412B /* Frameworks */ = {
@@ -1097,6 +1126,7 @@
 				49B2A3311A268070004EED86 /* BebasNeue Regular.otf in Resources */,
 				49E09F721D4EBABC0097A17B /* SignInViewController.xib in Resources */,
 				49B2A3461A268070004EED86 /* Images.xcassets in Resources */,
+				49FA2A001DC84A3300B1B9DB /* UpdatingViewController.xib in Resources */,
 				49F52A1E1D51850800E3BD47 /* VerifyIdentityViewController.xib in Resources */,
 				49E09F7C1D4EE9E00097A17B /* ConfirmIdentityViewController.xib in Resources */,
 				49B2A32F1A268070004EED86 /* BebasNeue Book.otf in Resources */,
@@ -1109,10 +1139,13 @@
 				49B2A3491A268070004EED86 /* MediaMasterTableViewCell.xib in Resources */,
 				49A569891A40807500B6F1E4 /* CalendarSettingsSelectTableViewCell.xib in Resources */,
 				49B2A34D1A268070004EED86 /* MyriadPro-Regular.otf in Resources */,
+				49FA2A141DC84F4500B1B9DB /* DeniedViewController.xib in Resources */,
+				49FA2A041DC84BDA00B1B9DB /* ApprovedViewController.xib in Resources */,
+				49FA2A0C1DC84CDA00B1B9DB /* PendingWithIdentityViewController.xib in Resources */,
+				49FA2A101DC84E7900B1B9DB /* PendingNeedsIdentityViewController.xib in Resources */,
 				49D507A31A37C18E00531F23 /* CalendarTableViewAllDayCell.xib in Resources */,
 				49B2A33C1A268070004EED86 /* ConnectTableFooterView.xib in Resources */,
 				49F2615D1B9CF22700FE027D /* MediaTableHeaderView.xib in Resources */,
-				4974599B1D5FDB6B007D8F2F /* PendingAccessViewController.xib in Resources */,
 				49B2A32D1A268070004EED86 /* Main.storyboard in Resources */,
 				49B2A3391A268070004EED86 /* CalendarTableViewCell.xib in Resources */,
 				495C471B1C8A83940018F677 /* DigitsKitResources.bundle in Resources */,
@@ -1270,6 +1303,8 @@
 				49A569881A40807500B6F1E4 /* CalendarSettingsSelectTableViewCell.swift in Sources */,
 				49B2A3341A268070004EED86 /* BulletinsDataSource.swift in Sources */,
 				49B2A3421A268070004EED86 /* EventViewController.swift in Sources */,
+				49FA2A0F1DC84E7900B1B9DB /* PendingNeedsIdentityViewController.swift in Sources */,
+				49FA2A131DC84F4500B1B9DB /* DeniedViewController.swift in Sources */,
 				49B2A3411A268070004EED86 /* ErrorAlerter.swift in Sources */,
 				49B2A3441A268070004EED86 /* GiveViewController.swift in Sources */,
 				49A569701A39F66500B6F1E4 /* API.swift in Sources */,
@@ -1324,6 +1359,7 @@
 				49B2A32C1A268070004EED86 /* AppDelegate.swift in Sources */,
 				49B2A3521A268070004EED86 /* UIChangingLabel.swift in Sources */,
 				49B2A34F1A268070004EED86 /* PrayerRequestViewController.swift in Sources */,
+				49FA2A031DC84BDA00B1B9DB /* ApprovedViewController.swift in Sources */,
 				49B2A3381A268070004EED86 /* CalendarTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
