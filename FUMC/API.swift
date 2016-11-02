@@ -74,7 +74,7 @@ public class API: NSObject {
     override init() {
         super.init()
         if let keychainToken = Locksmith.loadDataForUserAccount("accessToken") {
-            self._accessToken = try? AccessToken(rawJSON: keychainToken["rawJSON"] as! NSData)
+            // self._accessToken = try? AccessToken(rawJSON: keychainToken["rawJSON"] as! NSData)
             // TODO refresh token
         }
     }

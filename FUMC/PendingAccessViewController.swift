@@ -54,6 +54,7 @@ class PendingAccessViewController: UIPageViewController, SignInDelegate, Pending
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor.whiteColor()
         
         setViewControllers([updatingViewController], direction: .Forward, animated: false, completion: nil)
         if let digitsSession = Digits.sharedInstance().session() {
