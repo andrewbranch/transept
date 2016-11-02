@@ -379,6 +379,19 @@ public class API: NSObject {
         }
     }
     
+    func revokeToken() {
+        guard let token = accessToken else {
+            return
+        }
+
+        let url = NSURL(string: "\(base)/authenticate/digits/revoke")
+        let request = NSMutableURLRequest(URL: url!)
+        request.HTTPMethod = "POST"
+        request.setValue("Authorization", forHTTPHeaderField: "Bearer \(token.signed)")
+        self.accessToken = nil
+        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { _ in return }
+    }
+    
     func getAccessRequest(id: String, session: DGTSession, completed: (accessRequest: Result<AccessRequest>) -> Void) {
         let url = NSURL(string: "\(base)/authenticate/digits/request/\(id)")
         let request = NSMutableURLRequest(URL: url!)
