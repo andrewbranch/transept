@@ -15,7 +15,7 @@ protocol AuthenticationDelegate {
     func authenticationViewController(viewController: AuthenticationViewController, failedWith error: API.Error)
 }
 
-class AuthenticationViewController: UIPageViewController, SignInDelegate, ConfirmDelegate, VerifyDelegate {
+class AuthenticationViewController: UIPageViewController, ConfirmDelegate, VerifyDelegate {
 
     var authenticationDelegate: AuthenticationDelegate!
     var requestScopes: [API.Scopes]!
@@ -23,9 +23,10 @@ class AuthenticationViewController: UIPageViewController, SignInDelegate, Confir
     private var accessToken: AccessToken?
     private var accessRequest: AccessRequest?
     
-    init(requestScopes: [API.Scopes], delegate: AuthenticationDelegate) {
+    init(delegate: AuthenticationDelegate, requestScopes: [API.Scopes], token: AccessToken?) {
         super.init(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
         authenticationDelegate = delegate
+        accessToken = token
         self.requestScopes = requestScopes
     }
     
@@ -35,14 +36,11 @@ class AuthenticationViewController: UIPageViewController, SignInDelegate, Confir
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        signIn()
-    }
-    
-    private func signIn() {
-        let signInViewController = SignInViewController(nibName: "SignInViewController", bundle: nil)
-        signInViewController.requestScopes = requestScopes
-        signInViewController.delegate = self
-        setViewControllers([signInViewController], direction: .Forward, animated: false, completion: nil)
+        if let token = accessToken {
+            confirmIdentity(token)
+        } else {
+            requestAccess(revokedToken: nil)
+        }
     }
     
     private func confirmIdentity(token: AccessToken) {
@@ -101,28 +99,6 @@ class AuthenticationViewController: UIPageViewController, SignInDelegate, Confir
             } catch {
                 self.authenticationDelegate.authenticationViewController(self, failedWith: API.Error.Unknown(userMessage: nil, developerMessage: nil, userInfo: nil))
             }
-        }
-    }
-    
-    func signInViewController(viewController: SignInViewController, grantedUnknownUser token: AccessToken) {
-        accessToken = token
-        confirmIdentity(token)
-    }
-    
-    func signInViewController(viewController: SignInViewController, grantedKnownUser token: AccessToken) {
-        accessToken = token
-        authenticationDelegate.authenticationViewController(self, granted: token)
-    }
-    
-    func signInViewControllerCouldNotGrantToken(viewController viewController: SignInViewController) {
-        requestAccess(revokedToken: nil)
-    }
-    
-    func signInViewController(viewController: SignInViewController, failedWith error: NSError) {
-        if let apiError = error as? API.Error {
-            authenticationDelegate.authenticationViewController(self, failedWith: apiError)
-        } else {
-            authenticationDelegate.authenticationViewController(self, failedWith: API.Error.Unknown(userMessage: nil, developerMessage: nil, userInfo: nil))
         }
     }
     

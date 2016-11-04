@@ -22,6 +22,16 @@ class SignInViewController: UIViewController {
     var requestScopes: [API.Scopes]!
     var delegate: SignInDelegate!
     
+    init(delegate: SignInDelegate, requestScopes: [API.Scopes]) {
+        super.init(nibName: "SignInViewController", bundle: nil)
+        self.delegate = delegate
+        self.requestScopes = requestScopes
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     @IBAction func didTapSignInButton() {
         signInButton!.enabled = false
         Digits.sharedInstance().authenticateWithCompletion { session, error in

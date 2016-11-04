@@ -13,7 +13,7 @@ public protocol DirectoryDataSourceDelegate {
     func dataSource(dataSource: DirectoryDataSource, failedToLoadWith error: API.Error)
 }
 
-class DirectoryTableViewController: CustomTableViewController, DirectoryDataSourceDelegate, AuthenticationDelegate, PendingAccessDelegate {
+class DirectoryTableViewController: CustomTableViewController, DirectoryDataSourceDelegate, AuthenticationDelegate, SignInDelegate, PendingAccessDelegate {
     
     let requiredScopes = [API.Scopes.DirectoryFullReadAccess]
     let accessRequestKey = "directoryAccessRequestId"
@@ -28,14 +28,22 @@ class DirectoryTableViewController: CustomTableViewController, DirectoryDataSour
         if let requestId = NSUserDefaults.standardUserDefaults().valueForKey(accessRequestKey) as? String {
             // Access Request is open; show pending screen
             launchPendingAccessFlow(requestId)
-        } else if (!API.shared().hasAccessToken) {
-            launchAuthFlow()
+        } else if !API.shared().hasAccessToken || API.shared().accessToken!.expires < NSDate() {
+            launchAuthFlow(token: nil, forceRefresh: true)
         }
     }
     
-    private func launchAuthFlow() {
-        let authenticationViewController = AuthenticationViewController(requestScopes: requiredScopes, delegate: self)
-        self.presentViewController(authenticationViewController, animated: true, completion: nil)
+    private func launchAuthFlow(token token: AccessToken?, forceRefresh: Bool = false) {
+        if Digits.sharedInstance().session() != nil || forceRefresh {
+            let authenticationViewController = AuthenticationViewController(delegate: self, requestScopes: requiredScopes, token: token)
+            self.presentViewController(authenticationViewController, animated: true, completion: nil)
+        } else {
+            let signInController = SignInViewController(delegate: self, requestScopes: requiredScopes)
+            addChildViewController(signInController)
+            signInController.view.frame = view.bounds
+            view.addSubview(signInController.view)
+            signInController.didMoveToParentViewController(self)
+        }
     }
     
     private func launchPendingAccessFlow(requestId: String) {
@@ -61,10 +69,10 @@ class DirectoryTableViewController: CustomTableViewController, DirectoryDataSour
     func dataSource(dataSource: DirectoryDataSource, failedToLoadWith error: API.Error) {
         switch error {
         case .Unauthenticated: // this should never happen
-            launchAuthFlow()
+            launchAuthFlow(token: nil, forceRefresh: true)
             break;
         case .Unauthorized:
-            launchAuthFlow()
+            launchAuthFlow(token: nil, forceRefresh: true)
             break;
         default:
             ErrorAlerter.showUnknownErrorMessageInViewController(self, withOriginalError: nil)
@@ -99,5 +107,22 @@ class DirectoryTableViewController: CustomTableViewController, DirectoryDataSour
     
     func pendingAccessViewController(viewController: PendingAccessViewController, failedWith error: NSError) {
         ErrorAlerter.showUserErrorMessage(error, inViewController: self)
+    }
+    
+    func signInViewController(viewController: SignInViewController, failedWith error: NSError) {
+        ErrorAlerter.showUserErrorMessage(error, inViewController: self)
+    }
+    
+    func signInViewControllerCouldNotGrantToken(viewController viewController: SignInViewController) {
+        launchAuthFlow(token: nil)
+    }
+    
+    func signInViewController(viewController: SignInViewController, grantedKnownUser token: AccessToken) {
+        viewController.dismissViewControllerAnimated(true, completion: nil)
+        dataSource!.refresh()
+    }
+    
+    func signInViewController(viewController: SignInViewController, grantedUnknownUser token: AccessToken) {
+        launchAuthFlow(token: token)
     }
 }
