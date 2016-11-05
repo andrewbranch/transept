@@ -34,15 +34,17 @@ class DirectoryTableViewController: CustomTableViewController, DirectoryDataSour
     }
     
     private func launchAuthFlow(token token: AccessToken?, forceRefresh: Bool = false) {
-        if Digits.sharedInstance().session() != nil || forceRefresh {
-            let authenticationViewController = AuthenticationViewController(delegate: self, requestScopes: requiredScopes, token: token)
-            self.presentViewController(authenticationViewController, animated: true, completion: nil)
-        } else {
+        if Digits.sharedInstance().session() == nil || forceRefresh {
             let signInController = SignInViewController(delegate: self, requestScopes: requiredScopes)
             addChildViewController(signInController)
             signInController.view.frame = view.bounds
             view.addSubview(signInController.view)
             signInController.didMoveToParentViewController(self)
+        } else {
+            let authenticationViewController = AuthenticationViewController(delegate: self, requestScopes: requiredScopes, token: token)
+            dispatch_async(dispatch_get_main_queue()) {
+                self.presentViewController(authenticationViewController, animated: true, completion: nil)
+            }
         }
     }
     
@@ -80,13 +82,18 @@ class DirectoryTableViewController: CustomTableViewController, DirectoryDataSour
     }
     
     func authenticationViewController(viewController: AuthenticationViewController, failedWith error: API.Error) {
-        viewController.dismissViewControllerAnimated(true, completion: nil)
-        ErrorAlerter.showUserErrorMessage(error, inViewController: self)
+        dispatch_async(dispatch_get_main_queue()) {
+            viewController.dismissViewControllerAnimated(true) {
+                ErrorAlerter.showUserErrorMessage(error, inViewController: self)
+            }
+        }
     }
     
     func authenticationViewController(viewController: AuthenticationViewController, granted accessToken: AccessToken) {
-        viewController.dismissViewControllerAnimated(true, completion: nil)
         dataSource!.refresh()
+        dispatch_async(dispatch_get_main_queue()) {
+            viewController.dismissViewControllerAnimated(true, completion: nil)
+        }
     }
     
     func authenticationViewController(viewController: AuthenticationViewController, opened accessRequest: AccessRequest) {
@@ -118,8 +125,10 @@ class DirectoryTableViewController: CustomTableViewController, DirectoryDataSour
     }
     
     func signInViewController(viewController: SignInViewController, grantedKnownUser token: AccessToken) {
-        viewController.dismissViewControllerAnimated(true, completion: nil)
         dataSource!.refresh()
+        dispatch_async(dispatch_get_main_queue()) {
+            viewController.dismissViewControllerAnimated(true, completion: nil)
+        }
     }
     
     func signInViewController(viewController: SignInViewController, grantedUnknownUser token: AccessToken) {

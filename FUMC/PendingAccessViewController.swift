@@ -82,9 +82,7 @@ class PendingAccessViewController: UIPageViewController, SignInDelegate, Pending
                 }
             }
         } else {
-            let signInViewController = SignInViewController(nibName: "SignInViewController", bundle: nil)
-            signInViewController.delegate = self
-            signInViewController.requestScopes = scopes
+            let signInViewController = SignInViewController(delegate: self, requestScopes: scopes)
             self.presentViewController(signInViewController, animated: true, completion: nil)
         }
     }
