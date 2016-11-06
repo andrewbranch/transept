@@ -108,8 +108,16 @@ class AuthenticationViewController: UIPageViewController, ConfirmDelegate, Verif
     
     func confirmViewControllerDeniedIdentity(viewController viewController: ConfirmIdentityViewController) {
         // Revoke token and start access request process with some meta info describing phone number conflict
-        API.shared().revokeToken()
-        requestAccess(revokedToken: accessToken)
+        API.shared().revoke() { emptyResponse in
+            do {
+                try emptyResponse.value()
+                self.requestAccess(revokedToken: self.accessToken)
+            } catch let error as API.Error {
+                self.authenticationDelegate.authenticationViewController(self, failedWith: error)
+            } catch {
+                self.authenticationDelegate.authenticationViewController(self, failedWith: API.Error.Unknown(userMessage: nil, developerMessage: nil, userInfo: nil))
+            }
+        }
     }
     
     func verifyViewController(viewController: VerifyIdentityViewController, got facebookToken: FBSDKAccessToken) {

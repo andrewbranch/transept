@@ -60,6 +60,7 @@ public class API: NSObject {
         }
         set(value) {
             if let token = value {
+                _accessToken = token
                 do {
                     try Locksmith.updateData(["rawJSON": token.rawJSON], forUserAccount: "accessToken")
                 } catch { }
@@ -379,17 +380,13 @@ public class API: NSObject {
         }
     }
     
-    func revokeToken() {
-        guard let token = accessToken else {
-            return
-        }
-
+    func revoke(completed: (result: Result<EmptyResponse>) -> Void) {
         let url = NSURL(string: "\(base)/authenticate/digits/revoke")
         let request = NSMutableURLRequest(URL: url!)
         request.HTTPMethod = "POST"
-        request.setValue("Authorization", forHTTPHeaderField: "Bearer \(token.signed)")
-        self.accessToken = nil
-        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { _ in return }
+        sendAuthenticatedRequest(request) { empty in
+            completed(result: empty)
+        }
     }
     
     func getAccessRequest(id: String, session: DGTSession, completed: (accessRequest: Result<AccessRequest>) -> Void) {
@@ -408,7 +405,7 @@ public class API: NSObject {
             })
         }
         
-        request.setValue("Authorization", forHTTPHeaderField: "Bearer \(token.signed)")
+        request.setValue("Bearer \(token.signed)", forHTTPHeaderField: "Authorization")
         sendRequest(request) { result in
             completed(result: result)
         }

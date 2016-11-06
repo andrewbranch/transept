@@ -106,6 +106,7 @@
 		49B2A3671A26829D004EED86 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B2A3641A26829D004EED86 /* Crashlytics.framework */; };
 		49B2A3681A26829D004EED86 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B2A3651A26829D004EED86 /* Fabric.framework */; };
 		49C225071BA496A700D94552 /* Env.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C225061BA496A700D94552 /* Env.swift */; };
+		49C5ECC61DCFB41300A1F5C5 /* EmptyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C5ECC51DCFB41300A1F5C5 /* EmptyResponse.swift */; };
 		49D491B61BC9A8F0004B4D0E /* VideoAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D491B51BC9A8F0004B4D0E /* VideoAlbum.swift */; };
 		49D507A21A37C18E00531F23 /* CalendarTableViewAllDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D507A01A37C18E00531F23 /* CalendarTableViewAllDayCell.swift */; };
 		49D507A31A37C18E00531F23 /* CalendarTableViewAllDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49D507A11A37C18E00531F23 /* CalendarTableViewAllDayCell.xib */; };
@@ -378,6 +379,7 @@
 		49B2A3641A26829D004EED86 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		49B2A3651A26829D004EED86 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		49C225061BA496A700D94552 /* Env.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Env.swift; path = FUMC/Env.swift; sourceTree = "<group>"; };
+		49C5ECC51DCFB41300A1F5C5 /* EmptyResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmptyResponse.swift; path = FUMC/EmptyResponse.swift; sourceTree = "<group>"; };
 		49D491B51BC9A8F0004B4D0E /* VideoAlbum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoAlbum.swift; sourceTree = "<group>"; };
 		49D507A01A37C18E00531F23 /* CalendarTableViewAllDayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarTableViewAllDayCell.swift; path = FUMC/CalendarTableViewAllDayCell.swift; sourceTree = "<group>"; };
 		49D507A11A37C18E00531F23 /* CalendarTableViewAllDayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CalendarTableViewAllDayCell.xib; path = FUMC/CalendarTableViewAllDayCell.xib; sourceTree = "<group>"; };
@@ -801,6 +803,7 @@
 				49214F8C1BC0D2FE0098D2B4 /* Video.swift */,
 				49D491B51BC9A8F0004B4D0E /* VideoAlbum.swift */,
 				497A01A81CFD1645005D3CB5 /* User.swift */,
+				49C5ECC51DCFB41300A1F5C5 /* EmptyResponse.swift */,
 			);
 			name = Models;
 			path = ..;
@@ -1350,6 +1353,7 @@
 				494DF9DB1A3200C60040D02C /* CalendarSettingsTableViewCell.swift in Sources */,
 				49B2A3351A268070004EED86 /* CalendarEvent.swift in Sources */,
 				49B2A34B1A268070004EED86 /* MediaTableViewController.swift in Sources */,
+				49C5ECC61DCFB41300A1F5C5 /* EmptyResponse.swift in Sources */,
 				49E09F7B1D4EE9E00097A17B /* ConfirmIdentityViewController.swift in Sources */,
 				494F80981A3155C000403C6B /* CalendarSettingsViewController.swift in Sources */,
 				490C65A61A33895D00E87130 /* NSDateExtensions.swift in Sources */,
