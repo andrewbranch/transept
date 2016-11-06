@@ -385,7 +385,13 @@ public class API: NSObject {
         let request = NSMutableURLRequest(URL: url!)
         request.HTTPMethod = "POST"
         if let reason = reason {
-            request.HTTPBody = "{\"reason\":\"\(reason)\"}".dataUsingEncoding(NSUTF8StringEncoding)
+            let data = try! NSJSONSerialization.dataWithJSONObject([
+                "reason": reason
+            ], options: NSJSONWritingOptions(rawValue: 0))
+            request.HTTPBody = data
+            request.setValue("application/json", forHTTPHeaderField: "Accept")
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.setValue("\(data.length)", forHTTPHeaderField: "Content-Length")
         }
 
         sendAuthenticatedRequest(request) { empty in
