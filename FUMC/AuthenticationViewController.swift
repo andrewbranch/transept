@@ -108,7 +108,7 @@ class AuthenticationViewController: UIPageViewController, ConfirmDelegate, Verif
     
     func confirmViewControllerDeniedIdentity(viewController viewController: ConfirmIdentityViewController) {
         // Revoke token and start access request process with some meta info describing phone number conflict
-        API.shared().revoke() { emptyResponse in
+        API.shared().revoke(reason: "The user reported that they are not, in fact, \(accessToken!.user.fullName), despite being matched to that name in ACS by their phone number. A new access request is being opened, but the inconsistency needs to be fixed in ACS, and the token will have to be cleared or un-revoked manually.") { emptyResponse in
             do {
                 try emptyResponse.value()
                 self.requestAccess(revokedToken: self.accessToken)

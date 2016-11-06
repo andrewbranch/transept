@@ -380,10 +380,14 @@ public class API: NSObject {
         }
     }
     
-    func revoke(completed: (result: Result<EmptyResponse>) -> Void) {
+    func revoke(reason reason: String?, completed: (result: Result<EmptyResponse>) -> Void) {
         let url = NSURL(string: "\(base)/authenticate/digits/revoke")
         let request = NSMutableURLRequest(URL: url!)
         request.HTTPMethod = "POST"
+        if let reason = reason {
+            request.HTTPBody = "{\"reason\":\"\(reason)\"}".dataUsingEncoding(NSUTF8StringEncoding)
+        }
+
         sendAuthenticatedRequest(request) { empty in
             completed(result: empty)
         }

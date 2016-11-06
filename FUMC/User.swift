@@ -17,6 +17,15 @@ struct User {
     var email: String?
     var digitsId: String?
     var phone: String?
+    var fullName: String? {
+        get {
+            guard firstName != nil || lastName != nil else {
+                return nil
+            }
+
+            return "\(firstName) \(lastName)".stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        }
+    }
     
     init(jsonDictionary: NSDictionary) throws {
         id = jsonDictionary["id"] as! String
