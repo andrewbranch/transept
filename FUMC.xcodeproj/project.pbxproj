@@ -107,6 +107,8 @@
 		49B2A3681A26829D004EED86 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B2A3651A26829D004EED86 /* Fabric.framework */; };
 		49C225071BA496A700D94552 /* Env.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C225061BA496A700D94552 /* Env.swift */; };
 		49C5ECC61DCFB41300A1F5C5 /* EmptyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C5ECC51DCFB41300A1F5C5 /* EmptyResponse.swift */; };
+		49D39EF11DD943EA00E7EB56 /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D39EF01DD943EA00E7EB56 /* Member.swift */; };
+		49D39EF31DD94AFA00E7EB56 /* Family.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D39EF21DD94AFA00E7EB56 /* Family.swift */; };
 		49D491B61BC9A8F0004B4D0E /* VideoAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D491B51BC9A8F0004B4D0E /* VideoAlbum.swift */; };
 		49D507A21A37C18E00531F23 /* CalendarTableViewAllDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D507A01A37C18E00531F23 /* CalendarTableViewAllDayCell.swift */; };
 		49D507A31A37C18E00531F23 /* CalendarTableViewAllDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49D507A11A37C18E00531F23 /* CalendarTableViewAllDayCell.xib */; };
@@ -380,6 +382,8 @@
 		49B2A3651A26829D004EED86 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		49C225061BA496A700D94552 /* Env.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Env.swift; path = FUMC/Env.swift; sourceTree = "<group>"; };
 		49C5ECC51DCFB41300A1F5C5 /* EmptyResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmptyResponse.swift; path = FUMC/EmptyResponse.swift; sourceTree = "<group>"; };
+		49D39EF01DD943EA00E7EB56 /* Member.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Member.swift; path = FUMC/Member.swift; sourceTree = "<group>"; };
+		49D39EF21DD94AFA00E7EB56 /* Family.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Family.swift; path = FUMC/Family.swift; sourceTree = "<group>"; };
 		49D491B51BC9A8F0004B4D0E /* VideoAlbum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoAlbum.swift; sourceTree = "<group>"; };
 		49D507A01A37C18E00531F23 /* CalendarTableViewAllDayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarTableViewAllDayCell.swift; path = FUMC/CalendarTableViewAllDayCell.swift; sourceTree = "<group>"; };
 		49D507A11A37C18E00531F23 /* CalendarTableViewAllDayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CalendarTableViewAllDayCell.xib; path = FUMC/CalendarTableViewAllDayCell.xib; sourceTree = "<group>"; };
@@ -804,6 +808,8 @@
 				49D491B51BC9A8F0004B4D0E /* VideoAlbum.swift */,
 				497A01A81CFD1645005D3CB5 /* User.swift */,
 				49C5ECC51DCFB41300A1F5C5 /* EmptyResponse.swift */,
+				49D39EF01DD943EA00E7EB56 /* Member.swift */,
+				49D39EF21DD94AFA00E7EB56 /* Family.swift */,
 			);
 			name = Models;
 			path = ..;
@@ -1294,6 +1300,7 @@
 				49B2A3511A268070004EED86 /* RootTabBarController.swift in Sources */,
 				49B2A3331A268070004EED86 /* Bulletin.swift in Sources */,
 				49605DE11BA571E3003633A1 /* AFNetworkReachabilityManager.m in Sources */,
+				49D39EF31DD94AFA00E7EB56 /* Family.swift in Sources */,
 				491859CA1B07F9B300AFA077 /* RKDropdownAlert.m in Sources */,
 				49605DDF1BA571E3003633A1 /* AFHTTPRequestOperationManager.m in Sources */,
 				49605DE61BA571E3003633A1 /* AFURLSessionManager.m in Sources */,
@@ -1309,6 +1316,7 @@
 				49FA2A0F1DC84E7900B1B9DB /* PendingNeedsIdentityViewController.swift in Sources */,
 				49FA2A131DC84F4500B1B9DB /* DeniedViewController.swift in Sources */,
 				49B2A3411A268070004EED86 /* ErrorAlerter.swift in Sources */,
+				49D39EF11DD943EA00E7EB56 /* Member.swift in Sources */,
 				49B2A3441A268070004EED86 /* GiveViewController.swift in Sources */,
 				49A569701A39F66500B6F1E4 /* API.swift in Sources */,
 				490C65A41A324F7700E87130 /* CalendarsDataSource.swift in Sources */,

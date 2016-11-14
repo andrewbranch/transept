@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import DigitsKit
 import Locksmith
+import SwiftMoment
 
 public struct Result<T> {
     let value: () throws -> T
@@ -70,6 +71,12 @@ public class API: NSObject {
     
     var hasAccessToken: Bool {
         return self.accessToken != nil
+    }
+    
+    static var lastDirectorySync: NSDate? {
+        if let lastSyncDateString = NSUserDefaults.standardUserDefaults().stringForKey("lastDirectorySyncDate") {
+            return moment(lastSyncDateString)?.date
+        }
     }
     
     override init() {
@@ -405,6 +412,14 @@ public class API: NSObject {
         setDigitsHeaders(request: request, digitsSession: session)
         sendRequest(request) { accessRequest in
             completed(accessRequest: accessRequest)
+        }
+    }
+    
+    func getMembers(since: NSDate? = lastDirectorySync, completed: (result: Result<EmptyResponse>) -> Void) {
+        let url = NSURL(string: "\(base)/members")
+        let request = NSMutableURLRequest(URL: url!)
+        sendAuthenticatedRequest(request) {
+            
         }
     }
     
