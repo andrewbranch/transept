@@ -77,6 +77,8 @@ public class API: NSObject {
         if let lastSyncDateString = NSUserDefaults.standardUserDefaults().stringForKey("lastDirectorySyncDate") {
             return moment(lastSyncDateString)?.date
         }
+        
+        return nil;
     }
     
     override init() {
@@ -418,9 +420,9 @@ public class API: NSObject {
     func getMembers(since: NSDate? = lastDirectorySync, completed: (result: Result<EmptyResponse>) -> Void) {
         let url = NSURL(string: "\(base)/members")
         let request = NSMutableURLRequest(URL: url!)
-        sendAuthenticatedRequest(request) {
-            
-        }
+//        sendAuthenticatedRequest(request) {
+//            
+//        }
     }
     
     private func sendAuthenticatedRequest<TResponseType: Deserializable>(request: NSMutableURLRequest, completed: (result: Result<TResponseType>) -> Void) {
