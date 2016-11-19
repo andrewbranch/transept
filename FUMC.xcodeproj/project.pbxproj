@@ -97,7 +97,6 @@
 		49B2A3671A26829D004EED86 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B2A3641A26829D004EED86 /* Crashlytics.framework */; };
 		49B2A3681A26829D004EED86 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B2A3651A26829D004EED86 /* Fabric.framework */; };
 		49C225071BA496A700D94552 /* Env.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C225061BA496A700D94552 /* Env.swift */; };
-		49C5ECC61DCFB41300A1F5C5 /* EmptyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C5ECC51DCFB41300A1F5C5 /* EmptyResponse.swift */; };
 		49D39EF11DD943EA00E7EB56 /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D39EF01DD943EA00E7EB56 /* Member.swift */; };
 		49D39EF31DD94AFA00E7EB56 /* Family.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D39EF21DD94AFA00E7EB56 /* Family.swift */; };
 		49D491B61BC9A8F0004B4D0E /* VideoAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D491B51BC9A8F0004B4D0E /* VideoAlbum.swift */; };
@@ -108,6 +107,7 @@
 		49E09F781D4EDBEF0097A17B /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E09F771D4EDBEF0097A17B /* SignInViewController.swift */; };
 		49E09F7B1D4EE9E00097A17B /* ConfirmIdentityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E09F791D4EE9DF0097A17B /* ConfirmIdentityViewController.swift */; };
 		49E09F7C1D4EE9E00097A17B /* ConfirmIdentityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49E09F7A1D4EE9E00097A17B /* ConfirmIdentityViewController.xib */; };
+		49E13EEE1DE107BB006FC15F /* JSONAPIResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E13EED1DE107BB006FC15F /* JSONAPIResource.swift */; };
 		49F261561B9CE5F600FE027D /* BulletinTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F261551B9CE5F600FE027D /* BulletinTest.swift */; };
 		49F2615B1B9CF20D00FE027D /* MediaTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F2615A1B9CF20D00FE027D /* MediaTableHeaderView.swift */; };
 		49F2615D1B9CF22700FE027D /* MediaTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49F2615C1B9CF22700FE027D /* MediaTableHeaderView.xib */; };
@@ -353,7 +353,6 @@
 		49B2A3641A26829D004EED86 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		49B2A3651A26829D004EED86 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		49C225061BA496A700D94552 /* Env.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Env.swift; path = FUMC/Env.swift; sourceTree = "<group>"; };
-		49C5ECC51DCFB41300A1F5C5 /* EmptyResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmptyResponse.swift; path = FUMC/EmptyResponse.swift; sourceTree = "<group>"; };
 		49D39EF01DD943EA00E7EB56 /* Member.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Member.swift; path = FUMC/Member.swift; sourceTree = "<group>"; };
 		49D39EF21DD94AFA00E7EB56 /* Family.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Family.swift; path = FUMC/Family.swift; sourceTree = "<group>"; };
 		49D491B51BC9A8F0004B4D0E /* VideoAlbum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoAlbum.swift; sourceTree = "<group>"; };
@@ -364,6 +363,7 @@
 		49E09F771D4EDBEF0097A17B /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignInViewController.swift; path = FUMC/SignInViewController.swift; sourceTree = "<group>"; };
 		49E09F791D4EE9DF0097A17B /* ConfirmIdentityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfirmIdentityViewController.swift; path = FUMC/ConfirmIdentityViewController.swift; sourceTree = "<group>"; };
 		49E09F7A1D4EE9E00097A17B /* ConfirmIdentityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ConfirmIdentityViewController.xib; path = FUMC/ConfirmIdentityViewController.xib; sourceTree = "<group>"; };
+		49E13EED1DE107BB006FC15F /* JSONAPIResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONAPIResource.swift; path = FUMC/JSONAPIResource.swift; sourceTree = "<group>"; };
 		49F261551B9CE5F600FE027D /* BulletinTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulletinTest.swift; sourceTree = "<group>"; };
 		49F2615A1B9CF20D00FE027D /* MediaTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MediaTableHeaderView.swift; path = FUMC/MediaTableHeaderView.swift; sourceTree = "<group>"; };
 		49F2615C1B9CF22700FE027D /* MediaTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MediaTableHeaderView.xib; path = FUMC/MediaTableHeaderView.xib; sourceTree = "<group>"; };
@@ -751,9 +751,9 @@
 				49214F8C1BC0D2FE0098D2B4 /* Video.swift */,
 				49D491B51BC9A8F0004B4D0E /* VideoAlbum.swift */,
 				497A01A81CFD1645005D3CB5 /* User.swift */,
-				49C5ECC51DCFB41300A1F5C5 /* EmptyResponse.swift */,
 				49D39EF01DD943EA00E7EB56 /* Member.swift */,
 				49D39EF21DD94AFA00E7EB56 /* Family.swift */,
+				49E13EED1DE107BB006FC15F /* JSONAPIResource.swift */,
 			);
 			name = Models;
 			path = ..;
@@ -1244,6 +1244,7 @@
 				49B2A3511A268070004EED86 /* RootTabBarController.swift in Sources */,
 				49B2A3331A268070004EED86 /* Bulletin.swift in Sources */,
 				49D39EF31DD94AFA00E7EB56 /* Family.swift in Sources */,
+				49E13EEE1DE107BB006FC15F /* JSONAPIResource.swift in Sources */,
 				491859CA1B07F9B300AFA077 /* RKDropdownAlert.m in Sources */,
 				49209A511A360BD600DDD45E /* RadioView.swift in Sources */,
 				49F2615B1B9CF20D00FE027D /* MediaTableHeaderView.swift in Sources */,
@@ -1297,7 +1298,6 @@
 				494DF9DB1A3200C60040D02C /* CalendarSettingsTableViewCell.swift in Sources */,
 				49B2A3351A268070004EED86 /* CalendarEvent.swift in Sources */,
 				49B2A34B1A268070004EED86 /* MediaTableViewController.swift in Sources */,
-				49C5ECC61DCFB41300A1F5C5 /* EmptyResponse.swift in Sources */,
 				49E09F7B1D4EE9E00097A17B /* ConfirmIdentityViewController.swift in Sources */,
 				494F80981A3155C000403C6B /* CalendarSettingsViewController.swift in Sources */,
 				490C65A61A33895D00E87130 /* NSDateExtensions.swift in Sources */,

@@ -23,6 +23,10 @@ struct AccessRequest : Deserializable {
     var scopes: [API.Scopes]!
     var user: User!
     
+    static func mapInit(rawJSON rawJSON: NSData) throws -> [AccessRequest] {
+        fatalError("No such thing as an array response of access requests")
+    }
+    
     init(rawJSON: NSData) throws {
         let jsonDictionary = try NSJSONSerialization.JSONObjectWithData(rawJSON, options: .AllowFragments)
         let accessRequest = jsonDictionary["accessRequest"] as! NSDictionary

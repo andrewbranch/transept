@@ -18,6 +18,10 @@ struct AccessToken : Deserializable {
     var rawJSON: NSData
     var user: User
     
+    static func mapInit(rawJSON rawJSON: NSData) throws -> [AccessToken] {
+        fatalError("No such thing as an array response of access tokens")
+    }
+    
     init(rawJSON: NSData) throws {
         let jsonDictionary = try NSJSONSerialization.JSONObjectWithData(rawJSON, options: .AllowFragments)
         self.id = jsonDictionary["id"] as! String

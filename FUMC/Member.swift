@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-class Member: Object, Deserializable {
+final class Member: Object, Deserializable {
     dynamic var id: String!
     dynamic var firstName: String!
     dynamic var lastName: String!
@@ -23,10 +23,23 @@ class Member: Object, Deserializable {
         return "id"
     }
     
+    static func mapInit(rawJSON rawJSON: NSData) throws -> [Member] {
+        return try JSONAPIResource.getDataArray(rawJSON).map(self.init)
+    }
+    
     convenience required init(rawJSON: NSData) throws {
         let jsonDictionary = try NSJSONSerialization.JSONObjectWithData(rawJSON, options: .AllowFragments)
+        self.init()
+        try initAttrs(jsonDictionary as! NSDictionary)
+    }
+    
+    convenience required init(jsonDictionary: NSDictionary) throws {
+        self.init()
+        try initAttrs(jsonDictionary)
+    }
+    
+    private func initAttrs(jsonDictionary: NSDictionary) throws {
         let attrs = jsonDictionary["attributes"] as! NSDictionary
-
         guard let firstName = attrs["first-name"] as? String else {
             throw NSError(domain: API.ERROR_DOMAIN, code: 0, userInfo: ["developerMessage": "First name was blank"])
         }
@@ -35,7 +48,6 @@ class Member: Object, Deserializable {
             throw NSError(domain: API.ERROR_DOMAIN, code: 0, userInfo: ["developerMessage": "Last name was blank"])
         }
         
-        self.init()
         self.firstName = firstName
         self.lastName = lastName
         goesBy = attrs["goes-by"] as! String?

@@ -18,6 +18,7 @@ public struct Result<T> {
 
 public protocol Deserializable {
     init(rawJSON: NSData) throws
+    static func mapInit(rawJSON rawJSON: NSData) throws -> [Self]
 }
 
 public class API: NSObject {
@@ -346,7 +347,7 @@ public class API: NSObject {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("\(data.length)", forHTTPHeaderField: "Content-Length")
         
-        sendRequest(request) { accessToken in
+        getObject(request: request, authenticated: false) { accessToken in
             completed(token: accessToken)
         }
     }
@@ -365,7 +366,7 @@ public class API: NSObject {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("\(data.length)", forHTTPHeaderField: "Content-Length")
         
-        sendRequest(request) { accessRequest in
+        getObject(request: request, authenticated: false) { accessRequest in
             completed(accessRequest: accessRequest)
         }
     }
@@ -384,12 +385,12 @@ public class API: NSObject {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("\(data.length)", forHTTPHeaderField: "Content-Length")
         
-        sendRequest(request) { updatedAccessRequest in
+        getObject(request: request, authenticated: false) { updatedAccessRequest in
             completed(accessRequest: updatedAccessRequest)
         }
     }
     
-    func revoke(reason reason: String?, completed: (result: Result<EmptyResponse>) -> Void) {
+    func revoke(reason reason: String?, completed: (result: Result<Void>) -> Void) {
         let url = NSURL(string: "\(base)/authenticate/digits/revoke")
         let request = NSMutableURLRequest(URL: url!)
         request.HTTPMethod = "POST"
@@ -403,8 +404,8 @@ public class API: NSObject {
             request.setValue("\(data.length)", forHTTPHeaderField: "Content-Length")
         }
 
-        sendAuthenticatedRequest(request) { empty in
-            completed(result: empty)
+        send(request: request, authenticated: true) { _ in
+            completed(result: Result { })
         }
     }
     
@@ -412,33 +413,70 @@ public class API: NSObject {
         let url = NSURL(string: "\(base)/authenticate/digits/request/\(id)")
         let request = NSMutableURLRequest(URL: url!)
         setDigitsHeaders(request: request, digitsSession: session)
-        sendRequest(request) { accessRequest in
+        getObject(request: request, authenticated: false) { accessRequest in
             completed(accessRequest: accessRequest)
         }
     }
     
-    func getMembers(since: NSDate? = lastDirectorySync, completed: (result: Result<EmptyResponse>) -> Void) {
+    func getMembers(since: NSDate? = lastDirectorySync, completed: (result: Result<[Member]>) -> Void) {
         let url = NSURL(string: "\(base)/members")
         let request = NSMutableURLRequest(URL: url!)
-//        sendAuthenticatedRequest(request) {
-//            
-//        }
+        getArray(request: request, authenticated: true) { members in
+            completed(result: members)
+        }
     }
     
-    private func sendAuthenticatedRequest<TResponseType: Deserializable>(request: NSMutableURLRequest, completed: (result: Result<TResponseType>) -> Void) {
-        guard let token = accessToken else {
-            return completed(result: Result {
-                throw API.Error.Unauthenticated
+    private func deserializeObject<TObject: Deserializable>(data: NSData) throws -> TObject {
+        return try TObject(rawJSON: data)
+    }
+    
+    private func deserializeArray<TObject: Deserializable>(data: NSData) throws -> [TObject] {
+        return try TObject.mapInit(rawJSON: data)
+    }
+    
+    private func getObject<TObject: Deserializable>(request request: NSMutableURLRequest, authenticated: Bool, completed: (result: Result<TObject>) -> Void) {
+        send(request: request, authenticated: authenticated) { result in
+            completed(result: Result {
+                let res = try result.value()
+                guard let data = res.data else {
+                    throw Error.Unknown(userMessage: API.BAD_RESPONSE_MESSAGE, developerMessage: "No response body was present", userInfo: ["response": res.response])
+                }
+                guard let object = try? TObject(rawJSON: data) else {
+                    throw Error.Unknown(userMessage: API.BAD_RESPONSE_MESSAGE, developerMessage: "Could not deserialize response into \(String(TObject))", userInfo: ["rawJSON": data])
+                }
+
+                return object
             })
         }
-        
-        request.setValue("Bearer \(token.signed)", forHTTPHeaderField: "Authorization")
-        sendRequest(request) { result in
-            completed(result: result)
-        }
     }
     
-    private func sendRequest<TResponseType: Deserializable>(request: NSMutableURLRequest, completed: (result: Result<TResponseType>) -> Void) {
+    private func getArray<TObject: Deserializable>(request request: NSMutableURLRequest, authenticated: Bool, completed: (result: Result<[TObject]>) -> Void) {
+        send(request: request, authenticated: authenticated) { result in
+            completed(result: Result {
+                let res = try result.value()
+                guard let data = res.data else {
+                    throw Error.Unknown(userMessage: API.BAD_RESPONSE_MESSAGE, developerMessage: "No response body was present", userInfo: ["response": res.response])
+                }
+                guard let array = try? TObject.mapInit(rawJSON: data) else {
+                    throw Error.Unknown(userMessage: API.BAD_RESPONSE_MESSAGE, developerMessage: "Could not deserialize response into array of \(String(TObject))", userInfo: ["rawJSON": data])
+                }
+                
+                return array
+            })
+        }
+    }
+
+    private func send(request request: NSMutableURLRequest, authenticated: Bool, completed: (result: Result<(response: NSHTTPURLResponse, data: NSData?)>) -> Void) {
+        if (authenticated) {
+            guard let token = accessToken else {
+                return completed(result: Result {
+                    throw API.Error.Unauthenticated
+                    })
+            }
+            
+            request.setValue("Bearer \(token.signed)", forHTTPHeaderField: "Authorization")
+        }
+
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { response, data, error in
             guard error == nil else {
                 return completed(result: Result { throw error! })
@@ -455,18 +493,8 @@ public class API: NSObject {
                     throw Error.Unknown(userMessage: API.BAD_RESPONSE_MESSAGE, developerMessage: "Status code was \(response.statusCode)", userInfo: ["response": response])
                 })
             }
-            guard let data = data else {
-                return completed(result: Result {
-                    throw Error.Unknown(userMessage: API.BAD_RESPONSE_MESSAGE, developerMessage: "No response body was present", userInfo: ["response": response])
-                })
-            }
-            guard let result = try? TResponseType(rawJSON: data) else {
-                return completed(result: Result {
-                    throw Error.Unknown(userMessage: API.BAD_RESPONSE_MESSAGE, developerMessage: "Could not deserialize response into \(String(TResponseType))", userInfo: ["rawJSON": data])
-                })
-            }
             
-            completed(result: Result { result })
+            completed(result: Result { (response, data) })
         }
     }
    
