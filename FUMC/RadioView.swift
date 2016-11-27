@@ -2,23 +2,23 @@ class RadioView: UIView {
     
     var selected: Bool = false {
         didSet {
-            UIView.animateWithDuration(self.fadeTime) {
+            UIView.animate(withDuration: self.fadeTime, animations: {
                 self.inner.alpha = self.selected ? 1 : 0
-            }
+            }) 
         }
     }
     
-    var color: UIColor = UIColor.blackColor() {
+    var color: UIColor = UIColor.black {
         didSet {
-            self.layer.borderColor = self.color.CGColor
-            self.inner.layer.backgroundColor = self.color.CGColor
+            self.layer.borderColor = self.color.cgColor
+            self.inner.layer.backgroundColor = self.color.cgColor
         }
     }
     
-    var fadeTime: NSTimeInterval = 0
+    var fadeTime: TimeInterval = 0
     
-    private lazy var inner: UIView = {
-        return UIView(frame: CGRectMake(0, 0, 0, 0))
+    fileprivate lazy var inner: UIView = {
+        return UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     }()
     
     override init(frame: CGRect) {
@@ -39,17 +39,17 @@ class RadioView: UIView {
         layout()
     }
     
-    private func layout() {
+    fileprivate func layout() {
         self.layer.cornerRadius = self.frame.width / 2
         self.layer.borderWidth = self.frame.width / 12
-        self.layer.borderColor = self.color.CGColor
+        self.layer.borderColor = self.color.cgColor
         
         self.inner.translatesAutoresizingMaskIntoConstraints = false
-        self.inner.addConstraint(NSLayoutConstraint(item: self.inner, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Width, multiplier: 1, constant: self.frame.width * 0.6))
-        self.inner.addConstraint(NSLayoutConstraint(item: self.inner, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Height, multiplier: 1, constant: self.frame.height * 0.6))
+        self.inner.addConstraint(NSLayoutConstraint(item: self.inner, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.width, multiplier: 1, constant: self.frame.width * 0.6))
+        self.inner.addConstraint(NSLayoutConstraint(item: self.inner, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.height, multiplier: 1, constant: self.frame.height * 0.6))
         self.addSubview(inner)
-        self.addConstraint(NSLayoutConstraint(item: self.inner, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0))
-        self.addConstraint(NSLayoutConstraint(item: self.inner, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.CenterY, multiplier: 1, constant: 0))
+        self.addConstraint(NSLayoutConstraint(item: self.inner, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0))
+        self.addConstraint(NSLayoutConstraint(item: self.inner, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.centerY, multiplier: 1, constant: 0))
         
         self.inner.layoutIfNeeded()
         self.inner.layer.cornerRadius = self.inner.frame.width / 2

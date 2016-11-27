@@ -13,59 +13,59 @@ class MediaWebViewController: UIViewController, UIWebViewDelegate, UIScrollViewD
     
     @IBOutlet var webView: UIWebView?
     @IBOutlet var activityIndicator: UIActivityIndicatorView?
-    private var previousScrollViewYOffset = CGFloat(0)
-    private var navController: UINavigationController?
+    fileprivate var previousScrollViewYOffset = CGFloat(0)
+    fileprivate var navController: UINavigationController?
     
-    var url: NSURL?
+    var url: URL?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.webView!.delegate = self
         self.webView!.scrollView.delegate = self
-        self.webView!.hidden = true
-        self.webView!.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
+        self.webView!.isHidden = true
+        self.webView!.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
         self.webView!.scalesPageToFit = true
         
         if let url = self.url {
-            let request = NSURLRequest(URL: url)
+            let request = URLRequest(url: url)
             self.webView!.loadRequest(request)
         } else {
             ErrorAlerter.loadingAlertBasedOnReachability().show()
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navController = self.navigationController
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if (self.navController!.navigationBar.frame.origin.y < 0) {
-            animateNavBarTo(UIApplication.sharedApplication().statusBarFrame.height)
+            animateNavBarTo(UIApplication.shared.statusBarFrame.height)
         }
     }
     
     // MARK: - Web View Delegate
     
-    func webViewDidStartLoad(webView: UIWebView) {
+    func webViewDidStartLoad(_ webView: UIWebView) {
         self.activityIndicator!.startAnimating()
     }
     
-    func webViewDidFinishLoad(webView: UIWebView) {
+    func webViewDidFinishLoad(_ webView: UIWebView) {
         self.activityIndicator!.stopAnimating()
-        self.webView!.hidden = false
+        self.webView!.isHidden = false
     }
     
-    func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
-        if (self.isViewLoaded() && self.view.window != nil) {
+    func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
+        if (self.isViewLoaded && self.view.window != nil) {
             ErrorAlerter.loadingAlertBasedOnReachability().show()
         }
     }
     
-    func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        if (navigationType == UIWebViewNavigationType.LinkClicked) {
-            UIApplication.sharedApplication().openURL(request.URL!)
+    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        if (navigationType == UIWebViewNavigationType.linkClicked) {
+            UIApplication.shared.openURL(request.url!)
             return false
         }
         
@@ -74,10 +74,10 @@ class MediaWebViewController: UIViewController, UIWebViewDelegate, UIScrollViewD
     
     // MARK: - Scroll View Delegate
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if let navigationController = self.navigationController {
             var frame = navigationController.navigationBar.frame
-            let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.height
+            let statusBarHeight = UIApplication.shared.statusBarFrame.height
             let size = frame.size.height - statusBarHeight;
             let framePercentageHidden = ((statusBarHeight - frame.origin.y) / (frame.size.height - 1))
             let scrollOffset = scrollView.contentOffset.y
@@ -94,18 +94,18 @@ class MediaWebViewController: UIViewController, UIWebViewDelegate, UIScrollViewD
             }
             
             navigationController.navigationBar.frame = frame
-            self.view.frame = CGRectMake(0, frame.maxY, self.view.frame.width, self.view.frame.height + self.view.frame.origin.y - frame.maxY)
+            self.view.frame = CGRect(x: 0, y: frame.maxY, width: self.view.frame.width, height: self.view.frame.height + self.view.frame.origin.y - frame.maxY)
             
             self.updateBarButtonItems(alpha: 1 - framePercentageHidden)
             self.previousScrollViewYOffset = scrollOffset
         }
     }
     
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         stoppedScrolling()
     }
     
-    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if (!decelerate) {
             stoppedScrolling()
         }
@@ -114,7 +114,7 @@ class MediaWebViewController: UIViewController, UIWebViewDelegate, UIScrollViewD
     func stoppedScrolling() {
         if let navigationController = self.navigationController {
             let frame = navigationController.navigationBar.frame
-            let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.height
+            let statusBarHeight = UIApplication.shared.statusBarFrame.height
             
             // Stopped in between
             if (frame.origin.y < statusBarHeight && frame.origin.y > statusBarHeight - frame.height) {
@@ -123,21 +123,21 @@ class MediaWebViewController: UIViewController, UIWebViewDelegate, UIScrollViewD
         }
     }
     
-    func updateBarButtonItems(alpha alpha: CGFloat) {
-        self.navigationItem.backBarButtonItem?.tintColor = self.navigationItem.backBarButtonItem?.tintColor!.colorWithAlphaComponent(alpha)
+    func updateBarButtonItems(alpha: CGFloat) {
+        self.navigationItem.backBarButtonItem?.tintColor = self.navigationItem.backBarButtonItem?.tintColor!.withAlphaComponent(alpha)
         self.navigationItem.titleView?.alpha = alpha
-        self.navController!.navigationBar.tintColor = self.navController!.navigationBar.tintColor.colorWithAlphaComponent(alpha)
+        self.navController!.navigationBar.tintColor = self.navController!.navigationBar.tintColor.withAlphaComponent(alpha)
     }
     
-    func animateNavBarTo(y: CGFloat) {
+    func animateNavBarTo(_ y: CGFloat) {
         if let navigationController = self.navController {
-            UIView.animateWithDuration(0.2) {
+            UIView.animate(withDuration: 0.2, animations: {
                 var frame = navigationController.navigationBar.frame
                 let alpha = frame.origin.y >= y ? 0 : 1
                 frame.origin.y = y
                 navigationController.navigationBar.frame = frame
                 self.updateBarButtonItems(alpha: CGFloat(alpha))
-            }
+            }) 
         }
     }
 

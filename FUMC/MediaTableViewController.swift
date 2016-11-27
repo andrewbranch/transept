@@ -15,42 +15,42 @@ public protocol MediaTableViewDataSource: UITableViewDataSource, UITableViewDele
     
     init(delegate: MediaTableViewDataSourceDelegate?)
     func refresh() -> Void
-    func urlForIndexPath(indexPath: NSIndexPath) -> NSURL?
+    func urlForIndexPath(_ indexPath: IndexPath) -> URL?
 }
 
 public protocol MediaTableViewDataSourceDelegate {
-    func dataSourceDidStartLoadingAPI(dataSource: MediaTableViewDataSource) -> Void
-    func dataSourceDidFinishLoadingAPI(dataSource: MediaTableViewDataSource) -> Void
-    func dataSource(dataSource: MediaTableViewDataSource, failedToLoadWithError error: ErrorType?) -> Void
+    func dataSourceDidStartLoadingAPI(_ dataSource: MediaTableViewDataSource) -> Void
+    func dataSourceDidFinishLoadingAPI(_ dataSource: MediaTableViewDataSource) -> Void
+    func dataSource(_ dataSource: MediaTableViewDataSource, failedToLoadWithError error: Error?) -> Void
 }
 
-public class MediaTableViewController: CustomTableViewController, MediaTableViewDataSourceDelegate {
+open class MediaTableViewController: CustomTableViewController, MediaTableViewDataSourceDelegate {
     
     var dataSource: MediaTableViewDataSource?
 
-    override public func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationItem.title = self.dataSource!.title as String
         self.tableView!.dataSource = self.dataSource!
         self.tableView!.delegate = self.dataSource!
         
-        self.tableView!.backgroundView?.hidden = self.dataSource!.loading || self.dataSource!.tableView(self.tableView!, numberOfRowsInSection: 0) > 0
+        self.tableView!.backgroundView?.isHidden = self.dataSource!.loading || self.dataSource!.tableView(self.tableView!, numberOfRowsInSection: 0) > 0
         
-        self.tableView!.registerNib(UINib(nibName: "MediaTableHeaderView", bundle: NSBundle.mainBundle()), forHeaderFooterViewReuseIdentifier: "MediaTableHeaderViewIdentifier")
+        self.tableView!.register(UINib(nibName: "MediaTableHeaderView", bundle: Bundle.main), forHeaderFooterViewReuseIdentifier: "MediaTableHeaderViewIdentifier")
     }
     
-    override public func viewWillAppear(animated: Bool) {
+    override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let indexPath = self.tableView!.indexPathForSelectedRow {
-            self.tableView!.deselectRowAtIndexPath(indexPath, animated: true)
+            self.tableView!.deselectRow(at: indexPath, animated: true)
         }
     }
 
-    override public func viewDidAppear(animated: Bool) {
+    override open func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         #if !DEBUG
-        Answers.logCustomEventWithName("Viewed media list", customAttributes: [
+        Answers.logCustomEvent(withName: "Viewed media list", customAttributes: [
             "Name": self.dataSource?.title ?? ""
         ])
         #endif
@@ -63,19 +63,19 @@ public class MediaTableViewController: CustomTableViewController, MediaTableView
     
     // MARK: - MediaTableViewDataSourceDelegate
     
-    public func dataSourceDidStartLoadingAPI(dataSource: MediaTableViewDataSource) {
+    open func dataSourceDidStartLoadingAPI(_ dataSource: MediaTableViewDataSource) {
         self.showLoadingView()
     }
     
-    public func dataSourceDidFinishLoadingAPI(dataSource: MediaTableViewDataSource) {
+    open func dataSourceDidFinishLoadingAPI(_ dataSource: MediaTableViewDataSource) {
         self.tableView!.reloadData()
         self.tableViewController.refreshControl!.endRefreshing()
         self.hideLoadingView()
         
-        self.tableView!.backgroundView?.hidden = dataSource.tableView(self.tableView!, numberOfRowsInSection: 0) > 0
+        self.tableView!.backgroundView?.isHidden = dataSource.tableView(self.tableView!, numberOfRowsInSection: 0) > 0
     }
     
-    public func dataSource(dataSource: MediaTableViewDataSource, failedToLoadWithError error: ErrorType?) {
+    open func dataSource(_ dataSource: MediaTableViewDataSource, failedToLoadWithError error: Error?) {
         ErrorAlerter.showLoadingAlertInViewController(self)
         dataSourceDidFinishLoadingAPI(self.dataSource!)
     }
@@ -83,14 +83,14 @@ public class MediaTableViewController: CustomTableViewController, MediaTableView
 
     // MARK: - Navigation
 
-    override public func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+    override open func prepare(for segue: UIStoryboardSegue, sender: Any!) {
         if (segue.identifier == "mediaTableCellSelection") {
-            let viewController = segue.destinationViewController as! MediaWebViewController
+            let viewController = segue.destination as! MediaWebViewController
             let indexPath = self.tableView!.indexPathForSelectedRow
             
             viewController.url = self.dataSource!.urlForIndexPath(indexPath!)
             #if !DEBUG
-            Answers.logCustomEventWithName("Viewed media item", customAttributes: [
+            Answers.logCustomEvent(withName: "Viewed media item", customAttributes: [
                 "Kind": self.dataSource?.title ?? "",
                 "URL": viewController.url?.absoluteString ?? ""
             ])

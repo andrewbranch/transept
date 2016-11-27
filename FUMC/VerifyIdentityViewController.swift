@@ -10,9 +10,9 @@ import UIKit
 import FBSDKLoginKit
 
 protocol VerifyDelegate {
-    func verifyViewController(viewController: VerifyIdentityViewController, got facebookToken: FBSDKAccessToken)
-    func verifyViewControllerWillNotVerify(viewController viewController: VerifyIdentityViewController)
-    func verifyViewController(viewController: VerifyIdentityViewController, failedWith error: NSError)
+    func verifyViewController(_ viewController: VerifyIdentityViewController, got facebookToken: FBSDKAccessToken)
+    func verifyViewControllerWillNotVerify(viewController: VerifyIdentityViewController)
+    func verifyViewController(_ viewController: VerifyIdentityViewController, failedWith error: NSError)
 }
 
 class VerifyIdentityViewController: UIViewController, FBSDKLoginButtonDelegate {
@@ -23,18 +23,18 @@ class VerifyIdentityViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let facebookButton = FBSDKLoginButton(frame: CGRectZero)
+        let facebookButton = FBSDKLoginButton(frame: CGRect.zero)
         facebookButton.delegate = self
         facebookButtonContainer.addSubview(facebookButton)
         facebookButton.translatesAutoresizingMaskIntoConstraints = false
         facebookButtonContainer.addConstraints([
-            NSLayoutConstraint(item: facebookButton, attribute: .CenterX, relatedBy: .Equal, toItem: facebookButtonContainer, attribute: .CenterX, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: facebookButtonContainer, attribute: .Bottom, relatedBy: .Equal, toItem: facebookButton, attribute: .Bottom, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: facebookButtonContainer, attribute: .Top, relatedBy: .Equal, toItem: facebookButton, attribute: .Top, multiplier: 1, constant: 0)
+            NSLayoutConstraint(item: facebookButton, attribute: .centerX, relatedBy: .equal, toItem: facebookButtonContainer, attribute: .centerX, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: facebookButtonContainer, attribute: .bottom, relatedBy: .equal, toItem: facebookButton, attribute: .bottom, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: facebookButtonContainer, attribute: .top, relatedBy: .equal, toItem: facebookButton, attribute: .top, multiplier: 1, constant: 0)
         ])
     }
     
-    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         guard error == nil && !result.isCancelled else {
             delegate.verifyViewController(self, failedWith: error)
             return
@@ -44,11 +44,11 @@ class VerifyIdentityViewController: UIViewController, FBSDKLoginButtonDelegate {
         delegate.verifyViewController(self, got: result.token)
     }
     
-    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         return
     }
     
-    func loginButtonWillLogin(loginButton: FBSDKLoginButton!) -> Bool {
+    func loginButtonWillLogin(_ loginButton: FBSDKLoginButton!) -> Bool {
         return true
     }
     

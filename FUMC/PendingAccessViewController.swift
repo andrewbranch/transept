@@ -10,8 +10,8 @@ import UIKit
 import DigitsKit
 
 protocol PendingAccessDelegate {
-    func pendingAccessViewController(viewController: PendingAccessViewController, granted accessToken: AccessToken)
-    func pendingAccessViewController(viewController: PendingAccessViewController, failedWith error: NSError)
+    func pendingAccessViewController(_ viewController: PendingAccessViewController, granted accessToken: AccessToken)
+    func pendingAccessViewController(_ viewController: PendingAccessViewController, failedWith error: NSError)
 }
 
 class PendingAccessViewController: UIPageViewController, SignInDelegate, PendingNeedsIdentityDelegate, ApprovedDelegate {
@@ -35,14 +35,14 @@ class PendingAccessViewController: UIPageViewController, SignInDelegate, Pending
     }()
     
     init(delegate: PendingAccessDelegate, scopes: [API.Scopes], accessRequestId: String) {
-        super.init(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
+        super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         self.accessDelegate = delegate
         self.scopes = scopes
         self.requestId = accessRequestId
     }
     
     init(delegate: PendingAccessDelegate, scopes: [API.Scopes], accessRequest: AccessRequest) {
-        super.init(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
+        super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         self.accessDelegate = delegate
         self.scopes = scopes
         self.accessRequest = accessRequest
@@ -54,17 +54,17 @@ class PendingAccessViewController: UIPageViewController, SignInDelegate, Pending
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.whiteColor()
+        self.view.backgroundColor = UIColor.white
         
-        setViewControllers([updatingViewController], direction: .Forward, animated: false, completion: nil)
+        setViewControllers([updatingViewController], direction: .forward, animated: false, completion: nil)
         if let digitsSession = Digits.sharedInstance().session() {
             // Already signed into Digits
             if let accessRequest = self.accessRequest {
                 // We literally just created the access request
                 if accessRequest.user.facebook != nil {
-                    setViewControllers([pendingWithIdentityViewController], direction: .Forward, animated: true, completion: nil)
+                    setViewControllers([pendingWithIdentityViewController], direction: .forward, animated: true, completion: nil)
                 } else {
-                    setViewControllers([pendingNeedsIdentityViewController], direction: .Forward, animated: true, completion: nil)
+                    setViewControllers([pendingNeedsIdentityViewController], direction: .forward, animated: true, completion: nil)
                 }
             } else {
                 // Access request could be approved by now, let’s find out
@@ -73,8 +73,8 @@ class PendingAccessViewController: UIPageViewController, SignInDelegate, Pending
                         self.accessToken = try accessToken.value()
                         // Access Request must have been approved
                         API.shared().accessToken = self.accessToken!
-                        self.setViewControllers([self.approvedViewController], direction: .Forward, animated: true, completion: nil)
-                    } catch API.Error.Unauthorized {
+                        self.setViewControllers([self.approvedViewController], direction: .forward, animated: true, completion: nil)
+                    } catch API.Error.unauthorized {
                         self.getAccessRequest(digitsSession)
                     } catch let error as NSError {
                         self.accessDelegate.pendingAccessViewController(self, failedWith: error)
@@ -83,49 +83,49 @@ class PendingAccessViewController: UIPageViewController, SignInDelegate, Pending
             }
         } else {
             let signInViewController = SignInViewController(delegate: self, requestScopes: scopes)
-            self.presentViewController(signInViewController, animated: true, completion: nil)
+            self.present(signInViewController, animated: true, completion: nil)
         }
     }
     
-    func signInViewController(viewController: SignInViewController, failedWith error: NSError) {
+    func signInViewController(_ viewController: SignInViewController, failedWith error: NSError) {
         accessDelegate.pendingAccessViewController(self, failedWith: error)
     }
     
-    func signInViewController(viewController: SignInViewController, grantedKnownUser token: AccessToken) {
+    func signInViewController(_ viewController: SignInViewController, grantedKnownUser token: AccessToken) {
         accessToken = token
-        setViewControllers([approvedViewController], direction: .Forward, animated: true, completion: nil)
+        setViewControllers([approvedViewController], direction: .forward, animated: true, completion: nil)
     }
     
-    func signInViewController(viewController: SignInViewController, grantedUnknownUser token: AccessToken) {
+    func signInViewController(_ viewController: SignInViewController, grantedUnknownUser token: AccessToken) {
         // This is impossible
         accessDelegate.pendingAccessViewController(self, failedWith: NSError(domain: API.ERROR_DOMAIN, code: 3, userInfo: [
             "developerMessage": "PendingAccessViewController signed in but got an unknown user. Something is terribly wrong."
         ]))
     }
     
-    func signInViewControllerCouldNotGrantToken(viewController viewController: SignInViewController) {
+    func signInViewControllerCouldNotGrantToken(viewController: SignInViewController) {
         // Access Request wasn’t approved; get status from server
         self.getAccessRequest(Digits.sharedInstance().session()!)
     }
     
-    private func getAccessRequest(digitsSession: DGTSession) {
+    fileprivate func getAccessRequest(_ digitsSession: DGTSession) {
         API.shared().getAccessRequest(self.requestId, session: digitsSession) { accessRequest in
             do {
                 self.accessRequest = try accessRequest.value()
                 if (self.accessRequest!.status == .Rejected) {
-                    self.setViewControllers([self.deniedViewController], direction: .Forward, animated: true, completion: nil)
+                    self.setViewControllers([self.deniedViewController], direction: .forward, animated: true, completion: nil)
                 } else {
                     if (self.accessRequest!.status == .Approved) {
                         // TODO alert the authorities but carry on pretending it’s pending
                     }
                     
                     if (self.accessRequest!.user.facebook != nil) {
-                        self.setViewControllers([self.pendingWithIdentityViewController], direction: .Forward, animated: true, completion: nil)
+                        self.setViewControllers([self.pendingWithIdentityViewController], direction: .forward, animated: true, completion: nil)
                     } else {
-                        if let facebookToken = FBSDKAccessToken.currentAccessToken() {
+                        if let facebookToken = FBSDKAccessToken.current() {
                             self.updateAccessRequest(facebookToken)
                         } else {
-                            self.setViewControllers([self.pendingNeedsIdentityViewController], direction: .Forward, animated: true, completion: nil)
+                            self.setViewControllers([self.pendingNeedsIdentityViewController], direction: .forward, animated: true, completion: nil)
                         }
                     }
                 }
@@ -135,19 +135,19 @@ class PendingAccessViewController: UIPageViewController, SignInDelegate, Pending
         }
     }
     
-    func pendingNeedsIdentity(viewController viewController: PendingNeedsIdentityViewController, received token: FBSDKAccessToken) {
+    func pendingNeedsIdentity(viewController: PendingNeedsIdentityViewController, received token: FBSDKAccessToken) {
         updateAccessRequest(token)
     }
     
-    func approvedViewControllerTappedGetStarted(viewController viewController: ApprovedViewController) {
+    func approvedViewControllerTappedGetStarted(viewController: ApprovedViewController) {
         accessDelegate.pendingAccessViewController(self, granted: accessToken!)
     }
     
-    private func updateAccessRequest(token: FBSDKAccessToken) {
+    fileprivate func updateAccessRequest(_ token: FBSDKAccessToken) {
         API.shared().updateAccessRequest(self.accessRequest!, session: Digits.sharedInstance().session()!, facebookToken: token.tokenString) { accessRequest in
             do {
                 self.accessRequest = try accessRequest.value()
-                self.setViewControllers([self.pendingWithIdentityViewController], direction: .Forward, animated: true, completion: nil)
+                self.setViewControllers([self.pendingWithIdentityViewController], direction: .forward, animated: true, completion: nil)
             } catch let error as NSError {
                 self.accessDelegate.pendingAccessViewController(self, failedWith: error)
             }

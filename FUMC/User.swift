@@ -23,7 +23,7 @@ struct User {
                 return nil
             }
 
-            return "\(firstName ?? "") \(lastName ?? "")".stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+            return "\(firstName ?? "") \(lastName ?? "")".trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         }
     }
     

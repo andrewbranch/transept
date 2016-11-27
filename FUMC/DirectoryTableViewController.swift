@@ -10,7 +10,7 @@ import UIKit
 import DigitsKit
 
 public protocol DirectoryDataSourceDelegate {
-    func dataSource(dataSource: DirectoryDataSource, failedToLoadWith error: API.Error)
+    func dataSource(_ dataSource: DirectoryDataSource, failedToLoadWith error: API.Error)
 }
 
 class DirectoryTableViewController: CustomTableViewController, DirectoryDataSourceDelegate, AuthenticationDelegate, SignInDelegate, PendingAccessDelegate {
@@ -25,55 +25,55 @@ class DirectoryTableViewController: CustomTableViewController, DirectoryDataSour
         self.navigationItem.title = self.dataSource!.title as String
         self.tableView!.dataSource = self.dataSource!
         
-        if let requestId = NSUserDefaults.standardUserDefaults().valueForKey(accessRequestKey) as? String {
+        if let requestId = UserDefaults.standard.value(forKey: accessRequestKey) as? String {
             // Access Request is open; show pending screen
             launchPendingAccessFlow(requestId)
-        } else if !API.shared().hasAccessToken || API.shared().accessToken!.expires < NSDate() {
-            launchAuthFlow(token: nil, forceRefresh: true)
+        } else if !API.shared().hasAccessToken || API.shared().accessToken!.expires as Date < Date() {
+            self.launchAuthFlow(token: nil, forceRefresh: true)
         }
     }
     
-    private func launchAuthFlow(token token: AccessToken?, forceRefresh: Bool = false) {
+    fileprivate func launchAuthFlow(token: AccessToken?, forceRefresh: Bool = false) {
         if Digits.sharedInstance().session() == nil || forceRefresh {
             let signInController = SignInViewController(delegate: self, requestScopes: requiredScopes)
             addChildViewController(signInController)
             signInController.view.frame = view.bounds
             view.addSubview(signInController.view)
-            signInController.didMoveToParentViewController(self)
+            signInController.didMove(toParentViewController: self)
         } else {
             let authenticationViewController = AuthenticationViewController(delegate: self, requestScopes: requiredScopes, token: token)
-            dispatch_async(dispatch_get_main_queue()) {
-                self.presentViewController(authenticationViewController, animated: true, completion: nil)
+            DispatchQueue.main.async {
+                self.present(authenticationViewController, animated: true, completion: nil)
             }
         }
     }
     
-    private func launchPendingAccessFlow(requestId: String) {
+    fileprivate func launchPendingAccessFlow(_ requestId: String) {
         launchPendingAccessFlow(
             PendingAccessViewController(delegate: self, scopes: requiredScopes, accessRequestId: requestId)
         )
         
     }
     
-    private func launchPendingAccessFlow(request: AccessRequest) {
+    fileprivate func launchPendingAccessFlow(_ request: AccessRequest) {
         launchPendingAccessFlow(
             PendingAccessViewController(delegate: self, scopes: requiredScopes, accessRequest: request)
         )
     }
     
-    private func launchPendingAccessFlow(pendingAccessViewController: PendingAccessViewController) {
+    fileprivate func launchPendingAccessFlow(_ pendingAccessViewController: PendingAccessViewController) {
         self.addChildViewController(pendingAccessViewController)
         pendingAccessViewController.view.frame = self.view.bounds
         self.view.addSubview(pendingAccessViewController.view)
-        pendingAccessViewController.didMoveToParentViewController(self)
+        pendingAccessViewController.didMove(toParentViewController: self)
     }
     
-    func dataSource(dataSource: DirectoryDataSource, failedToLoadWith error: API.Error) {
+    func dataSource(_ dataSource: DirectoryDataSource, failedToLoadWith error: API.Error) {
         switch error {
-        case .Unauthenticated: // this should never happen
+        case .unauthenticated: // this should never happen
             launchAuthFlow(token: nil, forceRefresh: true)
             break;
-        case .Unauthorized:
+        case .unauthorized:
             launchAuthFlow(token: nil, forceRefresh: true)
             break;
         default:
@@ -81,57 +81,57 @@ class DirectoryTableViewController: CustomTableViewController, DirectoryDataSour
         }
     }
     
-    func authenticationViewController(viewController: AuthenticationViewController, failedWith error: API.Error) {
-        dispatch_async(dispatch_get_main_queue()) {
-            viewController.dismissViewControllerAnimated(true) {
+    func authenticationViewController(_ viewController: AuthenticationViewController, failedWith error: API.Error) {
+        DispatchQueue.main.async {
+            viewController.dismiss(animated: true) {
                 ErrorAlerter.showUserErrorMessage(error, inViewController: self)
             }
         }
     }
     
-    func authenticationViewController(viewController: AuthenticationViewController, granted accessToken: AccessToken) {
+    func authenticationViewController(_ viewController: AuthenticationViewController, granted accessToken: AccessToken) {
         dataSource!.refresh()
-        dispatch_async(dispatch_get_main_queue()) {
-            viewController.dismissViewControllerAnimated(true, completion: nil)
+        DispatchQueue.main.async {
+            viewController.dismiss(animated: true, completion: nil)
         }
     }
     
-    func authenticationViewController(viewController: AuthenticationViewController, opened accessRequest: AccessRequest) {
-        viewController.dismissViewControllerAnimated(true, completion: nil)
+    func authenticationViewController(_ viewController: AuthenticationViewController, opened accessRequest: AccessRequest) {
+        viewController.dismiss(animated: true, completion: nil)
         // Indicate that an access request is open.
         // applicationDidBecomeActive should check this and review the status of the request.
-        NSUserDefaults.standardUserDefaults().setValue(accessRequest.id, forKey: accessRequestKey)
+        UserDefaults.standard.setValue(accessRequest.id, forKey: accessRequestKey)
         launchPendingAccessFlow(accessRequest)
     }
     
-    func pendingAccessViewController(viewController: PendingAccessViewController, granted accessToken: AccessToken) {
+    func pendingAccessViewController(_ viewController: PendingAccessViewController, granted accessToken: AccessToken) {
         dataSource!.refresh()
-        NSUserDefaults.standardUserDefaults().setValue(nil, forKey: self.accessRequestKey)
-        viewController.willMoveToParentViewController(nil)
+        UserDefaults.standard.setValue(nil, forKey: self.accessRequestKey)
+        viewController.willMove(toParentViewController: nil)
         viewController.view.removeFromSuperview()
         viewController.removeFromParentViewController()
     }
     
-    func pendingAccessViewController(viewController: PendingAccessViewController, failedWith error: NSError) {
+    func pendingAccessViewController(_ viewController: PendingAccessViewController, failedWith error: NSError) {
         ErrorAlerter.showUserErrorMessage(error, inViewController: self)
     }
     
-    func signInViewController(viewController: SignInViewController, failedWith error: NSError) {
+    func signInViewController(_ viewController: SignInViewController, failedWith error: NSError) {
         ErrorAlerter.showUserErrorMessage(error, inViewController: self)
     }
     
-    func signInViewControllerCouldNotGrantToken(viewController viewController: SignInViewController) {
+    func signInViewControllerCouldNotGrantToken(viewController: SignInViewController) {
         launchAuthFlow(token: nil)
     }
     
-    func signInViewController(viewController: SignInViewController, grantedKnownUser token: AccessToken) {
+    func signInViewController(_ viewController: SignInViewController, grantedKnownUser token: AccessToken) {
         dataSource!.refresh()
-        dispatch_async(dispatch_get_main_queue()) {
-            viewController.dismissViewControllerAnimated(true, completion: nil)
+        DispatchQueue.main.async {
+            viewController.dismiss(animated: true, completion: nil)
         }
     }
     
-    func signInViewController(viewController: SignInViewController, grantedUnknownUser token: AccessToken) {
+    func signInViewController(_ viewController: SignInViewController, grantedUnknownUser token: AccessToken) {
         launchAuthFlow(token: token)
     }
 }

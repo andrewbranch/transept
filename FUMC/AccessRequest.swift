@@ -17,18 +17,18 @@ struct AccessRequest : Deserializable {
     }
     
     var id: String!
-    var dateRequested: NSDate?
-    var dateSettled: NSDate?
+    var dateRequested: Date?
+    var dateSettled: Date?
     var status: Status!
     var scopes: [API.Scopes]!
     var user: User!
     
-    static func mapInit(rawJSON rawJSON: NSData) throws -> [AccessRequest] {
+    static func mapInit(rawJSON: Data) throws -> [AccessRequest] {
         fatalError("No such thing as an array response of access requests")
     }
     
-    init(rawJSON: NSData) throws {
-        let jsonDictionary = try NSJSONSerialization.JSONObjectWithData(rawJSON, options: .AllowFragments)
+    init(rawJSON: Data) throws {
+        let jsonDictionary = try JSONSerialization.jsonObject(with: rawJSON, options: .allowFragments)
         let accessRequest = jsonDictionary["accessRequest"] as! NSDictionary
         id = accessRequest["id"] as! String
         dateRequested = moment(accessRequest["dateRequested"] as? String ?? "")?.date

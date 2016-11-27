@@ -20,11 +20,11 @@ extension UIColor {
     }
     
     // Assumes input like "#00FF00" (#RRGGBB).
-    class func colorWithHexString(hexString: String) -> UIColor {
+    class func colorWithHexString(_ hexString: String) -> UIColor {
         var rgbValue: UInt32 = 0;
-        let scanner = NSScanner(string: hexString)
+        let scanner = Scanner(string: hexString)
         scanner.scanLocation = 1 // bypass '#' character
-        scanner.scanHexInt(&rgbValue)
+        scanner.scanHexInt32(&rgbValue)
         return UIColor(red: CGFloat((rgbValue & 0xFF0000) >> 16)/255.0, green: CGFloat((rgbValue & 0xFF00) >> 8)/255.0, blue: CGFloat(rgbValue & 0xFF)/255.0, alpha:1.0)
     }
 }

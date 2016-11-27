@@ -10,7 +10,7 @@ import UIKit
 
 class RootTabBarController: UITabBarController, UITabBarControllerDelegate {
     
-    private var appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+    fileprivate var appDelegate = (UIApplication.shared.delegate as! AppDelegate)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +18,7 @@ class RootTabBarController: UITabBarController, UITabBarControllerDelegate {
         appDelegate.rootViewController = self
     }
     
-    func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         if (viewController is UINavigationController && (viewController as! UINavigationController).viewControllers[0] is DirectoryTableViewController) {
             ((viewController as! UINavigationController).viewControllers[0] as! DirectoryTableViewController).dataSource = appDelegate.directoryDataSource
         }

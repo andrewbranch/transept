@@ -9,8 +9,8 @@
 import UIKit
 
 protocol ConfirmDelegate {
-    func confirmViewControllerConfirmedIdentity(viewController viewController: ConfirmIdentityViewController)
-    func confirmViewControllerDeniedIdentity(viewController viewController: ConfirmIdentityViewController)
+    func confirmViewControllerConfirmedIdentity(viewController: ConfirmIdentityViewController)
+    func confirmViewControllerDeniedIdentity(viewController: ConfirmIdentityViewController)
 }
 
 class ConfirmIdentityViewController: UIViewController {
@@ -26,7 +26,7 @@ class ConfirmIdentityViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         greetingLabel.text = "Hello, \(firstName)!"
-        denyButton.setTitle("I’m not \(firstName) \(lastName)", forState: .Normal)
+        denyButton.setTitle("I’m not \(firstName) \(lastName)", for: UIControlState())
     }
     
     @IBAction func tappedConfirmButton() {

@@ -32,7 +32,7 @@ class CalendarsDataSource: NSObject, UITableViewDataSource {
         }
     }
     
-    func requestCalendars(completed: () -> Void = { }) {
+    func requestCalendars(_ completed: @escaping () -> Void = { }) {
         API.shared().getCalendars() { calendars, error in
             if (error != nil) {
                 self.settingsDelegate?.dataSource(self, failedToLoadWithError: error as? NSError)
@@ -45,33 +45,33 @@ class CalendarsDataSource: NSObject, UITableViewDataSource {
         }
     }
     
-    func indexPathForCalendarId(id: String) -> NSIndexPath? {
-        if let index = self.calendars.map({ $0.id }).indexOf(id) {
-            return NSIndexPath(forRow: index + 1, inSection: 0)
+    func indexPathForCalendarId(_ id: String) -> IndexPath? {
+        if let index = self.calendars.map({ $0.id }).index(of: id) {
+            return IndexPath(row: index + 1, section: 0)
         }
         return nil
     }
     
-    func calendarForIndexPath(indexPath: NSIndexPath) -> Calendar? {
+    func calendarForIndexPath(_ indexPath: IndexPath) -> Calendar? {
         if (indexPath.row == 0) { return nil }
         return self.calendars[indexPath.row - 1]
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.calendars.count + 1
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (indexPath.row == 0) {
-            let cell = tableView.dequeueReusableCellWithIdentifier("selectCell") as! CalendarSettingsSelectTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "selectCell") as! CalendarSettingsSelectTableViewCell
             return cell
         }
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("calendarSettingsTableViewCell", forIndexPath: indexPath) as! CalendarSettingsTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "calendarSettingsTableViewCell", for: indexPath) as! CalendarSettingsTableViewCell
         let calendar = calendarForIndexPath(indexPath)!
         cell.label!.text = calendar.name
         cell.checkView!.color = calendar.color

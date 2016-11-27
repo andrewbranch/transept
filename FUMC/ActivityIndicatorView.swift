@@ -21,7 +21,7 @@ class ActivityIndicatorView: UIView {
     }
     
     func setup() {
-        let activityIndicator = UIActivityIndicatorView(frame: CGRectMake(0, 0, 30, 30))
+        let activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
         self.backgroundColor = UIColor(white: 0, alpha: 0.75)
         self.layer.cornerRadius = 10
         self.addSubview(activityIndicator)

@@ -24,23 +24,23 @@ import UIKit
 import SwiftMoment
 
 public protocol VideoDelegate {
-    func video(video: Video, didLoadThumbnail thumbnail: UIImage)
+    func video(_ video: Video, didLoadThumbnail thumbnail: UIImage)
 }
 
-public class Video: NSObject {
+open class Video: NSObject {
     
     var id: String
     var name: String
     var link: String
     var duration: Int
-    var date: NSDate
+    var date: Date
     var thumbnailURL: String = ""
     var thumbnail: UIImage?
     var fileHD: String
     var delegate: VideoDelegate?
     
     func splitNameAndDate() {
-        let nameComponents = self.name.componentsSeparatedByString(" | ")
+        let nameComponents = self.name.components(separatedBy: " | ")
         if (nameComponents.count > 1) {
             for component in nameComponents {
                 if let date = moment(component) {
@@ -52,13 +52,13 @@ public class Video: NSObject {
         }
     }
     
-    init(jsonDictionary: NSDictionary, dateFormatter: NSDateFormatter) throws {
+    init(jsonDictionary: NSDictionary, dateFormatter: DateFormatter) throws {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         
         let attrs = jsonDictionary["attributes"] as! NSDictionary
         self.id = jsonDictionary["id"] as! String
         
-        self.date = dateFormatter.dateFromString(attrs["date"] as! String)!
+        self.date = dateFormatter.date(from: attrs["date"] as! String)!
         self.name = attrs["name"] as! String
         self.link = attrs["link"] as! String
         self.duration = attrs["duration"] as! Int
@@ -71,7 +71,7 @@ public class Video: NSObject {
             throw NSError(domain: "", code: 0, userInfo: nil)
         }
         self.thumbnailURL = url
-        NSURLConnection.sendAsynchronousRequest(NSURLRequest(URL: NSURL(string: url)!), queue: NSOperationQueue.mainQueue()) { response, data, error in
+        NSURLConnection.sendAsynchronousRequest(URLRequest(url: URL(string: url)!), queue: OperationQueue.main) { response, data, error in
             guard error == nil || data == nil else {
                 return
             }

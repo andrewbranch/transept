@@ -6,35 +6,35 @@
 //  Copyright (c) 2014 FUMC Pensacola. All rights reserved.
 //
 
-public class CustomTableViewController: UIViewController, ErrorAlertable {
+open class CustomTableViewController: UIViewController, ErrorAlertable {
     
     @IBOutlet var tableView: UITableView?
     var errorAlertToBeShown: UIAlertView?
-    let activityView = ActivityIndicatorView(frame: CGRectMake(0, 0, 100, 100))
+    let activityView = ActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
     let refreshControl = UIRefreshControl()
     lazy var tableViewController: UITableViewController = {
        return UITableViewController(style: self.tableView!.style)
     }()
     
-    private var showWhenLoaded = false
-    private lazy var backgroundView: UILabel = {
+    fileprivate var showWhenLoaded = false
+    fileprivate lazy var backgroundView: UILabel = {
         var backgroundLabel = UILabel(frame: self.tableView!.frame)
-        backgroundLabel.textAlignment = NSTextAlignment.Center
+        backgroundLabel.textAlignment = NSTextAlignment.center
         backgroundLabel.font = UIFont.fumcMainFontRegular26
-        backgroundLabel.textColor = UIColor.lightGrayColor()
+        backgroundLabel.textColor = UIColor.lightGray
         backgroundLabel.text = "Nothing to display"
-        backgroundLabel.hidden = true
+        backgroundLabel.isHidden = true
         return backgroundLabel
     }()
 
-    override public func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         
-        self.activityView.center = CGPointMake(self.view.center.x, self.view.center.y - 80)
+        self.activityView.center = CGPoint(x: self.view.center.x, y: self.view.center.y - 80)
         
         self.tableViewController.tableView = self.tableView!
         self.tableViewController.refreshControl = self.refreshControl
-        self.refreshControl.addTarget(self, action: #selector(CustomTableViewController.reloadData), forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl.addTarget(self, action: #selector(CustomTableViewController.reloadData), for: UIControlEvents.valueChanged)
         
         self.tableView!.backgroundView = self.backgroundView
         
@@ -44,7 +44,7 @@ public class CustomTableViewController: UIViewController, ErrorAlertable {
         }
     }
     
-    override public func viewWillAppear(animated: Bool) {
+    override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let alert = self.errorAlertToBeShown {
             alert.show()
@@ -53,7 +53,7 @@ public class CustomTableViewController: UIViewController, ErrorAlertable {
     }
     
     func showLoadingView() {
-        if (isViewLoaded()) {
+        if (isViewLoaded) {
             self.view.insertSubview(self.activityView, aboveSubview: self.tableView!)
         } else {
             self.showWhenLoaded = true
@@ -61,7 +61,7 @@ public class CustomTableViewController: UIViewController, ErrorAlertable {
     }
     
     func hideLoadingView() {
-        if (isViewLoaded()) {
+        if (isViewLoaded) {
             self.activityView.removeFromSuperview()
         } else {
             self.showWhenLoaded = false

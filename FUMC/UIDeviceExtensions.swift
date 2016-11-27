@@ -32,8 +32,8 @@ public extension UIDevice {
         var identifier = ""
         
         for child in mirror.children {
-            if let value = child.value as? Int8 where value != 0 {
-                identifier.append(UnicodeScalar(UInt8(value)))
+            if let value = child.value as? Int8, value != 0 {
+                identifier.append(String(UnicodeScalar(UInt8(value))))
             }
         }
         return DeviceList[identifier] ?? identifier
@@ -55,7 +55,7 @@ public extension UIDevice {
     }
     
     static var isIpad: Bool {
-        if (UIDevice.currentDevice().model.rangeOfString("iPad") != nil) {
+        if (UIDevice.current.model.range(of: "iPad") != nil) {
             return true
         }
         return false
@@ -85,8 +85,8 @@ public extension UIDevice {
         return UIDevice.isSimulatorWithScreenHeigth(736)
     }
     
-    private static func isSimulatorWithScreenHeigth(heigth: CGFloat) -> Bool {
-        let screenSize: CGRect = UIScreen.mainScreen().bounds
+    fileprivate static func isSimulatorWithScreenHeigth(_ heigth: CGFloat) -> Bool {
+        let screenSize: CGRect = UIScreen.main.bounds
         return modelName == "Simulator" && screenSize.height == heigth
     }
     

@@ -20,9 +20,9 @@ class BulletinTest: XCTestCase {
                 "service":"ICON",
                 "visible": true
             ]
-        ]
+        ] as [String : Any]
         
-        let bad = try? Bulletin(jsonDictionary: badData, dateFormatter: NSDateFormatter())
+        let bad = try? Bulletin(jsonDictionary: badData, dateFormatter: DateFormatter())
         XCTAssertNil(bad, "Should throw when file not present")
         
         let goodData = [
@@ -34,9 +34,9 @@ class BulletinTest: XCTestCase {
                 "visible": true,
                 "file": "file.pdf"
             ]
-        ]
+        ] as [String : Any]
         
-        let good = try? Bulletin(jsonDictionary: goodData, dateFormatter: NSDateFormatter())
+        let good = try? Bulletin(jsonDictionary: goodData, dateFormatter: DateFormatter())
         XCTAssertNotNil(good, "Should initialize")
     }
     

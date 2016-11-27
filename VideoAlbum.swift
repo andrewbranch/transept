@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class VideoAlbum: NSObject {
+open class VideoAlbum: NSObject {
     
     var id: String
     var name: String
@@ -16,7 +16,7 @@ public class VideoAlbum: NSObject {
     var videos: [Video] = []
     var featured: Bool
     
-    init(jsonDictionary: NSDictionary, dateFormatter: NSDateFormatter, included: [NSDictionary]?) {
+    init(jsonDictionary: NSDictionary, dateFormatter: DateFormatter, included: [NSDictionary]?) {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         
         let attrs = jsonDictionary["attributes"] as! NSDictionary

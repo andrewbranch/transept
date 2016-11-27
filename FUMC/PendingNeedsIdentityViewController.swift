@@ -10,7 +10,7 @@ import UIKit
 import FBSDKLoginKit
 
 protocol PendingNeedsIdentityDelegate {
-    func pendingNeedsIdentity(viewController viewController: PendingNeedsIdentityViewController, received token: FBSDKAccessToken)
+    func pendingNeedsIdentity(viewController: PendingNeedsIdentityViewController, received token: FBSDKAccessToken)
 }
 
 class PendingNeedsIdentityViewController: UIViewController, FBSDKLoginButtonDelegate {
@@ -30,27 +30,27 @@ class PendingNeedsIdentityViewController: UIViewController, FBSDKLoginButtonDele
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let facebookButton = FBSDKLoginButton(frame: CGRectZero)
+        let facebookButton = FBSDKLoginButton(frame: CGRect.zero)
         facebookButton.delegate = self
         facebookButtonContainer.addSubview(facebookButton)
         facebookButton.translatesAutoresizingMaskIntoConstraints = false
         facebookButtonContainer.addConstraints([
-            NSLayoutConstraint(item: facebookButton, attribute: .CenterX, relatedBy: .Equal, toItem: facebookButtonContainer, attribute: .CenterX, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: facebookButtonContainer, attribute: .Bottom, relatedBy: .Equal, toItem: facebookButton, attribute: .Bottom, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: facebookButtonContainer, attribute: .Top, relatedBy: .Equal, toItem: facebookButton, attribute: .Top, multiplier: 1, constant: 0)
+            NSLayoutConstraint(item: facebookButton, attribute: .centerX, relatedBy: .equal, toItem: facebookButtonContainer, attribute: .centerX, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: facebookButtonContainer, attribute: .bottom, relatedBy: .equal, toItem: facebookButton, attribute: .bottom, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: facebookButtonContainer, attribute: .top, relatedBy: .equal, toItem: facebookButton, attribute: .top, multiplier: 1, constant: 0)
         ])
     }
     
-    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         // This is impossible
     }
     
-    func loginButtonWillLogin(loginButton: FBSDKLoginButton!) -> Bool {
+    func loginButtonWillLogin(_ loginButton: FBSDKLoginButton!) -> Bool {
         // Don’t care
         return true
     }
     
-    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         guard error == nil && !result.isCancelled else {
             return
         }

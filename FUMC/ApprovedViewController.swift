@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ApprovedDelegate {
-    func approvedViewControllerTappedGetStarted(viewController viewController: ApprovedViewController)
+    func approvedViewControllerTappedGetStarted(viewController: ApprovedViewController)
 }
 
 class ApprovedViewController: UIViewController {

@@ -22,14 +22,14 @@ public func - <T: Equatable> (first: [T], second: [T]) -> [T] {
     return first.difference(second)
 }
 
-public extension CollectionType where Generator.Element : Equatable {
-    public func has(x: Self.Generator.Element) -> Bool {
-        return self.indexOf(x) != nil
+public extension Collection where Iterator.Element : Equatable {
+    public func has(_ x: Self.Iterator.Element) -> Bool {
+        return self.index(of: x) != nil
     }
 }
 
 public extension Array {
-    public func find(condition: (Element) -> Bool) -> Element? {
+    public func find(_ condition: (Element) -> Bool) -> Element? {
         for element in self {
             if condition(element) {
                 return element
@@ -43,7 +43,7 @@ public extension Array {
     
     :param: call Function to call for each element
     */
-    func each (call: (Element) -> ()) {
+    func each (_ call: (Element) -> ()) {
         
         for item in self {
             call(item)
@@ -57,7 +57,7 @@ public extension Array {
     :param: values Arrays to subtract
     :returns: Difference of self and the input arrays
     */
-    func difference <T: Equatable> (values: [T]...) -> [T] {
+    func difference <T: Equatable> (_ values: [T]...) -> [T] {
         
         var result = [T]()
         
@@ -82,8 +82,8 @@ public extension Array {
 }
 
 public extension Dictionary {
-    func has (key: Key) -> Bool {
-        return indexForKey(key) != nil
+    func has (_ key: Key) -> Bool {
+        return index(forKey: key) != nil
     }
     
     /**
@@ -93,7 +93,7 @@ public extension Dictionary {
     :param: testFunction Function called to test each key, value
     :returns: Filtered dictionary
     */
-    func filteredDictionary (test: (Key, Value) -> Bool) -> Dictionary {
+    func filteredDictionary (_ test: (Key, Value) -> Bool) -> Dictionary {
         
         var result = Dictionary()
         
@@ -112,7 +112,7 @@ public extension Dictionary {
     
     :param: eachFunction Function to inovke on each loop
     */
-    func each (each: (Key, Value) -> ()) {
+    func each (_ each: (Key, Value) -> ()) {
         
         for (key, value) in self {
             each(key, value)
@@ -126,7 +126,7 @@ public extension Dictionary {
     :param: dictionaries Dictionaries to join
     :returns: Union of self and the input dictionaries
     */
-    func union (dictionaries: Dictionary...) -> Dictionary {
+    func union (_ dictionaries: Dictionary...) -> Dictionary {
         
         var result = self
         
@@ -141,19 +141,19 @@ public extension Dictionary {
     }
 }
 
-public func < (lhs: NSDate, rhs: NSDate) -> Bool {
+public func < (lhs: Date, rhs: Date) -> Bool {
     return lhs.timeIntervalSinceReferenceDate < rhs.timeIntervalSinceReferenceDate
 }
 
-public func > (lhs: NSDate, rhs: NSDate) -> Bool {
+public func > (lhs: Date, rhs: Date) -> Bool {
     return lhs.timeIntervalSinceReferenceDate > rhs.timeIntervalSinceReferenceDate
 }
 
-public func - (lhs: NSDate, rhs: NSDate) -> NSTimeInterval {
+public func - (lhs: Date, rhs: Date) -> TimeInterval {
     return lhs.timeIntervalSinceReferenceDate - rhs.timeIntervalSinceReferenceDate
 }
 
-public extension NSDate {
+public extension Date {
     // MARK: Getter
     
     /**
@@ -161,7 +161,7 @@ public extension NSDate {
     */
     public var year : Int {
         get {
-            return getComponent(.Year)
+            return getComponent(.year)
         }
     }
     
@@ -170,7 +170,7 @@ public extension NSDate {
     */
     public var month : Int {
         get {
-            return getComponent(.Month)
+            return getComponent(.month)
         }
     }
     
@@ -179,7 +179,7 @@ public extension NSDate {
     */
     public var weekday : Int {
         get {
-            return getComponent(.Weekday)
+            return getComponent(.weekday)
         }
     }
     
@@ -188,7 +188,7 @@ public extension NSDate {
     */
     public var weekMonth : Int {
         get {
-            return getComponent(.WeekOfMonth)
+            return getComponent(.weekOfMonth)
         }
     }
     
@@ -198,7 +198,7 @@ public extension NSDate {
     */
     public var days : Int {
         get {
-            return getComponent(.Day)
+            return getComponent(.day)
         }
     }
     
@@ -208,7 +208,7 @@ public extension NSDate {
     public var hours : Int {
         
         get {
-            return getComponent(.Hour)
+            return getComponent(.hour)
         }
     }
     
@@ -217,7 +217,7 @@ public extension NSDate {
     */
     public var minutes : Int {
         get {
-            return getComponent(.Minute)
+            return getComponent(.minute)
         }
     }
     
@@ -226,7 +226,7 @@ public extension NSDate {
     */
     public var seconds : Int {
         get {
-            return getComponent(.Second)
+            return getComponent(.second)
         }
     }
     
@@ -237,10 +237,10 @@ public extension NSDate {
     :returns: the value of the component
     */
     
-    public func getComponent (component : NSCalendarUnit) -> Int {
-        let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components(component, fromDate: self)
+    public func getComponent (_ component : NSCalendar.Unit) -> Int {
+        let calendar = Foundation.Calendar.current
+        let components = (calendar as NSCalendar).components(component, from: self)
         
-        return components.valueForComponent(component)
+        return components.value(for: component)
     }
 }

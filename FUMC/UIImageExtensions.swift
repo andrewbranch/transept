@@ -9,13 +9,13 @@
 import UIKit
 
 extension UIImage {
-    class func imageFromColor(color: UIColor, forSize size: CGSize) -> UIImage {
-        let rect = CGRectMake(0, 0, size.width, size.height)
+    class func imageFromColor(_ color: UIColor, forSize size: CGSize) -> UIImage {
+        let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
         UIGraphicsBeginImageContext(rect.size)
         
         let context = UIGraphicsGetCurrentContext()
-        CGContextSetFillColorWithColor(context!, color.CGColor)
-        CGContextFillRect(context!, rect)
+        context!.setFillColor(color.cgColor)
+        context!.fill(rect)
         
         var image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
@@ -25,7 +25,7 @@ extension UIImage {
         UIGraphicsBeginImageContext(size);
         
         // Draw your image
-        image!.drawInRect(rect)
+        image!.draw(in: rect)
         
         // Get the image, here setting the UIImageView image
         image = UIGraphicsGetImageFromCurrentImageContext()

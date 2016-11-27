@@ -8,15 +8,15 @@
 
 import UIKit
 
-public class VideosDataSource: NSObject, MediaTableViewDataSource, UITableViewDataSource {
+open class VideosDataSource: NSObject, MediaTableViewDataSource, UITableViewDataSource {
     
-    public var delegate: MediaTableViewDataSourceDelegate?
-    public var title: NSString = "Videos"
-    public var loading = false
+    open var delegate: MediaTableViewDataSourceDelegate?
+    open var title: NSString = "Videos"
+    open var loading = false
     var albums: [VideoAlbum] = []
     
-    private func getError() -> NSError {
-        return NSError(domain: NSBundle.mainBundle().bundleIdentifier!, code: 5, userInfo: [
+    fileprivate func getError() -> NSError {
+        return NSError(domain: Bundle.main.bundleIdentifier!, code: 5, userInfo: [
             "message": "There was an error getting videos."
         ])
     }
@@ -26,7 +26,7 @@ public class VideosDataSource: NSObject, MediaTableViewDataSource, UITableViewDa
         self.delegate = delegate
     }
     
-    public func refresh() {
+    open func refresh() {
         self.delegate?.dataSourceDidStartLoadingAPI(self)
         requestData() { albums, err in
             guard err == nil else {
@@ -39,7 +39,7 @@ public class VideosDataSource: NSObject, MediaTableViewDataSource, UITableViewDa
         }
     }
     
-    public func requestData(completed: (albums: [VideoAlbum], error: ErrorType?) -> Void) {
+    open func requestData(_ completed: @escaping (_ albums: [VideoAlbum], _ error: Error?) -> Void) {
         API.shared().getVideos() { albums, error in
             guard error == nil else {
                 completed(albums: [], error: error)
@@ -49,19 +49,19 @@ public class VideosDataSource: NSObject, MediaTableViewDataSource, UITableViewDa
         }
     }
     
-    public func urlForIndexPath(indexPath: NSIndexPath) -> NSURL? {
+    open func urlForIndexPath(_ indexPath: IndexPath) -> URL? {
         return nil
     }
     
-    public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    open func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return albums.count + 1
     }
     
-    public func albumForIndexPath(indexPath: NSIndexPath) -> VideoAlbum? {
+    open func albumForIndexPath(_ indexPath: IndexPath) -> VideoAlbum? {
         guard indexPath.section == 0 else {
             return nil
         }
@@ -69,8 +69,8 @@ public class VideosDataSource: NSObject, MediaTableViewDataSource, UITableViewDa
         return albums[indexPath.row - 1]
     }
     
-    public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("videoAlbumsTableViewCell", forIndexPath: indexPath)
+    open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "videoAlbumsTableViewCell", for: indexPath)
         cell.textLabel!.text = indexPath.row == 0 ? "Live Stream" : albumForIndexPath(indexPath)?.name
         return cell
     }

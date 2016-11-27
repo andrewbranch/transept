@@ -18,8 +18,8 @@ class ConnectTableFooterView: UITableViewHeaderFooterView {
 
     override func awakeFromNib() {
         self.border = CALayer()
-        self.border!.frame = CGRectMake(0, self.frame.height - 1, self.superview?.frame.width ?? 1000, 1)
-        self.border!.backgroundColor = UIColor(white: 0, alpha: 0.1).CGColor
+        self.border!.frame = CGRect(x: 0, y: self.frame.height - 1, width: self.superview?.frame.width ?? 1000, height: 1)
+        self.border!.backgroundColor = UIColor(white: 0, alpha: 0.1).cgColor
         self.layer.addSublayer(self.border!)
 
         self.facebookView!.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ConnectTableFooterView.tappedFacebook)))
@@ -29,43 +29,43 @@ class ConnectTableFooterView: UITableViewHeaderFooterView {
     }
     
     func tappedFacebook() {
-        let facebookURL = NSURL(string: "fb://profile/120606361285987")
+        let facebookURL = URL(string: "fb://profile/120606361285987")
         if let url = facebookURL {
-            if (UIApplication.sharedApplication().canOpenURL(url)) {
-                UIApplication.sharedApplication().openURL(url)
+            if (UIApplication.shared.canOpenURL(url)) {
+                UIApplication.shared.openURL(url)
                 return
             }
         }
         
-        UIApplication.sharedApplication().openURL(NSURL(string: "https://www.facebook.com/FUMCPensacola")!)
+        UIApplication.shared.openURL(URL(string: "https://www.facebook.com/FUMCPensacola")!)
     }
     
     func tappedTwitter() {
-        let twitterURL = NSURL(string: "twitter://user?screen_name=FUMCPensacola")
+        let twitterURL = URL(string: "twitter://user?screen_name=FUMCPensacola")
         if let url = twitterURL {
-            if (UIApplication.sharedApplication().canOpenURL(url)) {
-                UIApplication.sharedApplication().openURL(url)
+            if (UIApplication.shared.canOpenURL(url)) {
+                UIApplication.shared.openURL(url)
                 return
             }
         }
         
-        UIApplication.sharedApplication().openURL(NSURL(string: "https://twitter.com/FUMCPensacola")!)
+        UIApplication.shared.openURL(URL(string: "https://twitter.com/FUMCPensacola")!)
     }
     
     func tappedVimeo() {
-        UIApplication.sharedApplication().openURL(NSURL(string: "http://vimeo.com/firstchurch")!)
+        UIApplication.shared.openURL(URL(string: "http://vimeo.com/firstchurch")!)
     }
     
     func tappedInstagram() {
-        let instagramURL = NSURL(string: "instagram://user?username=fumcpensacola")
+        let instagramURL = URL(string: "instagram://user?username=fumcpensacola")
         if let url = instagramURL {
-            if (UIApplication.sharedApplication().canOpenURL(url)) {
-                UIApplication.sharedApplication().openURL(url)
+            if (UIApplication.shared.canOpenURL(url)) {
+                UIApplication.shared.openURL(url)
                 return
             }
         }
         
-        UIApplication.sharedApplication().openURL(NSURL(string: "https://instagram.com/fumcpensacola")!)
+        UIApplication.shared.openURL(URL(string: "https://instagram.com/fumcpensacola")!)
     }
     
 }

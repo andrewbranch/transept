@@ -15,24 +15,24 @@ class YouCanLiveStreamViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.dismissButton!.layer.borderColor = UIColor.whiteColor().CGColor
+        self.dismissButton!.layer.borderColor = UIColor.white.cgColor
         self.dismissButton!.layer.borderWidth = 1
         self.dismissButton!.layer.cornerRadius = 10
         
-        self.label!.textColor = UIColor.whiteColor()
+        self.label!.textColor = UIColor.white
         self.label!.alpha = 1
-        self.label!.enabled = true
-        self.label!.textAlignment = NSTextAlignment.Center
+        self.label!.isEnabled = true
+        self.label!.textAlignment = NSTextAlignment.center
         self.label!.font = UIFont.fumcMainFontRegular26
     }
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "knowsYouCanLiveStream")
+        UserDefaults.standard.set(true, forKey: "knowsYouCanLiveStream")
     }
     
     @IBAction func dismiss() {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 
 }

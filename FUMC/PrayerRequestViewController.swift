@@ -15,9 +15,9 @@ class PrayerRequestViewController: UIViewController, UITextViewDelegate, UIAlert
     @IBOutlet var label: UILabel?
     @IBOutlet var button: UIButton?
     @IBOutlet var scrollView: UIScrollView?
-    private var successAlert: UIAlertView?
-    private var errorAlert: UIAlertView?
-    private let activityView = ActivityIndicatorView(frame: CGRectMake(0, 0, 100, 100))
+    fileprivate var successAlert: UIAlertView?
+    fileprivate var errorAlert: UIAlertView?
+    fileprivate let activityView = ActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,16 +25,16 @@ class PrayerRequestViewController: UIViewController, UITextViewDelegate, UIAlert
         
         self.label!.font = UIFont.fumcMainFontRegular14
         
-        let toolbar = UIToolbar(frame: CGRectMake(0, 0, 320, 50))
-        toolbar.barStyle = UIBarStyle.Default
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
+        toolbar.barStyle = UIBarStyle.default
         toolbar.items = [
-            UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target:nil, action:nil),
-            UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: #selector(PrayerRequestViewController.dismissKeyboard)),
+            UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target:nil, action:nil),
+            UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: #selector(PrayerRequestViewController.dismissKeyboard)),
         ]
         (toolbar.items![1] as UIBarButtonItem).setTitleTextAttributes([
-            NSFontAttributeName: UIFont.systemFontOfSize(16),
+            NSFontAttributeName: UIFont.systemFont(ofSize: 16),
             NSForegroundColorAttributeName: UIColor.fumcRedColor()
-        ], forState: UIControlState.Normal)
+        ], for: UIControlState())
         
         toolbar.sizeToFit()
         self.textView!.inputAccessoryView = toolbar
@@ -44,27 +44,27 @@ class PrayerRequestViewController: UIViewController, UITextViewDelegate, UIAlert
         self.successAlert = UIAlertView(title: "Submitted", message: "Your prayer has been submitted to our prayer team. May the peace of God be with you.", delegate: self, cancelButtonTitle: "OK")
         self.errorAlert = UIAlertView(title: "Error Submitting", message: "We’re having trouble processing your request right now. Do you want to copy your request into a new email message?", delegate: self, cancelButtonTitle: "Cancel", otherButtonTitles: "Copy to Email")
         
-        NSNotificationCenter.defaultCenter().addObserverForName(UIKeyboardWillShowNotification, object: nil, queue: NSOperationQueue.mainQueue()) { (notification) -> Void in
-            let keyboardSize = notification.userInfo![UIKeyboardFrameBeginUserInfoKey]?.CGRectValue.size
-            let contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize!.height - self.navigationController!.navigationBar.frame.height, 0.0)
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardWillShow, object: nil, queue: OperationQueue.main) { (notification) -> Void in
+            let keyboardSize = (notification.userInfo![UIKeyboardFrameBeginUserInfoKey] as AnyObject).cgRectValue.size
+            let contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height - self.navigationController!.navigationBar.frame.height, 0.0)
             self.scrollView!.contentInset = contentInsets
             self.scrollView!.scrollIndicatorInsets = contentInsets
             // Using the setContentOffset:animated: method doesn't animate the first time for some reason
-            UIView.animateWithDuration(0.25) {
-                self.scrollView!.contentOffset = CGPointMake(0.0, self.textView!.frame.origin.y - 20)
-            }
+            UIView.animate(withDuration: 0.25, animations: {
+                self.scrollView!.contentOffset = CGPoint(x: 0.0, y: self.textView!.frame.origin.y - 20)
+            }) 
         }
-        NSNotificationCenter.defaultCenter().addObserverForName(UIKeyboardWillHideNotification, object: nil, queue: NSOperationQueue.mainQueue()) { (notification) -> Void in
-            self.scrollView!.contentInset = UIEdgeInsetsZero
-            self.scrollView!.scrollIndicatorInsets = UIEdgeInsetsZero
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardWillHide, object: nil, queue: OperationQueue.main) { (notification) -> Void in
+            self.scrollView!.contentInset = UIEdgeInsets.zero
+            self.scrollView!.scrollIndicatorInsets = UIEdgeInsets.zero
         }
 
     }
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         #if !DEBUG
-        Answers.logCustomEventWithName("Viewed prayer request scene", customAttributes: nil)
+        Answers.logCustomEvent(withName: "Viewed prayer request scene", customAttributes: nil)
         #endif
     }
     
@@ -72,28 +72,28 @@ class PrayerRequestViewController: UIViewController, UITextViewDelegate, UIAlert
         self.textView!.resignFirstResponder()
     }
     
-    func textViewDidChange(textView: UITextView) {
+    func textViewDidChange(_ textView: UITextView) {
         if (textView.text.isEmpty) {
-            self.button!.enabled = false
+            self.button!.isEnabled = false
         } else {
-            self.button!.enabled = true
+            self.button!.isEnabled = true
         }
     }
     
     func beginLoading() {
-        self.textView!.backgroundColor = UIColor.lightGrayColor()
-        self.button!.enabled = false
-        self.activityView.center = CGPointMake(self.view.center.x, self.textView!.center.y)
+        self.textView!.backgroundColor = UIColor.lightGray
+        self.button!.isEnabled = false
+        self.activityView.center = CGPoint(x: self.view.center.x, y: self.textView!.center.y)
         self.scrollView!.addSubview(self.activityView)
     }
     
     func endLoading() {
-        self.textView!.backgroundColor = UIColor.whiteColor()
-        self.button!.enabled = true
+        self.textView!.backgroundColor = UIColor.white
+        self.button!.isEnabled = true
         self.activityView.removeFromSuperview()
     }
     
-    @IBAction func sendRequest(sender: AnyObject?) {
+    @IBAction func sendRequest(_ sender: AnyObject?) {
         self.dismissKeyboard()
         self.beginLoading()
         API.shared().sendPrayerRequest(self.textView!.text) { error in
@@ -109,18 +109,18 @@ class PrayerRequestViewController: UIViewController, UITextViewDelegate, UIAlert
     
     // MARK: - Alert View Delegate
     
-    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+    func alertView(_ alertView: UIAlertView, clickedButtonAt buttonIndex: Int) {
         if (alertView === self.errorAlert! && buttonIndex == 1) {
-            let emailURL = NSURL(string: "mailto:fumc@pensacolafirstchurch.com?subject=Prayer Request&body=\(self.textView!.text)".stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!)
+            let emailURL = URL(string: "mailto:fumc@pensacolafirstchurch.com?subject=Prayer Request&body=\(self.textView!.text)".addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)
             if let url = emailURL {
-                UIApplication.sharedApplication().openURL(url)
+                UIApplication.shared.openURL(url)
             } else {
-                UIApplication.sharedApplication().openURL(NSURL(string: "mailto:fumc@pensacolafirstchurch.com")!)
+                UIApplication.shared.openURL(URL(string: "mailto:fumc@pensacolafirstchurch.com")!)
             }
         } else if (alertView === self.successAlert!) {
             self.textView!.text = ""
             dismissKeyboard()
-            self.navigationController!.popViewControllerAnimated(true)
+            self.navigationController!.popViewController(animated: true)
         }
     }
     

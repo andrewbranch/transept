@@ -10,9 +10,9 @@ import Foundation
 
 class Env: NSObject {
     
-    static var env: NSDictionary = NSDictionary(contentsOfFile: NSBundle.mainBundle().pathForResource("Secrets", ofType: "plist")!)!
+    static var env: NSDictionary = NSDictionary(contentsOfFile: Bundle.main.path(forResource: "Secrets", ofType: "plist")!)!
     
-    class func get(key: String) -> String? {
+    class func get(_ key: String) -> String? {
         return self.env[key] as? String
     }
 }

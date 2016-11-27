@@ -13,10 +13,10 @@ class CalendarSettingsTableViewCell: UITableViewCell {
     @IBOutlet var label: UILabel?
     @IBOutlet var checkView: RadioView?
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         self.checkView!.selected = selected
-        self.label!.textColor = selected ? UIColor.darkGrayColor() : UIColor.lightGrayColor()
+        self.label!.textColor = selected ? UIColor.darkGray : UIColor.lightGray
         
     }
 

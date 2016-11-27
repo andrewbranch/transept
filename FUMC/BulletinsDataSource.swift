@@ -8,30 +8,30 @@
 
 import UIKit
 
-public class BulletinsDataSource: NSObject, MediaTableViewDataSource {
+open class BulletinsDataSource: NSObject, MediaTableViewDataSource {
     
-    public var title: NSString = "Worship Bulletins"
-    public var bulletins = Dictionary<NSDate, [Bulletin]>()
-    public var delegate: MediaTableViewDataSourceDelegate?
-    public var loading = false
-    public var referenceDate = NSDate() // For overriding in tests
-    let dateFormatter = NSDateFormatter()
+    open var title: NSString = "Worship Bulletins"
+    open var bulletins = Dictionary<Date, [Bulletin]>()
+    open var delegate: MediaTableViewDataSourceDelegate?
+    open var loading = false
+    open var referenceDate = Date() // For overriding in tests
+    let dateFormatter = DateFormatter()
     
     required public init(delegate: MediaTableViewDataSourceDelegate?) {
         super.init()
-        self.dateFormatter.timeZone = NSTimeZone(abbreviation: "CST")
+        self.dateFormatter.timeZone = TimeZone(abbreviation: "CST")
         self.delegate = delegate
     }
     
-    public func refresh() {
+    open func refresh() {
         self.delegate?.dataSourceDidStartLoadingAPI(self)
         requestData() {
             self.delegate?.dataSourceDidFinishLoadingAPI(self)
         }
     }
     
-    func requestData(completed: () -> Void = { }) {
-        self.referenceDate = NSDate()
+    func requestData(_ completed: @escaping () -> Void = { }) {
+        self.referenceDate = Date()
         self.loading = true
         API.shared().getBulletins() { bulletins, error in
             if (error != nil) {
@@ -52,32 +52,32 @@ public class BulletinsDataSource: NSObject, MediaTableViewDataSource {
         }
     }
     
-    public func urlForIndexPath(indexPath: NSIndexPath) -> NSURL? {
-        return API.shared().fileURL(key: self.bulletinForIndexPath(indexPath).file as String)
+    open func urlForIndexPath(_ indexPath: IndexPath) -> URL? {
+        return API.shared().fileURL(key: self.bulletinForIndexPath(indexPath).file as String) as URL?
     }
     
-    func bulletinForIndexPath(indexPath: NSIndexPath) -> Bulletin {
-        return self.bulletins[self.bulletins.keys.sort(>)[indexPath.section]]![indexPath.row]
+    func bulletinForIndexPath(_ indexPath: IndexPath) -> Bulletin {
+        return self.bulletins[self.bulletins.keys.sorted(by: >)[indexPath.section]]![indexPath.row]
     }
     
     // MARK: - Table view data source
     
-    public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    open func numberOfSections(in tableView: UITableView) -> Int {
         return self.bulletins.count
     }
     
-    public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (self.bulletins.keys.isEmpty) { return 0 }
-        return self.bulletins[self.bulletins.keys.sort(>)[section]]!.count
+        return self.bulletins[self.bulletins.keys.sorted(by: >)[section]]!.count
     }
     
-    public func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    open func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 70
     }
     
-    public func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterViewWithIdentifier("MediaTableHeaderViewIdentifier") as! MediaTableHeaderView
-        let date = self.bulletins.keys.sort(>)[section]
+    open func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "MediaTableHeaderViewIdentifier") as! MediaTableHeaderView
+        let date = self.bulletins.keys.sorted(by: >)[section]
         self.dateFormatter.dateFormat = "EEEE, MMMM d"
         if (date.midnight() == self.referenceDate.midnight()) {
             self.dateFormatter.dateFormat = "'Today,' MMMM d"
@@ -96,21 +96,21 @@ public class BulletinsDataSource: NSObject, MediaTableViewDataSource {
                 self.dateFormatter.dateFormat = "'Next' EEEE, MMMM d"
             }
         }
-        header.dateLabel!.text = self.dateFormatter.stringFromDate(date).uppercaseString
+        header.dateLabel!.text = self.dateFormatter.string(from: date).uppercased()
         header.liturgicalDayLabel!.text = self.bulletins[date]?[0].liturgicalDay
         
         return header
     }
     
-    public func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+    open func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let headerView = view as! MediaTableHeaderView
         if (headerView.dateLabel!.text!.hasPrefix("NEXT") || headerView.dateLabel!.text!.hasPrefix("THIS")) {
             headerView.dateLabel!.textColor = UIColor.fumcRedColor()
         }
     }
     
-    public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("mediaTableViewCell", forIndexPath: indexPath) as UITableViewCell
+    open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "mediaTableViewCell", for: indexPath) as UITableViewCell
         let bulletin = self.bulletinForIndexPath(indexPath)
         cell.textLabel!.font = UIFont.fumcMainFontRegular16
         cell.textLabel!.text = bulletin.service as String

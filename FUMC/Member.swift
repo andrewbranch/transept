@@ -23,12 +23,12 @@ final class Member: Object, Deserializable {
         return "id"
     }
     
-    static func mapInit(rawJSON rawJSON: NSData) throws -> [Member] {
+    static func mapInit(rawJSON: Data) throws -> [Member] {
         return try JSONAPIResource.getDataArray(rawJSON).map(self.init)
     }
     
-    convenience required init(rawJSON: NSData) throws {
-        let jsonDictionary = try NSJSONSerialization.JSONObjectWithData(rawJSON, options: .AllowFragments)
+    convenience required init(rawJSON: Data) throws {
+        let jsonDictionary = try JSONSerialization.jsonObject(with: rawJSON, options: .allowFragments)
         self.init()
         try initAttrs(jsonDictionary as! NSDictionary)
     }
@@ -38,7 +38,7 @@ final class Member: Object, Deserializable {
         try initAttrs(jsonDictionary)
     }
     
-    private func initAttrs(jsonDictionary: NSDictionary) throws {
+    fileprivate func initAttrs(_ jsonDictionary: NSDictionary) throws {
         let attrs = jsonDictionary["attributes"] as! NSDictionary
         guard let firstName = attrs["first-name"] as? String else {
             throw NSError(domain: API.ERROR_DOMAIN, code: 0, userInfo: ["developerMessage": "First name was blank"])

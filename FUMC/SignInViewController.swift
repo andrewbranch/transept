@@ -10,10 +10,10 @@ import UIKit
 import DigitsKit
 
 protocol SignInDelegate {
-    func signInViewController(viewController: SignInViewController, grantedKnownUser token: AccessToken)
-    func signInViewController(viewController: SignInViewController, grantedUnknownUser token: AccessToken)
-    func signInViewControllerCouldNotGrantToken(viewController viewController: SignInViewController)
-    func signInViewController(viewController: SignInViewController, failedWith error: NSError)
+    func signInViewController(_ viewController: SignInViewController, grantedKnownUser token: AccessToken)
+    func signInViewController(_ viewController: SignInViewController, grantedUnknownUser token: AccessToken)
+    func signInViewControllerCouldNotGrantToken(viewController: SignInViewController)
+    func signInViewController(_ viewController: SignInViewController, failedWith error: NSError)
 }
 
 class SignInViewController: UIViewController {
@@ -33,10 +33,10 @@ class SignInViewController: UIViewController {
     }
     
     @IBAction func didTapSignInButton() {
-        signInButton!.enabled = false
-        Digits.sharedInstance().authenticateWithCompletion { session, error in
+        signInButton!.isEnabled = false
+        Digits.sharedInstance().authenticate { session, error in
             guard error == nil else {
-                return self.delegate.signInViewController(self, failedWith: error)
+                return self.delegate.signInViewController(self, failedWith: error as! NSError)
             }
             
             API.shared().getAuthToken(session, scopes: self.requestScopes) { token in
@@ -52,7 +52,7 @@ class SignInViewController: UIViewController {
                         // Known user, just hide the gate
                         self.delegate.signInViewController(self, grantedKnownUser: token)
                     }
-                } catch API.Error.Unauthorized {
+                } catch API.Error.unauthorized {
                     // Could not grant requested scopes; start access request
                     self.delegate.signInViewControllerCouldNotGrantToken(viewController: self)
                 } catch let error as NSError {

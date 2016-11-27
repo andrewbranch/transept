@@ -12,47 +12,47 @@ import Crashlytics
 
 class ConnectTableViewController: UITableViewController {
     
-    private var prayerRequestViewController: PrayerRequestViewController?
-    private let podcastURL = NSURL(string: "itms-pcast://itunes.apple.com/us/podcast/first-umc-of-pensacola-fl/id313924198?mt=2&uo=4")
-    private let labels = [
+    fileprivate var prayerRequestViewController: PrayerRequestViewController?
+    fileprivate let podcastURL = URL(string: "itms-pcast://itunes.apple.com/us/podcast/first-umc-of-pensacola-fl/id313924198?mt=2&uo=4")
+    fileprivate let labels = [
         NSAttributedString(string: "Phone", attributes: [NSKernAttributeName: 4]),
         NSAttributedString(string: "Email", attributes: [NSKernAttributeName: 4]),
         NSAttributedString(string: "Website", attributes: [NSKernAttributeName: 4]),
         NSAttributedString(string: "Prayer Request", attributes: [NSKernAttributeName: 4])
     ]
-    private let images = [UIImage(named: "phone"), UIImage(named: "email"), UIImage(named: "globe"), UIImage(named: "hands")]
-    private var contact: ABRecordRef?
-    private let contactViewController = ABUnknownPersonViewController()
+    fileprivate let images = [UIImage(named: "phone"), UIImage(named: "email"), UIImage(named: "globe"), UIImage(named: "hands")]
+    fileprivate var contact: ABRecord?
+    fileprivate let contactViewController = ABUnknownPersonViewController()
     
-    func createMultiStringRef(kPropertyType: Int) -> ABMutableMultiValueRef {
-        let propertyType: NSNumber = kPropertyType
-        return Unmanaged.fromOpaque(ABMultiValueCreateMutable(propertyType.unsignedIntValue).toOpaque()).takeUnretainedValue() as NSObject as ABMultiValueRef
+    func createMultiStringRef(_ kPropertyType: Int) -> ABMutableMultiValue {
+        let propertyType: NSNumber = NSNumber(kPropertyType)
+        return Unmanaged.fromOpaque(ABMultiValueCreateMutable(propertyType.uint32Value).toOpaque()).takeUnretainedValue() as NSObject as ABMultiValue
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.prayerRequestViewController = self.storyboard!.instantiateViewControllerWithIdentifier("prayerRequestViewController") as? PrayerRequestViewController
+        self.prayerRequestViewController = self.storyboard!.instantiateViewController(withIdentifier: "prayerRequestViewController") as? PrayerRequestViewController
         self.clearsSelectionOnViewWillAppear = false
-        self.tableView.registerNib(UINib(nibName: "ConnectTableViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "connectTableCell")
-        self.tableView.registerNib(UINib(nibName: "ConnectTableFooterView", bundle: NSBundle.mainBundle()), forHeaderFooterViewReuseIdentifier: "ConnectTableFooterViewIdentifier")
+        self.tableView.register(UINib(nibName: "ConnectTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "connectTableCell")
+        self.tableView.register(UINib(nibName: "ConnectTableFooterView", bundle: Bundle.main), forHeaderFooterViewReuseIdentifier: "ConnectTableFooterViewIdentifier")
 
         
         self.contact = ABPersonCreate().takeUnretainedValue()
-        ABRecordSetValue(self.contact!, kABPersonOrganizationProperty, "First United Methodist Church" as CFStringRef, nil)
+        ABRecordSetValue(self.contact!, kABPersonOrganizationProperty, "First United Methodist Church" as CFString, nil)
         
-        let phoneNumber: ABMutableMultiValueRef = createMultiStringRef(kABMultiStringPropertyType)
-        let url: ABMutableMultiValueRef = createMultiStringRef(kABMultiStringPropertyType)
-        let email: ABMutableMultiValueRef = createMultiStringRef(kABMultiStringPropertyType)
-        ABMultiValueAddValueAndLabel(phoneNumber, "8504321434" as CFStringRef, kABPersonPhoneMainLabel, nil)
-        ABMultiValueAddValueAndLabel(url, "http://fumcpensacola.com" as CFStringRef, kABPersonHomePageLabel, nil)
-        ABMultiValueAddValueAndLabel(email, "fumc@pensacolafirstchurch.com" as CFStringRef, kABWorkLabel, nil)
+        let phoneNumber: ABMutableMultiValue = createMultiStringRef(kABMultiStringPropertyType)
+        let url: ABMutableMultiValue = createMultiStringRef(kABMultiStringPropertyType)
+        let email: ABMutableMultiValue = createMultiStringRef(kABMultiStringPropertyType)
+        ABMultiValueAddValueAndLabel(phoneNumber, "8504321434" as CFString, kABPersonPhoneMainLabel, nil)
+        ABMultiValueAddValueAndLabel(url, "http://fumcpensacola.com" as CFString, kABPersonHomePageLabel, nil)
+        ABMultiValueAddValueAndLabel(email, "fumc@pensacolafirstchurch.com" as CFString, kABWorkLabel, nil)
         ABRecordSetValue(self.contact!, kABPersonPhoneProperty, phoneNumber, nil)
         ABRecordSetValue(self.contact!, kABPersonURLProperty, url, nil)
         ABRecordSetValue(self.contact!, kABPersonEmailProperty, email, nil)
-        ABPersonSetImageData(self.contact!, UIImageJPEGRepresentation(UIImage(named: "contact-image")!, 0.7), nil)
+        ABPersonSetImageData(self.contact!, UIImageJPEGRepresentation(UIImage(named: "contact-image")!, 0.7) as CFData!, nil)
 
         
-        let address: ABMutableMultiValueRef = createMultiStringRef(kABMultiDictionaryPropertyType)
+        let address: ABMutableMultiValue = createMultiStringRef(kABMultiDictionaryPropertyType)
         let addressDictionary = NSDictionary(dictionary: [
             kABPersonAddressStreetKey: "6 East Wright Street",
             kABPersonAddressCityKey: "Pensacola",
@@ -60,7 +60,7 @@ class ConnectTableViewController: UITableViewController {
             kABPersonAddressZIPKey: "32501",
             kABPersonAddressCountryKey: "United States"
         ])
-        ABMultiValueAddValueAndLabel(address, addressDictionary as CFDictionaryRef, kABWorkLabel, nil)
+        ABMultiValueAddValueAndLabel(address, addressDictionary as CFDictionary, kABWorkLabel, nil)
         ABRecordSetValue(self.contact!, kABPersonAddressProperty, address, nil)
         
         self.contactViewController.displayedPerson = self.contact!
@@ -73,16 +73,16 @@ class ConnectTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         if let indexPath = self.tableView.indexPathForSelectedRow {
-            self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            self.tableView.deselectRow(at: indexPath, animated: true)
         }
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         #if !DEBUG
-        Answers.logCustomEventWithName("Viewed tab", customAttributes: ["Name": "Connect"])
+        Answers.logCustomEvent(withName: "Viewed tab", customAttributes: ["Name": "Connect"])
         #endif
     }
     
@@ -92,16 +92,16 @@ class ConnectTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.labels.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("connectTableCell", forIndexPath: indexPath) as! ConnectTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "connectTableCell", for: indexPath) as! ConnectTableViewCell
         
         cell.iconView!.image = self.images[indexPath.row]
         cell.label!.attributedText = self.labels[indexPath.row]
@@ -109,33 +109,33 @@ class ConnectTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let footer = tableView.dequeueReusableHeaderFooterViewWithIdentifier("ConnectTableFooterViewIdentifier") as! ConnectTableFooterView
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let footer = tableView.dequeueReusableHeaderFooterView(withIdentifier: "ConnectTableFooterViewIdentifier") as! ConnectTableFooterView
         return footer
     }
     
     // MARK: - Table view delegate
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch (indexPath.row) {
             case 0:
-                UIApplication.sharedApplication().openURL(NSURL(string: "telprompt://18504321434")!)
-                tableView.deselectRowAtIndexPath(indexPath, animated: true)
+                UIApplication.shared.openURL(URL(string: "telprompt://18504321434")!)
+                tableView.deselectRow(at: indexPath, animated: true)
                 break
             case 1:
-                UIApplication.sharedApplication().openURL(NSURL(string: "mailto:fumc@pensacolafirstchurch.com")!)
-                tableView.deselectRowAtIndexPath(indexPath, animated: true)
+                UIApplication.shared.openURL(URL(string: "mailto:fumc@pensacolafirstchurch.com")!)
+                tableView.deselectRow(at: indexPath, animated: true)
                 break
             case 2:
-                UIApplication.sharedApplication().openURL(NSURL(string: "http://fumcpensacola.com")!)
-                tableView.deselectRowAtIndexPath(indexPath, animated: true)
+                UIApplication.shared.openURL(URL(string: "http://fumcpensacola.com")!)
+                tableView.deselectRow(at: indexPath, animated: true)
                 break
             case 3:
                 // For some reason, using the segue here results in the prayerRequestViewController.navigationController
                 // being nil the second time you navigate to it
                 self.navigationController!.pushViewController(self.prayerRequestViewController!, animated: true)
             default:
-                tableView.deselectRowAtIndexPath(indexPath, animated: true)
+                tableView.deselectRow(at: indexPath, animated: true)
         }
     }
     

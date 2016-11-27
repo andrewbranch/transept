@@ -8,16 +8,16 @@
 
 import UIKit
 
-public class Bulletin : NSObject {
+open class Bulletin : NSObject {
     
     var id: String
     var service: String
     var liturgicalDay: String
-    var date: NSDate
+    var date: Date
     var file: String!
     var visible: Bool
     
-    public init(jsonDictionary: NSDictionary, dateFormatter: NSDateFormatter) throws {
+    public init(jsonDictionary: NSDictionary, dateFormatter: DateFormatter) throws {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         
         let attrs = jsonDictionary["attributes"] as! NSDictionary
@@ -25,7 +25,7 @@ public class Bulletin : NSObject {
         
         self.service = attrs["service"] as! String
         self.liturgicalDay = attrs["liturgical-day"] as! String
-        self.date = dateFormatter.dateFromString(attrs["date"] as! String)!
+        self.date = dateFormatter.date(from: attrs["date"] as! String)!
         self.visible = attrs["visible"] as! Bool
         
         super.init()

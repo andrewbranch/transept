@@ -21,7 +21,7 @@ public extension UIFont {
         if let font = Static.font {
             return font
         }
-        return UIFont.systemFontOfSize(10)
+        return UIFont.systemFont(ofSize: 10)
     }
     
     public class var fumcMainFontRegular14: UIFont {
@@ -31,7 +31,7 @@ public extension UIFont {
         if let font = Static.font {
             return font
         }
-        return UIFont.systemFontOfSize(14)
+        return UIFont.systemFont(ofSize: 14)
     }
     
     public class var fumcMainFontRegular16: UIFont {
@@ -41,7 +41,7 @@ public extension UIFont {
         if let font = Static.font {
             return font
         }
-        return UIFont.systemFontOfSize(16)
+        return UIFont.systemFont(ofSize: 16)
     }
     
     public class var fumcMainFontRegular18: UIFont {
@@ -51,7 +51,7 @@ public extension UIFont {
         if let font = Static.font {
             return font
         }
-        return UIFont.systemFontOfSize(18)
+        return UIFont.systemFont(ofSize: 18)
     }
     
     public class var fumcMainFontRegular20: UIFont {
@@ -61,7 +61,7 @@ public extension UIFont {
         if let font = Static.font {
             return font
         }
-        return UIFont.systemFontOfSize(20)
+        return UIFont.systemFont(ofSize: 20)
     }
     
     public class var fumcMainFontRegular26: UIFont {
@@ -71,7 +71,7 @@ public extension UIFont {
         if let font = Static.font {
             return font
         }
-        return UIFont.systemFontOfSize(26)
+        return UIFont.systemFont(ofSize: 26)
     }
     
     public class var fumcMainFontBold18: UIFont {
@@ -81,7 +81,7 @@ public extension UIFont {
         if let font = Static.font {
             return font
         }
-        return UIFont.systemFontOfSize(18)
+        return UIFont.systemFont(ofSize: 18)
     }
     
     public class var fumcAltFontBold22: UIFont {
@@ -91,7 +91,7 @@ public extension UIFont {
         if let font = Static.font {
             return font
         }
-        return UIFont.systemFontOfSize(22)
+        return UIFont.systemFont(ofSize: 22)
     }
     
     public class var fumcAltFontBold30: UIFont {
@@ -101,7 +101,7 @@ public extension UIFont {
         if let font = Static.font {
             return font
         }
-        return UIFont.systemFontOfSize(30)
+        return UIFont.systemFont(ofSize: 30)
     }
     
 }

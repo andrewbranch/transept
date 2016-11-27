@@ -9,59 +9,59 @@
 import Crashlytics
 
 protocol CalendarSettingsDelegate {
-    func calendarsDataSource(dataSource: CalendarsDataSource, didGetCalendars calendars: [Calendar]) -> Void
-    func calendarsDataSource(dataSource: CalendarsDataSource, failedGettingCalendarsWithError error: ErrorType) -> Void
-    func calendarSettingsController(viewController: CalendarSettingsViewController, didUpdateSelectionFrom oldCalendars: [Calendar], to newCalendars: [Calendar]) -> Void
+    func calendarsDataSource(_ dataSource: CalendarsDataSource, didGetCalendars calendars: [Calendar]) -> Void
+    func calendarsDataSource(_ dataSource: CalendarsDataSource, failedGettingCalendarsWithError error: Error) -> Void
+    func calendarSettingsController(_ viewController: CalendarSettingsViewController, didUpdateSelectionFrom oldCalendars: [Calendar], to newCalendars: [Calendar]) -> Void
 }
 
 class CalendarTableViewController: CustomTableViewController, UITableViewDataSource, UITableViewDelegate, CalendarSettingsDelegate {
     
-    lazy var events: Dictionary<NSDate, [CalendarEvent]> = {
+    lazy var events: Dictionary<Date, [CalendarEvent]> = {
         return [
-            NSDate(timeIntervalSinceNow: 60 * 60 * 24 * 0).midnight(): [],
-            NSDate(timeIntervalSinceNow: 60 * 60 * 24 * 1).midnight(): [],
-            NSDate(timeIntervalSinceNow: 60 * 60 * 24 * 2).midnight(): [],
-            NSDate(timeIntervalSinceNow: 60 * 60 * 24 * 3).midnight(): [],
-            NSDate(timeIntervalSinceNow: 60 * 60 * 24 * 4).midnight(): [],
-            NSDate(timeIntervalSinceNow: 60 * 60 * 24 * 5).midnight(): [],
-            NSDate(timeIntervalSinceNow: 60 * 60 * 24 * 6).midnight(): []
+            Date(timeIntervalSinceNow: 60 * 60 * 24 * 0).midnight(): [],
+            Date(timeIntervalSinceNow: 60 * 60 * 24 * 1).midnight(): [],
+            Date(timeIntervalSinceNow: 60 * 60 * 24 * 2).midnight(): [],
+            Date(timeIntervalSinceNow: 60 * 60 * 24 * 3).midnight(): [],
+            Date(timeIntervalSinceNow: 60 * 60 * 24 * 4).midnight(): [],
+            Date(timeIntervalSinceNow: 60 * 60 * 24 * 5).midnight(): [],
+            Date(timeIntervalSinceNow: 60 * 60 * 24 * 6).midnight(): []
         ]
     }()
-    var displayEvents: Dictionary<NSDate, [CalendarEvent]> {
+    var displayEvents: Dictionary<Date, [CalendarEvent]> {
         return self.events.filteredDictionary { key, value in value.count > 0 }
     }
     var sortedKeys = [NSString]()
-    let dateFormatter = NSDateFormatter()
+    let dateFormatter = DateFormatter()
     var currentCalendars = [Calendar]()
     var calendarsDataSource: CalendarsDataSource?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.dateFormatter.timeZone = NSTimeZone(abbreviation: "CST")
+        self.dateFormatter.timeZone = TimeZone(abbreviation: "CST")
 
-        self.tableView!.registerNib(UINib(nibName: "CalendarTableViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "calendarTableViewCell")
-        self.tableView!.registerNib(UINib(nibName: "CalendarTableViewAllDayCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "calendarTableViewAllDayCell")
-        self.tableView!.registerNib(UINib(nibName: "CalendarTableHeaderView", bundle: NSBundle.mainBundle()), forHeaderFooterViewReuseIdentifier: "CalendarTableHeaderViewIdentifier")
+        self.tableView!.register(UINib(nibName: "CalendarTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "calendarTableViewCell")
+        self.tableView!.register(UINib(nibName: "CalendarTableViewAllDayCell", bundle: Bundle.main), forCellReuseIdentifier: "calendarTableViewAllDayCell")
+        self.tableView!.register(UINib(nibName: "CalendarTableHeaderView", bundle: Bundle.main), forHeaderFooterViewReuseIdentifier: "CalendarTableHeaderViewIdentifier")
         
         self.calendarsDataSource = CalendarsDataSource(settingsDelegate: nil, calendarDelegate: self)
         self.showLoadingView()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let indexPath = self.tableView!.indexPathForSelectedRow {
-            self.tableView!.deselectRowAtIndexPath(indexPath, animated: true)
+            self.tableView!.deselectRow(at: indexPath, animated: true)
         }
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         #if !DEBUG
-        Answers.logCustomEventWithName("Viewed tab", customAttributes: ["Name": "Calendar"])
+        Answers.logCustomEvent(withName: "Viewed tab", customAttributes: ["Name": "Calendar"])
         #endif
     }
     
-    func requestEventsForCalendars(calendars: [Calendar], page: Int, completed: () -> Void = { }) {
+    func requestEventsForCalendars(_ calendars: [Calendar], page: Int, completed: @escaping () -> Void = { }) {
         if (calendars.count == 0) {
             completed()
             return
@@ -90,48 +90,48 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
         // Dispose of any resources that can be recreated.
     }
     
-    func structureEventsFromCalendars(calendars: [Calendar]) -> Dictionary<NSDate, [CalendarEvent]> {
-        var structured = Dictionary<NSDate, [CalendarEvent]>()
-        let events = calendars.map({ $0.events }).reduce([], combine: +).sort({
-            return NSCalendar.currentCalendar().compareDate($0.from, toDate: $1.from, toUnitGranularity: NSCalendarUnit.Minute) == NSComparisonResult.OrderedAscending
+    func structureEventsFromCalendars(_ calendars: [Calendar]) -> Dictionary<Date, [CalendarEvent]> {
+        var structured = Dictionary<Date, [CalendarEvent]>()
+        let events = calendars.map({ $0.events }).reduce([], +).sorted(by: {
+            return (Foundation.Calendar.current as NSCalendar).compare($0.from as Date, to: $1.from as Date, toUnitGranularity: NSCalendar.Unit.minute) == ComparisonResult.orderedAscending
         })
         for i in 0 ..< 7 {
-            let date = NSDate(timeIntervalSinceNow: 60 * 60 * 24 * Double(i)).midnight()
+            let date = Date(timeIntervalSinceNow: 60 * 60 * 24 * Double(i)).midnight()
             structured[date] = events.filter { $0.from.midnight() == date }
         }
         return structured
     }
     
-    func eventForIndexPath(indexPath: NSIndexPath) -> CalendarEvent {
-        return self.displayEvents[self.displayEvents.keys.sort(<)[indexPath.section]]![indexPath.row]
+    func eventForIndexPath(_ indexPath: IndexPath) -> CalendarEvent {
+        return self.displayEvents[self.displayEvents.keys.sorted(by: <)[indexPath.section]]![indexPath.row]
     }
 
     // MARK: - Table view data source
 
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return self.displayEvents.count
     }
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.displayEvents[self.displayEvents.keys.sort(<)[section]]!.count
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.displayEvents[self.displayEvents.keys.sorted(by: <)[section]]!.count
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let event = eventForIndexPath(indexPath)
         if (event.allDay) {
-            let cell = tableView.dequeueReusableCellWithIdentifier("calendarTableViewAllDayCell", forIndexPath: indexPath) as! CalendarTableViewAllDayCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "calendarTableViewAllDayCell", for: indexPath) as! CalendarTableViewAllDayCell
             cell.titleLabel!.text = event.name
             return cell
         }
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("calendarTableViewCell", forIndexPath: indexPath) as! CalendarTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "calendarTableViewCell", for: indexPath) as! CalendarTableViewCell
         cell.titleLabel!.text = event.name
         cell.locationLabel!.text = event.location
         
         let colorLayer = CALayer()
-        colorLayer.frame = CGRectMake(-1, 0, 10, cell.frame.height + 1)
-        colorLayer.backgroundColor = event.calendar.color.CGColor
+        colorLayer.frame = CGRect(x: -1, y: 0, width: 10, height: cell.frame.height + 1)
+        colorLayer.backgroundColor = event.calendar.color.cgColor
         cell.contentView.layer.addSublayer(colorLayer)
         
         if (event.allDay) {
@@ -139,35 +139,35 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
             cell.meridiemLabel!.text = ""
         } else {
             self.dateFormatter.dateFormat = "h:mm"
-            cell.timeLabel!.text = self.dateFormatter.stringFromDate(event.from)
+            cell.timeLabel!.text = self.dateFormatter.string(from: event.from as Date)
             self.dateFormatter.dateFormat = "a"
-            cell.meridiemLabel!.text = self.dateFormatter.stringFromDate(event.from)
+            cell.meridiemLabel!.text = self.dateFormatter.string(from: event.from as Date)
         }
 
         return cell
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterViewWithIdentifier("CalendarTableHeaderViewIdentifier") as! CalendarTableHeaderView
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "CalendarTableHeaderViewIdentifier") as! CalendarTableHeaderView
         self.dateFormatter.dateFormat = "EEEE, MMMM d"
-        header.label!.text = self.dateFormatter.stringFromDate(self.displayEvents.keys.sort(<)[section])
+        header.label!.text = self.dateFormatter.string(from: self.displayEvents.keys.sorted(by: <)[section])
         return header
     }
 
     // MARK: - Table view delegate
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.performSegueWithIdentifier("eventSegue", sender: indexPath)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "eventSegue", sender: indexPath)
     }
     
     // MARK: - Calendar Settings Delegate
     
-    func calendarsDataSource(dataSource: CalendarsDataSource, didGetCalendars calendars: [Calendar]) {
-        if let currentCalendarIds = NSUserDefaults.standardUserDefaults().objectForKey("selectedCalendarIds") as? [String] {
-            self.currentCalendars = calendars.filter { currentCalendarIds.indexOf($0.id) != nil }
+    func calendarsDataSource(_ dataSource: CalendarsDataSource, didGetCalendars calendars: [Calendar]) {
+        if let currentCalendarIds = UserDefaults.standard.object(forKey: "selectedCalendarIds") as? [String] {
+            self.currentCalendars = calendars.filter { currentCalendarIds.index(of: $0.id) != nil }
         } else {
             self.currentCalendars = calendars
-            NSUserDefaults.standardUserDefaults().setObject(calendars.map { $0.id }, forKey: "selectedCalendarIds")
+            UserDefaults.standard.set(calendars.map { $0.id }, forKey: "selectedCalendarIds")
         }
         
         self.showLoadingView()
@@ -177,22 +177,22 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
         }
     }
     
-    func calendarsDataSource(dataSource: CalendarsDataSource, failedGettingCalendarsWithError error: ErrorType) {
+    func calendarsDataSource(_ dataSource: CalendarsDataSource, failedGettingCalendarsWithError error: Error) {
         ErrorAlerter.loadingAlertBasedOnReachability().show()
         self.hideLoadingView()
     }
     
-    func calendarSettingsController(viewController: CalendarSettingsViewController, didUpdateSelectionFrom oldCalendars: [Calendar], to newCalendars: [Calendar]) {
+    func calendarSettingsController(_ viewController: CalendarSettingsViewController, didUpdateSelectionFrom oldCalendars: [Calendar], to newCalendars: [Calendar]) {
         self.showLoadingView()
         self.currentCalendars = newCalendars
-        let diffCalendars = newCalendars.filter { oldCalendars.indexOf($0) == nil }
+        let diffCalendars = newCalendars.filter { oldCalendars.index(of: $0) == nil }
         requestEventsForCalendars(diffCalendars, page: 1) {
             self.updateTableWithNewCalendars(newCalendars)
             self.hideLoadingView()
         }
     }
     
-    func updateTableWithNewCalendars(calendars: [Calendar]) {
+    func updateTableWithNewCalendars(_ calendars: [Calendar]) {
         
         let newEvents = self.structureEventsFromCalendars(calendars)
         self.tableView!.beginUpdates()
@@ -204,24 +204,24 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
             value.count > 0 && newEvents[key]!.count == 0
         }
         removedEntries.each { key, value in
-            sectionsToDelete.addIndex(currentSections.keys.sort(<).indexOf(key)!)
+            sectionsToDelete.add(currentSections.keys.sorted(by: <).index(of: key)!)
         }
-        self.tableView!.deleteSections(sectionsToDelete, withRowAnimation: UITableViewRowAnimation.Automatic)
+        self.tableView!.deleteSections(sectionsToDelete as IndexSet, with: UITableViewRowAnimation.automatic)
         
-        var rowsToDelete = [NSIndexPath]()
+        var rowsToDelete = [IndexPath]()
         let remainingEntries = self.events.filteredDictionary { key, value in !removedEntries.has(key) && value.count > 0 }
-        var entriesAfterRowRemove = Dictionary<NSDate, [CalendarEvent]>()
+        var entriesAfterRowRemove = Dictionary<Date, [CalendarEvent]>()
         remainingEntries.each { key, value in
             let entriesToDelete = value.filter {
                 !newEvents[key]!.contains($0)
             }
             entriesAfterRowRemove[key] = value - entriesToDelete
-            let section = currentSections.keys.sort(<).indexOf(key)!
-            rowsToDelete.appendContentsOf(entriesToDelete.map {
-                NSIndexPath(forRow: value.indexOf($0)!, inSection: section)
+            let section = currentSections.keys.sorted(by: <).index(of: key)!
+            rowsToDelete.append(contentsOf: entriesToDelete.map {
+                IndexPath(row: value.index(of: $0)!, section: section)
             })
         }
-        self.tableView!.deleteRowsAtIndexPaths(rowsToDelete, withRowAnimation: UITableViewRowAnimation.Automatic)
+        self.tableView!.deleteRows(at: rowsToDelete, with: UITableViewRowAnimation.automatic)
         
         
         // Insert
@@ -231,39 +231,39 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
         }
         let union = remainingEntries.union(insertedEntries)
         insertedEntries.each { key, value in
-            sectionsToInsert.addIndex(union.keys.sort(<).indexOf(key)!)
+            sectionsToInsert.add(union.keys.sorted(by: <).index(of: key)!)
         }
-        self.tableView!.insertSections(sectionsToInsert, withRowAnimation: UITableViewRowAnimation.Automatic)
+        self.tableView!.insertSections(sectionsToInsert as IndexSet, with: UITableViewRowAnimation.automatic)
         
-        var rowsToInsert = [NSIndexPath]()
+        var rowsToInsert = [IndexPath]()
         entriesAfterRowRemove.each { key, value in
             let entriesToInsert = newEvents[key]!.filter { !value.contains($0) }
-            let combined = (value + entriesToInsert).sort {
+            let combined = (value + entriesToInsert).sorted {
                 if ($0.0.from < $0.1.from) { return true }
                 if ($0.0.from > $0.1.from) { return false }
                 return $0.0.name <= $0.1.name
             }
-            let section = union.keys.sort(<).indexOf(key)!
-            rowsToInsert.appendContentsOf(entriesToInsert.map {
-                NSIndexPath(forRow: combined.indexOf($0)!, inSection: section)
+            let section = union.keys.sorted(by: <).index(of: key)!
+            rowsToInsert.append(contentsOf: entriesToInsert.map {
+                IndexPath(row: combined.index(of: $0)!, section: section)
             })
         }
-        self.tableView!.insertRowsAtIndexPaths(rowsToInsert, withRowAnimation: UITableViewRowAnimation.Automatic)
+        self.tableView!.insertRows(at: rowsToInsert, with: UITableViewRowAnimation.automatic)
         
         self.events = newEvents
         self.tableView!.endUpdates()
         
-        self.tableView!.backgroundView?.hidden = self.displayEvents.count > 0
+        self.tableView!.backgroundView?.isHidden = self.displayEvents.count > 0
     }
 
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "eventSegue") {
-            (segue.destinationViewController as! EventViewController).calendarEvent = eventForIndexPath(self.tableView!.indexPathForSelectedRow!)
+            (segue.destination as! EventViewController).calendarEvent = eventForIndexPath(self.tableView!.indexPathForSelectedRow!)
         } else if (segue.identifier == "calendarSettingsSegue") {
-            let viewController = (segue.destinationViewController as! CalendarSettingsViewController)
+            let viewController = (segue.destination as! CalendarSettingsViewController)
             self.calendarsDataSource!.settingsDelegate = viewController
             viewController.dataSource = self.calendarsDataSource
             viewController.delegate = self
@@ -273,7 +273,7 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
     
     func resetAccessRequests() {
         API.shared().accessToken = nil
-        NSUserDefaults.standardUserDefaults().setValue(nil, forKey: "directoryAccessRequestId")
+        UserDefaults.standard.setValue(nil, forKey: "directoryAccessRequestId")
     }
 
 }

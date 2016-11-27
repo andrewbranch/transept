@@ -23,14 +23,14 @@ class ErrorAlerter: NSObject {
             static let genericLoadingErrorAlert = UIAlertView(title: "Error Loading Content", message: "We’re having trouble loading the content on our end. Please check back later.", delegate: nil, cancelButtonTitle: "Close")
         }
         
-        let appDelegate = UIApplication.sharedApplication().delegate! as! AppDelegate
-        if (appDelegate.internetReachability.currentReachabilityStatus() == .NotReachable) {
+        let appDelegate = UIApplication.shared.delegate! as! AppDelegate
+        if (appDelegate.internetReachability?.currentReachabilityStatus() == .NotReachable) {
             return Static.internetNeededAlert
         }
         return Static.genericLoadingErrorAlert
     }
     
-    private class func alertWithUserErrorMessage(message: String?) -> UIAlertView {
+    fileprivate class func alertWithUserErrorMessage(_ message: String?) -> UIAlertView {
         return UIAlertView(
             title: "Oh dear.",
             message: message ?? AppDelegate.USER_UNKNOWN_ERROR_MESSAGE,
@@ -39,20 +39,20 @@ class ErrorAlerter: NSObject {
         )
     }
     
-    class func alertWithUserErrorMessage(error: NSError) -> UIAlertView {
+    class func alertWithUserErrorMessage(_ error: NSError) -> UIAlertView {
         return self.alertWithUserErrorMessage(error.userInfo["userMessage"] as! String?)
     }
     
-    class func alertWithUserErrorMessage(error: API.Error) -> UIAlertView {
+    class func alertWithUserErrorMessage(_ error: API.Error) -> UIAlertView {
         switch error {
-        case .Unknown(let userMessage, _, _):
+        case .unknown(let userMessage, _, _):
             return self.alertWithUserErrorMessage(userMessage)
         default:
             return self.alertWithUserErrorMessage(nil)
         }
     }
     
-    class func showUnknownErrorMessageInViewController(let viewController: ErrorAlertable, withOriginalError error: NSError?) {
+    class func showUnknownErrorMessageInViewController(_ viewController: ErrorAlertable, withOriginalError error: NSError?) {
         let unknownErrorAlert = self.alertWithUserErrorMessage(NSError(
             domain: self.ERROR_DOMAIN,
             code: 0,
@@ -68,7 +68,7 @@ class ErrorAlerter: NSObject {
         // TODO log original error
     }
     
-    class func showUserErrorMessage(error: NSError, let inViewController viewController: ErrorAlertable) {
+    class func showUserErrorMessage(_ error: NSError, inViewController viewController: ErrorAlertable) {
         if (viewController.isViewLoaded() && viewController.view.window != nil) {
             self.alertWithUserErrorMessage(error).show()
         } else {
@@ -76,7 +76,7 @@ class ErrorAlerter: NSObject {
         }
     }
     
-    class func showUserErrorMessage(error: API.Error, let inViewController viewController: ErrorAlertable) {
+    class func showUserErrorMessage(_ error: API.Error, inViewController viewController: ErrorAlertable) {
         if (viewController.isViewLoaded() && viewController.view.window != nil) {
             self.alertWithUserErrorMessage(error).show()
         } else {
@@ -84,7 +84,7 @@ class ErrorAlerter: NSObject {
         }
     }
     
-    class func showLoadingAlertInViewController(let viewController: ErrorAlertable) {
+    class func showLoadingAlertInViewController(_ viewController: ErrorAlertable) {
         if (viewController.isViewLoaded() && viewController.view.window != nil) {
             self.loadingAlertBasedOnReachability().show()
         } else {

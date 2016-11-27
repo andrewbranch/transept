@@ -13,12 +13,12 @@ class WitnessesDataSource: NSObject, MediaTableViewDataSource {
     var title: NSString = "The Methodist Witness"
     var delegate: MediaTableViewDataSourceDelegate?
     var witnesses = Dictionary<String, [Witness]>()
-    var dateFormatter = NSDateFormatter()
+    var dateFormatter = DateFormatter()
     var loading = false
     
     required init(delegate: MediaTableViewDataSourceDelegate?) {
         super.init()
-        self.dateFormatter.timeZone = NSTimeZone(abbreviation: "CST")
+        self.dateFormatter.timeZone = TimeZone(abbreviation: "CST")
         self.delegate = delegate
     }
     
@@ -29,14 +29,14 @@ class WitnessesDataSource: NSObject, MediaTableViewDataSource {
         }
     }
     
-    func requestData(completed: () -> Void = { }) {
+    func requestData(_ completed: @escaping () -> Void = { }) {
         self.loading = true
         API.shared().getWitnesses() { witnesses, error in
             if (error != nil) {
                 self.delegate?.dataSource(self, failedToLoadWithError: error)
             } else {
                 self.witnesses.removeAll(keepCapacity: true)
-                for w in witnesses.sort({ a, b in a.from > b.from }) {
+                for w in witnesses.sorted(by: { a, b in a.from > b.from }) {
                     let sectionTitle = "\(w.from.year) • Volume \(w.volume)"
                     if (self.witnesses.has(sectionTitle)) {
                         self.witnesses[sectionTitle]!.append(w)
@@ -52,36 +52,36 @@ class WitnessesDataSource: NSObject, MediaTableViewDataSource {
         }
     }
     
-    func witnessForIndexPath(indexPath: NSIndexPath) -> Witness {
-        return self.witnesses[self.witnesses.keys.sort(>)[indexPath.section]]![indexPath.row]
+    func witnessForIndexPath(_ indexPath: IndexPath) -> Witness {
+        return self.witnesses[self.witnesses.keys.sorted(by: >)[indexPath.section]]![indexPath.row]
     }
     
-    func urlForIndexPath(indexPath: NSIndexPath) -> NSURL? {
-        return API.shared().fileURL(key: self.witnessForIndexPath(indexPath).file as String)
+    func urlForIndexPath(_ indexPath: IndexPath) -> URL? {
+        return API.shared().fileURL(key: self.witnessForIndexPath(indexPath).file as String) as URL?
     }
     
     
     // MARK: - Table view data source
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return self.witnesses.count
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (self.witnesses.keys.isEmpty) { return 0 }
-        return self.witnesses[self.witnesses.keys.sort(>)[section]]!.count
+        return self.witnesses[self.witnesses.keys.sorted(by: >)[section]]!.count
     }
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return self.witnesses.keys.sort(>)[section]
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return self.witnesses.keys.sorted(by: >)[section]
     }
     
-    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         (view as! UITableViewHeaderFooterView).textLabel!.font = UIFont.fumcMainFontRegular14
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("mediaTableViewCell", forIndexPath: indexPath) as UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "mediaTableViewCell", for: indexPath) as UITableViewCell
         let witness = self.witnessForIndexPath(indexPath)
         self.dateFormatter.dateFormat = "MMMM d"
         
@@ -89,11 +89,11 @@ class WitnessesDataSource: NSObject, MediaTableViewDataSource {
         cell.detailTextLabel?.font = UIFont.fumcMainFontRegular16
         
         cell.textLabel!.text = NSString(format: "Issue %i", witness.issue) as String
-        cell.detailTextLabel!.text = NSString(format: "%@ – %@", self.dateFormatter.stringFromDate(witness.from), self.dateFormatter.stringFromDate(witness.to)) as String
+        cell.detailTextLabel!.text = NSString(format: "%@ – %@", self.dateFormatter.string(from: witness.from as Date), self.dateFormatter.string(from: witness.to as Date)) as String
         
-        if (witness.to.midnight().dateByAddingTimeInterval(24 * 60 * 60 - 1) > NSDate()) {
+        if (witness.to.midnight().addingTimeInterval(24 * 60 * 60 - 1) as Date > Date()) {
             cell.textLabel!.textColor = UIColor.fumcRedColor()
-            cell.detailTextLabel!.textColor = UIColor.fumcRedColor().colorWithAlphaComponent(0.5)
+            cell.detailTextLabel!.textColor = UIColor.fumcRedColor().withAlphaComponent(0.5)
         }
         
         return cell
