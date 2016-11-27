@@ -39,7 +39,7 @@ class SignInViewController: UIViewController {
                 return self.delegate.signInViewController(self, failedWith: error as! NSError)
             }
             
-            API.shared().getAuthToken(session, scopes: self.requestScopes) { token in
+            API.shared().getAuthToken(session!, scopes: self.requestScopes) { token in
                 do {
                     let token = try token.value()
                     API.shared().accessToken = token

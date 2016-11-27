@@ -34,9 +34,9 @@ class VerifyIdentityViewController: UIViewController, FBSDKLoginButtonDelegate {
         ])
     }
     
-    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         guard error == nil && !result.isCancelled else {
-            delegate.verifyViewController(self, failedWith: error)
+            delegate.verifyViewController(self, failedWith: error as NSError)
             return
         }
         

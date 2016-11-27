@@ -18,7 +18,7 @@ extension String {
                 NSCharacterEncodingDocumentAttribute: String.Encoding.utf8 as AnyObject
             ]
             let attributedString = try NSAttributedString(data: encodedData, options: attributedOptions, documentAttributes: nil)
-            self.init(attributedString.string)
+            self.init(attributedString.string)!
         } catch {
             fatalError("Unhandled error: \(error)")
         }

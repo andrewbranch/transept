@@ -35,7 +35,7 @@ class WitnessesDataSource: NSObject, MediaTableViewDataSource {
             if (error != nil) {
                 self.delegate?.dataSource(self, failedToLoadWithError: error)
             } else {
-                self.witnesses.removeAll(keepCapacity: true)
+                self.witnesses.removeAll(keepingCapacity: true)
                 for w in witnesses.sorted(by: { a, b in a.from > b.from }) {
                     let sectionTitle = "\(w.from.year) • Volume \(w.volume)"
                     if (self.witnesses.has(sectionTitle)) {

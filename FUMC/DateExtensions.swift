@@ -30,4 +30,8 @@ public extension Date {
     func minute() -> Int {
         return (Foundation.Calendar.current as NSCalendar).components(NSCalendar.Unit.minute, from: self).minute!
     }
+    
+    public var year: Int {
+        return (Foundation.Calendar.current as NSCalendar).components(NSCalendar.Unit.year, from: self).year!
+    }
 }

@@ -25,7 +25,7 @@ class ConnectTableViewController: UITableViewController {
     fileprivate let contactViewController = ABUnknownPersonViewController()
     
     func createMultiStringRef(_ kPropertyType: Int) -> ABMutableMultiValue {
-        let propertyType: NSNumber = NSNumber(kPropertyType)
+        let propertyType: NSNumber = NSNumber(integerLiteral: kPropertyType)
         return Unmanaged.fromOpaque(ABMultiValueCreateMutable(propertyType.uint32Value).toOpaque()).takeUnretainedValue() as NSObject as ABMultiValue
     }
     

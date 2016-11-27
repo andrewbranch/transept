@@ -73,7 +73,7 @@ class EventViewController: UIViewController, EKEventEditViewDelegate, UITableVie
         self.dateLabel!.text = self.dateFormatter.string(from: self.calendarEvent!.from as Date)
         
         if (self.calendarEvent!.allDay) {
-            self.fromTimeLabel!.superview!.subviews.each { (view: AnyObject) in (view as! UIView).isHidden = true }
+            self.fromTimeLabel!.superview!.subviews.forEach { $0.isHidden = true }
             self.fromTimeLabel!.isHidden = false
             self.fromTimeLabel!.text = "All day"
         } else {

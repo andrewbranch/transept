@@ -10,7 +10,7 @@ import UIKit
 
 struct JSONAPIResource {
     static func getDataArray(_ rawJSON: Data) throws -> [NSDictionary] {
-        let jsonDictionary = try JSONSerialization.jsonObject(with: rawJSON, options: .allowFragments)
+        let jsonDictionary = try JSONSerialization.jsonObject(with: rawJSON, options: .allowFragments) as! NSDictionary
         return jsonDictionary["data"] as! [NSDictionary]
     }
 }

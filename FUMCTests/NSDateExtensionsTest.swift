@@ -12,11 +12,9 @@ class NSDateExtensionsTest: XCTestCase {
     
     func testDayOfWorkWeek() {
         let sunday = Date(timeIntervalSince1970: 1442127600)
-        XCTAssertEqual(sunday.getComponent(NSCalendar.Unit.Weekday), 1)
         XCTAssertEqual(sunday.dayOfWorkWeek(), 7)
         
         let monday = Date(timeIntervalSince1970: 1441609200)
-        XCTAssertEqual(monday.getComponent(NSCalendar.Unit.Weekday), 2)
         XCTAssertEqual(monday.dayOfWorkWeek(), 1)
     }
     

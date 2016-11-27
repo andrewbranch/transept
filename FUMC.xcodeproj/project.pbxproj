@@ -11,7 +11,7 @@
 		4900737D1A342D820086CE0B /* DictionaryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4900737C1A342D820086CE0B /* DictionaryExtensions.swift */; };
 		490C659F1A3230A700E87130 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C659E1A3230A700E87130 /* Calendar.swift */; };
 		490C65A41A324F7700E87130 /* CalendarsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C65A31A324F7700E87130 /* CalendarsDataSource.swift */; };
-		490C65A61A33895D00E87130 /* NSDateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C65A51A33895D00E87130 /* NSDateExtensions.swift */; };
+		490C65A61A33895D00E87130 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C65A51A33895D00E87130 /* DateExtensions.swift */; };
 		491578521D69184200E71AC5 /* Pods_FUMC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26A14102F76CEA3A472DCBDF /* Pods_FUMC.framework */; };
 		4915A7421BCAD389008D958F /* VideosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4915A7411BCAD389008D958F /* VideosTableViewController.swift */; };
 		4915A7441BCADAF0008D958F /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4915A7431BCADAF0008D958F /* AVKit.framework */; };
@@ -36,7 +36,6 @@
 		49804B271C5E88CE005AE154 /* VideosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49804B241C5E88CE005AE154 /* VideosTableViewCell.swift */; };
 		49804B281C5E88CE005AE154 /* VideosTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49804B251C5E88CE005AE154 /* VideosTableViewCell.xib */; };
 		49804B291C5E88CE005AE154 /* VideosTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49804B251C5E88CE005AE154 /* VideosTableViewCell.xib */; };
-		49852DC81BC1E2D200E7F30E /* ExSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49852DC71BC1E2D200E7F30E /* ExSwift.swift */; };
 		499C00C81CF7FE4400D4F94D /* DirectoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499C00C71CF7FE4400D4F94D /* DirectoryTableViewController.swift */; };
 		499C00CA1CF7FF5E00D4F94D /* DirectoryDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499C00C91CF7FF5E00D4F94D /* DirectoryDataSource.swift */; };
 		499D1F4B1C5EB8AF00B1FF70 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D1F4A1C5EB8AF00B1FF70 /* StringExtensions.swift */; };
@@ -157,7 +156,7 @@
 		4900737C1A342D820086CE0B /* DictionaryExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DictionaryExtensions.swift; path = FUMC/DictionaryExtensions.swift; sourceTree = "<group>"; };
 		490C659E1A3230A700E87130 /* Calendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Calendar.swift; path = FUMC/Calendar.swift; sourceTree = "<group>"; };
 		490C65A31A324F7700E87130 /* CalendarsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarsDataSource.swift; path = FUMC/CalendarsDataSource.swift; sourceTree = "<group>"; };
-		490C65A51A33895D00E87130 /* NSDateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSDateExtensions.swift; path = FUMC/NSDateExtensions.swift; sourceTree = "<group>"; };
+		490C65A51A33895D00E87130 /* DateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateExtensions.swift; path = FUMC/DateExtensions.swift; sourceTree = "<group>"; };
 		4915A7411BCAD389008D958F /* VideosTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideosTableViewController.swift; path = FUMC/VideosTableViewController.swift; sourceTree = "<group>"; };
 		4915A7431BCADAF0008D958F /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		4915A7451BCADBBD008D958F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -287,7 +286,6 @@
 		497FA6F11DB4304800D03395 /* FUMC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FUMC.entitlements; sourceTree = "<group>"; };
 		49804B241C5E88CE005AE154 /* VideosTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideosTableViewCell.swift; path = FUMC/VideosTableViewCell.swift; sourceTree = "<group>"; };
 		49804B251C5E88CE005AE154 /* VideosTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VideosTableViewCell.xib; path = FUMC/VideosTableViewCell.xib; sourceTree = "<group>"; };
-		49852DC71BC1E2D200E7F30E /* ExSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExSwift.swift; path = FUMC/ExSwift.swift; sourceTree = "<group>"; };
 		499C00C71CF7FE4400D4F94D /* DirectoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DirectoryTableViewController.swift; path = FUMC/DirectoryTableViewController.swift; sourceTree = "<group>"; };
 		499C00C91CF7FF5E00D4F94D /* DirectoryDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DirectoryDataSource.swift; path = FUMC/DirectoryDataSource.swift; sourceTree = "<group>"; };
 		499D1F4A1C5EB8AF00B1FF70 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtensions.swift; path = FUMC/StringExtensions.swift; sourceTree = "<group>"; };
@@ -841,7 +839,6 @@
 		49B2A3611A2680F3004EED86 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				49852DC71BC1E2D200E7F30E /* ExSwift.swift */,
 				491859C81B07F9B300AFA077 /* RKDropdownAlert.h */,
 				491859C91B07F9B300AFA077 /* RKDropdownAlert.m */,
 				49B2A30F1A268070004EED86 /* ErrorAlerter.swift */,
@@ -851,7 +848,7 @@
 				49B2A3231A268070004EED86 /* UIColorExtensions.swift */,
 				49B2A3261A268070004EED86 /* UIFontExtensions.swift */,
 				49B2A3271A268070004EED86 /* UIImageExtensions.swift */,
-				490C65A51A33895D00E87130 /* NSDateExtensions.swift */,
+				490C65A51A33895D00E87130 /* DateExtensions.swift */,
 				49B2A3281A268070004EED86 /* UIPlaceHolderTextView.h */,
 				49B2A3291A268070004EED86 /* UIPlaceHolderTextView.m */,
 				4900737C1A342D820086CE0B /* DictionaryExtensions.swift */,
@@ -1286,7 +1283,6 @@
 				495C471E1C8AC1060018F677 /* UIDeviceExtensions.swift in Sources */,
 				49B2A3481A268070004EED86 /* MediaMasterTableViewCell.swift in Sources */,
 				49B2A3401A268070004EED86 /* CustomTableViewController.swift in Sources */,
-				49852DC81BC1E2D200E7F30E /* ExSwift.swift in Sources */,
 				49A569741A3A5ACD00B6F1E4 /* ActivityIndicatorView.swift in Sources */,
 				499C00C81CF7FE4400D4F94D /* DirectoryTableViewController.swift in Sources */,
 				49A9B1781BA602B100109D3D /* VideosDataSource.swift in Sources */,
@@ -1300,7 +1296,7 @@
 				49B2A34B1A268070004EED86 /* MediaTableViewController.swift in Sources */,
 				49E09F7B1D4EE9E00097A17B /* ConfirmIdentityViewController.swift in Sources */,
 				494F80981A3155C000403C6B /* CalendarSettingsViewController.swift in Sources */,
-				490C65A61A33895D00E87130 /* NSDateExtensions.swift in Sources */,
+				490C65A61A33895D00E87130 /* DateExtensions.swift in Sources */,
 				49B2A3561A268070004EED86 /* UIImageExtensions.swift in Sources */,
 				49214F8D1BC0D2FE0098D2B4 /* Video.swift in Sources */,
 				49B2A32C1A268070004EED86 /* AppDelegate.swift in Sources */,
@@ -1387,7 +1383,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1426,7 +1422,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -1449,7 +1445,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = FUMC/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "$(inherited)";
 				"OTHER_SWIFT_FLAGS[arch=*]" = "-D DEBUG";
@@ -1477,7 +1473,7 @@
 				);
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = FUMC/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.fumcpensacola.$(PRODUCT_NAME:rfc1034identifier)";

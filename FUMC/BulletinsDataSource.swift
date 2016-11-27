@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import EZSwiftExtensions
 
 open class BulletinsDataSource: NSObject, MediaTableViewDataSource {
     
@@ -37,7 +38,7 @@ open class BulletinsDataSource: NSObject, MediaTableViewDataSource {
             if (error != nil) {
                 self.delegate?.dataSource(self, failedToLoadWithError: error)
             } else {
-                self.bulletins.removeAll(keepCapacity: true)
+                self.bulletins.removeAll(keepingCapacity: true)
                 for b in bulletins {
                     if (self.bulletins.has(b.date)) {
                         self.bulletins[b.date]!.append(b)
@@ -79,10 +80,11 @@ open class BulletinsDataSource: NSObject, MediaTableViewDataSource {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "MediaTableHeaderViewIdentifier") as! MediaTableHeaderView
         let date = self.bulletins.keys.sorted(by: >)[section]
         self.dateFormatter.dateFormat = "EEEE, MMMM d"
+        let difference = date.midnight().timeIntervalSince(self.referenceDate.midnight())
         if (date.midnight() == self.referenceDate.midnight()) {
             self.dateFormatter.dateFormat = "'Today,' MMMM d"
         // Date is within the next seven days
-        } else if (date.midnight() - self.referenceDate.midnight() <= 7 * 24 * 60 * 60 && date.midnight() - self.referenceDate.midnight() >= 0) {
+        } else if (difference <= 7 * 24 * 60 * 60 && difference >= 0) {
             // People talk differently on Sundays (the whole next week is “this” until Sunday)
             if (self.referenceDate.dayOfWeek() == 1) {
                 if (date.dayOfWeek() == 1) {

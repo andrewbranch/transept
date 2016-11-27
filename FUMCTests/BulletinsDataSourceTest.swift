@@ -43,7 +43,7 @@ class BulletinsDataSourceTest: XCTestCase {
         
         self.dataSource!.bulletins = [
             // Sunday, September 13 2015
-            Date(timeIntervalSince1970: 1442127600): [try! Bulletin(jsonDictionary: bulletin, dateFormatter: DateFormatter())]
+            Date(timeIntervalSince1970: 1442127600): [try! Bulletin(jsonDictionary: bulletin as NSDictionary, dateFormatter: DateFormatter())]
         ]
         
         let thisSundayHeader = self.dataSource!.tableView(self.tableView!, viewForHeaderInSection: 0) as! MediaTableHeaderView
@@ -66,7 +66,7 @@ class BulletinsDataSourceTest: XCTestCase {
         
         self.dataSource!.bulletins = [
             // Monday, September 14 2015
-            Date(timeIntervalSince1970: 1442214000): [try! Bulletin(jsonDictionary: bulletin, dateFormatter: DateFormatter())]
+            Date(timeIntervalSince1970: 1442214000): [try! Bulletin(jsonDictionary: bulletin as NSDictionary, dateFormatter: DateFormatter())]
         ]
         
         // Saturday, September 5 2015

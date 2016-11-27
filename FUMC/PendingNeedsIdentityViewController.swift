@@ -50,7 +50,7 @@ class PendingNeedsIdentityViewController: UIViewController, FBSDKLoginButtonDele
         return true
     }
     
-    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         guard error == nil && !result.isCancelled else {
             return
         }

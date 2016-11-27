@@ -22,7 +22,7 @@ class BulletinTest: XCTestCase {
             ]
         ] as [String : Any]
         
-        let bad = try? Bulletin(jsonDictionary: badData, dateFormatter: DateFormatter())
+        let bad = try? Bulletin(jsonDictionary: badData as NSDictionary, dateFormatter: DateFormatter())
         XCTAssertNil(bad, "Should throw when file not present")
         
         let goodData = [
@@ -36,7 +36,7 @@ class BulletinTest: XCTestCase {
             ]
         ] as [String : Any]
         
-        let good = try? Bulletin(jsonDictionary: goodData, dateFormatter: DateFormatter())
+        let good = try? Bulletin(jsonDictionary: goodData as NSDictionary, dateFormatter: DateFormatter())
         XCTAssertNotNil(good, "Should initialize")
     }
     

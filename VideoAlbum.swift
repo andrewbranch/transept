@@ -27,7 +27,7 @@ open class VideoAlbum: NSObject {
         if let includedVideos = included {
             let videos = ((jsonDictionary["relationships"] as! NSDictionary)["videos"] as! NSDictionary)["data"] as! [NSDictionary]
             for json in videos {
-                if let videoDictionary = includedVideos.find({ v in
+                if let videoDictionary = includedVideos.first(where: { v in
                     return v["id"] as! String == json["id"] as! String
                 }) {
                     do {

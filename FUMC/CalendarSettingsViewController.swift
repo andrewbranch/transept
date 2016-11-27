@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 FUMC Pensacola. All rights reserved.
 //
 
+import EZSwiftExtensions
+
 @objc protocol CalendarsDataSourceDelegate {
     var tableView: UITableView? { get set }
     @objc optional func dataSourceDidStartLoadingAPI(_ dataSource: CalendarsDataSource) -> Void
@@ -108,7 +110,7 @@ class CalendarSettingsViewController: UIViewController, UITableViewDelegate, Cal
     func toggleSelection(_ sender: UIButton!) {
         // Select all
         if (self.currentCalendarIds!.count < self.dataSource!.calendars.count) {
-            for id in self.dataSource!.calendars.map({ $0.id }) - self.currentCalendarIds! {
+            for id in self.dataSource!.calendars.map({ $0.id }).difference(self.currentCalendarIds!) {
                 if let indexPath = self.dataSource!.indexPathForCalendarId(id) {
                     self.tableView!.selectRow(at: indexPath, animated: false, scrollPosition: UITableViewScrollPosition.none)
                     self.tableView(self.tableView!, didSelectRowAt: indexPath)

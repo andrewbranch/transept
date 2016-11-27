@@ -23,7 +23,7 @@ struct AccessToken : Deserializable {
     }
     
     init(rawJSON: Data) throws {
-        let jsonDictionary = try JSONSerialization.jsonObject(with: rawJSON, options: .allowFragments)
+        let jsonDictionary = try JSONSerialization.jsonObject(with: rawJSON, options: .allowFragments) as! NSDictionary
         self.id = jsonDictionary["id"] as! String
         self.signed = jsonDictionary["access_token"] as! String
         self.scopes = (jsonDictionary["scopes"] as! [String]).flatMap { API.Scopes(rawValue: $0) }

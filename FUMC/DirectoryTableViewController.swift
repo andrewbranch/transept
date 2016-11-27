@@ -28,7 +28,7 @@ class DirectoryTableViewController: CustomTableViewController, DirectoryDataSour
         if let requestId = UserDefaults.standard.value(forKey: accessRequestKey) as? String {
             // Access Request is open; show pending screen
             launchPendingAccessFlow(requestId)
-        } else if !API.shared().hasAccessToken || API.shared().accessToken!.expires as Date < Date() {
+        } else if !API.shared().hasAccessToken || (API.shared().accessToken!.expires as Date) < Date() {
             self.launchAuthFlow(token: nil, forceRefresh: true)
         }
     }

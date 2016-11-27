@@ -42,10 +42,10 @@ open class VideosDataSource: NSObject, MediaTableViewDataSource, UITableViewData
     open func requestData(_ completed: @escaping (_ albums: [VideoAlbum], _ error: Error?) -> Void) {
         API.shared().getVideos() { albums, error in
             guard error == nil else {
-                completed(albums: [], error: error)
+                completed([], error)
                 return
             }
-            completed(albums: albums, error: nil)
+            completed(albums, nil)
         }
     }
     

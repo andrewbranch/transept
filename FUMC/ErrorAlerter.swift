@@ -7,7 +7,7 @@
 //
 
 @objc protocol ErrorAlertable {
-    func isViewLoaded() -> Bool
+    var isViewLoaded: Bool { get }
     var view: UIView! { get set }
     var errorAlertToBeShown: UIAlertView? { get set }
 }
@@ -59,7 +59,7 @@ class ErrorAlerter: NSObject {
             userInfo: ["userMessage": AppDelegate.USER_UNKNOWN_ERROR_MESSAGE]
         ))
         
-        if (viewController.isViewLoaded()) {
+        if (viewController.isViewLoaded) {
             unknownErrorAlert.show()
         } else {
             viewController.errorAlertToBeShown = unknownErrorAlert
@@ -69,7 +69,7 @@ class ErrorAlerter: NSObject {
     }
     
     class func showUserErrorMessage(_ error: NSError, inViewController viewController: ErrorAlertable) {
-        if (viewController.isViewLoaded() && viewController.view.window != nil) {
+        if (viewController.isViewLoaded && viewController.view.window != nil) {
             self.alertWithUserErrorMessage(error).show()
         } else {
             viewController.errorAlertToBeShown = self.alertWithUserErrorMessage(error)
@@ -77,7 +77,7 @@ class ErrorAlerter: NSObject {
     }
     
     class func showUserErrorMessage(_ error: API.Error, inViewController viewController: ErrorAlertable) {
-        if (viewController.isViewLoaded() && viewController.view.window != nil) {
+        if (viewController.isViewLoaded && viewController.view.window != nil) {
             self.alertWithUserErrorMessage(error).show()
         } else {
             viewController.errorAlertToBeShown = self.alertWithUserErrorMessage(error)
@@ -85,7 +85,7 @@ class ErrorAlerter: NSObject {
     }
     
     class func showLoadingAlertInViewController(_ viewController: ErrorAlertable) {
-        if (viewController.isViewLoaded() && viewController.view.window != nil) {
+        if (viewController.isViewLoaded && viewController.view.window != nil) {
             self.loadingAlertBasedOnReachability().show()
         } else {
             viewController.errorAlertToBeShown = self.loadingAlertBasedOnReachability()

@@ -30,7 +30,7 @@ open class API: NSObject {
         case DirectoryFullReadAccess = "directory_full_read_access"
     }
     
-    public enum Error: Error {
+    public enum Error: Swift.Error {
         case unauthenticated
         case unauthorized
         case unknown(userMessage: String?, developerMessage: String?, userInfo: [AnyHashable: Any]?)
@@ -64,7 +64,7 @@ open class API: NSObject {
             if let token = value {
                 _accessToken = token
                 do {
-                    try Locksmith.updateData(["rawJSON": token.rawJSON], forUserAccount: "accessToken")
+                    try Locksmith.updateData(data: ["rawJSON": token.rawJSON], forUserAccount: "accessToken")
                 } catch { }
             }
         }
@@ -84,18 +84,18 @@ open class API: NSObject {
     
     override init() {
         super.init()
-        if let keychainToken = Locksmith.loadDataForUserAccount("accessToken") {
+        if let keychainToken = Locksmith.loadDataForUserAccount(userAccount: "accessToken") {
             // self._accessToken = try? AccessToken(rawJSON: keychainToken["rawJSON"] as! NSData)
             // TODO refresh token
         }
     }
     
-    func getCalendars(_ completed: @escaping (_ calendars: [Calendar], _ error: Error?) -> Void) {
+    func getCalendars(_ completed: @escaping (_ calendars: [Calendar], _ error: Swift.Error?) -> Void) {
         let url = URL(string: "\(base)/calendars")
         let request = URLRequest(url: url!)
         NSURLConnection.sendAsynchronousRequest(request, queue: OperationQueue.main) { (response, data, error) -> Void in
             if (error != nil) {
-                completed([], error as! API.Error?)
+                completed([], error)
             } else if ((response as! HTTPURLResponse).statusCode != 200) {
                 let error = NSError(domain: NSURLErrorDomain, code: 0, userInfo: ["response": response as! HTTPURLResponse])
                 completed([], error)
@@ -110,7 +110,7 @@ open class API: NSObject {
         }
     }
     
-    func getEventsForCalendars(_ calendars: [Calendar], completed: @escaping (_ calendars: [Calendar], _ error: Error?) -> Void) {
+    func getEventsForCalendars(_ calendars: [Calendar], completed: @escaping (_ calendars: [Calendar], _ error: Swift.Error?) -> Void) {
         let page = 1
         self.lock.lock()
         self.dateFormatter.dateFormat = "MM/dd/yyyy"
@@ -125,7 +125,7 @@ open class API: NSObject {
         let request = URLRequest(url: url!)
         NSURLConnection.sendAsynchronousRequest(request, queue: OperationQueue.main) { (response, data, error) -> Void in
             if (error != nil) {
-                completed(calendars, error as! API.Error?)
+                completed(calendars, error)
             } else if ((response as! HTTPURLResponse).statusCode != 200) {
                 let error = NSError(domain: NSURLErrorDomain, code: 0, userInfo: ["response": response as! HTTPURLResponse])
                 completed(calendars, error)
@@ -150,12 +150,12 @@ open class API: NSObject {
         }
     }
     
-    func getBulletins(_ completed: @escaping (_ bulletins: [Bulletin], _ error: Error?) -> Void) {
+    func getBulletins(_ completed: @escaping (_ bulletins: [Bulletin], _ error: Swift.Error?) -> Void) {
         let url = URL(string: "\(base)/bulletins?filter[simple][visible]=true&sort=-date,%2Bservice")
         let request = URLRequest(url: url!)
         NSURLConnection.sendAsynchronousRequest(request, queue: OperationQueue.main) { (response, data, error) -> Void in
             if (error != nil) {
-                completed([], error as! API.Error?)
+                completed([], error)
             } else if ((response as! HTTPURLResponse).statusCode != 200) {
                 let error = NSError(domain: "NSURLDomainError", code: 0, userInfo: ["response": response as! HTTPURLResponse])
                 completed([], error)
@@ -180,12 +180,12 @@ open class API: NSObject {
         }
     }
     
-    func getWitnesses(_ completed: @escaping (_ witnesses: [Witness], _ error: Error?) -> Void) {
+    func getWitnesses(_ completed: @escaping (_ witnesses: [Witness], _ error: Swift.Error?) -> Void) {
         let url = URL(string: "\(base)/witnesses?filter[simple][visible]=true&sort=-volume,-issue")
         let request = URLRequest(url: url!)
         NSURLConnection.sendAsynchronousRequest(request, queue: OperationQueue.main) { (response, data, error) -> Void in
             if (error != nil) {
-                completed([], error as! API.Error?)
+                completed([], error)
             } else if ((response as! HTTPURLResponse).statusCode != 200) {
                 let error = NSError(domain: "NSURLDomainError", code: 0, userInfo: ["response": response as! HTTPURLResponse])
                 completed([], error)
@@ -209,12 +209,12 @@ open class API: NSObject {
         }
     }
     
-    func getVideos(_ completed: @escaping (_ albums: [VideoAlbum], _ error: Error?) -> Void) {
+    func getVideos(_ completed: @escaping (_ albums: [VideoAlbum], _ error: Swift.Error?) -> Void) {
         let url = URL(string: "\(base)/video-albums?filter[simple][visible]=true&include=videos&sort=-featured")
         let request = URLRequest(url: url!)
         NSURLConnection.sendAsynchronousRequest(request, queue: OperationQueue.main) { response, data, error in
             guard error == nil else {
-                completed([], error as! API.Error?)
+                completed([], error)
                 return
             }
             guard (response as! HTTPURLResponse).statusCode == 200 else {
@@ -239,64 +239,17 @@ open class API: NSObject {
         }
     }
     
-    func getFile(_ key: String, completed: @escaping (_ data: Data, _ error: Error?) -> Void) {
+    func getFile(_ key: String, completed: @escaping (_ data: Data, _ error: Swift.Error?) -> Void) {
         let url = self.fileURL(key: key)
         let request = URLRequest(url: url!)
         NSURLConnection.sendAsynchronousRequest(request, queue: OperationQueue.main) { response, data, error in
             if (error != nil) {
-                completed(Data(), error as! API.Error?)
+                completed(Data(), error)
             } else if (data!.count == 0 || (response as! HTTPURLResponse).statusCode != 200) {
                 let error = NSError(domain: NSURLErrorDomain, code: 0, userInfo: ["response": (response as! HTTPURLResponse)])
                 completed(Data(), error)
             } else {
                 completed(data!, nil)
-            }
-        }
-    }
-    
-    func getFeaturedContent(_ deviceKey: String, completed: @escaping (_ image: UIImage?, _ id: String?, _ url: URL?, _ error: Error?) -> Void) {
-        let url = URL(string: "\(base)/features?filter[simple][active]=true")
-        let request = URLRequest(url: url!)
-        NSURLConnection.sendAsynchronousRequest(request, queue: OperationQueue.main) { response, data, error in
-            if (error != nil) {
-                completed(nil, nil, nil, error as! API.Error?)
-            } else if (data!.count == 0 || (response as! HTTPURLResponse).statusCode != 200) {
-                let error = NSError(domain: NSURLErrorDomain, code: 0, userInfo: ["response": (response as! HTTPURLResponse)])
-                completed(nil, nil, nil, error)
-            } else {
-                do {
-                    let featuresDictionary: NSDictionary = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
-                    if ((featuresDictionary["data"]! as AnyObject).count > 0) {
-                    
-                        // Doesn't work in simulator
-                        
-                        if let key = featuresDictionary["data"]![0][deviceKey] as? String {
-                            self.getFile(key) { data, error in
-                                if (error != nil) {
-                                    completed(image: nil, id: nil, url: nil, error: error)
-                                    return
-                                }
-                                
-                                let image = UIImage(data: data)
-                                if let img = image {
-                                    var url: URL?
-                                    if let urlString = featuresDictionary["data"]![0]["url"] as? String {
-                                        url = URL(string: urlString)
-                                    }
-                                    completed(image: img, id: (featuresDictionary["data"]![0]["id"] as! String), url: url, error: nil)
-                                } else {
-                                    completed(image: nil, id: nil, url: nil, error: NSError(domain: "com.fumcpensacola.transept", code: 1, userInfo: nil))
-                                }
-                            }
-                        } else {
-                            completed(nil, nil, nil, NSError(domain: "com.fumcpensacola.transept", code: 1, userInfo: nil))
-                        }
-                    } else {
-                        completed(nil, nil, nil, NSError(domain: "com.fumcpensacola.transept", code: 1, userInfo: nil))
-                    }
-                } catch let error {
-                    completed(nil, nil, nil, error)
-                }
             }
         }
     }
@@ -442,7 +395,7 @@ open class API: NSObject {
                     throw Error.unknown(userMessage: API.BAD_RESPONSE_MESSAGE, developerMessage: "No response body was present", userInfo: ["response": res.response])
                 }
                 guard let object = try? TObject(rawJSON: data) else {
-                    throw Error.unknown(userMessage: API.BAD_RESPONSE_MESSAGE, developerMessage: "Could not deserialize response into \(String(describing: TObject))", userInfo: ["rawJSON": data])
+                    throw Error.unknown(userMessage: API.BAD_RESPONSE_MESSAGE, developerMessage: "Could not deserialize response into \(String(describing: TObject.self))", userInfo: ["rawJSON": data])
                 }
 
                 return object
@@ -458,7 +411,7 @@ open class API: NSObject {
                     throw Error.unknown(userMessage: API.BAD_RESPONSE_MESSAGE, developerMessage: "No response body was present", userInfo: ["response": res.response])
                 }
                 guard let array = try? TObject.mapInit(rawJSON: data) else {
-                    throw Error.unknown(userMessage: API.BAD_RESPONSE_MESSAGE, developerMessage: "Could not deserialize response into array of \(String(describing: TObject))", userInfo: ["rawJSON": data])
+                    throw Error.unknown(userMessage: API.BAD_RESPONSE_MESSAGE, developerMessage: "Could not deserialize response into array of \(String(describing: TObject.self))", userInfo: ["rawJSON": data])
                 }
                 
                 return array

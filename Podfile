@@ -1,12 +1,13 @@
-platform :ios, '8.1'
+platform :ios, '9.0'
 use_frameworks!
 
 target 'FUMC' do
   pod 'NSDate+TimeAgo', :inhibit_warnings => true
-  pod 'SwiftMoment', :inhibit_warnings => true, :git => 'https://github.com/andrewbranch/SwiftMoment.git', :commit => 'e5882ea'
-  pod 'Locksmith', '2.0.8'
+  pod 'SwiftMoment', '0.7'
+  pod 'Locksmith', '3.0.0'
   pod 'FBSDKLoginKit', '4.16.1'
-  pod 'RealmSwift'
+  pod 'RealmSwift', '2.1.0'
+  pod 'EZSwiftExtensions'
 
   target 'FUMCTests' do
     inherit! :search_paths

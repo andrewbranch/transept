@@ -28,7 +28,7 @@ struct AccessRequest : Deserializable {
     }
     
     init(rawJSON: Data) throws {
-        let jsonDictionary = try JSONSerialization.jsonObject(with: rawJSON, options: .allowFragments)
+        let jsonDictionary = try JSONSerialization.jsonObject(with: rawJSON, options: .allowFragments) as! NSDictionary
         let accessRequest = jsonDictionary["accessRequest"] as! NSDictionary
         id = accessRequest["id"] as! String
         dateRequested = moment(accessRequest["dateRequested"] as? String ?? "")?.date

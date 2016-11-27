@@ -7,6 +7,7 @@
 //
 
 import Crashlytics
+import EZSwiftExtensions
 
 protocol CalendarSettingsDelegate {
     func calendarsDataSource(_ dataSource: CalendarsDataSource, didGetCalendars calendars: [Calendar]) -> Void
@@ -28,7 +29,7 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
         ]
     }()
     var displayEvents: Dictionary<Date, [CalendarEvent]> {
-        return self.events.filteredDictionary { key, value in value.count > 0 }
+        return self.events.filter { key, value in value.count > 0 }
     }
     var sortedKeys = [NSString]()
     let dateFormatter = DateFormatter()
@@ -199,23 +200,23 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
         
         // Delete
         let sectionsToDelete = NSMutableIndexSet()
-        let currentSections = self.events.filteredDictionary { key, value in value.count > 0 }
-        let removedEntries = self.events.filteredDictionary { key, value in
+        let currentSections = self.events.filter { key, value in value.count > 0 }
+        let removedEntries = self.events.filter { key, value in
             value.count > 0 && newEvents[key]!.count == 0
         }
-        removedEntries.each { key, value in
+        removedEntries.forEach { key, value in
             sectionsToDelete.add(currentSections.keys.sorted(by: <).index(of: key)!)
         }
         self.tableView!.deleteSections(sectionsToDelete as IndexSet, with: UITableViewRowAnimation.automatic)
         
         var rowsToDelete = [IndexPath]()
-        let remainingEntries = self.events.filteredDictionary { key, value in !removedEntries.has(key) && value.count > 0 }
+        let remainingEntries = self.events.filter { key, value in !removedEntries.has(key) && value.count > 0 }
         var entriesAfterRowRemove = Dictionary<Date, [CalendarEvent]>()
-        remainingEntries.each { key, value in
+        remainingEntries.forEach { key, value in
             let entriesToDelete = value.filter {
                 !newEvents[key]!.contains($0)
             }
-            entriesAfterRowRemove[key] = value - entriesToDelete
+            entriesAfterRowRemove[key] = value.difference(entriesToDelete)
             let section = currentSections.keys.sorted(by: <).index(of: key)!
             rowsToDelete.append(contentsOf: entriesToDelete.map {
                 IndexPath(row: value.index(of: $0)!, section: section)
@@ -226,17 +227,17 @@ class CalendarTableViewController: CustomTableViewController, UITableViewDataSou
         
         // Insert
         let sectionsToInsert = NSMutableIndexSet()
-        let insertedEntries = newEvents.filteredDictionary { key, value in
+        let insertedEntries = newEvents.filter { key, value in
             value.count > 0 && self.events[key]!.count == 0
         }
         let union = remainingEntries.union(insertedEntries)
-        insertedEntries.each { key, value in
+        insertedEntries.forEach { key, value in
             sectionsToInsert.add(union.keys.sorted(by: <).index(of: key)!)
         }
         self.tableView!.insertSections(sectionsToInsert as IndexSet, with: UITableViewRowAnimation.automatic)
         
         var rowsToInsert = [IndexPath]()
-        entriesAfterRowRemove.each { key, value in
+        entriesAfterRowRemove.forEach { key, value in
             let entriesToInsert = newEvents[key]!.filter { !value.contains($0) }
             let combined = (value + entriesToInsert).sorted {
                 if ($0.0.from < $0.1.from) { return true }

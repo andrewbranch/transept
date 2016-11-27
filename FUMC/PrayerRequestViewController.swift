@@ -29,7 +29,7 @@ class PrayerRequestViewController: UIViewController, UITextViewDelegate, UIAlert
         toolbar.barStyle = UIBarStyle.default
         toolbar.items = [
             UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target:nil, action:nil),
-            UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: #selector(PrayerRequestViewController.dismissKeyboard)),
+            UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: #selector(PrayerRequestViewController.hideKeyboard)),
         ]
         (toolbar.items![1] as UIBarButtonItem).setTitleTextAttributes([
             NSFontAttributeName: UIFont.systemFont(ofSize: 16),
@@ -68,7 +68,7 @@ class PrayerRequestViewController: UIViewController, UITextViewDelegate, UIAlert
         #endif
     }
     
-    func dismissKeyboard() {
+    func hideKeyboard() {
         self.textView!.resignFirstResponder()
     }
     
@@ -94,7 +94,7 @@ class PrayerRequestViewController: UIViewController, UITextViewDelegate, UIAlert
     }
     
     @IBAction func sendRequest(_ sender: AnyObject?) {
-        self.dismissKeyboard()
+        self.hideKeyboard()
         self.beginLoading()
         API.shared().sendPrayerRequest(self.textView!.text) { error in
             self.endLoading()
@@ -119,7 +119,7 @@ class PrayerRequestViewController: UIViewController, UITextViewDelegate, UIAlert
             }
         } else if (alertView === self.successAlert!) {
             self.textView!.text = ""
-            dismissKeyboard()
+            hideKeyboard()
             self.navigationController!.popViewController(animated: true)
         }
     }

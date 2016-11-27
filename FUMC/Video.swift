@@ -65,7 +65,7 @@ open class Video: NSObject {
         self.fileHD = attrs["fileHD"] as! String
         super.init()
         
-        guard let url = (attrs["pictures"] as! [NSDictionary]).find({ picture in
+        guard let url = (attrs["pictures"] as! [NSDictionary]).first(where: { picture in
             return picture["width"] as! Int == 200
         })?["link"] as? String else {
             throw NSError(domain: "", code: 0, userInfo: nil)
