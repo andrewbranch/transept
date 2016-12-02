@@ -24,7 +24,9 @@ final class Member: Object, Deserializable {
     }
     
     static func mapInit(rawJSON: Data) throws -> [Member] {
-        return try JSONAPIResource.getDataArray(rawJSON).map(self.init)
+        return try JSONAPIResource.getDataArray(rawJSON).flatMap {
+            return try? self.init(jsonDictionary: $0)
+        }
     }
     
     convenience required init(rawJSON: Data) throws {
@@ -39,6 +41,7 @@ final class Member: Object, Deserializable {
     }
     
     fileprivate func initAttrs(_ jsonDictionary: NSDictionary) throws {
+        id = jsonDictionary["id"] as! String
         let attrs = jsonDictionary["attributes"] as! NSDictionary
         guard let firstName = attrs["first-name"] as? String else {
             throw NSError(domain: API.ERROR_DOMAIN, code: 0, userInfo: ["developerMessage": "First name was blank"])
@@ -50,8 +53,8 @@ final class Member: Object, Deserializable {
         
         self.firstName = firstName
         self.lastName = lastName
-        goesBy = attrs["goes-by"] as! String?
-        photo = attrs["photo"] as! String?
+        goesBy = attrs["goes-by"] as? String
+        photo = attrs["photo"] as? String
         isDeleted = attrs["is-deleted"] as! Bool
     }
 }

@@ -7,19 +7,38 @@
 //
 
 import UIKit
+import RealmSwift
 
 open class DirectoryDataSource: NSObject, UITableViewDataSource {
     
+    private let realm = try! Realm()
+    private var notificationToken: NotificationToken?
+    private var data: Results<Member>!
     open var delegate: DirectoryDataSourceDelegate?
     open var title = "Directory"
     
     required public init(delegate: DirectoryDataSourceDelegate?) {
         super.init()
         self.delegate = delegate
+        data = realm
+            .objects(Member.self)
+            .filter("isDeleted == false")
+            .sorted(by: [
+                SortDescriptor(property: "lastName"),
+                SortDescriptor(property: "firstName")
+            ])
+        
+        notificationToken = data.addNotificationBlock { [weak self] _ in
+            self?.delegate?.dataSourceUpdatedMembers()
+        }
     }
     
     open func refresh() {
-        
+        API.shared().getMembers() { members in
+            if (try? members.value()) == nil {
+                self.delegate?.dataSource(self, failedWith: API.Error.unknown(userMessage: nil, developerMessage: nil, userInfo: nil))
+            }
+        }
     }
     
     open func numberOfSections(in tableView: UITableView) -> Int {
@@ -27,12 +46,13 @@ open class DirectoryDataSource: NSObject, UITableViewDataSource {
     }
     
     open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return data.count
     }
     
     open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "directoryTableViewCell", for: indexPath)
-        cell.textLabel!.text = "It works"
+        let member = data[indexPath.row]
+        cell.textLabel!.text = "\(member.firstName!) \(member.lastName!)"
         return cell
     }
 }

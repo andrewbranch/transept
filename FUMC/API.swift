@@ -11,6 +11,7 @@ import UIKit
 import DigitsKit
 import Locksmith
 import SwiftMoment
+import RealmSwift
 
 public struct Result<T> {
     let value: () throws -> T
@@ -325,7 +326,7 @@ open class API: NSObject {
     }
     
     func updateAccessRequest(_ accessRequest: AccessRequest, session: DGTSession, facebookToken: String, completed: @escaping (_ accessRequest: Result<AccessRequest>) -> Void) {
-        let url = URL(string: "\(base)/authenticate/digits/request/\(accessRequest.id)")
+        let url = URL(string: "\(base)/authenticate/digits/request/\(accessRequest.id!)")
         let request = NSMutableURLRequest(url: url!)
         let data = try! JSONSerialization.data(withJSONObject: [
             "facebookToken": facebookToken
@@ -371,11 +372,21 @@ open class API: NSObject {
         }
     }
     
-    func getMembers(_ since: Date? = lastDirectorySync, completed: @escaping (_ result: Result<[Member]>) -> Void) {
-        let url = URL(string: "\(base)/members")
+    func getMembers(_ since: Date? = lastDirectorySync, completed: ((_ result: Result<[Member]>) -> Void)? = nil) {
+        let url = URL(string: "\(base)/directory/members")
         let request = NSMutableURLRequest(url: url!)
-        getArray(request: request, authenticated: true) { members in
-            completed(members)
+        getArray(request: request, authenticated: true) { (members: Result<[Member]>) in
+            completed?(Result {
+                let members = try members.value()
+                let realm = try Realm()
+                try realm.write {
+                    members.forEach {
+                        realm.add($0, update: true)
+                    }
+                }
+
+                return members
+            })
         }
     }
     

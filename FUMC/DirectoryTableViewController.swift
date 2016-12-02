@@ -10,7 +10,8 @@ import UIKit
 import DigitsKit
 
 public protocol DirectoryDataSourceDelegate {
-    func dataSource(_ dataSource: DirectoryDataSource, failedToLoadWith error: API.Error)
+    func dataSource(_ dataSource: DirectoryDataSource, failedWith error: API.Error)
+    func dataSourceUpdatedMembers()
 }
 
 class DirectoryTableViewController: CustomTableViewController, DirectoryDataSourceDelegate, AuthenticationDelegate, SignInDelegate, PendingAccessDelegate {
@@ -68,7 +69,7 @@ class DirectoryTableViewController: CustomTableViewController, DirectoryDataSour
         pendingAccessViewController.didMove(toParentViewController: self)
     }
     
-    func dataSource(_ dataSource: DirectoryDataSource, failedToLoadWith error: API.Error) {
+    func dataSource(_ dataSource: DirectoryDataSource, failedWith error: API.Error) {
         switch error {
         case .unauthenticated: // this should never happen
             launchAuthFlow(token: nil, forceRefresh: true)
@@ -79,6 +80,10 @@ class DirectoryTableViewController: CustomTableViewController, DirectoryDataSour
         default:
             ErrorAlerter.showUnknownErrorMessageInViewController(self, withOriginalError: nil)
         }
+    }
+    
+    func dataSourceUpdatedMembers() {
+        tableView?.reloadData()
     }
     
     func authenticationViewController(_ viewController: AuthenticationViewController, failedWith error: API.Error) {
@@ -107,9 +112,11 @@ class DirectoryTableViewController: CustomTableViewController, DirectoryDataSour
     func pendingAccessViewController(_ viewController: PendingAccessViewController, granted accessToken: AccessToken) {
         dataSource!.refresh()
         UserDefaults.standard.setValue(nil, forKey: self.accessRequestKey)
-        viewController.willMove(toParentViewController: nil)
-        viewController.view.removeFromSuperview()
-        viewController.removeFromParentViewController()
+        DispatchQueue.main.async {
+            viewController.willMove(toParentViewController: nil)
+            viewController.view.removeFromSuperview()
+            viewController.removeFromParentViewController()
+        }
     }
     
     func pendingAccessViewController(_ viewController: PendingAccessViewController, failedWith error: NSError) {
@@ -127,7 +134,9 @@ class DirectoryTableViewController: CustomTableViewController, DirectoryDataSour
     func signInViewController(_ viewController: SignInViewController, grantedKnownUser token: AccessToken) {
         dataSource!.refresh()
         DispatchQueue.main.async {
-            viewController.dismiss(animated: true, completion: nil)
+            viewController.willMove(toParentViewController: nil)
+            viewController.view.removeFromSuperview()
+            viewController.removeFromParentViewController()
         }
     }
     
