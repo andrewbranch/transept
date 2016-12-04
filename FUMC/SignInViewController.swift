@@ -56,6 +56,7 @@ class SignInViewController: UIViewController {
                     // Could not grant requested scopes; start access request
                     self.delegate.signInViewControllerCouldNotGrantToken(viewController: self)
                 } catch let error as NSError {
+                    self.signInButton!.isEnabled = true
                     self.delegate.signInViewController(self, failedWith: error)
                 }
             }

@@ -440,8 +440,10 @@ open class API: NSObject {
             
             request.setValue("Bearer \(token.signed)", forHTTPHeaderField: "Authorization")
         }
-
+        
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         NSURLConnection.sendAsynchronousRequest(request as URLRequest, queue: OperationQueue.main) { response, data, error in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
             guard error == nil else {
                 return completed(Result { throw error! })
             }

@@ -29,14 +29,16 @@ open class DirectoryDataSource: NSObject, UITableViewDataSource {
             ])
         
         notificationToken = data.addNotificationBlock { [weak self] _ in
-            self?.delegate?.dataSourceUpdatedMembers()
+            self?.delegate?.dataSourceUpdatedMembers(dataSource: self!)
         }
     }
     
     open func refresh() {
-        API.shared().getMembers() { members in
+        delegate?.dataSourceStartedLoading(dataSource: self)
+        API.shared().getMembers() { [weak self] members in
             if (try? members.value()) == nil {
-                self.delegate?.dataSource(self, failedWith: API.Error.unknown(userMessage: nil, developerMessage: nil, userInfo: nil))
+                // TODO clean up this error
+                self?.delegate?.dataSource(self!, failedWith: API.Error.unknown(userMessage: nil, developerMessage: nil, userInfo: nil))
             }
         }
     }

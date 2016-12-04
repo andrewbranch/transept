@@ -25,8 +25,8 @@ class ConfirmIdentityViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        greetingLabel.text = "Hello, \(firstName)!"
-        denyButton.setTitle("I’m not \(firstName) \(lastName)", for: UIControlState())
+        greetingLabel.text = "Hello, \(firstName!)!"
+        denyButton.setTitle("I’m not \(firstName!) \(lastName!)", for: UIControlState())
     }
     
     @IBAction func tappedConfirmButton() {
